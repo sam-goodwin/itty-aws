@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "SupplyChain",
@@ -1905,7 +1905,7 @@ export const getDataIntegrationEvent: API.OperationMethod<
   GetDataIntegrationEventRequest,
   GetDataIntegrationEventResponse,
   GetDataIntegrationEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataIntegrationEventRequest,
   output: GetDataIntegrationEventResponse,
@@ -1931,7 +1931,7 @@ export const getDataIntegrationFlowExecution: API.OperationMethod<
   GetDataIntegrationFlowExecutionRequest,
   GetDataIntegrationFlowExecutionResponse,
   GetDataIntegrationFlowExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataIntegrationFlowExecutionRequest,
   output: GetDataIntegrationFlowExecutionResponse,
@@ -1956,21 +1956,21 @@ export const listDataIntegrationEvents: API.OperationMethod<
   ListDataIntegrationEventsRequest,
   ListDataIntegrationEventsResponse,
   ListDataIntegrationEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataIntegrationEventsRequest,
   ) => stream.Stream<
     ListDataIntegrationEventsResponse,
     ListDataIntegrationEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataIntegrationEventsRequest,
   ) => stream.Stream<
     DataIntegrationEvent,
     ListDataIntegrationEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationEventsRequest,
@@ -2002,21 +2002,21 @@ export const listDataIntegrationFlowExecutions: API.OperationMethod<
   ListDataIntegrationFlowExecutionsRequest,
   ListDataIntegrationFlowExecutionsResponse,
   ListDataIntegrationFlowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataIntegrationFlowExecutionsRequest,
   ) => stream.Stream<
     ListDataIntegrationFlowExecutionsResponse,
     ListDataIntegrationFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataIntegrationFlowExecutionsRequest,
   ) => stream.Stream<
     DataIntegrationFlowExecution,
     ListDataIntegrationFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationFlowExecutionsRequest,
@@ -2049,7 +2049,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2077,7 +2077,7 @@ export const sendDataIntegrationEvent: API.OperationMethod<
   SendDataIntegrationEventRequest,
   SendDataIntegrationEventResponse,
   SendDataIntegrationEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendDataIntegrationEventRequest,
   output: SendDataIntegrationEventResponse,
@@ -2105,7 +2105,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2131,7 +2131,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2160,7 +2160,7 @@ export const createBillOfMaterialsImportJob: API.OperationMethod<
   CreateBillOfMaterialsImportJobRequest,
   CreateBillOfMaterialsImportJobResponse,
   CreateBillOfMaterialsImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillOfMaterialsImportJobRequest,
   output: CreateBillOfMaterialsImportJobResponse,
@@ -2187,7 +2187,7 @@ export const getBillOfMaterialsImportJob: API.OperationMethod<
   GetBillOfMaterialsImportJobRequest,
   GetBillOfMaterialsImportJobResponse,
   GetBillOfMaterialsImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillOfMaterialsImportJobRequest,
   output: GetBillOfMaterialsImportJobResponse,
@@ -2214,7 +2214,7 @@ export const createDataIntegrationFlow: API.OperationMethod<
   CreateDataIntegrationFlowRequest,
   CreateDataIntegrationFlowResponse,
   CreateDataIntegrationFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataIntegrationFlowRequest,
   output: CreateDataIntegrationFlowResponse,
@@ -2241,7 +2241,7 @@ export const getDataIntegrationFlow: API.OperationMethod<
   GetDataIntegrationFlowRequest,
   GetDataIntegrationFlowResponse,
   GetDataIntegrationFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataIntegrationFlowRequest,
   output: GetDataIntegrationFlowResponse,
@@ -2267,7 +2267,7 @@ export const updateDataIntegrationFlow: API.OperationMethod<
   UpdateDataIntegrationFlowRequest,
   UpdateDataIntegrationFlowResponse,
   UpdateDataIntegrationFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataIntegrationFlowRequest,
   output: UpdateDataIntegrationFlowResponse,
@@ -2292,7 +2292,7 @@ export const deleteDataIntegrationFlow: API.OperationMethod<
   DeleteDataIntegrationFlowRequest,
   DeleteDataIntegrationFlowResponse,
   DeleteDataIntegrationFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataIntegrationFlowRequest,
   output: DeleteDataIntegrationFlowResponse,
@@ -2316,21 +2316,21 @@ export const listDataIntegrationFlows: API.OperationMethod<
   ListDataIntegrationFlowsRequest,
   ListDataIntegrationFlowsResponse,
   ListDataIntegrationFlowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataIntegrationFlowsRequest,
   ) => stream.Stream<
     ListDataIntegrationFlowsResponse,
     ListDataIntegrationFlowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataIntegrationFlowsRequest,
   ) => stream.Stream<
     DataIntegrationFlow,
     ListDataIntegrationFlowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationFlowsRequest,
@@ -2364,7 +2364,7 @@ export const createDataLakeDataset: API.OperationMethod<
   CreateDataLakeDatasetRequest,
   CreateDataLakeDatasetResponse,
   CreateDataLakeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataLakeDatasetRequest,
   output: CreateDataLakeDatasetResponse,
@@ -2392,7 +2392,7 @@ export const getDataLakeDataset: API.OperationMethod<
   GetDataLakeDatasetRequest,
   GetDataLakeDatasetResponse,
   GetDataLakeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataLakeDatasetRequest,
   output: GetDataLakeDatasetResponse,
@@ -2418,7 +2418,7 @@ export const updateDataLakeDataset: API.OperationMethod<
   UpdateDataLakeDatasetRequest,
   UpdateDataLakeDatasetResponse,
   UpdateDataLakeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataLakeDatasetRequest,
   output: UpdateDataLakeDatasetResponse,
@@ -2444,7 +2444,7 @@ export const deleteDataLakeDataset: API.OperationMethod<
   DeleteDataLakeDatasetRequest,
   DeleteDataLakeDatasetResponse,
   DeleteDataLakeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataLakeDatasetRequest,
   output: DeleteDataLakeDatasetResponse,
@@ -2470,21 +2470,21 @@ export const listDataLakeDatasets: API.OperationMethod<
   ListDataLakeDatasetsRequest,
   ListDataLakeDatasetsResponse,
   ListDataLakeDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataLakeDatasetsRequest,
   ) => stream.Stream<
     ListDataLakeDatasetsResponse,
     ListDataLakeDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataLakeDatasetsRequest,
   ) => stream.Stream<
     DataLakeDataset,
     ListDataLakeDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataLakeDatasetsRequest,
@@ -2518,7 +2518,7 @@ export const createDataLakeNamespace: API.OperationMethod<
   CreateDataLakeNamespaceRequest,
   CreateDataLakeNamespaceResponse,
   CreateDataLakeNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataLakeNamespaceRequest,
   output: CreateDataLakeNamespaceResponse,
@@ -2545,7 +2545,7 @@ export const getDataLakeNamespace: API.OperationMethod<
   GetDataLakeNamespaceRequest,
   GetDataLakeNamespaceResponse,
   GetDataLakeNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataLakeNamespaceRequest,
   output: GetDataLakeNamespaceResponse,
@@ -2571,7 +2571,7 @@ export const updateDataLakeNamespace: API.OperationMethod<
   UpdateDataLakeNamespaceRequest,
   UpdateDataLakeNamespaceResponse,
   UpdateDataLakeNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataLakeNamespaceRequest,
   output: UpdateDataLakeNamespaceResponse,
@@ -2597,7 +2597,7 @@ export const deleteDataLakeNamespace: API.OperationMethod<
   DeleteDataLakeNamespaceRequest,
   DeleteDataLakeNamespaceResponse,
   DeleteDataLakeNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataLakeNamespaceRequest,
   output: DeleteDataLakeNamespaceResponse,
@@ -2622,21 +2622,21 @@ export const listDataLakeNamespaces: API.OperationMethod<
   ListDataLakeNamespacesRequest,
   ListDataLakeNamespacesResponse,
   ListDataLakeNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataLakeNamespacesRequest,
   ) => stream.Stream<
     ListDataLakeNamespacesResponse,
     ListDataLakeNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataLakeNamespacesRequest,
   ) => stream.Stream<
     DataLakeNamespace,
     ListDataLakeNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataLakeNamespacesRequest,
@@ -2671,7 +2671,7 @@ export const createInstance: API.OperationMethod<
   CreateInstanceRequest,
   CreateInstanceResponse,
   CreateInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInstanceRequest,
   output: CreateInstanceResponse,
@@ -2698,7 +2698,7 @@ export const getInstance: API.OperationMethod<
   GetInstanceRequest,
   GetInstanceResponse,
   GetInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceRequest,
   output: GetInstanceResponse,
@@ -2724,7 +2724,7 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceRequest,
   UpdateInstanceResponse,
   UpdateInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateInstanceRequest,
   output: UpdateInstanceResponse,
@@ -2752,7 +2752,7 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceRequest,
   DeleteInstanceResponse,
   DeleteInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstanceRequest,
   output: DeleteInstanceResponse,
@@ -2777,21 +2777,21 @@ export const listInstances: API.OperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInstancesRequest,
   ) => stream.Stream<
     ListInstancesResponse,
     ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInstancesRequest,
   ) => stream.Stream<
     Instance,
     ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,

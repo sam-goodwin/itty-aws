@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Pricing",
   serviceShapeName: "AWSPriceListService",
@@ -375,21 +375,21 @@ export const describeServices: API.OperationMethod<
   DescribeServicesRequest,
   DescribeServicesResponse,
   DescribeServicesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeServicesRequest,
   ) => stream.Stream<
     DescribeServicesResponse,
     DescribeServicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeServicesRequest,
   ) => stream.Stream<
     Service,
     DescribeServicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeServicesRequest,
@@ -426,21 +426,21 @@ export const getAttributeValues: API.OperationMethod<
   GetAttributeValuesRequest,
   GetAttributeValuesResponse,
   GetAttributeValuesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetAttributeValuesRequest,
   ) => stream.Stream<
     GetAttributeValuesResponse,
     GetAttributeValuesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetAttributeValuesRequest,
   ) => stream.Stream<
     AttributeValue,
     GetAttributeValuesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAttributeValuesRequest,
@@ -478,7 +478,7 @@ export const getPriceListFileUrl: API.OperationMethod<
   GetPriceListFileUrlRequest,
   GetPriceListFileUrlResponse,
   GetPriceListFileUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPriceListFileUrlRequest,
   output: GetPriceListFileUrlResponse,
@@ -507,21 +507,21 @@ export const getProducts: API.OperationMethod<
   GetProductsRequest,
   GetProductsResponse,
   GetProductsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetProductsRequest,
   ) => stream.Stream<
     GetProductsResponse,
     GetProductsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetProductsRequest,
   ) => stream.Stream<
     SynthesizedJsonPriceListJsonItem,
     GetProductsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetProductsRequest,
@@ -561,21 +561,21 @@ export const listPriceLists: API.OperationMethod<
   ListPriceListsRequest,
   ListPriceListsResponse,
   ListPriceListsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPriceListsRequest,
   ) => stream.Stream<
     ListPriceListsResponse,
     ListPriceListsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPriceListsRequest,
   ) => stream.Stream<
     PriceList,
     ListPriceListsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPriceListsRequest,

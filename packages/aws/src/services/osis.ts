@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://osis.amazonaws.com/doc/2022-01-01");
 const svc = T.AwsApiService({
   sdkId: "OSIS",
@@ -1300,7 +1300,7 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineRequest,
   CreatePipelineResponse,
   CreatePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePipelineRequest,
   output: CreatePipelineResponse,
@@ -1330,7 +1330,7 @@ export const createPipelineEndpoint: API.OperationMethod<
   CreatePipelineEndpointRequest,
   CreatePipelineEndpointResponse,
   CreatePipelineEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePipelineEndpointRequest,
   output: CreatePipelineEndpointResponse,
@@ -1359,7 +1359,7 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineRequest,
   DeletePipelineResponse,
   DeletePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePipelineRequest,
   output: DeletePipelineResponse,
@@ -1385,7 +1385,7 @@ export const deletePipelineEndpoint: API.OperationMethod<
   DeletePipelineEndpointRequest,
   DeletePipelineEndpointResponse,
   DeletePipelineEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePipelineEndpointRequest,
   output: DeletePipelineEndpointResponse,
@@ -1411,7 +1411,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -1438,7 +1438,7 @@ export const getPipeline: API.OperationMethod<
   GetPipelineRequest,
   GetPipelineResponse,
   GetPipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPipelineRequest,
   output: GetPipelineResponse,
@@ -1467,7 +1467,7 @@ export const getPipelineBlueprint: API.OperationMethod<
   GetPipelineBlueprintRequest,
   GetPipelineBlueprintResponse,
   GetPipelineBlueprintError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPipelineBlueprintRequest,
   output: GetPipelineBlueprintResponse,
@@ -1497,7 +1497,7 @@ export const getPipelineChangeProgress: API.OperationMethod<
   GetPipelineChangeProgressRequest,
   GetPipelineChangeProgressResponse,
   GetPipelineChangeProgressError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPipelineChangeProgressRequest,
   output: GetPipelineChangeProgressResponse,
@@ -1524,7 +1524,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -1553,7 +1553,7 @@ export const listPipelineBlueprints: API.OperationMethod<
   ListPipelineBlueprintsRequest,
   ListPipelineBlueprintsResponse,
   ListPipelineBlueprintsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPipelineBlueprintsRequest,
   output: ListPipelineBlueprintsResponse,
@@ -1579,21 +1579,21 @@ export const listPipelineEndpointConnections: API.OperationMethod<
   ListPipelineEndpointConnectionsRequest,
   ListPipelineEndpointConnectionsResponse,
   ListPipelineEndpointConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPipelineEndpointConnectionsRequest,
   ) => stream.Stream<
     ListPipelineEndpointConnectionsResponse,
     ListPipelineEndpointConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPipelineEndpointConnectionsRequest,
   ) => stream.Stream<
     PipelineEndpointConnection,
     ListPipelineEndpointConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineEndpointConnectionsRequest,
@@ -1626,21 +1626,21 @@ export const listPipelineEndpoints: API.OperationMethod<
   ListPipelineEndpointsRequest,
   ListPipelineEndpointsResponse,
   ListPipelineEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPipelineEndpointsRequest,
   ) => stream.Stream<
     ListPipelineEndpointsResponse,
     ListPipelineEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPipelineEndpointsRequest,
   ) => stream.Stream<
     PipelineEndpoint,
     ListPipelineEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineEndpointsRequest,
@@ -1675,21 +1675,21 @@ export const listPipelines: API.OperationMethod<
   ListPipelinesRequest,
   ListPipelinesResponse,
   ListPipelinesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPipelinesRequest,
   ) => stream.Stream<
     ListPipelinesResponse,
     ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPipelinesRequest,
   ) => stream.Stream<
     unknown,
     ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPipelinesRequest,
@@ -1722,7 +1722,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1750,7 +1750,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -1777,7 +1777,7 @@ export const revokePipelineEndpointConnections: API.OperationMethod<
   RevokePipelineEndpointConnectionsRequest,
   RevokePipelineEndpointConnectionsResponse,
   RevokePipelineEndpointConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokePipelineEndpointConnectionsRequest,
   output: RevokePipelineEndpointConnectionsResponse,
@@ -1804,7 +1804,7 @@ export const startPipeline: API.OperationMethod<
   StartPipelineRequest,
   StartPipelineResponse,
   StartPipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartPipelineRequest,
   output: StartPipelineResponse,
@@ -1833,7 +1833,7 @@ export const stopPipeline: API.OperationMethod<
   StopPipelineRequest,
   StopPipelineResponse,
   StopPipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopPipelineRequest,
   output: StopPipelineResponse,
@@ -1862,7 +1862,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1890,7 +1890,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1918,7 +1918,7 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineRequest,
   UpdatePipelineResponse,
   UpdatePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePipelineRequest,
   output: UpdatePipelineResponse,
@@ -1946,7 +1946,7 @@ export const validatePipeline: API.OperationMethod<
   ValidatePipelineRequest,
   ValidatePipelineResponse,
   ValidatePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidatePipelineRequest,
   output: ValidatePipelineResponse,

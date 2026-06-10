@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://memorydb.amazonaws.com/doc/2021-01-01/");
 const svc = T.AwsApiService({
   sdkId: "MemoryDB",
@@ -2975,7 +2975,7 @@ export const batchUpdateCluster: API.OperationMethod<
   BatchUpdateClusterRequest,
   BatchUpdateClusterResponse,
   BatchUpdateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateClusterRequest,
   output: BatchUpdateClusterResponse,
@@ -2998,7 +2998,7 @@ export const copySnapshot: API.OperationMethod<
   CopySnapshotRequest,
   CopySnapshotResponse,
   CopySnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopySnapshotRequest,
   output: CopySnapshotResponse,
@@ -3029,7 +3029,7 @@ export const createACL: API.OperationMethod<
   CreateACLRequest,
   CreateACLResponse,
   CreateACLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateACLRequest,
   output: CreateACLResponse,
@@ -3070,7 +3070,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterRequest,
   CreateClusterResponse,
   CreateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
@@ -3110,7 +3110,7 @@ export const createMultiRegionCluster: API.OperationMethod<
   CreateMultiRegionClusterRequest,
   CreateMultiRegionClusterResponse,
   CreateMultiRegionClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMultiRegionClusterRequest,
   output: CreateMultiRegionClusterResponse,
@@ -3140,7 +3140,7 @@ export const createParameterGroup: API.OperationMethod<
   CreateParameterGroupRequest,
   CreateParameterGroupResponse,
   CreateParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateParameterGroupRequest,
   output: CreateParameterGroupResponse,
@@ -3171,7 +3171,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotRequest,
   CreateSnapshotResponse,
   CreateSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSnapshotRequest,
   output: CreateSnapshotResponse,
@@ -3205,7 +3205,7 @@ export const createSubnetGroup: API.OperationMethod<
   CreateSubnetGroupRequest,
   CreateSubnetGroupResponse,
   CreateSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubnetGroupRequest,
   output: CreateSubnetGroupResponse,
@@ -3234,7 +3234,7 @@ export const createUser: API.OperationMethod<
   CreateUserRequest,
   CreateUserResponse,
   CreateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
@@ -3259,7 +3259,7 @@ export const deleteACL: API.OperationMethod<
   DeleteACLRequest,
   DeleteACLResponse,
   DeleteACLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteACLRequest,
   output: DeleteACLResponse,
@@ -3287,7 +3287,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterRequest,
   DeleteClusterResponse,
   DeleteClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
@@ -3312,7 +3312,7 @@ export const deleteMultiRegionCluster: API.OperationMethod<
   DeleteMultiRegionClusterRequest,
   DeleteMultiRegionClusterResponse,
   DeleteMultiRegionClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMultiRegionClusterRequest,
   output: DeleteMultiRegionClusterResponse,
@@ -3337,7 +3337,7 @@ export const deleteParameterGroup: API.OperationMethod<
   DeleteParameterGroupRequest,
   DeleteParameterGroupResponse,
   DeleteParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteParameterGroupRequest,
   output: DeleteParameterGroupResponse,
@@ -3363,7 +3363,7 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotRequest,
   DeleteSnapshotResponse,
   DeleteSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSnapshotRequest,
   output: DeleteSnapshotResponse,
@@ -3387,7 +3387,7 @@ export const deleteSubnetGroup: API.OperationMethod<
   DeleteSubnetGroupRequest,
   DeleteSubnetGroupResponse,
   DeleteSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubnetGroupRequest,
   output: DeleteSubnetGroupResponse,
@@ -3409,7 +3409,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserRequest,
   DeleteUserResponse,
   DeleteUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
@@ -3430,21 +3430,21 @@ export const describeACLs: API.OperationMethod<
   DescribeACLsRequest,
   DescribeACLsResponse,
   DescribeACLsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeACLsRequest,
   ) => stream.Stream<
     DescribeACLsResponse,
     DescribeACLsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeACLsRequest,
   ) => stream.Stream<
     ACL,
     DescribeACLsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeACLsRequest,
@@ -3470,21 +3470,21 @@ export const describeClusters: API.OperationMethod<
   DescribeClustersRequest,
   DescribeClustersResponse,
   DescribeClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeClustersRequest,
   ) => stream.Stream<
     DescribeClustersResponse,
     DescribeClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeClustersRequest,
   ) => stream.Stream<
     Cluster,
     DescribeClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeClustersRequest,
@@ -3514,21 +3514,21 @@ export const describeEngineVersions: API.OperationMethod<
   DescribeEngineVersionsRequest,
   DescribeEngineVersionsResponse,
   DescribeEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEngineVersionsRequest,
   ) => stream.Stream<
     DescribeEngineVersionsResponse,
     DescribeEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEngineVersionsRequest,
   ) => stream.Stream<
     EngineVersionInfo,
     DescribeEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineVersionsRequest,
@@ -3559,21 +3559,21 @@ export const describeEvents: API.OperationMethod<
   DescribeEventsRequest,
   DescribeEventsResponse,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEventsRequest,
   ) => stream.Stream<
     DescribeEventsResponse,
     DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEventsRequest,
   ) => stream.Stream<
     Event,
     DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsRequest,
@@ -3603,21 +3603,21 @@ export const describeMultiRegionClusters: API.OperationMethod<
   DescribeMultiRegionClustersRequest,
   DescribeMultiRegionClustersResponse,
   DescribeMultiRegionClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeMultiRegionClustersRequest,
   ) => stream.Stream<
     DescribeMultiRegionClustersResponse,
     DescribeMultiRegionClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeMultiRegionClustersRequest,
   ) => stream.Stream<
     MultiRegionCluster,
     DescribeMultiRegionClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeMultiRegionClustersRequest,
@@ -3648,7 +3648,7 @@ export const describeMultiRegionParameterGroups: API.OperationMethod<
   DescribeMultiRegionParameterGroupsRequest,
   DescribeMultiRegionParameterGroupsResponse,
   DescribeMultiRegionParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeMultiRegionParameterGroupsRequest,
   output: DescribeMultiRegionParameterGroupsResponse,
@@ -3672,7 +3672,7 @@ export const describeMultiRegionParameters: API.OperationMethod<
   DescribeMultiRegionParametersRequest,
   DescribeMultiRegionParametersResponse,
   DescribeMultiRegionParametersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeMultiRegionParametersRequest,
   output: DescribeMultiRegionParametersResponse,
@@ -3696,21 +3696,21 @@ export const describeParameterGroups: API.OperationMethod<
   DescribeParameterGroupsRequest,
   DescribeParameterGroupsResponse,
   DescribeParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeParameterGroupsRequest,
   ) => stream.Stream<
     DescribeParameterGroupsResponse,
     DescribeParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeParameterGroupsRequest,
   ) => stream.Stream<
     ParameterGroup,
     DescribeParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeParameterGroupsRequest,
@@ -3741,21 +3741,21 @@ export const describeParameters: API.OperationMethod<
   DescribeParametersRequest,
   DescribeParametersResponse,
   DescribeParametersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeParametersRequest,
   ) => stream.Stream<
     DescribeParametersResponse,
     DescribeParametersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeParametersRequest,
   ) => stream.Stream<
     Parameter,
     DescribeParametersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeParametersRequest,
@@ -3786,21 +3786,21 @@ export const describeReservedNodes: API.OperationMethod<
   DescribeReservedNodesRequest,
   DescribeReservedNodesResponse,
   DescribeReservedNodesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeReservedNodesRequest,
   ) => stream.Stream<
     DescribeReservedNodesResponse,
     DescribeReservedNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeReservedNodesRequest,
   ) => stream.Stream<
     ReservedNode,
     DescribeReservedNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodesRequest,
@@ -3831,21 +3831,21 @@ export const describeReservedNodesOfferings: API.OperationMethod<
   DescribeReservedNodesOfferingsRequest,
   DescribeReservedNodesOfferingsResponse,
   DescribeReservedNodesOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeReservedNodesOfferingsRequest,
   ) => stream.Stream<
     DescribeReservedNodesOfferingsResponse,
     DescribeReservedNodesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeReservedNodesOfferingsRequest,
   ) => stream.Stream<
     ReservedNodesOffering,
     DescribeReservedNodesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodesOfferingsRequest,
@@ -3874,21 +3874,21 @@ export const describeServiceUpdates: API.OperationMethod<
   DescribeServiceUpdatesRequest,
   DescribeServiceUpdatesResponse,
   DescribeServiceUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeServiceUpdatesRequest,
   ) => stream.Stream<
     DescribeServiceUpdatesResponse,
     DescribeServiceUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeServiceUpdatesRequest,
   ) => stream.Stream<
     ServiceUpdate,
     DescribeServiceUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeServiceUpdatesRequest,
@@ -3918,21 +3918,21 @@ export const describeSnapshots: API.OperationMethod<
   DescribeSnapshotsRequest,
   DescribeSnapshotsResponse,
   DescribeSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeSnapshotsRequest,
   ) => stream.Stream<
     DescribeSnapshotsResponse,
     DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeSnapshotsRequest,
   ) => stream.Stream<
     Snapshot,
     DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
@@ -3961,21 +3961,21 @@ export const describeSubnetGroups: API.OperationMethod<
   DescribeSubnetGroupsRequest,
   DescribeSubnetGroupsResponse,
   DescribeSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeSubnetGroupsRequest,
   ) => stream.Stream<
     DescribeSubnetGroupsResponse,
     DescribeSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeSubnetGroupsRequest,
   ) => stream.Stream<
     SubnetGroup,
     DescribeSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubnetGroupsRequest,
@@ -3999,21 +3999,21 @@ export const describeUsers: API.OperationMethod<
   DescribeUsersRequest,
   DescribeUsersResponse,
   DescribeUsersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeUsersRequest,
   ) => stream.Stream<
     DescribeUsersResponse,
     DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeUsersRequest,
   ) => stream.Stream<
     User,
     DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeUsersRequest,
@@ -4044,7 +4044,7 @@ export const failoverShard: API.OperationMethod<
   FailoverShardRequest,
   FailoverShardResponse,
   FailoverShardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FailoverShardRequest,
   output: FailoverShardResponse,
@@ -4071,7 +4071,7 @@ export const listAllowedMultiRegionClusterUpdates: API.OperationMethod<
   ListAllowedMultiRegionClusterUpdatesRequest,
   ListAllowedMultiRegionClusterUpdatesResponse,
   ListAllowedMultiRegionClusterUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAllowedMultiRegionClusterUpdatesRequest,
   output: ListAllowedMultiRegionClusterUpdatesResponse,
@@ -4096,7 +4096,7 @@ export const listAllowedNodeTypeUpdates: API.OperationMethod<
   ListAllowedNodeTypeUpdatesRequest,
   ListAllowedNodeTypeUpdatesResponse,
   ListAllowedNodeTypeUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAllowedNodeTypeUpdatesRequest,
   output: ListAllowedNodeTypeUpdatesResponse,
@@ -4129,7 +4129,7 @@ export const listTags: API.OperationMethod<
   ListTagsRequest,
   ListTagsResponse,
   ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
@@ -4163,7 +4163,7 @@ export const purchaseReservedNodesOffering: API.OperationMethod<
   PurchaseReservedNodesOfferingRequest,
   PurchaseReservedNodesOfferingResponse,
   PurchaseReservedNodesOfferingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurchaseReservedNodesOfferingRequest,
   output: PurchaseReservedNodesOfferingResponse,
@@ -4191,7 +4191,7 @@ export const resetParameterGroup: API.OperationMethod<
   ResetParameterGroupRequest,
   ResetParameterGroupResponse,
   ResetParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetParameterGroupRequest,
   output: ResetParameterGroupResponse,
@@ -4233,7 +4233,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4283,7 +4283,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4319,7 +4319,7 @@ export const updateACL: API.OperationMethod<
   UpdateACLRequest,
   UpdateACLResponse,
   UpdateACLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateACLRequest,
   output: UpdateACLResponse,
@@ -4358,7 +4358,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterRequest,
   UpdateClusterResponse,
   UpdateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
@@ -4395,7 +4395,7 @@ export const updateMultiRegionCluster: API.OperationMethod<
   UpdateMultiRegionClusterRequest,
   UpdateMultiRegionClusterResponse,
   UpdateMultiRegionClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMultiRegionClusterRequest,
   output: UpdateMultiRegionClusterResponse,
@@ -4421,7 +4421,7 @@ export const updateParameterGroup: API.OperationMethod<
   UpdateParameterGroupRequest,
   UpdateParameterGroupResponse,
   UpdateParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateParameterGroupRequest,
   output: UpdateParameterGroupResponse,
@@ -4448,7 +4448,7 @@ export const updateSubnetGroup: API.OperationMethod<
   UpdateSubnetGroupRequest,
   UpdateSubnetGroupResponse,
   UpdateSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSubnetGroupRequest,
   output: UpdateSubnetGroupResponse,
@@ -4474,7 +4474,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserRequest,
   UpdateUserResponse,
   UpdateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,

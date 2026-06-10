@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Global Accelerator",
   serviceShapeName: "GlobalAccelerator_V20180706",
@@ -2155,7 +2155,7 @@ export const addCustomRoutingEndpoints: API.OperationMethod<
   AddCustomRoutingEndpointsRequest,
   AddCustomRoutingEndpointsResponse,
   AddCustomRoutingEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddCustomRoutingEndpointsRequest,
   output: AddCustomRoutingEndpointsResponse,
@@ -2201,7 +2201,7 @@ export const addEndpoints: API.OperationMethod<
   AddEndpointsRequest,
   AddEndpointsResponse,
   AddEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddEndpointsRequest,
   output: AddEndpointsResponse,
@@ -2236,7 +2236,7 @@ export const advertiseByoipCidr: API.OperationMethod<
   AdvertiseByoipCidrRequest,
   AdvertiseByoipCidrResponse,
   AdvertiseByoipCidrError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AdvertiseByoipCidrRequest,
   output: AdvertiseByoipCidrResponse,
@@ -2266,7 +2266,7 @@ export const allowCustomRoutingTraffic: API.OperationMethod<
   AllowCustomRoutingTrafficRequest,
   AllowCustomRoutingTrafficResponse,
   AllowCustomRoutingTrafficError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AllowCustomRoutingTrafficRequest,
   output: AllowCustomRoutingTrafficResponse,
@@ -2295,7 +2295,7 @@ export const createAccelerator: API.OperationMethod<
   CreateAcceleratorRequest,
   CreateAcceleratorResponse,
   CreateAcceleratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAcceleratorRequest,
   output: CreateAcceleratorResponse,
@@ -2340,7 +2340,7 @@ export const createCrossAccountAttachment: API.OperationMethod<
   CreateCrossAccountAttachmentRequest,
   CreateCrossAccountAttachmentResponse,
   CreateCrossAccountAttachmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCrossAccountAttachmentRequest,
   output: CreateCrossAccountAttachmentResponse,
@@ -2376,7 +2376,7 @@ export const createCustomRoutingAccelerator: API.OperationMethod<
   CreateCustomRoutingAcceleratorRequest,
   CreateCustomRoutingAcceleratorResponse,
   CreateCustomRoutingAcceleratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomRoutingAcceleratorRequest,
   output: CreateCustomRoutingAcceleratorResponse,
@@ -2407,7 +2407,7 @@ export const createCustomRoutingEndpointGroup: API.OperationMethod<
   CreateCustomRoutingEndpointGroupRequest,
   CreateCustomRoutingEndpointGroupResponse,
   CreateCustomRoutingEndpointGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomRoutingEndpointGroupRequest,
   output: CreateCustomRoutingEndpointGroupResponse,
@@ -2437,7 +2437,7 @@ export const createCustomRoutingListener: API.OperationMethod<
   CreateCustomRoutingListenerRequest,
   CreateCustomRoutingListenerResponse,
   CreateCustomRoutingListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomRoutingListenerRequest,
   output: CreateCustomRoutingListenerResponse,
@@ -2470,7 +2470,7 @@ export const createEndpointGroup: API.OperationMethod<
   CreateEndpointGroupRequest,
   CreateEndpointGroupResponse,
   CreateEndpointGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEndpointGroupRequest,
   output: CreateEndpointGroupResponse,
@@ -2499,7 +2499,7 @@ export const createListener: API.OperationMethod<
   CreateListenerRequest,
   CreateListenerResponse,
   CreateListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateListenerRequest,
   output: CreateListenerResponse,
@@ -2538,7 +2538,7 @@ export const deleteAccelerator: API.OperationMethod<
   DeleteAcceleratorRequest,
   DeleteAcceleratorResponse,
   DeleteAcceleratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAcceleratorRequest,
   output: DeleteAcceleratorResponse,
@@ -2571,7 +2571,7 @@ export const deleteCrossAccountAttachment: API.OperationMethod<
   DeleteCrossAccountAttachmentRequest,
   DeleteCrossAccountAttachmentResponse,
   DeleteCrossAccountAttachmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCrossAccountAttachmentRequest,
   output: DeleteCrossAccountAttachmentResponse,
@@ -2610,7 +2610,7 @@ export const deleteCustomRoutingAccelerator: API.OperationMethod<
   DeleteCustomRoutingAcceleratorRequest,
   DeleteCustomRoutingAcceleratorResponse,
   DeleteCustomRoutingAcceleratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomRoutingAcceleratorRequest,
   output: DeleteCustomRoutingAcceleratorResponse,
@@ -2635,7 +2635,7 @@ export const deleteCustomRoutingEndpointGroup: API.OperationMethod<
   DeleteCustomRoutingEndpointGroupRequest,
   DeleteCustomRoutingEndpointGroupResponse,
   DeleteCustomRoutingEndpointGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomRoutingEndpointGroupRequest,
   output: DeleteCustomRoutingEndpointGroupResponse,
@@ -2658,7 +2658,7 @@ export const deleteCustomRoutingListener: API.OperationMethod<
   DeleteCustomRoutingListenerRequest,
   DeleteCustomRoutingListenerResponse,
   DeleteCustomRoutingListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomRoutingListenerRequest,
   output: DeleteCustomRoutingListenerResponse,
@@ -2681,7 +2681,7 @@ export const deleteEndpointGroup: API.OperationMethod<
   DeleteEndpointGroupRequest,
   DeleteEndpointGroupResponse,
   DeleteEndpointGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEndpointGroupRequest,
   output: DeleteEndpointGroupResponse,
@@ -2704,7 +2704,7 @@ export const deleteListener: API.OperationMethod<
   DeleteListenerRequest,
   DeleteListenerResponse,
   DeleteListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteListenerRequest,
   output: DeleteListenerResponse,
@@ -2733,7 +2733,7 @@ export const denyCustomRoutingTraffic: API.OperationMethod<
   DenyCustomRoutingTrafficRequest,
   DenyCustomRoutingTrafficResponse,
   DenyCustomRoutingTrafficError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DenyCustomRoutingTrafficRequest,
   output: DenyCustomRoutingTrafficResponse,
@@ -2764,7 +2764,7 @@ export const deprovisionByoipCidr: API.OperationMethod<
   DeprovisionByoipCidrRequest,
   DeprovisionByoipCidrResponse,
   DeprovisionByoipCidrError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeprovisionByoipCidrRequest,
   output: DeprovisionByoipCidrResponse,
@@ -2788,7 +2788,7 @@ export const describeAccelerator: API.OperationMethod<
   DescribeAcceleratorRequest,
   DescribeAcceleratorResponse,
   DescribeAcceleratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAcceleratorRequest,
   output: DescribeAcceleratorResponse,
@@ -2810,7 +2810,7 @@ export const describeAcceleratorAttributes: API.OperationMethod<
   DescribeAcceleratorAttributesRequest,
   DescribeAcceleratorAttributesResponse,
   DescribeAcceleratorAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAcceleratorAttributesRequest,
   output: DescribeAcceleratorAttributesResponse,
@@ -2833,7 +2833,7 @@ export const describeCrossAccountAttachment: API.OperationMethod<
   DescribeCrossAccountAttachmentRequest,
   DescribeCrossAccountAttachmentResponse,
   DescribeCrossAccountAttachmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCrossAccountAttachmentRequest,
   output: DescribeCrossAccountAttachmentResponse,
@@ -2856,7 +2856,7 @@ export const describeCustomRoutingAccelerator: API.OperationMethod<
   DescribeCustomRoutingAcceleratorRequest,
   DescribeCustomRoutingAcceleratorResponse,
   DescribeCustomRoutingAcceleratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCustomRoutingAcceleratorRequest,
   output: DescribeCustomRoutingAcceleratorResponse,
@@ -2878,7 +2878,7 @@ export const describeCustomRoutingAcceleratorAttributes: API.OperationMethod<
   DescribeCustomRoutingAcceleratorAttributesRequest,
   DescribeCustomRoutingAcceleratorAttributesResponse,
   DescribeCustomRoutingAcceleratorAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCustomRoutingAcceleratorAttributesRequest,
   output: DescribeCustomRoutingAcceleratorAttributesResponse,
@@ -2900,7 +2900,7 @@ export const describeCustomRoutingEndpointGroup: API.OperationMethod<
   DescribeCustomRoutingEndpointGroupRequest,
   DescribeCustomRoutingEndpointGroupResponse,
   DescribeCustomRoutingEndpointGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCustomRoutingEndpointGroupRequest,
   output: DescribeCustomRoutingEndpointGroupResponse,
@@ -2922,7 +2922,7 @@ export const describeCustomRoutingListener: API.OperationMethod<
   DescribeCustomRoutingListenerRequest,
   DescribeCustomRoutingListenerResponse,
   DescribeCustomRoutingListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCustomRoutingListenerRequest,
   output: DescribeCustomRoutingListenerResponse,
@@ -2944,7 +2944,7 @@ export const describeEndpointGroup: API.OperationMethod<
   DescribeEndpointGroupRequest,
   DescribeEndpointGroupResponse,
   DescribeEndpointGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEndpointGroupRequest,
   output: DescribeEndpointGroupResponse,
@@ -2966,7 +2966,7 @@ export const describeListener: API.OperationMethod<
   DescribeListenerRequest,
   DescribeListenerResponse,
   DescribeListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeListenerRequest,
   output: DescribeListenerResponse,
@@ -2988,21 +2988,21 @@ export const listAccelerators: API.OperationMethod<
   ListAcceleratorsRequest,
   ListAcceleratorsResponse,
   ListAcceleratorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAcceleratorsRequest,
   ) => stream.Stream<
     ListAcceleratorsResponse,
     ListAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAcceleratorsRequest,
   ) => stream.Stream<
     Accelerator,
     ListAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAcceleratorsRequest,
@@ -3033,21 +3033,21 @@ export const listByoipCidrs: API.OperationMethod<
   ListByoipCidrsRequest,
   ListByoipCidrsResponse,
   ListByoipCidrsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListByoipCidrsRequest,
   ) => stream.Stream<
     ListByoipCidrsResponse,
     ListByoipCidrsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListByoipCidrsRequest,
   ) => stream.Stream<
     ByoipCidr,
     ListByoipCidrsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListByoipCidrsRequest,
@@ -3078,21 +3078,21 @@ export const listCrossAccountAttachments: API.OperationMethod<
   ListCrossAccountAttachmentsRequest,
   ListCrossAccountAttachmentsResponse,
   ListCrossAccountAttachmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCrossAccountAttachmentsRequest,
   ) => stream.Stream<
     ListCrossAccountAttachmentsResponse,
     ListCrossAccountAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCrossAccountAttachmentsRequest,
   ) => stream.Stream<
     Attachment,
     ListCrossAccountAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCrossAccountAttachmentsRequest,
@@ -3125,7 +3125,7 @@ export const listCrossAccountResourceAccounts: API.OperationMethod<
   ListCrossAccountResourceAccountsRequest,
   ListCrossAccountResourceAccountsResponse,
   ListCrossAccountResourceAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCrossAccountResourceAccountsRequest,
   output: ListCrossAccountResourceAccountsResponse,
@@ -3145,21 +3145,21 @@ export const listCrossAccountResources: API.OperationMethod<
   ListCrossAccountResourcesRequest,
   ListCrossAccountResourcesResponse,
   ListCrossAccountResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCrossAccountResourcesRequest,
   ) => stream.Stream<
     ListCrossAccountResourcesResponse,
     ListCrossAccountResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCrossAccountResourcesRequest,
   ) => stream.Stream<
     CrossAccountResource,
     ListCrossAccountResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCrossAccountResourcesRequest,
@@ -3190,21 +3190,21 @@ export const listCustomRoutingAccelerators: API.OperationMethod<
   ListCustomRoutingAcceleratorsRequest,
   ListCustomRoutingAcceleratorsResponse,
   ListCustomRoutingAcceleratorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCustomRoutingAcceleratorsRequest,
   ) => stream.Stream<
     ListCustomRoutingAcceleratorsResponse,
     ListCustomRoutingAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCustomRoutingAcceleratorsRequest,
   ) => stream.Stream<
     CustomRoutingAccelerator,
     ListCustomRoutingAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingAcceleratorsRequest,
@@ -3234,21 +3234,21 @@ export const listCustomRoutingEndpointGroups: API.OperationMethod<
   ListCustomRoutingEndpointGroupsRequest,
   ListCustomRoutingEndpointGroupsResponse,
   ListCustomRoutingEndpointGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCustomRoutingEndpointGroupsRequest,
   ) => stream.Stream<
     ListCustomRoutingEndpointGroupsResponse,
     ListCustomRoutingEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCustomRoutingEndpointGroupsRequest,
   ) => stream.Stream<
     CustomRoutingEndpointGroup,
     ListCustomRoutingEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingEndpointGroupsRequest,
@@ -3279,21 +3279,21 @@ export const listCustomRoutingListeners: API.OperationMethod<
   ListCustomRoutingListenersRequest,
   ListCustomRoutingListenersResponse,
   ListCustomRoutingListenersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCustomRoutingListenersRequest,
   ) => stream.Stream<
     ListCustomRoutingListenersResponse,
     ListCustomRoutingListenersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCustomRoutingListenersRequest,
   ) => stream.Stream<
     CustomRoutingListener,
     ListCustomRoutingListenersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingListenersRequest,
@@ -3335,21 +3335,21 @@ export const listCustomRoutingPortMappings: API.OperationMethod<
   ListCustomRoutingPortMappingsRequest,
   ListCustomRoutingPortMappingsResponse,
   ListCustomRoutingPortMappingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCustomRoutingPortMappingsRequest,
   ) => stream.Stream<
     ListCustomRoutingPortMappingsResponse,
     ListCustomRoutingPortMappingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCustomRoutingPortMappingsRequest,
   ) => stream.Stream<
     PortMapping,
     ListCustomRoutingPortMappingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingPortMappingsRequest,
@@ -3384,21 +3384,21 @@ export const listCustomRoutingPortMappingsByDestination: API.OperationMethod<
   ListCustomRoutingPortMappingsByDestinationRequest,
   ListCustomRoutingPortMappingsByDestinationResponse,
   ListCustomRoutingPortMappingsByDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCustomRoutingPortMappingsByDestinationRequest,
   ) => stream.Stream<
     ListCustomRoutingPortMappingsByDestinationResponse,
     ListCustomRoutingPortMappingsByDestinationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCustomRoutingPortMappingsByDestinationRequest,
   ) => stream.Stream<
     DestinationPortMapping,
     ListCustomRoutingPortMappingsByDestinationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingPortMappingsByDestinationRequest,
@@ -3429,21 +3429,21 @@ export const listEndpointGroups: API.OperationMethod<
   ListEndpointGroupsRequest,
   ListEndpointGroupsResponse,
   ListEndpointGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEndpointGroupsRequest,
   ) => stream.Stream<
     ListEndpointGroupsResponse,
     ListEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEndpointGroupsRequest,
   ) => stream.Stream<
     EndpointGroup,
     ListEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointGroupsRequest,
@@ -3474,21 +3474,21 @@ export const listListeners: API.OperationMethod<
   ListListenersRequest,
   ListListenersResponse,
   ListListenersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListListenersRequest,
   ) => stream.Stream<
     ListListenersResponse,
     ListListenersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListListenersRequest,
   ) => stream.Stream<
     Listener,
     ListListenersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListListenersRequest,
@@ -3524,7 +3524,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3557,7 +3557,7 @@ export const provisionByoipCidr: API.OperationMethod<
   ProvisionByoipCidrRequest,
   ProvisionByoipCidrResponse,
   ProvisionByoipCidrError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvisionByoipCidrRequest,
   output: ProvisionByoipCidrResponse,
@@ -3584,7 +3584,7 @@ export const removeCustomRoutingEndpoints: API.OperationMethod<
   RemoveCustomRoutingEndpointsRequest,
   RemoveCustomRoutingEndpointsResponse,
   RemoveCustomRoutingEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveCustomRoutingEndpointsRequest,
   output: RemoveCustomRoutingEndpointsResponse,
@@ -3624,7 +3624,7 @@ export const removeEndpoints: API.OperationMethod<
   RemoveEndpointsRequest,
   RemoveEndpointsResponse,
   RemoveEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveEndpointsRequest,
   output: RemoveEndpointsResponse,
@@ -3651,7 +3651,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3677,7 +3677,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3718,7 +3718,7 @@ export const updateAccelerator: API.OperationMethod<
   UpdateAcceleratorRequest,
   UpdateAcceleratorResponse,
   UpdateAcceleratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAcceleratorRequest,
   output: UpdateAcceleratorResponse,
@@ -3745,7 +3745,7 @@ export const updateAcceleratorAttributes: API.OperationMethod<
   UpdateAcceleratorAttributesRequest,
   UpdateAcceleratorAttributesResponse,
   UpdateAcceleratorAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAcceleratorAttributesRequest,
   output: UpdateAcceleratorAttributesResponse,
@@ -3778,7 +3778,7 @@ export const updateCrossAccountAttachment: API.OperationMethod<
   UpdateCrossAccountAttachmentRequest,
   UpdateCrossAccountAttachmentResponse,
   UpdateCrossAccountAttachmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCrossAccountAttachmentRequest,
   output: UpdateCrossAccountAttachmentResponse,
@@ -3805,7 +3805,7 @@ export const updateCustomRoutingAccelerator: API.OperationMethod<
   UpdateCustomRoutingAcceleratorRequest,
   UpdateCustomRoutingAcceleratorResponse,
   UpdateCustomRoutingAcceleratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCustomRoutingAcceleratorRequest,
   output: UpdateCustomRoutingAcceleratorResponse,
@@ -3831,7 +3831,7 @@ export const updateCustomRoutingAcceleratorAttributes: API.OperationMethod<
   UpdateCustomRoutingAcceleratorAttributesRequest,
   UpdateCustomRoutingAcceleratorAttributesResponse,
   UpdateCustomRoutingAcceleratorAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCustomRoutingAcceleratorAttributesRequest,
   output: UpdateCustomRoutingAcceleratorAttributesResponse,
@@ -3857,7 +3857,7 @@ export const updateCustomRoutingListener: API.OperationMethod<
   UpdateCustomRoutingListenerRequest,
   UpdateCustomRoutingListenerResponse,
   UpdateCustomRoutingListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCustomRoutingListenerRequest,
   output: UpdateCustomRoutingListenerResponse,
@@ -3883,7 +3883,7 @@ export const updateEndpointGroup: API.OperationMethod<
   UpdateEndpointGroupRequest,
   UpdateEndpointGroupResponse,
   UpdateEndpointGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEndpointGroupRequest,
   output: UpdateEndpointGroupResponse,
@@ -3909,7 +3909,7 @@ export const updateListener: API.OperationMethod<
   UpdateListenerRequest,
   UpdateListenerResponse,
   UpdateListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateListenerRequest,
   output: UpdateListenerResponse,
@@ -3943,7 +3943,7 @@ export const withdrawByoipCidr: API.OperationMethod<
   WithdrawByoipCidrRequest,
   WithdrawByoipCidrResponse,
   WithdrawByoipCidrError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WithdrawByoipCidrRequest,
   output: WithdrawByoipCidrResponse,

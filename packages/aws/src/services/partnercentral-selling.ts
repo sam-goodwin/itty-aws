@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "PartnerCentral Selling",
@@ -4262,7 +4262,7 @@ export const createEngagementContext: API.OperationMethod<
   CreateEngagementContextRequest,
   CreateEngagementContextResponse,
   CreateEngagementContextError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEngagementContextRequest,
   output: CreateEngagementContextResponse,
@@ -4290,7 +4290,7 @@ export const getSellingSystemSettings: API.OperationMethod<
   GetSellingSystemSettingsRequest,
   GetSellingSystemSettingsResponse,
   GetSellingSystemSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSellingSystemSettingsRequest,
   output: GetSellingSystemSettingsResponse,
@@ -4316,7 +4316,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -4342,7 +4342,7 @@ export const putSellingSystemSettings: API.OperationMethod<
   PutSellingSystemSettingsRequest,
   PutSellingSystemSettingsResponse,
   PutSellingSystemSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSellingSystemSettingsRequest,
   output: PutSellingSystemSettingsResponse,
@@ -4369,7 +4369,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4397,7 +4397,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4426,7 +4426,7 @@ export const updateEngagementContext: API.OperationMethod<
   UpdateEngagementContextRequest,
   UpdateEngagementContextResponse,
   UpdateEngagementContextError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEngagementContextRequest,
   output: UpdateEngagementContextResponse,
@@ -4456,7 +4456,7 @@ export const createEngagement: API.OperationMethod<
   CreateEngagementRequest,
   CreateEngagementResponse,
   CreateEngagementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEngagementRequest,
   output: CreateEngagementResponse,
@@ -4484,7 +4484,7 @@ export const getEngagement: API.OperationMethod<
   GetEngagementRequest,
   GetEngagementResponse,
   GetEngagementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEngagementRequest,
   output: GetEngagementResponse,
@@ -4510,21 +4510,21 @@ export const listEngagements: API.OperationMethod<
   ListEngagementsRequest,
   ListEngagementsResponse,
   ListEngagementsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEngagementsRequest,
   ) => stream.Stream<
     ListEngagementsResponse,
     ListEngagementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEngagementsRequest,
   ) => stream.Stream<
     EngagementSummary,
     ListEngagementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementsRequest,
@@ -4557,21 +4557,21 @@ export const listEngagementMembers: API.OperationMethod<
   ListEngagementMembersRequest,
   ListEngagementMembersResponse,
   ListEngagementMembersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEngagementMembersRequest,
   ) => stream.Stream<
     ListEngagementMembersResponse,
     ListEngagementMembersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEngagementMembersRequest,
   ) => stream.Stream<
     EngagementMember,
     ListEngagementMembersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementMembersRequest,
@@ -4606,7 +4606,7 @@ export const startEngagementByAcceptingInvitationTask: API.OperationMethod<
   StartEngagementByAcceptingInvitationTaskRequest,
   StartEngagementByAcceptingInvitationTaskResponse,
   StartEngagementByAcceptingInvitationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartEngagementByAcceptingInvitationTaskRequest,
   output: StartEngagementByAcceptingInvitationTaskResponse,
@@ -4634,21 +4634,21 @@ export const listEngagementByAcceptingInvitationTasks: API.OperationMethod<
   ListEngagementByAcceptingInvitationTasksRequest,
   ListEngagementByAcceptingInvitationTasksResponse,
   ListEngagementByAcceptingInvitationTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEngagementByAcceptingInvitationTasksRequest,
   ) => stream.Stream<
     ListEngagementByAcceptingInvitationTasksResponse,
     ListEngagementByAcceptingInvitationTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEngagementByAcceptingInvitationTasksRequest,
   ) => stream.Stream<
     ListEngagementByAcceptingInvitationTaskSummary,
     ListEngagementByAcceptingInvitationTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementByAcceptingInvitationTasksRequest,
@@ -4683,7 +4683,7 @@ export const startEngagementFromOpportunityTask: API.OperationMethod<
   StartEngagementFromOpportunityTaskRequest,
   StartEngagementFromOpportunityTaskResponse,
   StartEngagementFromOpportunityTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartEngagementFromOpportunityTaskRequest,
   output: StartEngagementFromOpportunityTaskResponse,
@@ -4711,21 +4711,21 @@ export const listEngagementFromOpportunityTasks: API.OperationMethod<
   ListEngagementFromOpportunityTasksRequest,
   ListEngagementFromOpportunityTasksResponse,
   ListEngagementFromOpportunityTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEngagementFromOpportunityTasksRequest,
   ) => stream.Stream<
     ListEngagementFromOpportunityTasksResponse,
     ListEngagementFromOpportunityTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEngagementFromOpportunityTasksRequest,
   ) => stream.Stream<
     ListEngagementFromOpportunityTaskSummary,
     ListEngagementFromOpportunityTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementFromOpportunityTasksRequest,
@@ -4760,7 +4760,7 @@ export const createEngagementInvitation: API.OperationMethod<
   CreateEngagementInvitationRequest,
   CreateEngagementInvitationResponse,
   CreateEngagementInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEngagementInvitationRequest,
   output: CreateEngagementInvitationResponse,
@@ -4788,7 +4788,7 @@ export const getEngagementInvitation: API.OperationMethod<
   GetEngagementInvitationRequest,
   GetEngagementInvitationResponse,
   GetEngagementInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEngagementInvitationRequest,
   output: GetEngagementInvitationResponse,
@@ -4814,21 +4814,21 @@ export const listEngagementInvitations: API.OperationMethod<
   ListEngagementInvitationsRequest,
   ListEngagementInvitationsResponse,
   ListEngagementInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEngagementInvitationsRequest,
   ) => stream.Stream<
     ListEngagementInvitationsResponse,
     ListEngagementInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEngagementInvitationsRequest,
   ) => stream.Stream<
     EngagementInvitationSummary,
     ListEngagementInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementInvitationsRequest,
@@ -4862,7 +4862,7 @@ export const acceptEngagementInvitation: API.OperationMethod<
   AcceptEngagementInvitationRequest,
   AcceptEngagementInvitationResponse,
   AcceptEngagementInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptEngagementInvitationRequest,
   output: AcceptEngagementInvitationResponse,
@@ -4890,7 +4890,7 @@ export const rejectEngagementInvitation: API.OperationMethod<
   RejectEngagementInvitationRequest,
   RejectEngagementInvitationResponse,
   RejectEngagementInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectEngagementInvitationRequest,
   output: RejectEngagementInvitationResponse,
@@ -4930,7 +4930,7 @@ export const createOpportunity: API.OperationMethod<
   CreateOpportunityRequest,
   CreateOpportunityResponse,
   CreateOpportunityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOpportunityRequest,
   output: CreateOpportunityResponse,
@@ -4959,7 +4959,7 @@ export const getOpportunity: API.OperationMethod<
   GetOpportunityRequest,
   GetOpportunityResponse,
   GetOpportunityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOpportunityRequest,
   output: GetOpportunityResponse,
@@ -4988,7 +4988,7 @@ export const updateOpportunity: API.OperationMethod<
   UpdateOpportunityRequest,
   UpdateOpportunityResponse,
   UpdateOpportunityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOpportunityRequest,
   output: UpdateOpportunityResponse,
@@ -5025,21 +5025,21 @@ export const listOpportunities: API.OperationMethod<
   ListOpportunitiesRequest,
   ListOpportunitiesResponse,
   ListOpportunitiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOpportunitiesRequest,
   ) => stream.Stream<
     ListOpportunitiesResponse,
     ListOpportunitiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOpportunitiesRequest,
   ) => stream.Stream<
     OpportunitySummary,
     ListOpportunitiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOpportunitiesRequest,
@@ -5074,7 +5074,7 @@ export const assignOpportunity: API.OperationMethod<
   AssignOpportunityRequest,
   AssignOpportunityResponse,
   AssignOpportunityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssignOpportunityRequest,
   output: AssignOpportunityResponse,
@@ -5114,7 +5114,7 @@ export const associateOpportunity: API.OperationMethod<
   AssociateOpportunityRequest,
   AssociateOpportunityResponse,
   AssociateOpportunityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateOpportunityRequest,
   output: AssociateOpportunityResponse,
@@ -5142,7 +5142,7 @@ export const disassociateOpportunity: API.OperationMethod<
   DisassociateOpportunityRequest,
   DisassociateOpportunityResponse,
   DisassociateOpportunityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateOpportunityRequest,
   output: DisassociateOpportunityResponse,
@@ -5168,7 +5168,7 @@ export const getAwsOpportunitySummary: API.OperationMethod<
   GetAwsOpportunitySummaryRequest,
   GetAwsOpportunitySummaryResponse,
   GetAwsOpportunitySummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAwsOpportunitySummaryRequest,
   output: GetAwsOpportunitySummaryResponse,
@@ -5194,7 +5194,7 @@ export const submitOpportunity: API.OperationMethod<
   SubmitOpportunityRequest,
   SubmitOpportunityResponse,
   SubmitOpportunityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitOpportunityRequest,
   output: SubmitOpportunityResponse,
@@ -5222,7 +5222,7 @@ export const startOpportunityFromEngagementTask: API.OperationMethod<
   StartOpportunityFromEngagementTaskRequest,
   StartOpportunityFromEngagementTaskResponse,
   StartOpportunityFromEngagementTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartOpportunityFromEngagementTaskRequest,
   output: StartOpportunityFromEngagementTaskResponse,
@@ -5250,21 +5250,21 @@ export const listOpportunityFromEngagementTasks: API.OperationMethod<
   ListOpportunityFromEngagementTasksRequest,
   ListOpportunityFromEngagementTasksResponse,
   ListOpportunityFromEngagementTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOpportunityFromEngagementTasksRequest,
   ) => stream.Stream<
     ListOpportunityFromEngagementTasksResponse,
     ListOpportunityFromEngagementTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOpportunityFromEngagementTasksRequest,
   ) => stream.Stream<
     ListOpportunityFromEngagementTaskSummary,
     ListOpportunityFromEngagementTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOpportunityFromEngagementTasksRequest,
@@ -5299,7 +5299,7 @@ export const createResourceSnapshot: API.OperationMethod<
   CreateResourceSnapshotRequest,
   CreateResourceSnapshotResponse,
   CreateResourceSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResourceSnapshotRequest,
   output: CreateResourceSnapshotResponse,
@@ -5327,7 +5327,7 @@ export const getResourceSnapshot: API.OperationMethod<
   GetResourceSnapshotRequest,
   GetResourceSnapshotResponse,
   GetResourceSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceSnapshotRequest,
   output: GetResourceSnapshotResponse,
@@ -5353,21 +5353,21 @@ export const listEngagementResourceAssociations: API.OperationMethod<
   ListEngagementResourceAssociationsRequest,
   ListEngagementResourceAssociationsResponse,
   ListEngagementResourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEngagementResourceAssociationsRequest,
   ) => stream.Stream<
     ListEngagementResourceAssociationsResponse,
     ListEngagementResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEngagementResourceAssociationsRequest,
   ) => stream.Stream<
     EngagementResourceAssociationSummary,
     ListEngagementResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementResourceAssociationsRequest,
@@ -5410,21 +5410,21 @@ export const listResourceSnapshots: API.OperationMethod<
   ListResourceSnapshotsRequest,
   ListResourceSnapshotsResponse,
   ListResourceSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceSnapshotsRequest,
   ) => stream.Stream<
     ListResourceSnapshotsResponse,
     ListResourceSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceSnapshotsRequest,
   ) => stream.Stream<
     ResourceSnapshotSummary,
     ListResourceSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSnapshotsRequest,
@@ -5459,7 +5459,7 @@ export const createResourceSnapshotJob: API.OperationMethod<
   CreateResourceSnapshotJobRequest,
   CreateResourceSnapshotJobResponse,
   CreateResourceSnapshotJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResourceSnapshotJobRequest,
   output: CreateResourceSnapshotJobResponse,
@@ -5487,7 +5487,7 @@ export const getResourceSnapshotJob: API.OperationMethod<
   GetResourceSnapshotJobRequest,
   GetResourceSnapshotJobResponse,
   GetResourceSnapshotJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceSnapshotJobRequest,
   output: GetResourceSnapshotJobResponse,
@@ -5514,7 +5514,7 @@ export const deleteResourceSnapshotJob: API.OperationMethod<
   DeleteResourceSnapshotJobRequest,
   DeleteResourceSnapshotJobResponse,
   DeleteResourceSnapshotJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceSnapshotJobRequest,
   output: DeleteResourceSnapshotJobResponse,
@@ -5541,21 +5541,21 @@ export const listResourceSnapshotJobs: API.OperationMethod<
   ListResourceSnapshotJobsRequest,
   ListResourceSnapshotJobsResponse,
   ListResourceSnapshotJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceSnapshotJobsRequest,
   ) => stream.Stream<
     ListResourceSnapshotJobsResponse,
     ListResourceSnapshotJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceSnapshotJobsRequest,
   ) => stream.Stream<
     ResourceSnapshotJobSummary,
     ListResourceSnapshotJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSnapshotJobsRequest,
@@ -5588,7 +5588,7 @@ export const startResourceSnapshotJob: API.OperationMethod<
   StartResourceSnapshotJobRequest,
   StartResourceSnapshotJobResponse,
   StartResourceSnapshotJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartResourceSnapshotJobRequest,
   output: StartResourceSnapshotJobResponse,
@@ -5614,7 +5614,7 @@ export const stopResourceSnapshotJob: API.OperationMethod<
   StopResourceSnapshotJobRequest,
   StopResourceSnapshotJobResponse,
   StopResourceSnapshotJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopResourceSnapshotJobRequest,
   output: StopResourceSnapshotJobResponse,
@@ -5640,21 +5640,21 @@ export const listSolutions: API.OperationMethod<
   ListSolutionsRequest,
   ListSolutionsResponse,
   ListSolutionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSolutionsRequest,
   ) => stream.Stream<
     ListSolutionsResponse,
     ListSolutionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSolutionsRequest,
   ) => stream.Stream<
     SolutionBase,
     ListSolutionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSolutionsRequest,

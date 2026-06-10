@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "ServerlessApplicationRepository",
   serviceShapeName: "ServerlessApplicationRepository",
@@ -1277,7 +1277,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationRequest,
   CreateApplicationResponse,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
@@ -1303,7 +1303,7 @@ export const createApplicationVersion: API.OperationMethod<
   CreateApplicationVersionRequest,
   CreateApplicationVersionResponse,
   CreateApplicationVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApplicationVersionRequest,
   output: CreateApplicationVersionResponse,
@@ -1328,7 +1328,7 @@ export const createCloudFormationChangeSet: API.OperationMethod<
   CreateCloudFormationChangeSetRequest,
   CreateCloudFormationChangeSetResponse,
   CreateCloudFormationChangeSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCloudFormationChangeSetRequest,
   output: CreateCloudFormationChangeSetResponse,
@@ -1353,7 +1353,7 @@ export const createCloudFormationTemplate: API.OperationMethod<
   CreateCloudFormationTemplateRequest,
   CreateCloudFormationTemplateResponse,
   CreateCloudFormationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCloudFormationTemplateRequest,
   output: CreateCloudFormationTemplateResponse,
@@ -1380,7 +1380,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationRequest,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
@@ -1407,7 +1407,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationRequest,
   GetApplicationResponse,
   GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
@@ -1433,7 +1433,7 @@ export const getApplicationPolicy: API.OperationMethod<
   GetApplicationPolicyRequest,
   GetApplicationPolicyResponse,
   GetApplicationPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationPolicyRequest,
   output: GetApplicationPolicyResponse,
@@ -1459,7 +1459,7 @@ export const getCloudFormationTemplate: API.OperationMethod<
   GetCloudFormationTemplateRequest,
   GetCloudFormationTemplateResponse,
   GetCloudFormationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCloudFormationTemplateRequest,
   output: GetCloudFormationTemplateResponse,
@@ -1485,21 +1485,21 @@ export const listApplicationDependencies: API.OperationMethod<
   ListApplicationDependenciesRequest,
   ListApplicationDependenciesResponse,
   ListApplicationDependenciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListApplicationDependenciesRequest,
   ) => stream.Stream<
     ListApplicationDependenciesResponse,
     ListApplicationDependenciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListApplicationDependenciesRequest,
   ) => stream.Stream<
     unknown,
     ListApplicationDependenciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationDependenciesRequest,
@@ -1530,21 +1530,21 @@ export const listApplications: API.OperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListApplicationsRequest,
   ) => stream.Stream<
     ListApplicationsResponse,
     ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListApplicationsRequest,
   ) => stream.Stream<
     unknown,
     ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
@@ -1575,21 +1575,21 @@ export const listApplicationVersions: API.OperationMethod<
   ListApplicationVersionsRequest,
   ListApplicationVersionsResponse,
   ListApplicationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListApplicationVersionsRequest,
   ) => stream.Stream<
     ListApplicationVersionsResponse,
     ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListApplicationVersionsRequest,
   ) => stream.Stream<
     unknown,
     ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationVersionsRequest,
@@ -1624,7 +1624,7 @@ export const putApplicationPolicy: API.OperationMethod<
   PutApplicationPolicyRequest,
   PutApplicationPolicyResponse,
   PutApplicationPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutApplicationPolicyRequest,
   output: PutApplicationPolicyResponse,
@@ -1652,7 +1652,7 @@ export const unshareApplication: API.OperationMethod<
   UnshareApplicationRequest,
   UnshareApplicationResponse,
   UnshareApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnshareApplicationRequest,
   output: UnshareApplicationResponse,
@@ -1679,7 +1679,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationRequest,
   UpdateApplicationResponse,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,

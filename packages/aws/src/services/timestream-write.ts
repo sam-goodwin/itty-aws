@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Timestream Write",
@@ -1144,7 +1144,7 @@ export const createBatchLoadTask: API.OperationMethod<
   CreateBatchLoadTaskRequest,
   CreateBatchLoadTaskResponse,
   CreateBatchLoadTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBatchLoadTaskRequest,
   output: CreateBatchLoadTaskResponse,
@@ -1177,7 +1177,7 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseRequest,
   CreateDatabaseResponse,
   CreateDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDatabaseRequest,
   output: CreateDatabaseResponse,
@@ -1213,7 +1213,7 @@ export const createTable: API.OperationMethod<
   CreateTableRequest,
   CreateTableResponse,
   CreateTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTableRequest,
   output: CreateTableResponse,
@@ -1254,7 +1254,7 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseRequest,
   DeleteDatabaseResponse,
   DeleteDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatabaseRequest,
   output: DeleteDatabaseResponse,
@@ -1290,7 +1290,7 @@ export const deleteTable: API.OperationMethod<
   DeleteTableRequest,
   DeleteTableResponse,
   DeleteTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTableRequest,
   output: DeleteTableResponse,
@@ -1320,7 +1320,7 @@ export const describeBatchLoadTask: API.OperationMethod<
   DescribeBatchLoadTaskRequest,
   DescribeBatchLoadTaskResponse,
   DescribeBatchLoadTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeBatchLoadTaskRequest,
   output: DescribeBatchLoadTaskResponse,
@@ -1350,7 +1350,7 @@ export const describeDatabase: API.OperationMethod<
   DescribeDatabaseRequest,
   DescribeDatabaseResponse,
   DescribeDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDatabaseRequest,
   output: DescribeDatabaseResponse,
@@ -1391,7 +1391,7 @@ export const describeEndpoints: API.OperationMethod<
   DescribeEndpointsRequest,
   DescribeEndpointsResponse,
   DescribeEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
@@ -1415,7 +1415,7 @@ export const describeTable: API.OperationMethod<
   DescribeTableRequest,
   DescribeTableResponse,
   DescribeTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTableRequest,
   output: DescribeTableResponse,
@@ -1444,21 +1444,21 @@ export const listBatchLoadTasks: API.OperationMethod<
   ListBatchLoadTasksRequest,
   ListBatchLoadTasksResponse,
   ListBatchLoadTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBatchLoadTasksRequest,
   ) => stream.Stream<
     ListBatchLoadTasksResponse,
     ListBatchLoadTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBatchLoadTasksRequest,
   ) => stream.Stream<
     unknown,
     ListBatchLoadTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBatchLoadTasksRequest,
@@ -1492,21 +1492,21 @@ export const listDatabases: API.OperationMethod<
   ListDatabasesRequest,
   ListDatabasesResponse,
   ListDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDatabasesRequest,
   ) => stream.Stream<
     ListDatabasesResponse,
     ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDatabasesRequest,
   ) => stream.Stream<
     unknown,
     ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesRequest,
@@ -1541,21 +1541,21 @@ export const listTables: API.OperationMethod<
   ListTablesRequest,
   ListTablesResponse,
   ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTablesRequest,
   ) => stream.Stream<
     ListTablesResponse,
     ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTablesRequest,
   ) => stream.Stream<
     unknown,
     ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
@@ -1587,7 +1587,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1613,7 +1613,7 @@ export const resumeBatchLoadTask: API.OperationMethod<
   ResumeBatchLoadTaskRequest,
   ResumeBatchLoadTaskResponse,
   ResumeBatchLoadTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeBatchLoadTaskRequest,
   output: ResumeBatchLoadTaskResponse,
@@ -1642,7 +1642,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1668,7 +1668,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1701,7 +1701,7 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseRequest,
   UpdateDatabaseResponse,
   UpdateDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDatabaseRequest,
   output: UpdateDatabaseResponse,
@@ -1736,7 +1736,7 @@ export const updateTable: API.OperationMethod<
   UpdateTableRequest,
   UpdateTableResponse,
   UpdateTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTableRequest,
   output: UpdateTableResponse,
@@ -1807,7 +1807,7 @@ export const writeRecords: API.OperationMethod<
   WriteRecordsRequest,
   WriteRecordsResponse,
   WriteRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WriteRecordsRequest,
   output: WriteRecordsResponse,

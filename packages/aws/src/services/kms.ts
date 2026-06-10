@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const ns = T.XmlNamespace("https://trent.amazonaws.com/doc/2014-11-01/");
 const svc = T.AwsApiService({ sdkId: "KMS", serviceShapeName: "TrentService" });
@@ -2940,7 +2940,7 @@ export const cancelKeyDeletion: API.OperationMethod<
   CancelKeyDeletionRequest,
   CancelKeyDeletionResponse,
   CancelKeyDeletionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelKeyDeletionRequest,
   output: CancelKeyDeletionResponse,
@@ -3047,7 +3047,7 @@ export const connectCustomKeyStore: API.OperationMethod<
   ConnectCustomKeyStoreRequest,
   ConnectCustomKeyStoreResponse,
   ConnectCustomKeyStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConnectCustomKeyStoreRequest,
   output: ConnectCustomKeyStoreResponse,
@@ -3119,7 +3119,7 @@ export const createAlias: API.OperationMethod<
   CreateAliasRequest,
   CreateAliasResponse,
   CreateAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAliasRequest,
   output: CreateAliasResponse,
@@ -3231,7 +3231,7 @@ export const createCustomKeyStore: API.OperationMethod<
   CreateCustomKeyStoreRequest,
   CreateCustomKeyStoreResponse,
   CreateCustomKeyStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomKeyStoreRequest,
   output: CreateCustomKeyStoreResponse,
@@ -3323,7 +3323,7 @@ export const createGrant: API.OperationMethod<
   CreateGrantRequest,
   CreateGrantResponse,
   CreateGrantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGrantRequest,
   output: CreateGrantResponse,
@@ -3525,7 +3525,7 @@ export const createKey: API.OperationMethod<
   CreateKeyRequest,
   CreateKeyResponse,
   CreateKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKeyRequest,
   output: CreateKeyResponse,
@@ -3634,7 +3634,7 @@ export const decrypt: API.OperationMethod<
   DecryptRequest,
   DecryptResponse,
   DecryptError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DecryptRequest,
   output: DecryptResponse,
@@ -3698,7 +3698,7 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasRequest,
   DeleteAliasResponse,
   DeleteAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAliasRequest,
   output: DeleteAliasResponse,
@@ -3770,7 +3770,7 @@ export const deleteCustomKeyStore: API.OperationMethod<
   DeleteCustomKeyStoreRequest,
   DeleteCustomKeyStoreResponse,
   DeleteCustomKeyStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomKeyStoreRequest,
   output: DeleteCustomKeyStoreResponse,
@@ -3830,7 +3830,7 @@ export const deleteImportedKeyMaterial: API.OperationMethod<
   DeleteImportedKeyMaterialRequest,
   DeleteImportedKeyMaterialResponse,
   DeleteImportedKeyMaterialError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteImportedKeyMaterialRequest,
   output: DeleteImportedKeyMaterialResponse,
@@ -3934,7 +3934,7 @@ export const deriveSharedSecret: API.OperationMethod<
   DeriveSharedSecretRequest,
   DeriveSharedSecretResponse,
   DeriveSharedSecretError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeriveSharedSecretRequest,
   output: DeriveSharedSecretResponse,
@@ -4010,21 +4010,21 @@ export const describeCustomKeyStores: API.OperationMethod<
   DescribeCustomKeyStoresRequest,
   DescribeCustomKeyStoresResponse,
   DescribeCustomKeyStoresError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCustomKeyStoresRequest,
   ) => stream.Stream<
     DescribeCustomKeyStoresResponse,
     DescribeCustomKeyStoresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCustomKeyStoresRequest,
   ) => stream.Stream<
     CustomKeyStoresListEntry,
     DescribeCustomKeyStoresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCustomKeyStoresRequest,
@@ -4110,7 +4110,7 @@ export const describeKey: API.OperationMethod<
   DescribeKeyRequest,
   DescribeKeyResponse,
   DescribeKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeKeyRequest,
   output: DescribeKeyResponse,
@@ -4151,7 +4151,7 @@ export const disableKey: API.OperationMethod<
   DisableKeyRequest,
   DisableKeyResponse,
   DisableKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableKeyRequest,
   output: DisableKeyResponse,
@@ -4211,7 +4211,7 @@ export const disableKeyRotation: API.OperationMethod<
   DisableKeyRotationRequest,
   DisableKeyRotationResponse,
   DisableKeyRotationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableKeyRotationRequest,
   output: DisableKeyRotationResponse,
@@ -4276,7 +4276,7 @@ export const disconnectCustomKeyStore: API.OperationMethod<
   DisconnectCustomKeyStoreRequest,
   DisconnectCustomKeyStoreResponse,
   DisconnectCustomKeyStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisconnectCustomKeyStoreRequest,
   output: DisconnectCustomKeyStoreResponse,
@@ -4314,7 +4314,7 @@ export const enableKey: API.OperationMethod<
   EnableKeyRequest,
   EnableKeyResponse,
   EnableKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableKeyRequest,
   output: EnableKeyResponse,
@@ -4395,7 +4395,7 @@ export const enableKeyRotation: API.OperationMethod<
   EnableKeyRotationRequest,
   EnableKeyRotationResponse,
   EnableKeyRotationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableKeyRotationRequest,
   output: EnableKeyRotationResponse,
@@ -4495,7 +4495,7 @@ export const encrypt: API.OperationMethod<
   EncryptRequest,
   EncryptResponse,
   EncryptError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EncryptRequest,
   output: EncryptResponse,
@@ -4615,7 +4615,7 @@ export const generateDataKey: API.OperationMethod<
   GenerateDataKeyRequest,
   GenerateDataKeyResponse,
   GenerateDataKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateDataKeyRequest,
   output: GenerateDataKeyResponse,
@@ -4722,7 +4722,7 @@ export const generateDataKeyPair: API.OperationMethod<
   GenerateDataKeyPairRequest,
   GenerateDataKeyPairResponse,
   GenerateDataKeyPairError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateDataKeyPairRequest,
   output: GenerateDataKeyPairResponse,
@@ -4811,7 +4811,7 @@ export const generateDataKeyPairWithoutPlaintext: API.OperationMethod<
   GenerateDataKeyPairWithoutPlaintextRequest,
   GenerateDataKeyPairWithoutPlaintextResponse,
   GenerateDataKeyPairWithoutPlaintextError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateDataKeyPairWithoutPlaintextRequest,
   output: GenerateDataKeyPairWithoutPlaintextResponse,
@@ -4912,7 +4912,7 @@ export const generateDataKeyWithoutPlaintext: API.OperationMethod<
   GenerateDataKeyWithoutPlaintextRequest,
   GenerateDataKeyWithoutPlaintextResponse,
   GenerateDataKeyWithoutPlaintextError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateDataKeyWithoutPlaintextRequest,
   output: GenerateDataKeyWithoutPlaintextResponse,
@@ -4976,7 +4976,7 @@ export const generateMac: API.OperationMethod<
   GenerateMacRequest,
   GenerateMacResponse,
   GenerateMacError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateMacRequest,
   output: GenerateMacResponse,
@@ -5030,7 +5030,7 @@ export const generateRandom: API.OperationMethod<
   GenerateRandomRequest,
   GenerateRandomResponse,
   GenerateRandomError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateRandomRequest,
   output: GenerateRandomResponse,
@@ -5065,7 +5065,7 @@ export const getKeyPolicy: API.OperationMethod<
   GetKeyPolicyRequest,
   GetKeyPolicyResponse,
   GetKeyPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKeyPolicyRequest,
   output: GetKeyPolicyResponse,
@@ -5144,7 +5144,7 @@ export const getKeyRotationStatus: API.OperationMethod<
   GetKeyRotationStatusRequest,
   GetKeyRotationStatusResponse,
   GetKeyRotationStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKeyRotationStatusRequest,
   output: GetKeyRotationStatusResponse,
@@ -5236,7 +5236,7 @@ export const getParametersForImport: API.OperationMethod<
   GetParametersForImportRequest,
   GetParametersForImportResponse,
   GetParametersForImportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetParametersForImportRequest,
   output: GetParametersForImportResponse,
@@ -5315,7 +5315,7 @@ export const getPublicKey: API.OperationMethod<
   GetPublicKeyRequest,
   GetPublicKeyResponse,
   GetPublicKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicKeyRequest,
   output: GetPublicKeyResponse,
@@ -5464,7 +5464,7 @@ export const importKeyMaterial: API.OperationMethod<
   ImportKeyMaterialRequest,
   ImportKeyMaterialResponse,
   ImportKeyMaterialError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportKeyMaterialRequest,
   output: ImportKeyMaterialResponse,
@@ -5529,21 +5529,21 @@ export const listAliases: API.OperationMethod<
   ListAliasesRequest,
   ListAliasesResponse,
   ListAliasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAliasesRequest,
   ) => stream.Stream<
     ListAliasesResponse,
     ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAliasesRequest,
   ) => stream.Stream<
     AliasListEntry,
     ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesRequest,
@@ -5611,21 +5611,21 @@ export const listGrants: API.OperationMethod<
   ListGrantsRequest,
   ListGrantsResponse,
   ListGrantsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGrantsRequest,
   ) => stream.Stream<
     ListGrantsResponse,
     ListGrantsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGrantsRequest,
   ) => stream.Stream<
     GrantListEntry,
     ListGrantsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGrantsRequest,
@@ -5675,21 +5675,21 @@ export const listKeyPolicies: API.OperationMethod<
   ListKeyPoliciesRequest,
   ListKeyPoliciesResponse,
   ListKeyPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKeyPoliciesRequest,
   ) => stream.Stream<
     ListKeyPoliciesResponse,
     ListKeyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKeyPoliciesRequest,
   ) => stream.Stream<
     PolicyNameType,
     ListKeyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKeyPoliciesRequest,
@@ -5752,21 +5752,21 @@ export const listKeyRotations: API.OperationMethod<
   ListKeyRotationsRequest,
   ListKeyRotationsResponse,
   ListKeyRotationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKeyRotationsRequest,
   ) => stream.Stream<
     ListKeyRotationsResponse,
     ListKeyRotationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKeyRotationsRequest,
   ) => stream.Stream<
     RotationsListEntry,
     ListKeyRotationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKeyRotationsRequest,
@@ -5815,21 +5815,21 @@ export const listKeys: API.OperationMethod<
   ListKeysRequest,
   ListKeysResponse,
   ListKeysError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKeysRequest,
   ) => stream.Stream<
     ListKeysResponse,
     ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKeysRequest,
   ) => stream.Stream<
     KeyListEntry,
     ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
@@ -5881,21 +5881,21 @@ export const listResourceTags: API.OperationMethod<
   ListResourceTagsRequest,
   ListResourceTagsResponse,
   ListResourceTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceTagsRequest,
   ) => stream.Stream<
     ListResourceTagsResponse,
     ListResourceTagsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceTagsRequest,
   ) => stream.Stream<
     Tag,
     ListResourceTagsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTagsRequest,
@@ -5967,21 +5967,21 @@ export const listRetirableGrants: API.OperationMethod<
   ListRetirableGrantsRequest,
   ListGrantsResponse,
   ListRetirableGrantsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRetirableGrantsRequest,
   ) => stream.Stream<
     ListGrantsResponse,
     ListRetirableGrantsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRetirableGrantsRequest,
   ) => stream.Stream<
     GrantListEntry,
     ListRetirableGrantsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRetirableGrantsRequest,
@@ -6033,7 +6033,7 @@ export const putKeyPolicy: API.OperationMethod<
   PutKeyPolicyRequest,
   PutKeyPolicyResponse,
   PutKeyPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutKeyPolicyRequest,
   output: PutKeyPolicyResponse,
@@ -6140,7 +6140,7 @@ export const reEncrypt: API.OperationMethod<
   ReEncryptRequest,
   ReEncryptResponse,
   ReEncryptError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReEncryptRequest,
   output: ReEncryptResponse,
@@ -6247,7 +6247,7 @@ export const replicateKey: API.OperationMethod<
   ReplicateKeyRequest,
   ReplicateKeyResponse,
   ReplicateKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplicateKeyRequest,
   output: ReplicateKeyResponse,
@@ -6315,7 +6315,7 @@ export const retireGrant: API.OperationMethod<
   RetireGrantRequest,
   RetireGrantResponse,
   RetireGrantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetireGrantRequest,
   output: RetireGrantResponse,
@@ -6379,7 +6379,7 @@ export const revokeGrant: API.OperationMethod<
   RevokeGrantRequest,
   RevokeGrantResponse,
   RevokeGrantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeGrantRequest,
   output: RevokeGrantResponse,
@@ -6465,7 +6465,7 @@ export const rotateKeyOnDemand: API.OperationMethod<
   RotateKeyOnDemandRequest,
   RotateKeyOnDemandResponse,
   RotateKeyOnDemandError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RotateKeyOnDemandRequest,
   output: RotateKeyOnDemandResponse,
@@ -6548,7 +6548,7 @@ export const scheduleKeyDeletion: API.OperationMethod<
   ScheduleKeyDeletionRequest,
   ScheduleKeyDeletionResponse,
   ScheduleKeyDeletionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScheduleKeyDeletionRequest,
   output: ScheduleKeyDeletionResponse,
@@ -6628,7 +6628,7 @@ export const sign: API.OperationMethod<
   SignRequest,
   SignResponse,
   SignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignRequest,
   output: SignResponse,
@@ -6696,7 +6696,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -6754,7 +6754,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -6828,7 +6828,7 @@ export const updateAlias: API.OperationMethod<
   UpdateAliasRequest,
   UpdateAliasResponse,
   UpdateAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAliasRequest,
   output: UpdateAliasResponse,
@@ -6948,7 +6948,7 @@ export const updateCustomKeyStore: API.OperationMethod<
   UpdateCustomKeyStoreRequest,
   UpdateCustomKeyStoreResponse,
   UpdateCustomKeyStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCustomKeyStoreRequest,
   output: UpdateCustomKeyStoreResponse,
@@ -7002,7 +7002,7 @@ export const updateKeyDescription: API.OperationMethod<
   UpdateKeyDescriptionRequest,
   UpdateKeyDescriptionResponse,
   UpdateKeyDescriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKeyDescriptionRequest,
   output: UpdateKeyDescriptionResponse,
@@ -7089,7 +7089,7 @@ export const updatePrimaryRegion: API.OperationMethod<
   UpdatePrimaryRegionRequest,
   UpdatePrimaryRegionResponse,
   UpdatePrimaryRegionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePrimaryRegionRequest,
   output: UpdatePrimaryRegionResponse,
@@ -7162,7 +7162,7 @@ export const verify: API.OperationMethod<
   VerifyRequest,
   VerifyResponse,
   VerifyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyRequest,
   output: VerifyResponse,
@@ -7222,7 +7222,7 @@ export const verifyMac: API.OperationMethod<
   VerifyMacRequest,
   VerifyMacResponse,
   VerifyMacError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyMacRequest,
   output: VerifyMacResponse,

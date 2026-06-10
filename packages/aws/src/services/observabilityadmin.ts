@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "ObservabilityAdmin",
   serviceShapeName: "ObservabilityAdmin",
@@ -2163,7 +2163,7 @@ export const createCentralizationRuleForOrganization: API.OperationMethod<
   CreateCentralizationRuleForOrganizationInput,
   CreateCentralizationRuleForOrganizationOutput,
   CreateCentralizationRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCentralizationRuleForOrganizationInput,
   output: CreateCentralizationRuleForOrganizationOutput,
@@ -2191,7 +2191,7 @@ export const createS3TableIntegration: API.OperationMethod<
   CreateS3TableIntegrationInput,
   CreateS3TableIntegrationOutput,
   CreateS3TableIntegrationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateS3TableIntegrationInput,
   output: CreateS3TableIntegrationOutput,
@@ -2219,7 +2219,7 @@ export const createTelemetryRule: API.OperationMethod<
   CreateTelemetryRuleInput,
   CreateTelemetryRuleOutput,
   CreateTelemetryRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTelemetryRuleInput,
   output: CreateTelemetryRuleOutput,
@@ -2247,7 +2247,7 @@ export const createTelemetryRuleForOrganization: API.OperationMethod<
   CreateTelemetryRuleForOrganizationInput,
   CreateTelemetryRuleForOrganizationOutput,
   CreateTelemetryRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTelemetryRuleForOrganizationInput,
   output: CreateTelemetryRuleForOrganizationOutput,
@@ -2274,7 +2274,7 @@ export const deleteCentralizationRuleForOrganization: API.OperationMethod<
   DeleteCentralizationRuleForOrganizationInput,
   DeleteCentralizationRuleForOrganizationResponse,
   DeleteCentralizationRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCentralizationRuleForOrganizationInput,
   output: DeleteCentralizationRuleForOrganizationResponse,
@@ -2301,7 +2301,7 @@ export const deleteS3TableIntegration: API.OperationMethod<
   DeleteS3TableIntegrationInput,
   DeleteS3TableIntegrationResponse,
   DeleteS3TableIntegrationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteS3TableIntegrationInput,
   output: DeleteS3TableIntegrationResponse,
@@ -2328,7 +2328,7 @@ export const deleteTelemetryRule: API.OperationMethod<
   DeleteTelemetryRuleInput,
   DeleteTelemetryRuleResponse,
   DeleteTelemetryRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTelemetryRuleInput,
   output: DeleteTelemetryRuleResponse,
@@ -2354,7 +2354,7 @@ export const deleteTelemetryRuleForOrganization: API.OperationMethod<
   DeleteTelemetryRuleForOrganizationInput,
   DeleteTelemetryRuleForOrganizationResponse,
   DeleteTelemetryRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTelemetryRuleForOrganizationInput,
   output: DeleteTelemetryRuleForOrganizationResponse,
@@ -2380,7 +2380,7 @@ export const getCentralizationRuleForOrganization: API.OperationMethod<
   GetCentralizationRuleForOrganizationInput,
   GetCentralizationRuleForOrganizationOutput,
   GetCentralizationRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCentralizationRuleForOrganizationInput,
   output: GetCentralizationRuleForOrganizationOutput,
@@ -2406,7 +2406,7 @@ export const getS3TableIntegration: API.OperationMethod<
   GetS3TableIntegrationInput,
   GetS3TableIntegrationOutput,
   GetS3TableIntegrationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetS3TableIntegrationInput,
   output: GetS3TableIntegrationOutput,
@@ -2431,7 +2431,7 @@ export const getTelemetryEnrichmentStatus: API.OperationMethod<
   GetTelemetryEnrichmentStatusRequest,
   GetTelemetryEnrichmentStatusOutput,
   GetTelemetryEnrichmentStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTelemetryEnrichmentStatusRequest,
   output: GetTelemetryEnrichmentStatusOutput,
@@ -2454,7 +2454,7 @@ export const getTelemetryEvaluationStatus: API.OperationMethod<
   GetTelemetryEvaluationStatusRequest,
   GetTelemetryEvaluationStatusOutput,
   GetTelemetryEvaluationStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTelemetryEvaluationStatusRequest,
   output: GetTelemetryEvaluationStatusOutput,
@@ -2477,7 +2477,7 @@ export const getTelemetryEvaluationStatusForOrganization: API.OperationMethod<
   GetTelemetryEvaluationStatusForOrganizationRequest,
   GetTelemetryEvaluationStatusForOrganizationOutput,
   GetTelemetryEvaluationStatusForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTelemetryEvaluationStatusForOrganizationRequest,
   output: GetTelemetryEvaluationStatusForOrganizationOutput,
@@ -2502,7 +2502,7 @@ export const getTelemetryRule: API.OperationMethod<
   GetTelemetryRuleInput,
   GetTelemetryRuleOutput,
   GetTelemetryRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTelemetryRuleInput,
   output: GetTelemetryRuleOutput,
@@ -2528,7 +2528,7 @@ export const getTelemetryRuleForOrganization: API.OperationMethod<
   GetTelemetryRuleForOrganizationInput,
   GetTelemetryRuleForOrganizationOutput,
   GetTelemetryRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTelemetryRuleForOrganizationInput,
   output: GetTelemetryRuleForOrganizationOutput,
@@ -2553,21 +2553,21 @@ export const listCentralizationRulesForOrganization: API.OperationMethod<
   ListCentralizationRulesForOrganizationInput,
   ListCentralizationRulesForOrganizationOutput,
   ListCentralizationRulesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCentralizationRulesForOrganizationInput,
   ) => stream.Stream<
     ListCentralizationRulesForOrganizationOutput,
     ListCentralizationRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCentralizationRulesForOrganizationInput,
   ) => stream.Stream<
     CentralizationRuleSummary,
     ListCentralizationRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCentralizationRulesForOrganizationInput,
@@ -2598,21 +2598,21 @@ export const listResourceTelemetry: API.OperationMethod<
   ListResourceTelemetryInput,
   ListResourceTelemetryOutput,
   ListResourceTelemetryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceTelemetryInput,
   ) => stream.Stream<
     ListResourceTelemetryOutput,
     ListResourceTelemetryError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceTelemetryInput,
   ) => stream.Stream<
     TelemetryConfiguration,
     ListResourceTelemetryError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTelemetryInput,
@@ -2643,21 +2643,21 @@ export const listResourceTelemetryForOrganization: API.OperationMethod<
   ListResourceTelemetryForOrganizationInput,
   ListResourceTelemetryForOrganizationOutput,
   ListResourceTelemetryForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceTelemetryForOrganizationInput,
   ) => stream.Stream<
     ListResourceTelemetryForOrganizationOutput,
     ListResourceTelemetryForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceTelemetryForOrganizationInput,
   ) => stream.Stream<
     TelemetryConfiguration,
     ListResourceTelemetryForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTelemetryForOrganizationInput,
@@ -2688,21 +2688,21 @@ export const listS3TableIntegrations: API.OperationMethod<
   ListS3TableIntegrationsInput,
   ListS3TableIntegrationsOutput,
   ListS3TableIntegrationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListS3TableIntegrationsInput,
   ) => stream.Stream<
     ListS3TableIntegrationsOutput,
     ListS3TableIntegrationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListS3TableIntegrationsInput,
   ) => stream.Stream<
     IntegrationSummary,
     ListS3TableIntegrationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListS3TableIntegrationsInput,
@@ -2734,7 +2734,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -2759,21 +2759,21 @@ export const listTelemetryRules: API.OperationMethod<
   ListTelemetryRulesInput,
   ListTelemetryRulesOutput,
   ListTelemetryRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTelemetryRulesInput,
   ) => stream.Stream<
     ListTelemetryRulesOutput,
     ListTelemetryRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTelemetryRulesInput,
   ) => stream.Stream<
     TelemetryRuleSummary,
     ListTelemetryRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryRulesInput,
@@ -2804,21 +2804,21 @@ export const listTelemetryRulesForOrganization: API.OperationMethod<
   ListTelemetryRulesForOrganizationInput,
   ListTelemetryRulesForOrganizationOutput,
   ListTelemetryRulesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTelemetryRulesForOrganizationInput,
   ) => stream.Stream<
     ListTelemetryRulesForOrganizationOutput,
     ListTelemetryRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTelemetryRulesForOrganizationInput,
   ) => stream.Stream<
     TelemetryRuleSummary,
     ListTelemetryRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryRulesForOrganizationInput,
@@ -2849,7 +2849,7 @@ export const startTelemetryEnrichment: API.OperationMethod<
   StartTelemetryEnrichmentRequest,
   StartTelemetryEnrichmentOutput,
   StartTelemetryEnrichmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartTelemetryEnrichmentRequest,
   output: StartTelemetryEnrichmentOutput,
@@ -2873,7 +2873,7 @@ export const startTelemetryEvaluation: API.OperationMethod<
   StartTelemetryEvaluationInput,
   StartTelemetryEvaluationResponse,
   StartTelemetryEvaluationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartTelemetryEvaluationInput,
   output: StartTelemetryEvaluationResponse,
@@ -2897,7 +2897,7 @@ export const startTelemetryEvaluationForOrganization: API.OperationMethod<
   StartTelemetryEvaluationForOrganizationInput,
   StartTelemetryEvaluationForOrganizationResponse,
   StartTelemetryEvaluationForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartTelemetryEvaluationForOrganizationInput,
   output: StartTelemetryEvaluationForOrganizationResponse,
@@ -2921,7 +2921,7 @@ export const stopTelemetryEnrichment: API.OperationMethod<
   StopTelemetryEnrichmentRequest,
   StopTelemetryEnrichmentOutput,
   StopTelemetryEnrichmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopTelemetryEnrichmentRequest,
   output: StopTelemetryEnrichmentOutput,
@@ -2945,7 +2945,7 @@ export const stopTelemetryEvaluation: API.OperationMethod<
   StopTelemetryEvaluationRequest,
   StopTelemetryEvaluationResponse,
   StopTelemetryEvaluationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopTelemetryEvaluationRequest,
   output: StopTelemetryEvaluationResponse,
@@ -2969,7 +2969,7 @@ export const stopTelemetryEvaluationForOrganization: API.OperationMethod<
   StopTelemetryEvaluationForOrganizationRequest,
   StopTelemetryEvaluationForOrganizationResponse,
   StopTelemetryEvaluationForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopTelemetryEvaluationForOrganizationRequest,
   output: StopTelemetryEvaluationForOrganizationResponse,
@@ -2995,7 +2995,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
@@ -3021,7 +3021,7 @@ export const testTelemetryPipeline: API.OperationMethod<
   TestTelemetryPipelineInput,
   TestTelemetryPipelineOutput,
   TestTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestTelemetryPipelineInput,
   output: TestTelemetryPipelineOutput,
@@ -3046,7 +3046,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
@@ -3073,7 +3073,7 @@ export const updateCentralizationRuleForOrganization: API.OperationMethod<
   UpdateCentralizationRuleForOrganizationInput,
   UpdateCentralizationRuleForOrganizationOutput,
   UpdateCentralizationRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCentralizationRuleForOrganizationInput,
   output: UpdateCentralizationRuleForOrganizationOutput,
@@ -3102,7 +3102,7 @@ export const updateTelemetryRule: API.OperationMethod<
   UpdateTelemetryRuleInput,
   UpdateTelemetryRuleOutput,
   UpdateTelemetryRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTelemetryRuleInput,
   output: UpdateTelemetryRuleOutput,
@@ -3131,7 +3131,7 @@ export const updateTelemetryRuleForOrganization: API.OperationMethod<
   UpdateTelemetryRuleForOrganizationInput,
   UpdateTelemetryRuleForOrganizationOutput,
   UpdateTelemetryRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTelemetryRuleForOrganizationInput,
   output: UpdateTelemetryRuleForOrganizationOutput,
@@ -3157,7 +3157,7 @@ export const validateTelemetryPipelineConfiguration: API.OperationMethod<
   ValidateTelemetryPipelineConfigurationInput,
   ValidateTelemetryPipelineConfigurationOutput,
   ValidateTelemetryPipelineConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateTelemetryPipelineConfigurationInput,
   output: ValidateTelemetryPipelineConfigurationOutput,
@@ -3183,7 +3183,7 @@ export const createTelemetryPipeline: API.OperationMethod<
   CreateTelemetryPipelineInput,
   CreateTelemetryPipelineOutput,
   CreateTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTelemetryPipelineInput,
   output: CreateTelemetryPipelineOutput,
@@ -3210,7 +3210,7 @@ export const getTelemetryPipeline: API.OperationMethod<
   GetTelemetryPipelineInput,
   GetTelemetryPipelineOutput,
   GetTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTelemetryPipelineInput,
   output: GetTelemetryPipelineOutput,
@@ -3284,7 +3284,7 @@ export const updateTelemetryPipeline: API.OperationMethod<
   UpdateTelemetryPipelineInput,
   UpdateTelemetryPipelineOutput,
   UpdateTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTelemetryPipelineInput,
   output: UpdateTelemetryPipelineOutput,
@@ -3311,7 +3311,7 @@ export const deleteTelemetryPipeline: API.OperationMethod<
   DeleteTelemetryPipelineInput,
   DeleteTelemetryPipelineOutput,
   DeleteTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTelemetryPipelineInput,
   output: DeleteTelemetryPipelineOutput,
@@ -3337,21 +3337,21 @@ export const listTelemetryPipelines: API.OperationMethod<
   ListTelemetryPipelinesInput,
   ListTelemetryPipelinesOutput,
   ListTelemetryPipelinesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTelemetryPipelinesInput,
   ) => stream.Stream<
     ListTelemetryPipelinesOutput,
     ListTelemetryPipelinesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTelemetryPipelinesInput,
   ) => stream.Stream<
     TelemetryPipelineSummary,
     ListTelemetryPipelinesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryPipelinesInput,

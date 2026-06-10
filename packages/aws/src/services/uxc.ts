@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "uxc",
   serviceShapeName: "AWSAccountUXSetting",
@@ -225,7 +225,7 @@ export const getAccountCustomizations: API.OperationMethod<
   GetAccountCustomizationsInput,
   GetAccountCustomizationsOutput,
   GetAccountCustomizationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountCustomizationsInput,
   output: GetAccountCustomizationsOutput,
@@ -251,21 +251,21 @@ export const listServices: API.OperationMethod<
   ListServicesInput,
   ListServicesOutput,
   ListServicesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServicesInput,
   ) => stream.Stream<
     ListServicesOutput,
     ListServicesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServicesInput,
   ) => stream.Stream<
     Service,
     ListServicesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesInput,
@@ -297,7 +297,7 @@ export const updateAccountCustomizations: API.OperationMethod<
   UpdateAccountCustomizationsInput,
   UpdateAccountCustomizationsOutput,
   UpdateAccountCustomizationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountCustomizationsInput,
   output: UpdateAccountCustomizationsOutput,

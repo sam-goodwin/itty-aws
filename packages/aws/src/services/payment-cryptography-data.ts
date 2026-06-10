@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Payment Cryptography Data",
@@ -2105,7 +2105,7 @@ export const decryptData: API.OperationMethod<
   DecryptDataInput,
   DecryptDataOutput,
   DecryptDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DecryptDataInput,
   output: DecryptDataOutput,
@@ -2157,7 +2157,7 @@ export const encryptData: API.OperationMethod<
   EncryptDataInput,
   EncryptDataOutput,
   EncryptDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EncryptDataInput,
   output: EncryptDataOutput,
@@ -2191,7 +2191,7 @@ export const generateAs2805KekValidation: API.OperationMethod<
   GenerateAs2805KekValidationInput,
   GenerateAs2805KekValidationOutput,
   GenerateAs2805KekValidationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAs2805KekValidationInput,
   output: GenerateAs2805KekValidationOutput,
@@ -2229,7 +2229,7 @@ export const generateCardValidationData: API.OperationMethod<
   GenerateCardValidationDataInput,
   GenerateCardValidationDataOutput,
   GenerateCardValidationDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateCardValidationDataInput,
   output: GenerateCardValidationDataOutput,
@@ -2267,7 +2267,7 @@ export const generateMac: API.OperationMethod<
   GenerateMacInput,
   GenerateMacOutput,
   GenerateMacError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateMacInput,
   output: GenerateMacOutput,
@@ -2311,7 +2311,7 @@ export const generateMacEmvPinChange: API.OperationMethod<
   GenerateMacEmvPinChangeInput,
   GenerateMacEmvPinChangeOutput,
   GenerateMacEmvPinChangeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateMacEmvPinChangeInput,
   output: GenerateMacEmvPinChangeOutput,
@@ -2353,7 +2353,7 @@ export const generatePinData: API.OperationMethod<
   GeneratePinDataInput,
   GeneratePinDataOutput,
   GeneratePinDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GeneratePinDataInput,
   output: GeneratePinDataOutput,
@@ -2399,7 +2399,7 @@ export const reEncryptData: API.OperationMethod<
   ReEncryptDataInput,
   ReEncryptDataOutput,
   ReEncryptDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReEncryptDataInput,
   output: ReEncryptDataOutput,
@@ -2441,7 +2441,7 @@ export const translateKeyMaterial: API.OperationMethod<
   TranslateKeyMaterialInput,
   TranslateKeyMaterialOutput,
   TranslateKeyMaterialError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateKeyMaterialInput,
   output: TranslateKeyMaterialOutput,
@@ -2489,7 +2489,7 @@ export const translatePinData: API.OperationMethod<
   TranslatePinDataInput,
   TranslatePinDataOutput,
   TranslatePinDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslatePinDataInput,
   output: TranslatePinDataOutput,
@@ -2528,7 +2528,7 @@ export const verifyAuthRequestCryptogram: API.OperationMethod<
   VerifyAuthRequestCryptogramInput,
   VerifyAuthRequestCryptogramOutput,
   VerifyAuthRequestCryptogramError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyAuthRequestCryptogramInput,
   output: VerifyAuthRequestCryptogramOutput,
@@ -2570,7 +2570,7 @@ export const verifyCardValidationData: API.OperationMethod<
   VerifyCardValidationDataInput,
   VerifyCardValidationDataOutput,
   VerifyCardValidationDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyCardValidationDataInput,
   output: VerifyCardValidationDataOutput,
@@ -2608,7 +2608,7 @@ export const verifyMac: API.OperationMethod<
   VerifyMacInput,
   VerifyMacOutput,
   VerifyMacError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyMacInput,
   output: VerifyMacOutput,
@@ -2648,7 +2648,7 @@ export const verifyPinData: API.OperationMethod<
   VerifyPinDataInput,
   VerifyPinDataOutput,
   VerifyPinDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyPinDataInput,
   output: VerifyPinDataOutput,

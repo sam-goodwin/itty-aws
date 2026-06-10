@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "IoTSecureTunneling",
@@ -487,7 +487,7 @@ export const closeTunnel: API.OperationMethod<
   CloseTunnelRequest,
   CloseTunnelResponse,
   CloseTunnelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloseTunnelRequest,
   output: CloseTunnelResponse,
@@ -503,7 +503,7 @@ export const describeTunnel: API.OperationMethod<
   DescribeTunnelRequest,
   DescribeTunnelResponse,
   DescribeTunnelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTunnelRequest,
   output: DescribeTunnelResponse,
@@ -517,7 +517,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -534,21 +534,21 @@ export const listTunnels: API.OperationMethod<
   ListTunnelsRequest,
   ListTunnelsResponse,
   ListTunnelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTunnelsRequest,
   ) => stream.Stream<
     ListTunnelsResponse,
     ListTunnelsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTunnelsRequest,
   ) => stream.Stream<
     unknown,
     ListTunnelsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTunnelsRequest,
@@ -571,7 +571,7 @@ export const openTunnel: API.OperationMethod<
   OpenTunnelRequest,
   OpenTunnelResponse,
   OpenTunnelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: OpenTunnelRequest,
   output: OpenTunnelResponse,
@@ -595,7 +595,7 @@ export const rotateTunnelAccessToken: API.OperationMethod<
   RotateTunnelAccessTokenRequest,
   RotateTunnelAccessTokenResponse,
   RotateTunnelAccessTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RotateTunnelAccessTokenRequest,
   output: RotateTunnelAccessTokenResponse,
@@ -609,7 +609,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -623,7 +623,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

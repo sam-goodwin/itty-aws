@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Bedrock AgentCore",
@@ -3663,7 +3663,7 @@ export const completeResourceTokenAuth: API.OperationMethod<
   CompleteResourceTokenAuthRequest,
   CompleteResourceTokenAuthResponse,
   CompleteResourceTokenAuthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteResourceTokenAuthRequest,
   output: CompleteResourceTokenAuthResponse,
@@ -3691,7 +3691,7 @@ export const getResourceApiKey: API.OperationMethod<
   GetResourceApiKeyRequest,
   GetResourceApiKeyResponse,
   GetResourceApiKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceApiKeyRequest,
   output: GetResourceApiKeyResponse,
@@ -3719,7 +3719,7 @@ export const getResourceOauth2Token: API.OperationMethod<
   GetResourceOauth2TokenRequest,
   GetResourceOauth2TokenResponse,
   GetResourceOauth2TokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceOauth2TokenRequest,
   output: GetResourceOauth2TokenResponse,
@@ -3747,7 +3747,7 @@ export const getWorkloadAccessToken: API.OperationMethod<
   GetWorkloadAccessTokenRequest,
   GetWorkloadAccessTokenResponse,
   GetWorkloadAccessTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkloadAccessTokenRequest,
   output: GetWorkloadAccessTokenResponse,
@@ -3775,7 +3775,7 @@ export const getWorkloadAccessTokenForJWT: API.OperationMethod<
   GetWorkloadAccessTokenForJWTRequest,
   GetWorkloadAccessTokenForJWTResponse,
   GetWorkloadAccessTokenForJWTError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkloadAccessTokenForJWTRequest,
   output: GetWorkloadAccessTokenForJWTResponse,
@@ -3803,7 +3803,7 @@ export const getWorkloadAccessTokenForUserId: API.OperationMethod<
   GetWorkloadAccessTokenForUserIdRequest,
   GetWorkloadAccessTokenForUserIdResponse,
   GetWorkloadAccessTokenForUserIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkloadAccessTokenForUserIdRequest,
   output: GetWorkloadAccessTokenForUserIdResponse,
@@ -3842,7 +3842,7 @@ export const invokeCodeInterpreter: API.OperationMethod<
   InvokeCodeInterpreterRequest,
   InvokeCodeInterpreterResponse,
   InvokeCodeInterpreterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvokeCodeInterpreterRequest,
   output: InvokeCodeInterpreterResponse,
@@ -3872,7 +3872,7 @@ export const getAgentCard: API.OperationMethod<
   GetAgentCardRequest,
   GetAgentCardResponse,
   GetAgentCardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAgentCardRequest,
   output: GetAgentCardResponse,
@@ -3912,7 +3912,7 @@ export const invokeAgentRuntime: API.OperationMethod<
   InvokeAgentRuntimeRequest,
   InvokeAgentRuntimeResponse,
   InvokeAgentRuntimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvokeAgentRuntimeRequest,
   output: InvokeAgentRuntimeResponse,
@@ -3946,7 +3946,7 @@ export const invokeAgentRuntimeCommand: API.OperationMethod<
   InvokeAgentRuntimeCommandRequest,
   InvokeAgentRuntimeCommandResponse,
   InvokeAgentRuntimeCommandError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvokeAgentRuntimeCommandRequest,
   output: InvokeAgentRuntimeCommandResponse,
@@ -3978,7 +3978,7 @@ export const stopRuntimeSession: API.OperationMethod<
   StopRuntimeSessionRequest,
   StopRuntimeSessionResponse,
   StopRuntimeSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopRuntimeSessionRequest,
   output: StopRuntimeSessionResponse,
@@ -4019,7 +4019,7 @@ export const saveBrowserSessionProfile: API.OperationMethod<
   SaveBrowserSessionProfileRequest,
   SaveBrowserSessionProfileResponse,
   SaveBrowserSessionProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SaveBrowserSessionProfileRequest,
   output: SaveBrowserSessionProfileResponse,
@@ -4056,7 +4056,7 @@ export const getBrowserSession: API.OperationMethod<
   GetBrowserSessionRequest,
   GetBrowserSessionResponse,
   GetBrowserSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBrowserSessionRequest,
   output: GetBrowserSessionResponse,
@@ -4093,7 +4093,7 @@ export const invokeBrowser: API.OperationMethod<
   InvokeBrowserRequest,
   InvokeBrowserResponse,
   InvokeBrowserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvokeBrowserRequest,
   output: InvokeBrowserResponse,
@@ -4130,7 +4130,7 @@ export const listBrowserSessions: API.OperationMethod<
   ListBrowserSessionsRequest,
   ListBrowserSessionsResponse,
   ListBrowserSessionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBrowserSessionsRequest,
   output: ListBrowserSessionsResponse,
@@ -4172,7 +4172,7 @@ export const startBrowserSession: API.OperationMethod<
   StartBrowserSessionRequest,
   StartBrowserSessionResponse,
   StartBrowserSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartBrowserSessionRequest,
   output: StartBrowserSessionResponse,
@@ -4210,7 +4210,7 @@ export const stopBrowserSession: API.OperationMethod<
   StopBrowserSessionRequest,
   StopBrowserSessionResponse,
   StopBrowserSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopBrowserSessionRequest,
   output: StopBrowserSessionResponse,
@@ -4240,7 +4240,7 @@ export const updateBrowserStream: API.OperationMethod<
   UpdateBrowserStreamRequest,
   UpdateBrowserStreamResponse,
   UpdateBrowserStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBrowserStreamRequest,
   output: UpdateBrowserStreamResponse,
@@ -4278,7 +4278,7 @@ export const getCodeInterpreterSession: API.OperationMethod<
   GetCodeInterpreterSessionRequest,
   GetCodeInterpreterSessionResponse,
   GetCodeInterpreterSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCodeInterpreterSessionRequest,
   output: GetCodeInterpreterSessionResponse,
@@ -4314,7 +4314,7 @@ export const listCodeInterpreterSessions: API.OperationMethod<
   ListCodeInterpreterSessionsRequest,
   ListCodeInterpreterSessionsResponse,
   ListCodeInterpreterSessionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCodeInterpreterSessionsRequest,
   output: ListCodeInterpreterSessionsResponse,
@@ -4352,7 +4352,7 @@ export const startCodeInterpreterSession: API.OperationMethod<
   StartCodeInterpreterSessionRequest,
   StartCodeInterpreterSessionResponse,
   StartCodeInterpreterSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartCodeInterpreterSessionRequest,
   output: StartCodeInterpreterSessionResponse,
@@ -4390,7 +4390,7 @@ export const stopCodeInterpreterSession: API.OperationMethod<
   StopCodeInterpreterSessionRequest,
   StopCodeInterpreterSessionResponse,
   StopCodeInterpreterSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopCodeInterpreterSessionRequest,
   output: StopCodeInterpreterSessionResponse,
@@ -4422,7 +4422,7 @@ export const evaluate: API.OperationMethod<
   EvaluateRequest,
   EvaluateResponse,
   EvaluateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EvaluateRequest,
   output: EvaluateResponse,
@@ -4453,7 +4453,7 @@ export const batchCreateMemoryRecords: API.OperationMethod<
   BatchCreateMemoryRecordsInput,
   BatchCreateMemoryRecordsOutput,
   BatchCreateMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateMemoryRecordsInput,
   output: BatchCreateMemoryRecordsOutput,
@@ -4481,7 +4481,7 @@ export const batchDeleteMemoryRecords: API.OperationMethod<
   BatchDeleteMemoryRecordsInput,
   BatchDeleteMemoryRecordsOutput,
   BatchDeleteMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteMemoryRecordsInput,
   output: BatchDeleteMemoryRecordsOutput,
@@ -4509,7 +4509,7 @@ export const batchUpdateMemoryRecords: API.OperationMethod<
   BatchUpdateMemoryRecordsInput,
   BatchUpdateMemoryRecordsOutput,
   BatchUpdateMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateMemoryRecordsInput,
   output: BatchUpdateMemoryRecordsOutput,
@@ -4543,7 +4543,7 @@ export const createEvent: API.OperationMethod<
   CreateEventInput,
   CreateEventOutput,
   CreateEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEventInput,
   output: CreateEventOutput,
@@ -4576,7 +4576,7 @@ export const deleteEvent: API.OperationMethod<
   DeleteEventInput,
   DeleteEventOutput,
   DeleteEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEventInput,
   output: DeleteEventOutput,
@@ -4608,7 +4608,7 @@ export const deleteMemoryRecord: API.OperationMethod<
   DeleteMemoryRecordInput,
   DeleteMemoryRecordOutput,
   DeleteMemoryRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMemoryRecordInput,
   output: DeleteMemoryRecordOutput,
@@ -4640,7 +4640,7 @@ export const getEvent: API.OperationMethod<
   GetEventInput,
   GetEventOutput,
   GetEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEventInput,
   output: GetEventOutput,
@@ -4672,7 +4672,7 @@ export const getMemoryRecord: API.OperationMethod<
   GetMemoryRecordInput,
   GetMemoryRecordOutput,
   GetMemoryRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMemoryRecordInput,
   output: GetMemoryRecordOutput,
@@ -4704,21 +4704,21 @@ export const listActors: API.OperationMethod<
   ListActorsInput,
   ListActorsOutput,
   ListActorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListActorsInput,
   ) => stream.Stream<
     ListActorsOutput,
     ListActorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListActorsInput,
   ) => stream.Stream<
     ActorSummary,
     ListActorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListActorsInput,
@@ -4757,21 +4757,21 @@ export const listEvents: API.OperationMethod<
   ListEventsInput,
   ListEventsOutput,
   ListEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEventsInput,
   ) => stream.Stream<
     ListEventsOutput,
     ListEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEventsInput,
   ) => stream.Stream<
     Event,
     ListEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEventsInput,
@@ -4809,21 +4809,21 @@ export const listMemoryExtractionJobs: API.OperationMethod<
   ListMemoryExtractionJobsInput,
   ListMemoryExtractionJobsOutput,
   ListMemoryExtractionJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMemoryExtractionJobsInput,
   ) => stream.Stream<
     ListMemoryExtractionJobsOutput,
     ListMemoryExtractionJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMemoryExtractionJobsInput,
   ) => stream.Stream<
     ExtractionJobMetadata,
     ListMemoryExtractionJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMemoryExtractionJobsInput,
@@ -4861,21 +4861,21 @@ export const listMemoryRecords: API.OperationMethod<
   ListMemoryRecordsInput,
   ListMemoryRecordsOutput,
   ListMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMemoryRecordsInput,
   ) => stream.Stream<
     ListMemoryRecordsOutput,
     ListMemoryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMemoryRecordsInput,
   ) => stream.Stream<
     MemoryRecordSummary,
     ListMemoryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMemoryRecordsInput,
@@ -4916,21 +4916,21 @@ export const listSessions: API.OperationMethod<
   ListSessionsInput,
   ListSessionsOutput,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSessionsInput,
   ) => stream.Stream<
     ListSessionsOutput,
     ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSessionsInput,
   ) => stream.Stream<
     SessionSummary,
     ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsInput,
@@ -4969,21 +4969,21 @@ export const retrieveMemoryRecords: API.OperationMethod<
   RetrieveMemoryRecordsInput,
   RetrieveMemoryRecordsOutput,
   RetrieveMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: RetrieveMemoryRecordsInput,
   ) => stream.Stream<
     RetrieveMemoryRecordsOutput,
     RetrieveMemoryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: RetrieveMemoryRecordsInput,
   ) => stream.Stream<
     MemoryRecordSummary,
     RetrieveMemoryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: RetrieveMemoryRecordsInput,
@@ -5021,7 +5021,7 @@ export const startMemoryExtractionJob: API.OperationMethod<
   StartMemoryExtractionJobInput,
   StartMemoryExtractionJobOutput,
   StartMemoryExtractionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartMemoryExtractionJobInput,
   output: StartMemoryExtractionJobOutput,
@@ -5049,7 +5049,7 @@ export const searchRegistryRecords: API.OperationMethod<
   SearchRegistryRecordsRequest,
   SearchRegistryRecordsResponse,
   SearchRegistryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchRegistryRecordsRequest,
   output: SearchRegistryRecordsResponse,

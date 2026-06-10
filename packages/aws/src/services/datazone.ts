@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "DataZone",
@@ -15861,7 +15861,7 @@ export const acceptPredictions: API.OperationMethod<
   AcceptPredictionsInput,
   AcceptPredictionsOutput,
   AcceptPredictionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptPredictionsInput,
   output: AcceptPredictionsOutput,
@@ -15890,7 +15890,7 @@ export const acceptSubscriptionRequest: API.OperationMethod<
   AcceptSubscriptionRequestInput,
   AcceptSubscriptionRequestOutput,
   AcceptSubscriptionRequestError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptSubscriptionRequestInput,
   output: AcceptSubscriptionRequestOutput,
@@ -15920,7 +15920,7 @@ export const addEntityOwner: API.OperationMethod<
   AddEntityOwnerInput,
   AddEntityOwnerOutput,
   AddEntityOwnerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddEntityOwnerInput,
   output: AddEntityOwnerOutput,
@@ -15949,7 +15949,7 @@ export const addPolicyGrant: API.OperationMethod<
   AddPolicyGrantInput,
   AddPolicyGrantOutput,
   AddPolicyGrantError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddPolicyGrantInput,
   output: AddPolicyGrantOutput,
@@ -15977,7 +15977,7 @@ export const associateEnvironmentRole: API.OperationMethod<
   AssociateEnvironmentRoleInput,
   AssociateEnvironmentRoleOutput,
   AssociateEnvironmentRoleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateEnvironmentRoleInput,
   output: AssociateEnvironmentRoleOutput,
@@ -16005,7 +16005,7 @@ export const associateGovernedTerms: API.OperationMethod<
   AssociateGovernedTermsInput,
   AssociateGovernedTermsOutput,
   AssociateGovernedTermsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateGovernedTermsInput,
   output: AssociateGovernedTermsOutput,
@@ -16032,7 +16032,7 @@ export const batchGetAttributesMetadata: API.OperationMethod<
   BatchGetAttributesMetadataInput,
   BatchGetAttributesMetadataOutput,
   BatchGetAttributesMetadataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetAttributesMetadataInput,
   output: BatchGetAttributesMetadataOutput,
@@ -16059,7 +16059,7 @@ export const batchPutAttributesMetadata: API.OperationMethod<
   BatchPutAttributesMetadataInput,
   BatchPutAttributesMetadataOutput,
   BatchPutAttributesMetadataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchPutAttributesMetadataInput,
   output: BatchPutAttributesMetadataOutput,
@@ -16087,7 +16087,7 @@ export const cancelSubscription: API.OperationMethod<
   CancelSubscriptionInput,
   CancelSubscriptionOutput,
   CancelSubscriptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelSubscriptionInput,
   output: CancelSubscriptionOutput,
@@ -16116,7 +16116,7 @@ export const createAccountPool: API.OperationMethod<
   CreateAccountPoolInput,
   CreateAccountPoolOutput,
   CreateAccountPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountPoolInput,
   output: CreateAccountPoolOutput,
@@ -16158,7 +16158,7 @@ export const createAssetFilter: API.OperationMethod<
   CreateAssetFilterInput,
   CreateAssetFilterOutput,
   CreateAssetFilterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAssetFilterInput,
   output: CreateAssetFilterOutput,
@@ -16188,7 +16188,7 @@ export const createConnection: API.OperationMethod<
   CreateConnectionInput,
   CreateConnectionOutput,
   CreateConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConnectionInput,
   output: CreateConnectionOutput,
@@ -16217,7 +16217,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentInput,
   CreateEnvironmentOutput,
   CreateEnvironmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentInput,
   output: CreateEnvironmentOutput,
@@ -16245,7 +16245,7 @@ export const createEnvironmentAction: API.OperationMethod<
   CreateEnvironmentActionInput,
   CreateEnvironmentActionOutput,
   CreateEnvironmentActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentActionInput,
   output: CreateEnvironmentActionOutput,
@@ -16274,7 +16274,7 @@ export const createEnvironmentBlueprint: API.OperationMethod<
   CreateEnvironmentBlueprintInput,
   CreateEnvironmentBlueprintOutput,
   CreateEnvironmentBlueprintError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentBlueprintInput,
   output: CreateEnvironmentBlueprintOutput,
@@ -16304,7 +16304,7 @@ export const createEnvironmentProfile: API.OperationMethod<
   CreateEnvironmentProfileInput,
   CreateEnvironmentProfileOutput,
   CreateEnvironmentProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentProfileInput,
   output: CreateEnvironmentProfileOutput,
@@ -16331,7 +16331,7 @@ export const createGroupProfile: API.OperationMethod<
   CreateGroupProfileInput,
   CreateGroupProfileOutput,
   CreateGroupProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGroupProfileInput,
   output: CreateGroupProfileOutput,
@@ -16358,7 +16358,7 @@ export const createListingChangeSet: API.OperationMethod<
   CreateListingChangeSetInput,
   CreateListingChangeSetOutput,
   CreateListingChangeSetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateListingChangeSetInput,
   output: CreateListingChangeSetOutput,
@@ -16388,7 +16388,7 @@ export const createProject: API.OperationMethod<
   CreateProjectInput,
   CreateProjectOutput,
   CreateProjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectInput,
   output: CreateProjectOutput,
@@ -16415,7 +16415,7 @@ export const createProjectMembership: API.OperationMethod<
   CreateProjectMembershipInput,
   CreateProjectMembershipOutput,
   CreateProjectMembershipError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectMembershipInput,
   output: CreateProjectMembershipOutput,
@@ -16442,7 +16442,7 @@ export const createProjectProfile: API.OperationMethod<
   CreateProjectProfileInput,
   CreateProjectProfileOutput,
   CreateProjectProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectProfileInput,
   output: CreateProjectProfileOutput,
@@ -16471,7 +16471,7 @@ export const createSubscriptionGrant: API.OperationMethod<
   CreateSubscriptionGrantInput,
   CreateSubscriptionGrantOutput,
   CreateSubscriptionGrantError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubscriptionGrantInput,
   output: CreateSubscriptionGrantOutput,
@@ -16500,7 +16500,7 @@ export const createSubscriptionRequest: API.OperationMethod<
   CreateSubscriptionRequestInput,
   CreateSubscriptionRequestOutput,
   CreateSubscriptionRequestError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequestInput,
   output: CreateSubscriptionRequestOutput,
@@ -16529,7 +16529,7 @@ export const createSubscriptionTarget: API.OperationMethod<
   CreateSubscriptionTargetInput,
   CreateSubscriptionTargetOutput,
   CreateSubscriptionTargetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubscriptionTargetInput,
   output: CreateSubscriptionTargetOutput,
@@ -16555,7 +16555,7 @@ export const createUserProfile: API.OperationMethod<
   CreateUserProfileInput,
   CreateUserProfileOutput,
   CreateUserProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUserProfileInput,
   output: CreateUserProfileOutput,
@@ -16580,7 +16580,7 @@ export const deleteAccountPool: API.OperationMethod<
   DeleteAccountPoolInput,
   DeleteAccountPoolOutput,
   DeleteAccountPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountPoolInput,
   output: DeleteAccountPoolOutput,
@@ -16615,7 +16615,7 @@ export const deleteAssetFilter: API.OperationMethod<
   DeleteAssetFilterInput,
   DeleteAssetFilterResponse,
   DeleteAssetFilterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAssetFilterInput,
   output: DeleteAssetFilterResponse,
@@ -16642,7 +16642,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionInput,
   DeleteConnectionOutput,
   DeleteConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectionInput,
   output: DeleteConnectionOutput,
@@ -16673,7 +16673,7 @@ export const deleteDataExportConfiguration: API.OperationMethod<
   DeleteDataExportConfigurationInput,
   DeleteDataExportConfigurationOutput,
   DeleteDataExportConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataExportConfigurationInput,
   output: DeleteDataExportConfigurationOutput,
@@ -16700,7 +16700,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentInput,
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentInput,
   output: DeleteEnvironmentResponse,
@@ -16727,7 +16727,7 @@ export const deleteEnvironmentAction: API.OperationMethod<
   DeleteEnvironmentActionInput,
   DeleteEnvironmentActionResponse,
   DeleteEnvironmentActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentActionInput,
   output: DeleteEnvironmentActionResponse,
@@ -16755,7 +16755,7 @@ export const deleteEnvironmentBlueprint: API.OperationMethod<
   DeleteEnvironmentBlueprintInput,
   DeleteEnvironmentBlueprintResponse,
   DeleteEnvironmentBlueprintError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentBlueprintInput,
   output: DeleteEnvironmentBlueprintResponse,
@@ -16782,7 +16782,7 @@ export const deleteEnvironmentProfile: API.OperationMethod<
   DeleteEnvironmentProfileInput,
   DeleteEnvironmentProfileResponse,
   DeleteEnvironmentProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentProfileInput,
   output: DeleteEnvironmentProfileResponse,
@@ -16808,7 +16808,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectInput,
   DeleteProjectOutput,
   DeleteProjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectInput,
   output: DeleteProjectOutput,
@@ -16835,7 +16835,7 @@ export const deleteProjectMembership: API.OperationMethod<
   DeleteProjectMembershipInput,
   DeleteProjectMembershipOutput,
   DeleteProjectMembershipError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectMembershipInput,
   output: DeleteProjectMembershipOutput,
@@ -16862,7 +16862,7 @@ export const deleteProjectProfile: API.OperationMethod<
   DeleteProjectProfileInput,
   DeleteProjectProfileOutput,
   DeleteProjectProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectProfileInput,
   output: DeleteProjectProfileOutput,
@@ -16889,7 +16889,7 @@ export const deleteSubscriptionGrant: API.OperationMethod<
   DeleteSubscriptionGrantInput,
   DeleteSubscriptionGrantOutput,
   DeleteSubscriptionGrantError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionGrantInput,
   output: DeleteSubscriptionGrantOutput,
@@ -16917,7 +16917,7 @@ export const deleteSubscriptionRequest: API.OperationMethod<
   DeleteSubscriptionRequestInput,
   DeleteSubscriptionRequestResponse,
   DeleteSubscriptionRequestError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionRequestInput,
   output: DeleteSubscriptionRequestResponse,
@@ -16945,7 +16945,7 @@ export const deleteSubscriptionTarget: API.OperationMethod<
   DeleteSubscriptionTargetInput,
   DeleteSubscriptionTargetResponse,
   DeleteSubscriptionTargetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionTargetInput,
   output: DeleteSubscriptionTargetResponse,
@@ -16972,7 +16972,7 @@ export const deleteTimeSeriesDataPoints: API.OperationMethod<
   DeleteTimeSeriesDataPointsInput,
   DeleteTimeSeriesDataPointsOutput,
   DeleteTimeSeriesDataPointsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTimeSeriesDataPointsInput,
   output: DeleteTimeSeriesDataPointsOutput,
@@ -16999,7 +16999,7 @@ export const disassociateEnvironmentRole: API.OperationMethod<
   DisassociateEnvironmentRoleInput,
   DisassociateEnvironmentRoleOutput,
   DisassociateEnvironmentRoleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateEnvironmentRoleInput,
   output: DisassociateEnvironmentRoleOutput,
@@ -17027,7 +17027,7 @@ export const disassociateGovernedTerms: API.OperationMethod<
   DisassociateGovernedTermsInput,
   DisassociateGovernedTermsOutput,
   DisassociateGovernedTermsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateGovernedTermsInput,
   output: DisassociateGovernedTermsOutput,
@@ -17054,7 +17054,7 @@ export const getAccountPool: API.OperationMethod<
   GetAccountPoolInput,
   GetAccountPoolOutput,
   GetAccountPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountPoolInput,
   output: GetAccountPoolOutput,
@@ -17088,7 +17088,7 @@ export const getAssetFilter: API.OperationMethod<
   GetAssetFilterInput,
   GetAssetFilterOutput,
   GetAssetFilterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssetFilterInput,
   output: GetAssetFilterOutput,
@@ -17114,7 +17114,7 @@ export const getConnection: API.OperationMethod<
   GetConnectionInput,
   GetConnectionOutput,
   GetConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectionInput,
   output: GetConnectionOutput,
@@ -17140,7 +17140,7 @@ export const getDataExportConfiguration: API.OperationMethod<
   GetDataExportConfigurationInput,
   GetDataExportConfigurationOutput,
   GetDataExportConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataExportConfigurationInput,
   output: GetDataExportConfigurationOutput,
@@ -17166,7 +17166,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentInput,
   GetEnvironmentOutput,
   GetEnvironmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnvironmentInput,
   output: GetEnvironmentOutput,
@@ -17192,7 +17192,7 @@ export const getEnvironmentAction: API.OperationMethod<
   GetEnvironmentActionInput,
   GetEnvironmentActionOutput,
   GetEnvironmentActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnvironmentActionInput,
   output: GetEnvironmentActionOutput,
@@ -17218,7 +17218,7 @@ export const getEnvironmentBlueprint: API.OperationMethod<
   GetEnvironmentBlueprintInput,
   GetEnvironmentBlueprintOutput,
   GetEnvironmentBlueprintError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnvironmentBlueprintInput,
   output: GetEnvironmentBlueprintOutput,
@@ -17244,7 +17244,7 @@ export const getEnvironmentCredentials: API.OperationMethod<
   GetEnvironmentCredentialsInput,
   GetEnvironmentCredentialsOutput,
   GetEnvironmentCredentialsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnvironmentCredentialsInput,
   output: GetEnvironmentCredentialsOutput,
@@ -17270,7 +17270,7 @@ export const getEnvironmentProfile: API.OperationMethod<
   GetEnvironmentProfileInput,
   GetEnvironmentProfileOutput,
   GetEnvironmentProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnvironmentProfileInput,
   output: GetEnvironmentProfileOutput,
@@ -17295,7 +17295,7 @@ export const getGroupProfile: API.OperationMethod<
   GetGroupProfileInput,
   GetGroupProfileOutput,
   GetGroupProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGroupProfileInput,
   output: GetGroupProfileOutput,
@@ -17321,7 +17321,7 @@ export const getIamPortalLoginUrl: API.OperationMethod<
   GetIamPortalLoginUrlInput,
   GetIamPortalLoginUrlOutput,
   GetIamPortalLoginUrlError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPortalLoginUrlInput,
   output: GetIamPortalLoginUrlOutput,
@@ -17348,7 +17348,7 @@ export const getJobRun: API.OperationMethod<
   GetJobRunInput,
   GetJobRunOutput,
   GetJobRunError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetJobRunInput,
   output: GetJobRunOutput,
@@ -17374,7 +17374,7 @@ export const getLineageEvent: API.OperationMethod<
   GetLineageEventInput,
   GetLineageEventOutput,
   GetLineageEventError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLineageEventInput,
   output: GetLineageEventOutput,
@@ -17400,7 +17400,7 @@ export const getLineageNode: API.OperationMethod<
   GetLineageNodeInput,
   GetLineageNodeOutput,
   GetLineageNodeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLineageNodeInput,
   output: GetLineageNodeOutput,
@@ -17426,7 +17426,7 @@ export const getProject: API.OperationMethod<
   GetProjectInput,
   GetProjectOutput,
   GetProjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectInput,
   output: GetProjectOutput,
@@ -17452,7 +17452,7 @@ export const getProjectProfile: API.OperationMethod<
   GetProjectProfileInput,
   GetProjectProfileOutput,
   GetProjectProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectProfileInput,
   output: GetProjectProfileOutput,
@@ -17478,7 +17478,7 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionInput,
   GetSubscriptionOutput,
   GetSubscriptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionInput,
   output: GetSubscriptionOutput,
@@ -17504,7 +17504,7 @@ export const getSubscriptionGrant: API.OperationMethod<
   GetSubscriptionGrantInput,
   GetSubscriptionGrantOutput,
   GetSubscriptionGrantError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionGrantInput,
   output: GetSubscriptionGrantOutput,
@@ -17530,7 +17530,7 @@ export const getSubscriptionRequestDetails: API.OperationMethod<
   GetSubscriptionRequestDetailsInput,
   GetSubscriptionRequestDetailsOutput,
   GetSubscriptionRequestDetailsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionRequestDetailsInput,
   output: GetSubscriptionRequestDetailsOutput,
@@ -17556,7 +17556,7 @@ export const getSubscriptionTarget: API.OperationMethod<
   GetSubscriptionTargetInput,
   GetSubscriptionTargetOutput,
   GetSubscriptionTargetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionTargetInput,
   output: GetSubscriptionTargetOutput,
@@ -17582,7 +17582,7 @@ export const getTimeSeriesDataPoint: API.OperationMethod<
   GetTimeSeriesDataPointInput,
   GetTimeSeriesDataPointOutput,
   GetTimeSeriesDataPointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTimeSeriesDataPointInput,
   output: GetTimeSeriesDataPointOutput,
@@ -17607,7 +17607,7 @@ export const getUserProfile: API.OperationMethod<
   GetUserProfileInput,
   GetUserProfileOutput,
   GetUserProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserProfileInput,
   output: GetUserProfileOutput,
@@ -17631,21 +17631,21 @@ export const listAccountPools: API.OperationMethod<
   ListAccountPoolsInput,
   ListAccountPoolsOutput,
   ListAccountPoolsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccountPoolsInput,
   ) => stream.Stream<
     ListAccountPoolsOutput,
     ListAccountPoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccountPoolsInput,
   ) => stream.Stream<
     AccountPoolSummary,
     ListAccountPoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountPoolsInput,
@@ -17677,21 +17677,21 @@ export const listAccountsInAccountPool: API.OperationMethod<
   ListAccountsInAccountPoolInput,
   ListAccountsInAccountPoolOutput,
   ListAccountsInAccountPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccountsInAccountPoolInput,
   ) => stream.Stream<
     ListAccountsInAccountPoolOutput,
     ListAccountsInAccountPoolError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccountsInAccountPoolInput,
   ) => stream.Stream<
     AccountInfo,
     ListAccountsInAccountPoolError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsInAccountPoolInput,
@@ -17730,21 +17730,21 @@ export const listAssetFilters: API.OperationMethod<
   ListAssetFiltersInput,
   ListAssetFiltersOutput,
   ListAssetFiltersError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAssetFiltersInput,
   ) => stream.Stream<
     ListAssetFiltersOutput,
     ListAssetFiltersError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAssetFiltersInput,
   ) => stream.Stream<
     AssetFilterSummary,
     ListAssetFiltersError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssetFiltersInput,
@@ -17787,21 +17787,21 @@ export const listAssetRevisions: API.OperationMethod<
   ListAssetRevisionsInput,
   ListAssetRevisionsOutput,
   ListAssetRevisionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAssetRevisionsInput,
   ) => stream.Stream<
     ListAssetRevisionsOutput,
     ListAssetRevisionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAssetRevisionsInput,
   ) => stream.Stream<
     unknown,
     ListAssetRevisionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssetRevisionsInput,
@@ -17832,21 +17832,21 @@ export const listConnections: API.OperationMethod<
   ListConnectionsInput,
   ListConnectionsOutput,
   ListConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConnectionsInput,
   ) => stream.Stream<
     ListConnectionsOutput,
     ListConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConnectionsInput,
   ) => stream.Stream<
     ConnectionSummary,
     ListConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsInput,
@@ -17886,21 +17886,21 @@ export const listDataProductRevisions: API.OperationMethod<
   ListDataProductRevisionsInput,
   ListDataProductRevisionsOutput,
   ListDataProductRevisionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataProductRevisionsInput,
   ) => stream.Stream<
     ListDataProductRevisionsOutput,
     ListDataProductRevisionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataProductRevisionsInput,
   ) => stream.Stream<
     DataProductRevision,
     ListDataProductRevisionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataProductRevisionsInput,
@@ -17935,21 +17935,21 @@ export const listDataSourceRunActivities: API.OperationMethod<
   ListDataSourceRunActivitiesInput,
   ListDataSourceRunActivitiesOutput,
   ListDataSourceRunActivitiesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataSourceRunActivitiesInput,
   ) => stream.Stream<
     ListDataSourceRunActivitiesOutput,
     ListDataSourceRunActivitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataSourceRunActivitiesInput,
   ) => stream.Stream<
     DataSourceRunActivity,
     ListDataSourceRunActivitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourceRunActivitiesInput,
@@ -17983,21 +17983,21 @@ export const listEntityOwners: API.OperationMethod<
   ListEntityOwnersInput,
   ListEntityOwnersOutput,
   ListEntityOwnersError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEntityOwnersInput,
   ) => stream.Stream<
     ListEntityOwnersOutput,
     ListEntityOwnersError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEntityOwnersInput,
   ) => stream.Stream<
     OwnerPropertiesOutput,
     ListEntityOwnersError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEntityOwnersInput,
@@ -18028,21 +18028,21 @@ export const listEnvironmentActions: API.OperationMethod<
   ListEnvironmentActionsInput,
   ListEnvironmentActionsOutput,
   ListEnvironmentActionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnvironmentActionsInput,
   ) => stream.Stream<
     ListEnvironmentActionsOutput,
     ListEnvironmentActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnvironmentActionsInput,
   ) => stream.Stream<
     EnvironmentActionSummary,
     ListEnvironmentActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentActionsInput,
@@ -18074,21 +18074,21 @@ export const listEnvironmentBlueprints: API.OperationMethod<
   ListEnvironmentBlueprintsInput,
   ListEnvironmentBlueprintsOutput,
   ListEnvironmentBlueprintsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnvironmentBlueprintsInput,
   ) => stream.Stream<
     ListEnvironmentBlueprintsOutput,
     ListEnvironmentBlueprintsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnvironmentBlueprintsInput,
   ) => stream.Stream<
     EnvironmentBlueprintSummary,
     ListEnvironmentBlueprintsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentBlueprintsInput,
@@ -18120,21 +18120,21 @@ export const listEnvironmentProfiles: API.OperationMethod<
   ListEnvironmentProfilesInput,
   ListEnvironmentProfilesOutput,
   ListEnvironmentProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnvironmentProfilesInput,
   ) => stream.Stream<
     ListEnvironmentProfilesOutput,
     ListEnvironmentProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnvironmentProfilesInput,
   ) => stream.Stream<
     EnvironmentProfileSummary,
     ListEnvironmentProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentProfilesInput,
@@ -18165,21 +18165,21 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsInput,
   ListEnvironmentsOutput,
   ListEnvironmentsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnvironmentsInput,
   ) => stream.Stream<
     ListEnvironmentsOutput,
     ListEnvironmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnvironmentsInput,
   ) => stream.Stream<
     EnvironmentSummary,
     ListEnvironmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsInput,
@@ -18211,21 +18211,21 @@ export const listJobRuns: API.OperationMethod<
   ListJobRunsInput,
   ListJobRunsOutput,
   ListJobRunsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListJobRunsInput,
   ) => stream.Stream<
     ListJobRunsOutput,
     ListJobRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListJobRunsInput,
   ) => stream.Stream<
     JobRunSummary,
     ListJobRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsInput,
@@ -18257,21 +18257,21 @@ export const listLineageEvents: API.OperationMethod<
   ListLineageEventsInput,
   ListLineageEventsOutput,
   ListLineageEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLineageEventsInput,
   ) => stream.Stream<
     ListLineageEventsOutput,
     ListLineageEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLineageEventsInput,
   ) => stream.Stream<
     LineageEventSummary,
     ListLineageEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLineageEventsInput,
@@ -18303,21 +18303,21 @@ export const listLineageNodeHistory: API.OperationMethod<
   ListLineageNodeHistoryInput,
   ListLineageNodeHistoryOutput,
   ListLineageNodeHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLineageNodeHistoryInput,
   ) => stream.Stream<
     ListLineageNodeHistoryOutput,
     ListLineageNodeHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLineageNodeHistoryInput,
   ) => stream.Stream<
     LineageNodeSummary,
     ListLineageNodeHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLineageNodeHistoryInput,
@@ -18349,21 +18349,21 @@ export const listNotifications: API.OperationMethod<
   ListNotificationsInput,
   ListNotificationsOutput,
   ListNotificationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListNotificationsInput,
   ) => stream.Stream<
     ListNotificationsOutput,
     ListNotificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListNotificationsInput,
   ) => stream.Stream<
     NotificationOutput,
     ListNotificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationsInput,
@@ -18394,21 +18394,21 @@ export const listPolicyGrants: API.OperationMethod<
   ListPolicyGrantsInput,
   ListPolicyGrantsOutput,
   ListPolicyGrantsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPolicyGrantsInput,
   ) => stream.Stream<
     ListPolicyGrantsOutput,
     ListPolicyGrantsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPolicyGrantsInput,
   ) => stream.Stream<
     PolicyGrantMember,
     ListPolicyGrantsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyGrantsInput,
@@ -18440,21 +18440,21 @@ export const listProjectMemberships: API.OperationMethod<
   ListProjectMembershipsInput,
   ListProjectMembershipsOutput,
   ListProjectMembershipsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProjectMembershipsInput,
   ) => stream.Stream<
     ListProjectMembershipsOutput,
     ListProjectMembershipsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProjectMembershipsInput,
   ) => stream.Stream<
     ProjectMember,
     ListProjectMembershipsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectMembershipsInput,
@@ -18486,21 +18486,21 @@ export const listProjectProfiles: API.OperationMethod<
   ListProjectProfilesInput,
   ListProjectProfilesOutput,
   ListProjectProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProjectProfilesInput,
   ) => stream.Stream<
     ListProjectProfilesOutput,
     ListProjectProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProjectProfilesInput,
   ) => stream.Stream<
     ProjectProfileSummary,
     ListProjectProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectProfilesInput,
@@ -18531,21 +18531,21 @@ export const listProjects: API.OperationMethod<
   ListProjectsInput,
   ListProjectsOutput,
   ListProjectsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProjectsInput,
   ) => stream.Stream<
     ListProjectsOutput,
     ListProjectsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProjectsInput,
   ) => stream.Stream<
     ProjectSummary,
     ListProjectsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInput,
@@ -18577,21 +18577,21 @@ export const listSubscriptionGrants: API.OperationMethod<
   ListSubscriptionGrantsInput,
   ListSubscriptionGrantsOutput,
   ListSubscriptionGrantsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSubscriptionGrantsInput,
   ) => stream.Stream<
     ListSubscriptionGrantsOutput,
     ListSubscriptionGrantsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSubscriptionGrantsInput,
   ) => stream.Stream<
     SubscriptionGrantSummary,
     ListSubscriptionGrantsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionGrantsInput,
@@ -18624,21 +18624,21 @@ export const listSubscriptionRequests: API.OperationMethod<
   ListSubscriptionRequestsInput,
   ListSubscriptionRequestsOutput,
   ListSubscriptionRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSubscriptionRequestsInput,
   ) => stream.Stream<
     ListSubscriptionRequestsOutput,
     ListSubscriptionRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSubscriptionRequestsInput,
   ) => stream.Stream<
     SubscriptionRequestSummary,
     ListSubscriptionRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionRequestsInput,
@@ -18671,21 +18671,21 @@ export const listSubscriptions: API.OperationMethod<
   ListSubscriptionsInput,
   ListSubscriptionsOutput,
   ListSubscriptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSubscriptionsInput,
   ) => stream.Stream<
     ListSubscriptionsOutput,
     ListSubscriptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSubscriptionsInput,
   ) => stream.Stream<
     SubscriptionSummary,
     ListSubscriptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsInput,
@@ -18718,21 +18718,21 @@ export const listSubscriptionTargets: API.OperationMethod<
   ListSubscriptionTargetsInput,
   ListSubscriptionTargetsOutput,
   ListSubscriptionTargetsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSubscriptionTargetsInput,
   ) => stream.Stream<
     ListSubscriptionTargetsOutput,
     ListSubscriptionTargetsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSubscriptionTargetsInput,
   ) => stream.Stream<
     SubscriptionTargetSummary,
     ListSubscriptionTargetsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionTargetsInput,
@@ -18763,7 +18763,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -18787,21 +18787,21 @@ export const listTimeSeriesDataPoints: API.OperationMethod<
   ListTimeSeriesDataPointsInput,
   ListTimeSeriesDataPointsOutput,
   ListTimeSeriesDataPointsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTimeSeriesDataPointsInput,
   ) => stream.Stream<
     ListTimeSeriesDataPointsOutput,
     ListTimeSeriesDataPointsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTimeSeriesDataPointsInput,
   ) => stream.Stream<
     TimeSeriesDataPointSummaryFormOutput,
     ListTimeSeriesDataPointsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTimeSeriesDataPointsInput,
@@ -18836,7 +18836,7 @@ export const postLineageEvent: API.OperationMethod<
   PostLineageEventInput,
   PostLineageEventOutput,
   PostLineageEventError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PostLineageEventInput,
   output: PostLineageEventOutput,
@@ -18866,7 +18866,7 @@ export const postTimeSeriesDataPoints: API.OperationMethod<
   PostTimeSeriesDataPointsInput,
   PostTimeSeriesDataPointsOutput,
   PostTimeSeriesDataPointsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PostTimeSeriesDataPointsInput,
   output: PostTimeSeriesDataPointsOutput,
@@ -18906,7 +18906,7 @@ export const putDataExportConfiguration: API.OperationMethod<
   PutDataExportConfigurationInput,
   PutDataExportConfigurationOutput,
   PutDataExportConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutDataExportConfigurationInput,
   output: PutDataExportConfigurationOutput,
@@ -18933,21 +18933,21 @@ export const queryGraph: API.OperationMethod<
   QueryGraphInput,
   QueryGraphOutput,
   QueryGraphError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: QueryGraphInput,
   ) => stream.Stream<
     QueryGraphOutput,
     QueryGraphError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: QueryGraphInput,
   ) => stream.Stream<
     ResultItem,
     QueryGraphError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: QueryGraphInput,
@@ -18980,7 +18980,7 @@ export const rejectPredictions: API.OperationMethod<
   RejectPredictionsInput,
   RejectPredictionsOutput,
   RejectPredictionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectPredictionsInput,
   output: RejectPredictionsOutput,
@@ -19008,7 +19008,7 @@ export const rejectSubscriptionRequest: API.OperationMethod<
   RejectSubscriptionRequestInput,
   RejectSubscriptionRequestOutput,
   RejectSubscriptionRequestError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectSubscriptionRequestInput,
   output: RejectSubscriptionRequestOutput,
@@ -19035,7 +19035,7 @@ export const removeEntityOwner: API.OperationMethod<
   RemoveEntityOwnerInput,
   RemoveEntityOwnerOutput,
   RemoveEntityOwnerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveEntityOwnerInput,
   output: RemoveEntityOwnerOutput,
@@ -19060,7 +19060,7 @@ export const removePolicyGrant: API.OperationMethod<
   RemovePolicyGrantInput,
   RemovePolicyGrantOutput,
   RemovePolicyGrantError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemovePolicyGrantInput,
   output: RemovePolicyGrantOutput,
@@ -19086,7 +19086,7 @@ export const revokeSubscription: API.OperationMethod<
   RevokeSubscriptionInput,
   RevokeSubscriptionOutput,
   RevokeSubscriptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeSubscriptionInput,
   output: RevokeSubscriptionOutput,
@@ -19134,21 +19134,21 @@ export const search: API.OperationMethod<
   SearchInput,
   SearchOutput,
   SearchError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchInput,
   ) => stream.Stream<
     SearchOutput,
     SearchError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchInput,
   ) => stream.Stream<
     SearchInventoryResultItem,
     SearchError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchInput,
@@ -19179,21 +19179,21 @@ export const searchGroupProfiles: API.OperationMethod<
   SearchGroupProfilesInput,
   SearchGroupProfilesOutput,
   SearchGroupProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchGroupProfilesInput,
   ) => stream.Stream<
     SearchGroupProfilesOutput,
     SearchGroupProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchGroupProfilesInput,
   ) => stream.Stream<
     GroupProfileSummary,
     SearchGroupProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchGroupProfilesInput,
@@ -19236,21 +19236,21 @@ export const searchListings: API.OperationMethod<
   SearchListingsInput,
   SearchListingsOutput,
   SearchListingsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchListingsInput,
   ) => stream.Stream<
     SearchListingsOutput,
     SearchListingsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchListingsInput,
   ) => stream.Stream<
     SearchResultItem,
     SearchListingsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchListingsInput,
@@ -19295,21 +19295,21 @@ export const searchTypes: API.OperationMethod<
   SearchTypesInput,
   SearchTypesOutput,
   SearchTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchTypesInput,
   ) => stream.Stream<
     SearchTypesOutput,
     SearchTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchTypesInput,
   ) => stream.Stream<
     SearchTypesResultItem,
     SearchTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchTypesInput,
@@ -19340,21 +19340,21 @@ export const searchUserProfiles: API.OperationMethod<
   SearchUserProfilesInput,
   SearchUserProfilesOutput,
   SearchUserProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchUserProfilesInput,
   ) => stream.Stream<
     SearchUserProfilesOutput,
     SearchUserProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchUserProfilesInput,
   ) => stream.Stream<
     UserProfileSummary,
     SearchUserProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchUserProfilesInput,
@@ -19384,7 +19384,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -19405,7 +19405,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -19427,7 +19427,7 @@ export const updateAccountPool: API.OperationMethod<
   UpdateAccountPoolInput,
   UpdateAccountPoolOutput,
   UpdateAccountPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountPoolInput,
   output: UpdateAccountPoolOutput,
@@ -19464,7 +19464,7 @@ export const updateAssetFilter: API.OperationMethod<
   UpdateAssetFilterInput,
   UpdateAssetFilterOutput,
   UpdateAssetFilterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAssetFilterInput,
   output: UpdateAssetFilterOutput,
@@ -19493,7 +19493,7 @@ export const updateConnection: API.OperationMethod<
   UpdateConnectionInput,
   UpdateConnectionOutput,
   UpdateConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConnectionInput,
   output: UpdateConnectionOutput,
@@ -19522,7 +19522,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentInput,
   UpdateEnvironmentOutput,
   UpdateEnvironmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentInput,
   output: UpdateEnvironmentOutput,
@@ -19550,7 +19550,7 @@ export const updateEnvironmentAction: API.OperationMethod<
   UpdateEnvironmentActionInput,
   UpdateEnvironmentActionOutput,
   UpdateEnvironmentActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentActionInput,
   output: UpdateEnvironmentActionOutput,
@@ -19579,7 +19579,7 @@ export const updateEnvironmentBlueprint: API.OperationMethod<
   UpdateEnvironmentBlueprintInput,
   UpdateEnvironmentBlueprintOutput,
   UpdateEnvironmentBlueprintError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentBlueprintInput,
   output: UpdateEnvironmentBlueprintOutput,
@@ -19609,7 +19609,7 @@ export const updateEnvironmentProfile: API.OperationMethod<
   UpdateEnvironmentProfileInput,
   UpdateEnvironmentProfileOutput,
   UpdateEnvironmentProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentProfileInput,
   output: UpdateEnvironmentProfileOutput,
@@ -19636,7 +19636,7 @@ export const updateGroupProfile: API.OperationMethod<
   UpdateGroupProfileInput,
   UpdateGroupProfileOutput,
   UpdateGroupProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGroupProfileInput,
   output: UpdateGroupProfileOutput,
@@ -19663,7 +19663,7 @@ export const updateProject: API.OperationMethod<
   UpdateProjectInput,
   UpdateProjectOutput,
   UpdateProjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectInput,
   output: UpdateProjectOutput,
@@ -19693,7 +19693,7 @@ export const updateProjectProfile: API.OperationMethod<
   UpdateProjectProfileInput,
   UpdateProjectProfileOutput,
   UpdateProjectProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectProfileInput,
   output: UpdateProjectProfileOutput,
@@ -19722,7 +19722,7 @@ export const updateRootDomainUnitOwner: API.OperationMethod<
   UpdateRootDomainUnitOwnerInput,
   UpdateRootDomainUnitOwnerOutput,
   UpdateRootDomainUnitOwnerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRootDomainUnitOwnerInput,
   output: UpdateRootDomainUnitOwnerOutput,
@@ -19750,7 +19750,7 @@ export const updateSubscriptionGrantStatus: API.OperationMethod<
   UpdateSubscriptionGrantStatusInput,
   UpdateSubscriptionGrantStatusOutput,
   UpdateSubscriptionGrantStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionGrantStatusInput,
   output: UpdateSubscriptionGrantStatusOutput,
@@ -19778,7 +19778,7 @@ export const updateSubscriptionRequest: API.OperationMethod<
   UpdateSubscriptionRequestInput,
   UpdateSubscriptionRequestOutput,
   UpdateSubscriptionRequestError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionRequestInput,
   output: UpdateSubscriptionRequestOutput,
@@ -19806,7 +19806,7 @@ export const updateSubscriptionTarget: API.OperationMethod<
   UpdateSubscriptionTargetInput,
   UpdateSubscriptionTargetOutput,
   UpdateSubscriptionTargetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionTargetInput,
   output: UpdateSubscriptionTargetOutput,
@@ -19832,7 +19832,7 @@ export const updateUserProfile: API.OperationMethod<
   UpdateUserProfileInput,
   UpdateUserProfileOutput,
   UpdateUserProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUserProfileInput,
   output: UpdateUserProfileOutput,
@@ -19879,7 +19879,7 @@ export const createAsset: API.OperationMethod<
   CreateAssetInput,
   CreateAssetOutput,
   CreateAssetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAssetInput,
   output: CreateAssetOutput,
@@ -19917,7 +19917,7 @@ export const getAsset: API.OperationMethod<
   GetAssetInput,
   GetAssetOutput,
   GetAssetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssetInput,
   output: GetAssetOutput,
@@ -19954,7 +19954,7 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetInput,
   DeleteAssetOutput,
   DeleteAssetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAssetInput,
   output: DeleteAssetOutput,
@@ -19996,7 +19996,7 @@ export const createAssetRevision: API.OperationMethod<
   CreateAssetRevisionInput,
   CreateAssetRevisionOutput,
   CreateAssetRevisionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAssetRevisionInput,
   output: CreateAssetRevisionOutput,
@@ -20036,7 +20036,7 @@ export const createAssetType: API.OperationMethod<
   CreateAssetTypeInput,
   CreateAssetTypeOutput,
   CreateAssetTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAssetTypeInput,
   output: CreateAssetTypeOutput,
@@ -20074,7 +20074,7 @@ export const deleteAssetType: API.OperationMethod<
   DeleteAssetTypeInput,
   DeleteAssetTypeOutput,
   DeleteAssetTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAssetTypeInput,
   output: DeleteAssetTypeOutput,
@@ -20111,7 +20111,7 @@ export const getAssetType: API.OperationMethod<
   GetAssetTypeInput,
   GetAssetTypeOutput,
   GetAssetTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssetTypeInput,
   output: GetAssetTypeOutput,
@@ -20151,7 +20151,7 @@ export const createDataProduct: API.OperationMethod<
   CreateDataProductInput,
   CreateDataProductOutput,
   CreateDataProductError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataProductInput,
   output: CreateDataProductOutput,
@@ -20187,7 +20187,7 @@ export const getDataProduct: API.OperationMethod<
   GetDataProductInput,
   GetDataProductOutput,
   GetDataProductError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataProductInput,
   output: GetDataProductOutput,
@@ -20222,7 +20222,7 @@ export const deleteDataProduct: API.OperationMethod<
   DeleteDataProductInput,
   DeleteDataProductOutput,
   DeleteDataProductError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataProductInput,
   output: DeleteDataProductOutput,
@@ -20260,7 +20260,7 @@ export const createDataProductRevision: API.OperationMethod<
   CreateDataProductRevisionInput,
   CreateDataProductRevisionOutput,
   CreateDataProductRevisionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataProductRevisionInput,
   output: CreateDataProductRevisionOutput,
@@ -20289,7 +20289,7 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceInput,
   CreateDataSourceOutput,
   CreateDataSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataSourceInput,
   output: CreateDataSourceOutput,
@@ -20319,7 +20319,7 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceInput,
   GetDataSourceOutput,
   GetDataSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataSourceInput,
   output: GetDataSourceOutput,
@@ -20349,7 +20349,7 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceInput,
   UpdateDataSourceOutput,
   UpdateDataSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataSourceInput,
   output: UpdateDataSourceOutput,
@@ -20379,7 +20379,7 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceInput,
   DeleteDataSourceOutput,
   DeleteDataSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataSourceInput,
   output: DeleteDataSourceOutput,
@@ -20409,21 +20409,21 @@ export const listDataSources: API.OperationMethod<
   ListDataSourcesInput,
   ListDataSourcesOutput,
   ListDataSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataSourcesInput,
   ) => stream.Stream<
     ListDataSourcesOutput,
     ListDataSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataSourcesInput,
   ) => stream.Stream<
     DataSourceSummary,
     ListDataSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesInput,
@@ -20460,7 +20460,7 @@ export const startDataSourceRun: API.OperationMethod<
   StartDataSourceRunInput,
   StartDataSourceRunOutput,
   StartDataSourceRunError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartDataSourceRunInput,
   output: StartDataSourceRunOutput,
@@ -20490,7 +20490,7 @@ export const getDataSourceRun: API.OperationMethod<
   GetDataSourceRunInput,
   GetDataSourceRunOutput,
   GetDataSourceRunError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataSourceRunInput,
   output: GetDataSourceRunOutput,
@@ -20520,21 +20520,21 @@ export const listDataSourceRuns: API.OperationMethod<
   ListDataSourceRunsInput,
   ListDataSourceRunsOutput,
   ListDataSourceRunsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataSourceRunsInput,
   ) => stream.Stream<
     ListDataSourceRunsOutput,
     ListDataSourceRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataSourceRunsInput,
   ) => stream.Stream<
     DataSourceRunSummary,
     ListDataSourceRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourceRunsInput,
@@ -20571,7 +20571,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainInput,
   CreateDomainOutput,
   CreateDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDomainInput,
   output: CreateDomainOutput,
@@ -20600,7 +20600,7 @@ export const getDomain: API.OperationMethod<
   GetDomainInput,
   GetDomainOutput,
   GetDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainInput,
   output: GetDomainOutput,
@@ -20629,7 +20629,7 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainInput,
   UpdateDomainOutput,
   UpdateDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDomainInput,
   output: UpdateDomainOutput,
@@ -20658,7 +20658,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainInput,
   DeleteDomainOutput,
   DeleteDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDomainInput,
   output: DeleteDomainOutput,
@@ -20687,21 +20687,21 @@ export const listDomains: API.OperationMethod<
   ListDomainsInput,
   ListDomainsOutput,
   ListDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDomainsInput,
   ) => stream.Stream<
     ListDomainsOutput,
     ListDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDomainsInput,
   ) => stream.Stream<
     DomainSummary,
     ListDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsInput,
@@ -20737,7 +20737,7 @@ export const createDomainUnit: API.OperationMethod<
   CreateDomainUnitInput,
   CreateDomainUnitOutput,
   CreateDomainUnitError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDomainUnitInput,
   output: CreateDomainUnitOutput,
@@ -20764,7 +20764,7 @@ export const getDomainUnit: API.OperationMethod<
   GetDomainUnitInput,
   GetDomainUnitOutput,
   GetDomainUnitError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainUnitInput,
   output: GetDomainUnitOutput,
@@ -20791,7 +20791,7 @@ export const updateDomainUnit: API.OperationMethod<
   UpdateDomainUnitInput,
   UpdateDomainUnitOutput,
   UpdateDomainUnitError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDomainUnitInput,
   output: UpdateDomainUnitOutput,
@@ -20819,7 +20819,7 @@ export const deleteDomainUnit: API.OperationMethod<
   DeleteDomainUnitInput,
   DeleteDomainUnitOutput,
   DeleteDomainUnitError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDomainUnitInput,
   output: DeleteDomainUnitOutput,
@@ -20845,21 +20845,21 @@ export const listDomainUnitsForParent: API.OperationMethod<
   ListDomainUnitsForParentInput,
   ListDomainUnitsForParentOutput,
   ListDomainUnitsForParentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDomainUnitsForParentInput,
   ) => stream.Stream<
     ListDomainUnitsForParentOutput,
     ListDomainUnitsForParentError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDomainUnitsForParentInput,
   ) => stream.Stream<
     DomainUnitSummary,
     ListDomainUnitsForParentError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainUnitsForParentInput,
@@ -20891,7 +20891,7 @@ export const putEnvironmentBlueprintConfiguration: API.OperationMethod<
   PutEnvironmentBlueprintConfigurationInput,
   PutEnvironmentBlueprintConfigurationOutput,
   PutEnvironmentBlueprintConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutEnvironmentBlueprintConfigurationInput,
   output: PutEnvironmentBlueprintConfigurationOutput,
@@ -20916,7 +20916,7 @@ export const getEnvironmentBlueprintConfiguration: API.OperationMethod<
   GetEnvironmentBlueprintConfigurationInput,
   GetEnvironmentBlueprintConfigurationOutput,
   GetEnvironmentBlueprintConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnvironmentBlueprintConfigurationInput,
   output: GetEnvironmentBlueprintConfigurationOutput,
@@ -20939,7 +20939,7 @@ export const deleteEnvironmentBlueprintConfiguration: API.OperationMethod<
   DeleteEnvironmentBlueprintConfigurationInput,
   DeleteEnvironmentBlueprintConfigurationOutput,
   DeleteEnvironmentBlueprintConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentBlueprintConfigurationInput,
   output: DeleteEnvironmentBlueprintConfigurationOutput,
@@ -20958,21 +20958,21 @@ export const listEnvironmentBlueprintConfigurations: API.OperationMethod<
   ListEnvironmentBlueprintConfigurationsInput,
   ListEnvironmentBlueprintConfigurationsOutput,
   ListEnvironmentBlueprintConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnvironmentBlueprintConfigurationsInput,
   ) => stream.Stream<
     ListEnvironmentBlueprintConfigurationsOutput,
     ListEnvironmentBlueprintConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnvironmentBlueprintConfigurationsInput,
   ) => stream.Stream<
     EnvironmentBlueprintConfigurationItem,
     ListEnvironmentBlueprintConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentBlueprintConfigurationsInput,
@@ -21017,7 +21017,7 @@ export const createFormType: API.OperationMethod<
   CreateFormTypeInput,
   CreateFormTypeOutput,
   CreateFormTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFormTypeInput,
   output: CreateFormTypeOutput,
@@ -21057,7 +21057,7 @@ export const deleteFormType: API.OperationMethod<
   DeleteFormTypeInput,
   DeleteFormTypeOutput,
   DeleteFormTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFormTypeInput,
   output: DeleteFormTypeOutput,
@@ -21100,7 +21100,7 @@ export const getFormType: API.OperationMethod<
   GetFormTypeInput,
   GetFormTypeOutput,
   GetFormTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFormTypeInput,
   output: GetFormTypeOutput,
@@ -21139,7 +21139,7 @@ export const createGlossary: API.OperationMethod<
   CreateGlossaryInput,
   CreateGlossaryOutput,
   CreateGlossaryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGlossaryInput,
   output: CreateGlossaryOutput,
@@ -21172,7 +21172,7 @@ export const getGlossary: API.OperationMethod<
   GetGlossaryInput,
   GetGlossaryOutput,
   GetGlossaryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGlossaryInput,
   output: GetGlossaryOutput,
@@ -21209,7 +21209,7 @@ export const updateGlossary: API.OperationMethod<
   UpdateGlossaryInput,
   UpdateGlossaryOutput,
   UpdateGlossaryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGlossaryInput,
   output: UpdateGlossaryOutput,
@@ -21249,7 +21249,7 @@ export const deleteGlossary: API.OperationMethod<
   DeleteGlossaryInput,
   DeleteGlossaryOutput,
   DeleteGlossaryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlossaryInput,
   output: DeleteGlossaryOutput,
@@ -21290,7 +21290,7 @@ export const createGlossaryTerm: API.OperationMethod<
   CreateGlossaryTermInput,
   CreateGlossaryTermOutput,
   CreateGlossaryTermError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGlossaryTermInput,
   output: CreateGlossaryTermOutput,
@@ -21326,7 +21326,7 @@ export const getGlossaryTerm: API.OperationMethod<
   GetGlossaryTermInput,
   GetGlossaryTermOutput,
   GetGlossaryTermError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGlossaryTermInput,
   output: GetGlossaryTermOutput,
@@ -21363,7 +21363,7 @@ export const updateGlossaryTerm: API.OperationMethod<
   UpdateGlossaryTermInput,
   UpdateGlossaryTermOutput,
   UpdateGlossaryTermError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGlossaryTermInput,
   output: UpdateGlossaryTermOutput,
@@ -21401,7 +21401,7 @@ export const deleteGlossaryTerm: API.OperationMethod<
   DeleteGlossaryTermInput,
   DeleteGlossaryTermOutput,
   DeleteGlossaryTermError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlossaryTermInput,
   output: DeleteGlossaryTermOutput,
@@ -21428,7 +21428,7 @@ export const getListing: API.OperationMethod<
   GetListingInput,
   GetListingOutput,
   GetListingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetListingInput,
   output: GetListingOutput,
@@ -21455,7 +21455,7 @@ export const deleteListing: API.OperationMethod<
   DeleteListingInput,
   DeleteListingOutput,
   DeleteListingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteListingInput,
   output: DeleteListingOutput,
@@ -21496,7 +21496,7 @@ export const startMetadataGenerationRun: API.OperationMethod<
   StartMetadataGenerationRunInput,
   StartMetadataGenerationRunOutput,
   StartMetadataGenerationRunError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartMetadataGenerationRunInput,
   output: StartMetadataGenerationRunOutput,
@@ -21532,7 +21532,7 @@ export const getMetadataGenerationRun: API.OperationMethod<
   GetMetadataGenerationRunInput,
   GetMetadataGenerationRunOutput,
   GetMetadataGenerationRunError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetadataGenerationRunInput,
   output: GetMetadataGenerationRunOutput,
@@ -21567,7 +21567,7 @@ export const cancelMetadataGenerationRun: API.OperationMethod<
   CancelMetadataGenerationRunInput,
   CancelMetadataGenerationRunOutput,
   CancelMetadataGenerationRunError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelMetadataGenerationRunInput,
   output: CancelMetadataGenerationRunOutput,
@@ -21602,21 +21602,21 @@ export const listMetadataGenerationRuns: API.OperationMethod<
   ListMetadataGenerationRunsInput,
   ListMetadataGenerationRunsOutput,
   ListMetadataGenerationRunsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMetadataGenerationRunsInput,
   ) => stream.Stream<
     ListMetadataGenerationRunsOutput,
     ListMetadataGenerationRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMetadataGenerationRunsInput,
   ) => stream.Stream<
     MetadataGenerationRunItem,
     ListMetadataGenerationRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMetadataGenerationRunsInput,
@@ -21651,7 +21651,7 @@ export const createRule: API.OperationMethod<
   CreateRuleInput,
   CreateRuleOutput,
   CreateRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRuleInput,
   output: CreateRuleOutput,
@@ -21679,7 +21679,7 @@ export const getRule: API.OperationMethod<
   GetRuleInput,
   GetRuleOutput,
   GetRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuleInput,
   output: GetRuleOutput,
@@ -21707,7 +21707,7 @@ export const updateRule: API.OperationMethod<
   UpdateRuleInput,
   UpdateRuleOutput,
   UpdateRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRuleInput,
   output: UpdateRuleOutput,
@@ -21736,7 +21736,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleInput,
   DeleteRuleOutput,
   DeleteRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRuleInput,
   output: DeleteRuleOutput,
@@ -21763,21 +21763,21 @@ export const listRules: API.OperationMethod<
   ListRulesInput,
   ListRulesOutput,
   ListRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRulesInput,
   ) => stream.Stream<
     ListRulesOutput,
     ListRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRulesInput,
   ) => stream.Stream<
     RuleSummary,
     ListRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesInput,

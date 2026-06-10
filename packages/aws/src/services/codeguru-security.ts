@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "CodeGuru Security",
@@ -934,7 +934,7 @@ export const batchGetFindings: API.OperationMethod<
   BatchGetFindingsRequest,
   BatchGetFindingsResponse,
   BatchGetFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetFindingsRequest,
   output: BatchGetFindingsResponse,
@@ -960,7 +960,7 @@ export const createScan: API.OperationMethod<
   CreateScanRequest,
   CreateScanResponse,
   CreateScanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateScanRequest,
   output: CreateScanResponse,
@@ -988,7 +988,7 @@ export const createUploadUrl: API.OperationMethod<
   CreateUploadUrlRequest,
   CreateUploadUrlResponse,
   CreateUploadUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUploadUrlRequest,
   output: CreateUploadUrlResponse,
@@ -1012,7 +1012,7 @@ export const getAccountConfiguration: API.OperationMethod<
   GetAccountConfigurationRequest,
   GetAccountConfigurationResponse,
   GetAccountConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountConfigurationRequest,
   output: GetAccountConfigurationResponse,
@@ -1038,21 +1038,21 @@ export const getFindings: API.OperationMethod<
   GetFindingsRequest,
   GetFindingsResponse,
   GetFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetFindingsRequest,
   ) => stream.Stream<
     GetFindingsResponse,
     GetFindingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetFindingsRequest,
   ) => stream.Stream<
     Finding,
     GetFindingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetFindingsRequest,
@@ -1085,7 +1085,7 @@ export const getMetricsSummary: API.OperationMethod<
   GetMetricsSummaryRequest,
   GetMetricsSummaryResponse,
   GetMetricsSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetricsSummaryRequest,
   output: GetMetricsSummaryResponse,
@@ -1110,7 +1110,7 @@ export const getScan: API.OperationMethod<
   GetScanRequest,
   GetScanResponse,
   GetScanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetScanRequest,
   output: GetScanResponse,
@@ -1135,21 +1135,21 @@ export const listFindingsMetrics: API.OperationMethod<
   ListFindingsMetricsRequest,
   ListFindingsMetricsResponse,
   ListFindingsMetricsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFindingsMetricsRequest,
   ) => stream.Stream<
     ListFindingsMetricsResponse,
     ListFindingsMetricsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFindingsMetricsRequest,
   ) => stream.Stream<
     AccountFindingsMetric,
     ListFindingsMetricsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsMetricsRequest,
@@ -1180,21 +1180,21 @@ export const listScans: API.OperationMethod<
   ListScansRequest,
   ListScansResponse,
   ListScansError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListScansRequest,
   ) => stream.Stream<
     ListScansResponse,
     ListScansError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListScansRequest,
   ) => stream.Stream<
     ScanSummary,
     ListScansError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListScansRequest,
@@ -1227,7 +1227,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1255,7 +1255,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1283,7 +1283,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1310,7 +1310,7 @@ export const updateAccountConfiguration: API.OperationMethod<
   UpdateAccountConfigurationRequest,
   UpdateAccountConfigurationResponse,
   UpdateAccountConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountConfigurationRequest,
   output: UpdateAccountConfigurationResponse,

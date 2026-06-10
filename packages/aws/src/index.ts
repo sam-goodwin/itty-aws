@@ -13,11 +13,12 @@ export * as Auth from "./auth.ts";
 export * as Credentials from "./credentials.ts";
 
 /**
- * AWS Endpoint configuration for custom or local endpoints.
+ * AWS configuration service (region and optional custom endpoint).
  *
  * @since 0.0.0
  */
-export * as Endpoint from "./endpoint.ts";
+export * as Config from "./config.ts";
+export { AWSConfig } from "./config.ts";
 
 /**
  * Common AWS error types shared across all services.
@@ -25,13 +26,6 @@ export * as Endpoint from "./endpoint.ts";
  * @since 0.0.0
  */
 export * as Errors from "./errors.ts";
-
-/**
- * AWS Region configuration.
- *
- * @since 0.0.0
- */
-export * as Region from "./region.ts";
 
 /**
  * Retry policy configuration for AWS API calls.

@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Marketplace Metering",
   serviceShapeName: "AWSMPMeteringService",
@@ -442,7 +442,7 @@ export const batchMeterUsage: API.OperationMethod<
   BatchMeterUsageRequest,
   BatchMeterUsageResult,
   BatchMeterUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchMeterUsageRequest,
   output: BatchMeterUsageResult,
@@ -517,7 +517,7 @@ export const meterUsage: API.OperationMethod<
   MeterUsageRequest,
   MeterUsageResult,
   MeterUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MeterUsageRequest,
   output: MeterUsageResult,
@@ -590,7 +590,7 @@ export const registerUsage: API.OperationMethod<
   RegisterUsageRequest,
   RegisterUsageResult,
   RegisterUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterUsageRequest,
   output: RegisterUsageResult,
@@ -634,7 +634,7 @@ export const resolveCustomer: API.OperationMethod<
   ResolveCustomerRequest,
   ResolveCustomerResult,
   ResolveCustomerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResolveCustomerRequest,
   output: ResolveCustomerResult,

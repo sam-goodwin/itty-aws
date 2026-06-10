@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Secrets Manager",
@@ -1242,21 +1242,21 @@ export const batchGetSecretValue: API.OperationMethod<
   BatchGetSecretValueRequest,
   BatchGetSecretValueResponse,
   BatchGetSecretValueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: BatchGetSecretValueRequest,
   ) => stream.Stream<
     BatchGetSecretValueResponse,
     BatchGetSecretValueError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: BatchGetSecretValueRequest,
   ) => stream.Stream<
     unknown,
     BatchGetSecretValueError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BatchGetSecretValueRequest,
@@ -1307,7 +1307,7 @@ export const cancelRotateSecret: API.OperationMethod<
   CancelRotateSecretRequest,
   CancelRotateSecretResponse,
   CancelRotateSecretError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelRotateSecretRequest,
   output: CancelRotateSecretResponse,
@@ -1391,7 +1391,7 @@ export const createSecret: API.OperationMethod<
   CreateSecretRequest,
   CreateSecretResponse,
   CreateSecretError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSecretRequest,
   output: CreateSecretResponse,
@@ -1430,7 +1430,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -1491,7 +1491,7 @@ export const deleteSecret: API.OperationMethod<
   DeleteSecretRequest,
   DeleteSecretResponse,
   DeleteSecretError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSecretRequest,
   output: DeleteSecretResponse,
@@ -1523,7 +1523,7 @@ export const describeSecret: API.OperationMethod<
   DescribeSecretRequest,
   DescribeSecretResponse,
   DescribeSecretError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSecretRequest,
   output: DescribeSecretResponse,
@@ -1558,7 +1558,7 @@ export const getRandomPassword: API.OperationMethod<
   GetRandomPasswordRequest,
   GetRandomPasswordResponse,
   GetRandomPasswordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRandomPasswordRequest,
   output: GetRandomPasswordResponse,
@@ -1590,7 +1590,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -1636,7 +1636,7 @@ export const getSecretValue: API.OperationMethod<
   GetSecretValueRequest,
   GetSecretValueResponse,
   GetSecretValueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecretValueRequest,
   output: GetSecretValueResponse,
@@ -1683,21 +1683,21 @@ export const listSecrets: API.OperationMethod<
   ListSecretsRequest,
   ListSecretsResponse,
   ListSecretsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSecretsRequest,
   ) => stream.Stream<
     ListSecretsResponse,
     ListSecretsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSecretsRequest,
   ) => stream.Stream<
     unknown,
     ListSecretsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSecretsRequest,
@@ -1739,21 +1739,21 @@ export const listSecretVersionIds: API.OperationMethod<
   ListSecretVersionIdsRequest,
   ListSecretVersionIdsResponse,
   ListSecretVersionIdsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSecretVersionIdsRequest,
   ) => stream.Stream<
     ListSecretVersionIdsResponse,
     ListSecretVersionIdsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSecretVersionIdsRequest,
   ) => stream.Stream<
     unknown,
     ListSecretVersionIdsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSecretVersionIdsRequest,
@@ -1796,7 +1796,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -1863,7 +1863,7 @@ export const putSecretValue: API.OperationMethod<
   PutSecretValueRequest,
   PutSecretValueResponse,
   PutSecretValueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSecretValueRequest,
   output: PutSecretValueResponse,
@@ -1901,7 +1901,7 @@ export const removeRegionsFromReplication: API.OperationMethod<
   RemoveRegionsFromReplicationRequest,
   RemoveRegionsFromReplicationResponse,
   RemoveRegionsFromReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveRegionsFromReplicationRequest,
   output: RemoveRegionsFromReplicationResponse,
@@ -1938,7 +1938,7 @@ export const replicateSecretToRegions: API.OperationMethod<
   ReplicateSecretToRegionsRequest,
   ReplicateSecretToRegionsResponse,
   ReplicateSecretToRegionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplicateSecretToRegionsRequest,
   output: ReplicateSecretToRegionsResponse,
@@ -1971,7 +1971,7 @@ export const restoreSecret: API.OperationMethod<
   RestoreSecretRequest,
   RestoreSecretResponse,
   RestoreSecretError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreSecretRequest,
   output: RestoreSecretResponse,
@@ -2020,7 +2020,7 @@ export const rotateSecret: API.OperationMethod<
   RotateSecretRequest,
   RotateSecretResponse,
   RotateSecretError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RotateSecretRequest,
   output: RotateSecretResponse,
@@ -2056,7 +2056,7 @@ export const stopReplicationToReplica: API.OperationMethod<
   StopReplicationToReplicaRequest,
   StopReplicationToReplicaResponse,
   StopReplicationToReplicaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopReplicationToReplicaRequest,
   output: StopReplicationToReplicaResponse,
@@ -2098,7 +2098,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2138,7 +2138,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2212,7 +2212,7 @@ export const updateSecret: API.OperationMethod<
   UpdateSecretRequest,
   UpdateSecretResponse,
   UpdateSecretError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecretRequest,
   output: UpdateSecretResponse,
@@ -2270,7 +2270,7 @@ export const updateSecretVersionStage: API.OperationMethod<
   UpdateSecretVersionStageRequest,
   UpdateSecretVersionStageResponse,
   UpdateSecretVersionStageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecretVersionStageRequest,
   output: UpdateSecretVersionStageResponse,
@@ -2316,7 +2316,7 @@ export const validateResourcePolicy: API.OperationMethod<
   ValidateResourcePolicyRequest,
   ValidateResourcePolicyResponse,
   ValidateResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateResourcePolicyRequest,
   output: ValidateResourcePolicyResponse,

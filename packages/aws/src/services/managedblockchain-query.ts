@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "ManagedBlockchain Query",
   serviceShapeName: "TietonChainQueryService",
@@ -879,7 +879,7 @@ export const batchGetTokenBalance: API.OperationMethod<
   BatchGetTokenBalanceInput,
   BatchGetTokenBalanceOutput,
   BatchGetTokenBalanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetTokenBalanceInput,
   output: BatchGetTokenBalanceOutput,
@@ -913,7 +913,7 @@ export const getAssetContract: API.OperationMethod<
   GetAssetContractInput,
   GetAssetContractOutput,
   GetAssetContractError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssetContractInput,
   output: GetAssetContractOutput,
@@ -944,7 +944,7 @@ export const getTokenBalance: API.OperationMethod<
   GetTokenBalanceInput,
   GetTokenBalanceOutput,
   GetTokenBalanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTokenBalanceInput,
   output: GetTokenBalanceOutput,
@@ -976,7 +976,7 @@ export const getTransaction: API.OperationMethod<
   GetTransactionInput,
   GetTransactionOutput,
   GetTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTransactionInput,
   output: GetTransactionOutput,
@@ -1007,21 +1007,21 @@ export const listAssetContracts: API.OperationMethod<
   ListAssetContractsInput,
   ListAssetContractsOutput,
   ListAssetContractsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAssetContractsInput,
   ) => stream.Stream<
     ListAssetContractsOutput,
     ListAssetContractsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAssetContractsInput,
   ) => stream.Stream<
     AssetContract,
     ListAssetContractsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssetContractsInput,
@@ -1056,21 +1056,21 @@ export const listFilteredTransactionEvents: API.OperationMethod<
   ListFilteredTransactionEventsInput,
   ListFilteredTransactionEventsOutput,
   ListFilteredTransactionEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFilteredTransactionEventsInput,
   ) => stream.Stream<
     ListFilteredTransactionEventsOutput,
     ListFilteredTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFilteredTransactionEventsInput,
   ) => stream.Stream<
     TransactionEvent,
     ListFilteredTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFilteredTransactionEventsInput,
@@ -1113,21 +1113,21 @@ export const listTokenBalances: API.OperationMethod<
   ListTokenBalancesInput,
   ListTokenBalancesOutput,
   ListTokenBalancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTokenBalancesInput,
   ) => stream.Stream<
     ListTokenBalancesOutput,
     ListTokenBalancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTokenBalancesInput,
   ) => stream.Stream<
     TokenBalance,
     ListTokenBalancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTokenBalancesInput,
@@ -1164,21 +1164,21 @@ export const listTransactionEvents: API.OperationMethod<
   ListTransactionEventsInput,
   ListTransactionEventsOutput,
   ListTransactionEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTransactionEventsInput,
   ) => stream.Stream<
     ListTransactionEventsOutput,
     ListTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTransactionEventsInput,
   ) => stream.Stream<
     TransactionEvent,
     ListTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTransactionEventsInput,
@@ -1211,21 +1211,21 @@ export const listTransactions: API.OperationMethod<
   ListTransactionsInput,
   ListTransactionsOutput,
   ListTransactionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTransactionsInput,
   ) => stream.Stream<
     ListTransactionsOutput,
     ListTransactionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTransactionsInput,
   ) => stream.Stream<
     TransactionOutputItem,
     ListTransactionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTransactionsInput,

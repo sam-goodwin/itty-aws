@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://dynamodb.amazonaws.com/doc/2012-08-10/");
 const svc = T.AwsApiService({
   sdkId: "DynamoDB",
@@ -5359,7 +5359,7 @@ export const batchExecuteStatement: API.OperationMethod<
   BatchExecuteStatementInput,
   BatchExecuteStatementOutput,
   BatchExecuteStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchExecuteStatementInput,
   output: BatchExecuteStatementOutput,
@@ -5435,7 +5435,7 @@ export const batchGetItem: API.OperationMethod<
   BatchGetItemInput,
   BatchGetItemOutput,
   BatchGetItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetItemInput,
   output: BatchGetItemOutput,
@@ -5548,7 +5548,7 @@ export const batchWriteItem: API.OperationMethod<
   BatchWriteItemInput,
   BatchWriteItemOutput,
   BatchWriteItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchWriteItemInput,
   output: BatchWriteItemOutput,
@@ -5608,7 +5608,7 @@ export const createBackup: API.OperationMethod<
   CreateBackupInput,
   CreateBackupOutput,
   CreateBackupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBackupInput,
   output: CreateBackupOutput,
@@ -5679,7 +5679,7 @@ export const createGlobalTable: API.OperationMethod<
   CreateGlobalTableInput,
   CreateGlobalTableOutput,
   CreateGlobalTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGlobalTableInput,
   output: CreateGlobalTableOutput,
@@ -5718,7 +5718,7 @@ export const createTable: API.OperationMethod<
   CreateTableInput,
   CreateTableOutput,
   CreateTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTableInput,
   output: CreateTableOutput,
@@ -5746,7 +5746,7 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupInput,
   DeleteBackupOutput,
   DeleteBackupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBackupInput,
   output: DeleteBackupOutput,
@@ -5790,7 +5790,7 @@ export const deleteItem: API.OperationMethod<
   DeleteItemInput,
   DeleteItemOutput,
   DeleteItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteItemInput,
   output: DeleteItemOutput,
@@ -5840,7 +5840,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyInput,
   DeleteResourcePolicyOutput,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyInput,
   output: DeleteResourcePolicyOutput,
@@ -5887,7 +5887,7 @@ export const deleteTable: API.OperationMethod<
   DeleteTableInput,
   DeleteTableOutput,
   DeleteTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTableInput,
   output: DeleteTableOutput,
@@ -5914,7 +5914,7 @@ export const describeBackup: API.OperationMethod<
   DescribeBackupInput,
   DescribeBackupOutput,
   DescribeBackupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeBackupInput,
   output: DescribeBackupOutput,
@@ -5950,7 +5950,7 @@ export const describeContinuousBackups: API.OperationMethod<
   DescribeContinuousBackupsInput,
   DescribeContinuousBackupsOutput,
   DescribeContinuousBackupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeContinuousBackupsInput,
   output: DescribeContinuousBackupsOutput,
@@ -5972,7 +5972,7 @@ export const describeContributorInsights: API.OperationMethod<
   DescribeContributorInsightsInput,
   DescribeContributorInsightsOutput,
   DescribeContributorInsightsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeContributorInsightsInput,
   output: DescribeContributorInsightsOutput,
@@ -5987,7 +5987,7 @@ export const describeEndpoints: API.OperationMethod<
   DescribeEndpointsRequest,
   DescribeEndpointsResponse,
   DescribeEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
@@ -6005,7 +6005,7 @@ export const describeExport: API.OperationMethod<
   DescribeExportInput,
   DescribeExportOutput,
   DescribeExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeExportInput,
   output: DescribeExportOutput,
@@ -6031,7 +6031,7 @@ export const describeGlobalTable: API.OperationMethod<
   DescribeGlobalTableInput,
   DescribeGlobalTableOutput,
   DescribeGlobalTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeGlobalTableInput,
   output: DescribeGlobalTableOutput,
@@ -6057,7 +6057,7 @@ export const describeGlobalTableSettings: API.OperationMethod<
   DescribeGlobalTableSettingsInput,
   DescribeGlobalTableSettingsOutput,
   DescribeGlobalTableSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeGlobalTableSettingsInput,
   output: DescribeGlobalTableSettingsOutput,
@@ -6075,7 +6075,7 @@ export const describeImport: API.OperationMethod<
   DescribeImportInput,
   DescribeImportOutput,
   DescribeImportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeImportInput,
   output: DescribeImportOutput,
@@ -6093,7 +6093,7 @@ export const describeKinesisStreamingDestination: API.OperationMethod<
   DescribeKinesisStreamingDestinationInput,
   DescribeKinesisStreamingDestinationOutput,
   DescribeKinesisStreamingDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeKinesisStreamingDestinationInput,
   output: DescribeKinesisStreamingDestinationOutput,
@@ -6176,7 +6176,7 @@ export const describeLimits: API.OperationMethod<
   DescribeLimitsInput,
   DescribeLimitsOutput,
   DescribeLimitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLimitsInput,
   output: DescribeLimitsOutput,
@@ -6202,7 +6202,7 @@ export const describeTable: API.OperationMethod<
   DescribeTableInput,
   DescribeTableOutput,
   DescribeTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTableInput,
   output: DescribeTableOutput,
@@ -6223,7 +6223,7 @@ export const describeTableReplicaAutoScaling: API.OperationMethod<
   DescribeTableReplicaAutoScalingInput,
   DescribeTableReplicaAutoScalingOutput,
   DescribeTableReplicaAutoScalingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTableReplicaAutoScalingInput,
   output: DescribeTableReplicaAutoScalingOutput,
@@ -6241,7 +6241,7 @@ export const describeTimeToLive: API.OperationMethod<
   DescribeTimeToLiveInput,
   DescribeTimeToLiveOutput,
   DescribeTimeToLiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTimeToLiveInput,
   output: DescribeTimeToLiveOutput,
@@ -6266,7 +6266,7 @@ export const disableKinesisStreamingDestination: API.OperationMethod<
   KinesisStreamingDestinationInput,
   KinesisStreamingDestinationOutput,
   DisableKinesisStreamingDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: KinesisStreamingDestinationInput,
   output: KinesisStreamingDestinationOutput,
@@ -6295,7 +6295,7 @@ export const enableKinesisStreamingDestination: API.OperationMethod<
   KinesisStreamingDestinationInput,
   KinesisStreamingDestinationOutput,
   EnableKinesisStreamingDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: KinesisStreamingDestinationInput,
   output: KinesisStreamingDestinationOutput,
@@ -6339,7 +6339,7 @@ export const executeStatement: API.OperationMethod<
   ExecuteStatementInput,
   ExecuteStatementOutput,
   ExecuteStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteStatementInput,
   output: ExecuteStatementOutput,
@@ -6378,7 +6378,7 @@ export const executeTransaction: API.OperationMethod<
   ExecuteTransactionInput,
   ExecuteTransactionOutput,
   ExecuteTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteTransactionInput,
   output: ExecuteTransactionOutput,
@@ -6410,7 +6410,7 @@ export const exportTableToPointInTime: API.OperationMethod<
   ExportTableToPointInTimeInput,
   ExportTableToPointInTimeOutput,
   ExportTableToPointInTimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportTableToPointInTimeInput,
   output: ExportTableToPointInTimeOutput,
@@ -6445,7 +6445,7 @@ export const getItem: API.OperationMethod<
   GetItemInput,
   GetItemOutput,
   GetItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetItemInput,
   output: GetItemOutput,
@@ -6503,7 +6503,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyInput,
   GetResourcePolicyOutput,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcePolicyInput,
   output: GetResourcePolicyOutput,
@@ -6526,7 +6526,7 @@ export const importTable: API.OperationMethod<
   ImportTableInput,
   ImportTableOutput,
   ImportTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportTableInput,
   output: ImportTableOutput,
@@ -6560,7 +6560,7 @@ export const listBackups: API.OperationMethod<
   ListBackupsInput,
   ListBackupsOutput,
   ListBackupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBackupsInput,
   output: ListBackupsOutput,
@@ -6578,21 +6578,21 @@ export const listContributorInsights: API.OperationMethod<
   ListContributorInsightsInput,
   ListContributorInsightsOutput,
   ListContributorInsightsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListContributorInsightsInput,
   ) => stream.Stream<
     ListContributorInsightsOutput,
     ListContributorInsightsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListContributorInsightsInput,
   ) => stream.Stream<
     unknown,
     ListContributorInsightsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListContributorInsightsInput,
@@ -6615,21 +6615,21 @@ export const listExports: API.OperationMethod<
   ListExportsInput,
   ListExportsOutput,
   ListExportsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListExportsInput,
   ) => stream.Stream<
     ListExportsOutput,
     ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListExportsInput,
   ) => stream.Stream<
     unknown,
     ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListExportsInput,
@@ -6656,7 +6656,7 @@ export const listGlobalTables: API.OperationMethod<
   ListGlobalTablesInput,
   ListGlobalTablesOutput,
   ListGlobalTablesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGlobalTablesInput,
   output: ListGlobalTablesOutput,
@@ -6670,21 +6670,21 @@ export const listImports: API.OperationMethod<
   ListImportsInput,
   ListImportsOutput,
   ListImportsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListImportsInput,
   ) => stream.Stream<
     ListImportsOutput,
     ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListImportsInput,
   ) => stream.Stream<
     unknown,
     ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListImportsInput,
@@ -6709,21 +6709,21 @@ export const listTables: API.OperationMethod<
   ListTablesInput,
   ListTablesOutput,
   ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTablesInput,
   ) => stream.Stream<
     ListTablesOutput,
     ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTablesInput,
   ) => stream.Stream<
     TableName,
     ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTablesInput,
@@ -6752,7 +6752,7 @@ export const listTagsOfResource: API.OperationMethod<
   ListTagsOfResourceInput,
   ListTagsOfResourceOutput,
   ListTagsOfResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsOfResourceInput,
   output: ListTagsOfResourceOutput,
@@ -6808,7 +6808,7 @@ export const putItem: API.OperationMethod<
   PutItemInput,
   PutItemOutput,
   PutItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutItemInput,
   output: PutItemOutput,
@@ -6859,7 +6859,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyInput,
   PutResourcePolicyOutput,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutResourcePolicyInput,
   output: PutResourcePolicyOutput,
@@ -6938,21 +6938,21 @@ export const query: API.OperationMethod<
   QueryInput,
   QueryOutput,
   QueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: QueryInput,
   ) => stream.Stream<
     QueryOutput,
     QueryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: QueryInput,
   ) => stream.Stream<
     { [key: string]: AttributeValue | undefined },
     QueryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: QueryInput,
@@ -7006,7 +7006,7 @@ export const restoreTableFromBackup: API.OperationMethod<
   RestoreTableFromBackupInput,
   RestoreTableFromBackupOutput,
   RestoreTableFromBackupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreTableFromBackupInput,
   output: RestoreTableFromBackupOutput,
@@ -7074,7 +7074,7 @@ export const restoreTableToPointInTime: API.OperationMethod<
   RestoreTableToPointInTimeInput,
   RestoreTableToPointInTimeOutput,
   RestoreTableToPointInTimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreTableToPointInTimeInput,
   output: RestoreTableToPointInTimeOutput,
@@ -7146,21 +7146,21 @@ export const scan: API.OperationMethod<
   ScanInput,
   ScanOutput,
   ScanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ScanInput,
   ) => stream.Stream<
     ScanOutput,
     ScanError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ScanInput,
   ) => stream.Stream<
     { [key: string]: AttributeValue | undefined },
     ScanError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ScanInput,
@@ -7213,7 +7213,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
@@ -7261,7 +7261,7 @@ export const transactGetItems: API.OperationMethod<
   TransactGetItemsInput,
   TransactGetItemsOutput,
   TransactGetItemsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TransactGetItemsInput,
   output: TransactGetItemsOutput,
@@ -7348,7 +7348,7 @@ export const transactWriteItems: API.OperationMethod<
   TransactWriteItemsInput,
   TransactWriteItemsOutput,
   TransactWriteItemsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TransactWriteItemsInput,
   output: TransactWriteItemsOutput,
@@ -7395,7 +7395,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
@@ -7432,7 +7432,7 @@ export const updateContinuousBackups: API.OperationMethod<
   UpdateContinuousBackupsInput,
   UpdateContinuousBackupsOutput,
   UpdateContinuousBackupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContinuousBackupsInput,
   output: UpdateContinuousBackupsOutput,
@@ -7460,7 +7460,7 @@ export const updateContributorInsights: API.OperationMethod<
   UpdateContributorInsightsInput,
   UpdateContributorInsightsOutput,
   UpdateContributorInsightsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContributorInsightsInput,
   output: UpdateContributorInsightsOutput,
@@ -7506,7 +7506,7 @@ export const updateGlobalTable: API.OperationMethod<
   UpdateGlobalTableInput,
   UpdateGlobalTableOutput,
   UpdateGlobalTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGlobalTableInput,
   output: UpdateGlobalTableOutput,
@@ -7539,7 +7539,7 @@ export const updateGlobalTableSettings: API.OperationMethod<
   UpdateGlobalTableSettingsInput,
   UpdateGlobalTableSettingsOutput,
   UpdateGlobalTableSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGlobalTableSettingsInput,
   output: UpdateGlobalTableSettingsOutput,
@@ -7579,7 +7579,7 @@ export const updateItem: API.OperationMethod<
   UpdateItemInput,
   UpdateItemOutput,
   UpdateItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateItemInput,
   output: UpdateItemOutput,
@@ -7610,7 +7610,7 @@ export const updateKinesisStreamingDestination: API.OperationMethod<
   UpdateKinesisStreamingDestinationInput,
   UpdateKinesisStreamingDestinationOutput,
   UpdateKinesisStreamingDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKinesisStreamingDestinationInput,
   output: UpdateKinesisStreamingDestinationOutput,
@@ -7653,7 +7653,7 @@ export const updateTable: API.OperationMethod<
   UpdateTableInput,
   UpdateTableOutput,
   UpdateTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTableInput,
   output: UpdateTableOutput,
@@ -7678,7 +7678,7 @@ export const updateTableReplicaAutoScaling: API.OperationMethod<
   UpdateTableReplicaAutoScalingInput,
   UpdateTableReplicaAutoScalingOutput,
   UpdateTableReplicaAutoScalingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTableReplicaAutoScalingInput,
   output: UpdateTableReplicaAutoScalingOutput,
@@ -7729,7 +7729,7 @@ export const updateTimeToLive: API.OperationMethod<
   UpdateTimeToLiveInput,
   UpdateTimeToLiveOutput,
   UpdateTimeToLiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTimeToLiveInput,
   output: UpdateTimeToLiveOutput,

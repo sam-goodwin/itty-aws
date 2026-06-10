@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Launch Wizard",
   serviceShapeName: "LaunchWizard",
@@ -962,7 +962,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -984,7 +984,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1006,7 +1006,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -1029,7 +1029,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentInput,
   CreateDeploymentOutput,
   CreateDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeploymentInput,
   output: CreateDeploymentOutput,
@@ -1052,7 +1052,7 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentInput,
   GetDeploymentOutput,
   GetDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentInput,
   output: GetDeploymentOutput,
@@ -1075,7 +1075,7 @@ export const updateDeployment: API.OperationMethod<
   UpdateDeploymentInput,
   UpdateDeploymentOutput,
   UpdateDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDeploymentInput,
   output: UpdateDeploymentOutput,
@@ -1099,7 +1099,7 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentInput,
   DeleteDeploymentOutput,
   DeleteDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDeploymentInput,
   output: DeleteDeploymentOutput,
@@ -1121,21 +1121,21 @@ export const listDeployments: API.OperationMethod<
   ListDeploymentsInput,
   ListDeploymentsOutput,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDeploymentsInput,
   ) => stream.Stream<
     ListDeploymentsOutput,
     ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDeploymentsInput,
   ) => stream.Stream<
     DeploymentDataSummary,
     ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsInput,
@@ -1160,21 +1160,21 @@ export const listDeploymentEvents: API.OperationMethod<
   ListDeploymentEventsInput,
   ListDeploymentEventsOutput,
   ListDeploymentEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDeploymentEventsInput,
   ) => stream.Stream<
     ListDeploymentEventsOutput,
     ListDeploymentEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDeploymentEventsInput,
   ) => stream.Stream<
     DeploymentEventDataSummary,
     ListDeploymentEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentEventsInput,
@@ -1203,7 +1203,7 @@ export const getWorkload: API.OperationMethod<
   GetWorkloadInput,
   GetWorkloadOutput,
   GetWorkloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkloadInput,
   output: GetWorkloadOutput,
@@ -1224,21 +1224,21 @@ export const listWorkloads: API.OperationMethod<
   ListWorkloadsInput,
   ListWorkloadsOutput,
   ListWorkloadsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkloadsInput,
   ) => stream.Stream<
     ListWorkloadsOutput,
     ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkloadsInput,
   ) => stream.Stream<
     WorkloadDataSummary,
     ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadsInput,
@@ -1263,7 +1263,7 @@ export const getWorkloadDeploymentPattern: API.OperationMethod<
   GetWorkloadDeploymentPatternInput,
   GetWorkloadDeploymentPatternOutput,
   GetWorkloadDeploymentPatternError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkloadDeploymentPatternInput,
   output: GetWorkloadDeploymentPatternOutput,
@@ -1285,21 +1285,21 @@ export const listWorkloadDeploymentPatterns: API.OperationMethod<
   ListWorkloadDeploymentPatternsInput,
   ListWorkloadDeploymentPatternsOutput,
   ListWorkloadDeploymentPatternsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkloadDeploymentPatternsInput,
   ) => stream.Stream<
     ListWorkloadDeploymentPatternsOutput,
     ListWorkloadDeploymentPatternsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkloadDeploymentPatternsInput,
   ) => stream.Stream<
     WorkloadDeploymentPatternDataSummary,
     ListWorkloadDeploymentPatternsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadDeploymentPatternsInput,
@@ -1327,7 +1327,7 @@ export const getDeploymentPatternVersion: API.OperationMethod<
   GetDeploymentPatternVersionInput,
   GetDeploymentPatternVersionOutput,
   GetDeploymentPatternVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentPatternVersionInput,
   output: GetDeploymentPatternVersionOutput,
@@ -1345,21 +1345,21 @@ export const listDeploymentPatternVersions: API.OperationMethod<
   ListDeploymentPatternVersionsInput,
   ListDeploymentPatternVersionsOutput,
   ListDeploymentPatternVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDeploymentPatternVersionsInput,
   ) => stream.Stream<
     ListDeploymentPatternVersionsOutput,
     ListDeploymentPatternVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDeploymentPatternVersionsInput,
   ) => stream.Stream<
     DeploymentPatternVersionDataSummary,
     ListDeploymentPatternVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentPatternVersionsInput,

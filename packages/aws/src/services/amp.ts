@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "amp",
   serviceShapeName: "AmazonPrometheusService",
@@ -2346,7 +2346,7 @@ export const getDefaultScraperConfiguration: API.OperationMethod<
   GetDefaultScraperConfigurationRequest,
   GetDefaultScraperConfigurationResponse,
   GetDefaultScraperConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDefaultScraperConfigurationRequest,
   output: GetDefaultScraperConfigurationResponse,
@@ -2366,7 +2366,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2394,7 +2394,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2420,7 +2420,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2456,7 +2456,7 @@ export const createScraper: API.OperationMethod<
   CreateScraperRequest,
   CreateScraperResponse,
   CreateScraperError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateScraperRequest,
   output: CreateScraperResponse,
@@ -2484,7 +2484,7 @@ export const describeScraper: API.OperationMethod<
   DescribeScraperRequest,
   DescribeScraperResponse,
   DescribeScraperError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeScraperRequest,
   output: DescribeScraperResponse,
@@ -2514,7 +2514,7 @@ export const updateScraper: API.OperationMethod<
   UpdateScraperRequest,
   UpdateScraperResponse,
   UpdateScraperError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateScraperRequest,
   output: UpdateScraperResponse,
@@ -2543,7 +2543,7 @@ export const deleteScraper: API.OperationMethod<
   DeleteScraperRequest,
   DeleteScraperResponse,
   DeleteScraperError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteScraperRequest,
   output: DeleteScraperResponse,
@@ -2569,21 +2569,21 @@ export const listScrapers: API.OperationMethod<
   ListScrapersRequest,
   ListScrapersResponse,
   ListScrapersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListScrapersRequest,
   ) => stream.Stream<
     ListScrapersResponse,
     ListScrapersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListScrapersRequest,
   ) => stream.Stream<
     ScraperSummary,
     ListScrapersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListScrapersRequest,
@@ -2615,7 +2615,7 @@ export const updateScraperLoggingConfiguration: API.OperationMethod<
   UpdateScraperLoggingConfigurationRequest,
   UpdateScraperLoggingConfigurationResponse,
   UpdateScraperLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateScraperLoggingConfigurationRequest,
   output: UpdateScraperLoggingConfigurationResponse,
@@ -2640,7 +2640,7 @@ export const describeScraperLoggingConfiguration: API.OperationMethod<
   DescribeScraperLoggingConfigurationRequest,
   DescribeScraperLoggingConfigurationResponse,
   DescribeScraperLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeScraperLoggingConfigurationRequest,
   output: DescribeScraperLoggingConfigurationResponse,
@@ -2665,7 +2665,7 @@ export const deleteScraperLoggingConfiguration: API.OperationMethod<
   DeleteScraperLoggingConfigurationRequest,
   DeleteScraperLoggingConfigurationResponse,
   DeleteScraperLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteScraperLoggingConfigurationRequest,
   output: DeleteScraperLoggingConfigurationResponse,
@@ -2692,7 +2692,7 @@ export const createWorkspace: API.OperationMethod<
   CreateWorkspaceRequest,
   CreateWorkspaceResponse,
   CreateWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkspaceRequest,
   output: CreateWorkspaceResponse,
@@ -2719,7 +2719,7 @@ export const describeWorkspace: API.OperationMethod<
   DescribeWorkspaceRequest,
   DescribeWorkspaceResponse,
   DescribeWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceRequest,
   output: DescribeWorkspaceResponse,
@@ -2747,7 +2747,7 @@ export const updateWorkspaceAlias: API.OperationMethod<
   UpdateWorkspaceAliasRequest,
   UpdateWorkspaceAliasResponse,
   UpdateWorkspaceAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceAliasRequest,
   output: UpdateWorkspaceAliasResponse,
@@ -2778,7 +2778,7 @@ export const deleteWorkspace: API.OperationMethod<
   DeleteWorkspaceRequest,
   DeleteWorkspaceResponse,
   DeleteWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceRequest,
   output: DeleteWorkspaceResponse,
@@ -2804,21 +2804,21 @@ export const listWorkspaces: API.OperationMethod<
   ListWorkspacesRequest,
   ListWorkspacesResponse,
   ListWorkspacesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkspacesRequest,
   ) => stream.Stream<
     ListWorkspacesResponse,
     ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkspacesRequest,
   ) => stream.Stream<
     WorkspaceSummary,
     ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspacesRequest,
@@ -2852,7 +2852,7 @@ export const createAlertManagerDefinition: API.OperationMethod<
   CreateAlertManagerDefinitionRequest,
   CreateAlertManagerDefinitionResponse,
   CreateAlertManagerDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAlertManagerDefinitionRequest,
   output: CreateAlertManagerDefinitionResponse,
@@ -2880,7 +2880,7 @@ export const describeAlertManagerDefinition: API.OperationMethod<
   DescribeAlertManagerDefinitionRequest,
   DescribeAlertManagerDefinitionResponse,
   DescribeAlertManagerDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAlertManagerDefinitionRequest,
   output: DescribeAlertManagerDefinitionResponse,
@@ -2908,7 +2908,7 @@ export const putAlertManagerDefinition: API.OperationMethod<
   PutAlertManagerDefinitionRequest,
   PutAlertManagerDefinitionResponse,
   PutAlertManagerDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAlertManagerDefinitionRequest,
   output: PutAlertManagerDefinitionResponse,
@@ -2937,7 +2937,7 @@ export const deleteAlertManagerDefinition: API.OperationMethod<
   DeleteAlertManagerDefinitionRequest,
   DeleteAlertManagerDefinitionResponse,
   DeleteAlertManagerDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAlertManagerDefinitionRequest,
   output: DeleteAlertManagerDefinitionResponse,
@@ -2965,7 +2965,7 @@ export const createAnomalyDetector: API.OperationMethod<
   CreateAnomalyDetectorRequest,
   CreateAnomalyDetectorResponse,
   CreateAnomalyDetectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAnomalyDetectorRequest,
   output: CreateAnomalyDetectorResponse,
@@ -2993,7 +2993,7 @@ export const putAnomalyDetector: API.OperationMethod<
   PutAnomalyDetectorRequest,
   PutAnomalyDetectorResponse,
   PutAnomalyDetectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAnomalyDetectorRequest,
   output: PutAnomalyDetectorResponse,
@@ -3020,7 +3020,7 @@ export const describeAnomalyDetector: API.OperationMethod<
   DescribeAnomalyDetectorRequest,
   DescribeAnomalyDetectorResponse,
   DescribeAnomalyDetectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAnomalyDetectorRequest,
   output: DescribeAnomalyDetectorResponse,
@@ -3047,7 +3047,7 @@ export const deleteAnomalyDetector: API.OperationMethod<
   DeleteAnomalyDetectorRequest,
   DeleteAnomalyDetectorResponse,
   DeleteAnomalyDetectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAnomalyDetectorRequest,
   output: DeleteAnomalyDetectorResponse,
@@ -3074,21 +3074,21 @@ export const listAnomalyDetectors: API.OperationMethod<
   ListAnomalyDetectorsRequest,
   ListAnomalyDetectorsResponse,
   ListAnomalyDetectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAnomalyDetectorsRequest,
   ) => stream.Stream<
     ListAnomalyDetectorsResponse,
     ListAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAnomalyDetectorsRequest,
   ) => stream.Stream<
     AnomalyDetectorSummary,
     ListAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAnomalyDetectorsRequest,
@@ -3122,7 +3122,7 @@ export const createLoggingConfiguration: API.OperationMethod<
   CreateLoggingConfigurationRequest,
   CreateLoggingConfigurationResponse,
   CreateLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLoggingConfigurationRequest,
   output: CreateLoggingConfigurationResponse,
@@ -3148,7 +3148,7 @@ export const describeLoggingConfiguration: API.OperationMethod<
   DescribeLoggingConfigurationRequest,
   DescribeLoggingConfigurationResponse,
   DescribeLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLoggingConfigurationRequest,
   output: DescribeLoggingConfigurationResponse,
@@ -3175,7 +3175,7 @@ export const updateLoggingConfiguration: API.OperationMethod<
   UpdateLoggingConfigurationRequest,
   UpdateLoggingConfigurationResponse,
   UpdateLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLoggingConfigurationRequest,
   output: UpdateLoggingConfigurationResponse,
@@ -3203,7 +3203,7 @@ export const deleteLoggingConfiguration: API.OperationMethod<
   DeleteLoggingConfigurationRequest,
   DeleteLoggingConfigurationResponse,
   DeleteLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLoggingConfigurationRequest,
   output: DeleteLoggingConfigurationResponse,
@@ -3228,7 +3228,7 @@ export const createQueryLoggingConfiguration: API.OperationMethod<
   CreateQueryLoggingConfigurationRequest,
   CreateQueryLoggingConfigurationResponse,
   CreateQueryLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateQueryLoggingConfigurationRequest,
   output: CreateQueryLoggingConfigurationResponse,
@@ -3252,7 +3252,7 @@ export const describeQueryLoggingConfiguration: API.OperationMethod<
   DescribeQueryLoggingConfigurationRequest,
   DescribeQueryLoggingConfigurationResponse,
   DescribeQueryLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeQueryLoggingConfigurationRequest,
   output: DescribeQueryLoggingConfigurationResponse,
@@ -3277,7 +3277,7 @@ export const updateQueryLoggingConfiguration: API.OperationMethod<
   UpdateQueryLoggingConfigurationRequest,
   UpdateQueryLoggingConfigurationResponse,
   UpdateQueryLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQueryLoggingConfigurationRequest,
   output: UpdateQueryLoggingConfigurationResponse,
@@ -3303,7 +3303,7 @@ export const deleteQueryLoggingConfiguration: API.OperationMethod<
   DeleteQueryLoggingConfigurationRequest,
   DeleteQueryLoggingConfigurationResponse,
   DeleteQueryLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteQueryLoggingConfigurationRequest,
   output: DeleteQueryLoggingConfigurationResponse,
@@ -3335,7 +3335,7 @@ export const createRuleGroupsNamespace: API.OperationMethod<
   CreateRuleGroupsNamespaceRequest,
   CreateRuleGroupsNamespaceResponse,
   CreateRuleGroupsNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRuleGroupsNamespaceRequest,
   output: CreateRuleGroupsNamespaceResponse,
@@ -3363,7 +3363,7 @@ export const describeRuleGroupsNamespace: API.OperationMethod<
   DescribeRuleGroupsNamespaceRequest,
   DescribeRuleGroupsNamespaceResponse,
   DescribeRuleGroupsNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRuleGroupsNamespaceRequest,
   output: DescribeRuleGroupsNamespaceResponse,
@@ -3397,7 +3397,7 @@ export const putRuleGroupsNamespace: API.OperationMethod<
   PutRuleGroupsNamespaceRequest,
   PutRuleGroupsNamespaceResponse,
   PutRuleGroupsNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutRuleGroupsNamespaceRequest,
   output: PutRuleGroupsNamespaceResponse,
@@ -3426,7 +3426,7 @@ export const deleteRuleGroupsNamespace: API.OperationMethod<
   DeleteRuleGroupsNamespaceRequest,
   DeleteRuleGroupsNamespaceResponse,
   DeleteRuleGroupsNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRuleGroupsNamespaceRequest,
   output: DeleteRuleGroupsNamespaceResponse,
@@ -3453,21 +3453,21 @@ export const listRuleGroupsNamespaces: API.OperationMethod<
   ListRuleGroupsNamespacesRequest,
   ListRuleGroupsNamespacesResponse,
   ListRuleGroupsNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRuleGroupsNamespacesRequest,
   ) => stream.Stream<
     ListRuleGroupsNamespacesResponse,
     ListRuleGroupsNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRuleGroupsNamespacesRequest,
   ) => stream.Stream<
     RuleGroupsNamespaceSummary,
     ListRuleGroupsNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRuleGroupsNamespacesRequest,
@@ -3500,7 +3500,7 @@ export const describeWorkspaceConfiguration: API.OperationMethod<
   DescribeWorkspaceConfigurationRequest,
   DescribeWorkspaceConfigurationResponse,
   DescribeWorkspaceConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceConfigurationRequest,
   output: DescribeWorkspaceConfigurationResponse,
@@ -3530,7 +3530,7 @@ export const updateWorkspaceConfiguration: API.OperationMethod<
   UpdateWorkspaceConfigurationRequest,
   UpdateWorkspaceConfigurationResponse,
   UpdateWorkspaceConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceConfigurationRequest,
   output: UpdateWorkspaceConfigurationResponse,
@@ -3565,7 +3565,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -3592,7 +3592,7 @@ export const describeResourcePolicy: API.OperationMethod<
   DescribeResourcePolicyRequest,
   DescribeResourcePolicyResponse,
   DescribeResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeResourcePolicyRequest,
   output: DescribeResourcePolicyResponse,
@@ -3619,7 +3619,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,

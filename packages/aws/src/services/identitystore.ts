@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "identitystore",
@@ -1042,7 +1042,7 @@ export const getGroupId: API.OperationMethod<
   GetGroupIdRequest,
   GetGroupIdResponse,
   GetGroupIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGroupIdRequest,
   output: GetGroupIdResponse,
@@ -1061,7 +1061,7 @@ export const getGroupMembershipId: API.OperationMethod<
   GetGroupMembershipIdRequest,
   GetGroupMembershipIdResponse,
   GetGroupMembershipIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGroupMembershipIdRequest,
   output: GetGroupMembershipIdResponse,
@@ -1080,7 +1080,7 @@ export const getUserId: API.OperationMethod<
   GetUserIdRequest,
   GetUserIdResponse,
   GetUserIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserIdRequest,
   output: GetUserIdResponse,
@@ -1099,7 +1099,7 @@ export const isMemberInGroups: API.OperationMethod<
   IsMemberInGroupsRequest,
   IsMemberInGroupsResponse,
   IsMemberInGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IsMemberInGroupsRequest,
   output: IsMemberInGroupsResponse,
@@ -1118,21 +1118,21 @@ export const listGroupMembershipsForMember: API.OperationMethod<
   ListGroupMembershipsForMemberRequest,
   ListGroupMembershipsForMemberResponse,
   ListGroupMembershipsForMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGroupMembershipsForMemberRequest,
   ) => stream.Stream<
     ListGroupMembershipsForMemberResponse,
     ListGroupMembershipsForMemberError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGroupMembershipsForMemberRequest,
   ) => stream.Stream<
     GroupMembership,
     ListGroupMembershipsForMemberError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembershipsForMemberRequest,
@@ -1158,7 +1158,7 @@ export const createGroupMembership: API.OperationMethod<
   CreateGroupMembershipRequest,
   CreateGroupMembershipResponse,
   CreateGroupMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGroupMembershipRequest,
   output: CreateGroupMembershipResponse,
@@ -1182,7 +1182,7 @@ export const describeGroupMembership: API.OperationMethod<
   DescribeGroupMembershipRequest,
   DescribeGroupMembershipResponse,
   DescribeGroupMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeGroupMembershipRequest,
   output: DescribeGroupMembershipResponse,
@@ -1200,7 +1200,7 @@ export const deleteGroupMembership: API.OperationMethod<
   DeleteGroupMembershipRequest,
   DeleteGroupMembershipResponse,
   DeleteGroupMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupMembershipRequest,
   output: DeleteGroupMembershipResponse,
@@ -1219,21 +1219,21 @@ export const listGroupMemberships: API.OperationMethod<
   ListGroupMembershipsRequest,
   ListGroupMembershipsResponse,
   ListGroupMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGroupMembershipsRequest,
   ) => stream.Stream<
     ListGroupMembershipsResponse,
     ListGroupMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGroupMembershipsRequest,
   ) => stream.Stream<
     GroupMembership,
     ListGroupMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembershipsRequest,
@@ -1259,7 +1259,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupRequest,
   CreateGroupResponse,
   CreateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResponse,
@@ -1283,7 +1283,7 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupRequest,
   DescribeGroupResponse,
   DescribeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeGroupRequest,
   output: DescribeGroupResponse,
@@ -1302,7 +1302,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupRequest,
   UpdateGroupResponse,
   UpdateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
@@ -1325,7 +1325,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupRequest,
   DeleteGroupResponse,
   DeleteGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
@@ -1344,21 +1344,21 @@ export const listGroups: API.OperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGroupsRequest,
   ) => stream.Stream<
     ListGroupsResponse,
     ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGroupsRequest,
   ) => stream.Stream<
     Group,
     ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
@@ -1384,7 +1384,7 @@ export const createUser: API.OperationMethod<
   CreateUserRequest,
   CreateUserResponse,
   CreateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
@@ -1408,7 +1408,7 @@ export const describeUser: API.OperationMethod<
   DescribeUserRequest,
   DescribeUserResponse,
   DescribeUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeUserRequest,
   output: DescribeUserResponse,
@@ -1427,7 +1427,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserRequest,
   UpdateUserResponse,
   UpdateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
@@ -1450,7 +1450,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserRequest,
   DeleteUserResponse,
   DeleteUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
@@ -1469,21 +1469,21 @@ export const listUsers: API.OperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListUsersRequest,
   ) => stream.Stream<
     ListUsersResponse,
     ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListUsersRequest,
   ) => stream.Stream<
     User,
     ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "MigrationHubOrchestrator",
   serviceShapeName: "AWSMigrationHubOrchestrator",
@@ -1917,7 +1917,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1934,7 +1934,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1951,7 +1951,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1970,7 +1970,7 @@ export const createWorkflow: API.OperationMethod<
   CreateMigrationWorkflowRequest,
   CreateMigrationWorkflowResponse,
   CreateWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMigrationWorkflowRequest,
   output: CreateMigrationWorkflowResponse,
@@ -1995,7 +1995,7 @@ export const getWorkflow: API.OperationMethod<
   GetMigrationWorkflowRequest,
   GetMigrationWorkflowResponse,
   GetWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMigrationWorkflowRequest,
   output: GetMigrationWorkflowResponse,
@@ -2021,7 +2021,7 @@ export const updateWorkflow: API.OperationMethod<
   UpdateMigrationWorkflowRequest,
   UpdateMigrationWorkflowResponse,
   UpdateWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMigrationWorkflowRequest,
   output: UpdateMigrationWorkflowResponse,
@@ -2048,7 +2048,7 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteMigrationWorkflowRequest,
   DeleteMigrationWorkflowResponse,
   DeleteWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMigrationWorkflowRequest,
   output: DeleteMigrationWorkflowResponse,
@@ -2074,21 +2074,21 @@ export const listWorkflows: API.OperationMethod<
   ListMigrationWorkflowsRequest,
   ListMigrationWorkflowsResponse,
   ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMigrationWorkflowsRequest,
   ) => stream.Stream<
     ListMigrationWorkflowsResponse,
     ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMigrationWorkflowsRequest,
   ) => stream.Stream<
     MigrationWorkflowSummary,
     ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationWorkflowsRequest,
@@ -2121,7 +2121,7 @@ export const startWorkflow: API.OperationMethod<
   StartMigrationWorkflowRequest,
   StartMigrationWorkflowResponse,
   StartWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartMigrationWorkflowRequest,
   output: StartMigrationWorkflowResponse,
@@ -2147,7 +2147,7 @@ export const stopWorkflow: API.OperationMethod<
   StopMigrationWorkflowRequest,
   StopMigrationWorkflowResponse,
   StopWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopMigrationWorkflowRequest,
   output: StopMigrationWorkflowResponse,
@@ -2173,7 +2173,7 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateRequest,
   CreateTemplateResponse,
   CreateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTemplateRequest,
   output: CreateTemplateResponse,
@@ -2198,7 +2198,7 @@ export const getTemplate: API.OperationMethod<
   GetMigrationWorkflowTemplateRequest,
   GetMigrationWorkflowTemplateResponse,
   GetTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMigrationWorkflowTemplateRequest,
   output: GetMigrationWorkflowTemplateResponse,
@@ -2223,7 +2223,7 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateRequest,
   UpdateTemplateResponse,
   UpdateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTemplateRequest,
   output: UpdateTemplateResponse,
@@ -2249,7 +2249,7 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateRequest,
   DeleteTemplateResponse,
   DeleteTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTemplateRequest,
   output: DeleteTemplateResponse,
@@ -2273,21 +2273,21 @@ export const listTemplates: API.OperationMethod<
   ListMigrationWorkflowTemplatesRequest,
   ListMigrationWorkflowTemplatesResponse,
   ListTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMigrationWorkflowTemplatesRequest,
   ) => stream.Stream<
     ListMigrationWorkflowTemplatesResponse,
     ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMigrationWorkflowTemplatesRequest,
   ) => stream.Stream<
     TemplateSummary,
     ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationWorkflowTemplatesRequest,
@@ -2312,21 +2312,21 @@ export const listPlugins: API.OperationMethod<
   ListPluginsRequest,
   ListPluginsResponse,
   ListPluginsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPluginsRequest,
   ) => stream.Stream<
     ListPluginsResponse,
     ListPluginsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPluginsRequest,
   ) => stream.Stream<
     PluginSummary,
     ListPluginsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPluginsRequest,
@@ -2353,7 +2353,7 @@ export const getTemplateStep: API.OperationMethod<
   GetTemplateStepRequest,
   GetTemplateStepResponse,
   GetTemplateStepError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTemplateStepRequest,
   output: GetTemplateStepResponse,
@@ -2379,21 +2379,21 @@ export const listTemplateSteps: API.OperationMethod<
   ListTemplateStepsRequest,
   ListTemplateStepsResponse,
   ListTemplateStepsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTemplateStepsRequest,
   ) => stream.Stream<
     ListTemplateStepsResponse,
     ListTemplateStepsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTemplateStepsRequest,
   ) => stream.Stream<
     TemplateStepSummary,
     ListTemplateStepsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateStepsRequest,
@@ -2426,7 +2426,7 @@ export const getTemplateStepGroup: API.OperationMethod<
   GetTemplateStepGroupRequest,
   GetTemplateStepGroupResponse,
   GetTemplateStepGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTemplateStepGroupRequest,
   output: GetTemplateStepGroupResponse,
@@ -2451,21 +2451,21 @@ export const listTemplateStepGroups: API.OperationMethod<
   ListTemplateStepGroupsRequest,
   ListTemplateStepGroupsResponse,
   ListTemplateStepGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTemplateStepGroupsRequest,
   ) => stream.Stream<
     ListTemplateStepGroupsResponse,
     ListTemplateStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTemplateStepGroupsRequest,
   ) => stream.Stream<
     TemplateStepGroupSummary,
     ListTemplateStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateStepGroupsRequest,
@@ -2496,7 +2496,7 @@ export const createWorkflowStep: API.OperationMethod<
   CreateWorkflowStepRequest,
   CreateWorkflowStepResponse,
   CreateWorkflowStepError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkflowStepRequest,
   output: CreateWorkflowStepResponse,
@@ -2520,7 +2520,7 @@ export const getWorkflowStep: API.OperationMethod<
   GetWorkflowStepRequest,
   GetWorkflowStepResponse,
   GetWorkflowStepError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkflowStepRequest,
   output: GetWorkflowStepResponse,
@@ -2544,7 +2544,7 @@ export const updateWorkflowStep: API.OperationMethod<
   UpdateWorkflowStepRequest,
   UpdateWorkflowStepResponse,
   UpdateWorkflowStepError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkflowStepRequest,
   output: UpdateWorkflowStepResponse,
@@ -2570,7 +2570,7 @@ export const deleteWorkflowStep: API.OperationMethod<
   DeleteWorkflowStepRequest,
   DeleteWorkflowStepResponse,
   DeleteWorkflowStepError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkflowStepRequest,
   output: DeleteWorkflowStepResponse,
@@ -2595,21 +2595,21 @@ export const listWorkflowSteps: API.OperationMethod<
   ListWorkflowStepsRequest,
   ListWorkflowStepsResponse,
   ListWorkflowStepsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkflowStepsRequest,
   ) => stream.Stream<
     ListWorkflowStepsResponse,
     ListWorkflowStepsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkflowStepsRequest,
   ) => stream.Stream<
     WorkflowStepSummary,
     ListWorkflowStepsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowStepsRequest,
@@ -2640,7 +2640,7 @@ export const retryWorkflowStep: API.OperationMethod<
   RetryWorkflowStepRequest,
   RetryWorkflowStepResponse,
   RetryWorkflowStepError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetryWorkflowStepRequest,
   output: RetryWorkflowStepResponse,
@@ -2664,7 +2664,7 @@ export const createWorkflowStepGroup: API.OperationMethod<
   CreateWorkflowStepGroupRequest,
   CreateWorkflowStepGroupResponse,
   CreateWorkflowStepGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkflowStepGroupRequest,
   output: CreateWorkflowStepGroupResponse,
@@ -2689,7 +2689,7 @@ export const getWorkflowStepGroup: API.OperationMethod<
   GetWorkflowStepGroupRequest,
   GetWorkflowStepGroupResponse,
   GetWorkflowStepGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkflowStepGroupRequest,
   output: GetWorkflowStepGroupResponse,
@@ -2715,7 +2715,7 @@ export const updateWorkflowStepGroup: API.OperationMethod<
   UpdateWorkflowStepGroupRequest,
   UpdateWorkflowStepGroupResponse,
   UpdateWorkflowStepGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkflowStepGroupRequest,
   output: UpdateWorkflowStepGroupResponse,
@@ -2741,7 +2741,7 @@ export const deleteWorkflowStepGroup: API.OperationMethod<
   DeleteWorkflowStepGroupRequest,
   DeleteWorkflowStepGroupResponse,
   DeleteWorkflowStepGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkflowStepGroupRequest,
   output: DeleteWorkflowStepGroupResponse,
@@ -2767,21 +2767,21 @@ export const listWorkflowStepGroups: API.OperationMethod<
   ListWorkflowStepGroupsRequest,
   ListWorkflowStepGroupsResponse,
   ListWorkflowStepGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkflowStepGroupsRequest,
   ) => stream.Stream<
     ListWorkflowStepGroupsResponse,
     ListWorkflowStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkflowStepGroupsRequest,
   ) => stream.Stream<
     WorkflowStepGroupSummary,
     ListWorkflowStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowStepGroupsRequest,

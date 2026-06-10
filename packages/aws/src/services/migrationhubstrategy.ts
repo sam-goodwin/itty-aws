@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "MigrationHubStrategy",
@@ -1850,7 +1850,7 @@ export const getApplicationComponentDetails: API.OperationMethod<
   GetApplicationComponentDetailsRequest,
   GetApplicationComponentDetailsResponse,
   GetApplicationComponentDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationComponentDetailsRequest,
   output: GetApplicationComponentDetailsResponse,
@@ -1873,7 +1873,7 @@ export const getApplicationComponentStrategies: API.OperationMethod<
   GetApplicationComponentStrategiesRequest,
   GetApplicationComponentStrategiesResponse,
   GetApplicationComponentStrategiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationComponentStrategiesRequest,
   output: GetApplicationComponentStrategiesResponse,
@@ -1896,7 +1896,7 @@ export const getAssessment: API.OperationMethod<
   GetAssessmentRequest,
   GetAssessmentResponse,
   GetAssessmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssessmentRequest,
   output: GetAssessmentResponse,
@@ -1921,7 +1921,7 @@ export const getImportFileTask: API.OperationMethod<
   GetImportFileTaskRequest,
   GetImportFileTaskResponse,
   GetImportFileTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetImportFileTaskRequest,
   output: GetImportFileTaskResponse,
@@ -1946,7 +1946,7 @@ export const getLatestAssessmentId: API.OperationMethod<
   GetLatestAssessmentIdRequest,
   GetLatestAssessmentIdResponse,
   GetLatestAssessmentIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLatestAssessmentIdRequest,
   output: GetLatestAssessmentIdResponse,
@@ -1970,7 +1970,7 @@ export const getPortfolioPreferences: API.OperationMethod<
   GetPortfolioPreferencesRequest,
   GetPortfolioPreferencesResponse,
   GetPortfolioPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPortfolioPreferencesRequest,
   output: GetPortfolioPreferencesResponse,
@@ -1994,7 +1994,7 @@ export const getPortfolioSummary: API.OperationMethod<
   GetPortfolioSummaryRequest,
   GetPortfolioSummaryResponse,
   GetPortfolioSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPortfolioSummaryRequest,
   output: GetPortfolioSummaryResponse,
@@ -2014,7 +2014,7 @@ export const getRecommendationReportDetails: API.OperationMethod<
   GetRecommendationReportDetailsRequest,
   GetRecommendationReportDetailsResponse,
   GetRecommendationReportDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecommendationReportDetailsRequest,
   output: GetRecommendationReportDetailsResponse,
@@ -2040,21 +2040,21 @@ export const getServerDetails: API.OperationMethod<
   GetServerDetailsRequest,
   GetServerDetailsResponse,
   GetServerDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetServerDetailsRequest,
   ) => stream.Stream<
     GetServerDetailsResponse,
     GetServerDetailsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetServerDetailsRequest,
   ) => stream.Stream<
     AssociatedApplication,
     GetServerDetailsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetServerDetailsRequest,
@@ -2087,7 +2087,7 @@ export const getServerStrategies: API.OperationMethod<
   GetServerStrategiesRequest,
   GetServerStrategiesResponse,
   GetServerStrategiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServerStrategiesRequest,
   output: GetServerStrategiesResponse,
@@ -2112,21 +2112,21 @@ export const listAnalyzableServers: API.OperationMethod<
   ListAnalyzableServersRequest,
   ListAnalyzableServersResponse,
   ListAnalyzableServersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAnalyzableServersRequest,
   ) => stream.Stream<
     ListAnalyzableServersResponse,
     ListAnalyzableServersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAnalyzableServersRequest,
   ) => stream.Stream<
     AnalyzableServerSummary,
     ListAnalyzableServersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAnalyzableServersRequest,
@@ -2157,21 +2157,21 @@ export const listApplicationComponents: API.OperationMethod<
   ListApplicationComponentsRequest,
   ListApplicationComponentsResponse,
   ListApplicationComponentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListApplicationComponentsRequest,
   ) => stream.Stream<
     ListApplicationComponentsResponse,
     ListApplicationComponentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListApplicationComponentsRequest,
   ) => stream.Stream<
     ApplicationComponentDetail,
     ListApplicationComponentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationComponentsRequest,
@@ -2202,21 +2202,21 @@ export const listCollectors: API.OperationMethod<
   ListCollectorsRequest,
   ListCollectorsResponse,
   ListCollectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCollectorsRequest,
   ) => stream.Stream<
     ListCollectorsResponse,
     ListCollectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCollectorsRequest,
   ) => stream.Stream<
     Collector,
     ListCollectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCollectorsRequest,
@@ -2247,21 +2247,21 @@ export const listImportFileTask: API.OperationMethod<
   ListImportFileTaskRequest,
   ListImportFileTaskResponse,
   ListImportFileTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListImportFileTaskRequest,
   ) => stream.Stream<
     ListImportFileTaskResponse,
     ListImportFileTaskError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListImportFileTaskRequest,
   ) => stream.Stream<
     ImportFileTaskInformation,
     ListImportFileTaskError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListImportFileTaskRequest,
@@ -2292,21 +2292,21 @@ export const listServers: API.OperationMethod<
   ListServersRequest,
   ListServersResponse,
   ListServersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServersRequest,
   ) => stream.Stream<
     ListServersResponse,
     ListServersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServersRequest,
   ) => stream.Stream<
     ServerDetail,
     ListServersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServersRequest,
@@ -2338,7 +2338,7 @@ export const putPortfolioPreferences: API.OperationMethod<
   PutPortfolioPreferencesRequest,
   PutPortfolioPreferencesResponse,
   PutPortfolioPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPortfolioPreferencesRequest,
   output: PutPortfolioPreferencesResponse,
@@ -2363,7 +2363,7 @@ export const startAssessment: API.OperationMethod<
   StartAssessmentRequest,
   StartAssessmentResponse,
   StartAssessmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAssessmentRequest,
   output: StartAssessmentResponse,
@@ -2388,7 +2388,7 @@ export const startImportFileTask: API.OperationMethod<
   StartImportFileTaskRequest,
   StartImportFileTaskResponse,
   StartImportFileTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartImportFileTaskRequest,
   output: StartImportFileTaskResponse,
@@ -2414,7 +2414,7 @@ export const startRecommendationReportGeneration: API.OperationMethod<
   StartRecommendationReportGenerationRequest,
   StartRecommendationReportGenerationResponse,
   StartRecommendationReportGenerationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartRecommendationReportGenerationRequest,
   output: StartRecommendationReportGenerationResponse,
@@ -2439,7 +2439,7 @@ export const stopAssessment: API.OperationMethod<
   StopAssessmentRequest,
   StopAssessmentResponse,
   StopAssessmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopAssessmentRequest,
   output: StopAssessmentResponse,
@@ -2463,7 +2463,7 @@ export const updateApplicationComponentConfig: API.OperationMethod<
   UpdateApplicationComponentConfigRequest,
   UpdateApplicationComponentConfigResponse,
   UpdateApplicationComponentConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApplicationComponentConfigRequest,
   output: UpdateApplicationComponentConfigResponse,
@@ -2487,7 +2487,7 @@ export const updateServerConfig: API.OperationMethod<
   UpdateServerConfigRequest,
   UpdateServerConfigResponse,
   UpdateServerConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateServerConfigRequest,
   output: UpdateServerConfigResponse,

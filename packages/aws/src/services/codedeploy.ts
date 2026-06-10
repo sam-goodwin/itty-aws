@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://codedeploy.amazonaws.com/doc/2014-10-06/");
 const svc = T.AwsApiService({
   sdkId: "CodeDeploy",
@@ -3350,7 +3350,7 @@ export const addTagsToOnPremisesInstances: API.OperationMethod<
   AddTagsToOnPremisesInstancesInput,
   AddTagsToOnPremisesInstancesResponse,
   AddTagsToOnPremisesInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTagsToOnPremisesInstancesInput,
   output: AddTagsToOnPremisesInstancesResponse,
@@ -3380,7 +3380,7 @@ export const batchGetApplicationRevisions: API.OperationMethod<
   BatchGetApplicationRevisionsInput,
   BatchGetApplicationRevisionsOutput,
   BatchGetApplicationRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetApplicationRevisionsInput,
   output: BatchGetApplicationRevisionsOutput,
@@ -3407,7 +3407,7 @@ export const batchGetApplications: API.OperationMethod<
   BatchGetApplicationsInput,
   BatchGetApplicationsOutput,
   BatchGetApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetApplicationsInput,
   output: BatchGetApplicationsOutput,
@@ -3434,7 +3434,7 @@ export const batchGetDeploymentGroups: API.OperationMethod<
   BatchGetDeploymentGroupsInput,
   BatchGetDeploymentGroupsOutput,
   BatchGetDeploymentGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetDeploymentGroupsInput,
   output: BatchGetDeploymentGroupsOutput,
@@ -3470,7 +3470,7 @@ export const batchGetDeploymentInstances: API.OperationMethod<
   BatchGetDeploymentInstancesInput,
   BatchGetDeploymentInstancesOutput,
   BatchGetDeploymentInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetDeploymentInstancesInput,
   output: BatchGetDeploymentInstancesOutput,
@@ -3497,7 +3497,7 @@ export const batchGetDeployments: API.OperationMethod<
   BatchGetDeploymentsInput,
   BatchGetDeploymentsOutput,
   BatchGetDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetDeploymentsInput,
   output: BatchGetDeploymentsOutput,
@@ -3542,7 +3542,7 @@ export const batchGetDeploymentTargets: API.OperationMethod<
   BatchGetDeploymentTargetsInput,
   BatchGetDeploymentTargetsOutput,
   BatchGetDeploymentTargetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetDeploymentTargetsInput,
   output: BatchGetDeploymentTargetsOutput,
@@ -3571,7 +3571,7 @@ export const batchGetOnPremisesInstances: API.OperationMethod<
   BatchGetOnPremisesInstancesInput,
   BatchGetOnPremisesInstancesOutput,
   BatchGetOnPremisesInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetOnPremisesInstancesInput,
   output: BatchGetOnPremisesInstancesOutput,
@@ -3602,7 +3602,7 @@ export const continueDeployment: API.OperationMethod<
   ContinueDeploymentInput,
   ContinueDeploymentResponse,
   ContinueDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ContinueDeploymentInput,
   output: ContinueDeploymentResponse,
@@ -3632,7 +3632,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationInput,
   CreateApplicationOutput,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApplicationInput,
   output: CreateApplicationOutput,
@@ -3680,7 +3680,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentInput,
   CreateDeploymentOutput,
   CreateDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeploymentInput,
   output: CreateDeploymentOutput,
@@ -3730,7 +3730,7 @@ export const createDeploymentConfig: API.OperationMethod<
   CreateDeploymentConfigInput,
   CreateDeploymentConfigOutput,
   CreateDeploymentConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeploymentConfigInput,
   output: CreateDeploymentConfigOutput,
@@ -3787,7 +3787,7 @@ export const createDeploymentGroup: API.OperationMethod<
   CreateDeploymentGroupInput,
   CreateDeploymentGroupOutput,
   CreateDeploymentGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeploymentGroupInput,
   output: CreateDeploymentGroupOutput,
@@ -3839,7 +3839,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationInput,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationInput,
   output: DeleteApplicationResponse,
@@ -3865,7 +3865,7 @@ export const deleteDeploymentConfig: API.OperationMethod<
   DeleteDeploymentConfigInput,
   DeleteDeploymentConfigResponse,
   DeleteDeploymentConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDeploymentConfigInput,
   output: DeleteDeploymentConfigResponse,
@@ -3890,7 +3890,7 @@ export const deleteDeploymentGroup: API.OperationMethod<
   DeleteDeploymentGroupInput,
   DeleteDeploymentGroupOutput,
   DeleteDeploymentGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDeploymentGroupInput,
   output: DeleteDeploymentGroupOutput,
@@ -3916,7 +3916,7 @@ export const deleteGitHubAccountToken: API.OperationMethod<
   DeleteGitHubAccountTokenInput,
   DeleteGitHubAccountTokenOutput,
   DeleteGitHubAccountTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGitHubAccountTokenInput,
   output: DeleteGitHubAccountTokenOutput,
@@ -3942,7 +3942,7 @@ export const deleteResourcesByExternalId: API.OperationMethod<
   DeleteResourcesByExternalIdInput,
   DeleteResourcesByExternalIdOutput,
   DeleteResourcesByExternalIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcesByExternalIdInput,
   output: DeleteResourcesByExternalIdOutput,
@@ -3959,7 +3959,7 @@ export const deregisterOnPremisesInstance: API.OperationMethod<
   DeregisterOnPremisesInstanceInput,
   DeregisterOnPremisesInstanceResponse,
   DeregisterOnPremisesInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeregisterOnPremisesInstanceInput,
   output: DeregisterOnPremisesInstanceResponse,
@@ -3977,7 +3977,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationInput,
   GetApplicationOutput,
   GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationInput,
   output: GetApplicationOutput,
@@ -4002,7 +4002,7 @@ export const getApplicationRevision: API.OperationMethod<
   GetApplicationRevisionInput,
   GetApplicationRevisionOutput,
   GetApplicationRevisionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationRevisionInput,
   output: GetApplicationRevisionOutput,
@@ -4032,7 +4032,7 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentInput,
   GetDeploymentOutput,
   GetDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentInput,
   output: GetDeploymentOutput,
@@ -4055,7 +4055,7 @@ export const getDeploymentConfig: API.OperationMethod<
   GetDeploymentConfigInput,
   GetDeploymentConfigOutput,
   GetDeploymentConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentConfigInput,
   output: GetDeploymentConfigOutput,
@@ -4082,7 +4082,7 @@ export const getDeploymentGroup: API.OperationMethod<
   GetDeploymentGroupInput,
   GetDeploymentGroupOutput,
   GetDeploymentGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentGroupInput,
   output: GetDeploymentGroupOutput,
@@ -4112,7 +4112,7 @@ export const getDeploymentInstance: API.OperationMethod<
   GetDeploymentInstanceInput,
   GetDeploymentInstanceOutput,
   GetDeploymentInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentInstanceInput,
   output: GetDeploymentInstanceOutput,
@@ -4143,7 +4143,7 @@ export const getDeploymentTarget: API.OperationMethod<
   GetDeploymentTargetInput,
   GetDeploymentTargetOutput,
   GetDeploymentTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentTargetInput,
   output: GetDeploymentTargetOutput,
@@ -4170,7 +4170,7 @@ export const getOnPremisesInstance: API.OperationMethod<
   GetOnPremisesInstanceInput,
   GetOnPremisesInstanceOutput,
   GetOnPremisesInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOnPremisesInstanceInput,
   output: GetOnPremisesInstanceOutput,
@@ -4199,21 +4199,21 @@ export const listApplicationRevisions: API.OperationMethod<
   ListApplicationRevisionsInput,
   ListApplicationRevisionsOutput,
   ListApplicationRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListApplicationRevisionsInput,
   ) => stream.Stream<
     ListApplicationRevisionsOutput,
     ListApplicationRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListApplicationRevisionsInput,
   ) => stream.Stream<
     RevisionLocation,
     ListApplicationRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationRevisionsInput,
@@ -4244,21 +4244,21 @@ export const listApplications: API.OperationMethod<
   ListApplicationsInput,
   ListApplicationsOutput,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListApplicationsInput,
   ) => stream.Stream<
     ListApplicationsOutput,
     ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListApplicationsInput,
   ) => stream.Stream<
     ApplicationName,
     ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsInput,
@@ -4280,21 +4280,21 @@ export const listDeploymentConfigs: API.OperationMethod<
   ListDeploymentConfigsInput,
   ListDeploymentConfigsOutput,
   ListDeploymentConfigsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDeploymentConfigsInput,
   ) => stream.Stream<
     ListDeploymentConfigsOutput,
     ListDeploymentConfigsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDeploymentConfigsInput,
   ) => stream.Stream<
     DeploymentConfigName,
     ListDeploymentConfigsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentConfigsInput,
@@ -4320,21 +4320,21 @@ export const listDeploymentGroups: API.OperationMethod<
   ListDeploymentGroupsInput,
   ListDeploymentGroupsOutput,
   ListDeploymentGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDeploymentGroupsInput,
   ) => stream.Stream<
     ListDeploymentGroupsOutput,
     ListDeploymentGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDeploymentGroupsInput,
   ) => stream.Stream<
     DeploymentGroupName,
     ListDeploymentGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentGroupsInput,
@@ -4375,21 +4375,21 @@ export const listDeploymentInstances: API.OperationMethod<
   ListDeploymentInstancesInput,
   ListDeploymentInstancesOutput,
   ListDeploymentInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDeploymentInstancesInput,
   ) => stream.Stream<
     ListDeploymentInstancesOutput,
     ListDeploymentInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDeploymentInstancesInput,
   ) => stream.Stream<
     InstanceId,
     ListDeploymentInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentInstancesInput,
@@ -4433,21 +4433,21 @@ export const listDeployments: API.OperationMethod<
   ListDeploymentsInput,
   ListDeploymentsOutput,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDeploymentsInput,
   ) => stream.Stream<
     ListDeploymentsOutput,
     ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDeploymentsInput,
   ) => stream.Stream<
     DeploymentId,
     ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsInput,
@@ -4489,7 +4489,7 @@ export const listDeploymentTargets: API.OperationMethod<
   ListDeploymentTargetsInput,
   ListDeploymentTargetsOutput,
   ListDeploymentTargetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDeploymentTargetsInput,
   output: ListDeploymentTargetsOutput,
@@ -4517,7 +4517,7 @@ export const listGitHubAccountTokenNames: API.OperationMethod<
   ListGitHubAccountTokenNamesInput,
   ListGitHubAccountTokenNamesOutput,
   ListGitHubAccountTokenNamesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGitHubAccountTokenNamesInput,
   output: ListGitHubAccountTokenNamesOutput,
@@ -4543,7 +4543,7 @@ export const listOnPremisesInstances: API.OperationMethod<
   ListOnPremisesInstancesInput,
   ListOnPremisesInstancesOutput,
   ListOnPremisesInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOnPremisesInstancesInput,
   output: ListOnPremisesInstancesOutput,
@@ -4566,7 +4566,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -4600,7 +4600,7 @@ export const putLifecycleEventHookExecutionStatus: API.OperationMethod<
   PutLifecycleEventHookExecutionStatusInput,
   PutLifecycleEventHookExecutionStatusOutput,
   PutLifecycleEventHookExecutionStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutLifecycleEventHookExecutionStatusInput,
   output: PutLifecycleEventHookExecutionStatusOutput,
@@ -4629,7 +4629,7 @@ export const registerApplicationRevision: API.OperationMethod<
   RegisterApplicationRevisionInput,
   RegisterApplicationRevisionResponse,
   RegisterApplicationRevisionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterApplicationRevisionInput,
   output: RegisterApplicationRevisionResponse,
@@ -4663,7 +4663,7 @@ export const registerOnPremisesInstance: API.OperationMethod<
   RegisterOnPremisesInstanceInput,
   RegisterOnPremisesInstanceResponse,
   RegisterOnPremisesInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterOnPremisesInstanceInput,
   output: RegisterOnPremisesInstanceResponse,
@@ -4696,7 +4696,7 @@ export const removeTagsFromOnPremisesInstances: API.OperationMethod<
   RemoveTagsFromOnPremisesInstancesInput,
   RemoveTagsFromOnPremisesInstancesResponse,
   RemoveTagsFromOnPremisesInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveTagsFromOnPremisesInstancesInput,
   output: RemoveTagsFromOnPremisesInstancesResponse,
@@ -4726,7 +4726,7 @@ export const skipWaitTimeForInstanceTermination: API.OperationMethod<
   SkipWaitTimeForInstanceTerminationInput,
   SkipWaitTimeForInstanceTerminationResponse,
   SkipWaitTimeForInstanceTerminationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SkipWaitTimeForInstanceTerminationInput,
   output: SkipWaitTimeForInstanceTerminationResponse,
@@ -4754,7 +4754,7 @@ export const stopDeployment: API.OperationMethod<
   StopDeploymentInput,
   StopDeploymentOutput,
   StopDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopDeploymentInput,
   output: StopDeploymentOutput,
@@ -4785,7 +4785,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -4819,7 +4819,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -4847,7 +4847,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationInput,
   UpdateApplicationResponse,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApplicationInput,
   output: UpdateApplicationResponse,
@@ -4898,7 +4898,7 @@ export const updateDeploymentGroup: API.OperationMethod<
   UpdateDeploymentGroupInput,
   UpdateDeploymentGroupOutput,
   UpdateDeploymentGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDeploymentGroupInput,
   output: UpdateDeploymentGroupOutput,

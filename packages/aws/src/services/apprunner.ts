@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://apprunner.amazonaws.com/doc/2020-05-15/");
 const svc = T.AwsApiService({
@@ -2132,7 +2132,7 @@ export const associateCustomDomain: API.OperationMethod<
   AssociateCustomDomainRequest,
   AssociateCustomDomainResponse,
   AssociateCustomDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateCustomDomainRequest,
   output: AssociateCustomDomainResponse,
@@ -2165,7 +2165,7 @@ export const createAutoScalingConfiguration: API.OperationMethod<
   CreateAutoScalingConfigurationRequest,
   CreateAutoScalingConfigurationResponse,
   CreateAutoScalingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAutoScalingConfigurationRequest,
   output: CreateAutoScalingConfigurationResponse,
@@ -2192,7 +2192,7 @@ export const createConnection: API.OperationMethod<
   CreateConnectionRequest,
   CreateConnectionResponse,
   CreateConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConnectionRequest,
   output: CreateConnectionResponse,
@@ -2224,7 +2224,7 @@ export const createObservabilityConfiguration: API.OperationMethod<
   CreateObservabilityConfigurationRequest,
   CreateObservabilityConfigurationResponse,
   CreateObservabilityConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateObservabilityConfigurationRequest,
   output: CreateObservabilityConfigurationResponse,
@@ -2248,7 +2248,7 @@ export const createService: API.OperationMethod<
   CreateServiceRequest,
   CreateServiceResponse,
   CreateServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServiceRequest,
   output: CreateServiceResponse,
@@ -2271,7 +2271,7 @@ export const createVpcConnector: API.OperationMethod<
   CreateVpcConnectorRequest,
   CreateVpcConnectorResponse,
   CreateVpcConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVpcConnectorRequest,
   output: CreateVpcConnectorResponse,
@@ -2294,7 +2294,7 @@ export const createVpcIngressConnection: API.OperationMethod<
   CreateVpcIngressConnectionRequest,
   CreateVpcIngressConnectionResponse,
   CreateVpcIngressConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVpcIngressConnectionRequest,
   output: CreateVpcIngressConnectionResponse,
@@ -2319,7 +2319,7 @@ export const deleteAutoScalingConfiguration: API.OperationMethod<
   DeleteAutoScalingConfigurationRequest,
   DeleteAutoScalingConfigurationResponse,
   DeleteAutoScalingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAutoScalingConfigurationRequest,
   output: DeleteAutoScalingConfigurationResponse,
@@ -2342,7 +2342,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionRequest,
   DeleteConnectionResponse,
   DeleteConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
@@ -2365,7 +2365,7 @@ export const deleteObservabilityConfiguration: API.OperationMethod<
   DeleteObservabilityConfigurationRequest,
   DeleteObservabilityConfigurationResponse,
   DeleteObservabilityConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteObservabilityConfigurationRequest,
   output: DeleteObservabilityConfigurationResponse,
@@ -2393,7 +2393,7 @@ export const deleteService: API.OperationMethod<
   DeleteServiceRequest,
   DeleteServiceResponse,
   DeleteServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
@@ -2417,7 +2417,7 @@ export const deleteVpcConnector: API.OperationMethod<
   DeleteVpcConnectorRequest,
   DeleteVpcConnectorResponse,
   DeleteVpcConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVpcConnectorRequest,
   output: DeleteVpcConnectorResponse,
@@ -2448,7 +2448,7 @@ export const deleteVpcIngressConnection: API.OperationMethod<
   DeleteVpcIngressConnectionRequest,
   DeleteVpcIngressConnectionResponse,
   DeleteVpcIngressConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVpcIngressConnectionRequest,
   output: DeleteVpcIngressConnectionResponse,
@@ -2471,7 +2471,7 @@ export const describeAutoScalingConfiguration: API.OperationMethod<
   DescribeAutoScalingConfigurationRequest,
   DescribeAutoScalingConfigurationResponse,
   DescribeAutoScalingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAutoScalingConfigurationRequest,
   output: DescribeAutoScalingConfigurationResponse,
@@ -2493,21 +2493,21 @@ export const describeCustomDomains: API.OperationMethod<
   DescribeCustomDomainsRequest,
   DescribeCustomDomainsResponse,
   DescribeCustomDomainsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCustomDomainsRequest,
   ) => stream.Stream<
     DescribeCustomDomainsResponse,
     DescribeCustomDomainsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCustomDomainsRequest,
   ) => stream.Stream<
     unknown,
     DescribeCustomDomainsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCustomDomainsRequest,
@@ -2535,7 +2535,7 @@ export const describeObservabilityConfiguration: API.OperationMethod<
   DescribeObservabilityConfigurationRequest,
   DescribeObservabilityConfigurationResponse,
   DescribeObservabilityConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeObservabilityConfigurationRequest,
   output: DescribeObservabilityConfigurationResponse,
@@ -2557,7 +2557,7 @@ export const describeService: API.OperationMethod<
   DescribeServiceRequest,
   DescribeServiceResponse,
   DescribeServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeServiceRequest,
   output: DescribeServiceResponse,
@@ -2579,7 +2579,7 @@ export const describeVpcConnector: API.OperationMethod<
   DescribeVpcConnectorRequest,
   DescribeVpcConnectorResponse,
   DescribeVpcConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeVpcConnectorRequest,
   output: DescribeVpcConnectorResponse,
@@ -2601,7 +2601,7 @@ export const describeVpcIngressConnection: API.OperationMethod<
   DescribeVpcIngressConnectionRequest,
   DescribeVpcIngressConnectionResponse,
   DescribeVpcIngressConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeVpcIngressConnectionRequest,
   output: DescribeVpcIngressConnectionResponse,
@@ -2628,7 +2628,7 @@ export const disassociateCustomDomain: API.OperationMethod<
   DisassociateCustomDomainRequest,
   DisassociateCustomDomainResponse,
   DisassociateCustomDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateCustomDomainRequest,
   output: DisassociateCustomDomainResponse,
@@ -2655,21 +2655,21 @@ export const listAutoScalingConfigurations: API.OperationMethod<
   ListAutoScalingConfigurationsRequest,
   ListAutoScalingConfigurationsResponse,
   ListAutoScalingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAutoScalingConfigurationsRequest,
   ) => stream.Stream<
     ListAutoScalingConfigurationsResponse,
     ListAutoScalingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAutoScalingConfigurationsRequest,
   ) => stream.Stream<
     unknown,
     ListAutoScalingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAutoScalingConfigurationsRequest,
@@ -2692,21 +2692,21 @@ export const listConnections: API.OperationMethod<
   ListConnectionsRequest,
   ListConnectionsResponse,
   ListConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConnectionsRequest,
   ) => stream.Stream<
     ListConnectionsResponse,
     ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConnectionsRequest,
   ) => stream.Stream<
     unknown,
     ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsRequest,
@@ -2734,21 +2734,21 @@ export const listObservabilityConfigurations: API.OperationMethod<
   ListObservabilityConfigurationsRequest,
   ListObservabilityConfigurationsResponse,
   ListObservabilityConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListObservabilityConfigurationsRequest,
   ) => stream.Stream<
     ListObservabilityConfigurationsResponse,
     ListObservabilityConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListObservabilityConfigurationsRequest,
   ) => stream.Stream<
     unknown,
     ListObservabilityConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObservabilityConfigurationsRequest,
@@ -2775,21 +2775,21 @@ export const listOperations: API.OperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOperationsRequest,
   ) => stream.Stream<
     ListOperationsResponse,
     ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOperationsRequest,
   ) => stream.Stream<
     unknown,
     ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
@@ -2816,21 +2816,21 @@ export const listServices: API.OperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServicesRequest,
   ) => stream.Stream<
     ListServicesResponse,
     ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServicesRequest,
   ) => stream.Stream<
     unknown,
     ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
@@ -2854,21 +2854,21 @@ export const listServicesForAutoScalingConfiguration: API.OperationMethod<
   ListServicesForAutoScalingConfigurationRequest,
   ListServicesForAutoScalingConfigurationResponse,
   ListServicesForAutoScalingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServicesForAutoScalingConfigurationRequest,
   ) => stream.Stream<
     ListServicesForAutoScalingConfigurationResponse,
     ListServicesForAutoScalingConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServicesForAutoScalingConfigurationRequest,
   ) => stream.Stream<
     unknown,
     ListServicesForAutoScalingConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesForAutoScalingConfigurationRequest,
@@ -2897,7 +2897,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2919,21 +2919,21 @@ export const listVpcConnectors: API.OperationMethod<
   ListVpcConnectorsRequest,
   ListVpcConnectorsResponse,
   ListVpcConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVpcConnectorsRequest,
   ) => stream.Stream<
     ListVpcConnectorsResponse,
     ListVpcConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListVpcConnectorsRequest,
   ) => stream.Stream<
     unknown,
     ListVpcConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVpcConnectorsRequest,
@@ -2956,21 +2956,21 @@ export const listVpcIngressConnections: API.OperationMethod<
   ListVpcIngressConnectionsRequest,
   ListVpcIngressConnectionsResponse,
   ListVpcIngressConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVpcIngressConnectionsRequest,
   ) => stream.Stream<
     ListVpcIngressConnectionsResponse,
     ListVpcIngressConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListVpcIngressConnectionsRequest,
   ) => stream.Stream<
     unknown,
     ListVpcIngressConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVpcIngressConnectionsRequest,
@@ -2999,7 +2999,7 @@ export const pauseService: API.OperationMethod<
   PauseServiceRequest,
   PauseServiceResponse,
   PauseServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseServiceRequest,
   output: PauseServiceResponse,
@@ -3026,7 +3026,7 @@ export const resumeService: API.OperationMethod<
   ResumeServiceRequest,
   ResumeServiceResponse,
   ResumeServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeServiceRequest,
   output: ResumeServiceResponse,
@@ -3056,7 +3056,7 @@ export const startDeployment: API.OperationMethod<
   StartDeploymentRequest,
   StartDeploymentResponse,
   StartDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartDeploymentRequest,
   output: StartDeploymentResponse,
@@ -3079,7 +3079,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3103,7 +3103,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3127,7 +3127,7 @@ export const updateDefaultAutoScalingConfiguration: API.OperationMethod<
   UpdateDefaultAutoScalingConfigurationRequest,
   UpdateDefaultAutoScalingConfigurationResponse,
   UpdateDefaultAutoScalingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDefaultAutoScalingConfigurationRequest,
   output: UpdateDefaultAutoScalingConfigurationResponse,
@@ -3157,7 +3157,7 @@ export const updateService: API.OperationMethod<
   UpdateServiceRequest,
   UpdateServiceResponse,
   UpdateServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateServiceRequest,
   output: UpdateServiceResponse,
@@ -3187,7 +3187,7 @@ export const updateVpcIngressConnection: API.OperationMethod<
   UpdateVpcIngressConnectionRequest,
   UpdateVpcIngressConnectionResponse,
   UpdateVpcIngressConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateVpcIngressConnectionRequest,
   output: UpdateVpcIngressConnectionResponse,

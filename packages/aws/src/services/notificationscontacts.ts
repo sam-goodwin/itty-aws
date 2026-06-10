@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "NotificationsContacts",
@@ -436,7 +436,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -462,7 +462,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -488,7 +488,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -515,7 +515,7 @@ export const createEmailContact: API.OperationMethod<
   CreateEmailContactRequest,
   CreateEmailContactResponse,
   CreateEmailContactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEmailContactRequest,
   output: CreateEmailContactResponse,
@@ -542,7 +542,7 @@ export const getEmailContact: API.OperationMethod<
   GetEmailContactRequest,
   GetEmailContactResponse,
   GetEmailContactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEmailContactRequest,
   output: GetEmailContactResponse,
@@ -571,7 +571,7 @@ export const deleteEmailContact: API.OperationMethod<
   DeleteEmailContactRequest,
   DeleteEmailContactResponse,
   DeleteEmailContactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEmailContactRequest,
   output: DeleteEmailContactResponse,
@@ -597,21 +597,21 @@ export const listEmailContacts: API.OperationMethod<
   ListEmailContactsRequest,
   ListEmailContactsResponse,
   ListEmailContactsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEmailContactsRequest,
   ) => stream.Stream<
     ListEmailContactsResponse,
     ListEmailContactsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEmailContactsRequest,
   ) => stream.Stream<
     EmailContact,
     ListEmailContactsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEmailContactsRequest,
@@ -644,7 +644,7 @@ export const activateEmailContact: API.OperationMethod<
   ActivateEmailContactRequest,
   ActivateEmailContactResponse,
   ActivateEmailContactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateEmailContactRequest,
   output: ActivateEmailContactResponse,
@@ -674,7 +674,7 @@ export const sendActivationCode: API.OperationMethod<
   SendActivationCodeRequest,
   SendActivationCodeResponse,
   SendActivationCodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendActivationCodeRequest,
   output: SendActivationCodeResponse,

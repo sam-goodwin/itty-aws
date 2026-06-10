@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "ARC Zonal Shift",
   serviceShapeName: "PercDataPlane",
@@ -942,21 +942,21 @@ export const listAutoshifts: API.OperationMethod<
   ListAutoshiftsRequest,
   ListAutoshiftsResponse,
   ListAutoshiftsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAutoshiftsRequest,
   ) => stream.Stream<
     ListAutoshiftsResponse,
     ListAutoshiftsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAutoshiftsRequest,
   ) => stream.Stream<
     AutoshiftSummary,
     ListAutoshiftsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAutoshiftsRequest,
@@ -986,7 +986,7 @@ export const getAutoshiftObserverNotificationStatus: API.OperationMethod<
   GetAutoshiftObserverNotificationStatusRequest,
   GetAutoshiftObserverNotificationStatusResponse,
   GetAutoshiftObserverNotificationStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAutoshiftObserverNotificationStatusRequest,
   output: GetAutoshiftObserverNotificationStatusResponse,
@@ -1009,7 +1009,7 @@ export const updateAutoshiftObserverNotificationStatus: API.OperationMethod<
   UpdateAutoshiftObserverNotificationStatusRequest,
   UpdateAutoshiftObserverNotificationStatusResponse,
   UpdateAutoshiftObserverNotificationStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAutoshiftObserverNotificationStatusRequest,
   output: UpdateAutoshiftObserverNotificationStatusResponse,
@@ -1034,7 +1034,7 @@ export const getManagedResource: API.OperationMethod<
   GetManagedResourceRequest,
   GetManagedResourceResponse,
   GetManagedResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagedResourceRequest,
   output: GetManagedResourceResponse,
@@ -1059,21 +1059,21 @@ export const listManagedResources: API.OperationMethod<
   ListManagedResourcesRequest,
   ListManagedResourcesResponse,
   ListManagedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListManagedResourcesRequest,
   ) => stream.Stream<
     ListManagedResourcesResponse,
     ListManagedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListManagedResourcesRequest,
   ) => stream.Stream<
     ManagedResourceSummary,
     ListManagedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManagedResourcesRequest,
@@ -1108,7 +1108,7 @@ export const updateZonalAutoshiftConfiguration: API.OperationMethod<
   UpdateZonalAutoshiftConfigurationRequest,
   UpdateZonalAutoshiftConfigurationResponse,
   UpdateZonalAutoshiftConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateZonalAutoshiftConfigurationRequest,
   output: UpdateZonalAutoshiftConfigurationResponse,
@@ -1136,7 +1136,7 @@ export const updatePracticeRunConfiguration: API.OperationMethod<
   UpdatePracticeRunConfigurationRequest,
   UpdatePracticeRunConfigurationResponse,
   UpdatePracticeRunConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePracticeRunConfigurationRequest,
   output: UpdatePracticeRunConfigurationResponse,
@@ -1164,7 +1164,7 @@ export const deletePracticeRunConfiguration: API.OperationMethod<
   DeletePracticeRunConfigurationRequest,
   DeletePracticeRunConfigurationResponse,
   DeletePracticeRunConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePracticeRunConfigurationRequest,
   output: DeletePracticeRunConfigurationResponse,
@@ -1196,7 +1196,7 @@ export const createPracticeRunConfiguration: API.OperationMethod<
   CreatePracticeRunConfigurationRequest,
   CreatePracticeRunConfigurationResponse,
   CreatePracticeRunConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePracticeRunConfigurationRequest,
   output: CreatePracticeRunConfigurationResponse,
@@ -1224,7 +1224,7 @@ export const cancelPracticeRun: API.OperationMethod<
   CancelPracticeRunRequest,
   CancelPracticeRunResponse,
   CancelPracticeRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelPracticeRunRequest,
   output: CancelPracticeRunResponse,
@@ -1254,7 +1254,7 @@ export const cancelZonalShift: API.OperationMethod<
   CancelZonalShiftRequest,
   ZonalShift,
   CancelZonalShiftError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelZonalShiftRequest,
   output: ZonalShift,
@@ -1282,7 +1282,7 @@ export const updateZonalShift: API.OperationMethod<
   UpdateZonalShiftRequest,
   ZonalShift,
   UpdateZonalShiftError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateZonalShiftRequest,
   output: ZonalShift,
@@ -1310,21 +1310,21 @@ export const listZonalShifts: API.OperationMethod<
   ListZonalShiftsRequest,
   ListZonalShiftsResponse,
   ListZonalShiftsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListZonalShiftsRequest,
   ) => stream.Stream<
     ListZonalShiftsResponse,
     ListZonalShiftsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListZonalShiftsRequest,
   ) => stream.Stream<
     ZonalShiftSummary,
     ListZonalShiftsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListZonalShiftsRequest,
@@ -1359,7 +1359,7 @@ export const startPracticeRun: API.OperationMethod<
   StartPracticeRunRequest,
   StartPracticeRunResponse,
   StartPracticeRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartPracticeRunRequest,
   output: StartPracticeRunResponse,
@@ -1401,7 +1401,7 @@ export const startZonalShift: API.OperationMethod<
   StartZonalShiftRequest,
   ZonalShift,
   StartZonalShiftError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartZonalShiftRequest,
   output: ZonalShift,

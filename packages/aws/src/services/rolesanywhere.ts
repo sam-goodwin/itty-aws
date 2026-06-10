@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "RolesAnywhere",
@@ -989,7 +989,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1015,7 +1015,7 @@ export const putNotificationSettings: API.OperationMethod<
   PutNotificationSettingsRequest,
   PutNotificationSettingsResponse,
   PutNotificationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutNotificationSettingsRequest,
   output: PutNotificationSettingsResponse,
@@ -1039,7 +1039,7 @@ export const resetNotificationSettings: API.OperationMethod<
   ResetNotificationSettingsRequest,
   ResetNotificationSettingsResponse,
   ResetNotificationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetNotificationSettingsRequest,
   output: ResetNotificationSettingsResponse,
@@ -1064,7 +1064,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1089,7 +1089,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1112,7 +1112,7 @@ export const importCrl: API.OperationMethod<
   ImportCrlRequest,
   CrlDetailResponse,
   ImportCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportCrlRequest,
   output: CrlDetailResponse,
@@ -1128,7 +1128,7 @@ export const getCrl: API.OperationMethod<
   ScalarCrlRequest,
   CrlDetailResponse,
   GetCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
@@ -1148,7 +1148,7 @@ export const updateCrl: API.OperationMethod<
   UpdateCrlRequest,
   CrlDetailResponse,
   UpdateCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCrlRequest,
   output: CrlDetailResponse,
@@ -1171,7 +1171,7 @@ export const deleteCrl: API.OperationMethod<
   ScalarCrlRequest,
   CrlDetailResponse,
   DeleteCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
@@ -1190,21 +1190,21 @@ export const listCrls: API.OperationMethod<
   ListRequest,
   ListCrlsResponse,
   ListCrlsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRequest,
   ) => stream.Stream<
     ListCrlsResponse,
     ListCrlsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRequest,
   ) => stream.Stream<
     CrlDetail,
     ListCrlsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
@@ -1229,7 +1229,7 @@ export const disableCrl: API.OperationMethod<
   ScalarCrlRequest,
   CrlDetailResponse,
   DisableCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
@@ -1248,7 +1248,7 @@ export const enableCrl: API.OperationMethod<
   ScalarCrlRequest,
   CrlDetailResponse,
   EnableCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
@@ -1267,7 +1267,7 @@ export const createProfile: API.OperationMethod<
   CreateProfileRequest,
   ProfileDetailResponse,
   CreateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProfileRequest,
   output: ProfileDetailResponse,
@@ -1286,7 +1286,7 @@ export const getProfile: API.OperationMethod<
   ScalarProfileRequest,
   ProfileDetailResponse,
   GetProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
@@ -1306,7 +1306,7 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileRequest,
   ProfileDetailResponse,
   UpdateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProfileRequest,
   output: ProfileDetailResponse,
@@ -1329,7 +1329,7 @@ export const deleteProfile: API.OperationMethod<
   ScalarProfileRequest,
   ProfileDetailResponse,
   DeleteProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
@@ -1348,21 +1348,21 @@ export const listProfiles: API.OperationMethod<
   ListRequest,
   ListProfilesResponse,
   ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRequest,
   ) => stream.Stream<
     ListProfilesResponse,
     ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRequest,
   ) => stream.Stream<
     ProfileDetail,
     ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
@@ -1386,7 +1386,7 @@ export const deleteAttributeMapping: API.OperationMethod<
   DeleteAttributeMappingRequest,
   DeleteAttributeMappingResponse,
   DeleteAttributeMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAttributeMappingRequest,
   output: DeleteAttributeMappingResponse,
@@ -1409,7 +1409,7 @@ export const disableProfile: API.OperationMethod<
   ScalarProfileRequest,
   ProfileDetailResponse,
   DisableProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
@@ -1428,7 +1428,7 @@ export const enableProfile: API.OperationMethod<
   ScalarProfileRequest,
   ProfileDetailResponse,
   EnableProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
@@ -1446,7 +1446,7 @@ export const putAttributeMapping: API.OperationMethod<
   PutAttributeMappingRequest,
   PutAttributeMappingResponse,
   PutAttributeMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAttributeMappingRequest,
   output: PutAttributeMappingResponse,
@@ -1469,7 +1469,7 @@ export const getSubject: API.OperationMethod<
   ScalarSubjectRequest,
   SubjectDetailResponse,
   GetSubjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarSubjectRequest,
   output: SubjectDetailResponse,
@@ -1488,21 +1488,21 @@ export const listSubjects: API.OperationMethod<
   ListRequest,
   ListSubjectsResponse,
   ListSubjectsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRequest,
   ) => stream.Stream<
     ListSubjectsResponse,
     ListSubjectsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRequest,
   ) => stream.Stream<
     SubjectSummary,
     ListSubjectsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
@@ -1527,7 +1527,7 @@ export const createTrustAnchor: API.OperationMethod<
   CreateTrustAnchorRequest,
   TrustAnchorDetailResponse,
   CreateTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
@@ -1547,7 +1547,7 @@ export const getTrustAnchor: API.OperationMethod<
   ScalarTrustAnchorRequest,
   TrustAnchorDetailResponse,
   GetTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
@@ -1571,7 +1571,7 @@ export const updateTrustAnchor: API.OperationMethod<
   UpdateTrustAnchorRequest,
   TrustAnchorDetailResponse,
   UpdateTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
@@ -1594,7 +1594,7 @@ export const deleteTrustAnchor: API.OperationMethod<
   ScalarTrustAnchorRequest,
   TrustAnchorDetailResponse,
   DeleteTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
@@ -1613,21 +1613,21 @@ export const listTrustAnchors: API.OperationMethod<
   ListRequest,
   ListTrustAnchorsResponse,
   ListTrustAnchorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRequest,
   ) => stream.Stream<
     ListTrustAnchorsResponse,
     ListTrustAnchorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRequest,
   ) => stream.Stream<
     TrustAnchorDetail,
     ListTrustAnchorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
@@ -1652,7 +1652,7 @@ export const disableTrustAnchor: API.OperationMethod<
   ScalarTrustAnchorRequest,
   TrustAnchorDetailResponse,
   DisableTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
@@ -1671,7 +1671,7 @@ export const enableTrustAnchor: API.OperationMethod<
   ScalarTrustAnchorRequest,
   TrustAnchorDetailResponse,
   EnableTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,

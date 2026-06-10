@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "ApplicationCostProfiler",
   serviceShapeName: "AWSApplicationCostProfiler",
@@ -392,7 +392,7 @@ export const deleteReportDefinition: API.OperationMethod<
   DeleteReportDefinitionRequest,
   DeleteReportDefinitionResult,
   DeleteReportDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteReportDefinitionRequest,
   output: DeleteReportDefinitionResult,
@@ -416,7 +416,7 @@ export const getReportDefinition: API.OperationMethod<
   GetReportDefinitionRequest,
   GetReportDefinitionResult,
   GetReportDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReportDefinitionRequest,
   output: GetReportDefinitionResult,
@@ -444,7 +444,7 @@ export const importApplicationUsage: API.OperationMethod<
   ImportApplicationUsageRequest,
   ImportApplicationUsageResult,
   ImportApplicationUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportApplicationUsageRequest,
   output: ImportApplicationUsageResult,
@@ -470,21 +470,21 @@ export const listReportDefinitions: API.OperationMethod<
   ListReportDefinitionsRequest,
   ListReportDefinitionsResult,
   ListReportDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListReportDefinitionsRequest,
   ) => stream.Stream<
     ListReportDefinitionsResult,
     ListReportDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListReportDefinitionsRequest,
   ) => stream.Stream<
     ReportDefinition,
     ListReportDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReportDefinitionsRequest,
@@ -516,7 +516,7 @@ export const putReportDefinition: API.OperationMethod<
   PutReportDefinitionRequest,
   PutReportDefinitionResult,
   PutReportDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutReportDefinitionRequest,
   output: PutReportDefinitionResult,
@@ -541,7 +541,7 @@ export const updateReportDefinition: API.OperationMethod<
   UpdateReportDefinitionRequest,
   UpdateReportDefinitionResult,
   UpdateReportDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateReportDefinitionRequest,
   output: UpdateReportDefinitionResult,

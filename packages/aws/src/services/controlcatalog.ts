@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "ControlCatalog",
   serviceShapeName: "ControlCatalog",
@@ -702,21 +702,21 @@ export const listControlMappings: API.OperationMethod<
   ListControlMappingsRequest,
   ListControlMappingsResponse,
   ListControlMappingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListControlMappingsRequest,
   ) => stream.Stream<
     ListControlMappingsResponse,
     ListControlMappingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListControlMappingsRequest,
   ) => stream.Stream<
     ControlMapping,
     ListControlMappingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListControlMappingsRequest,
@@ -749,21 +749,21 @@ export const listCommonControls: API.OperationMethod<
   ListCommonControlsRequest,
   ListCommonControlsResponse,
   ListCommonControlsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCommonControlsRequest,
   ) => stream.Stream<
     ListCommonControlsResponse,
     ListCommonControlsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCommonControlsRequest,
   ) => stream.Stream<
     CommonControlSummary,
     ListCommonControlsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCommonControlsRequest,
@@ -797,7 +797,7 @@ export const getControl: API.OperationMethod<
   GetControlRequest,
   GetControlResponse,
   GetControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetControlRequest,
   output: GetControlResponse,
@@ -822,21 +822,21 @@ export const listControls: API.OperationMethod<
   ListControlsRequest,
   ListControlsResponse,
   ListControlsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListControlsRequest,
   ) => stream.Stream<
     ListControlsResponse,
     ListControlsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListControlsRequest,
   ) => stream.Stream<
     ControlSummary,
     ListControlsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListControlsRequest,
@@ -867,21 +867,21 @@ export const listDomains: API.OperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDomainsRequest,
   ) => stream.Stream<
     ListDomainsResponse,
     ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDomainsRequest,
   ) => stream.Stream<
     DomainSummary,
     ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
@@ -914,21 +914,21 @@ export const listObjectives: API.OperationMethod<
   ListObjectivesRequest,
   ListObjectivesResponse,
   ListObjectivesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListObjectivesRequest,
   ) => stream.Stream<
     ListObjectivesResponse,
     ListObjectivesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListObjectivesRequest,
   ) => stream.Stream<
     ObjectiveSummary,
     ListObjectivesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObjectivesRequest,

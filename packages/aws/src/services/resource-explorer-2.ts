@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Resource Explorer 2",
@@ -1408,7 +1408,7 @@ export const batchGetView: API.OperationMethod<
   BatchGetViewInput,
   BatchGetViewOutput,
   BatchGetViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetViewInput,
   output: BatchGetViewOutput,
@@ -1434,7 +1434,7 @@ export const createResourceExplorerSetup: API.OperationMethod<
   CreateResourceExplorerSetupInput,
   CreateResourceExplorerSetupOutput,
   CreateResourceExplorerSetupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResourceExplorerSetupInput,
   output: CreateResourceExplorerSetupOutput,
@@ -1460,7 +1460,7 @@ export const deleteResourceExplorerSetup: API.OperationMethod<
   DeleteResourceExplorerSetupInput,
   DeleteResourceExplorerSetupOutput,
   DeleteResourceExplorerSetupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceExplorerSetupInput,
   output: DeleteResourceExplorerSetupOutput,
@@ -1488,7 +1488,7 @@ export const disassociateDefaultView: API.OperationMethod<
   DisassociateDefaultViewRequest,
   DisassociateDefaultViewResponse,
   DisassociateDefaultViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateDefaultViewRequest,
   output: DisassociateDefaultViewResponse,
@@ -1513,7 +1513,7 @@ export const getAccountLevelServiceConfiguration: API.OperationMethod<
   GetAccountLevelServiceConfigurationRequest,
   GetAccountLevelServiceConfigurationOutput,
   GetAccountLevelServiceConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountLevelServiceConfigurationRequest,
   output: GetAccountLevelServiceConfigurationOutput,
@@ -1538,7 +1538,7 @@ export const getDefaultView: API.OperationMethod<
   GetDefaultViewRequest,
   GetDefaultViewOutput,
   GetDefaultViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDefaultViewRequest,
   output: GetDefaultViewOutput,
@@ -1564,7 +1564,7 @@ export const getIndex: API.OperationMethod<
   GetIndexRequest,
   GetIndexOutput,
   GetIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexOutput,
@@ -1591,7 +1591,7 @@ export const getManagedView: API.OperationMethod<
   GetManagedViewInput,
   GetManagedViewOutput,
   GetManagedViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagedViewInput,
   output: GetManagedViewOutput,
@@ -1618,21 +1618,21 @@ export const getResourceExplorerSetup: API.OperationMethod<
   GetResourceExplorerSetupInput,
   GetResourceExplorerSetupOutput,
   GetResourceExplorerSetupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetResourceExplorerSetupInput,
   ) => stream.Stream<
     GetResourceExplorerSetupOutput,
     GetResourceExplorerSetupError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetResourceExplorerSetupInput,
   ) => stream.Stream<
     RegionStatus,
     GetResourceExplorerSetupError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetResourceExplorerSetupInput,
@@ -1665,7 +1665,7 @@ export const getServiceIndex: API.OperationMethod<
   GetServiceIndexRequest,
   GetServiceIndexOutput,
   GetServiceIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceIndexRequest,
   output: GetServiceIndexOutput,
@@ -1691,7 +1691,7 @@ export const getServiceView: API.OperationMethod<
   GetServiceViewInput,
   GetServiceViewOutput,
   GetServiceViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceViewInput,
   output: GetServiceViewOutput,
@@ -1716,21 +1716,21 @@ export const listIndexesForMembers: API.OperationMethod<
   ListIndexesForMembersInput,
   ListIndexesForMembersOutput,
   ListIndexesForMembersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIndexesForMembersInput,
   ) => stream.Stream<
     ListIndexesForMembersOutput,
     ListIndexesForMembersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListIndexesForMembersInput,
   ) => stream.Stream<
     MemberIndex,
     ListIndexesForMembersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesForMembersInput,
@@ -1762,21 +1762,21 @@ export const listManagedViews: API.OperationMethod<
   ListManagedViewsInput,
   ListManagedViewsOutput,
   ListManagedViewsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListManagedViewsInput,
   ) => stream.Stream<
     ListManagedViewsOutput,
     ListManagedViewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListManagedViewsInput,
   ) => stream.Stream<
     string,
     ListManagedViewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManagedViewsInput,
@@ -1810,21 +1810,21 @@ export const listResources: API.OperationMethod<
   ListResourcesInput,
   ListResourcesOutput,
   ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourcesInput,
   ) => stream.Stream<
     ListResourcesOutput,
     ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourcesInput,
   ) => stream.Stream<
     Resource,
     ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesInput,
@@ -1857,21 +1857,21 @@ export const listServiceIndexes: API.OperationMethod<
   ListServiceIndexesInput,
   ListServiceIndexesOutput,
   ListServiceIndexesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServiceIndexesInput,
   ) => stream.Stream<
     ListServiceIndexesOutput,
     ListServiceIndexesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServiceIndexesInput,
   ) => stream.Stream<
     Index,
     ListServiceIndexesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServiceIndexesInput,
@@ -1902,21 +1902,21 @@ export const listServiceViews: API.OperationMethod<
   ListServiceViewsInput,
   ListServiceViewsOutput,
   ListServiceViewsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServiceViewsInput,
   ) => stream.Stream<
     ListServiceViewsOutput,
     ListServiceViewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServiceViewsInput,
   ) => stream.Stream<
     string,
     ListServiceViewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServiceViewsInput,
@@ -1946,21 +1946,21 @@ export const listStreamingAccessForServices: API.OperationMethod<
   ListStreamingAccessForServicesInput,
   ListStreamingAccessForServicesOutput,
   ListStreamingAccessForServicesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStreamingAccessForServicesInput,
   ) => stream.Stream<
     ListStreamingAccessForServicesOutput,
     ListStreamingAccessForServicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStreamingAccessForServicesInput,
   ) => stream.Stream<
     StreamingAccessDetails,
     ListStreamingAccessForServicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStreamingAccessForServicesInput,
@@ -1986,21 +1986,21 @@ export const listSupportedResourceTypes: API.OperationMethod<
   ListSupportedResourceTypesInput,
   ListSupportedResourceTypesOutput,
   ListSupportedResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSupportedResourceTypesInput,
   ) => stream.Stream<
     ListSupportedResourceTypesOutput,
     ListSupportedResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSupportedResourceTypesInput,
   ) => stream.Stream<
     SupportedResourceType,
     ListSupportedResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSupportedResourceTypesInput,
@@ -2033,7 +2033,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -2067,21 +2067,21 @@ export const search: API.OperationMethod<
   SearchInput,
   SearchOutput,
   SearchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchInput,
   ) => stream.Stream<
     SearchOutput,
     SearchError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchInput,
   ) => stream.Stream<
     Resource,
     SearchError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchInput,
@@ -2116,7 +2116,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -2144,7 +2144,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -2191,7 +2191,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexInput,
   CreateIndexOutput,
   CreateIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIndexInput,
   output: CreateIndexOutput,
@@ -2235,7 +2235,7 @@ export const updateIndexType: API.OperationMethod<
   UpdateIndexTypeInput,
   UpdateIndexTypeOutput,
   UpdateIndexTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIndexTypeInput,
   output: UpdateIndexTypeOutput,
@@ -2265,7 +2265,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexInput,
   DeleteIndexOutput,
   DeleteIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIndexInput,
   output: DeleteIndexOutput,
@@ -2290,21 +2290,21 @@ export const listIndexes: API.OperationMethod<
   ListIndexesInput,
   ListIndexesOutput,
   ListIndexesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIndexesInput,
   ) => stream.Stream<
     ListIndexesOutput,
     ListIndexesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListIndexesInput,
   ) => stream.Stream<
     Index,
     ListIndexesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesInput,
@@ -2340,7 +2340,7 @@ export const createView: API.OperationMethod<
   CreateViewInput,
   CreateViewOutput,
   CreateViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateViewInput,
   output: CreateViewOutput,
@@ -2369,7 +2369,7 @@ export const getView: API.OperationMethod<
   GetViewInput,
   GetViewOutput,
   GetViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetViewInput,
   output: GetViewOutput,
@@ -2397,7 +2397,7 @@ export const updateView: API.OperationMethod<
   UpdateViewInput,
   UpdateViewOutput,
   UpdateViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateViewInput,
   output: UpdateViewOutput,
@@ -2427,7 +2427,7 @@ export const deleteView: API.OperationMethod<
   DeleteViewInput,
   DeleteViewOutput,
   DeleteViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteViewInput,
   output: DeleteViewOutput,
@@ -2455,21 +2455,21 @@ export const listViews: API.OperationMethod<
   ListViewsInput,
   ListViewsOutput,
   ListViewsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListViewsInput,
   ) => stream.Stream<
     ListViewsOutput,
     ListViewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListViewsInput,
   ) => stream.Stream<
     string,
     ListViewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListViewsInput,
@@ -2503,7 +2503,7 @@ export const associateDefaultView: API.OperationMethod<
   AssociateDefaultViewInput,
   AssociateDefaultViewOutput,
   AssociateDefaultViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateDefaultViewInput,
   output: AssociateDefaultViewOutput,

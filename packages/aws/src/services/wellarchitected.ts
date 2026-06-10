@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "WellArchitected",
   serviceShapeName: "WellArchitectedApiServiceLambda",
@@ -4622,7 +4622,7 @@ export const associateLenses: API.OperationMethod<
   AssociateLensesInput,
   AssociateLensesResponse,
   AssociateLensesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateLensesInput,
   output: AssociateLensesResponse,
@@ -4650,7 +4650,7 @@ export const associateProfiles: API.OperationMethod<
   AssociateProfilesInput,
   AssociateProfilesResponse,
   AssociateProfilesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateProfilesInput,
   output: AssociateProfilesResponse,
@@ -4700,7 +4700,7 @@ export const createLensShare: API.OperationMethod<
   CreateLensShareInput,
   CreateLensShareOutput,
   CreateLensShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLensShareInput,
   output: CreateLensShareOutput,
@@ -4737,7 +4737,7 @@ export const createLensVersion: API.OperationMethod<
   CreateLensVersionInput,
   CreateLensVersionOutput,
   CreateLensVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLensVersionInput,
   output: CreateLensVersionOutput,
@@ -4767,7 +4767,7 @@ export const createMilestone: API.OperationMethod<
   CreateMilestoneInput,
   CreateMilestoneOutput,
   CreateMilestoneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMilestoneInput,
   output: CreateMilestoneOutput,
@@ -4796,7 +4796,7 @@ export const createProfile: API.OperationMethod<
   CreateProfileInput,
   CreateProfileOutput,
   CreateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProfileInput,
   output: CreateProfileOutput,
@@ -4825,7 +4825,7 @@ export const createProfileShare: API.OperationMethod<
   CreateProfileShareInput,
   CreateProfileShareOutput,
   CreateProfileShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProfileShareInput,
   output: CreateProfileShareOutput,
@@ -4864,7 +4864,7 @@ export const createReviewTemplate: API.OperationMethod<
   CreateReviewTemplateInput,
   CreateReviewTemplateOutput,
   CreateReviewTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateReviewTemplateInput,
   output: CreateReviewTemplateOutput,
@@ -4909,7 +4909,7 @@ export const createTemplateShare: API.OperationMethod<
   CreateTemplateShareInput,
   CreateTemplateShareOutput,
   CreateTemplateShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTemplateShareInput,
   output: CreateTemplateShareOutput,
@@ -4962,7 +4962,7 @@ export const createWorkload: API.OperationMethod<
   CreateWorkloadInput,
   CreateWorkloadOutput,
   CreateWorkloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkloadInput,
   output: CreateWorkloadOutput,
@@ -5002,7 +5002,7 @@ export const createWorkloadShare: API.OperationMethod<
   CreateWorkloadShareInput,
   CreateWorkloadShareOutput,
   CreateWorkloadShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkloadShareInput,
   output: CreateWorkloadShareOutput,
@@ -5043,7 +5043,7 @@ export const deleteLens: API.OperationMethod<
   DeleteLensInput,
   DeleteLensResponse,
   DeleteLensError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLensInput,
   output: DeleteLensResponse,
@@ -5084,7 +5084,7 @@ export const deleteLensShare: API.OperationMethod<
   DeleteLensShareInput,
   DeleteLensShareResponse,
   DeleteLensShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLensShareInput,
   output: DeleteLensShareResponse,
@@ -5121,7 +5121,7 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileInput,
   DeleteProfileResponse,
   DeleteProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProfileInput,
   output: DeleteProfileResponse,
@@ -5149,7 +5149,7 @@ export const deleteProfileShare: API.OperationMethod<
   DeleteProfileShareInput,
   DeleteProfileShareResponse,
   DeleteProfileShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProfileShareInput,
   output: DeleteProfileShareResponse,
@@ -5183,7 +5183,7 @@ export const deleteReviewTemplate: API.OperationMethod<
   DeleteReviewTemplateInput,
   DeleteReviewTemplateResponse,
   DeleteReviewTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteReviewTemplateInput,
   output: DeleteReviewTemplateResponse,
@@ -5215,7 +5215,7 @@ export const deleteTemplateShare: API.OperationMethod<
   DeleteTemplateShareInput,
   DeleteTemplateShareResponse,
   DeleteTemplateShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTemplateShareInput,
   output: DeleteTemplateShareResponse,
@@ -5243,7 +5243,7 @@ export const deleteWorkload: API.OperationMethod<
   DeleteWorkloadInput,
   DeleteWorkloadResponse,
   DeleteWorkloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkloadInput,
   output: DeleteWorkloadResponse,
@@ -5271,7 +5271,7 @@ export const deleteWorkloadShare: API.OperationMethod<
   DeleteWorkloadShareInput,
   DeleteWorkloadShareResponse,
   DeleteWorkloadShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkloadShareInput,
   output: DeleteWorkloadShareResponse,
@@ -5304,7 +5304,7 @@ export const disassociateLenses: API.OperationMethod<
   DisassociateLensesInput,
   DisassociateLensesResponse,
   DisassociateLensesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateLensesInput,
   output: DisassociateLensesResponse,
@@ -5332,7 +5332,7 @@ export const disassociateProfiles: API.OperationMethod<
   DisassociateProfilesInput,
   DisassociateProfilesResponse,
   DisassociateProfilesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateProfilesInput,
   output: DisassociateProfilesResponse,
@@ -5374,7 +5374,7 @@ export const exportLens: API.OperationMethod<
   ExportLensInput,
   ExportLensOutput,
   ExportLensError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportLensInput,
   output: ExportLensOutput,
@@ -5400,7 +5400,7 @@ export const getAnswer: API.OperationMethod<
   GetAnswerInput,
   GetAnswerOutput,
   GetAnswerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAnswerInput,
   output: GetAnswerOutput,
@@ -5428,21 +5428,21 @@ export const getConsolidatedReport: API.OperationMethod<
   GetConsolidatedReportInput,
   GetConsolidatedReportOutput,
   GetConsolidatedReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetConsolidatedReportInput,
   ) => stream.Stream<
     GetConsolidatedReportOutput,
     GetConsolidatedReportError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetConsolidatedReportInput,
   ) => stream.Stream<
     unknown,
     GetConsolidatedReportError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetConsolidatedReportInput,
@@ -5473,7 +5473,7 @@ export const getGlobalSettings: API.OperationMethod<
   GetGlobalSettingsRequest,
   GetGlobalSettingsOutput,
   GetGlobalSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGlobalSettingsRequest,
   output: GetGlobalSettingsOutput,
@@ -5498,7 +5498,7 @@ export const getLens: API.OperationMethod<
   GetLensInput,
   GetLensOutput,
   GetLensError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLensInput,
   output: GetLensOutput,
@@ -5524,7 +5524,7 @@ export const getLensReview: API.OperationMethod<
   GetLensReviewInput,
   GetLensReviewOutput,
   GetLensReviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLensReviewInput,
   output: GetLensReviewOutput,
@@ -5550,7 +5550,7 @@ export const getLensReviewReport: API.OperationMethod<
   GetLensReviewReportInput,
   GetLensReviewReportOutput,
   GetLensReviewReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLensReviewReportInput,
   output: GetLensReviewReportOutput,
@@ -5576,7 +5576,7 @@ export const getLensVersionDifference: API.OperationMethod<
   GetLensVersionDifferenceInput,
   GetLensVersionDifferenceOutput,
   GetLensVersionDifferenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLensVersionDifferenceInput,
   output: GetLensVersionDifferenceOutput,
@@ -5602,7 +5602,7 @@ export const getMilestone: API.OperationMethod<
   GetMilestoneInput,
   GetMilestoneOutput,
   GetMilestoneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMilestoneInput,
   output: GetMilestoneOutput,
@@ -5628,7 +5628,7 @@ export const getProfile: API.OperationMethod<
   GetProfileInput,
   GetProfileOutput,
   GetProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProfileInput,
   output: GetProfileOutput,
@@ -5654,7 +5654,7 @@ export const getProfileTemplate: API.OperationMethod<
   GetProfileTemplateInput,
   GetProfileTemplateOutput,
   GetProfileTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProfileTemplateInput,
   output: GetProfileTemplateOutput,
@@ -5680,7 +5680,7 @@ export const getReviewTemplate: API.OperationMethod<
   GetReviewTemplateInput,
   GetReviewTemplateOutput,
   GetReviewTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReviewTemplateInput,
   output: GetReviewTemplateOutput,
@@ -5706,7 +5706,7 @@ export const getReviewTemplateAnswer: API.OperationMethod<
   GetReviewTemplateAnswerInput,
   GetReviewTemplateAnswerOutput,
   GetReviewTemplateAnswerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReviewTemplateAnswerInput,
   output: GetReviewTemplateAnswerOutput,
@@ -5732,7 +5732,7 @@ export const getReviewTemplateLensReview: API.OperationMethod<
   GetReviewTemplateLensReviewInput,
   GetReviewTemplateLensReviewOutput,
   GetReviewTemplateLensReviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReviewTemplateLensReviewInput,
   output: GetReviewTemplateLensReviewOutput,
@@ -5758,7 +5758,7 @@ export const getWorkload: API.OperationMethod<
   GetWorkloadInput,
   GetWorkloadOutput,
   GetWorkloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkloadInput,
   output: GetWorkloadOutput,
@@ -5807,7 +5807,7 @@ export const importLens: API.OperationMethod<
   ImportLensInput,
   ImportLensOutput,
   ImportLensError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportLensInput,
   output: ImportLensOutput,
@@ -5835,21 +5835,21 @@ export const listAnswers: API.OperationMethod<
   ListAnswersInput,
   ListAnswersOutput,
   ListAnswersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAnswersInput,
   ) => stream.Stream<
     ListAnswersOutput,
     ListAnswersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAnswersInput,
   ) => stream.Stream<
     unknown,
     ListAnswersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAnswersInput,
@@ -5881,21 +5881,21 @@ export const listCheckDetails: API.OperationMethod<
   ListCheckDetailsInput,
   ListCheckDetailsOutput,
   ListCheckDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCheckDetailsInput,
   ) => stream.Stream<
     ListCheckDetailsOutput,
     ListCheckDetailsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCheckDetailsInput,
   ) => stream.Stream<
     unknown,
     ListCheckDetailsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCheckDetailsInput,
@@ -5927,21 +5927,21 @@ export const listCheckSummaries: API.OperationMethod<
   ListCheckSummariesInput,
   ListCheckSummariesOutput,
   ListCheckSummariesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCheckSummariesInput,
   ) => stream.Stream<
     ListCheckSummariesOutput,
     ListCheckSummariesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCheckSummariesInput,
   ) => stream.Stream<
     unknown,
     ListCheckSummariesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCheckSummariesInput,
@@ -5972,21 +5972,21 @@ export const listLenses: API.OperationMethod<
   ListLensesInput,
   ListLensesOutput,
   ListLensesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLensesInput,
   ) => stream.Stream<
     ListLensesOutput,
     ListLensesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLensesInput,
   ) => stream.Stream<
     unknown,
     ListLensesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLensesInput,
@@ -6017,21 +6017,21 @@ export const listLensReviewImprovements: API.OperationMethod<
   ListLensReviewImprovementsInput,
   ListLensReviewImprovementsOutput,
   ListLensReviewImprovementsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLensReviewImprovementsInput,
   ) => stream.Stream<
     ListLensReviewImprovementsOutput,
     ListLensReviewImprovementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLensReviewImprovementsInput,
   ) => stream.Stream<
     unknown,
     ListLensReviewImprovementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLensReviewImprovementsInput,
@@ -6063,21 +6063,21 @@ export const listLensReviews: API.OperationMethod<
   ListLensReviewsInput,
   ListLensReviewsOutput,
   ListLensReviewsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLensReviewsInput,
   ) => stream.Stream<
     ListLensReviewsOutput,
     ListLensReviewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLensReviewsInput,
   ) => stream.Stream<
     unknown,
     ListLensReviewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLensReviewsInput,
@@ -6109,21 +6109,21 @@ export const listLensShares: API.OperationMethod<
   ListLensSharesInput,
   ListLensSharesOutput,
   ListLensSharesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLensSharesInput,
   ) => stream.Stream<
     ListLensSharesOutput,
     ListLensSharesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLensSharesInput,
   ) => stream.Stream<
     unknown,
     ListLensSharesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLensSharesInput,
@@ -6155,21 +6155,21 @@ export const listMilestones: API.OperationMethod<
   ListMilestonesInput,
   ListMilestonesOutput,
   ListMilestonesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMilestonesInput,
   ) => stream.Stream<
     ListMilestonesOutput,
     ListMilestonesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMilestonesInput,
   ) => stream.Stream<
     unknown,
     ListMilestonesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMilestonesInput,
@@ -6200,21 +6200,21 @@ export const listNotifications: API.OperationMethod<
   ListNotificationsInput,
   ListNotificationsOutput,
   ListNotificationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListNotificationsInput,
   ) => stream.Stream<
     ListNotificationsOutput,
     ListNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListNotificationsInput,
   ) => stream.Stream<
     unknown,
     ListNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationsInput,
@@ -6244,21 +6244,21 @@ export const listProfileNotifications: API.OperationMethod<
   ListProfileNotificationsInput,
   ListProfileNotificationsOutput,
   ListProfileNotificationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProfileNotificationsInput,
   ) => stream.Stream<
     ListProfileNotificationsOutput,
     ListProfileNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProfileNotificationsInput,
   ) => stream.Stream<
     unknown,
     ListProfileNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProfileNotificationsInput,
@@ -6288,21 +6288,21 @@ export const listProfiles: API.OperationMethod<
   ListProfilesInput,
   ListProfilesOutput,
   ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProfilesInput,
   ) => stream.Stream<
     ListProfilesOutput,
     ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProfilesInput,
   ) => stream.Stream<
     unknown,
     ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesInput,
@@ -6333,21 +6333,21 @@ export const listProfileShares: API.OperationMethod<
   ListProfileSharesInput,
   ListProfileSharesOutput,
   ListProfileSharesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProfileSharesInput,
   ) => stream.Stream<
     ListProfileSharesOutput,
     ListProfileSharesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProfileSharesInput,
   ) => stream.Stream<
     unknown,
     ListProfileSharesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProfileSharesInput,
@@ -6379,21 +6379,21 @@ export const listReviewTemplateAnswers: API.OperationMethod<
   ListReviewTemplateAnswersInput,
   ListReviewTemplateAnswersOutput,
   ListReviewTemplateAnswersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListReviewTemplateAnswersInput,
   ) => stream.Stream<
     ListReviewTemplateAnswersOutput,
     ListReviewTemplateAnswersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListReviewTemplateAnswersInput,
   ) => stream.Stream<
     unknown,
     ListReviewTemplateAnswersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReviewTemplateAnswersInput,
@@ -6424,21 +6424,21 @@ export const listReviewTemplates: API.OperationMethod<
   ListReviewTemplatesInput,
   ListReviewTemplatesOutput,
   ListReviewTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListReviewTemplatesInput,
   ) => stream.Stream<
     ListReviewTemplatesOutput,
     ListReviewTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListReviewTemplatesInput,
   ) => stream.Stream<
     unknown,
     ListReviewTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReviewTemplatesInput,
@@ -6472,21 +6472,21 @@ export const listShareInvitations: API.OperationMethod<
   ListShareInvitationsInput,
   ListShareInvitationsOutput,
   ListShareInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListShareInvitationsInput,
   ) => stream.Stream<
     ListShareInvitationsOutput,
     ListShareInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListShareInvitationsInput,
   ) => stream.Stream<
     unknown,
     ListShareInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListShareInvitationsInput,
@@ -6516,7 +6516,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -6536,21 +6536,21 @@ export const listTemplateShares: API.OperationMethod<
   ListTemplateSharesInput,
   ListTemplateSharesOutput,
   ListTemplateSharesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTemplateSharesInput,
   ) => stream.Stream<
     ListTemplateSharesOutput,
     ListTemplateSharesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTemplateSharesInput,
   ) => stream.Stream<
     unknown,
     ListTemplateSharesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateSharesInput,
@@ -6581,21 +6581,21 @@ export const listWorkloads: API.OperationMethod<
   ListWorkloadsInput,
   ListWorkloadsOutput,
   ListWorkloadsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkloadsInput,
   ) => stream.Stream<
     ListWorkloadsOutput,
     ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkloadsInput,
   ) => stream.Stream<
     unknown,
     ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadsInput,
@@ -6626,21 +6626,21 @@ export const listWorkloadShares: API.OperationMethod<
   ListWorkloadSharesInput,
   ListWorkloadSharesOutput,
   ListWorkloadSharesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkloadSharesInput,
   ) => stream.Stream<
     ListWorkloadSharesOutput,
     ListWorkloadSharesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkloadSharesInput,
   ) => stream.Stream<
     unknown,
     ListWorkloadSharesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadSharesInput,
@@ -6671,7 +6671,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -6694,7 +6694,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -6715,7 +6715,7 @@ export const updateAnswer: API.OperationMethod<
   UpdateAnswerInput,
   UpdateAnswerOutput,
   UpdateAnswerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAnswerInput,
   output: UpdateAnswerOutput,
@@ -6742,7 +6742,7 @@ export const updateGlobalSettings: API.OperationMethod<
   UpdateGlobalSettingsInput,
   UpdateGlobalSettingsResponse,
   UpdateGlobalSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGlobalSettingsInput,
   output: UpdateGlobalSettingsResponse,
@@ -6769,7 +6769,7 @@ export const updateIntegration: API.OperationMethod<
   UpdateIntegrationInput,
   UpdateIntegrationResponse,
   UpdateIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIntegrationInput,
   output: UpdateIntegrationResponse,
@@ -6797,7 +6797,7 @@ export const updateLensReview: API.OperationMethod<
   UpdateLensReviewInput,
   UpdateLensReviewOutput,
   UpdateLensReviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLensReviewInput,
   output: UpdateLensReviewOutput,
@@ -6825,7 +6825,7 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileInput,
   UpdateProfileOutput,
   UpdateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProfileInput,
   output: UpdateProfileOutput,
@@ -6853,7 +6853,7 @@ export const updateReviewTemplate: API.OperationMethod<
   UpdateReviewTemplateInput,
   UpdateReviewTemplateOutput,
   UpdateReviewTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateReviewTemplateInput,
   output: UpdateReviewTemplateOutput,
@@ -6881,7 +6881,7 @@ export const updateReviewTemplateAnswer: API.OperationMethod<
   UpdateReviewTemplateAnswerInput,
   UpdateReviewTemplateAnswerOutput,
   UpdateReviewTemplateAnswerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateReviewTemplateAnswerInput,
   output: UpdateReviewTemplateAnswerOutput,
@@ -6909,7 +6909,7 @@ export const updateReviewTemplateLensReview: API.OperationMethod<
   UpdateReviewTemplateLensReviewInput,
   UpdateReviewTemplateLensReviewOutput,
   UpdateReviewTemplateLensReviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateReviewTemplateLensReviewInput,
   output: UpdateReviewTemplateLensReviewOutput,
@@ -6939,7 +6939,7 @@ export const updateShareInvitation: API.OperationMethod<
   UpdateShareInvitationInput,
   UpdateShareInvitationOutput,
   UpdateShareInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateShareInvitationInput,
   output: UpdateShareInvitationOutput,
@@ -6967,7 +6967,7 @@ export const updateWorkload: API.OperationMethod<
   UpdateWorkloadInput,
   UpdateWorkloadOutput,
   UpdateWorkloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkloadInput,
   output: UpdateWorkloadOutput,
@@ -6995,7 +6995,7 @@ export const updateWorkloadShare: API.OperationMethod<
   UpdateWorkloadShareInput,
   UpdateWorkloadShareOutput,
   UpdateWorkloadShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkloadShareInput,
   output: UpdateWorkloadShareOutput,
@@ -7024,7 +7024,7 @@ export const upgradeLensReview: API.OperationMethod<
   UpgradeLensReviewInput,
   UpgradeLensReviewResponse,
   UpgradeLensReviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpgradeLensReviewInput,
   output: UpgradeLensReviewResponse,
@@ -7054,7 +7054,7 @@ export const upgradeProfileVersion: API.OperationMethod<
   UpgradeProfileVersionInput,
   UpgradeProfileVersionResponse,
   UpgradeProfileVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpgradeProfileVersionInput,
   output: UpgradeProfileVersionResponse,
@@ -7083,7 +7083,7 @@ export const upgradeReviewTemplateLensReview: API.OperationMethod<
   UpgradeReviewTemplateLensReviewInput,
   UpgradeReviewTemplateLensReviewResponse,
   UpgradeReviewTemplateLensReviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpgradeReviewTemplateLensReviewInput,
   output: UpgradeReviewTemplateLensReviewResponse,

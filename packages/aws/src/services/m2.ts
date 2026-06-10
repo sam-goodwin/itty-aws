@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "m2",
   serviceShapeName: "AwsSupernovaControlPlaneService",
@@ -2442,7 +2442,7 @@ export const getSignedBluinsightsUrl: API.OperationMethod<
   GetSignedBluinsightsUrlRequest,
   GetSignedBluinsightsUrlResponse,
   GetSignedBluinsightsUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSignedBluinsightsUrlRequest,
   output: GetSignedBluinsightsUrlResponse,
@@ -2461,21 +2461,21 @@ export const listEngineVersions: API.OperationMethod<
   ListEngineVersionsRequest,
   ListEngineVersionsResponse,
   ListEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEngineVersionsRequest,
   ) => stream.Stream<
     ListEngineVersionsResponse,
     ListEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEngineVersionsRequest,
   ) => stream.Stream<
     EngineVersionsSummary,
     ListEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEngineVersionsRequest,
@@ -2507,7 +2507,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2534,7 +2534,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2561,7 +2561,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2589,7 +2589,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationRequest,
   CreateApplicationResponse,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
@@ -2616,7 +2616,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationRequest,
   GetApplicationResponse,
   GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
@@ -2643,7 +2643,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationRequest,
   UpdateApplicationResponse,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
@@ -2670,7 +2670,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationRequest,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
@@ -2697,21 +2697,21 @@ export const listApplications: API.OperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListApplicationsRequest,
   ) => stream.Stream<
     ListApplicationsResponse,
     ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListApplicationsRequest,
   ) => stream.Stream<
     ApplicationSummary,
     ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
@@ -2744,7 +2744,7 @@ export const cancelBatchJobExecution: API.OperationMethod<
   CancelBatchJobExecutionRequest,
   CancelBatchJobExecutionResponse,
   CancelBatchJobExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelBatchJobExecutionRequest,
   output: CancelBatchJobExecutionResponse,
@@ -2773,7 +2773,7 @@ export const createDataSetExportTask: API.OperationMethod<
   CreateDataSetExportTaskRequest,
   CreateDataSetExportTaskResponse,
   CreateDataSetExportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataSetExportTaskRequest,
   output: CreateDataSetExportTaskResponse,
@@ -2803,7 +2803,7 @@ export const createDataSetImportTask: API.OperationMethod<
   CreateDataSetImportTaskRequest,
   CreateDataSetImportTaskResponse,
   CreateDataSetImportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataSetImportTaskRequest,
   output: CreateDataSetImportTaskResponse,
@@ -2834,7 +2834,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentRequest,
   CreateDeploymentResponse,
   CreateDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeploymentRequest,
   output: CreateDeploymentResponse,
@@ -2866,7 +2866,7 @@ export const deleteApplicationFromEnvironment: API.OperationMethod<
   DeleteApplicationFromEnvironmentRequest,
   DeleteApplicationFromEnvironmentResponse,
   DeleteApplicationFromEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationFromEnvironmentRequest,
   output: DeleteApplicationFromEnvironmentResponse,
@@ -2893,7 +2893,7 @@ export const getApplicationVersion: API.OperationMethod<
   GetApplicationVersionRequest,
   GetApplicationVersionResponse,
   GetApplicationVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationVersionRequest,
   output: GetApplicationVersionResponse,
@@ -2919,7 +2919,7 @@ export const getBatchJobExecution: API.OperationMethod<
   GetBatchJobExecutionRequest,
   GetBatchJobExecutionResponse,
   GetBatchJobExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBatchJobExecutionRequest,
   output: GetBatchJobExecutionResponse,
@@ -2948,7 +2948,7 @@ export const getDataSetDetails: API.OperationMethod<
   GetDataSetDetailsRequest,
   GetDataSetDetailsResponse,
   GetDataSetDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataSetDetailsRequest,
   output: GetDataSetDetailsResponse,
@@ -2977,7 +2977,7 @@ export const getDataSetExportTask: API.OperationMethod<
   GetDataSetExportTaskRequest,
   GetDataSetExportTaskResponse,
   GetDataSetExportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataSetExportTaskRequest,
   output: GetDataSetExportTaskResponse,
@@ -3003,7 +3003,7 @@ export const getDataSetImportTask: API.OperationMethod<
   GetDataSetImportTaskRequest,
   GetDataSetImportTaskResponse,
   GetDataSetImportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataSetImportTaskRequest,
   output: GetDataSetImportTaskResponse,
@@ -3029,7 +3029,7 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentRequest,
   GetDeploymentResponse,
   GetDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentRequest,
   output: GetDeploymentResponse,
@@ -3055,21 +3055,21 @@ export const listApplicationVersions: API.OperationMethod<
   ListApplicationVersionsRequest,
   ListApplicationVersionsResponse,
   ListApplicationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListApplicationVersionsRequest,
   ) => stream.Stream<
     ListApplicationVersionsResponse,
     ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListApplicationVersionsRequest,
   ) => stream.Stream<
     ApplicationVersionSummary,
     ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationVersionsRequest,
@@ -3104,21 +3104,21 @@ export const listBatchJobDefinitions: API.OperationMethod<
   ListBatchJobDefinitionsRequest,
   ListBatchJobDefinitionsResponse,
   ListBatchJobDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBatchJobDefinitionsRequest,
   ) => stream.Stream<
     ListBatchJobDefinitionsResponse,
     ListBatchJobDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBatchJobDefinitionsRequest,
   ) => stream.Stream<
     BatchJobDefinition,
     ListBatchJobDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBatchJobDefinitionsRequest,
@@ -3152,21 +3152,21 @@ export const listBatchJobExecutions: API.OperationMethod<
   ListBatchJobExecutionsRequest,
   ListBatchJobExecutionsResponse,
   ListBatchJobExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBatchJobExecutionsRequest,
   ) => stream.Stream<
     ListBatchJobExecutionsResponse,
     ListBatchJobExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBatchJobExecutionsRequest,
   ) => stream.Stream<
     BatchJobExecutionSummary,
     ListBatchJobExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBatchJobExecutionsRequest,
@@ -3200,7 +3200,7 @@ export const listBatchJobRestartPoints: API.OperationMethod<
   ListBatchJobRestartPointsRequest,
   ListBatchJobRestartPointsResponse,
   ListBatchJobRestartPointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBatchJobRestartPointsRequest,
   output: ListBatchJobRestartPointsResponse,
@@ -3227,21 +3227,21 @@ export const listDataSetExportHistory: API.OperationMethod<
   ListDataSetExportHistoryRequest,
   ListDataSetExportHistoryResponse,
   ListDataSetExportHistoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataSetExportHistoryRequest,
   ) => stream.Stream<
     ListDataSetExportHistoryResponse,
     ListDataSetExportHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataSetExportHistoryRequest,
   ) => stream.Stream<
     DataSetExportTask,
     ListDataSetExportHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetExportHistoryRequest,
@@ -3274,21 +3274,21 @@ export const listDataSetImportHistory: API.OperationMethod<
   ListDataSetImportHistoryRequest,
   ListDataSetImportHistoryResponse,
   ListDataSetImportHistoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataSetImportHistoryRequest,
   ) => stream.Stream<
     ListDataSetImportHistoryResponse,
     ListDataSetImportHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataSetImportHistoryRequest,
   ) => stream.Stream<
     DataSetImportTask,
     ListDataSetImportHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetImportHistoryRequest,
@@ -3326,21 +3326,21 @@ export const listDataSets: API.OperationMethod<
   ListDataSetsRequest,
   ListDataSetsResponse,
   ListDataSetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataSetsRequest,
   ) => stream.Stream<
     ListDataSetsResponse,
     ListDataSetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataSetsRequest,
   ) => stream.Stream<
     DataSetSummary,
     ListDataSetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetsRequest,
@@ -3378,21 +3378,21 @@ export const listDeployments: API.OperationMethod<
   ListDeploymentsRequest,
   ListDeploymentsResponse,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDeploymentsRequest,
   ) => stream.Stream<
     ListDeploymentsResponse,
     ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDeploymentsRequest,
   ) => stream.Stream<
     DeploymentSummary,
     ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
@@ -3426,7 +3426,7 @@ export const startApplication: API.OperationMethod<
   StartApplicationRequest,
   StartApplicationResponse,
   StartApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartApplicationRequest,
   output: StartApplicationResponse,
@@ -3455,7 +3455,7 @@ export const startBatchJob: API.OperationMethod<
   StartBatchJobRequest,
   StartBatchJobResponse,
   StartBatchJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartBatchJobRequest,
   output: StartBatchJobResponse,
@@ -3483,7 +3483,7 @@ export const stopApplication: API.OperationMethod<
   StopApplicationRequest,
   StopApplicationResponse,
   StopApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopApplicationRequest,
   output: StopApplicationResponse,
@@ -3511,7 +3511,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentRequest,
   CreateEnvironmentResponse,
   CreateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
@@ -3538,7 +3538,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentRequest,
   GetEnvironmentResponse,
   GetEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
@@ -3566,7 +3566,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentRequest,
   UpdateEnvironmentResponse,
   UpdateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentRequest,
   output: UpdateEnvironmentResponse,
@@ -3596,7 +3596,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentRequest,
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
@@ -3621,21 +3621,21 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsRequest,
   ListEnvironmentsResponse,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnvironmentsRequest,
   ) => stream.Stream<
     ListEnvironmentsResponse,
     ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnvironmentsRequest,
   ) => stream.Stream<
     EnvironmentSummary,
     ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,

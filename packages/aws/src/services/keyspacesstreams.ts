@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "KeyspacesStreams",
   serviceShapeName: "KeyspacesStreams",
@@ -1211,7 +1211,7 @@ export const getRecords: API.OperationMethod<
   GetRecordsInput,
   GetRecordsOutput,
   GetRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecordsInput,
   output: GetRecordsOutput,
@@ -1237,7 +1237,7 @@ export const getShardIterator: API.OperationMethod<
   GetShardIteratorInput,
   GetShardIteratorOutput,
   GetShardIteratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetShardIteratorInput,
   output: GetShardIteratorOutput,
@@ -1263,21 +1263,21 @@ export const getStream: API.OperationMethod<
   GetStreamInput,
   GetStreamOutput,
   GetStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetStreamInput,
   ) => stream.Stream<
     GetStreamOutput,
     GetStreamError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetStreamInput,
   ) => stream.Stream<
     Shard,
     GetStreamError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetStreamInput,
@@ -1310,21 +1310,21 @@ export const listStreams: API.OperationMethod<
   ListStreamsInput,
   ListStreamsOutput,
   ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStreamsInput,
   ) => stream.Stream<
     ListStreamsOutput,
     ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStreamsInput,
   ) => stream.Stream<
     Stream,
     ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsInput,

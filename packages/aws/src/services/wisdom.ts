@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Wisdom",
@@ -2548,7 +2548,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2565,7 +2565,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2579,7 +2579,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2598,7 +2598,7 @@ export const createAssistant: API.OperationMethod<
   CreateAssistantRequest,
   CreateAssistantResponse,
   CreateAssistantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAssistantRequest,
   output: CreateAssistantResponse,
@@ -2621,7 +2621,7 @@ export const getAssistant: API.OperationMethod<
   GetAssistantRequest,
   GetAssistantResponse,
   GetAssistantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssistantRequest,
   output: GetAssistantResponse,
@@ -2643,7 +2643,7 @@ export const deleteAssistant: API.OperationMethod<
   DeleteAssistantRequest,
   DeleteAssistantResponse,
   DeleteAssistantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAssistantRequest,
   output: DeleteAssistantResponse,
@@ -2664,21 +2664,21 @@ export const listAssistants: API.OperationMethod<
   ListAssistantsRequest,
   ListAssistantsResponse,
   ListAssistantsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAssistantsRequest,
   ) => stream.Stream<
     ListAssistantsResponse,
     ListAssistantsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAssistantsRequest,
   ) => stream.Stream<
     AssistantSummary,
     ListAssistantsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssistantsRequest,
@@ -2706,7 +2706,7 @@ export const getRecommendations: API.OperationMethod<
   GetRecommendationsRequest,
   GetRecommendationsResponse,
   GetRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecommendationsRequest,
   output: GetRecommendationsResponse,
@@ -2730,7 +2730,7 @@ export const notifyRecommendationsReceived: API.OperationMethod<
   NotifyRecommendationsReceivedRequest,
   NotifyRecommendationsReceivedResponse,
   NotifyRecommendationsReceivedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: NotifyRecommendationsReceivedRequest,
   output: NotifyRecommendationsReceivedResponse,
@@ -2754,21 +2754,21 @@ export const queryAssistant: API.OperationMethod<
   QueryAssistantRequest,
   QueryAssistantResponse,
   QueryAssistantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: QueryAssistantRequest,
   ) => stream.Stream<
     QueryAssistantResponse,
     QueryAssistantError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: QueryAssistantRequest,
   ) => stream.Stream<
     ResultData,
     QueryAssistantError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: QueryAssistantRequest,
@@ -2798,21 +2798,21 @@ export const searchSessions: API.OperationMethod<
   SearchSessionsRequest,
   SearchSessionsResponse,
   SearchSessionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchSessionsRequest,
   ) => stream.Stream<
     SearchSessionsResponse,
     SearchSessionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchSessionsRequest,
   ) => stream.Stream<
     SessionSummary,
     SearchSessionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchSessionsRequest,
@@ -2845,7 +2845,7 @@ export const createAssistantAssociation: API.OperationMethod<
   CreateAssistantAssociationRequest,
   CreateAssistantAssociationResponse,
   CreateAssistantAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAssistantAssociationRequest,
   output: CreateAssistantAssociationResponse,
@@ -2869,7 +2869,7 @@ export const getAssistantAssociation: API.OperationMethod<
   GetAssistantAssociationRequest,
   GetAssistantAssociationResponse,
   GetAssistantAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssistantAssociationRequest,
   output: GetAssistantAssociationResponse,
@@ -2891,7 +2891,7 @@ export const deleteAssistantAssociation: API.OperationMethod<
   DeleteAssistantAssociationRequest,
   DeleteAssistantAssociationResponse,
   DeleteAssistantAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAssistantAssociationRequest,
   output: DeleteAssistantAssociationResponse,
@@ -2913,21 +2913,21 @@ export const listAssistantAssociations: API.OperationMethod<
   ListAssistantAssociationsRequest,
   ListAssistantAssociationsResponse,
   ListAssistantAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAssistantAssociationsRequest,
   ) => stream.Stream<
     ListAssistantAssociationsResponse,
     ListAssistantAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAssistantAssociationsRequest,
   ) => stream.Stream<
     AssistantAssociationSummary,
     ListAssistantAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssistantAssociationsRequest,
@@ -2958,7 +2958,7 @@ export const createSession: API.OperationMethod<
   CreateSessionRequest,
   CreateSessionResponse,
   CreateSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSessionRequest,
   output: CreateSessionResponse,
@@ -2976,7 +2976,7 @@ export const getSession: API.OperationMethod<
   GetSessionRequest,
   GetSessionResponse,
   GetSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
@@ -3016,7 +3016,7 @@ export const createKnowledgeBase: API.OperationMethod<
   CreateKnowledgeBaseRequest,
   CreateKnowledgeBaseResponse,
   CreateKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKnowledgeBaseRequest,
   output: CreateKnowledgeBaseResponse,
@@ -3039,7 +3039,7 @@ export const getKnowledgeBase: API.OperationMethod<
   GetKnowledgeBaseRequest,
   GetKnowledgeBaseResponse,
   GetKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKnowledgeBaseRequest,
   output: GetKnowledgeBaseResponse,
@@ -3069,7 +3069,7 @@ export const deleteKnowledgeBase: API.OperationMethod<
   DeleteKnowledgeBaseRequest,
   DeleteKnowledgeBaseResponse,
   DeleteKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKnowledgeBaseRequest,
   output: DeleteKnowledgeBaseResponse,
@@ -3091,21 +3091,21 @@ export const listKnowledgeBases: API.OperationMethod<
   ListKnowledgeBasesRequest,
   ListKnowledgeBasesResponse,
   ListKnowledgeBasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKnowledgeBasesRequest,
   ) => stream.Stream<
     ListKnowledgeBasesResponse,
     ListKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKnowledgeBasesRequest,
   ) => stream.Stream<
     KnowledgeBaseSummary,
     ListKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKnowledgeBasesRequest,
@@ -3131,7 +3131,7 @@ export const deleteImportJob: API.OperationMethod<
   DeleteImportJobRequest,
   DeleteImportJobResponse,
   DeleteImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteImportJobRequest,
   output: DeleteImportJobResponse,
@@ -3154,7 +3154,7 @@ export const getImportJob: API.OperationMethod<
   GetImportJobRequest,
   GetImportJobResponse,
   GetImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetImportJobRequest,
   output: GetImportJobResponse,
@@ -3175,21 +3175,21 @@ export const listImportJobs: API.OperationMethod<
   ListImportJobsRequest,
   ListImportJobsResponse,
   ListImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListImportJobsRequest,
   ) => stream.Stream<
     ListImportJobsResponse,
     ListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListImportJobsRequest,
   ) => stream.Stream<
     ImportJobSummary,
     ListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListImportJobsRequest,
@@ -3214,7 +3214,7 @@ export const removeKnowledgeBaseTemplateUri: API.OperationMethod<
   RemoveKnowledgeBaseTemplateUriRequest,
   RemoveKnowledgeBaseTemplateUriResponse,
   RemoveKnowledgeBaseTemplateUriError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveKnowledgeBaseTemplateUriRequest,
   output: RemoveKnowledgeBaseTemplateUriResponse,
@@ -3237,21 +3237,21 @@ export const searchContent: API.OperationMethod<
   SearchContentRequest,
   SearchContentResponse,
   SearchContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchContentRequest,
   ) => stream.Stream<
     SearchContentResponse,
     SearchContentError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchContentRequest,
   ) => stream.Stream<
     ContentSummary,
     SearchContentError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchContentRequest,
@@ -3281,21 +3281,21 @@ export const searchQuickResponses: API.OperationMethod<
   SearchQuickResponsesRequest,
   SearchQuickResponsesResponse,
   SearchQuickResponsesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchQuickResponsesRequest,
   ) => stream.Stream<
     SearchQuickResponsesResponse,
     SearchQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchQuickResponsesRequest,
   ) => stream.Stream<
     QuickResponseSearchResultData,
     SearchQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchQuickResponsesRequest,
@@ -3328,7 +3328,7 @@ export const startContentUpload: API.OperationMethod<
   StartContentUploadRequest,
   StartContentUploadResponse,
   StartContentUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartContentUploadRequest,
   output: StartContentUploadResponse,
@@ -3355,7 +3355,7 @@ export const startImportJob: API.OperationMethod<
   StartImportJobRequest,
   StartImportJobResponse,
   StartImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartImportJobRequest,
   output: StartImportJobResponse,
@@ -3383,7 +3383,7 @@ export const updateKnowledgeBaseTemplateUri: API.OperationMethod<
   UpdateKnowledgeBaseTemplateUriRequest,
   UpdateKnowledgeBaseTemplateUriResponse,
   UpdateKnowledgeBaseTemplateUriError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKnowledgeBaseTemplateUriRequest,
   output: UpdateKnowledgeBaseTemplateUriResponse,
@@ -3408,7 +3408,7 @@ export const createContent: API.OperationMethod<
   CreateContentRequest,
   CreateContentResponse,
   CreateContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContentRequest,
   output: CreateContentResponse,
@@ -3432,7 +3432,7 @@ export const getContent: API.OperationMethod<
   GetContentRequest,
   GetContentResponse,
   GetContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContentRequest,
   output: GetContentResponse,
@@ -3455,7 +3455,7 @@ export const updateContent: API.OperationMethod<
   UpdateContentRequest,
   UpdateContentResponse,
   UpdateContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContentRequest,
   output: UpdateContentResponse,
@@ -3478,7 +3478,7 @@ export const deleteContent: API.OperationMethod<
   DeleteContentRequest,
   DeleteContentResponse,
   DeleteContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContentRequest,
   output: DeleteContentResponse,
@@ -3500,21 +3500,21 @@ export const listContents: API.OperationMethod<
   ListContentsRequest,
   ListContentsResponse,
   ListContentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListContentsRequest,
   ) => stream.Stream<
     ListContentsResponse,
     ListContentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListContentsRequest,
   ) => stream.Stream<
     ContentSummary,
     ListContentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListContentsRequest,
@@ -3543,7 +3543,7 @@ export const getContentSummary: API.OperationMethod<
   GetContentSummaryRequest,
   GetContentSummaryResponse,
   GetContentSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContentSummaryRequest,
   output: GetContentSummaryResponse,
@@ -3567,7 +3567,7 @@ export const createQuickResponse: API.OperationMethod<
   CreateQuickResponseRequest,
   CreateQuickResponseResponse,
   CreateQuickResponseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateQuickResponseRequest,
   output: CreateQuickResponseResponse,
@@ -3591,7 +3591,7 @@ export const getQuickResponse: API.OperationMethod<
   GetQuickResponseRequest,
   GetQuickResponseResponse,
   GetQuickResponseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQuickResponseRequest,
   output: GetQuickResponseResponse,
@@ -3615,7 +3615,7 @@ export const updateQuickResponse: API.OperationMethod<
   UpdateQuickResponseRequest,
   UpdateQuickResponseResponse,
   UpdateQuickResponseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQuickResponseRequest,
   output: UpdateQuickResponseResponse,
@@ -3639,7 +3639,7 @@ export const deleteQuickResponse: API.OperationMethod<
   DeleteQuickResponseRequest,
   DeleteQuickResponseResponse,
   DeleteQuickResponseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteQuickResponseRequest,
   output: DeleteQuickResponseResponse,
@@ -3661,21 +3661,21 @@ export const listQuickResponses: API.OperationMethod<
   ListQuickResponsesRequest,
   ListQuickResponsesResponse,
   ListQuickResponsesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListQuickResponsesRequest,
   ) => stream.Stream<
     ListQuickResponsesResponse,
     ListQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListQuickResponsesRequest,
   ) => stream.Stream<
     QuickResponseSummary,
     ListQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQuickResponsesRequest,

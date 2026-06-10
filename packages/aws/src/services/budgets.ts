@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Budgets",
@@ -1616,7 +1616,7 @@ export const createBudget: API.OperationMethod<
   CreateBudgetRequest,
   CreateBudgetResponse,
   CreateBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBudgetRequest,
   output: CreateBudgetResponse,
@@ -1649,7 +1649,7 @@ export const createBudgetAction: API.OperationMethod<
   CreateBudgetActionRequest,
   CreateBudgetActionResponse,
   CreateBudgetActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBudgetActionRequest,
   output: CreateBudgetActionResponse,
@@ -1680,7 +1680,7 @@ export const createNotification: API.OperationMethod<
   CreateNotificationRequest,
   CreateNotificationResponse,
   CreateNotificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNotificationRequest,
   output: CreateNotificationResponse,
@@ -1710,7 +1710,7 @@ export const createSubscriber: API.OperationMethod<
   CreateSubscriberRequest,
   CreateSubscriberResponse,
   CreateSubscriberError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubscriberRequest,
   output: CreateSubscriberResponse,
@@ -1740,7 +1740,7 @@ export const deleteBudget: API.OperationMethod<
   DeleteBudgetRequest,
   DeleteBudgetResponse,
   DeleteBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBudgetRequest,
   output: DeleteBudgetResponse,
@@ -1767,7 +1767,7 @@ export const deleteBudgetAction: API.OperationMethod<
   DeleteBudgetActionRequest,
   DeleteBudgetActionResponse,
   DeleteBudgetActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBudgetActionRequest,
   output: DeleteBudgetActionResponse,
@@ -1796,7 +1796,7 @@ export const deleteNotification: API.OperationMethod<
   DeleteNotificationRequest,
   DeleteNotificationResponse,
   DeleteNotificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNotificationRequest,
   output: DeleteNotificationResponse,
@@ -1824,7 +1824,7 @@ export const deleteSubscriber: API.OperationMethod<
   DeleteSubscriberRequest,
   DeleteSubscriberResponse,
   DeleteSubscriberError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriberRequest,
   output: DeleteSubscriberResponse,
@@ -1853,7 +1853,7 @@ export const describeBudget: API.OperationMethod<
   DescribeBudgetRequest,
   DescribeBudgetResponse,
   DescribeBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeBudgetRequest,
   output: DescribeBudgetResponse,
@@ -1879,7 +1879,7 @@ export const describeBudgetAction: API.OperationMethod<
   DescribeBudgetActionRequest,
   DescribeBudgetActionResponse,
   DescribeBudgetActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeBudgetActionRequest,
   output: DescribeBudgetActionResponse,
@@ -1906,21 +1906,21 @@ export const describeBudgetActionHistories: API.OperationMethod<
   DescribeBudgetActionHistoriesRequest,
   DescribeBudgetActionHistoriesResponse,
   DescribeBudgetActionHistoriesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeBudgetActionHistoriesRequest,
   ) => stream.Stream<
     DescribeBudgetActionHistoriesResponse,
     DescribeBudgetActionHistoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeBudgetActionHistoriesRequest,
   ) => stream.Stream<
     ActionHistory,
     DescribeBudgetActionHistoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetActionHistoriesRequest,
@@ -1954,21 +1954,21 @@ export const describeBudgetActionsForAccount: API.OperationMethod<
   DescribeBudgetActionsForAccountRequest,
   DescribeBudgetActionsForAccountResponse,
   DescribeBudgetActionsForAccountError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeBudgetActionsForAccountRequest,
   ) => stream.Stream<
     DescribeBudgetActionsForAccountResponse,
     DescribeBudgetActionsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeBudgetActionsForAccountRequest,
   ) => stream.Stream<
     Action,
     DescribeBudgetActionsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetActionsForAccountRequest,
@@ -2002,21 +2002,21 @@ export const describeBudgetActionsForBudget: API.OperationMethod<
   DescribeBudgetActionsForBudgetRequest,
   DescribeBudgetActionsForBudgetResponse,
   DescribeBudgetActionsForBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeBudgetActionsForBudgetRequest,
   ) => stream.Stream<
     DescribeBudgetActionsForBudgetResponse,
     DescribeBudgetActionsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeBudgetActionsForBudgetRequest,
   ) => stream.Stream<
     Action,
     DescribeBudgetActionsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetActionsForBudgetRequest,
@@ -2052,21 +2052,21 @@ export const describeBudgetNotificationsForAccount: API.OperationMethod<
   DescribeBudgetNotificationsForAccountRequest,
   DescribeBudgetNotificationsForAccountResponse,
   DescribeBudgetNotificationsForAccountError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeBudgetNotificationsForAccountRequest,
   ) => stream.Stream<
     DescribeBudgetNotificationsForAccountResponse,
     DescribeBudgetNotificationsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeBudgetNotificationsForAccountRequest,
   ) => stream.Stream<
     BudgetNotificationsForAccount,
     DescribeBudgetNotificationsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetNotificationsForAccountRequest,
@@ -2104,21 +2104,21 @@ export const describeBudgetPerformanceHistory: API.OperationMethod<
   DescribeBudgetPerformanceHistoryRequest,
   DescribeBudgetPerformanceHistoryResponse,
   DescribeBudgetPerformanceHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeBudgetPerformanceHistoryRequest,
   ) => stream.Stream<
     DescribeBudgetPerformanceHistoryResponse,
     DescribeBudgetPerformanceHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeBudgetPerformanceHistoryRequest,
   ) => stream.Stream<
     unknown,
     DescribeBudgetPerformanceHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetPerformanceHistoryRequest,
@@ -2158,21 +2158,21 @@ export const describeBudgets: API.OperationMethod<
   DescribeBudgetsRequest,
   DescribeBudgetsResponse,
   DescribeBudgetsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeBudgetsRequest,
   ) => stream.Stream<
     DescribeBudgetsResponse,
     DescribeBudgetsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeBudgetsRequest,
   ) => stream.Stream<
     Budget,
     DescribeBudgetsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetsRequest,
@@ -2209,21 +2209,21 @@ export const describeNotificationsForBudget: API.OperationMethod<
   DescribeNotificationsForBudgetRequest,
   DescribeNotificationsForBudgetResponse,
   DescribeNotificationsForBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeNotificationsForBudgetRequest,
   ) => stream.Stream<
     DescribeNotificationsForBudgetResponse,
     DescribeNotificationsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeNotificationsForBudgetRequest,
   ) => stream.Stream<
     Notification,
     DescribeNotificationsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotificationsForBudgetRequest,
@@ -2260,21 +2260,21 @@ export const describeSubscribersForNotification: API.OperationMethod<
   DescribeSubscribersForNotificationRequest,
   DescribeSubscribersForNotificationResponse,
   DescribeSubscribersForNotificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeSubscribersForNotificationRequest,
   ) => stream.Stream<
     DescribeSubscribersForNotificationResponse,
     DescribeSubscribersForNotificationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeSubscribersForNotificationRequest,
   ) => stream.Stream<
     Subscriber,
     DescribeSubscribersForNotificationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubscribersForNotificationRequest,
@@ -2310,7 +2310,7 @@ export const executeBudgetAction: API.OperationMethod<
   ExecuteBudgetActionRequest,
   ExecuteBudgetActionResponse,
   ExecuteBudgetActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteBudgetActionRequest,
   output: ExecuteBudgetActionResponse,
@@ -2337,7 +2337,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2364,7 +2364,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2391,7 +2391,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2431,7 +2431,7 @@ export const updateBudget: API.OperationMethod<
   UpdateBudgetRequest,
   UpdateBudgetResponse,
   UpdateBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBudgetRequest,
   output: UpdateBudgetResponse,
@@ -2460,7 +2460,7 @@ export const updateBudgetAction: API.OperationMethod<
   UpdateBudgetActionRequest,
   UpdateBudgetActionResponse,
   UpdateBudgetActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBudgetActionRequest,
   output: UpdateBudgetActionResponse,
@@ -2488,7 +2488,7 @@ export const updateNotification: API.OperationMethod<
   UpdateNotificationRequest,
   UpdateNotificationResponse,
   UpdateNotificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateNotificationRequest,
   output: UpdateNotificationResponse,
@@ -2516,7 +2516,7 @@ export const updateSubscriber: API.OperationMethod<
   UpdateSubscriberRequest,
   UpdateSubscriberResponse,
   UpdateSubscriberError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSubscriberRequest,
   output: UpdateSubscriberResponse,

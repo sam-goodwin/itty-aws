@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "ACM PCA",
   serviceShapeName: "ACMPrivateCA",
@@ -1277,7 +1277,7 @@ export const createCertificateAuthority: API.OperationMethod<
   CreateCertificateAuthorityRequest,
   CreateCertificateAuthorityResponse,
   CreateCertificateAuthorityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCertificateAuthorityRequest,
   output: CreateCertificateAuthorityResponse,
@@ -1309,7 +1309,7 @@ export const createCertificateAuthorityAuditReport: API.OperationMethod<
   CreateCertificateAuthorityAuditReportRequest,
   CreateCertificateAuthorityAuditReportResponse,
   CreateCertificateAuthorityAuditReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCertificateAuthorityAuditReportRequest,
   output: CreateCertificateAuthorityAuditReportResponse,
@@ -1346,7 +1346,7 @@ export const createPermission: API.OperationMethod<
   CreatePermissionRequest,
   CreatePermissionResponse,
   CreatePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePermissionRequest,
   output: CreatePermissionResponse,
@@ -1382,7 +1382,7 @@ export const deleteCertificateAuthority: API.OperationMethod<
   DeleteCertificateAuthorityRequest,
   DeleteCertificateAuthorityResponse,
   DeleteCertificateAuthorityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCertificateAuthorityRequest,
   output: DeleteCertificateAuthorityResponse,
@@ -1417,7 +1417,7 @@ export const deletePermission: API.OperationMethod<
   DeletePermissionRequest,
   DeletePermissionResponse,
   DeletePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePermissionRequest,
   output: DeletePermissionResponse,
@@ -1458,7 +1458,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyRequest,
   DeletePolicyResponse,
   DeletePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
@@ -1496,7 +1496,7 @@ export const describeCertificateAuthority: API.OperationMethod<
   DescribeCertificateAuthorityRequest,
   DescribeCertificateAuthorityResponse,
   DescribeCertificateAuthorityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCertificateAuthorityRequest,
   output: DescribeCertificateAuthorityResponse,
@@ -1514,7 +1514,7 @@ export const describeCertificateAuthorityAuditReport: API.OperationMethod<
   DescribeCertificateAuthorityAuditReportRequest,
   DescribeCertificateAuthorityAuditReportResponse,
   DescribeCertificateAuthorityAuditReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCertificateAuthorityAuditReportRequest,
   output: DescribeCertificateAuthorityAuditReportResponse,
@@ -1538,7 +1538,7 @@ export const getCertificate: API.OperationMethod<
   GetCertificateRequest,
   GetCertificateResponse,
   GetCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCertificateRequest,
   output: GetCertificateResponse,
@@ -1562,7 +1562,7 @@ export const getCertificateAuthorityCertificate: API.OperationMethod<
   GetCertificateAuthorityCertificateRequest,
   GetCertificateAuthorityCertificateResponse,
   GetCertificateAuthorityCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCertificateAuthorityCertificateRequest,
   output: GetCertificateAuthorityCertificateResponse,
@@ -1586,7 +1586,7 @@ export const getCertificateAuthorityCsr: API.OperationMethod<
   GetCertificateAuthorityCsrRequest,
   GetCertificateAuthorityCsrResponse,
   GetCertificateAuthorityCsrError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCertificateAuthorityCsrRequest,
   output: GetCertificateAuthorityCsrResponse,
@@ -1622,7 +1622,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyRequest,
   GetPolicyResponse,
   GetPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
@@ -1725,7 +1725,7 @@ export const importCertificateAuthorityCertificate: API.OperationMethod<
   ImportCertificateAuthorityCertificateRequest,
   ImportCertificateAuthorityCertificateResponse,
   ImportCertificateAuthorityCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportCertificateAuthorityCertificateRequest,
   output: ImportCertificateAuthorityCertificateResponse,
@@ -1758,7 +1758,7 @@ export const issueCertificate: API.OperationMethod<
   IssueCertificateRequest,
   IssueCertificateResponse,
   IssueCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IssueCertificateRequest,
   output: IssueCertificateResponse,
@@ -1781,21 +1781,21 @@ export const listCertificateAuthorities: API.OperationMethod<
   ListCertificateAuthoritiesRequest,
   ListCertificateAuthoritiesResponse,
   ListCertificateAuthoritiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCertificateAuthoritiesRequest,
   ) => stream.Stream<
     ListCertificateAuthoritiesResponse,
     ListCertificateAuthoritiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCertificateAuthoritiesRequest,
   ) => stream.Stream<
     CertificateAuthority,
     ListCertificateAuthoritiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCertificateAuthoritiesRequest,
@@ -1833,21 +1833,21 @@ export const listPermissions: API.OperationMethod<
   ListPermissionsRequest,
   ListPermissionsResponse,
   ListPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPermissionsRequest,
   ) => stream.Stream<
     ListPermissionsResponse,
     ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPermissionsRequest,
   ) => stream.Stream<
     Permission,
     ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
@@ -1879,21 +1879,21 @@ export const listTags: API.OperationMethod<
   ListTagsRequest,
   ListTagsResponse,
   ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsRequest,
   ) => stream.Stream<
     ListTagsResponse,
     ListTagsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsRequest,
   ) => stream.Stream<
     Tag,
     ListTagsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsRequest,
@@ -1940,7 +1940,7 @@ export const putPolicy: API.OperationMethod<
   PutPolicyRequest,
   PutPolicyResponse,
   PutPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPolicyRequest,
   output: PutPolicyResponse,
@@ -1966,7 +1966,7 @@ export const restoreCertificateAuthority: API.OperationMethod<
   RestoreCertificateAuthorityRequest,
   RestoreCertificateAuthorityResponse,
   RestoreCertificateAuthorityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreCertificateAuthorityRequest,
   output: RestoreCertificateAuthorityResponse,
@@ -2000,7 +2000,7 @@ export const revokeCertificate: API.OperationMethod<
   RevokeCertificateRequest,
   RevokeCertificateResponse,
   RevokeCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeCertificateRequest,
   output: RevokeCertificateResponse,
@@ -2032,7 +2032,7 @@ export const tagCertificateAuthority: API.OperationMethod<
   TagCertificateAuthorityRequest,
   TagCertificateAuthorityResponse,
   TagCertificateAuthorityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagCertificateAuthorityRequest,
   output: TagCertificateAuthorityResponse,
@@ -2057,7 +2057,7 @@ export const untagCertificateAuthority: API.OperationMethod<
   UntagCertificateAuthorityRequest,
   UntagCertificateAuthorityResponse,
   UntagCertificateAuthorityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagCertificateAuthorityRequest,
   output: UntagCertificateAuthorityResponse,
@@ -2085,7 +2085,7 @@ export const updateCertificateAuthority: API.OperationMethod<
   UpdateCertificateAuthorityRequest,
   UpdateCertificateAuthorityResponse,
   UpdateCertificateAuthorityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCertificateAuthorityRequest,
   output: UpdateCertificateAuthorityResponse,

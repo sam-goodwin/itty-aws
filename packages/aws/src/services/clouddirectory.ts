@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "CloudDirectory",
   serviceShapeName: "AmazonCloudDirectory_20170111",
@@ -4133,7 +4133,7 @@ export const addFacetToObject: API.OperationMethod<
   AddFacetToObjectRequest,
   AddFacetToObjectResponse,
   AddFacetToObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddFacetToObjectRequest,
   output: AddFacetToObjectResponse,
@@ -4168,7 +4168,7 @@ export const applySchema: API.OperationMethod<
   ApplySchemaRequest,
   ApplySchemaResponse,
   ApplySchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplySchemaRequest,
   output: ApplySchemaResponse,
@@ -4209,7 +4209,7 @@ export const attachObject: API.OperationMethod<
   AttachObjectRequest,
   AttachObjectResponse,
   AttachObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachObjectRequest,
   output: AttachObjectResponse,
@@ -4246,7 +4246,7 @@ export const attachPolicy: API.OperationMethod<
   AttachPolicyRequest,
   AttachPolicyResponse,
   AttachPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachPolicyRequest,
   output: AttachPolicyResponse,
@@ -4283,7 +4283,7 @@ export const attachToIndex: API.OperationMethod<
   AttachToIndexRequest,
   AttachToIndexResponse,
   AttachToIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachToIndexRequest,
   output: AttachToIndexResponse,
@@ -4321,7 +4321,7 @@ export const attachTypedLink: API.OperationMethod<
   AttachTypedLinkRequest,
   AttachTypedLinkResponse,
   AttachTypedLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachTypedLinkRequest,
   output: AttachTypedLinkResponse,
@@ -4354,7 +4354,7 @@ export const batchRead: API.OperationMethod<
   BatchReadRequest,
   BatchReadResponse,
   BatchReadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchReadRequest,
   output: BatchReadResponse,
@@ -4386,7 +4386,7 @@ export const batchWrite: API.OperationMethod<
   BatchWriteRequest,
   BatchWriteResponse,
   BatchWriteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchWriteRequest,
   output: BatchWriteResponse,
@@ -4422,7 +4422,7 @@ export const createDirectory: API.OperationMethod<
   CreateDirectoryRequest,
   CreateDirectoryResponse,
   CreateDirectoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDirectoryRequest,
   output: CreateDirectoryResponse,
@@ -4457,7 +4457,7 @@ export const createFacet: API.OperationMethod<
   CreateFacetRequest,
   CreateFacetResponse,
   CreateFacetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFacetRequest,
   output: CreateFacetResponse,
@@ -4494,7 +4494,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexRequest,
   CreateIndexResponse,
   CreateIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIndexRequest,
   output: CreateIndexResponse,
@@ -4535,7 +4535,7 @@ export const createObject: API.OperationMethod<
   CreateObjectRequest,
   CreateObjectResponse,
   CreateObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateObjectRequest,
   output: CreateObjectResponse,
@@ -4581,7 +4581,7 @@ export const createSchema: API.OperationMethod<
   CreateSchemaRequest,
   CreateSchemaResponse,
   CreateSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSchemaRequest,
   output: CreateSchemaResponse,
@@ -4614,7 +4614,7 @@ export const createTypedLinkFacet: API.OperationMethod<
   CreateTypedLinkFacetRequest,
   CreateTypedLinkFacetResponse,
   CreateTypedLinkFacetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTypedLinkFacetRequest,
   output: CreateTypedLinkFacetResponse,
@@ -4651,7 +4651,7 @@ export const deleteDirectory: API.OperationMethod<
   DeleteDirectoryRequest,
   DeleteDirectoryResponse,
   DeleteDirectoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDirectoryRequest,
   output: DeleteDirectoryResponse,
@@ -4687,7 +4687,7 @@ export const deleteFacet: API.OperationMethod<
   DeleteFacetRequest,
   DeleteFacetResponse,
   DeleteFacetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFacetRequest,
   output: DeleteFacetResponse,
@@ -4722,7 +4722,7 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectRequest,
   DeleteObjectResponse,
   DeleteObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteObjectRequest,
   output: DeleteObjectResponse,
@@ -4755,7 +4755,7 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaRequest,
   DeleteSchemaResponse,
   DeleteSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSchemaRequest,
   output: DeleteSchemaResponse,
@@ -4787,7 +4787,7 @@ export const deleteTypedLinkFacet: API.OperationMethod<
   DeleteTypedLinkFacetRequest,
   DeleteTypedLinkFacetResponse,
   DeleteTypedLinkFacetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTypedLinkFacetRequest,
   output: DeleteTypedLinkFacetResponse,
@@ -4821,7 +4821,7 @@ export const detachFromIndex: API.OperationMethod<
   DetachFromIndexRequest,
   DetachFromIndexResponse,
   DetachFromIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachFromIndexRequest,
   output: DetachFromIndexResponse,
@@ -4857,7 +4857,7 @@ export const detachObject: API.OperationMethod<
   DetachObjectRequest,
   DetachObjectResponse,
   DetachObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachObjectRequest,
   output: DetachObjectResponse,
@@ -4891,7 +4891,7 @@ export const detachPolicy: API.OperationMethod<
   DetachPolicyRequest,
   DetachPolicyResponse,
   DetachPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachPolicyRequest,
   output: DetachPolicyResponse,
@@ -4925,7 +4925,7 @@ export const detachTypedLink: API.OperationMethod<
   DetachTypedLinkRequest,
   DetachTypedLinkResponse,
   DetachTypedLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachTypedLinkRequest,
   output: DetachTypedLinkResponse,
@@ -4959,7 +4959,7 @@ export const disableDirectory: API.OperationMethod<
   DisableDirectoryRequest,
   DisableDirectoryResponse,
   DisableDirectoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableDirectoryRequest,
   output: DisableDirectoryResponse,
@@ -4992,7 +4992,7 @@ export const enableDirectory: API.OperationMethod<
   EnableDirectoryRequest,
   EnableDirectoryResponse,
   EnableDirectoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableDirectoryRequest,
   output: EnableDirectoryResponse,
@@ -5023,7 +5023,7 @@ export const getAppliedSchemaVersion: API.OperationMethod<
   GetAppliedSchemaVersionRequest,
   GetAppliedSchemaVersionResponse,
   GetAppliedSchemaVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppliedSchemaVersionRequest,
   output: GetAppliedSchemaVersionResponse,
@@ -5052,7 +5052,7 @@ export const getDirectory: API.OperationMethod<
   GetDirectoryRequest,
   GetDirectoryResponse,
   GetDirectoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDirectoryRequest,
   output: GetDirectoryResponse,
@@ -5083,7 +5083,7 @@ export const getFacet: API.OperationMethod<
   GetFacetRequest,
   GetFacetResponse,
   GetFacetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFacetRequest,
   output: GetFacetResponse,
@@ -5116,7 +5116,7 @@ export const getLinkAttributes: API.OperationMethod<
   GetLinkAttributesRequest,
   GetLinkAttributesResponse,
   GetLinkAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLinkAttributesRequest,
   output: GetLinkAttributesResponse,
@@ -5150,7 +5150,7 @@ export const getObjectAttributes: API.OperationMethod<
   GetObjectAttributesRequest,
   GetObjectAttributesResponse,
   GetObjectAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetObjectAttributesRequest,
   output: GetObjectAttributesResponse,
@@ -5183,7 +5183,7 @@ export const getObjectInformation: API.OperationMethod<
   GetObjectInformationRequest,
   GetObjectInformationResponse,
   GetObjectInformationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetObjectInformationRequest,
   output: GetObjectInformationResponse,
@@ -5214,7 +5214,7 @@ export const getSchemaAsJson: API.OperationMethod<
   GetSchemaAsJsonRequest,
   GetSchemaAsJsonResponse,
   GetSchemaAsJsonError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSchemaAsJsonRequest,
   output: GetSchemaAsJsonResponse,
@@ -5246,7 +5246,7 @@ export const getTypedLinkFacetInformation: API.OperationMethod<
   GetTypedLinkFacetInformationRequest,
   GetTypedLinkFacetInformationResponse,
   GetTypedLinkFacetInformationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTypedLinkFacetInformationRequest,
   output: GetTypedLinkFacetInformationResponse,
@@ -5279,21 +5279,21 @@ export const listAppliedSchemaArns: API.OperationMethod<
   ListAppliedSchemaArnsRequest,
   ListAppliedSchemaArnsResponse,
   ListAppliedSchemaArnsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppliedSchemaArnsRequest,
   ) => stream.Stream<
     ListAppliedSchemaArnsResponse,
     ListAppliedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppliedSchemaArnsRequest,
   ) => stream.Stream<
     unknown,
     ListAppliedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppliedSchemaArnsRequest,
@@ -5331,21 +5331,21 @@ export const listAttachedIndices: API.OperationMethod<
   ListAttachedIndicesRequest,
   ListAttachedIndicesResponse,
   ListAttachedIndicesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAttachedIndicesRequest,
   ) => stream.Stream<
     ListAttachedIndicesResponse,
     ListAttachedIndicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAttachedIndicesRequest,
   ) => stream.Stream<
     unknown,
     ListAttachedIndicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedIndicesRequest,
@@ -5384,21 +5384,21 @@ export const listDevelopmentSchemaArns: API.OperationMethod<
   ListDevelopmentSchemaArnsRequest,
   ListDevelopmentSchemaArnsResponse,
   ListDevelopmentSchemaArnsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDevelopmentSchemaArnsRequest,
   ) => stream.Stream<
     ListDevelopmentSchemaArnsResponse,
     ListDevelopmentSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDevelopmentSchemaArnsRequest,
   ) => stream.Stream<
     unknown,
     ListDevelopmentSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDevelopmentSchemaArnsRequest,
@@ -5435,21 +5435,21 @@ export const listDirectories: API.OperationMethod<
   ListDirectoriesRequest,
   ListDirectoriesResponse,
   ListDirectoriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDirectoriesRequest,
   ) => stream.Stream<
     ListDirectoriesResponse,
     ListDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDirectoriesRequest,
   ) => stream.Stream<
     unknown,
     ListDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoriesRequest,
@@ -5487,21 +5487,21 @@ export const listFacetAttributes: API.OperationMethod<
   ListFacetAttributesRequest,
   ListFacetAttributesResponse,
   ListFacetAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFacetAttributesRequest,
   ) => stream.Stream<
     ListFacetAttributesResponse,
     ListFacetAttributesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFacetAttributesRequest,
   ) => stream.Stream<
     unknown,
     ListFacetAttributesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFacetAttributesRequest,
@@ -5540,21 +5540,21 @@ export const listFacetNames: API.OperationMethod<
   ListFacetNamesRequest,
   ListFacetNamesResponse,
   ListFacetNamesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFacetNamesRequest,
   ) => stream.Stream<
     ListFacetNamesResponse,
     ListFacetNamesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFacetNamesRequest,
   ) => stream.Stream<
     unknown,
     ListFacetNamesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFacetNamesRequest,
@@ -5596,7 +5596,7 @@ export const listIncomingTypedLinks: API.OperationMethod<
   ListIncomingTypedLinksRequest,
   ListIncomingTypedLinksResponse,
   ListIncomingTypedLinksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListIncomingTypedLinksRequest,
   output: ListIncomingTypedLinksResponse,
@@ -5633,21 +5633,21 @@ export const listIndex: API.OperationMethod<
   ListIndexRequest,
   ListIndexResponse,
   ListIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIndexRequest,
   ) => stream.Stream<
     ListIndexResponse,
     ListIndexError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListIndexRequest,
   ) => stream.Stream<
     unknown,
     ListIndexError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIndexRequest,
@@ -5686,21 +5686,21 @@ export const listManagedSchemaArns: API.OperationMethod<
   ListManagedSchemaArnsRequest,
   ListManagedSchemaArnsResponse,
   ListManagedSchemaArnsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListManagedSchemaArnsRequest,
   ) => stream.Stream<
     ListManagedSchemaArnsResponse,
     ListManagedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListManagedSchemaArnsRequest,
   ) => stream.Stream<
     unknown,
     ListManagedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManagedSchemaArnsRequest,
@@ -5738,21 +5738,21 @@ export const listObjectAttributes: API.OperationMethod<
   ListObjectAttributesRequest,
   ListObjectAttributesResponse,
   ListObjectAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListObjectAttributesRequest,
   ) => stream.Stream<
     ListObjectAttributesResponse,
     ListObjectAttributesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListObjectAttributesRequest,
   ) => stream.Stream<
     unknown,
     ListObjectAttributesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObjectAttributesRequest,
@@ -5795,21 +5795,21 @@ export const listObjectChildren: API.OperationMethod<
   ListObjectChildrenRequest,
   ListObjectChildrenResponse,
   ListObjectChildrenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListObjectChildrenRequest,
   ) => stream.Stream<
     ListObjectChildrenResponse,
     ListObjectChildrenError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListObjectChildrenRequest,
   ) => stream.Stream<
     unknown,
     ListObjectChildrenError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObjectChildrenRequest,
@@ -5858,21 +5858,21 @@ export const listObjectParentPaths: API.OperationMethod<
   ListObjectParentPathsRequest,
   ListObjectParentPathsResponse,
   ListObjectParentPathsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListObjectParentPathsRequest,
   ) => stream.Stream<
     ListObjectParentPathsResponse,
     ListObjectParentPathsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListObjectParentPathsRequest,
   ) => stream.Stream<
     unknown,
     ListObjectParentPathsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObjectParentPathsRequest,
@@ -5914,21 +5914,21 @@ export const listObjectParents: API.OperationMethod<
   ListObjectParentsRequest,
   ListObjectParentsResponse,
   ListObjectParentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListObjectParentsRequest,
   ) => stream.Stream<
     ListObjectParentsResponse,
     ListObjectParentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListObjectParentsRequest,
   ) => stream.Stream<
     unknown,
     ListObjectParentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObjectParentsRequest,
@@ -5969,21 +5969,21 @@ export const listObjectPolicies: API.OperationMethod<
   ListObjectPoliciesRequest,
   ListObjectPoliciesResponse,
   ListObjectPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListObjectPoliciesRequest,
   ) => stream.Stream<
     ListObjectPoliciesResponse,
     ListObjectPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListObjectPoliciesRequest,
   ) => stream.Stream<
     unknown,
     ListObjectPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObjectPoliciesRequest,
@@ -6026,7 +6026,7 @@ export const listOutgoingTypedLinks: API.OperationMethod<
   ListOutgoingTypedLinksRequest,
   ListOutgoingTypedLinksResponse,
   ListOutgoingTypedLinksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOutgoingTypedLinksRequest,
   output: ListOutgoingTypedLinksResponse,
@@ -6062,21 +6062,21 @@ export const listPolicyAttachments: API.OperationMethod<
   ListPolicyAttachmentsRequest,
   ListPolicyAttachmentsResponse,
   ListPolicyAttachmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPolicyAttachmentsRequest,
   ) => stream.Stream<
     ListPolicyAttachmentsResponse,
     ListPolicyAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPolicyAttachmentsRequest,
   ) => stream.Stream<
     unknown,
     ListPolicyAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyAttachmentsRequest,
@@ -6116,21 +6116,21 @@ export const listPublishedSchemaArns: API.OperationMethod<
   ListPublishedSchemaArnsRequest,
   ListPublishedSchemaArnsResponse,
   ListPublishedSchemaArnsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPublishedSchemaArnsRequest,
   ) => stream.Stream<
     ListPublishedSchemaArnsResponse,
     ListPublishedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPublishedSchemaArnsRequest,
   ) => stream.Stream<
     unknown,
     ListPublishedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPublishedSchemaArnsRequest,
@@ -6170,21 +6170,21 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     ListTagsForResourceResponse,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     unknown,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
@@ -6223,21 +6223,21 @@ export const listTypedLinkFacetAttributes: API.OperationMethod<
   ListTypedLinkFacetAttributesRequest,
   ListTypedLinkFacetAttributesResponse,
   ListTypedLinkFacetAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTypedLinkFacetAttributesRequest,
   ) => stream.Stream<
     ListTypedLinkFacetAttributesResponse,
     ListTypedLinkFacetAttributesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTypedLinkFacetAttributesRequest,
   ) => stream.Stream<
     unknown,
     ListTypedLinkFacetAttributesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTypedLinkFacetAttributesRequest,
@@ -6277,21 +6277,21 @@ export const listTypedLinkFacetNames: API.OperationMethod<
   ListTypedLinkFacetNamesRequest,
   ListTypedLinkFacetNamesResponse,
   ListTypedLinkFacetNamesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTypedLinkFacetNamesRequest,
   ) => stream.Stream<
     ListTypedLinkFacetNamesResponse,
     ListTypedLinkFacetNamesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTypedLinkFacetNamesRequest,
   ) => stream.Stream<
     unknown,
     ListTypedLinkFacetNamesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTypedLinkFacetNamesRequest,
@@ -6335,21 +6335,21 @@ export const lookupPolicy: API.OperationMethod<
   LookupPolicyRequest,
   LookupPolicyResponse,
   LookupPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: LookupPolicyRequest,
   ) => stream.Stream<
     LookupPolicyResponse,
     LookupPolicyError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: LookupPolicyRequest,
   ) => stream.Stream<
     unknown,
     LookupPolicyError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: LookupPolicyRequest,
@@ -6388,7 +6388,7 @@ export const publishSchema: API.OperationMethod<
   PublishSchemaRequest,
   PublishSchemaResponse,
   PublishSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishSchemaRequest,
   output: PublishSchemaResponse,
@@ -6420,7 +6420,7 @@ export const putSchemaFromJson: API.OperationMethod<
   PutSchemaFromJsonRequest,
   PutSchemaFromJsonResponse,
   PutSchemaFromJsonError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSchemaFromJsonRequest,
   output: PutSchemaFromJsonResponse,
@@ -6453,7 +6453,7 @@ export const removeFacetFromObject: API.OperationMethod<
   RemoveFacetFromObjectRequest,
   RemoveFacetFromObjectResponse,
   RemoveFacetFromObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveFacetFromObjectRequest,
   output: RemoveFacetFromObjectResponse,
@@ -6486,7 +6486,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -6518,7 +6518,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -6559,7 +6559,7 @@ export const updateFacet: API.OperationMethod<
   UpdateFacetRequest,
   UpdateFacetResponse,
   UpdateFacetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFacetRequest,
   output: UpdateFacetResponse,
@@ -6595,7 +6595,7 @@ export const updateLinkAttributes: API.OperationMethod<
   UpdateLinkAttributesRequest,
   UpdateLinkAttributesResponse,
   UpdateLinkAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLinkAttributesRequest,
   output: UpdateLinkAttributesResponse,
@@ -6630,7 +6630,7 @@ export const updateObjectAttributes: API.OperationMethod<
   UpdateObjectAttributesRequest,
   UpdateObjectAttributesResponse,
   UpdateObjectAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateObjectAttributesRequest,
   output: UpdateObjectAttributesResponse,
@@ -6664,7 +6664,7 @@ export const updateSchema: API.OperationMethod<
   UpdateSchemaRequest,
   UpdateSchemaResponse,
   UpdateSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSchemaRequest,
   output: UpdateSchemaResponse,
@@ -6698,7 +6698,7 @@ export const updateTypedLinkFacet: API.OperationMethod<
   UpdateTypedLinkFacetRequest,
   UpdateTypedLinkFacetResponse,
   UpdateTypedLinkFacetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTypedLinkFacetRequest,
   output: UpdateTypedLinkFacetResponse,
@@ -6734,7 +6734,7 @@ export const upgradeAppliedSchema: API.OperationMethod<
   UpgradeAppliedSchemaRequest,
   UpgradeAppliedSchemaResponse,
   UpgradeAppliedSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpgradeAppliedSchemaRequest,
   output: UpgradeAppliedSchemaResponse,
@@ -6768,7 +6768,7 @@ export const upgradePublishedSchema: API.OperationMethod<
   UpgradePublishedSchemaRequest,
   UpgradePublishedSchemaResponse,
   UpgradePublishedSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpgradePublishedSchemaRequest,
   output: UpgradePublishedSchemaResponse,

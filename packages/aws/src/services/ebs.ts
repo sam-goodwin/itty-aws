@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "EBS", serviceShapeName: "Ebs" });
 const auth = T.AwsAuthSigv4({ name: "ebs" });
@@ -569,7 +569,7 @@ export const completeSnapshot: API.OperationMethod<
   CompleteSnapshotRequest,
   CompleteSnapshotResponse,
   CompleteSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteSnapshotRequest,
   output: CompleteSnapshotResponse,
@@ -603,7 +603,7 @@ export const getSnapshotBlock: API.OperationMethod<
   GetSnapshotBlockRequest,
   GetSnapshotBlockResponse,
   GetSnapshotBlockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSnapshotBlockRequest,
   output: GetSnapshotBlockResponse,
@@ -637,21 +637,21 @@ export const listChangedBlocks: API.OperationMethod<
   ListChangedBlocksRequest,
   ListChangedBlocksResponse,
   ListChangedBlocksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChangedBlocksRequest,
   ) => stream.Stream<
     ListChangedBlocksResponse,
     ListChangedBlocksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChangedBlocksRequest,
   ) => stream.Stream<
     unknown,
     ListChangedBlocksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChangedBlocksRequest,
@@ -690,21 +690,21 @@ export const listSnapshotBlocks: API.OperationMethod<
   ListSnapshotBlocksRequest,
   ListSnapshotBlocksResponse,
   ListSnapshotBlocksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSnapshotBlocksRequest,
   ) => stream.Stream<
     ListSnapshotBlocksResponse,
     ListSnapshotBlocksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSnapshotBlocksRequest,
   ) => stream.Stream<
     unknown,
     ListSnapshotBlocksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotBlocksRequest,
@@ -748,7 +748,7 @@ export const putSnapshotBlock: API.OperationMethod<
   PutSnapshotBlockRequest,
   PutSnapshotBlockResponse,
   PutSnapshotBlockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSnapshotBlockRequest,
   output: PutSnapshotBlockResponse,
@@ -788,7 +788,7 @@ export const startSnapshot: API.OperationMethod<
   StartSnapshotRequest,
   StartSnapshotResponse,
   StartSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartSnapshotRequest,
   output: StartSnapshotResponse,

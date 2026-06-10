@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://requester.mturk.com/2017-01-17/");
 const svc = T.AwsApiService({
   sdkId: "MTurk",
@@ -1927,7 +1927,7 @@ export const acceptQualificationRequest: API.OperationMethod<
   AcceptQualificationRequestRequest,
   AcceptQualificationRequestResponse,
   AcceptQualificationRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptQualificationRequestRequest,
   output: AcceptQualificationRequestResponse,
@@ -1957,7 +1957,7 @@ export const approveAssignment: API.OperationMethod<
   ApproveAssignmentRequest,
   ApproveAssignmentResponse,
   ApproveAssignmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveAssignmentRequest,
   output: ApproveAssignmentResponse,
@@ -1986,7 +1986,7 @@ export const associateQualificationWithWorker: API.OperationMethod<
   AssociateQualificationWithWorkerRequest,
   AssociateQualificationWithWorkerResponse,
   AssociateQualificationWithWorkerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateQualificationWithWorkerRequest,
   output: AssociateQualificationWithWorkerResponse,
@@ -2016,7 +2016,7 @@ export const createAdditionalAssignmentsForHIT: API.OperationMethod<
   CreateAdditionalAssignmentsForHITRequest,
   CreateAdditionalAssignmentsForHITResponse,
   CreateAdditionalAssignmentsForHITError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdditionalAssignmentsForHITRequest,
   output: CreateAdditionalAssignmentsForHITResponse,
@@ -2043,7 +2043,7 @@ export const createHIT: API.OperationMethod<
   CreateHITRequest,
   CreateHITResponse,
   CreateHITError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateHITRequest,
   output: CreateHITResponse,
@@ -2060,7 +2060,7 @@ export const createHITType: API.OperationMethod<
   CreateHITTypeRequest,
   CreateHITTypeResponse,
   CreateHITTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateHITTypeRequest,
   output: CreateHITTypeResponse,
@@ -2088,7 +2088,7 @@ export const createHITWithHITType: API.OperationMethod<
   CreateHITWithHITTypeRequest,
   CreateHITWithHITTypeResponse,
   CreateHITWithHITTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateHITWithHITTypeRequest,
   output: CreateHITWithHITTypeResponse,
@@ -2109,7 +2109,7 @@ export const createQualificationType: API.OperationMethod<
   CreateQualificationTypeRequest,
   CreateQualificationTypeResponse,
   CreateQualificationTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateQualificationTypeRequest,
   output: CreateQualificationTypeResponse,
@@ -2123,7 +2123,7 @@ export const createWorkerBlock: API.OperationMethod<
   CreateWorkerBlockRequest,
   CreateWorkerBlockResponse,
   CreateWorkerBlockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkerBlockRequest,
   output: CreateWorkerBlockResponse,
@@ -2153,7 +2153,7 @@ export const deleteHIT: API.OperationMethod<
   DeleteHITRequest,
   DeleteHITResponse,
   DeleteHITError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteHITRequest,
   output: DeleteHITResponse,
@@ -2186,7 +2186,7 @@ export const deleteQualificationType: API.OperationMethod<
   DeleteQualificationTypeRequest,
   DeleteQualificationTypeResponse,
   DeleteQualificationTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteQualificationTypeRequest,
   output: DeleteQualificationTypeResponse,
@@ -2200,7 +2200,7 @@ export const deleteWorkerBlock: API.OperationMethod<
   DeleteWorkerBlockRequest,
   DeleteWorkerBlockResponse,
   DeleteWorkerBlockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkerBlockRequest,
   output: DeleteWorkerBlockResponse,
@@ -2221,7 +2221,7 @@ export const disassociateQualificationFromWorker: API.OperationMethod<
   DisassociateQualificationFromWorkerRequest,
   DisassociateQualificationFromWorkerResponse,
   DisassociateQualificationFromWorkerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateQualificationFromWorkerRequest,
   output: DisassociateQualificationFromWorkerResponse,
@@ -2237,7 +2237,7 @@ export const getAccountBalance: API.OperationMethod<
   GetAccountBalanceRequest,
   GetAccountBalanceResponse,
   GetAccountBalanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountBalanceRequest,
   output: GetAccountBalanceResponse,
@@ -2251,7 +2251,7 @@ export const getAssignment: API.OperationMethod<
   GetAssignmentRequest,
   GetAssignmentResponse,
   GetAssignmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssignmentRequest,
   output: GetAssignmentResponse,
@@ -2279,7 +2279,7 @@ export const getFileUploadURL: API.OperationMethod<
   GetFileUploadURLRequest,
   GetFileUploadURLResponse,
   GetFileUploadURLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFileUploadURLRequest,
   output: GetFileUploadURLResponse,
@@ -2293,7 +2293,7 @@ export const getHIT: API.OperationMethod<
   GetHITRequest,
   GetHITResponse,
   GetHITError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHITRequest,
   output: GetHITResponse,
@@ -2321,7 +2321,7 @@ export const getQualificationScore: API.OperationMethod<
   GetQualificationScoreRequest,
   GetQualificationScoreResponse,
   GetQualificationScoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQualificationScoreRequest,
   output: GetQualificationScoreResponse,
@@ -2338,7 +2338,7 @@ export const getQualificationType: API.OperationMethod<
   GetQualificationTypeRequest,
   GetQualificationTypeResponse,
   GetQualificationTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQualificationTypeRequest,
   output: GetQualificationTypeResponse,
@@ -2379,21 +2379,21 @@ export const listAssignmentsForHIT: API.OperationMethod<
   ListAssignmentsForHITRequest,
   ListAssignmentsForHITResponse,
   ListAssignmentsForHITError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAssignmentsForHITRequest,
   ) => stream.Stream<
     ListAssignmentsForHITResponse,
     ListAssignmentsForHITError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAssignmentsForHITRequest,
   ) => stream.Stream<
     unknown,
     ListAssignmentsForHITError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssignmentsForHITRequest,
@@ -2416,21 +2416,21 @@ export const listBonusPayments: API.OperationMethod<
   ListBonusPaymentsRequest,
   ListBonusPaymentsResponse,
   ListBonusPaymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBonusPaymentsRequest,
   ) => stream.Stream<
     ListBonusPaymentsResponse,
     ListBonusPaymentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBonusPaymentsRequest,
   ) => stream.Stream<
     unknown,
     ListBonusPaymentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBonusPaymentsRequest,
@@ -2454,21 +2454,21 @@ export const listHITs: API.OperationMethod<
   ListHITsRequest,
   ListHITsResponse,
   ListHITsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListHITsRequest,
   ) => stream.Stream<
     ListHITsResponse,
     ListHITsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListHITsRequest,
   ) => stream.Stream<
     unknown,
     ListHITsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHITsRequest,
@@ -2494,21 +2494,21 @@ export const listHITsForQualificationType: API.OperationMethod<
   ListHITsForQualificationTypeRequest,
   ListHITsForQualificationTypeResponse,
   ListHITsForQualificationTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListHITsForQualificationTypeRequest,
   ) => stream.Stream<
     ListHITsForQualificationTypeResponse,
     ListHITsForQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListHITsForQualificationTypeRequest,
   ) => stream.Stream<
     unknown,
     ListHITsForQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHITsForQualificationTypeRequest,
@@ -2536,21 +2536,21 @@ export const listQualificationRequests: API.OperationMethod<
   ListQualificationRequestsRequest,
   ListQualificationRequestsResponse,
   ListQualificationRequestsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListQualificationRequestsRequest,
   ) => stream.Stream<
     ListQualificationRequestsResponse,
     ListQualificationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListQualificationRequestsRequest,
   ) => stream.Stream<
     unknown,
     ListQualificationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQualificationRequestsRequest,
@@ -2576,21 +2576,21 @@ export const listQualificationTypes: API.OperationMethod<
   ListQualificationTypesRequest,
   ListQualificationTypesResponse,
   ListQualificationTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListQualificationTypesRequest,
   ) => stream.Stream<
     ListQualificationTypesResponse,
     ListQualificationTypesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListQualificationTypesRequest,
   ) => stream.Stream<
     unknown,
     ListQualificationTypesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQualificationTypesRequest,
@@ -2614,21 +2614,21 @@ export const listReviewableHITs: API.OperationMethod<
   ListReviewableHITsRequest,
   ListReviewableHITsResponse,
   ListReviewableHITsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListReviewableHITsRequest,
   ) => stream.Stream<
     ListReviewableHITsResponse,
     ListReviewableHITsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListReviewableHITsRequest,
   ) => stream.Stream<
     unknown,
     ListReviewableHITsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReviewableHITsRequest,
@@ -2655,21 +2655,21 @@ export const listReviewPolicyResultsForHIT: API.OperationMethod<
   ListReviewPolicyResultsForHITRequest,
   ListReviewPolicyResultsForHITResponse,
   ListReviewPolicyResultsForHITError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListReviewPolicyResultsForHITRequest,
   ) => stream.Stream<
     ListReviewPolicyResultsForHITResponse,
     ListReviewPolicyResultsForHITError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListReviewPolicyResultsForHITRequest,
   ) => stream.Stream<
     unknown,
     ListReviewPolicyResultsForHITError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReviewPolicyResultsForHITRequest,
@@ -2689,21 +2689,21 @@ export const listWorkerBlocks: API.OperationMethod<
   ListWorkerBlocksRequest,
   ListWorkerBlocksResponse,
   ListWorkerBlocksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkerBlocksRequest,
   ) => stream.Stream<
     ListWorkerBlocksResponse,
     ListWorkerBlocksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkerBlocksRequest,
   ) => stream.Stream<
     unknown,
     ListWorkerBlocksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkerBlocksRequest,
@@ -2727,21 +2727,21 @@ export const listWorkersWithQualificationType: API.OperationMethod<
   ListWorkersWithQualificationTypeRequest,
   ListWorkersWithQualificationTypeResponse,
   ListWorkersWithQualificationTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkersWithQualificationTypeRequest,
   ) => stream.Stream<
     ListWorkersWithQualificationTypeResponse,
     ListWorkersWithQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkersWithQualificationTypeRequest,
   ) => stream.Stream<
     unknown,
     ListWorkersWithQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkersWithQualificationTypeRequest,
@@ -2768,7 +2768,7 @@ export const notifyWorkers: API.OperationMethod<
   NotifyWorkersRequest,
   NotifyWorkersResponse,
   NotifyWorkersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: NotifyWorkersRequest,
   output: NotifyWorkersResponse,
@@ -2790,7 +2790,7 @@ export const rejectAssignment: API.OperationMethod<
   RejectAssignmentRequest,
   RejectAssignmentResponse,
   RejectAssignmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectAssignmentRequest,
   output: RejectAssignmentResponse,
@@ -2812,7 +2812,7 @@ export const rejectQualificationRequest: API.OperationMethod<
   RejectQualificationRequestRequest,
   RejectQualificationRequestResponse,
   RejectQualificationRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectQualificationRequestRequest,
   output: RejectQualificationRequestResponse,
@@ -2837,7 +2837,7 @@ export const sendBonus: API.OperationMethod<
   SendBonusRequest,
   SendBonusResponse,
   SendBonusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendBonusRequest,
   output: SendBonusResponse,
@@ -2858,7 +2858,7 @@ export const sendTestEventNotification: API.OperationMethod<
   SendTestEventNotificationRequest,
   SendTestEventNotificationResponse,
   SendTestEventNotificationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendTestEventNotificationRequest,
   output: SendTestEventNotificationResponse,
@@ -2876,7 +2876,7 @@ export const updateExpirationForHIT: API.OperationMethod<
   UpdateExpirationForHITRequest,
   UpdateExpirationForHITResponse,
   UpdateExpirationForHITError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateExpirationForHITRequest,
   output: UpdateExpirationForHITResponse,
@@ -2895,7 +2895,7 @@ export const updateHITReviewStatus: API.OperationMethod<
   UpdateHITReviewStatusRequest,
   UpdateHITReviewStatusResponse,
   UpdateHITReviewStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateHITReviewStatusRequest,
   output: UpdateHITReviewStatusResponse,
@@ -2917,7 +2917,7 @@ export const updateHITTypeOfHIT: API.OperationMethod<
   UpdateHITTypeOfHITRequest,
   UpdateHITTypeOfHITResponse,
   UpdateHITTypeOfHITError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateHITTypeOfHITRequest,
   output: UpdateHITTypeOfHITResponse,
@@ -2943,7 +2943,7 @@ export const updateNotificationSettings: API.OperationMethod<
   UpdateNotificationSettingsRequest,
   UpdateNotificationSettingsResponse,
   UpdateNotificationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateNotificationSettingsRequest,
   output: UpdateNotificationSettingsResponse,
@@ -2996,7 +2996,7 @@ export const updateQualificationType: API.OperationMethod<
   UpdateQualificationTypeRequest,
   UpdateQualificationTypeResponse,
   UpdateQualificationTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQualificationTypeRequest,
   output: UpdateQualificationTypeResponse,

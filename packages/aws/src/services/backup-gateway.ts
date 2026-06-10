@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Backup Gateway",
@@ -941,7 +941,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -955,7 +955,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -969,7 +969,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -984,7 +984,7 @@ export const createGateway: API.OperationMethod<
   CreateGatewayInput,
   CreateGatewayOutput,
   CreateGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGatewayInput,
   output: CreateGatewayOutput,
@@ -999,7 +999,7 @@ export const getGateway: API.OperationMethod<
   GetGatewayInput,
   GetGatewayOutput,
   GetGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGatewayInput,
   output: GetGatewayOutput,
@@ -1017,7 +1017,7 @@ export const updateGatewayInformation: API.OperationMethod<
   UpdateGatewayInformationInput,
   UpdateGatewayInformationOutput,
   UpdateGatewayInformationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGatewayInformationInput,
   output: UpdateGatewayInformationOutput,
@@ -1031,7 +1031,7 @@ export const deleteGateway: API.OperationMethod<
   DeleteGatewayInput,
   DeleteGatewayOutput,
   DeleteGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGatewayInput,
   output: DeleteGatewayOutput,
@@ -1045,21 +1045,21 @@ export const listGateways: API.OperationMethod<
   ListGatewaysInput,
   ListGatewaysOutput,
   ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGatewaysInput,
   ) => stream.Stream<
     ListGatewaysOutput,
     ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGatewaysInput,
   ) => stream.Stream<
     Gateway,
     ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGatewaysInput,
@@ -1081,7 +1081,7 @@ export const associateGatewayToServer: API.OperationMethod<
   AssociateGatewayToServerInput,
   AssociateGatewayToServerOutput,
   AssociateGatewayToServerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateGatewayToServerInput,
   output: AssociateGatewayToServerOutput,
@@ -1099,7 +1099,7 @@ export const disassociateGatewayFromServer: API.OperationMethod<
   DisassociateGatewayFromServerInput,
   DisassociateGatewayFromServerOutput,
   DisassociateGatewayFromServerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateGatewayFromServerInput,
   output: DisassociateGatewayFromServerOutput,
@@ -1116,7 +1116,7 @@ export const putMaintenanceStartTime: API.OperationMethod<
   PutMaintenanceStartTimeInput,
   PutMaintenanceStartTimeOutput,
   PutMaintenanceStartTimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutMaintenanceStartTimeInput,
   output: PutMaintenanceStartTimeOutput,
@@ -1134,7 +1134,7 @@ export const testHypervisorConfiguration: API.OperationMethod<
   TestHypervisorConfigurationInput,
   TestHypervisorConfigurationOutput,
   TestHypervisorConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestHypervisorConfigurationInput,
   output: TestHypervisorConfigurationOutput,
@@ -1155,7 +1155,7 @@ export const updateGatewaySoftwareNow: API.OperationMethod<
   UpdateGatewaySoftwareNowInput,
   UpdateGatewaySoftwareNowOutput,
   UpdateGatewaySoftwareNowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGatewaySoftwareNowInput,
   output: UpdateGatewaySoftwareNowOutput,
@@ -1174,7 +1174,7 @@ export const putBandwidthRateLimitSchedule: API.OperationMethod<
   PutBandwidthRateLimitScheduleInput,
   PutBandwidthRateLimitScheduleOutput,
   PutBandwidthRateLimitScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBandwidthRateLimitScheduleInput,
   output: PutBandwidthRateLimitScheduleOutput,
@@ -1193,7 +1193,7 @@ export const getBandwidthRateLimitSchedule: API.OperationMethod<
   GetBandwidthRateLimitScheduleInput,
   GetBandwidthRateLimitScheduleOutput,
   GetBandwidthRateLimitScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBandwidthRateLimitScheduleInput,
   output: GetBandwidthRateLimitScheduleOutput,
@@ -1210,7 +1210,7 @@ export const importHypervisorConfiguration: API.OperationMethod<
   ImportHypervisorConfigurationInput,
   ImportHypervisorConfigurationOutput,
   ImportHypervisorConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportHypervisorConfigurationInput,
   output: ImportHypervisorConfigurationOutput,
@@ -1226,7 +1226,7 @@ export const getHypervisor: API.OperationMethod<
   GetHypervisorInput,
   GetHypervisorOutput,
   GetHypervisorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHypervisorInput,
   output: GetHypervisorOutput,
@@ -1246,7 +1246,7 @@ export const updateHypervisor: API.OperationMethod<
   UpdateHypervisorInput,
   UpdateHypervisorOutput,
   UpdateHypervisorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateHypervisorInput,
   output: UpdateHypervisorOutput,
@@ -1264,7 +1264,7 @@ export const deleteHypervisor: API.OperationMethod<
   DeleteHypervisorInput,
   DeleteHypervisorOutput,
   DeleteHypervisorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteHypervisorInput,
   output: DeleteHypervisorOutput,
@@ -1278,21 +1278,21 @@ export const listHypervisors: API.OperationMethod<
   ListHypervisorsInput,
   ListHypervisorsOutput,
   ListHypervisorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListHypervisorsInput,
   ) => stream.Stream<
     ListHypervisorsOutput,
     ListHypervisorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListHypervisorsInput,
   ) => stream.Stream<
     Hypervisor,
     ListHypervisorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHypervisorsInput,
@@ -1316,7 +1316,7 @@ export const startVirtualMachinesMetadataSync: API.OperationMethod<
   StartVirtualMachinesMetadataSyncInput,
   StartVirtualMachinesMetadataSyncOutput,
   StartVirtualMachinesMetadataSyncError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartVirtualMachinesMetadataSyncInput,
   output: StartVirtualMachinesMetadataSyncOutput,
@@ -1336,7 +1336,7 @@ export const putHypervisorPropertyMappings: API.OperationMethod<
   PutHypervisorPropertyMappingsInput,
   PutHypervisorPropertyMappingsOutput,
   PutHypervisorPropertyMappingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutHypervisorPropertyMappingsInput,
   output: PutHypervisorPropertyMappingsOutput,
@@ -1354,7 +1354,7 @@ export const getHypervisorPropertyMappings: API.OperationMethod<
   GetHypervisorPropertyMappingsInput,
   GetHypervisorPropertyMappingsOutput,
   GetHypervisorPropertyMappingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHypervisorPropertyMappingsInput,
   output: GetHypervisorPropertyMappingsOutput,
@@ -1368,7 +1368,7 @@ export const getVirtualMachine: API.OperationMethod<
   GetVirtualMachineInput,
   GetVirtualMachineOutput,
   GetVirtualMachineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVirtualMachineInput,
   output: GetVirtualMachineOutput,
@@ -1382,21 +1382,21 @@ export const listVirtualMachines: API.OperationMethod<
   ListVirtualMachinesInput,
   ListVirtualMachinesOutput,
   ListVirtualMachinesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVirtualMachinesInput,
   ) => stream.Stream<
     ListVirtualMachinesOutput,
     ListVirtualMachinesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListVirtualMachinesInput,
   ) => stream.Stream<
     VirtualMachine,
     ListVirtualMachinesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualMachinesInput,

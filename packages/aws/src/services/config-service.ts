@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://config.amazonaws.com/doc/2014-11-12/");
 const svc = T.AwsApiService({
   sdkId: "Config Service",
@@ -6755,7 +6755,7 @@ export const associateResourceTypes: API.OperationMethod<
   AssociateResourceTypesRequest,
   AssociateResourceTypesResponse,
   AssociateResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateResourceTypesRequest,
   output: AssociateResourceTypesResponse,
@@ -6781,7 +6781,7 @@ export const batchGetAggregateResourceConfig: API.OperationMethod<
   BatchGetAggregateResourceConfigRequest,
   BatchGetAggregateResourceConfigResponse,
   BatchGetAggregateResourceConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetAggregateResourceConfigRequest,
   output: BatchGetAggregateResourceConfigResponse,
@@ -6810,7 +6810,7 @@ export const batchGetResourceConfig: API.OperationMethod<
   BatchGetResourceConfigRequest,
   BatchGetResourceConfigResponse,
   BatchGetResourceConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetResourceConfigRequest,
   output: BatchGetResourceConfigResponse,
@@ -6827,7 +6827,7 @@ export const deleteAggregationAuthorization: API.OperationMethod<
   DeleteAggregationAuthorizationRequest,
   DeleteAggregationAuthorizationResponse,
   DeleteAggregationAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAggregationAuthorizationRequest,
   output: DeleteAggregationAuthorizationResponse,
@@ -6866,7 +6866,7 @@ export const deleteConfigRule: API.OperationMethod<
   DeleteConfigRuleRequest,
   DeleteConfigRuleResponse,
   DeleteConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfigRuleRequest,
   output: DeleteConfigRuleResponse,
@@ -6883,7 +6883,7 @@ export const deleteConfigurationAggregator: API.OperationMethod<
   DeleteConfigurationAggregatorRequest,
   DeleteConfigurationAggregatorResponse,
   DeleteConfigurationAggregatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfigurationAggregatorRequest,
   output: DeleteConfigurationAggregatorResponse,
@@ -6907,7 +6907,7 @@ export const deleteConfigurationRecorder: API.OperationMethod<
   DeleteConfigurationRecorderRequest,
   DeleteConfigurationRecorderResponse,
   DeleteConfigurationRecorderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfigurationRecorderRequest,
   output: DeleteConfigurationRecorderResponse,
@@ -6940,7 +6940,7 @@ export const deleteConformancePack: API.OperationMethod<
   DeleteConformancePackRequest,
   DeleteConformancePackResponse,
   DeleteConformancePackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConformancePackRequest,
   output: DeleteConformancePackResponse,
@@ -6959,7 +6959,7 @@ export const deleteDeliveryChannel: API.OperationMethod<
   DeleteDeliveryChannelRequest,
   DeleteDeliveryChannelResponse,
   DeleteDeliveryChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDeliveryChannelRequest,
   output: DeleteDeliveryChannelResponse,
@@ -6982,7 +6982,7 @@ export const deleteEvaluationResults: API.OperationMethod<
   DeleteEvaluationResultsRequest,
   DeleteEvaluationResultsResponse,
   DeleteEvaluationResultsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEvaluationResultsRequest,
   output: DeleteEvaluationResultsResponse,
@@ -7019,7 +7019,7 @@ export const deleteOrganizationConfigRule: API.OperationMethod<
   DeleteOrganizationConfigRuleRequest,
   DeleteOrganizationConfigRuleResponse,
   DeleteOrganizationConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationConfigRuleRequest,
   output: DeleteOrganizationConfigRuleResponse,
@@ -7061,7 +7061,7 @@ export const deleteOrganizationConformancePack: API.OperationMethod<
   DeleteOrganizationConformancePackRequest,
   DeleteOrganizationConformancePackResponse,
   DeleteOrganizationConformancePackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationConformancePackRequest,
   output: DeleteOrganizationConformancePackResponse,
@@ -7082,7 +7082,7 @@ export const deletePendingAggregationRequest: API.OperationMethod<
   DeletePendingAggregationRequestRequest,
   DeletePendingAggregationRequestResponse,
   DeletePendingAggregationRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePendingAggregationRequestRequest,
   output: DeletePendingAggregationRequestResponse,
@@ -7101,7 +7101,7 @@ export const deleteRemediationConfiguration: API.OperationMethod<
   DeleteRemediationConfigurationRequest,
   DeleteRemediationConfigurationResponse,
   DeleteRemediationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRemediationConfigurationRequest,
   output: DeleteRemediationConfigurationResponse,
@@ -7125,7 +7125,7 @@ export const deleteRemediationExceptions: API.OperationMethod<
   DeleteRemediationExceptionsRequest,
   DeleteRemediationExceptionsResponse,
   DeleteRemediationExceptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRemediationExceptionsRequest,
   output: DeleteRemediationExceptionsResponse,
@@ -7142,7 +7142,7 @@ export const deleteResourceConfig: API.OperationMethod<
   DeleteResourceConfigRequest,
   DeleteResourceConfigResponse,
   DeleteResourceConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceConfigRequest,
   output: DeleteResourceConfigResponse,
@@ -7159,7 +7159,7 @@ export const deleteRetentionConfiguration: API.OperationMethod<
   DeleteRetentionConfigurationRequest,
   DeleteRetentionConfigurationResponse,
   DeleteRetentionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRetentionConfigurationRequest,
   output: DeleteRetentionConfigurationResponse,
@@ -7190,7 +7190,7 @@ export const deleteServiceLinkedConfigurationRecorder: API.OperationMethod<
   DeleteServiceLinkedConfigurationRecorderRequest,
   DeleteServiceLinkedConfigurationRecorderResponse,
   DeleteServiceLinkedConfigurationRecorderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServiceLinkedConfigurationRecorderRequest,
   output: DeleteServiceLinkedConfigurationRecorderResponse,
@@ -7211,7 +7211,7 @@ export const deleteStoredQuery: API.OperationMethod<
   DeleteStoredQueryRequest,
   DeleteStoredQueryResponse,
   DeleteStoredQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStoredQueryRequest,
   output: DeleteStoredQueryResponse,
@@ -7240,7 +7240,7 @@ export const deliverConfigSnapshot: API.OperationMethod<
   DeliverConfigSnapshotRequest,
   DeliverConfigSnapshotResponse,
   DeliverConfigSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeliverConfigSnapshotRequest,
   output: DeliverConfigSnapshotResponse,
@@ -7268,21 +7268,21 @@ export const describeAggregateComplianceByConfigRules: API.OperationMethod<
   DescribeAggregateComplianceByConfigRulesRequest,
   DescribeAggregateComplianceByConfigRulesResponse,
   DescribeAggregateComplianceByConfigRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeAggregateComplianceByConfigRulesRequest,
   ) => stream.Stream<
     DescribeAggregateComplianceByConfigRulesResponse,
     DescribeAggregateComplianceByConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeAggregateComplianceByConfigRulesRequest,
   ) => stream.Stream<
     unknown,
     DescribeAggregateComplianceByConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeAggregateComplianceByConfigRulesRequest,
@@ -7315,21 +7315,21 @@ export const describeAggregateComplianceByConformancePacks: API.OperationMethod<
   DescribeAggregateComplianceByConformancePacksRequest,
   DescribeAggregateComplianceByConformancePacksResponse,
   DescribeAggregateComplianceByConformancePacksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeAggregateComplianceByConformancePacksRequest,
   ) => stream.Stream<
     DescribeAggregateComplianceByConformancePacksResponse,
     DescribeAggregateComplianceByConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeAggregateComplianceByConformancePacksRequest,
   ) => stream.Stream<
     AggregateComplianceByConformancePack,
     DescribeAggregateComplianceByConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeAggregateComplianceByConformancePacksRequest,
@@ -7360,21 +7360,21 @@ export const describeAggregationAuthorizations: API.OperationMethod<
   DescribeAggregationAuthorizationsRequest,
   DescribeAggregationAuthorizationsResponse,
   DescribeAggregationAuthorizationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeAggregationAuthorizationsRequest,
   ) => stream.Stream<
     DescribeAggregationAuthorizationsResponse,
     DescribeAggregationAuthorizationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeAggregationAuthorizationsRequest,
   ) => stream.Stream<
     AggregationAuthorization,
     DescribeAggregationAuthorizationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeAggregationAuthorizationsRequest,
@@ -7432,21 +7432,21 @@ export const describeComplianceByConfigRule: API.OperationMethod<
   DescribeComplianceByConfigRuleRequest,
   DescribeComplianceByConfigRuleResponse,
   DescribeComplianceByConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeComplianceByConfigRuleRequest,
   ) => stream.Stream<
     DescribeComplianceByConfigRuleResponse,
     DescribeComplianceByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeComplianceByConfigRuleRequest,
   ) => stream.Stream<
     ComplianceByConfigRule,
     DescribeComplianceByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeComplianceByConfigRuleRequest,
@@ -7502,21 +7502,21 @@ export const describeComplianceByResource: API.OperationMethod<
   DescribeComplianceByResourceRequest,
   DescribeComplianceByResourceResponse,
   DescribeComplianceByResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeComplianceByResourceRequest,
   ) => stream.Stream<
     DescribeComplianceByResourceResponse,
     DescribeComplianceByResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeComplianceByResourceRequest,
   ) => stream.Stream<
     ComplianceByResource,
     DescribeComplianceByResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeComplianceByResourceRequest,
@@ -7542,21 +7542,21 @@ export const describeConfigRuleEvaluationStatus: API.OperationMethod<
   DescribeConfigRuleEvaluationStatusRequest,
   DescribeConfigRuleEvaluationStatusResponse,
   DescribeConfigRuleEvaluationStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeConfigRuleEvaluationStatusRequest,
   ) => stream.Stream<
     DescribeConfigRuleEvaluationStatusResponse,
     DescribeConfigRuleEvaluationStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeConfigRuleEvaluationStatusRequest,
   ) => stream.Stream<
     ConfigRuleEvaluationStatus,
     DescribeConfigRuleEvaluationStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigRuleEvaluationStatusRequest,
@@ -7585,21 +7585,21 @@ export const describeConfigRules: API.OperationMethod<
   DescribeConfigRulesRequest,
   DescribeConfigRulesResponse,
   DescribeConfigRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeConfigRulesRequest,
   ) => stream.Stream<
     DescribeConfigRulesResponse,
     DescribeConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeConfigRulesRequest,
   ) => stream.Stream<
     ConfigRule,
     DescribeConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigRulesRequest,
@@ -7631,21 +7631,21 @@ export const describeConfigurationAggregators: API.OperationMethod<
   DescribeConfigurationAggregatorsRequest,
   DescribeConfigurationAggregatorsResponse,
   DescribeConfigurationAggregatorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeConfigurationAggregatorsRequest,
   ) => stream.Stream<
     DescribeConfigurationAggregatorsResponse,
     DescribeConfigurationAggregatorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeConfigurationAggregatorsRequest,
   ) => stream.Stream<
     ConfigurationAggregator,
     DescribeConfigurationAggregatorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigurationAggregatorsRequest,
@@ -7677,21 +7677,21 @@ export const describeConfigurationAggregatorSourcesStatus: API.OperationMethod<
   DescribeConfigurationAggregatorSourcesStatusRequest,
   DescribeConfigurationAggregatorSourcesStatusResponse,
   DescribeConfigurationAggregatorSourcesStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeConfigurationAggregatorSourcesStatusRequest,
   ) => stream.Stream<
     DescribeConfigurationAggregatorSourcesStatusResponse,
     DescribeConfigurationAggregatorSourcesStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeConfigurationAggregatorSourcesStatusRequest,
   ) => stream.Stream<
     AggregatedSourceStatus,
     DescribeConfigurationAggregatorSourcesStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigurationAggregatorSourcesStatusRequest,
@@ -7725,7 +7725,7 @@ export const describeConfigurationRecorders: API.OperationMethod<
   DescribeConfigurationRecordersRequest,
   DescribeConfigurationRecordersResponse,
   DescribeConfigurationRecordersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeConfigurationRecordersRequest,
   output: DescribeConfigurationRecordersResponse,
@@ -7750,7 +7750,7 @@ export const describeConfigurationRecorderStatus: API.OperationMethod<
   DescribeConfigurationRecorderStatusRequest,
   DescribeConfigurationRecorderStatusResponse,
   DescribeConfigurationRecorderStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeConfigurationRecorderStatusRequest,
   output: DescribeConfigurationRecorderStatusResponse,
@@ -7772,21 +7772,21 @@ export const describeConformancePackCompliance: API.OperationMethod<
   DescribeConformancePackComplianceRequest,
   DescribeConformancePackComplianceResponse,
   DescribeConformancePackComplianceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeConformancePackComplianceRequest,
   ) => stream.Stream<
     DescribeConformancePackComplianceResponse,
     DescribeConformancePackComplianceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeConformancePackComplianceRequest,
   ) => stream.Stream<
     ConformancePackRuleCompliance,
     DescribeConformancePackComplianceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeConformancePackComplianceRequest,
@@ -7818,21 +7818,21 @@ export const describeConformancePacks: API.OperationMethod<
   DescribeConformancePacksRequest,
   DescribeConformancePacksResponse,
   DescribeConformancePacksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeConformancePacksRequest,
   ) => stream.Stream<
     DescribeConformancePacksResponse,
     DescribeConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeConformancePacksRequest,
   ) => stream.Stream<
     ConformancePackDetail,
     DescribeConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeConformancePacksRequest,
@@ -7864,21 +7864,21 @@ export const describeConformancePackStatus: API.OperationMethod<
   DescribeConformancePackStatusRequest,
   DescribeConformancePackStatusResponse,
   DescribeConformancePackStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeConformancePackStatusRequest,
   ) => stream.Stream<
     DescribeConformancePackStatusResponse,
     DescribeConformancePackStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeConformancePackStatusRequest,
   ) => stream.Stream<
     ConformancePackStatusDetail,
     DescribeConformancePackStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeConformancePackStatusRequest,
@@ -7910,7 +7910,7 @@ export const describeDeliveryChannels: API.OperationMethod<
   DescribeDeliveryChannelsRequest,
   DescribeDeliveryChannelsResponse,
   DescribeDeliveryChannelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDeliveryChannelsRequest,
   output: DescribeDeliveryChannelsResponse,
@@ -7932,7 +7932,7 @@ export const describeDeliveryChannelStatus: API.OperationMethod<
   DescribeDeliveryChannelStatusRequest,
   DescribeDeliveryChannelStatusResponse,
   DescribeDeliveryChannelStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDeliveryChannelStatusRequest,
   output: DescribeDeliveryChannelStatusResponse,
@@ -7969,21 +7969,21 @@ export const describeOrganizationConfigRules: API.OperationMethod<
   DescribeOrganizationConfigRulesRequest,
   DescribeOrganizationConfigRulesResponse,
   DescribeOrganizationConfigRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeOrganizationConfigRulesRequest,
   ) => stream.Stream<
     DescribeOrganizationConfigRulesResponse,
     DescribeOrganizationConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeOrganizationConfigRulesRequest,
   ) => stream.Stream<
     OrganizationConfigRule,
     DescribeOrganizationConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConfigRulesRequest,
@@ -8021,21 +8021,21 @@ export const describeOrganizationConfigRuleStatuses: API.OperationMethod<
   DescribeOrganizationConfigRuleStatusesRequest,
   DescribeOrganizationConfigRuleStatusesResponse,
   DescribeOrganizationConfigRuleStatusesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeOrganizationConfigRuleStatusesRequest,
   ) => stream.Stream<
     DescribeOrganizationConfigRuleStatusesResponse,
     DescribeOrganizationConfigRuleStatusesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeOrganizationConfigRuleStatusesRequest,
   ) => stream.Stream<
     OrganizationConfigRuleStatus,
     DescribeOrganizationConfigRuleStatusesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConfigRuleStatusesRequest,
@@ -8084,21 +8084,21 @@ export const describeOrganizationConformancePacks: API.OperationMethod<
   DescribeOrganizationConformancePacksRequest,
   DescribeOrganizationConformancePacksResponse,
   DescribeOrganizationConformancePacksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeOrganizationConformancePacksRequest,
   ) => stream.Stream<
     DescribeOrganizationConformancePacksResponse,
     DescribeOrganizationConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeOrganizationConformancePacksRequest,
   ) => stream.Stream<
     OrganizationConformancePack,
     DescribeOrganizationConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConformancePacksRequest,
@@ -8136,21 +8136,21 @@ export const describeOrganizationConformancePackStatuses: API.OperationMethod<
   DescribeOrganizationConformancePackStatusesRequest,
   DescribeOrganizationConformancePackStatusesResponse,
   DescribeOrganizationConformancePackStatusesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeOrganizationConformancePackStatusesRequest,
   ) => stream.Stream<
     DescribeOrganizationConformancePackStatusesResponse,
     DescribeOrganizationConformancePackStatusesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeOrganizationConformancePackStatusesRequest,
   ) => stream.Stream<
     OrganizationConformancePackStatus,
     DescribeOrganizationConformancePackStatusesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConformancePackStatusesRequest,
@@ -8180,21 +8180,21 @@ export const describePendingAggregationRequests: API.OperationMethod<
   DescribePendingAggregationRequestsRequest,
   DescribePendingAggregationRequestsResponse,
   DescribePendingAggregationRequestsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribePendingAggregationRequestsRequest,
   ) => stream.Stream<
     DescribePendingAggregationRequestsResponse,
     DescribePendingAggregationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribePendingAggregationRequestsRequest,
   ) => stream.Stream<
     PendingAggregationRequest,
     DescribePendingAggregationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribePendingAggregationRequestsRequest,
@@ -8219,7 +8219,7 @@ export const describeRemediationConfigurations: API.OperationMethod<
   DescribeRemediationConfigurationsRequest,
   DescribeRemediationConfigurationsResponse,
   DescribeRemediationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRemediationConfigurationsRequest,
   output: DescribeRemediationConfigurationsResponse,
@@ -8244,21 +8244,21 @@ export const describeRemediationExceptions: API.OperationMethod<
   DescribeRemediationExceptionsRequest,
   DescribeRemediationExceptionsResponse,
   DescribeRemediationExceptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeRemediationExceptionsRequest,
   ) => stream.Stream<
     DescribeRemediationExceptionsResponse,
     DescribeRemediationExceptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeRemediationExceptionsRequest,
   ) => stream.Stream<
     unknown,
     DescribeRemediationExceptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeRemediationExceptionsRequest,
@@ -8283,21 +8283,21 @@ export const describeRemediationExecutionStatus: API.OperationMethod<
   DescribeRemediationExecutionStatusRequest,
   DescribeRemediationExecutionStatusResponse,
   DescribeRemediationExecutionStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeRemediationExecutionStatusRequest,
   ) => stream.Stream<
     DescribeRemediationExecutionStatusResponse,
     DescribeRemediationExecutionStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeRemediationExecutionStatusRequest,
   ) => stream.Stream<
     RemediationExecutionStatus,
     DescribeRemediationExecutionStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeRemediationExecutionStatusRequest,
@@ -8332,21 +8332,21 @@ export const describeRetentionConfigurations: API.OperationMethod<
   DescribeRetentionConfigurationsRequest,
   DescribeRetentionConfigurationsResponse,
   DescribeRetentionConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeRetentionConfigurationsRequest,
   ) => stream.Stream<
     DescribeRetentionConfigurationsResponse,
     DescribeRetentionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeRetentionConfigurationsRequest,
   ) => stream.Stream<
     RetentionConfiguration,
     DescribeRetentionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeRetentionConfigurationsRequest,
@@ -8376,7 +8376,7 @@ export const disassociateResourceTypes: API.OperationMethod<
   DisassociateResourceTypesRequest,
   DisassociateResourceTypesResponse,
   DisassociateResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateResourceTypesRequest,
   output: DisassociateResourceTypesResponse,
@@ -8406,21 +8406,21 @@ export const getAggregateComplianceDetailsByConfigRule: API.OperationMethod<
   GetAggregateComplianceDetailsByConfigRuleRequest,
   GetAggregateComplianceDetailsByConfigRuleResponse,
   GetAggregateComplianceDetailsByConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetAggregateComplianceDetailsByConfigRuleRequest,
   ) => stream.Stream<
     GetAggregateComplianceDetailsByConfigRuleResponse,
     GetAggregateComplianceDetailsByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetAggregateComplianceDetailsByConfigRuleRequest,
   ) => stream.Stream<
     AggregateEvaluationResult,
     GetAggregateComplianceDetailsByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateComplianceDetailsByConfigRuleRequest,
@@ -8456,21 +8456,21 @@ export const getAggregateConfigRuleComplianceSummary: API.OperationMethod<
   GetAggregateConfigRuleComplianceSummaryRequest,
   GetAggregateConfigRuleComplianceSummaryResponse,
   GetAggregateConfigRuleComplianceSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetAggregateConfigRuleComplianceSummaryRequest,
   ) => stream.Stream<
     GetAggregateConfigRuleComplianceSummaryResponse,
     GetAggregateConfigRuleComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetAggregateConfigRuleComplianceSummaryRequest,
   ) => stream.Stream<
     unknown,
     GetAggregateConfigRuleComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateConfigRuleComplianceSummaryRequest,
@@ -8502,21 +8502,21 @@ export const getAggregateConformancePackComplianceSummary: API.OperationMethod<
   GetAggregateConformancePackComplianceSummaryRequest,
   GetAggregateConformancePackComplianceSummaryResponse,
   GetAggregateConformancePackComplianceSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetAggregateConformancePackComplianceSummaryRequest,
   ) => stream.Stream<
     GetAggregateConformancePackComplianceSummaryResponse,
     GetAggregateConformancePackComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetAggregateConformancePackComplianceSummaryRequest,
   ) => stream.Stream<
     unknown,
     GetAggregateConformancePackComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateConformancePackComplianceSummaryRequest,
@@ -8549,21 +8549,21 @@ export const getAggregateDiscoveredResourceCounts: API.OperationMethod<
   GetAggregateDiscoveredResourceCountsRequest,
   GetAggregateDiscoveredResourceCountsResponse,
   GetAggregateDiscoveredResourceCountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetAggregateDiscoveredResourceCountsRequest,
   ) => stream.Stream<
     GetAggregateDiscoveredResourceCountsResponse,
     GetAggregateDiscoveredResourceCountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetAggregateDiscoveredResourceCountsRequest,
   ) => stream.Stream<
     unknown,
     GetAggregateDiscoveredResourceCountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateDiscoveredResourceCountsRequest,
@@ -8595,7 +8595,7 @@ export const getAggregateResourceConfig: API.OperationMethod<
   GetAggregateResourceConfigRequest,
   GetAggregateResourceConfigResponse,
   GetAggregateResourceConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAggregateResourceConfigRequest,
   output: GetAggregateResourceConfigResponse,
@@ -8621,21 +8621,21 @@ export const getComplianceDetailsByConfigRule: API.OperationMethod<
   GetComplianceDetailsByConfigRuleRequest,
   GetComplianceDetailsByConfigRuleResponse,
   GetComplianceDetailsByConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetComplianceDetailsByConfigRuleRequest,
   ) => stream.Stream<
     GetComplianceDetailsByConfigRuleResponse,
     GetComplianceDetailsByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetComplianceDetailsByConfigRuleRequest,
   ) => stream.Stream<
     EvaluationResult,
     GetComplianceDetailsByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetComplianceDetailsByConfigRuleRequest,
@@ -8665,21 +8665,21 @@ export const getComplianceDetailsByResource: API.OperationMethod<
   GetComplianceDetailsByResourceRequest,
   GetComplianceDetailsByResourceResponse,
   GetComplianceDetailsByResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetComplianceDetailsByResourceRequest,
   ) => stream.Stream<
     GetComplianceDetailsByResourceResponse,
     GetComplianceDetailsByResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetComplianceDetailsByResourceRequest,
   ) => stream.Stream<
     EvaluationResult,
     GetComplianceDetailsByResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetComplianceDetailsByResourceRequest,
@@ -8700,7 +8700,7 @@ export const getComplianceSummaryByConfigRule: API.OperationMethod<
   GetComplianceSummaryByConfigRuleRequest,
   GetComplianceSummaryByConfigRuleResponse,
   GetComplianceSummaryByConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetComplianceSummaryByConfigRuleRequest,
   output: GetComplianceSummaryByConfigRuleResponse,
@@ -8719,7 +8719,7 @@ export const getComplianceSummaryByResourceType: API.OperationMethod<
   GetComplianceSummaryByResourceTypeRequest,
   GetComplianceSummaryByResourceTypeResponse,
   GetComplianceSummaryByResourceTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetComplianceSummaryByResourceTypeRequest,
   output: GetComplianceSummaryByResourceTypeResponse,
@@ -8739,21 +8739,21 @@ export const getConformancePackComplianceDetails: API.OperationMethod<
   GetConformancePackComplianceDetailsRequest,
   GetConformancePackComplianceDetailsResponse,
   GetConformancePackComplianceDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetConformancePackComplianceDetailsRequest,
   ) => stream.Stream<
     GetConformancePackComplianceDetailsResponse,
     GetConformancePackComplianceDetailsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetConformancePackComplianceDetailsRequest,
   ) => stream.Stream<
     unknown,
     GetConformancePackComplianceDetailsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetConformancePackComplianceDetailsRequest,
@@ -8783,21 +8783,21 @@ export const getConformancePackComplianceSummary: API.OperationMethod<
   GetConformancePackComplianceSummaryRequest,
   GetConformancePackComplianceSummaryResponse,
   GetConformancePackComplianceSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetConformancePackComplianceSummaryRequest,
   ) => stream.Stream<
     GetConformancePackComplianceSummaryResponse,
     GetConformancePackComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetConformancePackComplianceSummaryRequest,
   ) => stream.Stream<
     ConformancePackComplianceSummary,
     GetConformancePackComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetConformancePackComplianceSummaryRequest,
@@ -8822,7 +8822,7 @@ export const getCustomRulePolicy: API.OperationMethod<
   GetCustomRulePolicyRequest,
   GetCustomRulePolicyResponse,
   GetCustomRulePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomRulePolicyRequest,
   output: GetCustomRulePolicyResponse,
@@ -8882,21 +8882,21 @@ export const getDiscoveredResourceCounts: API.OperationMethod<
   GetDiscoveredResourceCountsRequest,
   GetDiscoveredResourceCountsResponse,
   GetDiscoveredResourceCountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetDiscoveredResourceCountsRequest,
   ) => stream.Stream<
     GetDiscoveredResourceCountsResponse,
     GetDiscoveredResourceCountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetDiscoveredResourceCountsRequest,
   ) => stream.Stream<
     unknown,
     GetDiscoveredResourceCountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetDiscoveredResourceCountsRequest,
@@ -8925,21 +8925,21 @@ export const getOrganizationConfigRuleDetailedStatus: API.OperationMethod<
   GetOrganizationConfigRuleDetailedStatusRequest,
   GetOrganizationConfigRuleDetailedStatusResponse,
   GetOrganizationConfigRuleDetailedStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetOrganizationConfigRuleDetailedStatusRequest,
   ) => stream.Stream<
     GetOrganizationConfigRuleDetailedStatusResponse,
     GetOrganizationConfigRuleDetailedStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetOrganizationConfigRuleDetailedStatusRequest,
   ) => stream.Stream<
     MemberAccountStatus,
     GetOrganizationConfigRuleDetailedStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetOrganizationConfigRuleDetailedStatusRequest,
@@ -8970,21 +8970,21 @@ export const getOrganizationConformancePackDetailedStatus: API.OperationMethod<
   GetOrganizationConformancePackDetailedStatusRequest,
   GetOrganizationConformancePackDetailedStatusResponse,
   GetOrganizationConformancePackDetailedStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetOrganizationConformancePackDetailedStatusRequest,
   ) => stream.Stream<
     GetOrganizationConformancePackDetailedStatusResponse,
     GetOrganizationConformancePackDetailedStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetOrganizationConformancePackDetailedStatusRequest,
   ) => stream.Stream<
     OrganizationConformancePackDetailedStatus,
     GetOrganizationConformancePackDetailedStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetOrganizationConformancePackDetailedStatusRequest,
@@ -9013,7 +9013,7 @@ export const getOrganizationCustomRulePolicy: API.OperationMethod<
   GetOrganizationCustomRulePolicyRequest,
   GetOrganizationCustomRulePolicyResponse,
   GetOrganizationCustomRulePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationCustomRulePolicyRequest,
   output: GetOrganizationCustomRulePolicyResponse,
@@ -9065,21 +9065,21 @@ export const getResourceConfigHistory: API.OperationMethod<
   GetResourceConfigHistoryRequest,
   GetResourceConfigHistoryResponse,
   GetResourceConfigHistoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetResourceConfigHistoryRequest,
   ) => stream.Stream<
     GetResourceConfigHistoryResponse,
     GetResourceConfigHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetResourceConfigHistoryRequest,
   ) => stream.Stream<
     ConfigurationItem,
     GetResourceConfigHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetResourceConfigHistoryRequest,
@@ -9114,7 +9114,7 @@ export const getResourceEvaluationSummary: API.OperationMethod<
   GetResourceEvaluationSummaryRequest,
   GetResourceEvaluationSummaryResponse,
   GetResourceEvaluationSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceEvaluationSummaryRequest,
   output: GetResourceEvaluationSummaryResponse,
@@ -9131,7 +9131,7 @@ export const getStoredQuery: API.OperationMethod<
   GetStoredQueryRequest,
   GetStoredQueryResponse,
   GetStoredQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStoredQueryRequest,
   output: GetStoredQueryResponse,
@@ -9154,21 +9154,21 @@ export const listAggregateDiscoveredResources: API.OperationMethod<
   ListAggregateDiscoveredResourcesRequest,
   ListAggregateDiscoveredResourcesResponse,
   ListAggregateDiscoveredResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAggregateDiscoveredResourcesRequest,
   ) => stream.Stream<
     ListAggregateDiscoveredResourcesResponse,
     ListAggregateDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAggregateDiscoveredResourcesRequest,
   ) => stream.Stream<
     AggregateResourceIdentifier,
     ListAggregateDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAggregateDiscoveredResourcesRequest,
@@ -9196,21 +9196,21 @@ export const listConfigurationRecorders: API.OperationMethod<
   ListConfigurationRecordersRequest,
   ListConfigurationRecordersResponse,
   ListConfigurationRecordersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConfigurationRecordersRequest,
   ) => stream.Stream<
     ListConfigurationRecordersResponse,
     ListConfigurationRecordersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConfigurationRecordersRequest,
   ) => stream.Stream<
     ConfigurationRecorderSummary,
     ListConfigurationRecordersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationRecordersRequest,
@@ -9240,21 +9240,21 @@ export const listConformancePackComplianceScores: API.OperationMethod<
   ListConformancePackComplianceScoresRequest,
   ListConformancePackComplianceScoresResponse,
   ListConformancePackComplianceScoresError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConformancePackComplianceScoresRequest,
   ) => stream.Stream<
     ListConformancePackComplianceScoresResponse,
     ListConformancePackComplianceScoresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConformancePackComplianceScoresRequest,
   ) => stream.Stream<
     unknown,
     ListConformancePackComplianceScoresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConformancePackComplianceScoresRequest,
@@ -9316,21 +9316,21 @@ export const listDiscoveredResources: API.OperationMethod<
   ListDiscoveredResourcesRequest,
   ListDiscoveredResourcesResponse,
   ListDiscoveredResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDiscoveredResourcesRequest,
   ) => stream.Stream<
     ListDiscoveredResourcesResponse,
     ListDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDiscoveredResourcesRequest,
   ) => stream.Stream<
     ResourceIdentifier,
     ListDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveredResourcesRequest,
@@ -9360,21 +9360,21 @@ export const listResourceEvaluations: API.OperationMethod<
   ListResourceEvaluationsRequest,
   ListResourceEvaluationsResponse,
   ListResourceEvaluationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceEvaluationsRequest,
   ) => stream.Stream<
     ListResourceEvaluationsResponse,
     ListResourceEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceEvaluationsRequest,
   ) => stream.Stream<
     ResourceEvaluation,
     ListResourceEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceEvaluationsRequest,
@@ -9402,21 +9402,21 @@ export const listStoredQueries: API.OperationMethod<
   ListStoredQueriesRequest,
   ListStoredQueriesResponse,
   ListStoredQueriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStoredQueriesRequest,
   ) => stream.Stream<
     ListStoredQueriesResponse,
     ListStoredQueriesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStoredQueriesRequest,
   ) => stream.Stream<
     unknown,
     ListStoredQueriesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStoredQueriesRequest,
@@ -9441,21 +9441,21 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     ListTagsForResourceResponse,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     Tag,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
@@ -9491,7 +9491,7 @@ export const putAggregationAuthorization: API.OperationMethod<
   PutAggregationAuthorizationRequest,
   PutAggregationAuthorizationResponse,
   PutAggregationAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAggregationAuthorizationRequest,
   output: PutAggregationAuthorizationResponse,
@@ -9562,7 +9562,7 @@ export const putConfigRule: API.OperationMethod<
   PutConfigRuleRequest,
   PutConfigRuleResponse,
   PutConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutConfigRuleRequest,
   output: PutConfigRuleResponse,
@@ -9610,7 +9610,7 @@ export const putConfigurationAggregator: API.OperationMethod<
   PutConfigurationAggregatorRequest,
   PutConfigurationAggregatorResponse,
   PutConfigurationAggregatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutConfigurationAggregatorRequest,
   output: PutConfigurationAggregatorResponse,
@@ -9663,7 +9663,7 @@ export const putConfigurationRecorder: API.OperationMethod<
   PutConfigurationRecorderRequest,
   PutConfigurationRecorderResponse,
   PutConfigurationRecorderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutConfigurationRecorderRequest,
   output: PutConfigurationRecorderResponse,
@@ -9717,7 +9717,7 @@ export const putConformancePack: API.OperationMethod<
   PutConformancePackRequest,
   PutConformancePackResponse,
   PutConformancePackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutConformancePackRequest,
   output: PutConformancePackResponse,
@@ -9758,7 +9758,7 @@ export const putDeliveryChannel: API.OperationMethod<
   PutDeliveryChannelRequest,
   PutDeliveryChannelResponse,
   PutDeliveryChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutDeliveryChannelRequest,
   output: PutDeliveryChannelResponse,
@@ -9787,7 +9787,7 @@ export const putEvaluations: API.OperationMethod<
   PutEvaluationsRequest,
   PutEvaluationsResponse,
   PutEvaluationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutEvaluationsRequest,
   output: PutEvaluationsResponse,
@@ -9809,7 +9809,7 @@ export const putExternalEvaluation: API.OperationMethod<
   PutExternalEvaluationRequest,
   PutExternalEvaluationResponse,
   PutExternalEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutExternalEvaluationRequest,
   output: PutExternalEvaluationResponse,
@@ -9873,7 +9873,7 @@ export const putOrganizationConfigRule: API.OperationMethod<
   PutOrganizationConfigRuleRequest,
   PutOrganizationConfigRuleResponse,
   PutOrganizationConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutOrganizationConfigRuleRequest,
   output: PutOrganizationConfigRuleResponse,
@@ -9939,7 +9939,7 @@ export const putOrganizationConformancePack: API.OperationMethod<
   PutOrganizationConformancePackRequest,
   PutOrganizationConformancePackResponse,
   PutOrganizationConformancePackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutOrganizationConformancePackRequest,
   output: PutOrganizationConformancePackResponse,
@@ -9992,7 +9992,7 @@ export const putRemediationConfigurations: API.OperationMethod<
   PutRemediationConfigurationsRequest,
   PutRemediationConfigurationsResponse,
   PutRemediationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutRemediationConfigurationsRequest,
   output: PutRemediationConfigurationsResponse,
@@ -10042,7 +10042,7 @@ export const putRemediationExceptions: API.OperationMethod<
   PutRemediationExceptionsRequest,
   PutRemediationExceptionsResponse,
   PutRemediationExceptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutRemediationExceptionsRequest,
   output: PutRemediationExceptionsResponse,
@@ -10070,7 +10070,7 @@ export const putResourceConfig: API.OperationMethod<
   PutResourceConfigRequest,
   PutResourceConfigResponse,
   PutResourceConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutResourceConfigRequest,
   output: PutResourceConfigResponse,
@@ -10101,7 +10101,7 @@ export const putRetentionConfiguration: API.OperationMethod<
   PutRetentionConfigurationRequest,
   PutRetentionConfigurationResponse,
   PutRetentionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutRetentionConfigurationRequest,
   output: PutRetentionConfigurationResponse,
@@ -10139,7 +10139,7 @@ export const putServiceLinkedConfigurationRecorder: API.OperationMethod<
   PutServiceLinkedConfigurationRecorderRequest,
   PutServiceLinkedConfigurationRecorderResponse,
   PutServiceLinkedConfigurationRecorderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutServiceLinkedConfigurationRecorderRequest,
   output: PutServiceLinkedConfigurationRecorderResponse,
@@ -10168,7 +10168,7 @@ export const putStoredQuery: API.OperationMethod<
   PutStoredQueryRequest,
   PutStoredQueryResponse,
   PutStoredQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutStoredQueryRequest,
   output: PutStoredQueryResponse,
@@ -10203,21 +10203,21 @@ export const selectAggregateResourceConfig: API.OperationMethod<
   SelectAggregateResourceConfigRequest,
   SelectAggregateResourceConfigResponse,
   SelectAggregateResourceConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SelectAggregateResourceConfigRequest,
   ) => stream.Stream<
     SelectAggregateResourceConfigResponse,
     SelectAggregateResourceConfigError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SelectAggregateResourceConfigRequest,
   ) => stream.Stream<
     string,
     SelectAggregateResourceConfigError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SelectAggregateResourceConfigRequest,
@@ -10252,21 +10252,21 @@ export const selectResourceConfig: API.OperationMethod<
   SelectResourceConfigRequest,
   SelectResourceConfigResponse,
   SelectResourceConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SelectResourceConfigRequest,
   ) => stream.Stream<
     SelectResourceConfigResponse,
     SelectResourceConfigError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SelectResourceConfigRequest,
   ) => stream.Stream<
     string,
     SelectResourceConfigError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SelectResourceConfigRequest,
@@ -10335,7 +10335,7 @@ export const startConfigRulesEvaluation: API.OperationMethod<
   StartConfigRulesEvaluationRequest,
   StartConfigRulesEvaluationResponse,
   StartConfigRulesEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartConfigRulesEvaluationRequest,
   output: StartConfigRulesEvaluationResponse,
@@ -10361,7 +10361,7 @@ export const startConfigurationRecorder: API.OperationMethod<
   StartConfigurationRecorderRequest,
   StartConfigurationRecorderResponse,
   StartConfigurationRecorderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartConfigurationRecorderRequest,
   output: StartConfigurationRecorderResponse,
@@ -10385,7 +10385,7 @@ export const startRemediationExecution: API.OperationMethod<
   StartRemediationExecutionRequest,
   StartRemediationExecutionResponse,
   StartRemediationExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartRemediationExecutionRequest,
   output: StartRemediationExecutionResponse,
@@ -10417,7 +10417,7 @@ export const startResourceEvaluation: API.OperationMethod<
   StartResourceEvaluationRequest,
   StartResourceEvaluationResponse,
   StartResourceEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartResourceEvaluationRequest,
   output: StartResourceEvaluationResponse,
@@ -10434,7 +10434,7 @@ export const stopConfigurationRecorder: API.OperationMethod<
   StopConfigurationRecorderRequest,
   StopConfigurationRecorderResponse,
   StopConfigurationRecorderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopConfigurationRecorderRequest,
   output: StopConfigurationRecorderResponse,
@@ -10453,7 +10453,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -10474,7 +10474,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "InternetMonitor",
   serviceShapeName: "InternetMonitor20210603",
@@ -1114,7 +1114,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1142,7 +1142,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1168,7 +1168,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -1199,7 +1199,7 @@ export const getInternetEvent: API.OperationMethod<
   GetInternetEventInput,
   GetInternetEventOutput,
   GetInternetEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInternetEventInput,
   output: GetInternetEventOutput,
@@ -1232,21 +1232,21 @@ export const listInternetEvents: API.OperationMethod<
   ListInternetEventsInput,
   ListInternetEventsOutput,
   ListInternetEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInternetEventsInput,
   ) => stream.Stream<
     ListInternetEventsOutput,
     ListInternetEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInternetEventsInput,
   ) => stream.Stream<
     InternetEventSummary,
     ListInternetEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInternetEventsInput,
@@ -1288,7 +1288,7 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorInput,
   CreateMonitorOutput,
   CreateMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMonitorInput,
   output: CreateMonitorOutput,
@@ -1315,7 +1315,7 @@ export const getMonitor: API.OperationMethod<
   GetMonitorInput,
   GetMonitorOutput,
   GetMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMonitorInput,
   output: GetMonitorOutput,
@@ -1345,7 +1345,7 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorInput,
   UpdateMonitorOutput,
   UpdateMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMonitorInput,
   output: UpdateMonitorOutput,
@@ -1371,7 +1371,7 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorInput,
   DeleteMonitorOutput,
   DeleteMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMonitorInput,
   output: DeleteMonitorOutput,
@@ -1395,21 +1395,21 @@ export const listMonitors: API.OperationMethod<
   ListMonitorsInput,
   ListMonitorsOutput,
   ListMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMonitorsInput,
   ) => stream.Stream<
     ListMonitorsOutput,
     ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMonitorsInput,
   ) => stream.Stream<
     Monitor,
     ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsInput,
@@ -1446,21 +1446,21 @@ export const getQueryResults: API.OperationMethod<
   GetQueryResultsInput,
   GetQueryResultsOutput,
   GetQueryResultsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetQueryResultsInput,
   ) => stream.Stream<
     GetQueryResultsOutput,
     GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetQueryResultsInput,
   ) => stream.Stream<
     unknown,
     GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsInput,
@@ -1503,7 +1503,7 @@ export const getQueryStatus: API.OperationMethod<
   GetQueryStatusInput,
   GetQueryStatusOutput,
   GetQueryStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQueryStatusInput,
   output: GetQueryStatusOutput,
@@ -1535,7 +1535,7 @@ export const startQuery: API.OperationMethod<
   StartQueryInput,
   StartQueryOutput,
   StartQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartQueryInput,
   output: StartQueryOutput,
@@ -1561,7 +1561,7 @@ export const stopQuery: API.OperationMethod<
   StopQueryInput,
   StopQueryOutput,
   StopQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopQueryInput,
   output: StopQueryOutput,
@@ -1592,7 +1592,7 @@ export const getHealthEvent: API.OperationMethod<
   GetHealthEventInput,
   GetHealthEventOutput,
   GetHealthEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHealthEventInput,
   output: GetHealthEventOutput,
@@ -1619,21 +1619,21 @@ export const listHealthEvents: API.OperationMethod<
   ListHealthEventsInput,
   ListHealthEventsOutput,
   ListHealthEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListHealthEventsInput,
   ) => stream.Stream<
     ListHealthEventsOutput,
     ListHealthEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListHealthEventsInput,
   ) => stream.Stream<
     HealthEvent,
     ListHealthEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHealthEventsInput,

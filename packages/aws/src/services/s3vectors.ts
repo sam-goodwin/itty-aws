@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "S3Vectors",
   serviceShapeName: "S3Vectors",
@@ -935,7 +935,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -959,7 +959,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -983,7 +983,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -1007,7 +1007,7 @@ export const createVectorBucket: API.OperationMethod<
   CreateVectorBucketInput,
   CreateVectorBucketOutput,
   CreateVectorBucketError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVectorBucketInput,
   output: CreateVectorBucketOutput,
@@ -1033,7 +1033,7 @@ export const deleteVectorBucket: API.OperationMethod<
   DeleteVectorBucketInput,
   DeleteVectorBucketOutput,
   DeleteVectorBucketError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVectorBucketInput,
   output: DeleteVectorBucketOutput,
@@ -1054,7 +1054,7 @@ export const deleteVectorBucketPolicy: API.OperationMethod<
   DeleteVectorBucketPolicyInput,
   DeleteVectorBucketPolicyOutput,
   DeleteVectorBucketPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVectorBucketPolicyInput,
   output: DeleteVectorBucketPolicyOutput,
@@ -1075,7 +1075,7 @@ export const getVectorBucket: API.OperationMethod<
   GetVectorBucketInput,
   GetVectorBucketOutput,
   GetVectorBucketError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVectorBucketInput,
   output: GetVectorBucketOutput,
@@ -1096,7 +1096,7 @@ export const getVectorBucketPolicy: API.OperationMethod<
   GetVectorBucketPolicyInput,
   GetVectorBucketPolicyOutput,
   GetVectorBucketPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVectorBucketPolicyInput,
   output: GetVectorBucketPolicyOutput,
@@ -1114,21 +1114,21 @@ export const listVectorBuckets: API.OperationMethod<
   ListVectorBucketsInput,
   ListVectorBucketsOutput,
   ListVectorBucketsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVectorBucketsInput,
   ) => stream.Stream<
     ListVectorBucketsOutput,
     ListVectorBucketsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListVectorBucketsInput,
   ) => stream.Stream<
     VectorBucketSummary,
     ListVectorBucketsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVectorBucketsInput,
@@ -1156,7 +1156,7 @@ export const putVectorBucketPolicy: API.OperationMethod<
   PutVectorBucketPolicyInput,
   PutVectorBucketPolicyOutput,
   PutVectorBucketPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutVectorBucketPolicyInput,
   output: PutVectorBucketPolicyOutput,
@@ -1181,7 +1181,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexInput,
   CreateIndexOutput,
   CreateIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIndexInput,
   output: CreateIndexOutput,
@@ -1207,7 +1207,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexInput,
   DeleteIndexOutput,
   DeleteIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIndexInput,
   output: DeleteIndexOutput,
@@ -1228,7 +1228,7 @@ export const getIndex: API.OperationMethod<
   GetIndexInput,
   GetIndexOutput,
   GetIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIndexInput,
   output: GetIndexOutput,
@@ -1249,21 +1249,21 @@ export const listIndexes: API.OperationMethod<
   ListIndexesInput,
   ListIndexesOutput,
   ListIndexesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIndexesInput,
   ) => stream.Stream<
     ListIndexesOutput,
     ListIndexesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListIndexesInput,
   ) => stream.Stream<
     IndexSummary,
     ListIndexesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesInput,
@@ -1296,7 +1296,7 @@ export const deleteVectors: API.OperationMethod<
   DeleteVectorsInput,
   DeleteVectorsOutput,
   DeleteVectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVectorsInput,
   output: DeleteVectorsOutput,
@@ -1329,7 +1329,7 @@ export const getVectors: API.OperationMethod<
   GetVectorsInput,
   GetVectorsOutput,
   GetVectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVectorsInput,
   output: GetVectorsOutput,
@@ -1364,21 +1364,21 @@ export const listVectors: API.OperationMethod<
   ListVectorsInput,
   ListVectorsOutput,
   ListVectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVectorsInput,
   ) => stream.Stream<
     ListVectorsOutput,
     ListVectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListVectorsInput,
   ) => stream.Stream<
     ListOutputVector,
     ListVectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVectorsInput,
@@ -1420,7 +1420,7 @@ export const putVectors: API.OperationMethod<
   PutVectorsInput,
   PutVectorsOutput,
   PutVectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutVectorsInput,
   output: PutVectorsOutput,
@@ -1460,7 +1460,7 @@ export const queryVectors: API.OperationMethod<
   QueryVectorsInput,
   QueryVectorsOutput,
   QueryVectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVectorsInput,
   output: QueryVectorsOutput,

@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Greengrass",
   serviceShapeName: "Greengrass",
@@ -4524,7 +4524,7 @@ export const associateRoleToGroup: API.OperationMethod<
   AssociateRoleToGroupRequest,
   AssociateRoleToGroupResponse,
   AssociateRoleToGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateRoleToGroupRequest,
   output: AssociateRoleToGroupResponse,
@@ -4541,7 +4541,7 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   AssociateServiceRoleToAccountRequest,
   AssociateServiceRoleToAccountResponse,
   AssociateServiceRoleToAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateServiceRoleToAccountRequest,
   output: AssociateServiceRoleToAccountResponse,
@@ -4555,7 +4555,7 @@ export const createConnectorDefinition: API.OperationMethod<
   CreateConnectorDefinitionRequest,
   CreateConnectorDefinitionResponse,
   CreateConnectorDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConnectorDefinitionRequest,
   output: CreateConnectorDefinitionResponse,
@@ -4571,7 +4571,7 @@ export const createConnectorDefinitionVersion: API.OperationMethod<
   CreateConnectorDefinitionVersionRequest,
   CreateConnectorDefinitionVersionResponse,
   CreateConnectorDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConnectorDefinitionVersionRequest,
   output: CreateConnectorDefinitionVersionResponse,
@@ -4585,7 +4585,7 @@ export const createCoreDefinition: API.OperationMethod<
   CreateCoreDefinitionRequest,
   CreateCoreDefinitionResponse,
   CreateCoreDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoreDefinitionRequest,
   output: CreateCoreDefinitionResponse,
@@ -4601,7 +4601,7 @@ export const createCoreDefinitionVersion: API.OperationMethod<
   CreateCoreDefinitionVersionRequest,
   CreateCoreDefinitionVersionResponse,
   CreateCoreDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoreDefinitionVersionRequest,
   output: CreateCoreDefinitionVersionResponse,
@@ -4615,7 +4615,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentRequest,
   CreateDeploymentResponse,
   CreateDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeploymentRequest,
   output: CreateDeploymentResponse,
@@ -4629,7 +4629,7 @@ export const createDeviceDefinition: API.OperationMethod<
   CreateDeviceDefinitionRequest,
   CreateDeviceDefinitionResponse,
   CreateDeviceDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeviceDefinitionRequest,
   output: CreateDeviceDefinitionResponse,
@@ -4645,7 +4645,7 @@ export const createDeviceDefinitionVersion: API.OperationMethod<
   CreateDeviceDefinitionVersionRequest,
   CreateDeviceDefinitionVersionResponse,
   CreateDeviceDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeviceDefinitionVersionRequest,
   output: CreateDeviceDefinitionVersionResponse,
@@ -4659,7 +4659,7 @@ export const createFunctionDefinition: API.OperationMethod<
   CreateFunctionDefinitionRequest,
   CreateFunctionDefinitionResponse,
   CreateFunctionDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFunctionDefinitionRequest,
   output: CreateFunctionDefinitionResponse,
@@ -4675,7 +4675,7 @@ export const createFunctionDefinitionVersion: API.OperationMethod<
   CreateFunctionDefinitionVersionRequest,
   CreateFunctionDefinitionVersionResponse,
   CreateFunctionDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFunctionDefinitionVersionRequest,
   output: CreateFunctionDefinitionVersionResponse,
@@ -4689,7 +4689,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupRequest,
   CreateGroupResponse,
   CreateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResponse,
@@ -4706,7 +4706,7 @@ export const createGroupCertificateAuthority: API.OperationMethod<
   CreateGroupCertificateAuthorityRequest,
   CreateGroupCertificateAuthorityResponse,
   CreateGroupCertificateAuthorityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGroupCertificateAuthorityRequest,
   output: CreateGroupCertificateAuthorityResponse,
@@ -4720,7 +4720,7 @@ export const createGroupVersion: API.OperationMethod<
   CreateGroupVersionRequest,
   CreateGroupVersionResponse,
   CreateGroupVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGroupVersionRequest,
   output: CreateGroupVersionResponse,
@@ -4734,7 +4734,7 @@ export const createLoggerDefinition: API.OperationMethod<
   CreateLoggerDefinitionRequest,
   CreateLoggerDefinitionResponse,
   CreateLoggerDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLoggerDefinitionRequest,
   output: CreateLoggerDefinitionResponse,
@@ -4750,7 +4750,7 @@ export const createLoggerDefinitionVersion: API.OperationMethod<
   CreateLoggerDefinitionVersionRequest,
   CreateLoggerDefinitionVersionResponse,
   CreateLoggerDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLoggerDefinitionVersionRequest,
   output: CreateLoggerDefinitionVersionResponse,
@@ -4764,7 +4764,7 @@ export const createResourceDefinition: API.OperationMethod<
   CreateResourceDefinitionRequest,
   CreateResourceDefinitionResponse,
   CreateResourceDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResourceDefinitionRequest,
   output: CreateResourceDefinitionResponse,
@@ -4780,7 +4780,7 @@ export const createResourceDefinitionVersion: API.OperationMethod<
   CreateResourceDefinitionVersionRequest,
   CreateResourceDefinitionVersionResponse,
   CreateResourceDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResourceDefinitionVersionRequest,
   output: CreateResourceDefinitionVersionResponse,
@@ -4797,7 +4797,7 @@ export const createSoftwareUpdateJob: API.OperationMethod<
   CreateSoftwareUpdateJobRequest,
   CreateSoftwareUpdateJobResponse,
   CreateSoftwareUpdateJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSoftwareUpdateJobRequest,
   output: CreateSoftwareUpdateJobResponse,
@@ -4813,7 +4813,7 @@ export const createSubscriptionDefinition: API.OperationMethod<
   CreateSubscriptionDefinitionRequest,
   CreateSubscriptionDefinitionResponse,
   CreateSubscriptionDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubscriptionDefinitionRequest,
   output: CreateSubscriptionDefinitionResponse,
@@ -4829,7 +4829,7 @@ export const createSubscriptionDefinitionVersion: API.OperationMethod<
   CreateSubscriptionDefinitionVersionRequest,
   CreateSubscriptionDefinitionVersionResponse,
   CreateSubscriptionDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubscriptionDefinitionVersionRequest,
   output: CreateSubscriptionDefinitionVersionResponse,
@@ -4843,7 +4843,7 @@ export const deleteConnectorDefinition: API.OperationMethod<
   DeleteConnectorDefinitionRequest,
   DeleteConnectorDefinitionResponse,
   DeleteConnectorDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectorDefinitionRequest,
   output: DeleteConnectorDefinitionResponse,
@@ -4857,7 +4857,7 @@ export const deleteCoreDefinition: API.OperationMethod<
   DeleteCoreDefinitionRequest,
   DeleteCoreDefinitionResponse,
   DeleteCoreDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoreDefinitionRequest,
   output: DeleteCoreDefinitionResponse,
@@ -4871,7 +4871,7 @@ export const deleteDeviceDefinition: API.OperationMethod<
   DeleteDeviceDefinitionRequest,
   DeleteDeviceDefinitionResponse,
   DeleteDeviceDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDeviceDefinitionRequest,
   output: DeleteDeviceDefinitionResponse,
@@ -4885,7 +4885,7 @@ export const deleteFunctionDefinition: API.OperationMethod<
   DeleteFunctionDefinitionRequest,
   DeleteFunctionDefinitionResponse,
   DeleteFunctionDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFunctionDefinitionRequest,
   output: DeleteFunctionDefinitionResponse,
@@ -4899,7 +4899,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupRequest,
   DeleteGroupResponse,
   DeleteGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
@@ -4913,7 +4913,7 @@ export const deleteLoggerDefinition: API.OperationMethod<
   DeleteLoggerDefinitionRequest,
   DeleteLoggerDefinitionResponse,
   DeleteLoggerDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLoggerDefinitionRequest,
   output: DeleteLoggerDefinitionResponse,
@@ -4927,7 +4927,7 @@ export const deleteResourceDefinition: API.OperationMethod<
   DeleteResourceDefinitionRequest,
   DeleteResourceDefinitionResponse,
   DeleteResourceDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceDefinitionRequest,
   output: DeleteResourceDefinitionResponse,
@@ -4943,7 +4943,7 @@ export const deleteSubscriptionDefinition: API.OperationMethod<
   DeleteSubscriptionDefinitionRequest,
   DeleteSubscriptionDefinitionResponse,
   DeleteSubscriptionDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionDefinitionRequest,
   output: DeleteSubscriptionDefinitionResponse,
@@ -4960,7 +4960,7 @@ export const disassociateRoleFromGroup: API.OperationMethod<
   DisassociateRoleFromGroupRequest,
   DisassociateRoleFromGroupResponse,
   DisassociateRoleFromGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateRoleFromGroupRequest,
   output: DisassociateRoleFromGroupResponse,
@@ -4976,7 +4976,7 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   DisassociateServiceRoleFromAccountRequest,
   DisassociateServiceRoleFromAccountResponse,
   DisassociateServiceRoleFromAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateServiceRoleFromAccountRequest,
   output: DisassociateServiceRoleFromAccountResponse,
@@ -4993,7 +4993,7 @@ export const getAssociatedRole: API.OperationMethod<
   GetAssociatedRoleRequest,
   GetAssociatedRoleResponse,
   GetAssociatedRoleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssociatedRoleRequest,
   output: GetAssociatedRoleResponse,
@@ -5007,7 +5007,7 @@ export const getBulkDeploymentStatus: API.OperationMethod<
   GetBulkDeploymentStatusRequest,
   GetBulkDeploymentStatusResponse,
   GetBulkDeploymentStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBulkDeploymentStatusRequest,
   output: GetBulkDeploymentStatusResponse,
@@ -5024,7 +5024,7 @@ export const getConnectivityInfo: API.OperationMethod<
   GetConnectivityInfoRequest,
   GetConnectivityInfoResponse,
   GetConnectivityInfoError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectivityInfoRequest,
   output: GetConnectivityInfoResponse,
@@ -5038,7 +5038,7 @@ export const getConnectorDefinition: API.OperationMethod<
   GetConnectorDefinitionRequest,
   GetConnectorDefinitionResponse,
   GetConnectorDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectorDefinitionRequest,
   output: GetConnectorDefinitionResponse,
@@ -5054,7 +5054,7 @@ export const getConnectorDefinitionVersion: API.OperationMethod<
   GetConnectorDefinitionVersionRequest,
   GetConnectorDefinitionVersionResponse,
   GetConnectorDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectorDefinitionVersionRequest,
   output: GetConnectorDefinitionVersionResponse,
@@ -5068,7 +5068,7 @@ export const getCoreDefinition: API.OperationMethod<
   GetCoreDefinitionRequest,
   GetCoreDefinitionResponse,
   GetCoreDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoreDefinitionRequest,
   output: GetCoreDefinitionResponse,
@@ -5082,7 +5082,7 @@ export const getCoreDefinitionVersion: API.OperationMethod<
   GetCoreDefinitionVersionRequest,
   GetCoreDefinitionVersionResponse,
   GetCoreDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoreDefinitionVersionRequest,
   output: GetCoreDefinitionVersionResponse,
@@ -5096,7 +5096,7 @@ export const getDeploymentStatus: API.OperationMethod<
   GetDeploymentStatusRequest,
   GetDeploymentStatusResponse,
   GetDeploymentStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentStatusRequest,
   output: GetDeploymentStatusResponse,
@@ -5110,7 +5110,7 @@ export const getDeviceDefinition: API.OperationMethod<
   GetDeviceDefinitionRequest,
   GetDeviceDefinitionResponse,
   GetDeviceDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeviceDefinitionRequest,
   output: GetDeviceDefinitionResponse,
@@ -5126,7 +5126,7 @@ export const getDeviceDefinitionVersion: API.OperationMethod<
   GetDeviceDefinitionVersionRequest,
   GetDeviceDefinitionVersionResponse,
   GetDeviceDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeviceDefinitionVersionRequest,
   output: GetDeviceDefinitionVersionResponse,
@@ -5140,7 +5140,7 @@ export const getFunctionDefinition: API.OperationMethod<
   GetFunctionDefinitionRequest,
   GetFunctionDefinitionResponse,
   GetFunctionDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFunctionDefinitionRequest,
   output: GetFunctionDefinitionResponse,
@@ -5156,7 +5156,7 @@ export const getFunctionDefinitionVersion: API.OperationMethod<
   GetFunctionDefinitionVersionRequest,
   GetFunctionDefinitionVersionResponse,
   GetFunctionDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFunctionDefinitionVersionRequest,
   output: GetFunctionDefinitionVersionResponse,
@@ -5170,7 +5170,7 @@ export const getGroup: API.OperationMethod<
   GetGroupRequest,
   GetGroupResponse,
   GetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGroupRequest,
   output: GetGroupResponse,
@@ -5187,7 +5187,7 @@ export const getGroupCertificateAuthority: API.OperationMethod<
   GetGroupCertificateAuthorityRequest,
   GetGroupCertificateAuthorityResponse,
   GetGroupCertificateAuthorityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGroupCertificateAuthorityRequest,
   output: GetGroupCertificateAuthorityResponse,
@@ -5204,7 +5204,7 @@ export const getGroupCertificateConfiguration: API.OperationMethod<
   GetGroupCertificateConfigurationRequest,
   GetGroupCertificateConfigurationResponse,
   GetGroupCertificateConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGroupCertificateConfigurationRequest,
   output: GetGroupCertificateConfigurationResponse,
@@ -5218,7 +5218,7 @@ export const getGroupVersion: API.OperationMethod<
   GetGroupVersionRequest,
   GetGroupVersionResponse,
   GetGroupVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGroupVersionRequest,
   output: GetGroupVersionResponse,
@@ -5232,7 +5232,7 @@ export const getLoggerDefinition: API.OperationMethod<
   GetLoggerDefinitionRequest,
   GetLoggerDefinitionResponse,
   GetLoggerDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoggerDefinitionRequest,
   output: GetLoggerDefinitionResponse,
@@ -5248,7 +5248,7 @@ export const getLoggerDefinitionVersion: API.OperationMethod<
   GetLoggerDefinitionVersionRequest,
   GetLoggerDefinitionVersionResponse,
   GetLoggerDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoggerDefinitionVersionRequest,
   output: GetLoggerDefinitionVersionResponse,
@@ -5262,7 +5262,7 @@ export const getResourceDefinition: API.OperationMethod<
   GetResourceDefinitionRequest,
   GetResourceDefinitionResponse,
   GetResourceDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceDefinitionRequest,
   output: GetResourceDefinitionResponse,
@@ -5278,7 +5278,7 @@ export const getResourceDefinitionVersion: API.OperationMethod<
   GetResourceDefinitionVersionRequest,
   GetResourceDefinitionVersionResponse,
   GetResourceDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceDefinitionVersionRequest,
   output: GetResourceDefinitionVersionResponse,
@@ -5294,7 +5294,7 @@ export const getServiceRoleForAccount: API.OperationMethod<
   GetServiceRoleForAccountRequest,
   GetServiceRoleForAccountResponse,
   GetServiceRoleForAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceRoleForAccountRequest,
   output: GetServiceRoleForAccountResponse,
@@ -5308,7 +5308,7 @@ export const getSubscriptionDefinition: API.OperationMethod<
   GetSubscriptionDefinitionRequest,
   GetSubscriptionDefinitionResponse,
   GetSubscriptionDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionDefinitionRequest,
   output: GetSubscriptionDefinitionResponse,
@@ -5324,7 +5324,7 @@ export const getSubscriptionDefinitionVersion: API.OperationMethod<
   GetSubscriptionDefinitionVersionRequest,
   GetSubscriptionDefinitionVersionResponse,
   GetSubscriptionDefinitionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionDefinitionVersionRequest,
   output: GetSubscriptionDefinitionVersionResponse,
@@ -5341,7 +5341,7 @@ export const getThingRuntimeConfiguration: API.OperationMethod<
   GetThingRuntimeConfigurationRequest,
   GetThingRuntimeConfigurationResponse,
   GetThingRuntimeConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetThingRuntimeConfigurationRequest,
   output: GetThingRuntimeConfigurationResponse,
@@ -5357,7 +5357,7 @@ export const listBulkDeploymentDetailedReports: API.OperationMethod<
   ListBulkDeploymentDetailedReportsRequest,
   ListBulkDeploymentDetailedReportsResponse,
   ListBulkDeploymentDetailedReportsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBulkDeploymentDetailedReportsRequest,
   output: ListBulkDeploymentDetailedReportsResponse,
@@ -5371,7 +5371,7 @@ export const listBulkDeployments: API.OperationMethod<
   ListBulkDeploymentsRequest,
   ListBulkDeploymentsResponse,
   ListBulkDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBulkDeploymentsRequest,
   output: ListBulkDeploymentsResponse,
@@ -5385,7 +5385,7 @@ export const listConnectorDefinitions: API.OperationMethod<
   ListConnectorDefinitionsRequest,
   ListConnectorDefinitionsResponse,
   ListConnectorDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListConnectorDefinitionsRequest,
   output: ListConnectorDefinitionsResponse,
@@ -5401,7 +5401,7 @@ export const listConnectorDefinitionVersions: API.OperationMethod<
   ListConnectorDefinitionVersionsRequest,
   ListConnectorDefinitionVersionsResponse,
   ListConnectorDefinitionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListConnectorDefinitionVersionsRequest,
   output: ListConnectorDefinitionVersionsResponse,
@@ -5415,7 +5415,7 @@ export const listCoreDefinitions: API.OperationMethod<
   ListCoreDefinitionsRequest,
   ListCoreDefinitionsResponse,
   ListCoreDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCoreDefinitionsRequest,
   output: ListCoreDefinitionsResponse,
@@ -5431,7 +5431,7 @@ export const listCoreDefinitionVersions: API.OperationMethod<
   ListCoreDefinitionVersionsRequest,
   ListCoreDefinitionVersionsResponse,
   ListCoreDefinitionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCoreDefinitionVersionsRequest,
   output: ListCoreDefinitionVersionsResponse,
@@ -5445,7 +5445,7 @@ export const listDeployments: API.OperationMethod<
   ListDeploymentsRequest,
   ListDeploymentsResponse,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDeploymentsRequest,
   output: ListDeploymentsResponse,
@@ -5459,7 +5459,7 @@ export const listDeviceDefinitions: API.OperationMethod<
   ListDeviceDefinitionsRequest,
   ListDeviceDefinitionsResponse,
   ListDeviceDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDeviceDefinitionsRequest,
   output: ListDeviceDefinitionsResponse,
@@ -5475,7 +5475,7 @@ export const listDeviceDefinitionVersions: API.OperationMethod<
   ListDeviceDefinitionVersionsRequest,
   ListDeviceDefinitionVersionsResponse,
   ListDeviceDefinitionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDeviceDefinitionVersionsRequest,
   output: ListDeviceDefinitionVersionsResponse,
@@ -5489,7 +5489,7 @@ export const listFunctionDefinitions: API.OperationMethod<
   ListFunctionDefinitionsRequest,
   ListFunctionDefinitionsResponse,
   ListFunctionDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFunctionDefinitionsRequest,
   output: ListFunctionDefinitionsResponse,
@@ -5505,7 +5505,7 @@ export const listFunctionDefinitionVersions: API.OperationMethod<
   ListFunctionDefinitionVersionsRequest,
   ListFunctionDefinitionVersionsResponse,
   ListFunctionDefinitionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFunctionDefinitionVersionsRequest,
   output: ListFunctionDefinitionVersionsResponse,
@@ -5522,7 +5522,7 @@ export const listGroupCertificateAuthorities: API.OperationMethod<
   ListGroupCertificateAuthoritiesRequest,
   ListGroupCertificateAuthoritiesResponse,
   ListGroupCertificateAuthoritiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGroupCertificateAuthoritiesRequest,
   output: ListGroupCertificateAuthoritiesResponse,
@@ -5536,7 +5536,7 @@ export const listGroups: API.OperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
@@ -5550,7 +5550,7 @@ export const listGroupVersions: API.OperationMethod<
   ListGroupVersionsRequest,
   ListGroupVersionsResponse,
   ListGroupVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGroupVersionsRequest,
   output: ListGroupVersionsResponse,
@@ -5564,7 +5564,7 @@ export const listLoggerDefinitions: API.OperationMethod<
   ListLoggerDefinitionsRequest,
   ListLoggerDefinitionsResponse,
   ListLoggerDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListLoggerDefinitionsRequest,
   output: ListLoggerDefinitionsResponse,
@@ -5580,7 +5580,7 @@ export const listLoggerDefinitionVersions: API.OperationMethod<
   ListLoggerDefinitionVersionsRequest,
   ListLoggerDefinitionVersionsResponse,
   ListLoggerDefinitionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListLoggerDefinitionVersionsRequest,
   output: ListLoggerDefinitionVersionsResponse,
@@ -5594,7 +5594,7 @@ export const listResourceDefinitions: API.OperationMethod<
   ListResourceDefinitionsRequest,
   ListResourceDefinitionsResponse,
   ListResourceDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListResourceDefinitionsRequest,
   output: ListResourceDefinitionsResponse,
@@ -5610,7 +5610,7 @@ export const listResourceDefinitionVersions: API.OperationMethod<
   ListResourceDefinitionVersionsRequest,
   ListResourceDefinitionVersionsResponse,
   ListResourceDefinitionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListResourceDefinitionVersionsRequest,
   output: ListResourceDefinitionVersionsResponse,
@@ -5624,7 +5624,7 @@ export const listSubscriptionDefinitions: API.OperationMethod<
   ListSubscriptionDefinitionsRequest,
   ListSubscriptionDefinitionsResponse,
   ListSubscriptionDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListSubscriptionDefinitionsRequest,
   output: ListSubscriptionDefinitionsResponse,
@@ -5640,7 +5640,7 @@ export const listSubscriptionDefinitionVersions: API.OperationMethod<
   ListSubscriptionDefinitionVersionsRequest,
   ListSubscriptionDefinitionVersionsResponse,
   ListSubscriptionDefinitionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListSubscriptionDefinitionVersionsRequest,
   output: ListSubscriptionDefinitionVersionsResponse,
@@ -5654,7 +5654,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -5668,7 +5668,7 @@ export const resetDeployments: API.OperationMethod<
   ResetDeploymentsRequest,
   ResetDeploymentsResponse,
   ResetDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetDeploymentsRequest,
   output: ResetDeploymentsResponse,
@@ -5682,7 +5682,7 @@ export const startBulkDeployment: API.OperationMethod<
   StartBulkDeploymentRequest,
   StartBulkDeploymentResponse,
   StartBulkDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartBulkDeploymentRequest,
   output: StartBulkDeploymentResponse,
@@ -5696,7 +5696,7 @@ export const stopBulkDeployment: API.OperationMethod<
   StopBulkDeploymentRequest,
   StopBulkDeploymentResponse,
   StopBulkDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopBulkDeploymentRequest,
   output: StopBulkDeploymentResponse,
@@ -5710,7 +5710,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -5724,7 +5724,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -5741,7 +5741,7 @@ export const updateConnectivityInfo: API.OperationMethod<
   UpdateConnectivityInfoRequest,
   UpdateConnectivityInfoResponse,
   UpdateConnectivityInfoError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConnectivityInfoRequest,
   output: UpdateConnectivityInfoResponse,
@@ -5755,7 +5755,7 @@ export const updateConnectorDefinition: API.OperationMethod<
   UpdateConnectorDefinitionRequest,
   UpdateConnectorDefinitionResponse,
   UpdateConnectorDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConnectorDefinitionRequest,
   output: UpdateConnectorDefinitionResponse,
@@ -5769,7 +5769,7 @@ export const updateCoreDefinition: API.OperationMethod<
   UpdateCoreDefinitionRequest,
   UpdateCoreDefinitionResponse,
   UpdateCoreDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCoreDefinitionRequest,
   output: UpdateCoreDefinitionResponse,
@@ -5783,7 +5783,7 @@ export const updateDeviceDefinition: API.OperationMethod<
   UpdateDeviceDefinitionRequest,
   UpdateDeviceDefinitionResponse,
   UpdateDeviceDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDeviceDefinitionRequest,
   output: UpdateDeviceDefinitionResponse,
@@ -5797,7 +5797,7 @@ export const updateFunctionDefinition: API.OperationMethod<
   UpdateFunctionDefinitionRequest,
   UpdateFunctionDefinitionResponse,
   UpdateFunctionDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFunctionDefinitionRequest,
   output: UpdateFunctionDefinitionResponse,
@@ -5811,7 +5811,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupRequest,
   UpdateGroupResponse,
   UpdateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
@@ -5828,7 +5828,7 @@ export const updateGroupCertificateConfiguration: API.OperationMethod<
   UpdateGroupCertificateConfigurationRequest,
   UpdateGroupCertificateConfigurationResponse,
   UpdateGroupCertificateConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGroupCertificateConfigurationRequest,
   output: UpdateGroupCertificateConfigurationResponse,
@@ -5842,7 +5842,7 @@ export const updateLoggerDefinition: API.OperationMethod<
   UpdateLoggerDefinitionRequest,
   UpdateLoggerDefinitionResponse,
   UpdateLoggerDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLoggerDefinitionRequest,
   output: UpdateLoggerDefinitionResponse,
@@ -5856,7 +5856,7 @@ export const updateResourceDefinition: API.OperationMethod<
   UpdateResourceDefinitionRequest,
   UpdateResourceDefinitionResponse,
   UpdateResourceDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourceDefinitionRequest,
   output: UpdateResourceDefinitionResponse,
@@ -5872,7 +5872,7 @@ export const updateSubscriptionDefinition: API.OperationMethod<
   UpdateSubscriptionDefinitionRequest,
   UpdateSubscriptionDefinitionResponse,
   UpdateSubscriptionDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionDefinitionRequest,
   output: UpdateSubscriptionDefinitionResponse,
@@ -5889,7 +5889,7 @@ export const updateThingRuntimeConfiguration: API.OperationMethod<
   UpdateThingRuntimeConfigurationRequest,
   UpdateThingRuntimeConfigurationResponse,
   UpdateThingRuntimeConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateThingRuntimeConfigurationRequest,
   output: UpdateThingRuntimeConfigurationResponse,

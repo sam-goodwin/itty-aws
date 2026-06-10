@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Security IR",
@@ -1506,7 +1506,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1528,7 +1528,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1550,7 +1550,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -1568,7 +1568,7 @@ export const createCase: API.OperationMethod<
   CreateCaseRequest,
   CreateCaseResponse,
   CreateCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCaseRequest,
   output: CreateCaseResponse,
@@ -1582,7 +1582,7 @@ export const getCase: API.OperationMethod<
   GetCaseRequest,
   GetCaseResponse,
   GetCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCaseRequest,
   output: GetCaseResponse,
@@ -1596,7 +1596,7 @@ export const updateCase: API.OperationMethod<
   UpdateCaseRequest,
   UpdateCaseResponse,
   UpdateCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCaseRequest,
   output: UpdateCaseResponse,
@@ -1610,21 +1610,21 @@ export const listCases: API.OperationMethod<
   ListCasesRequest,
   ListCasesResponse,
   ListCasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCasesRequest,
   ) => stream.Stream<
     ListCasesResponse,
     ListCasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCasesRequest,
   ) => stream.Stream<
     ListCasesItem,
     ListCasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCasesRequest,
@@ -1645,7 +1645,7 @@ export const closeCase: API.OperationMethod<
   CloseCaseRequest,
   CloseCaseResponse,
   CloseCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloseCaseRequest,
   output: CloseCaseResponse,
@@ -1659,7 +1659,7 @@ export const createCaseComment: API.OperationMethod<
   CreateCaseCommentRequest,
   CreateCaseCommentResponse,
   CreateCaseCommentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCaseCommentRequest,
   output: CreateCaseCommentResponse,
@@ -1673,7 +1673,7 @@ export const getCaseAttachmentDownloadUrl: API.OperationMethod<
   GetCaseAttachmentDownloadUrlRequest,
   GetCaseAttachmentDownloadUrlResponse,
   GetCaseAttachmentDownloadUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCaseAttachmentDownloadUrlRequest,
   output: GetCaseAttachmentDownloadUrlResponse,
@@ -1687,7 +1687,7 @@ export const getCaseAttachmentUploadUrl: API.OperationMethod<
   GetCaseAttachmentUploadUrlRequest,
   GetCaseAttachmentUploadUrlResponse,
   GetCaseAttachmentUploadUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCaseAttachmentUploadUrlRequest,
   output: GetCaseAttachmentUploadUrlResponse,
@@ -1701,21 +1701,21 @@ export const listCaseEdits: API.OperationMethod<
   ListCaseEditsRequest,
   ListCaseEditsResponse,
   ListCaseEditsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCaseEditsRequest,
   ) => stream.Stream<
     ListCaseEditsResponse,
     ListCaseEditsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCaseEditsRequest,
   ) => stream.Stream<
     CaseEditItem,
     ListCaseEditsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCaseEditsRequest,
@@ -1736,21 +1736,21 @@ export const listComments: API.OperationMethod<
   ListCommentsRequest,
   ListCommentsResponse,
   ListCommentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCommentsRequest,
   ) => stream.Stream<
     ListCommentsResponse,
     ListCommentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCommentsRequest,
   ) => stream.Stream<
     ListCommentsItem,
     ListCommentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
@@ -1771,21 +1771,21 @@ export const listInvestigations: API.OperationMethod<
   ListInvestigationsRequest,
   ListInvestigationsResponse,
   ListInvestigationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInvestigationsRequest,
   ) => stream.Stream<
     ListInvestigationsResponse,
     ListInvestigationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInvestigationsRequest,
   ) => stream.Stream<
     InvestigationAction,
     ListInvestigationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigationsRequest,
@@ -1806,7 +1806,7 @@ export const sendFeedback: API.OperationMethod<
   SendFeedbackRequest,
   SendFeedbackResponse,
   SendFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendFeedbackRequest,
   output: SendFeedbackResponse,
@@ -1820,7 +1820,7 @@ export const updateCaseComment: API.OperationMethod<
   UpdateCaseCommentRequest,
   UpdateCaseCommentResponse,
   UpdateCaseCommentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCaseCommentRequest,
   output: UpdateCaseCommentResponse,
@@ -1854,7 +1854,7 @@ export const updateCaseStatus: API.OperationMethod<
   UpdateCaseStatusRequest,
   UpdateCaseStatusResponse,
   UpdateCaseStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCaseStatusRequest,
   output: UpdateCaseStatusResponse,
@@ -1870,7 +1870,7 @@ export const updateResolverType: API.OperationMethod<
   UpdateResolverTypeRequest,
   UpdateResolverTypeResponse,
   UpdateResolverTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResolverTypeRequest,
   output: UpdateResolverTypeResponse,
@@ -1884,7 +1884,7 @@ export const createMembership: API.OperationMethod<
   CreateMembershipRequest,
   CreateMembershipResponse,
   CreateMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMembershipRequest,
   output: CreateMembershipResponse,
@@ -1898,7 +1898,7 @@ export const getMembership: API.OperationMethod<
   GetMembershipRequest,
   GetMembershipResponse,
   GetMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMembershipRequest,
   output: GetMembershipResponse,
@@ -1912,7 +1912,7 @@ export const updateMembership: API.OperationMethod<
   UpdateMembershipRequest,
   UpdateMembershipResponse,
   UpdateMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMembershipRequest,
   output: UpdateMembershipResponse,
@@ -1926,21 +1926,21 @@ export const listMemberships: API.OperationMethod<
   ListMembershipsRequest,
   ListMembershipsResponse,
   ListMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMembershipsRequest,
   ) => stream.Stream<
     ListMembershipsResponse,
     ListMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMembershipsRequest,
   ) => stream.Stream<
     ListMembershipItem,
     ListMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMembershipsRequest,
@@ -1963,7 +1963,7 @@ export const batchGetMemberAccountDetails: API.OperationMethod<
   BatchGetMemberAccountDetailsRequest,
   BatchGetMemberAccountDetailsResponse,
   BatchGetMemberAccountDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetMemberAccountDetailsRequest,
   output: BatchGetMemberAccountDetailsResponse,
@@ -1977,7 +1977,7 @@ export const cancelMembership: API.OperationMethod<
   CancelMembershipRequest,
   CancelMembershipResponse,
   CancelMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelMembershipRequest,
   output: CancelMembershipResponse,

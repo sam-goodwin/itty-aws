@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://cloudfront.amazonaws.com/doc/2020-05-31/");
 const svc = T.AwsApiService({
@@ -10796,7 +10796,7 @@ export const associateAlias: API.OperationMethod<
   AssociateAliasRequest,
   AssociateAliasResponse,
   AssociateAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateAliasRequest,
   output: AssociateAliasResponse,
@@ -10823,7 +10823,7 @@ export const associateDistributionTenantWebACL: API.OperationMethod<
   AssociateDistributionTenantWebACLRequest,
   AssociateDistributionTenantWebACLResult,
   AssociateDistributionTenantWebACLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateDistributionTenantWebACLRequest,
   output: AssociateDistributionTenantWebACLResult,
@@ -10851,7 +10851,7 @@ export const associateDistributionWebACL: API.OperationMethod<
   AssociateDistributionWebACLRequest,
   AssociateDistributionWebACLResult,
   AssociateDistributionWebACLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateDistributionWebACLRequest,
   output: AssociateDistributionWebACLResult,
@@ -10879,7 +10879,7 @@ export const createAnycastIpList: API.OperationMethod<
   CreateAnycastIpListRequest,
   CreateAnycastIpListResult,
   CreateAnycastIpListError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAnycastIpListRequest,
   output: CreateAnycastIpListResult,
@@ -10921,7 +10921,7 @@ export const createCachePolicy: API.OperationMethod<
   CreateCachePolicyRequest,
   CreateCachePolicyResult,
   CreateCachePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCachePolicyRequest,
   output: CreateCachePolicyResult,
@@ -10950,7 +10950,7 @@ export const createCloudFrontOriginAccessIdentity: API.OperationMethod<
   CreateCloudFrontOriginAccessIdentityRequest,
   CreateCloudFrontOriginAccessIdentityResult,
   CreateCloudFrontOriginAccessIdentityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCloudFrontOriginAccessIdentityRequest,
   output: CreateCloudFrontOriginAccessIdentityResult,
@@ -10978,7 +10978,7 @@ export const createConnectionFunction: API.OperationMethod<
   CreateConnectionFunctionRequest,
   CreateConnectionFunctionResult,
   CreateConnectionFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConnectionFunctionRequest,
   output: CreateConnectionFunctionResult,
@@ -11007,7 +11007,7 @@ export const createConnectionGroup: API.OperationMethod<
   CreateConnectionGroupRequest,
   CreateConnectionGroupResult,
   CreateConnectionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConnectionGroupRequest,
   output: CreateConnectionGroupResult,
@@ -11039,7 +11039,7 @@ export const createContinuousDeploymentPolicy: API.OperationMethod<
   CreateContinuousDeploymentPolicyRequest,
   CreateContinuousDeploymentPolicyResult,
   CreateContinuousDeploymentPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContinuousDeploymentPolicyRequest,
   output: CreateContinuousDeploymentPolicyResult,
@@ -11069,7 +11069,7 @@ export const createDistributionTenant: API.OperationMethod<
   CreateDistributionTenantRequest,
   CreateDistributionTenantResult,
   CreateDistributionTenantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDistributionTenantRequest,
   output: CreateDistributionTenantResult,
@@ -11101,7 +11101,7 @@ export const createFieldLevelEncryptionConfig: API.OperationMethod<
   CreateFieldLevelEncryptionConfigRequest,
   CreateFieldLevelEncryptionConfigResult,
   CreateFieldLevelEncryptionConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFieldLevelEncryptionConfigRequest,
   output: CreateFieldLevelEncryptionConfigResult,
@@ -11133,7 +11133,7 @@ export const createFieldLevelEncryptionProfile: API.OperationMethod<
   CreateFieldLevelEncryptionProfileRequest,
   CreateFieldLevelEncryptionProfileResult,
   CreateFieldLevelEncryptionProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFieldLevelEncryptionProfileRequest,
   output: CreateFieldLevelEncryptionProfileResult,
@@ -11168,7 +11168,7 @@ export const createFunction: API.OperationMethod<
   CreateFunctionRequest,
   CreateFunctionResult,
   CreateFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFunctionRequest,
   output: CreateFunctionResult,
@@ -11196,7 +11196,7 @@ export const createInvalidation: API.OperationMethod<
   CreateInvalidationRequest,
   CreateInvalidationResult,
   CreateInvalidationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInvalidationRequest,
   output: CreateInvalidationResult,
@@ -11226,7 +11226,7 @@ export const createInvalidationForDistributionTenant: API.OperationMethod<
   CreateInvalidationForDistributionTenantRequest,
   CreateInvalidationForDistributionTenantResult,
   CreateInvalidationForDistributionTenantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInvalidationForDistributionTenantRequest,
   output: CreateInvalidationForDistributionTenantResult,
@@ -11255,7 +11255,7 @@ export const createKeyGroup: API.OperationMethod<
   CreateKeyGroupRequest,
   CreateKeyGroupResult,
   CreateKeyGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKeyGroupRequest,
   output: CreateKeyGroupResult,
@@ -11281,7 +11281,7 @@ export const createKeyValueStore: API.OperationMethod<
   CreateKeyValueStoreRequest,
   CreateKeyValueStoreResult,
   CreateKeyValueStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKeyValueStoreRequest,
   output: CreateKeyValueStoreResult,
@@ -11309,7 +11309,7 @@ export const createMonitoringSubscription: API.OperationMethod<
   CreateMonitoringSubscriptionRequest,
   CreateMonitoringSubscriptionResult,
   CreateMonitoringSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMonitoringSubscriptionRequest,
   output: CreateMonitoringSubscriptionResult,
@@ -11336,7 +11336,7 @@ export const createOriginAccessControl: API.OperationMethod<
   CreateOriginAccessControlRequest,
   CreateOriginAccessControlResult,
   CreateOriginAccessControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOriginAccessControlRequest,
   output: CreateOriginAccessControlResult,
@@ -11375,7 +11375,7 @@ export const createOriginRequestPolicy: API.OperationMethod<
   CreateOriginRequestPolicyRequest,
   CreateOriginRequestPolicyResult,
   CreateOriginRequestPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOriginRequestPolicyRequest,
   output: CreateOriginRequestPolicyResult,
@@ -11402,7 +11402,7 @@ export const createPublicKey: API.OperationMethod<
   CreatePublicKeyRequest,
   CreatePublicKeyResult,
   CreatePublicKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePublicKeyRequest,
   output: CreatePublicKeyResult,
@@ -11425,7 +11425,7 @@ export const createRealtimeLogConfig: API.OperationMethod<
   CreateRealtimeLogConfigRequest,
   CreateRealtimeLogConfigResult,
   CreateRealtimeLogConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRealtimeLogConfigRequest,
   output: CreateRealtimeLogConfigResult,
@@ -11459,7 +11459,7 @@ export const createResponseHeadersPolicy: API.OperationMethod<
   CreateResponseHeadersPolicyRequest,
   CreateResponseHeadersPolicyResult,
   CreateResponseHeadersPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResponseHeadersPolicyRequest,
   output: CreateResponseHeadersPolicyResult,
@@ -11496,7 +11496,7 @@ export const createStreamingDistribution: API.OperationMethod<
   CreateStreamingDistributionRequest,
   CreateStreamingDistributionResult,
   CreateStreamingDistributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateStreamingDistributionRequest,
   output: CreateStreamingDistributionResult,
@@ -11539,7 +11539,7 @@ export const createStreamingDistributionWithTags: API.OperationMethod<
   CreateStreamingDistributionWithTagsRequest,
   CreateStreamingDistributionWithTagsResult,
   CreateStreamingDistributionWithTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateStreamingDistributionWithTagsRequest,
   output: CreateStreamingDistributionWithTagsResult,
@@ -11575,7 +11575,7 @@ export const createTrustStore: API.OperationMethod<
   CreateTrustStoreRequest,
   CreateTrustStoreResult,
   CreateTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTrustStoreRequest,
   output: CreateTrustStoreResult,
@@ -11604,7 +11604,7 @@ export const createVpcOrigin: API.OperationMethod<
   CreateVpcOriginRequest,
   CreateVpcOriginResult,
   CreateVpcOriginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVpcOriginRequest,
   output: CreateVpcOriginResult,
@@ -11635,7 +11635,7 @@ export const deleteAnycastIpList: API.OperationMethod<
   DeleteAnycastIpListRequest,
   DeleteAnycastIpListResponse,
   DeleteAnycastIpListError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAnycastIpListRequest,
   output: DeleteAnycastIpListResponse,
@@ -11669,7 +11669,7 @@ export const deleteCachePolicy: API.OperationMethod<
   DeleteCachePolicyRequest,
   DeleteCachePolicyResponse,
   DeleteCachePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCachePolicyRequest,
   output: DeleteCachePolicyResponse,
@@ -11696,7 +11696,7 @@ export const deleteCloudFrontOriginAccessIdentity: API.OperationMethod<
   DeleteCloudFrontOriginAccessIdentityRequest,
   DeleteCloudFrontOriginAccessIdentityResponse,
   DeleteCloudFrontOriginAccessIdentityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCloudFrontOriginAccessIdentityRequest,
   output: DeleteCloudFrontOriginAccessIdentityResponse,
@@ -11724,7 +11724,7 @@ export const deleteConnectionFunction: API.OperationMethod<
   DeleteConnectionFunctionRequest,
   DeleteConnectionFunctionResponse,
   DeleteConnectionFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectionFunctionRequest,
   output: DeleteConnectionFunctionResponse,
@@ -11753,7 +11753,7 @@ export const deleteConnectionGroup: API.OperationMethod<
   DeleteConnectionGroupRequest,
   DeleteConnectionGroupResponse,
   DeleteConnectionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectionGroupRequest,
   output: DeleteConnectionGroupResponse,
@@ -11783,7 +11783,7 @@ export const deleteContinuousDeploymentPolicy: API.OperationMethod<
   DeleteContinuousDeploymentPolicyRequest,
   DeleteContinuousDeploymentPolicyResponse,
   DeleteContinuousDeploymentPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContinuousDeploymentPolicyRequest,
   output: DeleteContinuousDeploymentPolicyResponse,
@@ -11813,7 +11813,7 @@ export const deleteDistribution: API.OperationMethod<
   DeleteDistributionRequest,
   DeleteDistributionResponse,
   DeleteDistributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDistributionRequest,
   output: DeleteDistributionResponse,
@@ -11842,7 +11842,7 @@ export const deleteDistributionTenant: API.OperationMethod<
   DeleteDistributionTenantRequest,
   DeleteDistributionTenantResponse,
   DeleteDistributionTenantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDistributionTenantRequest,
   output: DeleteDistributionTenantResponse,
@@ -11868,7 +11868,7 @@ export const deleteFieldLevelEncryptionConfig: API.OperationMethod<
   DeleteFieldLevelEncryptionConfigRequest,
   DeleteFieldLevelEncryptionConfigResponse,
   DeleteFieldLevelEncryptionConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFieldLevelEncryptionConfigRequest,
   output: DeleteFieldLevelEncryptionConfigResponse,
@@ -11894,7 +11894,7 @@ export const deleteFieldLevelEncryptionProfile: API.OperationMethod<
   DeleteFieldLevelEncryptionProfileRequest,
   DeleteFieldLevelEncryptionProfileResponse,
   DeleteFieldLevelEncryptionProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFieldLevelEncryptionProfileRequest,
   output: DeleteFieldLevelEncryptionProfileResponse,
@@ -11924,7 +11924,7 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionRequest,
   DeleteFunctionResponse,
   DeleteFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFunctionRequest,
   output: DeleteFunctionResponse,
@@ -11953,7 +11953,7 @@ export const deleteKeyGroup: API.OperationMethod<
   DeleteKeyGroupRequest,
   DeleteKeyGroupResponse,
   DeleteKeyGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKeyGroupRequest,
   output: DeleteKeyGroupResponse,
@@ -11979,7 +11979,7 @@ export const deleteKeyValueStore: API.OperationMethod<
   DeleteKeyValueStoreRequest,
   DeleteKeyValueStoreResponse,
   DeleteKeyValueStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKeyValueStoreRequest,
   output: DeleteKeyValueStoreResponse,
@@ -12005,7 +12005,7 @@ export const deleteMonitoringSubscription: API.OperationMethod<
   DeleteMonitoringSubscriptionRequest,
   DeleteMonitoringSubscriptionResult,
   DeleteMonitoringSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMonitoringSubscriptionRequest,
   output: DeleteMonitoringSubscriptionResult,
@@ -12032,7 +12032,7 @@ export const deleteOriginAccessControl: API.OperationMethod<
   DeleteOriginAccessControlRequest,
   DeleteOriginAccessControlResponse,
   DeleteOriginAccessControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOriginAccessControlRequest,
   output: DeleteOriginAccessControlResponse,
@@ -12063,7 +12063,7 @@ export const deleteOriginRequestPolicy: API.OperationMethod<
   DeleteOriginRequestPolicyRequest,
   DeleteOriginRequestPolicyResponse,
   DeleteOriginRequestPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOriginRequestPolicyRequest,
   output: DeleteOriginRequestPolicyResponse,
@@ -12090,7 +12090,7 @@ export const deletePublicKey: API.OperationMethod<
   DeletePublicKeyRequest,
   DeletePublicKeyResponse,
   DeletePublicKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePublicKeyRequest,
   output: DeletePublicKeyResponse,
@@ -12119,7 +12119,7 @@ export const deleteRealtimeLogConfig: API.OperationMethod<
   DeleteRealtimeLogConfigRequest,
   DeleteRealtimeLogConfigResponse,
   DeleteRealtimeLogConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRealtimeLogConfigRequest,
   output: DeleteRealtimeLogConfigResponse,
@@ -12145,7 +12145,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -12177,7 +12177,7 @@ export const deleteResponseHeadersPolicy: API.OperationMethod<
   DeleteResponseHeadersPolicyRequest,
   DeleteResponseHeadersPolicyResponse,
   DeleteResponseHeadersPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResponseHeadersPolicyRequest,
   output: DeleteResponseHeadersPolicyResponse,
@@ -12224,7 +12224,7 @@ export const deleteStreamingDistribution: API.OperationMethod<
   DeleteStreamingDistributionRequest,
   DeleteStreamingDistributionResponse,
   DeleteStreamingDistributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStreamingDistributionRequest,
   output: DeleteStreamingDistributionResponse,
@@ -12251,7 +12251,7 @@ export const deleteTrustStore: API.OperationMethod<
   DeleteTrustStoreRequest,
   DeleteTrustStoreResponse,
   DeleteTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTrustStoreRequest,
   output: DeleteTrustStoreResponse,
@@ -12281,7 +12281,7 @@ export const deleteVpcOrigin: API.OperationMethod<
   DeleteVpcOriginRequest,
   DeleteVpcOriginResult,
   DeleteVpcOriginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVpcOriginRequest,
   output: DeleteVpcOriginResult,
@@ -12309,7 +12309,7 @@ export const describeConnectionFunction: API.OperationMethod<
   DescribeConnectionFunctionRequest,
   DescribeConnectionFunctionResult,
   DescribeConnectionFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeConnectionFunctionRequest,
   output: DescribeConnectionFunctionResult,
@@ -12328,7 +12328,7 @@ export const describeFunction: API.OperationMethod<
   DescribeFunctionRequest,
   DescribeFunctionResult,
   DescribeFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeFunctionRequest,
   output: DescribeFunctionResult,
@@ -12347,7 +12347,7 @@ export const describeKeyValueStore: API.OperationMethod<
   DescribeKeyValueStoreRequest,
   DescribeKeyValueStoreResult,
   DescribeKeyValueStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeKeyValueStoreRequest,
   output: DescribeKeyValueStoreResult,
@@ -12367,7 +12367,7 @@ export const disassociateDistributionTenantWebACL: API.OperationMethod<
   DisassociateDistributionTenantWebACLRequest,
   DisassociateDistributionTenantWebACLResult,
   DisassociateDistributionTenantWebACLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateDistributionTenantWebACLRequest,
   output: DisassociateDistributionTenantWebACLResult,
@@ -12393,7 +12393,7 @@ export const disassociateDistributionWebACL: API.OperationMethod<
   DisassociateDistributionWebACLRequest,
   DisassociateDistributionWebACLResult,
   DisassociateDistributionWebACLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateDistributionWebACLRequest,
   output: DisassociateDistributionWebACLResult,
@@ -12418,7 +12418,7 @@ export const getAnycastIpList: API.OperationMethod<
   GetAnycastIpListRequest,
   GetAnycastIpListResult,
   GetAnycastIpListError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAnycastIpListRequest,
   output: GetAnycastIpListResult,
@@ -12441,7 +12441,7 @@ export const getCachePolicy: API.OperationMethod<
   GetCachePolicyRequest,
   GetCachePolicyResult,
   GetCachePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCachePolicyRequest,
   output: GetCachePolicyResult,
@@ -12460,7 +12460,7 @@ export const getCachePolicyConfig: API.OperationMethod<
   GetCachePolicyConfigRequest,
   GetCachePolicyConfigResult,
   GetCachePolicyConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCachePolicyConfigRequest,
   output: GetCachePolicyConfigResult,
@@ -12477,7 +12477,7 @@ export const getCloudFrontOriginAccessIdentity: API.OperationMethod<
   GetCloudFrontOriginAccessIdentityRequest,
   GetCloudFrontOriginAccessIdentityResult,
   GetCloudFrontOriginAccessIdentityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCloudFrontOriginAccessIdentityRequest,
   output: GetCloudFrontOriginAccessIdentityResult,
@@ -12494,7 +12494,7 @@ export const getCloudFrontOriginAccessIdentityConfig: API.OperationMethod<
   GetCloudFrontOriginAccessIdentityConfigRequest,
   GetCloudFrontOriginAccessIdentityConfigResult,
   GetCloudFrontOriginAccessIdentityConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCloudFrontOriginAccessIdentityConfigRequest,
   output: GetCloudFrontOriginAccessIdentityConfigResult,
@@ -12512,7 +12512,7 @@ export const getConnectionFunction: API.OperationMethod<
   GetConnectionFunctionRequest,
   GetConnectionFunctionResult,
   GetConnectionFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectionFunctionRequest,
   output: GetConnectionFunctionResult,
@@ -12529,7 +12529,7 @@ export const getConnectionGroup: API.OperationMethod<
   GetConnectionGroupRequest,
   GetConnectionGroupResult,
   GetConnectionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectionGroupRequest,
   output: GetConnectionGroupResult,
@@ -12546,7 +12546,7 @@ export const getConnectionGroupByRoutingEndpoint: API.OperationMethod<
   GetConnectionGroupByRoutingEndpointRequest,
   GetConnectionGroupByRoutingEndpointResult,
   GetConnectionGroupByRoutingEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectionGroupByRoutingEndpointRequest,
   output: GetConnectionGroupByRoutingEndpointResult,
@@ -12563,7 +12563,7 @@ export const getContinuousDeploymentPolicy: API.OperationMethod<
   GetContinuousDeploymentPolicyRequest,
   GetContinuousDeploymentPolicyResult,
   GetContinuousDeploymentPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContinuousDeploymentPolicyRequest,
   output: GetContinuousDeploymentPolicyResult,
@@ -12580,7 +12580,7 @@ export const getContinuousDeploymentPolicyConfig: API.OperationMethod<
   GetContinuousDeploymentPolicyConfigRequest,
   GetContinuousDeploymentPolicyConfigResult,
   GetContinuousDeploymentPolicyConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContinuousDeploymentPolicyConfigRequest,
   output: GetContinuousDeploymentPolicyConfigResult,
@@ -12597,7 +12597,7 @@ export const getDistribution: API.OperationMethod<
   GetDistributionRequest,
   GetDistributionResult,
   GetDistributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDistributionRequest,
   output: GetDistributionResult,
@@ -12614,7 +12614,7 @@ export const getDistributionConfig: API.OperationMethod<
   GetDistributionConfigRequest,
   GetDistributionConfigResult,
   GetDistributionConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDistributionConfigRequest,
   output: GetDistributionConfigResult,
@@ -12631,7 +12631,7 @@ export const getDistributionTenant: API.OperationMethod<
   GetDistributionTenantRequest,
   GetDistributionTenantResult,
   GetDistributionTenantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDistributionTenantRequest,
   output: GetDistributionTenantResult,
@@ -12648,7 +12648,7 @@ export const getDistributionTenantByDomain: API.OperationMethod<
   GetDistributionTenantByDomainRequest,
   GetDistributionTenantByDomainResult,
   GetDistributionTenantByDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDistributionTenantByDomainRequest,
   output: GetDistributionTenantByDomainResult,
@@ -12665,7 +12665,7 @@ export const getFieldLevelEncryption: API.OperationMethod<
   GetFieldLevelEncryptionRequest,
   GetFieldLevelEncryptionResult,
   GetFieldLevelEncryptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFieldLevelEncryptionRequest,
   output: GetFieldLevelEncryptionResult,
@@ -12682,7 +12682,7 @@ export const getFieldLevelEncryptionConfig: API.OperationMethod<
   GetFieldLevelEncryptionConfigRequest,
   GetFieldLevelEncryptionConfigResult,
   GetFieldLevelEncryptionConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFieldLevelEncryptionConfigRequest,
   output: GetFieldLevelEncryptionConfigResult,
@@ -12699,7 +12699,7 @@ export const getFieldLevelEncryptionProfile: API.OperationMethod<
   GetFieldLevelEncryptionProfileRequest,
   GetFieldLevelEncryptionProfileResult,
   GetFieldLevelEncryptionProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFieldLevelEncryptionProfileRequest,
   output: GetFieldLevelEncryptionProfileResult,
@@ -12716,7 +12716,7 @@ export const getFieldLevelEncryptionProfileConfig: API.OperationMethod<
   GetFieldLevelEncryptionProfileConfigRequest,
   GetFieldLevelEncryptionProfileConfigResult,
   GetFieldLevelEncryptionProfileConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFieldLevelEncryptionProfileConfigRequest,
   output: GetFieldLevelEncryptionProfileConfigResult,
@@ -12735,7 +12735,7 @@ export const getFunction: API.OperationMethod<
   GetFunctionRequest,
   GetFunctionResult,
   GetFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFunctionRequest,
   output: GetFunctionResult,
@@ -12753,7 +12753,7 @@ export const getInvalidation: API.OperationMethod<
   GetInvalidationRequest,
   GetInvalidationResult,
   GetInvalidationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInvalidationRequest,
   output: GetInvalidationResult,
@@ -12771,7 +12771,7 @@ export const getInvalidationForDistributionTenant: API.OperationMethod<
   GetInvalidationForDistributionTenantRequest,
   GetInvalidationForDistributionTenantResult,
   GetInvalidationForDistributionTenantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInvalidationForDistributionTenantRequest,
   output: GetInvalidationForDistributionTenantResult,
@@ -12787,7 +12787,7 @@ export const getKeyGroup: API.OperationMethod<
   GetKeyGroupRequest,
   GetKeyGroupResult,
   GetKeyGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKeyGroupRequest,
   output: GetKeyGroupResult,
@@ -12803,7 +12803,7 @@ export const getKeyGroupConfig: API.OperationMethod<
   GetKeyGroupConfigRequest,
   GetKeyGroupConfigResult,
   GetKeyGroupConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKeyGroupConfigRequest,
   output: GetKeyGroupConfigResult,
@@ -12820,7 +12820,7 @@ export const getManagedCertificateDetails: API.OperationMethod<
   GetManagedCertificateDetailsRequest,
   GetManagedCertificateDetailsResult,
   GetManagedCertificateDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagedCertificateDetailsRequest,
   output: GetManagedCertificateDetailsResult,
@@ -12839,7 +12839,7 @@ export const getMonitoringSubscription: API.OperationMethod<
   GetMonitoringSubscriptionRequest,
   GetMonitoringSubscriptionResult,
   GetMonitoringSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMonitoringSubscriptionRequest,
   output: GetMonitoringSubscriptionResult,
@@ -12861,7 +12861,7 @@ export const getOriginAccessControl: API.OperationMethod<
   GetOriginAccessControlRequest,
   GetOriginAccessControlResult,
   GetOriginAccessControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOriginAccessControlRequest,
   output: GetOriginAccessControlResult,
@@ -12878,7 +12878,7 @@ export const getOriginAccessControlConfig: API.OperationMethod<
   GetOriginAccessControlConfigRequest,
   GetOriginAccessControlConfigResult,
   GetOriginAccessControlConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOriginAccessControlConfigRequest,
   output: GetOriginAccessControlConfigResult,
@@ -12901,7 +12901,7 @@ export const getOriginRequestPolicy: API.OperationMethod<
   GetOriginRequestPolicyRequest,
   GetOriginRequestPolicyResult,
   GetOriginRequestPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOriginRequestPolicyRequest,
   output: GetOriginRequestPolicyResult,
@@ -12920,7 +12920,7 @@ export const getOriginRequestPolicyConfig: API.OperationMethod<
   GetOriginRequestPolicyConfigRequest,
   GetOriginRequestPolicyConfigResult,
   GetOriginRequestPolicyConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOriginRequestPolicyConfigRequest,
   output: GetOriginRequestPolicyConfigResult,
@@ -12934,7 +12934,7 @@ export const getPublicKey: API.OperationMethod<
   GetPublicKeyRequest,
   GetPublicKeyResult,
   GetPublicKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicKeyRequest,
   output: GetPublicKeyResult,
@@ -12951,7 +12951,7 @@ export const getPublicKeyConfig: API.OperationMethod<
   GetPublicKeyConfigRequest,
   GetPublicKeyConfigResult,
   GetPublicKeyConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicKeyConfigRequest,
   output: GetPublicKeyConfigResult,
@@ -12971,7 +12971,7 @@ export const getRealtimeLogConfig: API.OperationMethod<
   GetRealtimeLogConfigRequest,
   GetRealtimeLogConfigResult,
   GetRealtimeLogConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRealtimeLogConfigRequest,
   output: GetRealtimeLogConfigResult,
@@ -12990,7 +12990,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResult,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResult,
@@ -13009,7 +13009,7 @@ export const getResponseHeadersPolicy: API.OperationMethod<
   GetResponseHeadersPolicyRequest,
   GetResponseHeadersPolicyResult,
   GetResponseHeadersPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResponseHeadersPolicyRequest,
   output: GetResponseHeadersPolicyResult,
@@ -13028,7 +13028,7 @@ export const getResponseHeadersPolicyConfig: API.OperationMethod<
   GetResponseHeadersPolicyConfigRequest,
   GetResponseHeadersPolicyConfigResult,
   GetResponseHeadersPolicyConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResponseHeadersPolicyConfigRequest,
   output: GetResponseHeadersPolicyConfigResult,
@@ -13045,7 +13045,7 @@ export const getStreamingDistribution: API.OperationMethod<
   GetStreamingDistributionRequest,
   GetStreamingDistributionResult,
   GetStreamingDistributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStreamingDistributionRequest,
   output: GetStreamingDistributionResult,
@@ -13062,7 +13062,7 @@ export const getStreamingDistributionConfig: API.OperationMethod<
   GetStreamingDistributionConfigRequest,
   GetStreamingDistributionConfigResult,
   GetStreamingDistributionConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStreamingDistributionConfigRequest,
   output: GetStreamingDistributionConfigResult,
@@ -13080,7 +13080,7 @@ export const getTrustStore: API.OperationMethod<
   GetTrustStoreRequest,
   GetTrustStoreResult,
   GetTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTrustStoreRequest,
   output: GetTrustStoreResult,
@@ -13099,7 +13099,7 @@ export const getVpcOrigin: API.OperationMethod<
   GetVpcOriginRequest,
   GetVpcOriginResult,
   GetVpcOriginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVpcOriginRequest,
   output: GetVpcOriginResult,
@@ -13118,7 +13118,7 @@ export const listAnycastIpLists: API.OperationMethod<
   ListAnycastIpListsRequest,
   ListAnycastIpListsResult,
   ListAnycastIpListsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAnycastIpListsRequest,
   output: ListAnycastIpListsResult,
@@ -13140,7 +13140,7 @@ export const listCachePolicies: API.OperationMethod<
   ListCachePoliciesRequest,
   ListCachePoliciesResult,
   ListCachePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCachePoliciesRequest,
   output: ListCachePoliciesResult,
@@ -13156,21 +13156,21 @@ export const listCloudFrontOriginAccessIdentities: API.OperationMethod<
   ListCloudFrontOriginAccessIdentitiesRequest,
   ListCloudFrontOriginAccessIdentitiesResult,
   ListCloudFrontOriginAccessIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCloudFrontOriginAccessIdentitiesRequest,
   ) => stream.Stream<
     ListCloudFrontOriginAccessIdentitiesResult,
     ListCloudFrontOriginAccessIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCloudFrontOriginAccessIdentitiesRequest,
   ) => stream.Stream<
     unknown,
     ListCloudFrontOriginAccessIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCloudFrontOriginAccessIdentitiesRequest,
@@ -13204,7 +13204,7 @@ export const listConflictingAliases: API.OperationMethod<
   ListConflictingAliasesRequest,
   ListConflictingAliasesResult,
   ListConflictingAliasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListConflictingAliasesRequest,
   output: ListConflictingAliasesResult,
@@ -13222,21 +13222,21 @@ export const listConnectionFunctions: API.OperationMethod<
   ListConnectionFunctionsRequest,
   ListConnectionFunctionsResult,
   ListConnectionFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConnectionFunctionsRequest,
   ) => stream.Stream<
     ListConnectionFunctionsResult,
     ListConnectionFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConnectionFunctionsRequest,
   ) => stream.Stream<
     ConnectionFunctionSummary,
     ListConnectionFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionFunctionsRequest,
@@ -13261,21 +13261,21 @@ export const listConnectionGroups: API.OperationMethod<
   ListConnectionGroupsRequest,
   ListConnectionGroupsResult,
   ListConnectionGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConnectionGroupsRequest,
   ) => stream.Stream<
     ListConnectionGroupsResult,
     ListConnectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConnectionGroupsRequest,
   ) => stream.Stream<
     ConnectionGroupSummary,
     ListConnectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionGroupsRequest,
@@ -13302,7 +13302,7 @@ export const listContinuousDeploymentPolicies: API.OperationMethod<
   ListContinuousDeploymentPoliciesRequest,
   ListContinuousDeploymentPoliciesResult,
   ListContinuousDeploymentPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListContinuousDeploymentPoliciesRequest,
   output: ListContinuousDeploymentPoliciesResult,
@@ -13316,21 +13316,21 @@ export const listDistributions: API.OperationMethod<
   ListDistributionsRequest,
   ListDistributionsResult,
   ListDistributionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDistributionsRequest,
   ) => stream.Stream<
     ListDistributionsResult,
     ListDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDistributionsRequest,
   ) => stream.Stream<
     unknown,
     ListDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsRequest,
@@ -13356,7 +13356,7 @@ export const listDistributionsByAnycastIpListId: API.OperationMethod<
   ListDistributionsByAnycastIpListIdRequest,
   ListDistributionsByAnycastIpListIdResult,
   ListDistributionsByAnycastIpListIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDistributionsByAnycastIpListIdRequest,
   output: ListDistributionsByAnycastIpListIdResult,
@@ -13376,7 +13376,7 @@ export const listDistributionsByCachePolicyId: API.OperationMethod<
   ListDistributionsByCachePolicyIdRequest,
   ListDistributionsByCachePolicyIdResult,
   ListDistributionsByCachePolicyIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDistributionsByCachePolicyIdRequest,
   output: ListDistributionsByCachePolicyIdResult,
@@ -13394,21 +13394,21 @@ export const listDistributionsByConnectionFunction: API.OperationMethod<
   ListDistributionsByConnectionFunctionRequest,
   ListDistributionsByConnectionFunctionResult,
   ListDistributionsByConnectionFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDistributionsByConnectionFunctionRequest,
   ) => stream.Stream<
     ListDistributionsByConnectionFunctionResult,
     ListDistributionsByConnectionFunctionError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDistributionsByConnectionFunctionRequest,
   ) => stream.Stream<
     unknown,
     ListDistributionsByConnectionFunctionError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsByConnectionFunctionRequest,
@@ -13432,21 +13432,21 @@ export const listDistributionsByConnectionMode: API.OperationMethod<
   ListDistributionsByConnectionModeRequest,
   ListDistributionsByConnectionModeResult,
   ListDistributionsByConnectionModeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDistributionsByConnectionModeRequest,
   ) => stream.Stream<
     ListDistributionsByConnectionModeResult,
     ListDistributionsByConnectionModeError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDistributionsByConnectionModeRequest,
   ) => stream.Stream<
     unknown,
     ListDistributionsByConnectionModeError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsByConnectionModeRequest,
@@ -13472,7 +13472,7 @@ export const listDistributionsByKeyGroup: API.OperationMethod<
   ListDistributionsByKeyGroupRequest,
   ListDistributionsByKeyGroupResult,
   ListDistributionsByKeyGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDistributionsByKeyGroupRequest,
   output: ListDistributionsByKeyGroupResult,
@@ -13492,7 +13492,7 @@ export const listDistributionsByOriginRequestPolicyId: API.OperationMethod<
   ListDistributionsByOriginRequestPolicyIdRequest,
   ListDistributionsByOriginRequestPolicyIdResult,
   ListDistributionsByOriginRequestPolicyIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDistributionsByOriginRequestPolicyIdRequest,
   output: ListDistributionsByOriginRequestPolicyIdResult,
@@ -13511,7 +13511,7 @@ export const listDistributionsByOwnedResource: API.OperationMethod<
   ListDistributionsByOwnedResourceRequest,
   ListDistributionsByOwnedResourceResult,
   ListDistributionsByOwnedResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDistributionsByOwnedResourceRequest,
   output: ListDistributionsByOwnedResourceResult,
@@ -13531,7 +13531,7 @@ export const listDistributionsByRealtimeLogConfig: API.OperationMethod<
   ListDistributionsByRealtimeLogConfigRequest,
   ListDistributionsByRealtimeLogConfigResult,
   ListDistributionsByRealtimeLogConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDistributionsByRealtimeLogConfigRequest,
   output: ListDistributionsByRealtimeLogConfigResult,
@@ -13551,7 +13551,7 @@ export const listDistributionsByResponseHeadersPolicyId: API.OperationMethod<
   ListDistributionsByResponseHeadersPolicyIdRequest,
   ListDistributionsByResponseHeadersPolicyIdResult,
   ListDistributionsByResponseHeadersPolicyIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDistributionsByResponseHeadersPolicyIdRequest,
   output: ListDistributionsByResponseHeadersPolicyIdResult,
@@ -13569,21 +13569,21 @@ export const listDistributionsByTrustStore: API.OperationMethod<
   ListDistributionsByTrustStoreRequest,
   ListDistributionsByTrustStoreResult,
   ListDistributionsByTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDistributionsByTrustStoreRequest,
   ) => stream.Stream<
     ListDistributionsByTrustStoreResult,
     ListDistributionsByTrustStoreError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDistributionsByTrustStoreRequest,
   ) => stream.Stream<
     unknown,
     ListDistributionsByTrustStoreError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsByTrustStoreRequest,
@@ -13609,7 +13609,7 @@ export const listDistributionsByVpcOriginId: API.OperationMethod<
   ListDistributionsByVpcOriginIdRequest,
   ListDistributionsByVpcOriginIdResult,
   ListDistributionsByVpcOriginIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDistributionsByVpcOriginIdRequest,
   output: ListDistributionsByVpcOriginIdResult,
@@ -13626,7 +13626,7 @@ export const listDistributionsByWebACLId: API.OperationMethod<
   ListDistributionsByWebACLIdRequest,
   ListDistributionsByWebACLIdResult,
   ListDistributionsByWebACLIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDistributionsByWebACLIdRequest,
   output: ListDistributionsByWebACLIdResult,
@@ -13644,21 +13644,21 @@ export const listDistributionTenants: API.OperationMethod<
   ListDistributionTenantsRequest,
   ListDistributionTenantsResult,
   ListDistributionTenantsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDistributionTenantsRequest,
   ) => stream.Stream<
     ListDistributionTenantsResult,
     ListDistributionTenantsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDistributionTenantsRequest,
   ) => stream.Stream<
     DistributionTenantSummary,
     ListDistributionTenantsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionTenantsRequest,
@@ -13685,21 +13685,21 @@ export const listDistributionTenantsByCustomization: API.OperationMethod<
   ListDistributionTenantsByCustomizationRequest,
   ListDistributionTenantsByCustomizationResult,
   ListDistributionTenantsByCustomizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDistributionTenantsByCustomizationRequest,
   ) => stream.Stream<
     ListDistributionTenantsByCustomizationResult,
     ListDistributionTenantsByCustomizationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDistributionTenantsByCustomizationRequest,
   ) => stream.Stream<
     DistributionTenantSummary,
     ListDistributionTenantsByCustomizationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionTenantsByCustomizationRequest,
@@ -13740,21 +13740,21 @@ export const listDomainConflicts: API.OperationMethod<
   ListDomainConflictsRequest,
   ListDomainConflictsResult,
   ListDomainConflictsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDomainConflictsRequest,
   ) => stream.Stream<
     ListDomainConflictsResult,
     ListDomainConflictsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDomainConflictsRequest,
   ) => stream.Stream<
     DomainConflict,
     ListDomainConflictsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainConflictsRequest,
@@ -13777,7 +13777,7 @@ export const listFieldLevelEncryptionConfigs: API.OperationMethod<
   ListFieldLevelEncryptionConfigsRequest,
   ListFieldLevelEncryptionConfigsResult,
   ListFieldLevelEncryptionConfigsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFieldLevelEncryptionConfigsRequest,
   output: ListFieldLevelEncryptionConfigsResult,
@@ -13793,7 +13793,7 @@ export const listFieldLevelEncryptionProfiles: API.OperationMethod<
   ListFieldLevelEncryptionProfilesRequest,
   ListFieldLevelEncryptionProfilesResult,
   ListFieldLevelEncryptionProfilesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFieldLevelEncryptionProfilesRequest,
   output: ListFieldLevelEncryptionProfilesResult,
@@ -13814,7 +13814,7 @@ export const listFunctions: API.OperationMethod<
   ListFunctionsRequest,
   ListFunctionsResult,
   ListFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFunctionsRequest,
   output: ListFunctionsResult,
@@ -13832,21 +13832,21 @@ export const listInvalidations: API.OperationMethod<
   ListInvalidationsRequest,
   ListInvalidationsResult,
   ListInvalidationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInvalidationsRequest,
   ) => stream.Stream<
     ListInvalidationsResult,
     ListInvalidationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInvalidationsRequest,
   ) => stream.Stream<
     unknown,
     ListInvalidationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInvalidationsRequest,
@@ -13871,21 +13871,21 @@ export const listInvalidationsForDistributionTenant: API.OperationMethod<
   ListInvalidationsForDistributionTenantRequest,
   ListInvalidationsForDistributionTenantResult,
   ListInvalidationsForDistributionTenantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInvalidationsForDistributionTenantRequest,
   ) => stream.Stream<
     ListInvalidationsForDistributionTenantResult,
     ListInvalidationsForDistributionTenantError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInvalidationsForDistributionTenantRequest,
   ) => stream.Stream<
     unknown,
     ListInvalidationsForDistributionTenantError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInvalidationsForDistributionTenantRequest,
@@ -13908,7 +13908,7 @@ export const listKeyGroups: API.OperationMethod<
   ListKeyGroupsRequest,
   ListKeyGroupsResult,
   ListKeyGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListKeyGroupsRequest,
   output: ListKeyGroupsResult,
@@ -13926,21 +13926,21 @@ export const listKeyValueStores: API.OperationMethod<
   ListKeyValueStoresRequest,
   ListKeyValueStoresResult,
   ListKeyValueStoresError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKeyValueStoresRequest,
   ) => stream.Stream<
     ListKeyValueStoresResult,
     ListKeyValueStoresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKeyValueStoresRequest,
   ) => stream.Stream<
     unknown,
     ListKeyValueStoresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKeyValueStoresRequest,
@@ -13965,21 +13965,21 @@ export const listOriginAccessControls: API.OperationMethod<
   ListOriginAccessControlsRequest,
   ListOriginAccessControlsResult,
   ListOriginAccessControlsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOriginAccessControlsRequest,
   ) => stream.Stream<
     ListOriginAccessControlsResult,
     ListOriginAccessControlsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOriginAccessControlsRequest,
   ) => stream.Stream<
     unknown,
     ListOriginAccessControlsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOriginAccessControlsRequest,
@@ -14008,7 +14008,7 @@ export const listOriginRequestPolicies: API.OperationMethod<
   ListOriginRequestPoliciesRequest,
   ListOriginRequestPoliciesResult,
   ListOriginRequestPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOriginRequestPoliciesRequest,
   output: ListOriginRequestPoliciesResult,
@@ -14022,21 +14022,21 @@ export const listPublicKeys: API.OperationMethod<
   ListPublicKeysRequest,
   ListPublicKeysResult,
   ListPublicKeysError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPublicKeysRequest,
   ) => stream.Stream<
     ListPublicKeysResult,
     ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPublicKeysRequest,
   ) => stream.Stream<
     unknown,
     ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPublicKeysRequest,
@@ -14063,7 +14063,7 @@ export const listRealtimeLogConfigs: API.OperationMethod<
   ListRealtimeLogConfigsRequest,
   ListRealtimeLogConfigsResult,
   ListRealtimeLogConfigsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRealtimeLogConfigsRequest,
   output: ListRealtimeLogConfigsResult,
@@ -14085,7 +14085,7 @@ export const listResponseHeadersPolicies: API.OperationMethod<
   ListResponseHeadersPoliciesRequest,
   ListResponseHeadersPoliciesResult,
   ListResponseHeadersPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListResponseHeadersPoliciesRequest,
   output: ListResponseHeadersPoliciesResult,
@@ -14099,21 +14099,21 @@ export const listStreamingDistributions: API.OperationMethod<
   ListStreamingDistributionsRequest,
   ListStreamingDistributionsResult,
   ListStreamingDistributionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStreamingDistributionsRequest,
   ) => stream.Stream<
     ListStreamingDistributionsResult,
     ListStreamingDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStreamingDistributionsRequest,
   ) => stream.Stream<
     unknown,
     ListStreamingDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStreamingDistributionsRequest,
@@ -14139,7 +14139,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResult,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
@@ -14157,21 +14157,21 @@ export const listTrustStores: API.OperationMethod<
   ListTrustStoresRequest,
   ListTrustStoresResult,
   ListTrustStoresError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTrustStoresRequest,
   ) => stream.Stream<
     ListTrustStoresResult,
     ListTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTrustStoresRequest,
   ) => stream.Stream<
     TrustStoreSummary,
     ListTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTrustStoresRequest,
@@ -14197,7 +14197,7 @@ export const listVpcOrigins: API.OperationMethod<
   ListVpcOriginsRequest,
   ListVpcOriginsResult,
   ListVpcOriginsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListVpcOriginsRequest,
   output: ListVpcOriginsResult,
@@ -14218,7 +14218,7 @@ export const publishConnectionFunction: API.OperationMethod<
   PublishConnectionFunctionRequest,
   PublishConnectionFunctionResult,
   PublishConnectionFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishConnectionFunctionRequest,
   output: PublishConnectionFunctionResult,
@@ -14249,7 +14249,7 @@ export const publishFunction: API.OperationMethod<
   PublishFunctionRequest,
   PublishFunctionResult,
   PublishFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishFunctionRequest,
   output: PublishFunctionResult,
@@ -14276,7 +14276,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResult,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResult,
@@ -14302,7 +14302,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -14323,7 +14323,7 @@ export const testConnectionFunction: API.OperationMethod<
   TestConnectionFunctionRequest,
   TestConnectionFunctionResult,
   TestConnectionFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestConnectionFunctionRequest,
   output: TestConnectionFunctionResult,
@@ -14354,7 +14354,7 @@ export const testFunction: API.OperationMethod<
   TestFunctionRequest,
   TestFunctionResult,
   TestFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestFunctionRequest,
   output: TestFunctionResult,
@@ -14379,7 +14379,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -14400,7 +14400,7 @@ export const updateAnycastIpList: API.OperationMethod<
   UpdateAnycastIpListRequest,
   UpdateAnycastIpListResult,
   UpdateAnycastIpListError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAnycastIpListRequest,
   output: UpdateAnycastIpListResult,
@@ -14443,7 +14443,7 @@ export const updateCachePolicy: API.OperationMethod<
   UpdateCachePolicyRequest,
   UpdateCachePolicyResult,
   UpdateCachePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCachePolicyRequest,
   output: UpdateCachePolicyResult,
@@ -14478,7 +14478,7 @@ export const updateCloudFrontOriginAccessIdentity: API.OperationMethod<
   UpdateCloudFrontOriginAccessIdentityRequest,
   UpdateCloudFrontOriginAccessIdentityResult,
   UpdateCloudFrontOriginAccessIdentityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCloudFrontOriginAccessIdentityRequest,
   output: UpdateCloudFrontOriginAccessIdentityResult,
@@ -14509,7 +14509,7 @@ export const updateConnectionFunction: API.OperationMethod<
   UpdateConnectionFunctionRequest,
   UpdateConnectionFunctionResult,
   UpdateConnectionFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConnectionFunctionRequest,
   output: UpdateConnectionFunctionResult,
@@ -14540,7 +14540,7 @@ export const updateConnectionGroup: API.OperationMethod<
   UpdateConnectionGroupRequest,
   UpdateConnectionGroupResult,
   UpdateConnectionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConnectionGroupRequest,
   output: UpdateConnectionGroupResult,
@@ -14579,7 +14579,7 @@ export const updateContinuousDeploymentPolicy: API.OperationMethod<
   UpdateContinuousDeploymentPolicyRequest,
   UpdateContinuousDeploymentPolicyResult,
   UpdateContinuousDeploymentPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContinuousDeploymentPolicyRequest,
   output: UpdateContinuousDeploymentPolicyResult,
@@ -14611,7 +14611,7 @@ export const updateDistributionTenant: API.OperationMethod<
   UpdateDistributionTenantRequest,
   UpdateDistributionTenantResult,
   UpdateDistributionTenantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDistributionTenantRequest,
   output: UpdateDistributionTenantResult,
@@ -14648,7 +14648,7 @@ export const updateDomainAssociation: API.OperationMethod<
   UpdateDomainAssociationRequest,
   UpdateDomainAssociationResult,
   UpdateDomainAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDomainAssociationRequest,
   output: UpdateDomainAssociationResult,
@@ -14681,7 +14681,7 @@ export const updateFieldLevelEncryptionConfig: API.OperationMethod<
   UpdateFieldLevelEncryptionConfigRequest,
   UpdateFieldLevelEncryptionConfigResult,
   UpdateFieldLevelEncryptionConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFieldLevelEncryptionConfigRequest,
   output: UpdateFieldLevelEncryptionConfigResult,
@@ -14720,7 +14720,7 @@ export const updateFieldLevelEncryptionProfile: API.OperationMethod<
   UpdateFieldLevelEncryptionProfileRequest,
   UpdateFieldLevelEncryptionProfileResult,
   UpdateFieldLevelEncryptionProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFieldLevelEncryptionProfileRequest,
   output: UpdateFieldLevelEncryptionProfileResult,
@@ -14758,7 +14758,7 @@ export const updateFunction: API.OperationMethod<
   UpdateFunctionRequest,
   UpdateFunctionResult,
   UpdateFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFunctionRequest,
   output: UpdateFunctionResult,
@@ -14794,7 +14794,7 @@ export const updateKeyGroup: API.OperationMethod<
   UpdateKeyGroupRequest,
   UpdateKeyGroupResult,
   UpdateKeyGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKeyGroupRequest,
   output: UpdateKeyGroupResult,
@@ -14822,7 +14822,7 @@ export const updateKeyValueStore: API.OperationMethod<
   UpdateKeyValueStoreRequest,
   UpdateKeyValueStoreResult,
   UpdateKeyValueStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKeyValueStoreRequest,
   output: UpdateKeyValueStoreResult,
@@ -14851,7 +14851,7 @@ export const updateOriginAccessControl: API.OperationMethod<
   UpdateOriginAccessControlRequest,
   UpdateOriginAccessControlResult,
   UpdateOriginAccessControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOriginAccessControlRequest,
   output: UpdateOriginAccessControlResult,
@@ -14893,7 +14893,7 @@ export const updateOriginRequestPolicy: API.OperationMethod<
   UpdateOriginRequestPolicyRequest,
   UpdateOriginRequestPolicyResult,
   UpdateOriginRequestPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOriginRequestPolicyRequest,
   output: UpdateOriginRequestPolicyResult,
@@ -14927,7 +14927,7 @@ export const updatePublicKey: API.OperationMethod<
   UpdatePublicKeyRequest,
   UpdatePublicKeyResult,
   UpdatePublicKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePublicKeyRequest,
   output: UpdatePublicKeyResult,
@@ -14963,7 +14963,7 @@ export const updateRealtimeLogConfig: API.OperationMethod<
   UpdateRealtimeLogConfigRequest,
   UpdateRealtimeLogConfigResult,
   UpdateRealtimeLogConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRealtimeLogConfigRequest,
   output: UpdateRealtimeLogConfigResult,
@@ -14997,7 +14997,7 @@ export const updateResponseHeadersPolicy: API.OperationMethod<
   UpdateResponseHeadersPolicyRequest,
   UpdateResponseHeadersPolicyResult,
   UpdateResponseHeadersPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResponseHeadersPolicyRequest,
   output: UpdateResponseHeadersPolicyResult,
@@ -15038,7 +15038,7 @@ export const updateStreamingDistribution: API.OperationMethod<
   UpdateStreamingDistributionRequest,
   UpdateStreamingDistributionResult,
   UpdateStreamingDistributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStreamingDistributionRequest,
   output: UpdateStreamingDistributionResult,
@@ -15073,7 +15073,7 @@ export const updateTrustStore: API.OperationMethod<
   UpdateTrustStoreRequest,
   UpdateTrustStoreResult,
   UpdateTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTrustStoreRequest,
   output: UpdateTrustStoreResult,
@@ -15105,7 +15105,7 @@ export const updateVpcOrigin: API.OperationMethod<
   UpdateVpcOriginRequest,
   UpdateVpcOriginResult,
   UpdateVpcOriginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateVpcOriginRequest,
   output: UpdateVpcOriginResult,
@@ -15135,7 +15135,7 @@ export const verifyDnsConfiguration: API.OperationMethod<
   VerifyDnsConfigurationRequest,
   VerifyDnsConfigurationResult,
   VerifyDnsConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyDnsConfigurationRequest,
   output: VerifyDnsConfigurationResult,
@@ -15217,7 +15217,7 @@ export const createDistribution: API.OperationMethod<
   CreateDistributionRequest,
   CreateDistributionResult,
   CreateDistributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDistributionRequest,
   output: CreateDistributionResult,
@@ -15371,7 +15371,7 @@ export const createDistributionWithTags: API.OperationMethod<
   CreateDistributionWithTagsRequest,
   CreateDistributionWithTagsResult,
   CreateDistributionWithTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDistributionWithTagsRequest,
   output: CreateDistributionWithTagsResult,
@@ -15535,7 +15535,7 @@ export const updateDistribution: API.OperationMethod<
   UpdateDistributionRequest,
   UpdateDistributionResult,
   UpdateDistributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDistributionRequest,
   output: UpdateDistributionResult,
@@ -15689,7 +15689,7 @@ export const updateDistributionWithStagingConfig: API.OperationMethod<
   UpdateDistributionWithStagingConfigRequest,
   UpdateDistributionWithStagingConfigResult,
   UpdateDistributionWithStagingConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDistributionWithStagingConfigRequest,
   output: UpdateDistributionWithStagingConfigResult,
@@ -15842,7 +15842,7 @@ export const copyDistribution: API.OperationMethod<
   CopyDistributionRequest,
   CopyDistributionResult,
   CopyDistributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyDistributionRequest,
   output: CopyDistributionResult,

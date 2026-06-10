@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "ControlTower",
   serviceShapeName: "AWSControlTowerApis",
@@ -1629,7 +1629,7 @@ export const disableControl: API.OperationMethod<
   DisableControlInput,
   DisableControlOutput,
   DisableControlError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableControlInput,
   output: DisableControlOutput,
@@ -1657,7 +1657,7 @@ export const getBaselineOperation: API.OperationMethod<
   GetBaselineOperationInput,
   GetBaselineOperationOutput,
   GetBaselineOperationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBaselineOperationInput,
   output: GetBaselineOperationOutput,
@@ -1683,7 +1683,7 @@ export const getBaseline: API.OperationMethod<
   GetBaselineInput,
   GetBaselineOutput,
   GetBaselineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBaselineInput,
   output: GetBaselineOutput,
@@ -1708,21 +1708,21 @@ export const listBaselines: API.OperationMethod<
   ListBaselinesInput,
   ListBaselinesOutput,
   ListBaselinesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBaselinesInput,
   ) => stream.Stream<
     ListBaselinesOutput,
     ListBaselinesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBaselinesInput,
   ) => stream.Stream<
     BaselineSummary,
     ListBaselinesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBaselinesInput,
@@ -1754,7 +1754,7 @@ export const getControlOperation: API.OperationMethod<
   GetControlOperationInput,
   GetControlOperationOutput,
   GetControlOperationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetControlOperationInput,
   output: GetControlOperationOutput,
@@ -1779,21 +1779,21 @@ export const listControlOperations: API.OperationMethod<
   ListControlOperationsInput,
   ListControlOperationsOutput,
   ListControlOperationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListControlOperationsInput,
   ) => stream.Stream<
     ListControlOperationsOutput,
     ListControlOperationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListControlOperationsInput,
   ) => stream.Stream<
     ControlOperationSummary,
     ListControlOperationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListControlOperationsInput,
@@ -1827,7 +1827,7 @@ export const enableBaseline: API.OperationMethod<
   EnableBaselineInput,
   EnableBaselineOutput,
   EnableBaselineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableBaselineInput,
   output: EnableBaselineOutput,
@@ -1855,7 +1855,7 @@ export const getEnabledBaseline: API.OperationMethod<
   GetEnabledBaselineInput,
   GetEnabledBaselineOutput,
   GetEnabledBaselineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnabledBaselineInput,
   output: GetEnabledBaselineOutput,
@@ -1883,7 +1883,7 @@ export const updateEnabledBaseline: API.OperationMethod<
   UpdateEnabledBaselineInput,
   UpdateEnabledBaselineOutput,
   UpdateEnabledBaselineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnabledBaselineInput,
   output: UpdateEnabledBaselineOutput,
@@ -1913,7 +1913,7 @@ export const disableBaseline: API.OperationMethod<
   DisableBaselineInput,
   DisableBaselineOutput,
   DisableBaselineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableBaselineInput,
   output: DisableBaselineOutput,
@@ -1940,21 +1940,21 @@ export const listEnabledBaselines: API.OperationMethod<
   ListEnabledBaselinesInput,
   ListEnabledBaselinesOutput,
   ListEnabledBaselinesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnabledBaselinesInput,
   ) => stream.Stream<
     ListEnabledBaselinesOutput,
     ListEnabledBaselinesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnabledBaselinesInput,
   ) => stream.Stream<
     EnabledBaselineSummary,
     ListEnabledBaselinesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnabledBaselinesInput,
@@ -1988,7 +1988,7 @@ export const resetEnabledBaseline: API.OperationMethod<
   ResetEnabledBaselineInput,
   ResetEnabledBaselineOutput,
   ResetEnabledBaselineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetEnabledBaselineInput,
   output: ResetEnabledBaselineOutput,
@@ -2018,7 +2018,7 @@ export const enableControl: API.OperationMethod<
   EnableControlInput,
   EnableControlOutput,
   EnableControlError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableControlInput,
   output: EnableControlOutput,
@@ -2046,7 +2046,7 @@ export const getEnabledControl: API.OperationMethod<
   GetEnabledControlInput,
   GetEnabledControlOutput,
   GetEnabledControlError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnabledControlInput,
   output: GetEnabledControlOutput,
@@ -2080,7 +2080,7 @@ export const updateEnabledControl: API.OperationMethod<
   UpdateEnabledControlInput,
   UpdateEnabledControlOutput,
   UpdateEnabledControlError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnabledControlInput,
   output: UpdateEnabledControlOutput,
@@ -2108,21 +2108,21 @@ export const listEnabledControls: API.OperationMethod<
   ListEnabledControlsInput,
   ListEnabledControlsOutput,
   ListEnabledControlsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnabledControlsInput,
   ) => stream.Stream<
     ListEnabledControlsOutput,
     ListEnabledControlsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnabledControlsInput,
   ) => stream.Stream<
     EnabledControlSummary,
     ListEnabledControlsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnabledControlsInput,
@@ -2157,7 +2157,7 @@ export const resetEnabledControl: API.OperationMethod<
   ResetEnabledControlInput,
   ResetEnabledControlOutput,
   ResetEnabledControlError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetEnabledControlInput,
   output: ResetEnabledControlOutput,
@@ -2185,7 +2185,7 @@ export const getLandingZoneOperation: API.OperationMethod<
   GetLandingZoneOperationInput,
   GetLandingZoneOperationOutput,
   GetLandingZoneOperationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLandingZoneOperationInput,
   output: GetLandingZoneOperationOutput,
@@ -2210,21 +2210,21 @@ export const listLandingZoneOperations: API.OperationMethod<
   ListLandingZoneOperationsInput,
   ListLandingZoneOperationsOutput,
   ListLandingZoneOperationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLandingZoneOperationsInput,
   ) => stream.Stream<
     ListLandingZoneOperationsOutput,
     ListLandingZoneOperationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLandingZoneOperationsInput,
   ) => stream.Stream<
     LandingZoneOperationSummary,
     ListLandingZoneOperationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLandingZoneOperationsInput,
@@ -2256,7 +2256,7 @@ export const createLandingZone: API.OperationMethod<
   CreateLandingZoneInput,
   CreateLandingZoneOutput,
   CreateLandingZoneError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLandingZoneInput,
   output: CreateLandingZoneOutput,
@@ -2282,7 +2282,7 @@ export const getLandingZone: API.OperationMethod<
   GetLandingZoneInput,
   GetLandingZoneOutput,
   GetLandingZoneError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLandingZoneInput,
   output: GetLandingZoneOutput,
@@ -2309,7 +2309,7 @@ export const updateLandingZone: API.OperationMethod<
   UpdateLandingZoneInput,
   UpdateLandingZoneOutput,
   UpdateLandingZoneError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLandingZoneInput,
   output: UpdateLandingZoneOutput,
@@ -2339,7 +2339,7 @@ export const deleteLandingZone: API.OperationMethod<
   DeleteLandingZoneInput,
   DeleteLandingZoneOutput,
   DeleteLandingZoneError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLandingZoneInput,
   output: DeleteLandingZoneOutput,
@@ -2367,21 +2367,21 @@ export const listLandingZones: API.OperationMethod<
   ListLandingZonesInput,
   ListLandingZonesOutput,
   ListLandingZonesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLandingZonesInput,
   ) => stream.Stream<
     ListLandingZonesOutput,
     ListLandingZonesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLandingZonesInput,
   ) => stream.Stream<
     LandingZoneSummary,
     ListLandingZonesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLandingZonesInput,
@@ -2414,7 +2414,7 @@ export const resetLandingZone: API.OperationMethod<
   ResetLandingZoneInput,
   ResetLandingZoneOutput,
   ResetLandingZoneError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetLandingZoneInput,
   output: ResetLandingZoneOutput,
@@ -2439,7 +2439,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -2461,7 +2461,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -2483,7 +2483,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,

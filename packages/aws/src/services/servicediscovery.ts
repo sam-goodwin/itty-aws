@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "ServiceDiscovery",
   serviceShapeName: "Route53AutoNaming_v20170314",
@@ -1554,7 +1554,7 @@ export const createHttpNamespace: API.OperationMethod<
   CreateHttpNamespaceRequest,
   CreateHttpNamespaceResponse,
   CreateHttpNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateHttpNamespaceRequest,
   output: CreateHttpNamespaceResponse,
@@ -1587,7 +1587,7 @@ export const createPrivateDnsNamespace: API.OperationMethod<
   CreatePrivateDnsNamespaceRequest,
   CreatePrivateDnsNamespaceResponse,
   CreatePrivateDnsNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePrivateDnsNamespaceRequest,
   output: CreatePrivateDnsNamespaceResponse,
@@ -1621,7 +1621,7 @@ export const createPublicDnsNamespace: API.OperationMethod<
   CreatePublicDnsNamespaceRequest,
   CreatePublicDnsNamespaceResponse,
   CreatePublicDnsNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePublicDnsNamespaceRequest,
   output: CreatePublicDnsNamespaceResponse,
@@ -1669,7 +1669,7 @@ export const createService: API.OperationMethod<
   CreateServiceRequest,
   CreateServiceResponse,
   CreateServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServiceRequest,
   output: CreateServiceResponse,
@@ -1695,7 +1695,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceRequest,
   DeleteNamespaceResponse,
   DeleteNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
@@ -1714,7 +1714,7 @@ export const deleteService: API.OperationMethod<
   DeleteServiceRequest,
   DeleteServiceResponse,
   DeleteServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
@@ -1731,7 +1731,7 @@ export const deleteServiceAttributes: API.OperationMethod<
   DeleteServiceAttributesRequest,
   DeleteServiceAttributesResponse,
   DeleteServiceAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServiceAttributesRequest,
   output: DeleteServiceAttributesResponse,
@@ -1752,7 +1752,7 @@ export const deregisterInstance: API.OperationMethod<
   DeregisterInstanceRequest,
   DeregisterInstanceResponse,
   DeregisterInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeregisterInstanceRequest,
   output: DeregisterInstanceResponse,
@@ -1781,7 +1781,7 @@ export const discoverInstances: API.OperationMethod<
   DiscoverInstancesRequest,
   DiscoverInstancesResponse,
   DiscoverInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DiscoverInstancesRequest,
   output: DiscoverInstancesResponse,
@@ -1805,7 +1805,7 @@ export const discoverInstancesRevision: API.OperationMethod<
   DiscoverInstancesRevisionRequest,
   DiscoverInstancesRevisionResponse,
   DiscoverInstancesRevisionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DiscoverInstancesRevisionRequest,
   output: DiscoverInstancesRevisionResponse,
@@ -1828,7 +1828,7 @@ export const getInstance: API.OperationMethod<
   GetInstanceRequest,
   GetInstanceResponse,
   GetInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceRequest,
   output: GetInstanceResponse,
@@ -1851,21 +1851,21 @@ export const getInstancesHealthStatus: API.OperationMethod<
   GetInstancesHealthStatusRequest,
   GetInstancesHealthStatusResponse,
   GetInstancesHealthStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetInstancesHealthStatusRequest,
   ) => stream.Stream<
     GetInstancesHealthStatusResponse,
     GetInstancesHealthStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetInstancesHealthStatusRequest,
   ) => stream.Stream<
     unknown,
     GetInstancesHealthStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetInstancesHealthStatusRequest,
@@ -1885,7 +1885,7 @@ export const getNamespace: API.OperationMethod<
   GetNamespaceRequest,
   GetNamespaceResponse,
   GetNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNamespaceRequest,
   output: GetNamespaceResponse,
@@ -1902,7 +1902,7 @@ export const getOperation: API.OperationMethod<
   GetOperationRequest,
   GetOperationResponse,
   GetOperationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationRequest,
   output: GetOperationResponse,
@@ -1916,7 +1916,7 @@ export const getService: API.OperationMethod<
   GetServiceRequest,
   GetServiceResponse,
   GetServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceRequest,
   output: GetServiceResponse,
@@ -1933,7 +1933,7 @@ export const getServiceAttributes: API.OperationMethod<
   GetServiceAttributesRequest,
   GetServiceAttributesResponse,
   GetServiceAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceAttributesRequest,
   output: GetServiceAttributesResponse,
@@ -1948,21 +1948,21 @@ export const listInstances: API.OperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInstancesRequest,
   ) => stream.Stream<
     ListInstancesResponse,
     ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInstancesRequest,
   ) => stream.Stream<
     unknown,
     ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
@@ -1982,21 +1982,21 @@ export const listNamespaces: API.OperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
   ListNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListNamespacesRequest,
   ) => stream.Stream<
     ListNamespacesResponse,
     ListNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListNamespacesRequest,
   ) => stream.Stream<
     unknown,
     ListNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
@@ -2016,21 +2016,21 @@ export const listOperations: API.OperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOperationsRequest,
   ) => stream.Stream<
     ListOperationsResponse,
     ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOperationsRequest,
   ) => stream.Stream<
     unknown,
     ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
@@ -2051,21 +2051,21 @@ export const listServices: API.OperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServicesRequest,
   ) => stream.Stream<
     ListServicesResponse,
     ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServicesRequest,
   ) => stream.Stream<
     unknown,
     ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
@@ -2088,7 +2088,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2140,7 +2140,7 @@ export const registerInstance: API.OperationMethod<
   RegisterInstanceRequest,
   RegisterInstanceResponse,
   RegisterInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterInstanceRequest,
   output: RegisterInstanceResponse,
@@ -2164,7 +2164,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2181,7 +2181,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2201,7 +2201,7 @@ export const updateHttpNamespace: API.OperationMethod<
   UpdateHttpNamespaceRequest,
   UpdateHttpNamespaceResponse,
   UpdateHttpNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateHttpNamespaceRequest,
   output: UpdateHttpNamespaceResponse,
@@ -2228,7 +2228,7 @@ export const updateInstanceCustomHealthStatus: API.OperationMethod<
   UpdateInstanceCustomHealthStatusRequest,
   UpdateInstanceCustomHealthStatusResponse,
   UpdateInstanceCustomHealthStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateInstanceCustomHealthStatusRequest,
   output: UpdateInstanceCustomHealthStatusResponse,
@@ -2253,7 +2253,7 @@ export const updatePrivateDnsNamespace: API.OperationMethod<
   UpdatePrivateDnsNamespaceRequest,
   UpdatePrivateDnsNamespaceResponse,
   UpdatePrivateDnsNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePrivateDnsNamespaceRequest,
   output: UpdatePrivateDnsNamespaceResponse,
@@ -2272,7 +2272,7 @@ export const updatePublicDnsNamespace: API.OperationMethod<
   UpdatePublicDnsNamespaceRequest,
   UpdatePublicDnsNamespaceResponse,
   UpdatePublicDnsNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePublicDnsNamespaceRequest,
   output: UpdatePublicDnsNamespaceResponse,
@@ -2318,7 +2318,7 @@ export const updateService: API.OperationMethod<
   UpdateServiceRequest,
   UpdateServiceResponse,
   UpdateServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateServiceRequest,
   output: UpdateServiceResponse,
@@ -2336,7 +2336,7 @@ export const updateServiceAttributes: API.OperationMethod<
   UpdateServiceAttributesRequest,
   UpdateServiceAttributesResponse,
   UpdateServiceAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateServiceAttributesRequest,
   output: UpdateServiceAttributesResponse,

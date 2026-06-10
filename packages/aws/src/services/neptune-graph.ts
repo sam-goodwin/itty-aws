@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Neptune Graph",
   serviceShapeName: "AmazonNeptuneGraph",
@@ -2278,7 +2278,7 @@ export const cancelQuery: API.OperationMethod<
   CancelQueryInput,
   CancelQueryResponse,
   CancelQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelQueryInput,
   output: CancelQueryResponse,
@@ -2313,7 +2313,7 @@ export const executeQuery: API.OperationMethod<
   ExecuteQueryInput,
   ExecuteQueryOutput,
   ExecuteQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteQueryInput,
   output: ExecuteQueryOutput,
@@ -2340,7 +2340,7 @@ export const getGraphSummary: API.OperationMethod<
   GetGraphSummaryInput,
   GetGraphSummaryOutput,
   GetGraphSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGraphSummaryInput,
   output: GetGraphSummaryOutput,
@@ -2368,7 +2368,7 @@ export const getQuery: API.OperationMethod<
   GetQueryInput,
   GetQueryOutput,
   GetQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQueryInput,
   output: GetQueryOutput,
@@ -2393,7 +2393,7 @@ export const listQueries: API.OperationMethod<
   ListQueriesInput,
   ListQueriesOutput,
   ListQueriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListQueriesInput,
   output: ListQueriesOutput,
@@ -2417,7 +2417,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -2441,7 +2441,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -2465,7 +2465,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -2490,7 +2490,7 @@ export const createGraph: API.OperationMethod<
   CreateGraphInput,
   CreateGraphOutput,
   CreateGraphError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGraphInput,
   output: CreateGraphOutput,
@@ -2516,7 +2516,7 @@ export const deleteGraph: API.OperationMethod<
   DeleteGraphInput,
   DeleteGraphOutput,
   DeleteGraphError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGraphInput,
   output: DeleteGraphOutput,
@@ -2541,7 +2541,7 @@ export const getGraph: API.OperationMethod<
   GetGraphInput,
   GetGraphOutput,
   GetGraphError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGraphInput,
   output: GetGraphOutput,
@@ -2564,21 +2564,21 @@ export const listGraphs: API.OperationMethod<
   ListGraphsInput,
   ListGraphsOutput,
   ListGraphsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGraphsInput,
   ) => stream.Stream<
     ListGraphsOutput,
     ListGraphsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGraphsInput,
   ) => stream.Stream<
     GraphSummary,
     ListGraphsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGraphsInput,
@@ -2609,7 +2609,7 @@ export const resetGraph: API.OperationMethod<
   ResetGraphInput,
   ResetGraphOutput,
   ResetGraphError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetGraphInput,
   output: ResetGraphOutput,
@@ -2636,7 +2636,7 @@ export const restoreGraphFromSnapshot: API.OperationMethod<
   RestoreGraphFromSnapshotInput,
   RestoreGraphFromSnapshotOutput,
   RestoreGraphFromSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreGraphFromSnapshotInput,
   output: RestoreGraphFromSnapshotOutput,
@@ -2663,7 +2663,7 @@ export const startGraph: API.OperationMethod<
   StartGraphInput,
   StartGraphOutput,
   StartGraphError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartGraphInput,
   output: StartGraphOutput,
@@ -2689,7 +2689,7 @@ export const stopGraph: API.OperationMethod<
   StopGraphInput,
   StopGraphOutput,
   StopGraphError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopGraphInput,
   output: StopGraphOutput,
@@ -2715,7 +2715,7 @@ export const updateGraph: API.OperationMethod<
   UpdateGraphInput,
   UpdateGraphOutput,
   UpdateGraphError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGraphInput,
   output: UpdateGraphOutput,
@@ -2744,7 +2744,7 @@ export const createPrivateGraphEndpoint: API.OperationMethod<
   CreatePrivateGraphEndpointInput,
   CreatePrivateGraphEndpointOutput,
   CreatePrivateGraphEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePrivateGraphEndpointInput,
   output: CreatePrivateGraphEndpointOutput,
@@ -2771,7 +2771,7 @@ export const deletePrivateGraphEndpoint: API.OperationMethod<
   DeletePrivateGraphEndpointInput,
   DeletePrivateGraphEndpointOutput,
   DeletePrivateGraphEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePrivateGraphEndpointInput,
   output: DeletePrivateGraphEndpointOutput,
@@ -2796,7 +2796,7 @@ export const getPrivateGraphEndpoint: API.OperationMethod<
   GetPrivateGraphEndpointInput,
   GetPrivateGraphEndpointOutput,
   GetPrivateGraphEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPrivateGraphEndpointInput,
   output: GetPrivateGraphEndpointOutput,
@@ -2820,21 +2820,21 @@ export const listPrivateGraphEndpoints: API.OperationMethod<
   ListPrivateGraphEndpointsInput,
   ListPrivateGraphEndpointsOutput,
   ListPrivateGraphEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPrivateGraphEndpointsInput,
   ) => stream.Stream<
     ListPrivateGraphEndpointsOutput,
     ListPrivateGraphEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPrivateGraphEndpointsInput,
   ) => stream.Stream<
     PrivateGraphEndpointSummary,
     ListPrivateGraphEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrivateGraphEndpointsInput,
@@ -2867,7 +2867,7 @@ export const createGraphSnapshot: API.OperationMethod<
   CreateGraphSnapshotInput,
   CreateGraphSnapshotOutput,
   CreateGraphSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGraphSnapshotInput,
   output: CreateGraphSnapshotOutput,
@@ -2894,7 +2894,7 @@ export const deleteGraphSnapshot: API.OperationMethod<
   DeleteGraphSnapshotInput,
   DeleteGraphSnapshotOutput,
   DeleteGraphSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGraphSnapshotInput,
   output: DeleteGraphSnapshotOutput,
@@ -2919,7 +2919,7 @@ export const getGraphSnapshot: API.OperationMethod<
   GetGraphSnapshotInput,
   GetGraphSnapshotOutput,
   GetGraphSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGraphSnapshotInput,
   output: GetGraphSnapshotOutput,
@@ -2943,21 +2943,21 @@ export const listGraphSnapshots: API.OperationMethod<
   ListGraphSnapshotsInput,
   ListGraphSnapshotsOutput,
   ListGraphSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGraphSnapshotsInput,
   ) => stream.Stream<
     ListGraphSnapshotsOutput,
     ListGraphSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGraphSnapshotsInput,
   ) => stream.Stream<
     GraphSnapshotSummary,
     ListGraphSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGraphSnapshotsInput,
@@ -2989,7 +2989,7 @@ export const cancelExportTask: API.OperationMethod<
   CancelExportTaskInput,
   CancelExportTaskOutput,
   CancelExportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelExportTaskInput,
   output: CancelExportTaskOutput,
@@ -3015,7 +3015,7 @@ export const cancelImportTask: API.OperationMethod<
   CancelImportTaskInput,
   CancelImportTaskOutput,
   CancelImportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelImportTaskInput,
   output: CancelImportTaskOutput,
@@ -3043,7 +3043,7 @@ export const createGraphUsingImportTask: API.OperationMethod<
   CreateGraphUsingImportTaskInput,
   CreateGraphUsingImportTaskOutput,
   CreateGraphUsingImportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGraphUsingImportTaskInput,
   output: CreateGraphUsingImportTaskOutput,
@@ -3068,7 +3068,7 @@ export const getExportTask: API.OperationMethod<
   GetExportTaskInput,
   GetExportTaskOutput,
   GetExportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetExportTaskInput,
   output: GetExportTaskOutput,
@@ -3092,7 +3092,7 @@ export const getImportTask: API.OperationMethod<
   GetImportTaskInput,
   GetImportTaskOutput,
   GetImportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetImportTaskInput,
   output: GetImportTaskOutput,
@@ -3116,21 +3116,21 @@ export const listExportTasks: API.OperationMethod<
   ListExportTasksInput,
   ListExportTasksOutput,
   ListExportTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListExportTasksInput,
   ) => stream.Stream<
     ListExportTasksOutput,
     ListExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListExportTasksInput,
   ) => stream.Stream<
     ExportTaskSummary,
     ListExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListExportTasksInput,
@@ -3161,21 +3161,21 @@ export const listImportTasks: API.OperationMethod<
   ListImportTasksInput,
   ListImportTasksOutput,
   ListImportTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListImportTasksInput,
   ) => stream.Stream<
     ListImportTasksOutput,
     ListImportTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListImportTasksInput,
   ) => stream.Stream<
     ImportTaskSummary,
     ListImportTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListImportTasksInput,
@@ -3207,7 +3207,7 @@ export const startExportTask: API.OperationMethod<
   StartExportTaskInput,
   StartExportTaskOutput,
   StartExportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartExportTaskInput,
   output: StartExportTaskOutput,
@@ -3233,7 +3233,7 @@ export const startImportTask: API.OperationMethod<
   StartImportTaskInput,
   StartImportTaskOutput,
   StartImportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartImportTaskInput,
   output: StartImportTaskOutput,

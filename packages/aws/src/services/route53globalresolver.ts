@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Route53GlobalResolver",
@@ -3001,7 +3001,7 @@ export const disassociateHostedZone: API.OperationMethod<
   DisassociateHostedZoneInput,
   DisassociateHostedZoneOutput,
   DisassociateHostedZoneError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateHostedZoneInput,
   output: DisassociateHostedZoneOutput,
@@ -3024,7 +3024,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3044,7 +3044,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3067,7 +3067,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3091,7 +3091,7 @@ export const createAccessSource: API.OperationMethod<
   CreateAccessSourceInput,
   CreateAccessSourceOutput,
   CreateAccessSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessSourceInput,
   output: CreateAccessSourceOutput,
@@ -3121,7 +3121,7 @@ export const getAccessSource: API.OperationMethod<
   GetAccessSourceInput,
   GetAccessSourceOutput,
   GetAccessSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessSourceInput,
   output: GetAccessSourceOutput,
@@ -3151,7 +3151,7 @@ export const updateAccessSource: API.OperationMethod<
   UpdateAccessSourceInput,
   UpdateAccessSourceOutput,
   UpdateAccessSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessSourceInput,
   output: UpdateAccessSourceOutput,
@@ -3182,7 +3182,7 @@ export const deleteAccessSource: API.OperationMethod<
   DeleteAccessSourceInput,
   DeleteAccessSourceOutput,
   DeleteAccessSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessSourceInput,
   output: DeleteAccessSourceOutput,
@@ -3210,21 +3210,21 @@ export const listAccessSources: API.OperationMethod<
   ListAccessSourcesInput,
   ListAccessSourcesOutput,
   ListAccessSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccessSourcesInput,
   ) => stream.Stream<
     ListAccessSourcesOutput,
     ListAccessSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccessSourcesInput,
   ) => stream.Stream<
     AccessSourcesItem,
     ListAccessSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessSourcesInput,
@@ -3260,7 +3260,7 @@ export const createAccessToken: API.OperationMethod<
   CreateAccessTokenInput,
   CreateAccessTokenOutput,
   CreateAccessTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessTokenInput,
   output: CreateAccessTokenOutput,
@@ -3290,7 +3290,7 @@ export const getAccessToken: API.OperationMethod<
   GetAccessTokenInput,
   GetAccessTokenOutput,
   GetAccessTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessTokenInput,
   output: GetAccessTokenOutput,
@@ -3320,7 +3320,7 @@ export const updateAccessToken: API.OperationMethod<
   UpdateAccessTokenInput,
   UpdateAccessTokenOutput,
   UpdateAccessTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessTokenInput,
   output: UpdateAccessTokenOutput,
@@ -3350,7 +3350,7 @@ export const deleteAccessToken: API.OperationMethod<
   DeleteAccessTokenInput,
   DeleteAccessTokenOutput,
   DeleteAccessTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessTokenInput,
   output: DeleteAccessTokenOutput,
@@ -3378,21 +3378,21 @@ export const listAccessTokens: API.OperationMethod<
   ListAccessTokensInput,
   ListAccessTokensOutput,
   ListAccessTokensError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccessTokensInput,
   ) => stream.Stream<
     ListAccessTokensOutput,
     ListAccessTokensError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccessTokensInput,
   ) => stream.Stream<
     AccessTokenItem,
     ListAccessTokensError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessTokensInput,
@@ -3429,7 +3429,7 @@ export const createDNSView: API.OperationMethod<
   CreateDNSViewInput,
   CreateDNSViewOutput,
   CreateDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDNSViewInput,
   output: CreateDNSViewOutput,
@@ -3459,7 +3459,7 @@ export const getDNSView: API.OperationMethod<
   GetDNSViewInput,
   GetDNSViewOutput,
   GetDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDNSViewInput,
   output: GetDNSViewOutput,
@@ -3489,7 +3489,7 @@ export const updateDNSView: API.OperationMethod<
   UpdateDNSViewInput,
   UpdateDNSViewOutput,
   UpdateDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDNSViewInput,
   output: UpdateDNSViewOutput,
@@ -3520,7 +3520,7 @@ export const deleteDNSView: API.OperationMethod<
   DeleteDNSViewInput,
   DeleteDNSViewOutput,
   DeleteDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDNSViewInput,
   output: DeleteDNSViewOutput,
@@ -3549,21 +3549,21 @@ export const listDNSViews: API.OperationMethod<
   ListDNSViewsInput,
   ListDNSViewsOutput,
   ListDNSViewsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDNSViewsInput,
   ) => stream.Stream<
     ListDNSViewsOutput,
     ListDNSViewsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDNSViewsInput,
   ) => stream.Stream<
     DNSViewSummary,
     ListDNSViewsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDNSViewsInput,
@@ -3600,7 +3600,7 @@ export const disableDNSView: API.OperationMethod<
   DisableDNSViewInput,
   DisableDNSViewOutput,
   DisableDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableDNSViewInput,
   output: DisableDNSViewOutput,
@@ -3632,7 +3632,7 @@ export const enableDNSView: API.OperationMethod<
   EnableDNSViewInput,
   EnableDNSViewOutput,
   EnableDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableDNSViewInput,
   output: EnableDNSViewOutput,
@@ -3664,7 +3664,7 @@ export const createFirewallDomainList: API.OperationMethod<
   CreateFirewallDomainListInput,
   CreateFirewallDomainListOutput,
   CreateFirewallDomainListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFirewallDomainListInput,
   output: CreateFirewallDomainListOutput,
@@ -3694,7 +3694,7 @@ export const getFirewallDomainList: API.OperationMethod<
   GetFirewallDomainListInput,
   GetFirewallDomainListOutput,
   GetFirewallDomainListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFirewallDomainListInput,
   output: GetFirewallDomainListOutput,
@@ -3723,7 +3723,7 @@ export const deleteFirewallDomainList: API.OperationMethod<
   DeleteFirewallDomainListInput,
   DeleteFirewallDomainListOutput,
   DeleteFirewallDomainListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFirewallDomainListInput,
   output: DeleteFirewallDomainListOutput,
@@ -3752,21 +3752,21 @@ export const listFirewallDomainLists: API.OperationMethod<
   ListFirewallDomainListsInput,
   ListFirewallDomainListsOutput,
   ListFirewallDomainListsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFirewallDomainListsInput,
   ) => stream.Stream<
     ListFirewallDomainListsOutput,
     ListFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFirewallDomainListsInput,
   ) => stream.Stream<
     FirewallDomainListsItem,
     ListFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallDomainListsInput,
@@ -3803,7 +3803,7 @@ export const importFirewallDomains: API.OperationMethod<
   ImportFirewallDomainsInput,
   ImportFirewallDomainsOutput,
   ImportFirewallDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportFirewallDomainsInput,
   output: ImportFirewallDomainsOutput,
@@ -3833,21 +3833,21 @@ export const listFirewallDomains: API.OperationMethod<
   ListFirewallDomainsInput,
   ListFirewallDomainsOutput,
   ListFirewallDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFirewallDomainsInput,
   ) => stream.Stream<
     ListFirewallDomainsOutput,
     ListFirewallDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFirewallDomainsInput,
   ) => stream.Stream<
     Domain,
     ListFirewallDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallDomainsInput,
@@ -3884,7 +3884,7 @@ export const updateFirewallDomains: API.OperationMethod<
   UpdateFirewallDomainsInput,
   UpdateFirewallDomainsOutput,
   UpdateFirewallDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFirewallDomainsInput,
   output: UpdateFirewallDomainsOutput,
@@ -3916,7 +3916,7 @@ export const createFirewallRule: API.OperationMethod<
   CreateFirewallRuleInput,
   CreateFirewallRuleOutput,
   CreateFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFirewallRuleInput,
   output: CreateFirewallRuleOutput,
@@ -3946,7 +3946,7 @@ export const getFirewallRule: API.OperationMethod<
   GetFirewallRuleInput,
   GetFirewallRuleOutput,
   GetFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFirewallRuleInput,
   output: GetFirewallRuleOutput,
@@ -3976,7 +3976,7 @@ export const updateFirewallRule: API.OperationMethod<
   UpdateFirewallRuleInput,
   UpdateFirewallRuleOutput,
   UpdateFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFirewallRuleInput,
   output: UpdateFirewallRuleOutput,
@@ -4007,7 +4007,7 @@ export const deleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleInput,
   DeleteFirewallRuleOutput,
   DeleteFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFirewallRuleInput,
   output: DeleteFirewallRuleOutput,
@@ -4036,21 +4036,21 @@ export const listFirewallRules: API.OperationMethod<
   ListFirewallRulesInput,
   ListFirewallRulesOutput,
   ListFirewallRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFirewallRulesInput,
   ) => stream.Stream<
     ListFirewallRulesOutput,
     ListFirewallRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFirewallRulesInput,
   ) => stream.Stream<
     FirewallRulesItem,
     ListFirewallRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallRulesInput,
@@ -4084,7 +4084,7 @@ export const batchCreateFirewallRule: API.OperationMethod<
   BatchCreateFirewallRuleInput,
   BatchCreateFirewallRuleOutput,
   BatchCreateFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateFirewallRuleInput,
   output: BatchCreateFirewallRuleOutput,
@@ -4110,7 +4110,7 @@ export const batchDeleteFirewallRule: API.OperationMethod<
   BatchDeleteFirewallRuleInput,
   BatchDeleteFirewallRuleOutput,
   BatchDeleteFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteFirewallRuleInput,
   output: BatchDeleteFirewallRuleOutput,
@@ -4136,7 +4136,7 @@ export const batchUpdateFirewallRule: API.OperationMethod<
   BatchUpdateFirewallRuleInput,
   BatchUpdateFirewallRuleOutput,
   BatchUpdateFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateFirewallRuleInput,
   output: BatchUpdateFirewallRuleOutput,
@@ -4164,7 +4164,7 @@ export const createGlobalResolver: API.OperationMethod<
   CreateGlobalResolverInput,
   CreateGlobalResolverOutput,
   CreateGlobalResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGlobalResolverInput,
   output: CreateGlobalResolverOutput,
@@ -4193,7 +4193,7 @@ export const getGlobalResolver: API.OperationMethod<
   GetGlobalResolverInput,
   GetGlobalResolverOutput,
   GetGlobalResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGlobalResolverInput,
   output: GetGlobalResolverOutput,
@@ -4223,7 +4223,7 @@ export const updateGlobalResolver: API.OperationMethod<
   UpdateGlobalResolverInput,
   UpdateGlobalResolverOutput,
   UpdateGlobalResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGlobalResolverInput,
   output: UpdateGlobalResolverOutput,
@@ -4254,7 +4254,7 @@ export const deleteGlobalResolver: API.OperationMethod<
   DeleteGlobalResolverInput,
   DeleteGlobalResolverOutput,
   DeleteGlobalResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlobalResolverInput,
   output: DeleteGlobalResolverOutput,
@@ -4282,21 +4282,21 @@ export const listGlobalResolvers: API.OperationMethod<
   ListGlobalResolversInput,
   ListGlobalResolversOutput,
   ListGlobalResolversError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGlobalResolversInput,
   ) => stream.Stream<
     ListGlobalResolversOutput,
     ListGlobalResolversError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGlobalResolversInput,
   ) => stream.Stream<
     GlobalResolversItem,
     ListGlobalResolversError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalResolversInput,
@@ -4332,7 +4332,7 @@ export const associateHostedZone: API.OperationMethod<
   AssociateHostedZoneInput,
   AssociateHostedZoneOutput,
   AssociateHostedZoneError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateHostedZoneInput,
   output: AssociateHostedZoneOutput,
@@ -4362,7 +4362,7 @@ export const getHostedZoneAssociation: API.OperationMethod<
   GetHostedZoneAssociationInput,
   GetHostedZoneAssociationOutput,
   GetHostedZoneAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHostedZoneAssociationInput,
   output: GetHostedZoneAssociationOutput,
@@ -4392,7 +4392,7 @@ export const updateHostedZoneAssociation: API.OperationMethod<
   UpdateHostedZoneAssociationInput,
   UpdateHostedZoneAssociationOutput,
   UpdateHostedZoneAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateHostedZoneAssociationInput,
   output: UpdateHostedZoneAssociationOutput,
@@ -4422,21 +4422,21 @@ export const listHostedZoneAssociations: API.OperationMethod<
   ListHostedZoneAssociationsInput,
   ListHostedZoneAssociationsOutput,
   ListHostedZoneAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListHostedZoneAssociationsInput,
   ) => stream.Stream<
     ListHostedZoneAssociationsOutput,
     ListHostedZoneAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListHostedZoneAssociationsInput,
   ) => stream.Stream<
     HostedZoneAssociationSummary,
     ListHostedZoneAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHostedZoneAssociationsInput,
@@ -4471,7 +4471,7 @@ export const getManagedFirewallDomainList: API.OperationMethod<
   GetManagedFirewallDomainListInput,
   GetManagedFirewallDomainListOutput,
   GetManagedFirewallDomainListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagedFirewallDomainListInput,
   output: GetManagedFirewallDomainListOutput,
@@ -4498,21 +4498,21 @@ export const listManagedFirewallDomainLists: API.OperationMethod<
   ListManagedFirewallDomainListsInput,
   ListManagedFirewallDomainListsOutput,
   ListManagedFirewallDomainListsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListManagedFirewallDomainListsInput,
   ) => stream.Stream<
     ListManagedFirewallDomainListsOutput,
     ListManagedFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListManagedFirewallDomainListsInput,
   ) => stream.Stream<
     ManagedFirewallDomainListsItem,
     ListManagedFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManagedFirewallDomainListsInput,

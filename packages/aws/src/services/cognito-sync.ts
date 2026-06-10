@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://cognito-sync.amazonaws.com/doc/2014-06-30/");
 const svc = T.AwsApiService({
   sdkId: "Cognito Sync",
@@ -1003,7 +1003,7 @@ export const bulkPublish: API.OperationMethod<
   BulkPublishRequest,
   BulkPublishResponse,
   BulkPublishError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkPublishRequest,
   output: BulkPublishResponse,
@@ -1036,7 +1036,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetRequest,
   DeleteDatasetResponse,
   DeleteDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
@@ -1067,7 +1067,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetRequest,
   DescribeDatasetResponse,
   DescribeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
@@ -1136,7 +1136,7 @@ export const describeIdentityPoolUsage: API.OperationMethod<
   DescribeIdentityPoolUsageRequest,
   DescribeIdentityPoolUsageResponse,
   DescribeIdentityPoolUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeIdentityPoolUsageRequest,
   output: DescribeIdentityPoolUsageResponse,
@@ -1207,7 +1207,7 @@ export const describeIdentityUsage: API.OperationMethod<
   DescribeIdentityUsageRequest,
   DescribeIdentityUsageResponse,
   DescribeIdentityUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeIdentityUsageRequest,
   output: DescribeIdentityUsageResponse,
@@ -1234,7 +1234,7 @@ export const getBulkPublishDetails: API.OperationMethod<
   GetBulkPublishDetailsRequest,
   GetBulkPublishDetailsResponse,
   GetBulkPublishDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBulkPublishDetailsRequest,
   output: GetBulkPublishDetailsResponse,
@@ -1261,7 +1261,7 @@ export const getCognitoEvents: API.OperationMethod<
   GetCognitoEventsRequest,
   GetCognitoEventsResponse,
   GetCognitoEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCognitoEventsRequest,
   output: GetCognitoEventsResponse,
@@ -1329,7 +1329,7 @@ export const getIdentityPoolConfiguration: API.OperationMethod<
   GetIdentityPoolConfigurationRequest,
   GetIdentityPoolConfigurationResponse,
   GetIdentityPoolConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdentityPoolConfigurationRequest,
   output: GetIdentityPoolConfigurationResponse,
@@ -1408,7 +1408,7 @@ export const listDatasets: API.OperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
@@ -1486,7 +1486,7 @@ export const listIdentityPoolUsage: API.OperationMethod<
   ListIdentityPoolUsageRequest,
   ListIdentityPoolUsageResponse,
   ListIdentityPoolUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListIdentityPoolUsageRequest,
   output: ListIdentityPoolUsageResponse,
@@ -1561,7 +1561,7 @@ export const listRecords: API.OperationMethod<
   ListRecordsRequest,
   ListRecordsResponse,
   ListRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRecordsRequest,
   output: ListRecordsResponse,
@@ -1628,7 +1628,7 @@ export const registerDevice: API.OperationMethod<
   RegisterDeviceRequest,
   RegisterDeviceResponse,
   RegisterDeviceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterDeviceRequest,
   output: RegisterDeviceResponse,
@@ -1657,7 +1657,7 @@ export const setCognitoEvents: API.OperationMethod<
   SetCognitoEventsRequest,
   SetCognitoEventsResponse,
   SetCognitoEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetCognitoEventsRequest,
   output: SetCognitoEventsResponse,
@@ -1731,7 +1731,7 @@ export const setIdentityPoolConfiguration: API.OperationMethod<
   SetIdentityPoolConfigurationRequest,
   SetIdentityPoolConfigurationResponse,
   SetIdentityPoolConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIdentityPoolConfigurationRequest,
   output: SetIdentityPoolConfigurationResponse,
@@ -1799,7 +1799,7 @@ export const subscribeToDataset: API.OperationMethod<
   SubscribeToDatasetRequest,
   SubscribeToDatasetResponse,
   SubscribeToDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubscribeToDatasetRequest,
   output: SubscribeToDatasetResponse,
@@ -1868,7 +1868,7 @@ export const unsubscribeFromDataset: API.OperationMethod<
   UnsubscribeFromDatasetRequest,
   UnsubscribeFromDatasetResponse,
   UnsubscribeFromDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnsubscribeFromDatasetRequest,
   output: UnsubscribeFromDatasetResponse,
@@ -1905,7 +1905,7 @@ export const updateRecords: API.OperationMethod<
   UpdateRecordsRequest,
   UpdateRecordsResponse,
   UpdateRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRecordsRequest,
   output: UpdateRecordsResponse,

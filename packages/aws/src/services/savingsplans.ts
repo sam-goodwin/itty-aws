@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "savingsplans",
   serviceShapeName: "AWSSavingsPlan",
@@ -1011,7 +1011,7 @@ export const createSavingsPlan: API.OperationMethod<
   CreateSavingsPlanRequest,
   CreateSavingsPlanResponse,
   CreateSavingsPlanError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSavingsPlanRequest,
   output: CreateSavingsPlanResponse,
@@ -1035,7 +1035,7 @@ export const deleteQueuedSavingsPlan: API.OperationMethod<
   DeleteQueuedSavingsPlanRequest,
   DeleteQueuedSavingsPlanResponse,
   DeleteQueuedSavingsPlanError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteQueuedSavingsPlanRequest,
   output: DeleteQueuedSavingsPlanResponse,
@@ -1058,7 +1058,7 @@ export const describeSavingsPlanRates: API.OperationMethod<
   DescribeSavingsPlanRatesRequest,
   DescribeSavingsPlanRatesResponse,
   DescribeSavingsPlanRatesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSavingsPlanRatesRequest,
   output: DescribeSavingsPlanRatesResponse,
@@ -1079,7 +1079,7 @@ export const describeSavingsPlans: API.OperationMethod<
   DescribeSavingsPlansRequest,
   DescribeSavingsPlansResponse,
   DescribeSavingsPlansError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSavingsPlansRequest,
   output: DescribeSavingsPlansResponse,
@@ -1096,7 +1096,7 @@ export const describeSavingsPlansOfferingRates: API.OperationMethod<
   DescribeSavingsPlansOfferingRatesRequest,
   DescribeSavingsPlansOfferingRatesResponse,
   DescribeSavingsPlansOfferingRatesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSavingsPlansOfferingRatesRequest,
   output: DescribeSavingsPlansOfferingRatesResponse,
@@ -1113,7 +1113,7 @@ export const describeSavingsPlansOfferings: API.OperationMethod<
   DescribeSavingsPlansOfferingsRequest,
   DescribeSavingsPlansOfferingsResponse,
   DescribeSavingsPlansOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSavingsPlansOfferingsRequest,
   output: DescribeSavingsPlansOfferingsResponse,
@@ -1131,7 +1131,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1154,7 +1154,7 @@ export const returnSavingsPlan: API.OperationMethod<
   ReturnSavingsPlanRequest,
   ReturnSavingsPlanResponse,
   ReturnSavingsPlanError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReturnSavingsPlanRequest,
   output: ReturnSavingsPlanResponse,
@@ -1178,7 +1178,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1201,7 +1201,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

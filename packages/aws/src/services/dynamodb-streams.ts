@@ -4,7 +4,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://dynamodb.amazonaws.com/doc/2012-08-10/");
 const svc = T.AwsApiService({
   sdkId: "DynamoDB Streams",
@@ -679,7 +679,7 @@ export const describeStream: API.OperationMethod<
   DescribeStreamInput,
   DescribeStreamOutput,
   DescribeStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeStreamInput,
   output: DescribeStreamOutput,
@@ -708,7 +708,7 @@ export const getRecords: API.OperationMethod<
   GetRecordsInput,
   GetRecordsOutput,
   GetRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecordsInput,
   output: GetRecordsOutput,
@@ -738,7 +738,7 @@ export const getShardIterator: API.OperationMethod<
   GetShardIteratorInput,
   GetShardIteratorOutput,
   GetShardIteratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetShardIteratorInput,
   output: GetShardIteratorOutput,
@@ -763,7 +763,7 @@ export const listStreams: API.OperationMethod<
   ListStreamsInput,
   ListStreamsOutput,
   ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListStreamsInput,
   output: ListStreamsOutput,

@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "SSO",
@@ -303,7 +303,7 @@ export const getRoleCredentials: API.OperationMethod<
   GetRoleCredentialsRequest,
   GetRoleCredentialsResponse,
   GetRoleCredentialsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRoleCredentialsRequest,
   output: GetRoleCredentialsResponse,
@@ -327,21 +327,21 @@ export const listAccountRoles: API.OperationMethod<
   ListAccountRolesRequest,
   ListAccountRolesResponse,
   ListAccountRolesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccountRolesRequest,
   ) => stream.Stream<
     ListAccountRolesResponse,
     ListAccountRolesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccountRolesRequest,
   ) => stream.Stream<
     RoleInfo,
     ListAccountRolesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountRolesRequest,
@@ -374,21 +374,21 @@ export const listAccounts: API.OperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccountsRequest,
   ) => stream.Stream<
     ListAccountsResponse,
     ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccountsRequest,
   ) => stream.Stream<
     AccountInfo,
     ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
@@ -431,7 +431,7 @@ export const logout: API.OperationMethod<
   LogoutRequest,
   LogoutResponse,
   LogoutError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LogoutRequest,
   output: LogoutResponse,

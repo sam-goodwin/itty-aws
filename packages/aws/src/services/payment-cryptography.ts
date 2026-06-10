@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Payment Cryptography",
@@ -1344,7 +1344,7 @@ export const disableDefaultKeyReplicationRegions: API.OperationMethod<
   DisableDefaultKeyReplicationRegionsInput,
   DisableDefaultKeyReplicationRegionsOutput,
   DisableDefaultKeyReplicationRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableDefaultKeyReplicationRegionsInput,
   output: DisableDefaultKeyReplicationRegionsOutput,
@@ -1386,7 +1386,7 @@ export const enableDefaultKeyReplicationRegions: API.OperationMethod<
   EnableDefaultKeyReplicationRegionsInput,
   EnableDefaultKeyReplicationRegionsOutput,
   EnableDefaultKeyReplicationRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableDefaultKeyReplicationRegionsInput,
   output: EnableDefaultKeyReplicationRegionsOutput,
@@ -1504,7 +1504,7 @@ export const exportKey: API.OperationMethod<
   ExportKeyInput,
   ExportKeyOutput,
   ExportKeyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportKeyInput,
   output: ExportKeyOutput,
@@ -1533,7 +1533,7 @@ export const getCertificateSigningRequest: API.OperationMethod<
   GetCertificateSigningRequestInput,
   GetCertificateSigningRequestOutput,
   GetCertificateSigningRequestError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCertificateSigningRequestInput,
   output: GetCertificateSigningRequestOutput,
@@ -1572,7 +1572,7 @@ export const getDefaultKeyReplicationRegions: API.OperationMethod<
   GetDefaultKeyReplicationRegionsInput,
   GetDefaultKeyReplicationRegionsOutput,
   GetDefaultKeyReplicationRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDefaultKeyReplicationRegionsInput,
   output: GetDefaultKeyReplicationRegionsOutput,
@@ -1615,7 +1615,7 @@ export const getParametersForExport: API.OperationMethod<
   GetParametersForExportInput,
   GetParametersForExportOutput,
   GetParametersForExportError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetParametersForExportInput,
   output: GetParametersForExportOutput,
@@ -1659,7 +1659,7 @@ export const getParametersForImport: API.OperationMethod<
   GetParametersForImportInput,
   GetParametersForImportOutput,
   GetParametersForImportError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetParametersForImportInput,
   output: GetParametersForImportOutput,
@@ -1693,7 +1693,7 @@ export const getPublicKeyCertificate: API.OperationMethod<
   GetPublicKeyCertificateInput,
   GetPublicKeyCertificateOutput,
   GetPublicKeyCertificateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicKeyCertificateInput,
   output: GetPublicKeyCertificateOutput,
@@ -1817,7 +1817,7 @@ export const importKey: API.OperationMethod<
   ImportKeyInput,
   ImportKeyOutput,
   ImportKeyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportKeyInput,
   output: ImportKeyOutput,
@@ -1857,21 +1857,21 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsForResourceInput,
   ) => stream.Stream<
     ListTagsForResourceOutput,
     ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsForResourceInput,
   ) => stream.Stream<
     Tag,
     ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
@@ -1920,7 +1920,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1961,7 +1961,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -2008,7 +2008,7 @@ export const createAlias: API.OperationMethod<
   CreateAliasInput,
   CreateAliasOutput,
   CreateAliasError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAliasInput,
   output: CreateAliasOutput,
@@ -2050,7 +2050,7 @@ export const getAlias: API.OperationMethod<
   GetAliasInput,
   GetAliasOutput,
   GetAliasError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAliasInput,
   output: GetAliasOutput,
@@ -2091,7 +2091,7 @@ export const updateAlias: API.OperationMethod<
   UpdateAliasInput,
   UpdateAliasOutput,
   UpdateAliasError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAliasInput,
   output: UpdateAliasOutput,
@@ -2135,7 +2135,7 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasInput,
   DeleteAliasOutput,
   DeleteAliasError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAliasInput,
   output: DeleteAliasOutput,
@@ -2178,21 +2178,21 @@ export const listAliases: API.OperationMethod<
   ListAliasesInput,
   ListAliasesOutput,
   ListAliasesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAliasesInput,
   ) => stream.Stream<
     ListAliasesOutput,
     ListAliasesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAliasesInput,
   ) => stream.Stream<
     Alias,
     ListAliasesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesInput,
@@ -2249,7 +2249,7 @@ export const createKey: API.OperationMethod<
   CreateKeyInput,
   CreateKeyOutput,
   CreateKeyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKeyInput,
   output: CreateKeyOutput,
@@ -2289,7 +2289,7 @@ export const getKey: API.OperationMethod<
   GetKeyInput,
   GetKeyOutput,
   GetKeyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKeyInput,
   output: GetKeyOutput,
@@ -2332,7 +2332,7 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyInput,
   DeleteKeyOutput,
   DeleteKeyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKeyInput,
   output: DeleteKeyOutput,
@@ -2373,21 +2373,21 @@ export const listKeys: API.OperationMethod<
   ListKeysInput,
   ListKeysOutput,
   ListKeysError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKeysInput,
   ) => stream.Stream<
     ListKeysOutput,
     ListKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKeysInput,
   ) => stream.Stream<
     KeySummary,
     ListKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKeysInput,
@@ -2437,7 +2437,7 @@ export const addKeyReplicationRegions: API.OperationMethod<
   AddKeyReplicationRegionsInput,
   AddKeyReplicationRegionsOutput,
   AddKeyReplicationRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddKeyReplicationRegionsInput,
   output: AddKeyReplicationRegionsOutput,
@@ -2479,7 +2479,7 @@ export const removeKeyReplicationRegions: API.OperationMethod<
   RemoveKeyReplicationRegionsInput,
   RemoveKeyReplicationRegionsOutput,
   RemoveKeyReplicationRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveKeyReplicationRegionsInput,
   output: RemoveKeyReplicationRegionsOutput,
@@ -2522,7 +2522,7 @@ export const restoreKey: API.OperationMethod<
   RestoreKeyInput,
   RestoreKeyOutput,
   RestoreKeyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreKeyInput,
   output: RestoreKeyOutput,
@@ -2560,7 +2560,7 @@ export const startKeyUsage: API.OperationMethod<
   StartKeyUsageInput,
   StartKeyUsageOutput,
   StartKeyUsageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartKeyUsageInput,
   output: StartKeyUsageOutput,
@@ -2602,7 +2602,7 @@ export const stopKeyUsage: API.OperationMethod<
   StopKeyUsageInput,
   StopKeyUsageOutput,
   StopKeyUsageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopKeyUsageInput,
   output: StopKeyUsageOutput,

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace(
   "http://elasticmapreduce.amazonaws.com/doc/2009-03-31",
 );
@@ -4729,7 +4729,7 @@ export const addInstanceFleet: API.OperationMethod<
   AddInstanceFleetInput,
   AddInstanceFleetOutput,
   AddInstanceFleetError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddInstanceFleetInput,
   output: AddInstanceFleetOutput,
@@ -4743,7 +4743,7 @@ export const addInstanceGroups: API.OperationMethod<
   AddInstanceGroupsInput,
   AddInstanceGroupsOutput,
   AddInstanceGroupsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddInstanceGroupsInput,
   output: AddInstanceGroupsOutput,
@@ -4778,7 +4778,7 @@ export const addJobFlowSteps: API.OperationMethod<
   AddJobFlowStepsInput,
   AddJobFlowStepsOutput,
   AddJobFlowStepsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddJobFlowStepsInput,
   output: AddJobFlowStepsOutput,
@@ -4799,7 +4799,7 @@ export const addTags: API.OperationMethod<
   AddTagsInput,
   AddTagsOutput,
   AddTagsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTagsInput,
   output: AddTagsOutput,
@@ -4820,7 +4820,7 @@ export const cancelSteps: API.OperationMethod<
   CancelStepsInput,
   CancelStepsOutput,
   CancelStepsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelStepsInput,
   output: CancelStepsOutput,
@@ -4837,7 +4837,7 @@ export const createPersistentAppUI: API.OperationMethod<
   CreatePersistentAppUIInput,
   CreatePersistentAppUIOutput,
   CreatePersistentAppUIError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePersistentAppUIInput,
   output: CreatePersistentAppUIOutput,
@@ -4855,7 +4855,7 @@ export const createSecurityConfiguration: API.OperationMethod<
   CreateSecurityConfigurationInput,
   CreateSecurityConfigurationOutput,
   CreateSecurityConfigurationError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSecurityConfigurationInput,
   output: CreateSecurityConfigurationOutput,
@@ -4872,7 +4872,7 @@ export const createStudio: API.OperationMethod<
   CreateStudioInput,
   CreateStudioOutput,
   CreateStudioError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateStudioInput,
   output: CreateStudioOutput,
@@ -4893,7 +4893,7 @@ export const createStudioSessionMapping: API.OperationMethod<
   CreateStudioSessionMappingInput,
   CreateStudioSessionMappingResponse,
   CreateStudioSessionMappingError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateStudioSessionMappingInput,
   output: CreateStudioSessionMappingResponse,
@@ -4910,7 +4910,7 @@ export const deleteSecurityConfiguration: API.OperationMethod<
   DeleteSecurityConfigurationInput,
   DeleteSecurityConfigurationOutput,
   DeleteSecurityConfigurationError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSecurityConfigurationInput,
   output: DeleteSecurityConfigurationOutput,
@@ -4927,7 +4927,7 @@ export const deleteStudio: API.OperationMethod<
   DeleteStudioInput,
   DeleteStudioResponse,
   DeleteStudioError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStudioInput,
   output: DeleteStudioResponse,
@@ -4944,7 +4944,7 @@ export const deleteStudioSessionMapping: API.OperationMethod<
   DeleteStudioSessionMappingInput,
   DeleteStudioSessionMappingResponse,
   DeleteStudioSessionMappingError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStudioSessionMappingInput,
   output: DeleteStudioSessionMappingResponse,
@@ -4962,7 +4962,7 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterInput,
   DescribeClusterOutput,
   DescribeClusterError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeClusterInput,
   output: DescribeClusterOutput,
@@ -4995,7 +4995,7 @@ export const describeJobFlows: API.OperationMethod<
   DescribeJobFlowsInput,
   DescribeJobFlowsOutput,
   DescribeJobFlowsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeJobFlowsInput,
   output: DescribeJobFlowsOutput,
@@ -5012,7 +5012,7 @@ export const describeNotebookExecution: API.OperationMethod<
   DescribeNotebookExecutionInput,
   DescribeNotebookExecutionOutput,
   DescribeNotebookExecutionError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeNotebookExecutionInput,
   output: DescribeNotebookExecutionOutput,
@@ -5029,7 +5029,7 @@ export const describePersistentAppUI: API.OperationMethod<
   DescribePersistentAppUIInput,
   DescribePersistentAppUIOutput,
   DescribePersistentAppUIError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribePersistentAppUIInput,
   output: DescribePersistentAppUIOutput,
@@ -5048,7 +5048,7 @@ export const describeReleaseLabel: API.OperationMethod<
   DescribeReleaseLabelInput,
   DescribeReleaseLabelOutput,
   DescribeReleaseLabelError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeReleaseLabelInput,
   output: DescribeReleaseLabelOutput,
@@ -5066,7 +5066,7 @@ export const describeSecurityConfiguration: API.OperationMethod<
   DescribeSecurityConfigurationInput,
   DescribeSecurityConfigurationOutput,
   DescribeSecurityConfigurationError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSecurityConfigurationInput,
   output: DescribeSecurityConfigurationOutput,
@@ -5083,7 +5083,7 @@ export const describeStep: API.OperationMethod<
   DescribeStepInput,
   DescribeStepOutput,
   DescribeStepError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeStepInput,
   output: DescribeStepOutput,
@@ -5101,7 +5101,7 @@ export const describeStudio: API.OperationMethod<
   DescribeStudioInput,
   DescribeStudioOutput,
   DescribeStudioError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeStudioInput,
   output: DescribeStudioOutput,
@@ -5115,7 +5115,7 @@ export const getAutoTerminationPolicy: API.OperationMethod<
   GetAutoTerminationPolicyInput,
   GetAutoTerminationPolicyOutput,
   GetAutoTerminationPolicyError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAutoTerminationPolicyInput,
   output: GetAutoTerminationPolicyOutput,
@@ -5134,7 +5134,7 @@ export const getBlockPublicAccessConfiguration: API.OperationMethod<
   GetBlockPublicAccessConfigurationInput,
   GetBlockPublicAccessConfigurationOutput,
   GetBlockPublicAccessConfigurationError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBlockPublicAccessConfigurationInput,
   output: GetBlockPublicAccessConfigurationOutput,
@@ -5154,7 +5154,7 @@ export const getClusterSessionCredentials: API.OperationMethod<
   GetClusterSessionCredentialsInput,
   GetClusterSessionCredentialsOutput,
   GetClusterSessionCredentialsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetClusterSessionCredentialsInput,
   output: GetClusterSessionCredentialsOutput,
@@ -5168,7 +5168,7 @@ export const getManagedScalingPolicy: API.OperationMethod<
   GetManagedScalingPolicyInput,
   GetManagedScalingPolicyOutput,
   GetManagedScalingPolicyError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagedScalingPolicyInput,
   output: GetManagedScalingPolicyOutput,
@@ -5185,7 +5185,7 @@ export const getOnClusterAppUIPresignedURL: API.OperationMethod<
   GetOnClusterAppUIPresignedURLInput,
   GetOnClusterAppUIPresignedURLOutput,
   GetOnClusterAppUIPresignedURLError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOnClusterAppUIPresignedURLInput,
   output: GetOnClusterAppUIPresignedURLOutput,
@@ -5202,7 +5202,7 @@ export const getPersistentAppUIPresignedURL: API.OperationMethod<
   GetPersistentAppUIPresignedURLInput,
   GetPersistentAppUIPresignedURLOutput,
   GetPersistentAppUIPresignedURLError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPersistentAppUIPresignedURLInput,
   output: GetPersistentAppUIPresignedURLOutput,
@@ -5220,7 +5220,7 @@ export const getStudioSessionMapping: API.OperationMethod<
   GetStudioSessionMappingInput,
   GetStudioSessionMappingOutput,
   GetStudioSessionMappingError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStudioSessionMappingInput,
   output: GetStudioSessionMappingOutput,
@@ -5237,21 +5237,21 @@ export const listBootstrapActions: API.OperationMethod<
   ListBootstrapActionsInput,
   ListBootstrapActionsOutput,
   ListBootstrapActionsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBootstrapActionsInput,
   ) => stream.Stream<
     ListBootstrapActionsOutput,
     ListBootstrapActionsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBootstrapActionsInput,
   ) => stream.Stream<
     Command,
     ListBootstrapActionsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBootstrapActionsInput,
@@ -5278,21 +5278,21 @@ export const listClusters: API.OperationMethod<
   ListClustersInput,
   ListClustersOutput,
   ListClustersError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListClustersInput,
   ) => stream.Stream<
     ListClustersOutput,
     ListClustersError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListClustersInput,
   ) => stream.Stream<
     ClusterSummary,
     ListClustersError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClustersInput,
@@ -5318,21 +5318,21 @@ export const listInstanceFleets: API.OperationMethod<
   ListInstanceFleetsInput,
   ListInstanceFleetsOutput,
   ListInstanceFleetsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInstanceFleetsInput,
   ) => stream.Stream<
     ListInstanceFleetsOutput,
     ListInstanceFleetsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInstanceFleetsInput,
   ) => stream.Stream<
     InstanceFleet,
     ListInstanceFleetsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceFleetsInput,
@@ -5355,21 +5355,21 @@ export const listInstanceGroups: API.OperationMethod<
   ListInstanceGroupsInput,
   ListInstanceGroupsOutput,
   ListInstanceGroupsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInstanceGroupsInput,
   ) => stream.Stream<
     ListInstanceGroupsOutput,
     ListInstanceGroupsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInstanceGroupsInput,
   ) => stream.Stream<
     InstanceGroup,
     ListInstanceGroupsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceGroupsInput,
@@ -5395,21 +5395,21 @@ export const listInstances: API.OperationMethod<
   ListInstancesInput,
   ListInstancesOutput,
   ListInstancesError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInstancesInput,
   ) => stream.Stream<
     ListInstancesOutput,
     ListInstancesError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInstancesInput,
   ) => stream.Stream<
     Instance,
     ListInstancesError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesInput,
@@ -5435,21 +5435,21 @@ export const listNotebookExecutions: API.OperationMethod<
   ListNotebookExecutionsInput,
   ListNotebookExecutionsOutput,
   ListNotebookExecutionsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListNotebookExecutionsInput,
   ) => stream.Stream<
     ListNotebookExecutionsOutput,
     ListNotebookExecutionsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListNotebookExecutionsInput,
   ) => stream.Stream<
     NotebookExecutionSummary,
     ListNotebookExecutionsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNotebookExecutionsInput,
@@ -5473,21 +5473,21 @@ export const listReleaseLabels: API.OperationMethod<
   ListReleaseLabelsInput,
   ListReleaseLabelsOutput,
   ListReleaseLabelsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListReleaseLabelsInput,
   ) => stream.Stream<
     ListReleaseLabelsOutput,
     ListReleaseLabelsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListReleaseLabelsInput,
   ) => stream.Stream<
     unknown,
     ListReleaseLabelsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReleaseLabelsInput,
@@ -5513,21 +5513,21 @@ export const listSecurityConfigurations: API.OperationMethod<
   ListSecurityConfigurationsInput,
   ListSecurityConfigurationsOutput,
   ListSecurityConfigurationsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSecurityConfigurationsInput,
   ) => stream.Stream<
     ListSecurityConfigurationsOutput,
     ListSecurityConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSecurityConfigurationsInput,
   ) => stream.Stream<
     SecurityConfigurationSummary,
     ListSecurityConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityConfigurationsInput,
@@ -5555,21 +5555,21 @@ export const listSteps: API.OperationMethod<
   ListStepsInput,
   ListStepsOutput,
   ListStepsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStepsInput,
   ) => stream.Stream<
     ListStepsOutput,
     ListStepsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStepsInput,
   ) => stream.Stream<
     StepSummary,
     ListStepsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStepsInput,
@@ -5593,21 +5593,21 @@ export const listStudios: API.OperationMethod<
   ListStudiosInput,
   ListStudiosOutput,
   ListStudiosError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStudiosInput,
   ) => stream.Stream<
     ListStudiosOutput,
     ListStudiosError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStudiosInput,
   ) => stream.Stream<
     StudioSummary,
     ListStudiosError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStudiosInput,
@@ -5631,21 +5631,21 @@ export const listStudioSessionMappings: API.OperationMethod<
   ListStudioSessionMappingsInput,
   ListStudioSessionMappingsOutput,
   ListStudioSessionMappingsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStudioSessionMappingsInput,
   ) => stream.Stream<
     ListStudioSessionMappingsOutput,
     ListStudioSessionMappingsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStudioSessionMappingsInput,
   ) => stream.Stream<
     SessionMappingSummary,
     ListStudioSessionMappingsError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStudioSessionMappingsInput,
@@ -5669,21 +5669,21 @@ export const listSupportedInstanceTypes: API.OperationMethod<
   ListSupportedInstanceTypesInput,
   ListSupportedInstanceTypesOutput,
   ListSupportedInstanceTypesError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSupportedInstanceTypesInput,
   ) => stream.Stream<
     ListSupportedInstanceTypesOutput,
     ListSupportedInstanceTypesError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSupportedInstanceTypesInput,
   ) => stream.Stream<
     unknown,
     ListSupportedInstanceTypesError,
-    Creds | Region | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSupportedInstanceTypesInput,
@@ -5703,7 +5703,7 @@ export const modifyCluster: API.OperationMethod<
   ModifyClusterInput,
   ModifyClusterOutput,
   ModifyClusterError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyClusterInput,
   output: ModifyClusterOutput,
@@ -5725,7 +5725,7 @@ export const modifyInstanceFleet: API.OperationMethod<
   ModifyInstanceFleetInput,
   ModifyInstanceFleetResponse,
   ModifyInstanceFleetError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyInstanceFleetInput,
   output: ModifyInstanceFleetResponse,
@@ -5741,7 +5741,7 @@ export const modifyInstanceGroups: API.OperationMethod<
   ModifyInstanceGroupsInput,
   ModifyInstanceGroupsResponse,
   ModifyInstanceGroupsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyInstanceGroupsInput,
   output: ModifyInstanceGroupsResponse,
@@ -5758,7 +5758,7 @@ export const putAutoScalingPolicy: API.OperationMethod<
   PutAutoScalingPolicyInput,
   PutAutoScalingPolicyOutput,
   PutAutoScalingPolicyError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAutoScalingPolicyInput,
   output: PutAutoScalingPolicyOutput,
@@ -5779,7 +5779,7 @@ export const putAutoTerminationPolicy: API.OperationMethod<
   PutAutoTerminationPolicyInput,
   PutAutoTerminationPolicyOutput,
   PutAutoTerminationPolicyError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAutoTerminationPolicyInput,
   output: PutAutoTerminationPolicyOutput,
@@ -5799,7 +5799,7 @@ export const putBlockPublicAccessConfiguration: API.OperationMethod<
   PutBlockPublicAccessConfigurationInput,
   PutBlockPublicAccessConfigurationOutput,
   PutBlockPublicAccessConfigurationError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBlockPublicAccessConfigurationInput,
   output: PutBlockPublicAccessConfigurationOutput,
@@ -5816,7 +5816,7 @@ export const putManagedScalingPolicy: API.OperationMethod<
   PutManagedScalingPolicyInput,
   PutManagedScalingPolicyOutput,
   PutManagedScalingPolicyError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutManagedScalingPolicyInput,
   output: PutManagedScalingPolicyOutput,
@@ -5830,7 +5830,7 @@ export const removeAutoScalingPolicy: API.OperationMethod<
   RemoveAutoScalingPolicyInput,
   RemoveAutoScalingPolicyOutput,
   RemoveAutoScalingPolicyError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAutoScalingPolicyInput,
   output: RemoveAutoScalingPolicyOutput,
@@ -5844,7 +5844,7 @@ export const removeAutoTerminationPolicy: API.OperationMethod<
   RemoveAutoTerminationPolicyInput,
   RemoveAutoTerminationPolicyOutput,
   RemoveAutoTerminationPolicyError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAutoTerminationPolicyInput,
   output: RemoveAutoTerminationPolicyOutput,
@@ -5858,7 +5858,7 @@ export const removeManagedScalingPolicy: API.OperationMethod<
   RemoveManagedScalingPolicyInput,
   RemoveManagedScalingPolicyOutput,
   RemoveManagedScalingPolicyError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveManagedScalingPolicyInput,
   output: RemoveManagedScalingPolicyOutput,
@@ -5880,7 +5880,7 @@ export const removeTags: API.OperationMethod<
   RemoveTagsInput,
   RemoveTagsOutput,
   RemoveTagsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
@@ -5918,7 +5918,7 @@ export const runJobFlow: API.OperationMethod<
   RunJobFlowInput,
   RunJobFlowOutput,
   RunJobFlowError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunJobFlowInput,
   output: RunJobFlowOutput,
@@ -5938,7 +5938,7 @@ export const setKeepJobFlowAliveWhenNoSteps: API.OperationMethod<
   SetKeepJobFlowAliveWhenNoStepsInput,
   SetKeepJobFlowAliveWhenNoStepsResponse,
   SetKeepJobFlowAliveWhenNoStepsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetKeepJobFlowAliveWhenNoStepsInput,
   output: SetKeepJobFlowAliveWhenNoStepsResponse,
@@ -5970,7 +5970,7 @@ export const setTerminationProtection: API.OperationMethod<
   SetTerminationProtectionInput,
   SetTerminationProtectionResponse,
   SetTerminationProtectionError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetTerminationProtectionInput,
   output: SetTerminationProtectionResponse,
@@ -5999,7 +5999,7 @@ export const setUnhealthyNodeReplacement: API.OperationMethod<
   SetUnhealthyNodeReplacementInput,
   SetUnhealthyNodeReplacementResponse,
   SetUnhealthyNodeReplacementError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetUnhealthyNodeReplacementInput,
   output: SetUnhealthyNodeReplacementResponse,
@@ -6026,7 +6026,7 @@ export const setVisibleToAllUsers: API.OperationMethod<
   SetVisibleToAllUsersInput,
   SetVisibleToAllUsersResponse,
   SetVisibleToAllUsersError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetVisibleToAllUsersInput,
   output: SetVisibleToAllUsersResponse,
@@ -6043,7 +6043,7 @@ export const startNotebookExecution: API.OperationMethod<
   StartNotebookExecutionInput,
   StartNotebookExecutionOutput,
   StartNotebookExecutionError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartNotebookExecutionInput,
   output: StartNotebookExecutionOutput,
@@ -6060,7 +6060,7 @@ export const stopNotebookExecution: API.OperationMethod<
   StopNotebookExecutionInput,
   StopNotebookExecutionResponse,
   StopNotebookExecutionError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopNotebookExecutionInput,
   output: StopNotebookExecutionResponse,
@@ -6081,7 +6081,7 @@ export const terminateJobFlows: API.OperationMethod<
   TerminateJobFlowsInput,
   TerminateJobFlowsResponse,
   TerminateJobFlowsError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TerminateJobFlowsInput,
   output: TerminateJobFlowsResponse,
@@ -6099,7 +6099,7 @@ export const updateStudio: API.OperationMethod<
   UpdateStudioInput,
   UpdateStudioResponse,
   UpdateStudioError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStudioInput,
   output: UpdateStudioResponse,
@@ -6116,7 +6116,7 @@ export const updateStudioSessionMapping: API.OperationMethod<
   UpdateStudioSessionMappingInput,
   UpdateStudioSessionMappingResponse,
   UpdateStudioSessionMappingError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStudioSessionMappingInput,
   output: UpdateStudioSessionMappingResponse,

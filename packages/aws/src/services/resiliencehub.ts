@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "resiliencehub",
   serviceShapeName: "AwsResilienceHub",
@@ -4076,7 +4076,7 @@ export const acceptResourceGroupingRecommendations: API.OperationMethod<
   AcceptResourceGroupingRecommendationsRequest,
   AcceptResourceGroupingRecommendationsResponse,
   AcceptResourceGroupingRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptResourceGroupingRecommendationsRequest,
   output: AcceptResourceGroupingRecommendationsResponse,
@@ -4109,7 +4109,7 @@ export const addDraftAppVersionResourceMappings: API.OperationMethod<
   AddDraftAppVersionResourceMappingsRequest,
   AddDraftAppVersionResourceMappingsResponse,
   AddDraftAppVersionResourceMappingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddDraftAppVersionResourceMappingsRequest,
   output: AddDraftAppVersionResourceMappingsResponse,
@@ -4137,7 +4137,7 @@ export const batchUpdateRecommendationStatus: API.OperationMethod<
   BatchUpdateRecommendationStatusRequest,
   BatchUpdateRecommendationStatusResponse,
   BatchUpdateRecommendationStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateRecommendationStatusRequest,
   output: BatchUpdateRecommendationStatusResponse,
@@ -4176,7 +4176,7 @@ export const createApp: API.OperationMethod<
   CreateAppRequest,
   CreateAppResponse,
   CreateAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppRequest,
   output: CreateAppResponse,
@@ -4210,7 +4210,7 @@ export const createAppVersionAppComponent: API.OperationMethod<
   CreateAppVersionAppComponentRequest,
   CreateAppVersionAppComponentResponse,
   CreateAppVersionAppComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppVersionAppComponentRequest,
   output: CreateAppVersionAppComponentResponse,
@@ -4251,7 +4251,7 @@ export const createAppVersionResource: API.OperationMethod<
   CreateAppVersionResourceRequest,
   CreateAppVersionResourceResponse,
   CreateAppVersionResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppVersionResourceRequest,
   output: CreateAppVersionResourceResponse,
@@ -4281,7 +4281,7 @@ export const createRecommendationTemplate: API.OperationMethod<
   CreateRecommendationTemplateRequest,
   CreateRecommendationTemplateResponse,
   CreateRecommendationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRecommendationTemplateRequest,
   output: CreateRecommendationTemplateResponse,
@@ -4318,7 +4318,7 @@ export const createResiliencyPolicy: API.OperationMethod<
   CreateResiliencyPolicyRequest,
   CreateResiliencyPolicyResponse,
   CreateResiliencyPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResiliencyPolicyRequest,
   output: CreateResiliencyPolicyResponse,
@@ -4346,7 +4346,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppRequest,
   DeleteAppResponse,
   DeleteAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppRequest,
   output: DeleteAppResponse,
@@ -4374,7 +4374,7 @@ export const deleteAppAssessment: API.OperationMethod<
   DeleteAppAssessmentRequest,
   DeleteAppAssessmentResponse,
   DeleteAppAssessmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppAssessmentRequest,
   output: DeleteAppAssessmentResponse,
@@ -4403,7 +4403,7 @@ export const deleteAppInputSource: API.OperationMethod<
   DeleteAppInputSourceRequest,
   DeleteAppInputSourceResponse,
   DeleteAppInputSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppInputSourceRequest,
   output: DeleteAppInputSourceResponse,
@@ -4438,7 +4438,7 @@ export const deleteAppVersionAppComponent: API.OperationMethod<
   DeleteAppVersionAppComponentRequest,
   DeleteAppVersionAppComponentResponse,
   DeleteAppVersionAppComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppVersionAppComponentRequest,
   output: DeleteAppVersionAppComponentResponse,
@@ -4475,7 +4475,7 @@ export const deleteAppVersionResource: API.OperationMethod<
   DeleteAppVersionResourceRequest,
   DeleteAppVersionResourceResponse,
   DeleteAppVersionResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppVersionResourceRequest,
   output: DeleteAppVersionResourceResponse,
@@ -4503,7 +4503,7 @@ export const deleteRecommendationTemplate: API.OperationMethod<
   DeleteRecommendationTemplateRequest,
   DeleteRecommendationTemplateResponse,
   DeleteRecommendationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRecommendationTemplateRequest,
   output: DeleteRecommendationTemplateResponse,
@@ -4530,7 +4530,7 @@ export const deleteResiliencyPolicy: API.OperationMethod<
   DeleteResiliencyPolicyRequest,
   DeleteResiliencyPolicyResponse,
   DeleteResiliencyPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResiliencyPolicyRequest,
   output: DeleteResiliencyPolicyResponse,
@@ -4557,7 +4557,7 @@ export const describeApp: API.OperationMethod<
   DescribeAppRequest,
   DescribeAppResponse,
   DescribeAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAppRequest,
   output: DescribeAppResponse,
@@ -4583,7 +4583,7 @@ export const describeAppAssessment: API.OperationMethod<
   DescribeAppAssessmentRequest,
   DescribeAppAssessmentResponse,
   DescribeAppAssessmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAppAssessmentRequest,
   output: DescribeAppAssessmentResponse,
@@ -4609,7 +4609,7 @@ export const describeAppVersion: API.OperationMethod<
   DescribeAppVersionRequest,
   DescribeAppVersionResponse,
   DescribeAppVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAppVersionRequest,
   output: DescribeAppVersionResponse,
@@ -4636,7 +4636,7 @@ export const describeAppVersionAppComponent: API.OperationMethod<
   DescribeAppVersionAppComponentRequest,
   DescribeAppVersionAppComponentResponse,
   DescribeAppVersionAppComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAppVersionAppComponentRequest,
   output: DescribeAppVersionAppComponentResponse,
@@ -4673,7 +4673,7 @@ export const describeAppVersionResource: API.OperationMethod<
   DescribeAppVersionResourceRequest,
   DescribeAppVersionResourceResponse,
   DescribeAppVersionResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAppVersionResourceRequest,
   output: DescribeAppVersionResourceResponse,
@@ -4702,7 +4702,7 @@ export const describeAppVersionResourcesResolutionStatus: API.OperationMethod<
   DescribeAppVersionResourcesResolutionStatusRequest,
   DescribeAppVersionResourcesResolutionStatusResponse,
   DescribeAppVersionResourcesResolutionStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAppVersionResourcesResolutionStatusRequest,
   output: DescribeAppVersionResourcesResolutionStatusResponse,
@@ -4728,7 +4728,7 @@ export const describeAppVersionTemplate: API.OperationMethod<
   DescribeAppVersionTemplateRequest,
   DescribeAppVersionTemplateResponse,
   DescribeAppVersionTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAppVersionTemplateRequest,
   output: DescribeAppVersionTemplateResponse,
@@ -4760,7 +4760,7 @@ export const describeDraftAppVersionResourcesImportStatus: API.OperationMethod<
   DescribeDraftAppVersionResourcesImportStatusRequest,
   DescribeDraftAppVersionResourcesImportStatusResponse,
   DescribeDraftAppVersionResourcesImportStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDraftAppVersionResourcesImportStatusRequest,
   output: DescribeDraftAppVersionResourcesImportStatusResponse,
@@ -4786,7 +4786,7 @@ export const describeMetricsExport: API.OperationMethod<
   DescribeMetricsExportRequest,
   DescribeMetricsExportResponse,
   DescribeMetricsExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeMetricsExportRequest,
   output: DescribeMetricsExportResponse,
@@ -4814,7 +4814,7 @@ export const describeResiliencyPolicy: API.OperationMethod<
   DescribeResiliencyPolicyRequest,
   DescribeResiliencyPolicyResponse,
   DescribeResiliencyPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeResiliencyPolicyRequest,
   output: DescribeResiliencyPolicyResponse,
@@ -4840,7 +4840,7 @@ export const describeResourceGroupingRecommendationTask: API.OperationMethod<
   DescribeResourceGroupingRecommendationTaskRequest,
   DescribeResourceGroupingRecommendationTaskResponse,
   DescribeResourceGroupingRecommendationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeResourceGroupingRecommendationTaskRequest,
   output: DescribeResourceGroupingRecommendationTaskResponse,
@@ -4870,7 +4870,7 @@ export const importResourcesToDraftAppVersion: API.OperationMethod<
   ImportResourcesToDraftAppVersionRequest,
   ImportResourcesToDraftAppVersionResponse,
   ImportResourcesToDraftAppVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportResourcesToDraftAppVersionRequest,
   output: ImportResourcesToDraftAppVersionResponse,
@@ -4898,21 +4898,21 @@ export const listAlarmRecommendations: API.OperationMethod<
   ListAlarmRecommendationsRequest,
   ListAlarmRecommendationsResponse,
   ListAlarmRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAlarmRecommendationsRequest,
   ) => stream.Stream<
     ListAlarmRecommendationsResponse,
     ListAlarmRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAlarmRecommendationsRequest,
   ) => stream.Stream<
     unknown,
     ListAlarmRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAlarmRecommendationsRequest,
@@ -4944,21 +4944,21 @@ export const listAppAssessmentComplianceDrifts: API.OperationMethod<
   ListAppAssessmentComplianceDriftsRequest,
   ListAppAssessmentComplianceDriftsResponse,
   ListAppAssessmentComplianceDriftsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppAssessmentComplianceDriftsRequest,
   ) => stream.Stream<
     ListAppAssessmentComplianceDriftsResponse,
     ListAppAssessmentComplianceDriftsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppAssessmentComplianceDriftsRequest,
   ) => stream.Stream<
     unknown,
     ListAppAssessmentComplianceDriftsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppAssessmentComplianceDriftsRequest,
@@ -4989,21 +4989,21 @@ export const listAppAssessmentResourceDrifts: API.OperationMethod<
   ListAppAssessmentResourceDriftsRequest,
   ListAppAssessmentResourceDriftsResponse,
   ListAppAssessmentResourceDriftsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppAssessmentResourceDriftsRequest,
   ) => stream.Stream<
     ListAppAssessmentResourceDriftsResponse,
     ListAppAssessmentResourceDriftsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppAssessmentResourceDriftsRequest,
   ) => stream.Stream<
     ResourceDrift,
     ListAppAssessmentResourceDriftsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppAssessmentResourceDriftsRequest,
@@ -5036,21 +5036,21 @@ export const listAppAssessments: API.OperationMethod<
   ListAppAssessmentsRequest,
   ListAppAssessmentsResponse,
   ListAppAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppAssessmentsRequest,
   ) => stream.Stream<
     ListAppAssessmentsResponse,
     ListAppAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppAssessmentsRequest,
   ) => stream.Stream<
     unknown,
     ListAppAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppAssessmentsRequest,
@@ -5082,21 +5082,21 @@ export const listAppComponentCompliances: API.OperationMethod<
   ListAppComponentCompliancesRequest,
   ListAppComponentCompliancesResponse,
   ListAppComponentCompliancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppComponentCompliancesRequest,
   ) => stream.Stream<
     ListAppComponentCompliancesResponse,
     ListAppComponentCompliancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppComponentCompliancesRequest,
   ) => stream.Stream<
     unknown,
     ListAppComponentCompliancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppComponentCompliancesRequest,
@@ -5128,21 +5128,21 @@ export const listAppComponentRecommendations: API.OperationMethod<
   ListAppComponentRecommendationsRequest,
   ListAppComponentRecommendationsResponse,
   ListAppComponentRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppComponentRecommendationsRequest,
   ) => stream.Stream<
     ListAppComponentRecommendationsResponse,
     ListAppComponentRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppComponentRecommendationsRequest,
   ) => stream.Stream<
     unknown,
     ListAppComponentRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppComponentRecommendationsRequest,
@@ -5176,21 +5176,21 @@ export const listAppInputSources: API.OperationMethod<
   ListAppInputSourcesRequest,
   ListAppInputSourcesResponse,
   ListAppInputSourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppInputSourcesRequest,
   ) => stream.Stream<
     ListAppInputSourcesResponse,
     ListAppInputSourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppInputSourcesRequest,
   ) => stream.Stream<
     unknown,
     ListAppInputSourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppInputSourcesRequest,
@@ -5228,21 +5228,21 @@ export const listApps: API.OperationMethod<
   ListAppsRequest,
   ListAppsResponse,
   ListAppsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppsRequest,
   ) => stream.Stream<
     ListAppsResponse,
     ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppsRequest,
   ) => stream.Stream<
     unknown,
     ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
@@ -5274,21 +5274,21 @@ export const listAppVersionAppComponents: API.OperationMethod<
   ListAppVersionAppComponentsRequest,
   ListAppVersionAppComponentsResponse,
   ListAppVersionAppComponentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppVersionAppComponentsRequest,
   ) => stream.Stream<
     ListAppVersionAppComponentsResponse,
     ListAppVersionAppComponentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppVersionAppComponentsRequest,
   ) => stream.Stream<
     unknown,
     ListAppVersionAppComponentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionAppComponentsRequest,
@@ -5323,21 +5323,21 @@ export const listAppVersionResourceMappings: API.OperationMethod<
   ListAppVersionResourceMappingsRequest,
   ListAppVersionResourceMappingsResponse,
   ListAppVersionResourceMappingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppVersionResourceMappingsRequest,
   ) => stream.Stream<
     ListAppVersionResourceMappingsResponse,
     ListAppVersionResourceMappingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppVersionResourceMappingsRequest,
   ) => stream.Stream<
     unknown,
     ListAppVersionResourceMappingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionResourceMappingsRequest,
@@ -5370,21 +5370,21 @@ export const listAppVersionResources: API.OperationMethod<
   ListAppVersionResourcesRequest,
   ListAppVersionResourcesResponse,
   ListAppVersionResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppVersionResourcesRequest,
   ) => stream.Stream<
     ListAppVersionResourcesResponse,
     ListAppVersionResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppVersionResourcesRequest,
   ) => stream.Stream<
     unknown,
     ListAppVersionResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionResourcesRequest,
@@ -5416,21 +5416,21 @@ export const listAppVersions: API.OperationMethod<
   ListAppVersionsRequest,
   ListAppVersionsResponse,
   ListAppVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAppVersionsRequest,
   ) => stream.Stream<
     ListAppVersionsResponse,
     ListAppVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAppVersionsRequest,
   ) => stream.Stream<
     unknown,
     ListAppVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionsRequest,
@@ -5460,21 +5460,21 @@ export const listMetrics: API.OperationMethod<
   ListMetricsRequest,
   ListMetricsResponse,
   ListMetricsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMetricsRequest,
   ) => stream.Stream<
     ListMetricsResponse,
     ListMetricsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMetricsRequest,
   ) => stream.Stream<
     String255[],
     ListMetricsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMetricsRequest,
@@ -5505,21 +5505,21 @@ export const listRecommendationTemplates: API.OperationMethod<
   ListRecommendationTemplatesRequest,
   ListRecommendationTemplatesResponse,
   ListRecommendationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecommendationTemplatesRequest,
   ) => stream.Stream<
     ListRecommendationTemplatesResponse,
     ListRecommendationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecommendationTemplatesRequest,
   ) => stream.Stream<
     unknown,
     ListRecommendationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationTemplatesRequest,
@@ -5550,21 +5550,21 @@ export const listResiliencyPolicies: API.OperationMethod<
   ListResiliencyPoliciesRequest,
   ListResiliencyPoliciesResponse,
   ListResiliencyPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResiliencyPoliciesRequest,
   ) => stream.Stream<
     ListResiliencyPoliciesResponse,
     ListResiliencyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResiliencyPoliciesRequest,
   ) => stream.Stream<
     unknown,
     ListResiliencyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResiliencyPoliciesRequest,
@@ -5596,21 +5596,21 @@ export const listResourceGroupingRecommendations: API.OperationMethod<
   ListResourceGroupingRecommendationsRequest,
   ListResourceGroupingRecommendationsResponse,
   ListResourceGroupingRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceGroupingRecommendationsRequest,
   ) => stream.Stream<
     ListResourceGroupingRecommendationsResponse,
     ListResourceGroupingRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceGroupingRecommendationsRequest,
   ) => stream.Stream<
     GroupingRecommendation,
     ListResourceGroupingRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceGroupingRecommendationsRequest,
@@ -5644,21 +5644,21 @@ export const listSopRecommendations: API.OperationMethod<
   ListSopRecommendationsRequest,
   ListSopRecommendationsResponse,
   ListSopRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSopRecommendationsRequest,
   ) => stream.Stream<
     ListSopRecommendationsResponse,
     ListSopRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSopRecommendationsRequest,
   ) => stream.Stream<
     unknown,
     ListSopRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSopRecommendationsRequest,
@@ -5692,21 +5692,21 @@ export const listSuggestedResiliencyPolicies: API.OperationMethod<
   ListSuggestedResiliencyPoliciesRequest,
   ListSuggestedResiliencyPoliciesResponse,
   ListSuggestedResiliencyPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSuggestedResiliencyPoliciesRequest,
   ) => stream.Stream<
     ListSuggestedResiliencyPoliciesResponse,
     ListSuggestedResiliencyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSuggestedResiliencyPoliciesRequest,
   ) => stream.Stream<
     unknown,
     ListSuggestedResiliencyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSuggestedResiliencyPoliciesRequest,
@@ -5738,7 +5738,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -5765,21 +5765,21 @@ export const listTestRecommendations: API.OperationMethod<
   ListTestRecommendationsRequest,
   ListTestRecommendationsResponse,
   ListTestRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTestRecommendationsRequest,
   ) => stream.Stream<
     ListTestRecommendationsResponse,
     ListTestRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTestRecommendationsRequest,
   ) => stream.Stream<
     unknown,
     ListTestRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTestRecommendationsRequest,
@@ -5815,21 +5815,21 @@ export const listUnsupportedAppVersionResources: API.OperationMethod<
   ListUnsupportedAppVersionResourcesRequest,
   ListUnsupportedAppVersionResourcesResponse,
   ListUnsupportedAppVersionResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListUnsupportedAppVersionResourcesRequest,
   ) => stream.Stream<
     ListUnsupportedAppVersionResourcesResponse,
     ListUnsupportedAppVersionResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListUnsupportedAppVersionResourcesRequest,
   ) => stream.Stream<
     unknown,
     ListUnsupportedAppVersionResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUnsupportedAppVersionResourcesRequest,
@@ -5863,7 +5863,7 @@ export const publishAppVersion: API.OperationMethod<
   PublishAppVersionRequest,
   PublishAppVersionResponse,
   PublishAppVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishAppVersionRequest,
   output: PublishAppVersionResponse,
@@ -5892,7 +5892,7 @@ export const putDraftAppVersionTemplate: API.OperationMethod<
   PutDraftAppVersionTemplateRequest,
   PutDraftAppVersionTemplateResponse,
   PutDraftAppVersionTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutDraftAppVersionTemplateRequest,
   output: PutDraftAppVersionTemplateResponse,
@@ -5919,7 +5919,7 @@ export const rejectResourceGroupingRecommendations: API.OperationMethod<
   RejectResourceGroupingRecommendationsRequest,
   RejectResourceGroupingRecommendationsResponse,
   RejectResourceGroupingRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectResourceGroupingRecommendationsRequest,
   output: RejectResourceGroupingRecommendationsResponse,
@@ -5946,7 +5946,7 @@ export const removeDraftAppVersionResourceMappings: API.OperationMethod<
   RemoveDraftAppVersionResourceMappingsRequest,
   RemoveDraftAppVersionResourceMappingsResponse,
   RemoveDraftAppVersionResourceMappingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveDraftAppVersionResourceMappingsRequest,
   output: RemoveDraftAppVersionResourceMappingsResponse,
@@ -5974,7 +5974,7 @@ export const resolveAppVersionResources: API.OperationMethod<
   ResolveAppVersionResourcesRequest,
   ResolveAppVersionResourcesResponse,
   ResolveAppVersionResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResolveAppVersionResourcesRequest,
   output: ResolveAppVersionResourcesResponse,
@@ -6003,7 +6003,7 @@ export const startAppAssessment: API.OperationMethod<
   StartAppAssessmentRequest,
   StartAppAssessmentResponse,
   StartAppAssessmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAppAssessmentRequest,
   output: StartAppAssessmentResponse,
@@ -6032,7 +6032,7 @@ export const startMetricsExport: API.OperationMethod<
   StartMetricsExportRequest,
   StartMetricsExportResponse,
   StartMetricsExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartMetricsExportRequest,
   output: StartMetricsExportResponse,
@@ -6060,7 +6060,7 @@ export const startResourceGroupingRecommendationTask: API.OperationMethod<
   StartResourceGroupingRecommendationTaskRequest,
   StartResourceGroupingRecommendationTaskResponse,
   StartResourceGroupingRecommendationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartResourceGroupingRecommendationTaskRequest,
   output: StartResourceGroupingRecommendationTaskResponse,
@@ -6087,7 +6087,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -6113,7 +6113,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -6140,7 +6140,7 @@ export const updateApp: API.OperationMethod<
   UpdateAppRequest,
   UpdateAppResponse,
   UpdateAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAppRequest,
   output: UpdateAppResponse,
@@ -6172,7 +6172,7 @@ export const updateAppVersion: API.OperationMethod<
   UpdateAppVersionRequest,
   UpdateAppVersionResponse,
   UpdateAppVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAppVersionRequest,
   output: UpdateAppVersionResponse,
@@ -6204,7 +6204,7 @@ export const updateAppVersionAppComponent: API.OperationMethod<
   UpdateAppVersionAppComponentRequest,
   UpdateAppVersionAppComponentResponse,
   UpdateAppVersionAppComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAppVersionAppComponentRequest,
   output: UpdateAppVersionAppComponentResponse,
@@ -6242,7 +6242,7 @@ export const updateAppVersionResource: API.OperationMethod<
   UpdateAppVersionResourceRequest,
   UpdateAppVersionResourceResponse,
   UpdateAppVersionResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAppVersionResourceRequest,
   output: UpdateAppVersionResourceResponse,
@@ -6279,7 +6279,7 @@ export const updateResiliencyPolicy: API.OperationMethod<
   UpdateResiliencyPolicyRequest,
   UpdateResiliencyPolicyResponse,
   UpdateResiliencyPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResiliencyPolicyRequest,
   output: UpdateResiliencyPolicyResponse,

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("https://sts.amazonaws.com/doc/2011-06-15/");
 const svc = T.AwsApiService({
@@ -929,7 +929,7 @@ export const assumeRole: API.OperationMethod<
   AssumeRoleRequest,
   AssumeRoleResponse,
   AssumeRoleError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssumeRoleRequest,
   output: AssumeRoleResponse,
@@ -1078,7 +1078,7 @@ export const assumeRoleWithSAML: API.OperationMethod<
   AssumeRoleWithSAMLRequest,
   AssumeRoleWithSAMLResponse,
   AssumeRoleWithSAMLError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssumeRoleWithSAMLRequest,
   output: AssumeRoleWithSAMLResponse,
@@ -1224,7 +1224,7 @@ export const assumeRoleWithWebIdentity: API.OperationMethod<
   AssumeRoleWithWebIdentityRequest,
   AssumeRoleWithWebIdentityResponse,
   AssumeRoleWithWebIdentityError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssumeRoleWithWebIdentityRequest,
   output: AssumeRoleWithWebIdentityResponse,
@@ -1269,7 +1269,7 @@ export const assumeRoot: API.OperationMethod<
   AssumeRootRequest,
   AssumeRootResponse,
   AssumeRootError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssumeRootRequest,
   output: AssumeRootResponse,
@@ -1315,7 +1315,7 @@ export const decodeAuthorizationMessage: API.OperationMethod<
   DecodeAuthorizationMessageRequest,
   DecodeAuthorizationMessageResponse,
   DecodeAuthorizationMessageError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DecodeAuthorizationMessageRequest,
   output: DecodeAuthorizationMessageResponse,
@@ -1348,7 +1348,7 @@ export const getAccessKeyInfo: API.OperationMethod<
   GetAccessKeyInfoRequest,
   GetAccessKeyInfoResponse,
   GetAccessKeyInfoError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessKeyInfoRequest,
   output: GetAccessKeyInfoResponse,
@@ -1370,7 +1370,7 @@ export const getCallerIdentity: API.OperationMethod<
   GetCallerIdentityRequest,
   GetCallerIdentityResponse,
   GetCallerIdentityError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCallerIdentityRequest,
   output: GetCallerIdentityResponse,
@@ -1391,7 +1391,7 @@ export const getDelegatedAccessToken: API.OperationMethod<
   GetDelegatedAccessTokenRequest,
   GetDelegatedAccessTokenResponse,
   GetDelegatedAccessTokenError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDelegatedAccessTokenRequest,
   output: GetDelegatedAccessTokenResponse,
@@ -1503,7 +1503,7 @@ export const getFederationToken: API.OperationMethod<
   GetFederationTokenRequest,
   GetFederationTokenResponse,
   GetFederationTokenError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFederationTokenRequest,
   output: GetFederationTokenResponse,
@@ -1575,7 +1575,7 @@ export const getSessionToken: API.OperationMethod<
   GetSessionTokenRequest,
   GetSessionTokenResponse,
   GetSessionTokenError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSessionTokenRequest,
   output: GetSessionTokenResponse,
@@ -1595,7 +1595,7 @@ export const getWebIdentityToken: API.OperationMethod<
   GetWebIdentityTokenRequest,
   GetWebIdentityTokenResponse,
   GetWebIdentityTokenError,
-  Creds | Region | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWebIdentityTokenRequest,
   output: GetWebIdentityTokenResponse,

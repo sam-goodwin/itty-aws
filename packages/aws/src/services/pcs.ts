@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "PCS",
@@ -1287,7 +1287,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1304,7 +1304,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1318,7 +1318,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1341,7 +1341,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterRequest,
   CreateClusterResponse,
   CreateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
@@ -1371,7 +1371,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterRequest,
   UpdateClusterResponse,
   UpdateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
@@ -1399,7 +1399,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterRequest,
   DeleteClusterResponse,
   DeleteClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
@@ -1427,7 +1427,7 @@ export const getCluster: API.OperationMethod<
   GetClusterRequest,
   GetClusterResponse,
   GetClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetClusterRequest,
   output: GetClusterResponse,
@@ -1453,7 +1453,7 @@ export const registerComputeNodeGroupInstance: API.OperationMethod<
   RegisterComputeNodeGroupInstanceRequest,
   RegisterComputeNodeGroupInstanceResponse,
   RegisterComputeNodeGroupInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterComputeNodeGroupInstanceRequest,
   output: RegisterComputeNodeGroupInstanceResponse,
@@ -1474,21 +1474,21 @@ export const listClusters: API.OperationMethod<
   ListClustersRequest,
   ListClustersResponse,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListClustersRequest,
   ) => stream.Stream<
     ListClustersResponse,
     ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListClustersRequest,
   ) => stream.Stream<
     ClusterSummary,
     ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
@@ -1524,7 +1524,7 @@ export const createComputeNodeGroup: API.OperationMethod<
   CreateComputeNodeGroupRequest,
   CreateComputeNodeGroupResponse,
   CreateComputeNodeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateComputeNodeGroupRequest,
   output: CreateComputeNodeGroupResponse,
@@ -1554,7 +1554,7 @@ export const updateComputeNodeGroup: API.OperationMethod<
   UpdateComputeNodeGroupRequest,
   UpdateComputeNodeGroupResponse,
   UpdateComputeNodeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateComputeNodeGroupRequest,
   output: UpdateComputeNodeGroupResponse,
@@ -1583,7 +1583,7 @@ export const deleteComputeNodeGroup: API.OperationMethod<
   DeleteComputeNodeGroupRequest,
   DeleteComputeNodeGroupResponse,
   DeleteComputeNodeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteComputeNodeGroupRequest,
   output: DeleteComputeNodeGroupResponse,
@@ -1611,7 +1611,7 @@ export const getComputeNodeGroup: API.OperationMethod<
   GetComputeNodeGroupRequest,
   GetComputeNodeGroupResponse,
   GetComputeNodeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetComputeNodeGroupRequest,
   output: GetComputeNodeGroupResponse,
@@ -1639,21 +1639,21 @@ export const listComputeNodeGroups: API.OperationMethod<
   ListComputeNodeGroupsRequest,
   ListComputeNodeGroupsResponse,
   ListComputeNodeGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListComputeNodeGroupsRequest,
   ) => stream.Stream<
     ListComputeNodeGroupsResponse,
     ListComputeNodeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListComputeNodeGroupsRequest,
   ) => stream.Stream<
     ComputeNodeGroupSummary,
     ListComputeNodeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListComputeNodeGroupsRequest,
@@ -1689,7 +1689,7 @@ export const createQueue: API.OperationMethod<
   CreateQueueRequest,
   CreateQueueResponse,
   CreateQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateQueueRequest,
   output: CreateQueueResponse,
@@ -1719,7 +1719,7 @@ export const updateQueue: API.OperationMethod<
   UpdateQueueRequest,
   UpdateQueueResponse,
   UpdateQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQueueRequest,
   output: UpdateQueueResponse,
@@ -1748,7 +1748,7 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueRequest,
   DeleteQueueResponse,
   DeleteQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
@@ -1776,7 +1776,7 @@ export const getQueue: API.OperationMethod<
   GetQueueRequest,
   GetQueueResponse,
   GetQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQueueRequest,
   output: GetQueueResponse,
@@ -1804,21 +1804,21 @@ export const listQueues: API.OperationMethod<
   ListQueuesRequest,
   ListQueuesResponse,
   ListQueuesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListQueuesRequest,
   ) => stream.Stream<
     ListQueuesResponse,
     ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListQueuesRequest,
   ) => stream.Stream<
     QueueSummary,
     ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,

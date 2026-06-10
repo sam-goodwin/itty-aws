@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "odb", serviceShapeName: "Odb" });
 const auth = T.AwsAuthSigv4({ name: "odb" });
@@ -3083,7 +3083,7 @@ export const acceptMarketplaceRegistration: API.OperationMethod<
   AcceptMarketplaceRegistrationInput,
   AcceptMarketplaceRegistrationOutput,
   AcceptMarketplaceRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptMarketplaceRegistrationInput,
   output: AcceptMarketplaceRegistrationOutput,
@@ -3110,7 +3110,7 @@ export const associateIamRoleToResource: API.OperationMethod<
   AssociateIamRoleToResourceInput,
   AssociateIamRoleToResourceOutput,
   AssociateIamRoleToResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateIamRoleToResourceInput,
   output: AssociateIamRoleToResourceOutput,
@@ -3138,7 +3138,7 @@ export const disassociateIamRoleFromResource: API.OperationMethod<
   DisassociateIamRoleFromResourceInput,
   DisassociateIamRoleFromResourceOutput,
   DisassociateIamRoleFromResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateIamRoleFromResourceInput,
   output: DisassociateIamRoleFromResourceOutput,
@@ -3164,7 +3164,7 @@ export const getOciOnboardingStatus: API.OperationMethod<
   GetOciOnboardingStatusInput,
   GetOciOnboardingStatusOutput,
   GetOciOnboardingStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOciOnboardingStatusInput,
   output: GetOciOnboardingStatusOutput,
@@ -3188,7 +3188,7 @@ export const initializeService: API.OperationMethod<
   InitializeServiceInput,
   InitializeServiceOutput,
   InitializeServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InitializeServiceInput,
   output: InitializeServiceOutput,
@@ -3212,21 +3212,21 @@ export const listDbSystemShapes: API.OperationMethod<
   ListDbSystemShapesInput,
   ListDbSystemShapesOutput,
   ListDbSystemShapesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDbSystemShapesInput,
   ) => stream.Stream<
     ListDbSystemShapesOutput,
     ListDbSystemShapesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDbSystemShapesInput,
   ) => stream.Stream<
     DbSystemShapeSummary,
     ListDbSystemShapesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDbSystemShapesInput,
@@ -3257,21 +3257,21 @@ export const listGiVersions: API.OperationMethod<
   ListGiVersionsInput,
   ListGiVersionsOutput,
   ListGiVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGiVersionsInput,
   ) => stream.Stream<
     ListGiVersionsOutput,
     ListGiVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGiVersionsInput,
   ) => stream.Stream<
     GiVersionSummary,
     ListGiVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGiVersionsInput,
@@ -3303,21 +3303,21 @@ export const listSystemVersions: API.OperationMethod<
   ListSystemVersionsInput,
   ListSystemVersionsOutput,
   ListSystemVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSystemVersionsInput,
   ) => stream.Stream<
     ListSystemVersionsOutput,
     ListSystemVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSystemVersionsInput,
   ) => stream.Stream<
     SystemVersionSummary,
     ListSystemVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSystemVersionsInput,
@@ -3344,7 +3344,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3361,7 +3361,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3375,7 +3375,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3397,7 +3397,7 @@ export const createCloudAutonomousVmCluster: API.OperationMethod<
   CreateCloudAutonomousVmClusterInput,
   CreateCloudAutonomousVmClusterOutput,
   CreateCloudAutonomousVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCloudAutonomousVmClusterInput,
   output: CreateCloudAutonomousVmClusterOutput,
@@ -3425,7 +3425,7 @@ export const getCloudAutonomousVmCluster: API.OperationMethod<
   GetCloudAutonomousVmClusterInput,
   GetCloudAutonomousVmClusterOutput,
   GetCloudAutonomousVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCloudAutonomousVmClusterInput,
   output: GetCloudAutonomousVmClusterOutput,
@@ -3451,7 +3451,7 @@ export const deleteCloudAutonomousVmCluster: API.OperationMethod<
   DeleteCloudAutonomousVmClusterInput,
   DeleteCloudAutonomousVmClusterOutput,
   DeleteCloudAutonomousVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCloudAutonomousVmClusterInput,
   output: DeleteCloudAutonomousVmClusterOutput,
@@ -3477,21 +3477,21 @@ export const listCloudAutonomousVmClusters: API.OperationMethod<
   ListCloudAutonomousVmClustersInput,
   ListCloudAutonomousVmClustersOutput,
   ListCloudAutonomousVmClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCloudAutonomousVmClustersInput,
   ) => stream.Stream<
     ListCloudAutonomousVmClustersOutput,
     ListCloudAutonomousVmClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCloudAutonomousVmClustersInput,
   ) => stream.Stream<
     CloudAutonomousVmClusterSummary,
     ListCloudAutonomousVmClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCloudAutonomousVmClustersInput,
@@ -3524,21 +3524,21 @@ export const listAutonomousVirtualMachines: API.OperationMethod<
   ListAutonomousVirtualMachinesInput,
   ListAutonomousVirtualMachinesOutput,
   ListAutonomousVirtualMachinesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAutonomousVirtualMachinesInput,
   ) => stream.Stream<
     ListAutonomousVirtualMachinesOutput,
     ListAutonomousVirtualMachinesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAutonomousVirtualMachinesInput,
   ) => stream.Stream<
     AutonomousVirtualMachineSummary,
     ListAutonomousVirtualMachinesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAutonomousVirtualMachinesInput,
@@ -3572,7 +3572,7 @@ export const createCloudExadataInfrastructure: API.OperationMethod<
   CreateCloudExadataInfrastructureInput,
   CreateCloudExadataInfrastructureOutput,
   CreateCloudExadataInfrastructureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCloudExadataInfrastructureInput,
   output: CreateCloudExadataInfrastructureOutput,
@@ -3599,7 +3599,7 @@ export const getCloudExadataInfrastructure: API.OperationMethod<
   GetCloudExadataInfrastructureInput,
   GetCloudExadataInfrastructureOutput,
   GetCloudExadataInfrastructureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCloudExadataInfrastructureInput,
   output: GetCloudExadataInfrastructureOutput,
@@ -3626,7 +3626,7 @@ export const updateCloudExadataInfrastructure: API.OperationMethod<
   UpdateCloudExadataInfrastructureInput,
   UpdateCloudExadataInfrastructureOutput,
   UpdateCloudExadataInfrastructureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCloudExadataInfrastructureInput,
   output: UpdateCloudExadataInfrastructureOutput,
@@ -3654,7 +3654,7 @@ export const deleteCloudExadataInfrastructure: API.OperationMethod<
   DeleteCloudExadataInfrastructureInput,
   DeleteCloudExadataInfrastructureOutput,
   DeleteCloudExadataInfrastructureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCloudExadataInfrastructureInput,
   output: DeleteCloudExadataInfrastructureOutput,
@@ -3680,21 +3680,21 @@ export const listCloudExadataInfrastructures: API.OperationMethod<
   ListCloudExadataInfrastructuresInput,
   ListCloudExadataInfrastructuresOutput,
   ListCloudExadataInfrastructuresError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCloudExadataInfrastructuresInput,
   ) => stream.Stream<
     ListCloudExadataInfrastructuresOutput,
     ListCloudExadataInfrastructuresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCloudExadataInfrastructuresInput,
   ) => stream.Stream<
     CloudExadataInfrastructureSummary,
     ListCloudExadataInfrastructuresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCloudExadataInfrastructuresInput,
@@ -3726,7 +3726,7 @@ export const getCloudExadataInfrastructureUnallocatedResources: API.OperationMet
   GetCloudExadataInfrastructureUnallocatedResourcesInput,
   GetCloudExadataInfrastructureUnallocatedResourcesOutput,
   GetCloudExadataInfrastructureUnallocatedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCloudExadataInfrastructureUnallocatedResourcesInput,
   output: GetCloudExadataInfrastructureUnallocatedResourcesOutput,
@@ -3752,7 +3752,7 @@ export const getDbServer: API.OperationMethod<
   GetDbServerInput,
   GetDbServerOutput,
   GetDbServerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDbServerInput,
   output: GetDbServerOutput,
@@ -3778,21 +3778,21 @@ export const listDbServers: API.OperationMethod<
   ListDbServersInput,
   ListDbServersOutput,
   ListDbServersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDbServersInput,
   ) => stream.Stream<
     ListDbServersOutput,
     ListDbServersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDbServersInput,
   ) => stream.Stream<
     DbServerSummary,
     ListDbServersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDbServersInput,
@@ -3827,7 +3827,7 @@ export const createCloudVmCluster: API.OperationMethod<
   CreateCloudVmClusterInput,
   CreateCloudVmClusterOutput,
   CreateCloudVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCloudVmClusterInput,
   output: CreateCloudVmClusterOutput,
@@ -3855,7 +3855,7 @@ export const getCloudVmCluster: API.OperationMethod<
   GetCloudVmClusterInput,
   GetCloudVmClusterOutput,
   GetCloudVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCloudVmClusterInput,
   output: GetCloudVmClusterOutput,
@@ -3881,7 +3881,7 @@ export const deleteCloudVmCluster: API.OperationMethod<
   DeleteCloudVmClusterInput,
   DeleteCloudVmClusterOutput,
   DeleteCloudVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCloudVmClusterInput,
   output: DeleteCloudVmClusterOutput,
@@ -3907,21 +3907,21 @@ export const listCloudVmClusters: API.OperationMethod<
   ListCloudVmClustersInput,
   ListCloudVmClustersOutput,
   ListCloudVmClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCloudVmClustersInput,
   ) => stream.Stream<
     ListCloudVmClustersOutput,
     ListCloudVmClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCloudVmClustersInput,
   ) => stream.Stream<
     CloudVmClusterSummary,
     ListCloudVmClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCloudVmClustersInput,
@@ -3954,7 +3954,7 @@ export const getDbNode: API.OperationMethod<
   GetDbNodeInput,
   GetDbNodeOutput,
   GetDbNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDbNodeInput,
   output: GetDbNodeOutput,
@@ -3980,21 +3980,21 @@ export const listDbNodes: API.OperationMethod<
   ListDbNodesInput,
   ListDbNodesOutput,
   ListDbNodesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDbNodesInput,
   ) => stream.Stream<
     ListDbNodesOutput,
     ListDbNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDbNodesInput,
   ) => stream.Stream<
     DbNodeSummary,
     ListDbNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDbNodesInput,
@@ -4027,7 +4027,7 @@ export const rebootDbNode: API.OperationMethod<
   RebootDbNodeInput,
   RebootDbNodeOutput,
   RebootDbNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RebootDbNodeInput,
   output: RebootDbNodeOutput,
@@ -4053,7 +4053,7 @@ export const startDbNode: API.OperationMethod<
   StartDbNodeInput,
   StartDbNodeOutput,
   StartDbNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartDbNodeInput,
   output: StartDbNodeOutput,
@@ -4079,7 +4079,7 @@ export const stopDbNode: API.OperationMethod<
   StopDbNodeInput,
   StopDbNodeOutput,
   StopDbNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopDbNodeInput,
   output: StopDbNodeOutput,
@@ -4106,7 +4106,7 @@ export const createOdbNetwork: API.OperationMethod<
   CreateOdbNetworkInput,
   CreateOdbNetworkOutput,
   CreateOdbNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOdbNetworkInput,
   output: CreateOdbNetworkOutput,
@@ -4133,7 +4133,7 @@ export const getOdbNetwork: API.OperationMethod<
   GetOdbNetworkInput,
   GetOdbNetworkOutput,
   GetOdbNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOdbNetworkInput,
   output: GetOdbNetworkOutput,
@@ -4160,7 +4160,7 @@ export const updateOdbNetwork: API.OperationMethod<
   UpdateOdbNetworkInput,
   UpdateOdbNetworkOutput,
   UpdateOdbNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOdbNetworkInput,
   output: UpdateOdbNetworkOutput,
@@ -4187,7 +4187,7 @@ export const deleteOdbNetwork: API.OperationMethod<
   DeleteOdbNetworkInput,
   DeleteOdbNetworkOutput,
   DeleteOdbNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOdbNetworkInput,
   output: DeleteOdbNetworkOutput,
@@ -4212,21 +4212,21 @@ export const listOdbNetworks: API.OperationMethod<
   ListOdbNetworksInput,
   ListOdbNetworksOutput,
   ListOdbNetworksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOdbNetworksInput,
   ) => stream.Stream<
     ListOdbNetworksOutput,
     ListOdbNetworksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOdbNetworksInput,
   ) => stream.Stream<
     OdbNetworkSummary,
     ListOdbNetworksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOdbNetworksInput,
@@ -4261,7 +4261,7 @@ export const createOdbPeeringConnection: API.OperationMethod<
   CreateOdbPeeringConnectionInput,
   CreateOdbPeeringConnectionOutput,
   CreateOdbPeeringConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOdbPeeringConnectionInput,
   output: CreateOdbPeeringConnectionOutput,
@@ -4288,7 +4288,7 @@ export const getOdbPeeringConnection: API.OperationMethod<
   GetOdbPeeringConnectionInput,
   GetOdbPeeringConnectionOutput,
   GetOdbPeeringConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOdbPeeringConnectionInput,
   output: GetOdbPeeringConnectionOutput,
@@ -4315,7 +4315,7 @@ export const updateOdbPeeringConnection: API.OperationMethod<
   UpdateOdbPeeringConnectionInput,
   UpdateOdbPeeringConnectionOutput,
   UpdateOdbPeeringConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOdbPeeringConnectionInput,
   output: UpdateOdbPeeringConnectionOutput,
@@ -4344,7 +4344,7 @@ export const deleteOdbPeeringConnection: API.OperationMethod<
   DeleteOdbPeeringConnectionInput,
   DeleteOdbPeeringConnectionOutput,
   DeleteOdbPeeringConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOdbPeeringConnectionInput,
   output: DeleteOdbPeeringConnectionOutput,
@@ -4370,21 +4370,21 @@ export const listOdbPeeringConnections: API.OperationMethod<
   ListOdbPeeringConnectionsInput,
   ListOdbPeeringConnectionsOutput,
   ListOdbPeeringConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOdbPeeringConnectionsInput,
   ) => stream.Stream<
     ListOdbPeeringConnectionsOutput,
     ListOdbPeeringConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOdbPeeringConnectionsInput,
   ) => stream.Stream<
     OdbPeeringConnectionSummary,
     ListOdbPeeringConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOdbPeeringConnectionsInput,

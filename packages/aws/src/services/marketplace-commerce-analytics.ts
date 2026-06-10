@@ -4,7 +4,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Marketplace Commerce Analytics",
   serviceShapeName: "MarketplaceCommerceAnalytics20150701",
@@ -224,7 +224,7 @@ export const generateDataSet: API.OperationMethod<
   GenerateDataSetRequest,
   GenerateDataSetResult,
   GenerateDataSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateDataSetRequest,
   output: GenerateDataSetResult,
@@ -247,7 +247,7 @@ export const startSupportDataExport: API.OperationMethod<
   StartSupportDataExportRequest,
   StartSupportDataExportResult,
   StartSupportDataExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartSupportDataExportRequest,
   output: StartSupportDataExportResult,

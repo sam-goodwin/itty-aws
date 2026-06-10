@@ -6,7 +6,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Cloud9",
@@ -619,7 +619,7 @@ export const createEnvironmentEC2: API.OperationMethod<
   CreateEnvironmentEC2Request,
   CreateEnvironmentEC2Result,
   CreateEnvironmentEC2Error,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentEC2Request,
   output: CreateEnvironmentEC2Result,
@@ -653,7 +653,7 @@ export const createEnvironmentMembership: API.OperationMethod<
   CreateEnvironmentMembershipRequest,
   CreateEnvironmentMembershipResult,
   CreateEnvironmentMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentMembershipRequest,
   output: CreateEnvironmentMembershipResult,
@@ -688,7 +688,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentRequest,
   DeleteEnvironmentResult,
   DeleteEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResult,
@@ -722,7 +722,7 @@ export const deleteEnvironmentMembership: API.OperationMethod<
   DeleteEnvironmentMembershipRequest,
   DeleteEnvironmentMembershipResult,
   DeleteEnvironmentMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentMembershipRequest,
   output: DeleteEnvironmentMembershipResult,
@@ -756,21 +756,21 @@ export const describeEnvironmentMemberships: API.OperationMethod<
   DescribeEnvironmentMembershipsRequest,
   DescribeEnvironmentMembershipsResult,
   DescribeEnvironmentMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEnvironmentMembershipsRequest,
   ) => stream.Stream<
     DescribeEnvironmentMembershipsResult,
     DescribeEnvironmentMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEnvironmentMembershipsRequest,
   ) => stream.Stream<
     unknown,
     DescribeEnvironmentMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEnvironmentMembershipsRequest,
@@ -810,7 +810,7 @@ export const describeEnvironments: API.OperationMethod<
   DescribeEnvironmentsRequest,
   DescribeEnvironmentsResult,
   DescribeEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentsRequest,
   output: DescribeEnvironmentsResult,
@@ -844,7 +844,7 @@ export const describeEnvironmentStatus: API.OperationMethod<
   DescribeEnvironmentStatusRequest,
   DescribeEnvironmentStatusResult,
   DescribeEnvironmentStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentStatusRequest,
   output: DescribeEnvironmentStatusResult,
@@ -882,21 +882,21 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsRequest,
   ListEnvironmentsResult,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnvironmentsRequest,
   ) => stream.Stream<
     ListEnvironmentsResult,
     ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnvironmentsRequest,
   ) => stream.Stream<
     unknown,
     ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
@@ -932,7 +932,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -962,7 +962,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -990,7 +990,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1021,7 +1021,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentRequest,
   UpdateEnvironmentResult,
   UpdateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentRequest,
   output: UpdateEnvironmentResult,
@@ -1056,7 +1056,7 @@ export const updateEnvironmentMembership: API.OperationMethod<
   UpdateEnvironmentMembershipRequest,
   UpdateEnvironmentMembershipResult,
   UpdateEnvironmentMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentMembershipRequest,
   output: UpdateEnvironmentMembershipResult,

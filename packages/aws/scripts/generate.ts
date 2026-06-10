@@ -55,7 +55,7 @@ class SdkFile extends Context.Service<
     allSchemaNames: Set<string>;
     // Import reference names (resolved based on conflicts)
     credsRef: string;
-    rgnRef: string;
+    cfgRef: string;
     commonErrorsRef: string;
     streamRef: string;
     // Map of newtype names to their underlying TypeScript type (e.g., PhoneNumber -> string)
@@ -2786,7 +2786,7 @@ const generateClient = Effect.fn(function* (
         const apiFn = paginatedTrait ? "API.makePaginated" : "API.make";
 
         // Dependencies type for operations
-        const depsType = `${sdkFile.credsRef} | ${sdkFile.rgnRef} | HttpClient.HttpClient`;
+        const depsType = `${sdkFile.credsRef} | ${sdkFile.cfgRef} | HttpClient.HttpClient`;
 
         // Map Smithy primitives to TypeScript types
         const smithyPrimitiveToTs: Record<string, string> = {
@@ -2966,10 +2966,10 @@ const generateClient = Effect.fn(function* (
       sdkFile.credsRef === "Creds"
         ? 'import type { Credentials as Creds } from "../credentials.ts";'
         : 'import type { Credentials } from "../credentials.ts";';
-    const regionImport =
-      sdkFile.rgnRef === "Rgn"
-        ? 'import type { Region as Rgn } from "../region.ts";'
-        : 'import type { Region } from "../region.ts";';
+    const configImport =
+      sdkFile.cfgRef === "Cfg"
+        ? 'import type { AWSConfig as Cfg } from "../config.ts";'
+        : 'import type { AWSConfig } from "../config.ts";';
     const commonErrorsImport =
       sdkFile.commonErrorsRef === "CommonErr"
         ? 'import type { CommonErrors as CommonErr } from "../errors.ts";'
@@ -2988,7 +2988,7 @@ const generateClient = Effect.fn(function* (
       __CATEGORY_IMPORT__
       ${credentialsImport}
       ${commonErrorsImport}
-      ${regionImport}
+      ${configImport}
       __SENSITIVE_IMPORT__`;
 
     // Define service-level constants
@@ -3135,11 +3135,11 @@ const generateClient = Effect.fn(function* (
 
   // Pre-compute conflict resolution for imports
   const hasCredentialsConflict = allSchemaNames.has("Credentials");
-  const hasRegionConflict = allSchemaNames.has("Region");
+  const hasConfigConflict = allSchemaNames.has("AWSConfig");
   const hasCommonErrorsConflict = allSchemaNames.has("CommonErrors");
 
   const credsRef = hasCredentialsConflict ? "Creds" : "Credentials";
-  const rgnRef = hasRegionConflict ? "Rgn" : "Region";
+  const cfgRef = hasConfigConflict ? "Cfg" : "AWSConfig";
   const commonErrorsRef = hasCommonErrorsConflict
     ? "CommonErr"
     : "CommonErrors";
@@ -3214,7 +3214,7 @@ const generateClient = Effect.fn(function* (
       allUnionNames,
       allSchemaNames,
       credsRef,
-      rgnRef,
+      cfgRef,
       commonErrorsRef,
       streamRef,
       newtypes: yield* Ref.make<Map<string, string>>(new Map()),

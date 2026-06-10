@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Snowball",
@@ -1533,7 +1533,7 @@ export const cancelCluster: API.OperationMethod<
   CancelClusterRequest,
   CancelClusterResult,
   CancelClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelClusterRequest,
   output: CancelClusterResult,
@@ -1558,7 +1558,7 @@ export const cancelJob: API.OperationMethod<
   CancelJobRequest,
   CancelJobResult,
   CancelJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelJobRequest,
   output: CancelJobResult,
@@ -1582,7 +1582,7 @@ export const createAddress: API.OperationMethod<
   CreateAddressRequest,
   CreateAddressResult,
   CreateAddressError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAddressRequest,
   output: CreateAddressResult,
@@ -1602,7 +1602,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterRequest,
   CreateClusterResult,
   CreateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResult,
@@ -1706,7 +1706,7 @@ export const createJob: API.OperationMethod<
   CreateJobRequest,
   CreateJobResult,
   CreateJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateJobRequest,
   output: CreateJobResult,
@@ -1729,7 +1729,7 @@ export const createLongTermPricing: API.OperationMethod<
   CreateLongTermPricingRequest,
   CreateLongTermPricingResult,
   CreateLongTermPricingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLongTermPricingRequest,
   output: CreateLongTermPricingResult,
@@ -1749,7 +1749,7 @@ export const createReturnShippingLabel: API.OperationMethod<
   CreateReturnShippingLabelRequest,
   CreateReturnShippingLabelResult,
   CreateReturnShippingLabelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateReturnShippingLabelRequest,
   output: CreateReturnShippingLabelResult,
@@ -1770,7 +1770,7 @@ export const describeAddress: API.OperationMethod<
   DescribeAddressRequest,
   DescribeAddressResult,
   DescribeAddressError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAddressRequest,
   output: DescribeAddressResult,
@@ -1789,21 +1789,21 @@ export const describeAddresses: API.OperationMethod<
   DescribeAddressesRequest,
   DescribeAddressesResult,
   DescribeAddressesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeAddressesRequest,
   ) => stream.Stream<
     DescribeAddressesResult,
     DescribeAddressesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeAddressesRequest,
   ) => stream.Stream<
     Address,
     DescribeAddressesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddressesRequest,
@@ -1825,7 +1825,7 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterRequest,
   DescribeClusterResult,
   DescribeClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeClusterRequest,
   output: DescribeClusterResult,
@@ -1840,7 +1840,7 @@ export const describeJob: API.OperationMethod<
   DescribeJobRequest,
   DescribeJobResult,
   DescribeJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeJobRequest,
   output: DescribeJobResult,
@@ -1858,7 +1858,7 @@ export const describeReturnShippingLabel: API.OperationMethod<
   DescribeReturnShippingLabelRequest,
   DescribeReturnShippingLabelResult,
   DescribeReturnShippingLabelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeReturnShippingLabelRequest,
   output: DescribeReturnShippingLabelResult,
@@ -1897,7 +1897,7 @@ export const getJobManifest: API.OperationMethod<
   GetJobManifestRequest,
   GetJobManifestResult,
   GetJobManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetJobManifestRequest,
   output: GetJobManifestResult,
@@ -1928,7 +1928,7 @@ export const getJobUnlockCode: API.OperationMethod<
   GetJobUnlockCodeRequest,
   GetJobUnlockCodeResult,
   GetJobUnlockCodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetJobUnlockCodeRequest,
   output: GetJobUnlockCodeResult,
@@ -1946,7 +1946,7 @@ export const getSnowballUsage: API.OperationMethod<
   GetSnowballUsageRequest,
   GetSnowballUsageResult,
   GetSnowballUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSnowballUsageRequest,
   output: GetSnowballUsageResult,
@@ -1964,7 +1964,7 @@ export const getSoftwareUpdates: API.OperationMethod<
   GetSoftwareUpdatesRequest,
   GetSoftwareUpdatesResult,
   GetSoftwareUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSoftwareUpdatesRequest,
   output: GetSoftwareUpdatesResult,
@@ -1983,21 +1983,21 @@ export const listClusterJobs: API.OperationMethod<
   ListClusterJobsRequest,
   ListClusterJobsResult,
   ListClusterJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListClusterJobsRequest,
   ) => stream.Stream<
     ListClusterJobsResult,
     ListClusterJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListClusterJobsRequest,
   ) => stream.Stream<
     JobListEntry,
     ListClusterJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClusterJobsRequest,
@@ -2020,21 +2020,21 @@ export const listClusters: API.OperationMethod<
   ListClustersRequest,
   ListClustersResult,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListClustersRequest,
   ) => stream.Stream<
     ListClustersResult,
     ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListClustersRequest,
   ) => stream.Stream<
     ClusterListEntry,
     ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
@@ -2061,21 +2061,21 @@ export const listCompatibleImages: API.OperationMethod<
   ListCompatibleImagesRequest,
   ListCompatibleImagesResult,
   ListCompatibleImagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCompatibleImagesRequest,
   ) => stream.Stream<
     ListCompatibleImagesResult,
     ListCompatibleImagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCompatibleImagesRequest,
   ) => stream.Stream<
     CompatibleImage,
     ListCompatibleImagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCompatibleImagesRequest,
@@ -2100,21 +2100,21 @@ export const listJobs: API.OperationMethod<
   ListJobsRequest,
   ListJobsResult,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListJobsRequest,
   ) => stream.Stream<
     ListJobsResult,
     ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListJobsRequest,
   ) => stream.Stream<
     JobListEntry,
     ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
@@ -2138,21 +2138,21 @@ export const listLongTermPricing: API.OperationMethod<
   ListLongTermPricingRequest,
   ListLongTermPricingResult,
   ListLongTermPricingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLongTermPricingRequest,
   ) => stream.Stream<
     ListLongTermPricingResult,
     ListLongTermPricingError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLongTermPricingRequest,
   ) => stream.Stream<
     LongTermPricingListEntry,
     ListLongTermPricingError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLongTermPricingRequest,
@@ -2173,21 +2173,21 @@ export const listPickupLocations: API.OperationMethod<
   ListPickupLocationsRequest,
   ListPickupLocationsResult,
   ListPickupLocationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPickupLocationsRequest,
   ) => stream.Stream<
     ListPickupLocationsResult,
     ListPickupLocationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPickupLocationsRequest,
   ) => stream.Stream<
     unknown,
     ListPickupLocationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPickupLocationsRequest,
@@ -2211,7 +2211,7 @@ export const listServiceVersions: API.OperationMethod<
   ListServiceVersionsRequest,
   ListServiceVersionsResult,
   ListServiceVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListServiceVersionsRequest,
   output: ListServiceVersionsResult,
@@ -2234,7 +2234,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterRequest,
   UpdateClusterResult,
   UpdateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResult,
@@ -2263,7 +2263,7 @@ export const updateJob: API.OperationMethod<
   UpdateJobRequest,
   UpdateJobResult,
   UpdateJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateJobRequest,
   output: UpdateJobResult,
@@ -2287,7 +2287,7 @@ export const updateJobShipmentState: API.OperationMethod<
   UpdateJobShipmentStateRequest,
   UpdateJobShipmentStateResult,
   UpdateJobShipmentStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateJobShipmentStateRequest,
   output: UpdateJobShipmentStateResult,
@@ -2303,7 +2303,7 @@ export const updateLongTermPricing: API.OperationMethod<
   UpdateLongTermPricingRequest,
   UpdateLongTermPricingResult,
   UpdateLongTermPricingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLongTermPricingRequest,
   output: UpdateLongTermPricingResult,

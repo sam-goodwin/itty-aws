@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace(
   "http://elasticloadbalancing.amazonaws.com/doc/2012-06-01/",
 );
@@ -1560,7 +1560,7 @@ export const addTags: API.OperationMethod<
   AddTagsInput,
   AddTagsOutput,
   AddTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTagsInput,
   output: AddTagsOutput,
@@ -1585,7 +1585,7 @@ export const applySecurityGroupsToLoadBalancer: API.OperationMethod<
   ApplySecurityGroupsToLoadBalancerInput,
   ApplySecurityGroupsToLoadBalancerOutput,
   ApplySecurityGroupsToLoadBalancerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplySecurityGroupsToLoadBalancerInput,
   output: ApplySecurityGroupsToLoadBalancerOutput,
@@ -1612,7 +1612,7 @@ export const attachLoadBalancerToSubnets: API.OperationMethod<
   AttachLoadBalancerToSubnetsInput,
   AttachLoadBalancerToSubnetsOutput,
   AttachLoadBalancerToSubnetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachLoadBalancerToSubnetsInput,
   output: AttachLoadBalancerToSubnetsOutput,
@@ -1636,7 +1636,7 @@ export const configureHealthCheck: API.OperationMethod<
   ConfigureHealthCheckInput,
   ConfigureHealthCheckOutput,
   ConfigureHealthCheckError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConfigureHealthCheckInput,
   output: ConfigureHealthCheckOutput,
@@ -1666,7 +1666,7 @@ export const createAppCookieStickinessPolicy: API.OperationMethod<
   CreateAppCookieStickinessPolicyInput,
   CreateAppCookieStickinessPolicyOutput,
   CreateAppCookieStickinessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppCookieStickinessPolicyInput,
   output: CreateAppCookieStickinessPolicyOutput,
@@ -1698,7 +1698,7 @@ export const createLBCookieStickinessPolicy: API.OperationMethod<
   CreateLBCookieStickinessPolicyInput,
   CreateLBCookieStickinessPolicyOutput,
   CreateLBCookieStickinessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLBCookieStickinessPolicyInput,
   output: CreateLBCookieStickinessPolicyOutput,
@@ -1744,7 +1744,7 @@ export const createLoadBalancer: API.OperationMethod<
   CreateAccessPointInput,
   CreateAccessPointOutput,
   CreateLoadBalancerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessPointInput,
   output: CreateAccessPointOutput,
@@ -1780,7 +1780,7 @@ export const createLoadBalancerListeners: API.OperationMethod<
   CreateLoadBalancerListenerInput,
   CreateLoadBalancerListenerOutput,
   CreateLoadBalancerListenersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerListenerInput,
   output: CreateLoadBalancerListenerOutput,
@@ -1808,7 +1808,7 @@ export const createLoadBalancerPolicy: API.OperationMethod<
   CreateLoadBalancerPolicyInput,
   CreateLoadBalancerPolicyOutput,
   CreateLoadBalancerPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerPolicyInput,
   output: CreateLoadBalancerPolicyOutput,
@@ -1833,7 +1833,7 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteAccessPointInput,
   DeleteAccessPointOutput,
   DeleteLoadBalancerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPointInput,
   output: DeleteAccessPointOutput,
@@ -1849,7 +1849,7 @@ export const deleteLoadBalancerListeners: API.OperationMethod<
   DeleteLoadBalancerListenerInput,
   DeleteLoadBalancerListenerOutput,
   DeleteLoadBalancerListenersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerListenerInput,
   output: DeleteLoadBalancerListenerOutput,
@@ -1866,7 +1866,7 @@ export const deleteLoadBalancerPolicy: API.OperationMethod<
   DeleteLoadBalancerPolicyInput,
   DeleteLoadBalancerPolicyOutput,
   DeleteLoadBalancerPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerPolicyInput,
   output: DeleteLoadBalancerPolicyOutput,
@@ -1888,7 +1888,7 @@ export const deregisterInstancesFromLoadBalancer: API.OperationMethod<
   DeregisterEndPointsInput,
   DeregisterEndPointsOutput,
   DeregisterInstancesFromLoadBalancerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeregisterEndPointsInput,
   output: DeregisterEndPointsOutput,
@@ -1905,7 +1905,7 @@ export const describeAccountLimits: API.OperationMethod<
   DescribeAccountLimitsInput,
   DescribeAccountLimitsOutput,
   DescribeAccountLimitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
@@ -1922,7 +1922,7 @@ export const describeInstanceHealth: API.OperationMethod<
   DescribeEndPointStateInput,
   DescribeEndPointStateOutput,
   DescribeInstanceHealthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEndPointStateInput,
   output: DescribeEndPointStateOutput,
@@ -1939,7 +1939,7 @@ export const describeLoadBalancerAttributes: API.OperationMethod<
   DescribeLoadBalancerAttributesInput,
   DescribeLoadBalancerAttributesOutput,
   DescribeLoadBalancerAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLoadBalancerAttributesInput,
   output: DescribeLoadBalancerAttributesOutput,
@@ -1964,7 +1964,7 @@ export const describeLoadBalancerPolicies: API.OperationMethod<
   DescribeLoadBalancerPoliciesInput,
   DescribeLoadBalancerPoliciesOutput,
   DescribeLoadBalancerPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLoadBalancerPoliciesInput,
   output: DescribeLoadBalancerPoliciesOutput,
@@ -1989,7 +1989,7 @@ export const describeLoadBalancerPolicyTypes: API.OperationMethod<
   DescribeLoadBalancerPolicyTypesInput,
   DescribeLoadBalancerPolicyTypesOutput,
   DescribeLoadBalancerPolicyTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLoadBalancerPolicyTypesInput,
   output: DescribeLoadBalancerPolicyTypesOutput,
@@ -2006,21 +2006,21 @@ export const describeLoadBalancers: API.OperationMethod<
   DescribeAccessPointsInput,
   DescribeAccessPointsOutput,
   DescribeLoadBalancersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeAccessPointsInput,
   ) => stream.Stream<
     DescribeAccessPointsOutput,
     DescribeLoadBalancersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeAccessPointsInput,
   ) => stream.Stream<
     LoadBalancerDescription,
     DescribeLoadBalancersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccessPointsInput,
@@ -2040,7 +2040,7 @@ export const describeTags: API.OperationMethod<
   DescribeTagsInput,
   DescribeTagsOutput,
   DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTagsInput,
   output: DescribeTagsOutput,
@@ -2061,7 +2061,7 @@ export const detachLoadBalancerFromSubnets: API.OperationMethod<
   DetachLoadBalancerFromSubnetsInput,
   DetachLoadBalancerFromSubnetsOutput,
   DetachLoadBalancerFromSubnetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachLoadBalancerFromSubnetsInput,
   output: DetachLoadBalancerFromSubnetsOutput,
@@ -2089,7 +2089,7 @@ export const disableAvailabilityZonesForLoadBalancer: API.OperationMethod<
   RemoveAvailabilityZonesInput,
   RemoveAvailabilityZonesOutput,
   DisableAvailabilityZonesForLoadBalancerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAvailabilityZonesInput,
   output: RemoveAvailabilityZonesOutput,
@@ -2112,7 +2112,7 @@ export const enableAvailabilityZonesForLoadBalancer: API.OperationMethod<
   AddAvailabilityZonesInput,
   AddAvailabilityZonesOutput,
   EnableAvailabilityZonesForLoadBalancerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddAvailabilityZonesInput,
   output: AddAvailabilityZonesOutput,
@@ -2144,7 +2144,7 @@ export const modifyLoadBalancerAttributes: API.OperationMethod<
   ModifyLoadBalancerAttributesInput,
   ModifyLoadBalancerAttributesOutput,
   ModifyLoadBalancerAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyLoadBalancerAttributesInput,
   output: ModifyLoadBalancerAttributesOutput,
@@ -2183,7 +2183,7 @@ export const registerInstancesWithLoadBalancer: API.OperationMethod<
   RegisterEndPointsInput,
   RegisterEndPointsOutput,
   RegisterInstancesWithLoadBalancerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterEndPointsInput,
   output: RegisterEndPointsOutput,
@@ -2197,7 +2197,7 @@ export const removeTags: API.OperationMethod<
   RemoveTagsInput,
   RemoveTagsOutput,
   RemoveTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
@@ -2221,7 +2221,7 @@ export const setLoadBalancerListenerSSLCertificate: API.OperationMethod<
   SetLoadBalancerListenerSSLCertificateInput,
   SetLoadBalancerListenerSSLCertificateOutput,
   SetLoadBalancerListenerSSLCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLoadBalancerListenerSSLCertificateInput,
   output: SetLoadBalancerListenerSSLCertificateOutput,
@@ -2257,7 +2257,7 @@ export const setLoadBalancerPoliciesForBackendServer: API.OperationMethod<
   SetLoadBalancerPoliciesForBackendServerInput,
   SetLoadBalancerPoliciesForBackendServerOutput,
   SetLoadBalancerPoliciesForBackendServerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLoadBalancerPoliciesForBackendServerInput,
   output: SetLoadBalancerPoliciesForBackendServerOutput,
@@ -2288,7 +2288,7 @@ export const setLoadBalancerPoliciesOfListener: API.OperationMethod<
   SetLoadBalancerPoliciesOfListenerInput,
   SetLoadBalancerPoliciesOfListenerOutput,
   SetLoadBalancerPoliciesOfListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLoadBalancerPoliciesOfListenerInput,
   output: SetLoadBalancerPoliciesOfListenerOutput,

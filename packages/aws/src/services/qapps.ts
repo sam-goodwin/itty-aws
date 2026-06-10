@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "QApps",
   serviceShapeName: "QAppsService",
@@ -2259,7 +2259,7 @@ export const associateLibraryItemReview: API.OperationMethod<
   AssociateLibraryItemReviewInput,
   AssociateLibraryItemReviewResponse,
   AssociateLibraryItemReviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateLibraryItemReviewInput,
   output: AssociateLibraryItemReviewResponse,
@@ -2290,7 +2290,7 @@ export const associateQAppWithUser: API.OperationMethod<
   AssociateQAppWithUserInput,
   AssociateQAppWithUserResponse,
   AssociateQAppWithUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateQAppWithUserInput,
   output: AssociateQAppWithUserResponse,
@@ -2320,7 +2320,7 @@ export const batchCreateCategory: API.OperationMethod<
   BatchCreateCategoryInput,
   BatchCreateCategoryResponse,
   BatchCreateCategoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateCategoryInput,
   output: BatchCreateCategoryResponse,
@@ -2350,7 +2350,7 @@ export const batchDeleteCategory: API.OperationMethod<
   BatchDeleteCategoryInput,
   BatchDeleteCategoryResponse,
   BatchDeleteCategoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteCategoryInput,
   output: BatchDeleteCategoryResponse,
@@ -2380,7 +2380,7 @@ export const batchUpdateCategory: API.OperationMethod<
   BatchUpdateCategoryInput,
   BatchUpdateCategoryResponse,
   BatchUpdateCategoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateCategoryInput,
   output: BatchUpdateCategoryResponse,
@@ -2410,7 +2410,7 @@ export const createLibraryItem: API.OperationMethod<
   CreateLibraryItemInput,
   CreateLibraryItemOutput,
   CreateLibraryItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLibraryItemInput,
   output: CreateLibraryItemOutput,
@@ -2440,7 +2440,7 @@ export const createPresignedUrl: API.OperationMethod<
   CreatePresignedUrlInput,
   CreatePresignedUrlOutput,
   CreatePresignedUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePresignedUrlInput,
   output: CreatePresignedUrlOutput,
@@ -2469,7 +2469,7 @@ export const createQApp: API.OperationMethod<
   CreateQAppInput,
   CreateQAppOutput,
   CreateQAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateQAppInput,
   output: CreateQAppOutput,
@@ -2500,7 +2500,7 @@ export const deleteLibraryItem: API.OperationMethod<
   DeleteLibraryItemInput,
   DeleteLibraryItemResponse,
   DeleteLibraryItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLibraryItemInput,
   output: DeleteLibraryItemResponse,
@@ -2529,7 +2529,7 @@ export const deleteQApp: API.OperationMethod<
   DeleteQAppInput,
   DeleteQAppResponse,
   DeleteQAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteQAppInput,
   output: DeleteQAppResponse,
@@ -2557,7 +2557,7 @@ export const describeQAppPermissions: API.OperationMethod<
   DescribeQAppPermissionsInput,
   DescribeQAppPermissionsOutput,
   DescribeQAppPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeQAppPermissionsInput,
   output: DescribeQAppPermissionsOutput,
@@ -2587,7 +2587,7 @@ export const disassociateLibraryItemReview: API.OperationMethod<
   DisassociateLibraryItemReviewInput,
   DisassociateLibraryItemReviewResponse,
   DisassociateLibraryItemReviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateLibraryItemReviewInput,
   output: DisassociateLibraryItemReviewResponse,
@@ -2617,7 +2617,7 @@ export const disassociateQAppFromUser: API.OperationMethod<
   DisassociateQAppFromUserInput,
   DisassociateQAppFromUserResponse,
   DisassociateQAppFromUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateQAppFromUserInput,
   output: DisassociateQAppFromUserResponse,
@@ -2647,7 +2647,7 @@ export const exportQAppSessionData: API.OperationMethod<
   ExportQAppSessionDataInput,
   ExportQAppSessionDataOutput,
   ExportQAppSessionDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportQAppSessionDataInput,
   output: ExportQAppSessionDataOutput,
@@ -2677,7 +2677,7 @@ export const getLibraryItem: API.OperationMethod<
   GetLibraryItemInput,
   GetLibraryItemOutput,
   GetLibraryItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLibraryItemInput,
   output: GetLibraryItemOutput,
@@ -2705,7 +2705,7 @@ export const getQApp: API.OperationMethod<
   GetQAppInput,
   GetQAppOutput,
   GetQAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQAppInput,
   output: GetQAppOutput,
@@ -2734,7 +2734,7 @@ export const getQAppSession: API.OperationMethod<
   GetQAppSessionInput,
   GetQAppSessionOutput,
   GetQAppSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQAppSessionInput,
   output: GetQAppSessionOutput,
@@ -2764,7 +2764,7 @@ export const getQAppSessionMetadata: API.OperationMethod<
   GetQAppSessionMetadataInput,
   GetQAppSessionMetadataOutput,
   GetQAppSessionMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQAppSessionMetadataInput,
   output: GetQAppSessionMetadataOutput,
@@ -2795,7 +2795,7 @@ export const importDocument: API.OperationMethod<
   ImportDocumentInput,
   ImportDocumentOutput,
   ImportDocumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportDocumentInput,
   output: ImportDocumentOutput,
@@ -2825,7 +2825,7 @@ export const listCategories: API.OperationMethod<
   ListCategoriesInput,
   ListCategoriesOutput,
   ListCategoriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCategoriesInput,
   output: ListCategoriesOutput,
@@ -2853,21 +2853,21 @@ export const listLibraryItems: API.OperationMethod<
   ListLibraryItemsInput,
   ListLibraryItemsOutput,
   ListLibraryItemsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLibraryItemsInput,
   ) => stream.Stream<
     ListLibraryItemsOutput,
     ListLibraryItemsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLibraryItemsInput,
   ) => stream.Stream<
     LibraryItemMember,
     ListLibraryItemsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLibraryItemsInput,
@@ -2901,21 +2901,21 @@ export const listQApps: API.OperationMethod<
   ListQAppsInput,
   ListQAppsOutput,
   ListQAppsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListQAppsInput,
   ) => stream.Stream<
     ListQAppsOutput,
     ListQAppsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListQAppsInput,
   ) => stream.Stream<
     UserAppItem,
     ListQAppsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQAppsInput,
@@ -2950,7 +2950,7 @@ export const listQAppSessionData: API.OperationMethod<
   ListQAppSessionDataInput,
   ListQAppSessionDataOutput,
   ListQAppSessionDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListQAppSessionDataInput,
   output: ListQAppSessionDataOutput,
@@ -2978,7 +2978,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3004,7 +3004,7 @@ export const predictQApp: API.OperationMethod<
   PredictQAppInput,
   PredictQAppOutput,
   PredictQAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PredictQAppInput,
   output: PredictQAppOutput,
@@ -3034,7 +3034,7 @@ export const startQAppSession: API.OperationMethod<
   StartQAppSessionInput,
   StartQAppSessionOutput,
   StartQAppSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartQAppSessionInput,
   output: StartQAppSessionOutput,
@@ -3064,7 +3064,7 @@ export const stopQAppSession: API.OperationMethod<
   StopQAppSessionInput,
   StopQAppSessionResponse,
   StopQAppSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopQAppSessionInput,
   output: StopQAppSessionResponse,
@@ -3093,7 +3093,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3120,7 +3120,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3148,7 +3148,7 @@ export const updateLibraryItem: API.OperationMethod<
   UpdateLibraryItemInput,
   UpdateLibraryItemOutput,
   UpdateLibraryItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLibraryItemInput,
   output: UpdateLibraryItemOutput,
@@ -3178,7 +3178,7 @@ export const updateLibraryItemMetadata: API.OperationMethod<
   UpdateLibraryItemMetadataInput,
   UpdateLibraryItemMetadataResponse,
   UpdateLibraryItemMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLibraryItemMetadataInput,
   output: UpdateLibraryItemMetadataResponse,
@@ -3208,7 +3208,7 @@ export const updateQApp: API.OperationMethod<
   UpdateQAppInput,
   UpdateQAppOutput,
   UpdateQAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQAppInput,
   output: UpdateQAppOutput,
@@ -3237,7 +3237,7 @@ export const updateQAppPermissions: API.OperationMethod<
   UpdateQAppPermissionsInput,
   UpdateQAppPermissionsOutput,
   UpdateQAppPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQAppPermissionsInput,
   output: UpdateQAppPermissionsOutput,
@@ -3266,7 +3266,7 @@ export const updateQAppSession: API.OperationMethod<
   UpdateQAppSessionInput,
   UpdateQAppSessionOutput,
   UpdateQAppSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQAppSessionInput,
   output: UpdateQAppSessionOutput,
@@ -3296,7 +3296,7 @@ export const updateQAppSessionMetadata: API.OperationMethod<
   UpdateQAppSessionMetadataInput,
   UpdateQAppSessionMetadataOutput,
   UpdateQAppSessionMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQAppSessionMetadataInput,
   output: UpdateQAppSessionMetadataOutput,

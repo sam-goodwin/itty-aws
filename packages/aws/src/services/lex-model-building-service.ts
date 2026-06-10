@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Lex Model Building Service",
   serviceShapeName: "AWSDeepSenseModelBuildingService",
@@ -2717,7 +2717,7 @@ export const createBotVersion: API.OperationMethod<
   CreateBotVersionRequest,
   CreateBotVersionResponse,
   CreateBotVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBotVersionRequest,
   output: CreateBotVersionResponse,
@@ -2759,7 +2759,7 @@ export const createIntentVersion: API.OperationMethod<
   CreateIntentVersionRequest,
   CreateIntentVersionResponse,
   CreateIntentVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIntentVersionRequest,
   output: CreateIntentVersionResponse,
@@ -2801,7 +2801,7 @@ export const createSlotTypeVersion: API.OperationMethod<
   CreateSlotTypeVersionRequest,
   CreateSlotTypeVersionResponse,
   CreateSlotTypeVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSlotTypeVersionRequest,
   output: CreateSlotTypeVersionResponse,
@@ -2847,7 +2847,7 @@ export const deleteBot: API.OperationMethod<
   DeleteBotRequest,
   DeleteBotResponse,
   DeleteBotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBotRequest,
   output: DeleteBotResponse,
@@ -2884,7 +2884,7 @@ export const deleteBotAlias: API.OperationMethod<
   DeleteBotAliasRequest,
   DeleteBotAliasResponse,
   DeleteBotAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBotAliasRequest,
   output: DeleteBotAliasResponse,
@@ -2915,7 +2915,7 @@ export const deleteBotChannelAssociation: API.OperationMethod<
   DeleteBotChannelAssociationRequest,
   DeleteBotChannelAssociationResponse,
   DeleteBotChannelAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBotChannelAssociationRequest,
   output: DeleteBotChannelAssociationResponse,
@@ -2946,7 +2946,7 @@ export const deleteBotVersion: API.OperationMethod<
   DeleteBotVersionRequest,
   DeleteBotVersionResponse,
   DeleteBotVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBotVersionRequest,
   output: DeleteBotVersionResponse,
@@ -2991,7 +2991,7 @@ export const deleteIntent: API.OperationMethod<
   DeleteIntentRequest,
   DeleteIntentResponse,
   DeleteIntentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIntentRequest,
   output: DeleteIntentResponse,
@@ -3023,7 +3023,7 @@ export const deleteIntentVersion: API.OperationMethod<
   DeleteIntentVersionRequest,
   DeleteIntentVersionResponse,
   DeleteIntentVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIntentVersionRequest,
   output: DeleteIntentVersionResponse,
@@ -3068,7 +3068,7 @@ export const deleteSlotType: API.OperationMethod<
   DeleteSlotTypeRequest,
   DeleteSlotTypeResponse,
   DeleteSlotTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSlotTypeRequest,
   output: DeleteSlotTypeResponse,
@@ -3100,7 +3100,7 @@ export const deleteSlotTypeVersion: API.OperationMethod<
   DeleteSlotTypeVersionRequest,
   DeleteSlotTypeVersionResponse,
   DeleteSlotTypeVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSlotTypeVersionRequest,
   output: DeleteSlotTypeVersionResponse,
@@ -3140,7 +3140,7 @@ export const deleteUtterances: API.OperationMethod<
   DeleteUtterancesRequest,
   DeleteUtterancesResponse,
   DeleteUtterancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUtterancesRequest,
   output: DeleteUtterancesResponse,
@@ -3168,7 +3168,7 @@ export const getBot: API.OperationMethod<
   GetBotRequest,
   GetBotResponse,
   GetBotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBotRequest,
   output: GetBotResponse,
@@ -3196,7 +3196,7 @@ export const getBotAlias: API.OperationMethod<
   GetBotAliasRequest,
   GetBotAliasResponse,
   GetBotAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBotAliasRequest,
   output: GetBotAliasResponse,
@@ -3222,21 +3222,21 @@ export const getBotAliases: API.OperationMethod<
   GetBotAliasesRequest,
   GetBotAliasesResponse,
   GetBotAliasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetBotAliasesRequest,
   ) => stream.Stream<
     GetBotAliasesResponse,
     GetBotAliasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetBotAliasesRequest,
   ) => stream.Stream<
     unknown,
     GetBotAliasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetBotAliasesRequest,
@@ -3269,7 +3269,7 @@ export const getBotChannelAssociation: API.OperationMethod<
   GetBotChannelAssociationRequest,
   GetBotChannelAssociationResponse,
   GetBotChannelAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBotChannelAssociationRequest,
   output: GetBotChannelAssociationResponse,
@@ -3297,21 +3297,21 @@ export const getBotChannelAssociations: API.OperationMethod<
   GetBotChannelAssociationsRequest,
   GetBotChannelAssociationsResponse,
   GetBotChannelAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetBotChannelAssociationsRequest,
   ) => stream.Stream<
     GetBotChannelAssociationsResponse,
     GetBotChannelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetBotChannelAssociationsRequest,
   ) => stream.Stream<
     unknown,
     GetBotChannelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetBotChannelAssociationsRequest,
@@ -3351,21 +3351,21 @@ export const getBots: API.OperationMethod<
   GetBotsRequest,
   GetBotsResponse,
   GetBotsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetBotsRequest,
   ) => stream.Stream<
     GetBotsResponse,
     GetBotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetBotsRequest,
   ) => stream.Stream<
     unknown,
     GetBotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetBotsRequest,
@@ -3408,21 +3408,21 @@ export const getBotVersions: API.OperationMethod<
   GetBotVersionsRequest,
   GetBotVersionsResponse,
   GetBotVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetBotVersionsRequest,
   ) => stream.Stream<
     GetBotVersionsResponse,
     GetBotVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetBotVersionsRequest,
   ) => stream.Stream<
     unknown,
     GetBotVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetBotVersionsRequest,
@@ -3455,7 +3455,7 @@ export const getBuiltinIntent: API.OperationMethod<
   GetBuiltinIntentRequest,
   GetBuiltinIntentResponse,
   GetBuiltinIntentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuiltinIntentRequest,
   output: GetBuiltinIntentResponse,
@@ -3482,21 +3482,21 @@ export const getBuiltinIntents: API.OperationMethod<
   GetBuiltinIntentsRequest,
   GetBuiltinIntentsResponse,
   GetBuiltinIntentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetBuiltinIntentsRequest,
   ) => stream.Stream<
     GetBuiltinIntentsResponse,
     GetBuiltinIntentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetBuiltinIntentsRequest,
   ) => stream.Stream<
     unknown,
     GetBuiltinIntentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetBuiltinIntentsRequest,
@@ -3531,21 +3531,21 @@ export const getBuiltinSlotTypes: API.OperationMethod<
   GetBuiltinSlotTypesRequest,
   GetBuiltinSlotTypesResponse,
   GetBuiltinSlotTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetBuiltinSlotTypesRequest,
   ) => stream.Stream<
     GetBuiltinSlotTypesResponse,
     GetBuiltinSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetBuiltinSlotTypesRequest,
   ) => stream.Stream<
     unknown,
     GetBuiltinSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetBuiltinSlotTypesRequest,
@@ -3574,7 +3574,7 @@ export const getExport: API.OperationMethod<
   GetExportRequest,
   GetExportResponse,
   GetExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetExportRequest,
   output: GetExportResponse,
@@ -3599,7 +3599,7 @@ export const getImport: API.OperationMethod<
   GetImportRequest,
   GetImportResponse,
   GetImportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetImportRequest,
   output: GetImportResponse,
@@ -3627,7 +3627,7 @@ export const getIntent: API.OperationMethod<
   GetIntentRequest,
   GetIntentResponse,
   GetIntentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIntentRequest,
   output: GetIntentResponse,
@@ -3662,21 +3662,21 @@ export const getIntents: API.OperationMethod<
   GetIntentsRequest,
   GetIntentsResponse,
   GetIntentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetIntentsRequest,
   ) => stream.Stream<
     GetIntentsResponse,
     GetIntentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetIntentsRequest,
   ) => stream.Stream<
     unknown,
     GetIntentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetIntentsRequest,
@@ -3719,21 +3719,21 @@ export const getIntentVersions: API.OperationMethod<
   GetIntentVersionsRequest,
   GetIntentVersionsResponse,
   GetIntentVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetIntentVersionsRequest,
   ) => stream.Stream<
     GetIntentVersionsResponse,
     GetIntentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetIntentVersionsRequest,
   ) => stream.Stream<
     unknown,
     GetIntentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetIntentVersionsRequest,
@@ -3765,7 +3765,7 @@ export const getMigration: API.OperationMethod<
   GetMigrationRequest,
   GetMigrationResponse,
   GetMigrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMigrationRequest,
   output: GetMigrationResponse,
@@ -3788,21 +3788,21 @@ export const getMigrations: API.OperationMethod<
   GetMigrationsRequest,
   GetMigrationsResponse,
   GetMigrationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetMigrationsRequest,
   ) => stream.Stream<
     GetMigrationsResponse,
     GetMigrationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetMigrationsRequest,
   ) => stream.Stream<
     unknown,
     GetMigrationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetMigrationsRequest,
@@ -3836,7 +3836,7 @@ export const getSlotType: API.OperationMethod<
   GetSlotTypeRequest,
   GetSlotTypeResponse,
   GetSlotTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSlotTypeRequest,
   output: GetSlotTypeResponse,
@@ -3871,21 +3871,21 @@ export const getSlotTypes: API.OperationMethod<
   GetSlotTypesRequest,
   GetSlotTypesResponse,
   GetSlotTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetSlotTypesRequest,
   ) => stream.Stream<
     GetSlotTypesResponse,
     GetSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetSlotTypesRequest,
   ) => stream.Stream<
     unknown,
     GetSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetSlotTypesRequest,
@@ -3928,21 +3928,21 @@ export const getSlotTypeVersions: API.OperationMethod<
   GetSlotTypeVersionsRequest,
   GetSlotTypeVersionsResponse,
   GetSlotTypeVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetSlotTypeVersionsRequest,
   ) => stream.Stream<
     GetSlotTypeVersionsResponse,
     GetSlotTypeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetSlotTypeVersionsRequest,
   ) => stream.Stream<
     unknown,
     GetSlotTypeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetSlotTypeVersionsRequest,
@@ -3999,7 +3999,7 @@ export const getUtterancesView: API.OperationMethod<
   GetUtterancesViewRequest,
   GetUtterancesViewResponse,
   GetUtterancesViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUtterancesViewRequest,
   output: GetUtterancesViewResponse,
@@ -4023,7 +4023,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -4066,7 +4066,7 @@ export const putBot: API.OperationMethod<
   PutBotRequest,
   PutBotResponse,
   PutBotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBotRequest,
   output: PutBotResponse,
@@ -4098,7 +4098,7 @@ export const putBotAlias: API.OperationMethod<
   PutBotAliasRequest,
   PutBotAliasResponse,
   PutBotAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBotAliasRequest,
   output: PutBotAliasResponse,
@@ -4175,7 +4175,7 @@ export const putIntent: API.OperationMethod<
   PutIntentRequest,
   PutIntentResponse,
   PutIntentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutIntentRequest,
   output: PutIntentResponse,
@@ -4218,7 +4218,7 @@ export const putSlotType: API.OperationMethod<
   PutSlotTypeRequest,
   PutSlotTypeResponse,
   PutSlotTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSlotTypeRequest,
   output: PutSlotTypeResponse,
@@ -4242,7 +4242,7 @@ export const startImport: API.OperationMethod<
   StartImportRequest,
   StartImportResponse,
   StartImportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartImportRequest,
   output: StartImportResponse,
@@ -4270,7 +4270,7 @@ export const startMigration: API.OperationMethod<
   StartMigrationRequest,
   StartMigrationResponse,
   StartMigrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartMigrationRequest,
   output: StartMigrationResponse,
@@ -4297,7 +4297,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4323,7 +4323,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

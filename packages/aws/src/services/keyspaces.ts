@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Keyspaces",
   serviceShapeName: "KeyspacesService",
@@ -1123,7 +1123,7 @@ export const createKeyspace: API.OperationMethod<
   CreateKeyspaceRequest,
   CreateKeyspaceResponse,
   CreateKeyspaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKeyspaceRequest,
   output: CreateKeyspaceResponse,
@@ -1154,7 +1154,7 @@ export const createTable: API.OperationMethod<
   CreateTableRequest,
   CreateTableResponse,
   CreateTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTableRequest,
   output: CreateTableResponse,
@@ -1186,7 +1186,7 @@ export const createType: API.OperationMethod<
   CreateTypeRequest,
   CreateTypeResponse,
   CreateTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTypeRequest,
   output: CreateTypeResponse,
@@ -1214,7 +1214,7 @@ export const deleteKeyspace: API.OperationMethod<
   DeleteKeyspaceRequest,
   DeleteKeyspaceResponse,
   DeleteKeyspaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKeyspaceRequest,
   output: DeleteKeyspaceResponse,
@@ -1242,7 +1242,7 @@ export const deleteTable: API.OperationMethod<
   DeleteTableRequest,
   DeleteTableResponse,
   DeleteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTableRequest,
   output: DeleteTableResponse,
@@ -1272,7 +1272,7 @@ export const deleteType: API.OperationMethod<
   DeleteTypeRequest,
   DeleteTypeResponse,
   DeleteTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTypeRequest,
   output: DeleteTypeResponse,
@@ -1299,7 +1299,7 @@ export const getKeyspace: API.OperationMethod<
   GetKeyspaceRequest,
   GetKeyspaceResponse,
   GetKeyspaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKeyspaceRequest,
   output: GetKeyspaceResponse,
@@ -1327,7 +1327,7 @@ export const getTable: API.OperationMethod<
   GetTableRequest,
   GetTableResponse,
   GetTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTableRequest,
   output: GetTableResponse,
@@ -1363,7 +1363,7 @@ export const getTableAutoScalingSettings: API.OperationMethod<
   GetTableAutoScalingSettingsRequest,
   GetTableAutoScalingSettingsResponse,
   GetTableAutoScalingSettingsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTableAutoScalingSettingsRequest,
   output: GetTableAutoScalingSettingsResponse,
@@ -1391,7 +1391,7 @@ export const getType: API.OperationMethod<
   GetTypeRequest,
   GetTypeResponse,
   GetTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTypeRequest,
   output: GetTypeResponse,
@@ -1417,21 +1417,21 @@ export const listKeyspaces: API.OperationMethod<
   ListKeyspacesRequest,
   ListKeyspacesResponse,
   ListKeyspacesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKeyspacesRequest,
   ) => stream.Stream<
     ListKeyspacesResponse,
     ListKeyspacesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKeyspacesRequest,
   ) => stream.Stream<
     KeyspaceSummary,
     ListKeyspacesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKeyspacesRequest,
@@ -1466,21 +1466,21 @@ export const listTables: API.OperationMethod<
   ListTablesRequest,
   ListTablesResponse,
   ListTablesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTablesRequest,
   ) => stream.Stream<
     ListTablesResponse,
     ListTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTablesRequest,
   ) => stream.Stream<
     TableSummary,
     ListTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
@@ -1515,21 +1515,21 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     ListTagsForResourceResponse,
     ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     Tag,
     ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
@@ -1564,21 +1564,21 @@ export const listTypes: API.OperationMethod<
   ListTypesRequest,
   ListTypesResponse,
   ListTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTypesRequest,
   ) => stream.Stream<
     ListTypesResponse,
     ListTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTypesRequest,
   ) => stream.Stream<
     TypeName,
     ListTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTypesRequest,
@@ -1638,7 +1638,7 @@ export const restoreTable: API.OperationMethod<
   RestoreTableRequest,
   RestoreTableResponse,
   RestoreTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreTableRequest,
   output: RestoreTableResponse,
@@ -1668,7 +1668,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1696,7 +1696,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1764,7 +1764,7 @@ export const updateKeyspace: API.OperationMethod<
   UpdateKeyspaceRequest,
   UpdateKeyspaceResponse,
   UpdateKeyspaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKeyspaceRequest,
   output: UpdateKeyspaceResponse,
@@ -1792,7 +1792,7 @@ export const updateTable: API.OperationMethod<
   UpdateTableRequest,
   UpdateTableResponse,
   UpdateTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTableRequest,
   output: UpdateTableResponse,

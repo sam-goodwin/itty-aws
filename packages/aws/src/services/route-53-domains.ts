@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace(
   "https://route53domains.amazonaws.com/doc/2014-05-15/",
@@ -1977,7 +1977,7 @@ export const acceptDomainTransferFromAnotherAwsAccount: API.OperationMethod<
   AcceptDomainTransferFromAnotherAwsAccountRequest,
   AcceptDomainTransferFromAnotherAwsAccountResponse,
   AcceptDomainTransferFromAnotherAwsAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptDomainTransferFromAnotherAwsAccountRequest,
   output: AcceptDomainTransferFromAnotherAwsAccountResponse,
@@ -2011,7 +2011,7 @@ export const associateDelegationSignerToDomain: API.OperationMethod<
   AssociateDelegationSignerToDomainRequest,
   AssociateDelegationSignerToDomainResponse,
   AssociateDelegationSignerToDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateDelegationSignerToDomainRequest,
   output: AssociateDelegationSignerToDomainResponse,
@@ -2043,7 +2043,7 @@ export const cancelDomainTransferToAnotherAwsAccount: API.OperationMethod<
   CancelDomainTransferToAnotherAwsAccountRequest,
   CancelDomainTransferToAnotherAwsAccountResponse,
   CancelDomainTransferToAnotherAwsAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelDomainTransferToAnotherAwsAccountRequest,
   output: CancelDomainTransferToAnotherAwsAccountResponse,
@@ -2062,7 +2062,7 @@ export const checkDomainAvailability: API.OperationMethod<
   CheckDomainAvailabilityRequest,
   CheckDomainAvailabilityResponse,
   CheckDomainAvailabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckDomainAvailabilityRequest,
   output: CheckDomainAvailabilityResponse,
@@ -2079,7 +2079,7 @@ export const checkDomainTransferability: API.OperationMethod<
   CheckDomainTransferabilityRequest,
   CheckDomainTransferabilityResponse,
   CheckDomainTransferabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckDomainTransferabilityRequest,
   output: CheckDomainTransferabilityResponse,
@@ -2114,7 +2114,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainRequest,
   DeleteDomainResponse,
   DeleteDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
@@ -2135,7 +2135,7 @@ export const deleteTagsForDomain: API.OperationMethod<
   DeleteTagsForDomainRequest,
   DeleteTagsForDomainResponse,
   DeleteTagsForDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTagsForDomainRequest,
   output: DeleteTagsForDomainResponse,
@@ -2153,7 +2153,7 @@ export const disableDomainAutoRenew: API.OperationMethod<
   DisableDomainAutoRenewRequest,
   DisableDomainAutoRenewResponse,
   DisableDomainAutoRenewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableDomainAutoRenewRequest,
   output: DisableDomainAutoRenewResponse,
@@ -2178,7 +2178,7 @@ export const disableDomainTransferLock: API.OperationMethod<
   DisableDomainTransferLockRequest,
   DisableDomainTransferLockResponse,
   DisableDomainTransferLockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableDomainTransferLockRequest,
   output: DisableDomainTransferLockResponse,
@@ -2205,7 +2205,7 @@ export const disassociateDelegationSignerFromDomain: API.OperationMethod<
   DisassociateDelegationSignerFromDomainRequest,
   DisassociateDelegationSignerFromDomainResponse,
   DisassociateDelegationSignerFromDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateDelegationSignerFromDomainRequest,
   output: DisassociateDelegationSignerFromDomainResponse,
@@ -2237,7 +2237,7 @@ export const enableDomainAutoRenew: API.OperationMethod<
   EnableDomainAutoRenewRequest,
   EnableDomainAutoRenewResponse,
   EnableDomainAutoRenewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableDomainAutoRenewRequest,
   output: EnableDomainAutoRenewResponse,
@@ -2261,7 +2261,7 @@ export const enableDomainTransferLock: API.OperationMethod<
   EnableDomainTransferLockRequest,
   EnableDomainTransferLockResponse,
   EnableDomainTransferLockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableDomainTransferLockRequest,
   output: EnableDomainTransferLockResponse,
@@ -2290,7 +2290,7 @@ export const getContactReachabilityStatus: API.OperationMethod<
   GetContactReachabilityStatusRequest,
   GetContactReachabilityStatusResponse,
   GetContactReachabilityStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContactReachabilityStatusRequest,
   output: GetContactReachabilityStatusResponse,
@@ -2306,7 +2306,7 @@ export const getDomainDetail: API.OperationMethod<
   GetDomainDetailRequest,
   GetDomainDetailResponse,
   GetDomainDetailError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainDetailRequest,
   output: GetDomainDetailResponse,
@@ -2323,7 +2323,7 @@ export const getDomainSuggestions: API.OperationMethod<
   GetDomainSuggestionsRequest,
   GetDomainSuggestionsResponse,
   GetDomainSuggestionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainSuggestionsRequest,
   output: GetDomainSuggestionsResponse,
@@ -2338,7 +2338,7 @@ export const getOperationDetail: API.OperationMethod<
   GetOperationDetailRequest,
   GetOperationDetailResponse,
   GetOperationDetailError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationDetailRequest,
   output: GetOperationDetailResponse,
@@ -2353,21 +2353,21 @@ export const listDomains: API.OperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDomainsRequest,
   ) => stream.Stream<
     ListDomainsResponse,
     ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDomainsRequest,
   ) => stream.Stream<
     DomainSummary,
     ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
@@ -2391,21 +2391,21 @@ export const listOperations: API.OperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOperationsRequest,
   ) => stream.Stream<
     ListOperationsResponse,
     ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOperationsRequest,
   ) => stream.Stream<
     OperationSummary,
     ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
@@ -2437,21 +2437,21 @@ export const listPrices: API.OperationMethod<
   ListPricesRequest,
   ListPricesResponse,
   ListPricesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPricesRequest,
   ) => stream.Stream<
     ListPricesResponse,
     ListPricesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPricesRequest,
   ) => stream.Stream<
     DomainPrice,
     ListPricesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPricesRequest,
@@ -2480,7 +2480,7 @@ export const listTagsForDomain: API.OperationMethod<
   ListTagsForDomainRequest,
   ListTagsForDomainResponse,
   ListTagsForDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForDomainRequest,
   output: ListTagsForDomainResponse,
@@ -2503,7 +2503,7 @@ export const pushDomain: API.OperationMethod<
   PushDomainRequest,
   PushDomainResponse,
   PushDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PushDomainRequest,
   output: PushDomainResponse,
@@ -2551,7 +2551,7 @@ export const registerDomain: API.OperationMethod<
   RegisterDomainRequest,
   RegisterDomainResponse,
   RegisterDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterDomainRequest,
   output: RegisterDomainResponse,
@@ -2580,7 +2580,7 @@ export const rejectDomainTransferFromAnotherAwsAccount: API.OperationMethod<
   RejectDomainTransferFromAnotherAwsAccountRequest,
   RejectDomainTransferFromAnotherAwsAccountResponse,
   RejectDomainTransferFromAnotherAwsAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectDomainTransferFromAnotherAwsAccountRequest,
   output: RejectDomainTransferFromAnotherAwsAccountResponse,
@@ -2607,7 +2607,7 @@ export const renewDomain: API.OperationMethod<
   RenewDomainRequest,
   RenewDomainResponse,
   RenewDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenewDomainRequest,
   output: RenewDomainResponse,
@@ -2633,7 +2633,7 @@ export const resendContactReachabilityEmail: API.OperationMethod<
   ResendContactReachabilityEmailRequest,
   ResendContactReachabilityEmailResponse,
   ResendContactReachabilityEmailError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResendContactReachabilityEmailRequest,
   output: ResendContactReachabilityEmailResponse,
@@ -2647,7 +2647,7 @@ export const resendOperationAuthorization: API.OperationMethod<
   ResendOperationAuthorizationRequest,
   ResendOperationAuthorizationResponse,
   ResendOperationAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResendOperationAuthorizationRequest,
   output: ResendOperationAuthorizationResponse,
@@ -2665,7 +2665,7 @@ export const retrieveDomainAuthCode: API.OperationMethod<
   RetrieveDomainAuthCodeRequest,
   RetrieveDomainAuthCodeResponse,
   RetrieveDomainAuthCodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveDomainAuthCodeRequest,
   output: RetrieveDomainAuthCodeResponse,
@@ -2719,7 +2719,7 @@ export const transferDomain: API.OperationMethod<
   TransferDomainRequest,
   TransferDomainResponse,
   TransferDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TransferDomainRequest,
   output: TransferDomainResponse,
@@ -2764,7 +2764,7 @@ export const transferDomainToAnotherAwsAccount: API.OperationMethod<
   TransferDomainToAnotherAwsAccountRequest,
   TransferDomainToAnotherAwsAccountResponse,
   TransferDomainToAnotherAwsAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TransferDomainToAnotherAwsAccountRequest,
   output: TransferDomainToAnotherAwsAccountResponse,
@@ -2795,7 +2795,7 @@ export const updateDomainContact: API.OperationMethod<
   UpdateDomainContactRequest,
   UpdateDomainContactResponse,
   UpdateDomainContactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDomainContactRequest,
   output: UpdateDomainContactResponse,
@@ -2841,7 +2841,7 @@ export const updateDomainContactPrivacy: API.OperationMethod<
   UpdateDomainContactPrivacyRequest,
   UpdateDomainContactPrivacyResponse,
   UpdateDomainContactPrivacyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDomainContactPrivacyRequest,
   output: UpdateDomainContactPrivacyResponse,
@@ -2873,7 +2873,7 @@ export const updateDomainNameservers: API.OperationMethod<
   UpdateDomainNameserversRequest,
   UpdateDomainNameserversResponse,
   UpdateDomainNameserversError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDomainNameserversRequest,
   output: UpdateDomainNameserversResponse,
@@ -2900,7 +2900,7 @@ export const updateTagsForDomain: API.OperationMethod<
   UpdateTagsForDomainRequest,
   UpdateTagsForDomainResponse,
   UpdateTagsForDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTagsForDomainRequest,
   output: UpdateTagsForDomainResponse,
@@ -2914,21 +2914,21 @@ export const viewBilling: API.OperationMethod<
   ViewBillingRequest,
   ViewBillingResponse,
   ViewBillingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ViewBillingRequest,
   ) => stream.Stream<
     ViewBillingResponse,
     ViewBillingError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ViewBillingRequest,
   ) => stream.Stream<
     BillingRecord,
     ViewBillingError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ViewBillingRequest,

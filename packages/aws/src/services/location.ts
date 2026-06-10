@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Location",
@@ -3635,7 +3635,7 @@ export const createKey: API.OperationMethod<
   CreateKeyRequest,
   CreateKeyResponse,
   CreateKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKeyRequest,
   output: CreateKeyResponse,
@@ -3664,7 +3664,7 @@ export const describeKey: API.OperationMethod<
   DescribeKeyRequest,
   DescribeKeyResponse,
   DescribeKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeKeyRequest,
   output: DescribeKeyResponse,
@@ -3690,7 +3690,7 @@ export const updateKey: API.OperationMethod<
   UpdateKeyRequest,
   UpdateKeyResponse,
   UpdateKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKeyRequest,
   output: UpdateKeyResponse,
@@ -3718,7 +3718,7 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyRequest,
   DeleteKeyResponse,
   DeleteKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKeyRequest,
   output: DeleteKeyResponse,
@@ -3745,21 +3745,21 @@ export const listKeys: API.OperationMethod<
   ListKeysRequest,
   ListKeysResponse,
   ListKeysError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKeysRequest,
   ) => stream.Stream<
     ListKeysResponse,
     ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKeysRequest,
   ) => stream.Stream<
     ListKeysResponseEntry,
     ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
@@ -3791,7 +3791,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3823,7 +3823,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3849,7 +3849,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3876,7 +3876,7 @@ export const createGeofenceCollection: API.OperationMethod<
   CreateGeofenceCollectionRequest,
   CreateGeofenceCollectionResponse,
   CreateGeofenceCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGeofenceCollectionRequest,
   output: CreateGeofenceCollectionResponse,
@@ -3903,7 +3903,7 @@ export const describeGeofenceCollection: API.OperationMethod<
   DescribeGeofenceCollectionRequest,
   DescribeGeofenceCollectionResponse,
   DescribeGeofenceCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeGeofenceCollectionRequest,
   output: DescribeGeofenceCollectionResponse,
@@ -3929,7 +3929,7 @@ export const updateGeofenceCollection: API.OperationMethod<
   UpdateGeofenceCollectionRequest,
   UpdateGeofenceCollectionResponse,
   UpdateGeofenceCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGeofenceCollectionRequest,
   output: UpdateGeofenceCollectionResponse,
@@ -3957,7 +3957,7 @@ export const deleteGeofenceCollection: API.OperationMethod<
   DeleteGeofenceCollectionRequest,
   DeleteGeofenceCollectionResponse,
   DeleteGeofenceCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGeofenceCollectionRequest,
   output: DeleteGeofenceCollectionResponse,
@@ -3982,21 +3982,21 @@ export const listGeofenceCollections: API.OperationMethod<
   ListGeofenceCollectionsRequest,
   ListGeofenceCollectionsResponse,
   ListGeofenceCollectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGeofenceCollectionsRequest,
   ) => stream.Stream<
     ListGeofenceCollectionsResponse,
     ListGeofenceCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGeofenceCollectionsRequest,
   ) => stream.Stream<
     ListGeofenceCollectionsResponseEntry,
     ListGeofenceCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGeofenceCollectionsRequest,
@@ -4030,7 +4030,7 @@ export const batchDeleteGeofence: API.OperationMethod<
   BatchDeleteGeofenceRequest,
   BatchDeleteGeofenceResponse,
   BatchDeleteGeofenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteGeofenceRequest,
   output: BatchDeleteGeofenceResponse,
@@ -4068,7 +4068,7 @@ export const batchEvaluateGeofences: API.OperationMethod<
   BatchEvaluateGeofencesRequest,
   BatchEvaluateGeofencesResponse,
   BatchEvaluateGeofencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchEvaluateGeofencesRequest,
   output: BatchEvaluateGeofencesResponse,
@@ -4094,7 +4094,7 @@ export const batchPutGeofence: API.OperationMethod<
   BatchPutGeofenceRequest,
   BatchPutGeofenceResponse,
   BatchPutGeofenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchPutGeofenceRequest,
   output: BatchPutGeofenceResponse,
@@ -4128,21 +4128,21 @@ export const forecastGeofenceEvents: API.OperationMethod<
   ForecastGeofenceEventsRequest,
   ForecastGeofenceEventsResponse,
   ForecastGeofenceEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ForecastGeofenceEventsRequest,
   ) => stream.Stream<
     ForecastGeofenceEventsResponse,
     ForecastGeofenceEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ForecastGeofenceEventsRequest,
   ) => stream.Stream<
     ForecastedEvent,
     ForecastGeofenceEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ForecastGeofenceEventsRequest,
@@ -4177,7 +4177,7 @@ export const getGeofence: API.OperationMethod<
   GetGeofenceRequest,
   GetGeofenceResponse,
   GetGeofenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGeofenceRequest,
   output: GetGeofenceResponse,
@@ -4203,21 +4203,21 @@ export const listGeofences: API.OperationMethod<
   ListGeofencesRequest,
   ListGeofencesResponse,
   ListGeofencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGeofencesRequest,
   ) => stream.Stream<
     ListGeofencesResponse,
     ListGeofencesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListGeofencesRequest,
   ) => stream.Stream<
     ListGeofenceResponseEntry,
     ListGeofencesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGeofencesRequest,
@@ -4251,7 +4251,7 @@ export const putGeofence: API.OperationMethod<
   PutGeofenceRequest,
   PutGeofenceResponse,
   PutGeofenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutGeofenceRequest,
   output: PutGeofenceResponse,
@@ -4293,7 +4293,7 @@ export const createMap: API.OperationMethod<
   CreateMapRequest,
   CreateMapResponse,
   CreateMapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMapRequest,
   output: CreateMapResponse,
@@ -4332,7 +4332,7 @@ export const describeMap: API.OperationMethod<
   DescribeMapRequest,
   DescribeMapResponse,
   DescribeMapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeMapRequest,
   output: DescribeMapResponse,
@@ -4370,7 +4370,7 @@ export const updateMap: API.OperationMethod<
   UpdateMapRequest,
   UpdateMapResponse,
   UpdateMapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMapRequest,
   output: UpdateMapResponse,
@@ -4410,7 +4410,7 @@ export const deleteMap: API.OperationMethod<
   DeleteMapRequest,
   DeleteMapResponse,
   DeleteMapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMapRequest,
   output: DeleteMapResponse,
@@ -4447,21 +4447,21 @@ export const listMaps: API.OperationMethod<
   ListMapsRequest,
   ListMapsResponse,
   ListMapsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMapsRequest,
   ) => stream.Stream<
     ListMapsResponse,
     ListMapsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMapsRequest,
   ) => stream.Stream<
     ListMapsResponseEntry,
     ListMapsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMapsRequest,
@@ -4505,7 +4505,7 @@ export const getMapGlyphs: API.OperationMethod<
   GetMapGlyphsRequest,
   GetMapGlyphsResponse,
   GetMapGlyphsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMapGlyphsRequest,
   output: GetMapGlyphsResponse,
@@ -4543,7 +4543,7 @@ export const getMapSprites: API.OperationMethod<
   GetMapSpritesRequest,
   GetMapSpritesResponse,
   GetMapSpritesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMapSpritesRequest,
   output: GetMapSpritesResponse,
@@ -4583,7 +4583,7 @@ export const getMapStyleDescriptor: API.OperationMethod<
   GetMapStyleDescriptorRequest,
   GetMapStyleDescriptorResponse,
   GetMapStyleDescriptorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMapStyleDescriptorRequest,
   output: GetMapStyleDescriptorResponse,
@@ -4623,7 +4623,7 @@ export const getMapTile: API.OperationMethod<
   GetMapTileRequest,
   GetMapTileResponse,
   GetMapTileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMapTileRequest,
   output: GetMapTileResponse,
@@ -4664,7 +4664,7 @@ export const createPlaceIndex: API.OperationMethod<
   CreatePlaceIndexRequest,
   CreatePlaceIndexResponse,
   CreatePlaceIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePlaceIndexRequest,
   output: CreatePlaceIndexResponse,
@@ -4703,7 +4703,7 @@ export const describePlaceIndex: API.OperationMethod<
   DescribePlaceIndexRequest,
   DescribePlaceIndexResponse,
   DescribePlaceIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribePlaceIndexRequest,
   output: DescribePlaceIndexResponse,
@@ -4741,7 +4741,7 @@ export const updatePlaceIndex: API.OperationMethod<
   UpdatePlaceIndexRequest,
   UpdatePlaceIndexResponse,
   UpdatePlaceIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePlaceIndexRequest,
   output: UpdatePlaceIndexResponse,
@@ -4781,7 +4781,7 @@ export const deletePlaceIndex: API.OperationMethod<
   DeletePlaceIndexRequest,
   DeletePlaceIndexResponse,
   DeletePlaceIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePlaceIndexRequest,
   output: DeletePlaceIndexResponse,
@@ -4818,21 +4818,21 @@ export const listPlaceIndexes: API.OperationMethod<
   ListPlaceIndexesRequest,
   ListPlaceIndexesResponse,
   ListPlaceIndexesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPlaceIndexesRequest,
   ) => stream.Stream<
     ListPlaceIndexesResponse,
     ListPlaceIndexesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPlaceIndexesRequest,
   ) => stream.Stream<
     ListPlaceIndexesResponseEntry,
     ListPlaceIndexesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlaceIndexesRequest,
@@ -4886,7 +4886,7 @@ export const getPlace: API.OperationMethod<
   GetPlaceRequest,
   GetPlaceResponse,
   GetPlaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlaceRequest,
   output: GetPlaceResponse,
@@ -4922,7 +4922,7 @@ export const searchPlaceIndexForPosition: API.OperationMethod<
   SearchPlaceIndexForPositionRequest,
   SearchPlaceIndexForPositionResponse,
   SearchPlaceIndexForPositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchPlaceIndexForPositionRequest,
   output: SearchPlaceIndexForPositionResponse,
@@ -4962,7 +4962,7 @@ export const searchPlaceIndexForSuggestions: API.OperationMethod<
   SearchPlaceIndexForSuggestionsRequest,
   SearchPlaceIndexForSuggestionsResponse,
   SearchPlaceIndexForSuggestionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchPlaceIndexForSuggestionsRequest,
   output: SearchPlaceIndexForSuggestionsResponse,
@@ -5004,7 +5004,7 @@ export const searchPlaceIndexForText: API.OperationMethod<
   SearchPlaceIndexForTextRequest,
   SearchPlaceIndexForTextResponse,
   SearchPlaceIndexForTextError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchPlaceIndexForTextRequest,
   output: SearchPlaceIndexForTextResponse,
@@ -5047,7 +5047,7 @@ export const createRouteCalculator: API.OperationMethod<
   CreateRouteCalculatorRequest,
   CreateRouteCalculatorResponse,
   CreateRouteCalculatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRouteCalculatorRequest,
   output: CreateRouteCalculatorResponse,
@@ -5086,7 +5086,7 @@ export const describeRouteCalculator: API.OperationMethod<
   DescribeRouteCalculatorRequest,
   DescribeRouteCalculatorResponse,
   DescribeRouteCalculatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRouteCalculatorRequest,
   output: DescribeRouteCalculatorResponse,
@@ -5124,7 +5124,7 @@ export const updateRouteCalculator: API.OperationMethod<
   UpdateRouteCalculatorRequest,
   UpdateRouteCalculatorResponse,
   UpdateRouteCalculatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRouteCalculatorRequest,
   output: UpdateRouteCalculatorResponse,
@@ -5164,7 +5164,7 @@ export const deleteRouteCalculator: API.OperationMethod<
   DeleteRouteCalculatorRequest,
   DeleteRouteCalculatorResponse,
   DeleteRouteCalculatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRouteCalculatorRequest,
   output: DeleteRouteCalculatorResponse,
@@ -5201,21 +5201,21 @@ export const listRouteCalculators: API.OperationMethod<
   ListRouteCalculatorsRequest,
   ListRouteCalculatorsResponse,
   ListRouteCalculatorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRouteCalculatorsRequest,
   ) => stream.Stream<
     ListRouteCalculatorsResponse,
     ListRouteCalculatorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRouteCalculatorsRequest,
   ) => stream.Stream<
     ListRouteCalculatorsResponseEntry,
     ListRouteCalculatorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRouteCalculatorsRequest,
@@ -5269,7 +5269,7 @@ export const calculateRoute: API.OperationMethod<
   CalculateRouteRequest,
   CalculateRouteResponse,
   CalculateRouteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateRouteRequest,
   output: CalculateRouteResponse,
@@ -5321,7 +5321,7 @@ export const calculateRouteMatrix: API.OperationMethod<
   CalculateRouteMatrixRequest,
   CalculateRouteMatrixResponse,
   CalculateRouteMatrixError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateRouteMatrixRequest,
   output: CalculateRouteMatrixResponse,
@@ -5348,7 +5348,7 @@ export const createTracker: API.OperationMethod<
   CreateTrackerRequest,
   CreateTrackerResponse,
   CreateTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTrackerRequest,
   output: CreateTrackerResponse,
@@ -5375,7 +5375,7 @@ export const describeTracker: API.OperationMethod<
   DescribeTrackerRequest,
   DescribeTrackerResponse,
   DescribeTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTrackerRequest,
   output: DescribeTrackerResponse,
@@ -5401,7 +5401,7 @@ export const updateTracker: API.OperationMethod<
   UpdateTrackerRequest,
   UpdateTrackerResponse,
   UpdateTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTrackerRequest,
   output: UpdateTrackerResponse,
@@ -5429,7 +5429,7 @@ export const deleteTracker: API.OperationMethod<
   DeleteTrackerRequest,
   DeleteTrackerResponse,
   DeleteTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTrackerRequest,
   output: DeleteTrackerResponse,
@@ -5454,21 +5454,21 @@ export const listTrackers: API.OperationMethod<
   ListTrackersRequest,
   ListTrackersResponse,
   ListTrackersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTrackersRequest,
   ) => stream.Stream<
     ListTrackersResponse,
     ListTrackersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTrackersRequest,
   ) => stream.Stream<
     ListTrackersResponseEntry,
     ListTrackersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTrackersRequest,
@@ -5506,7 +5506,7 @@ export const associateTrackerConsumer: API.OperationMethod<
   AssociateTrackerConsumerRequest,
   AssociateTrackerConsumerResponse,
   AssociateTrackerConsumerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateTrackerConsumerRequest,
   output: AssociateTrackerConsumerResponse,
@@ -5534,7 +5534,7 @@ export const batchDeleteDevicePositionHistory: API.OperationMethod<
   BatchDeleteDevicePositionHistoryRequest,
   BatchDeleteDevicePositionHistoryResponse,
   BatchDeleteDevicePositionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteDevicePositionHistoryRequest,
   output: BatchDeleteDevicePositionHistoryResponse,
@@ -5560,7 +5560,7 @@ export const batchGetDevicePosition: API.OperationMethod<
   BatchGetDevicePositionRequest,
   BatchGetDevicePositionResponse,
   BatchGetDevicePositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetDevicePositionRequest,
   output: BatchGetDevicePositionResponse,
@@ -5592,7 +5592,7 @@ export const batchUpdateDevicePosition: API.OperationMethod<
   BatchUpdateDevicePositionRequest,
   BatchUpdateDevicePositionResponse,
   BatchUpdateDevicePositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateDevicePositionRequest,
   output: BatchUpdateDevicePositionResponse,
@@ -5620,7 +5620,7 @@ export const disassociateTrackerConsumer: API.OperationMethod<
   DisassociateTrackerConsumerRequest,
   DisassociateTrackerConsumerResponse,
   DisassociateTrackerConsumerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateTrackerConsumerRequest,
   output: DisassociateTrackerConsumerResponse,
@@ -5648,7 +5648,7 @@ export const getDevicePosition: API.OperationMethod<
   GetDevicePositionRequest,
   GetDevicePositionResponse,
   GetDevicePositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDevicePositionRequest,
   output: GetDevicePositionResponse,
@@ -5676,21 +5676,21 @@ export const getDevicePositionHistory: API.OperationMethod<
   GetDevicePositionHistoryRequest,
   GetDevicePositionHistoryResponse,
   GetDevicePositionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetDevicePositionHistoryRequest,
   ) => stream.Stream<
     GetDevicePositionHistoryResponse,
     GetDevicePositionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetDevicePositionHistoryRequest,
   ) => stream.Stream<
     DevicePosition,
     GetDevicePositionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePositionHistoryRequest,
@@ -5722,21 +5722,21 @@ export const listDevicePositions: API.OperationMethod<
   ListDevicePositionsRequest,
   ListDevicePositionsResponse,
   ListDevicePositionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDevicePositionsRequest,
   ) => stream.Stream<
     ListDevicePositionsResponse,
     ListDevicePositionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDevicePositionsRequest,
   ) => stream.Stream<
     ListDevicePositionsResponseEntry,
     ListDevicePositionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePositionsRequest,
@@ -5768,21 +5768,21 @@ export const listTrackerConsumers: API.OperationMethod<
   ListTrackerConsumersRequest,
   ListTrackerConsumersResponse,
   ListTrackerConsumersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTrackerConsumersRequest,
   ) => stream.Stream<
     ListTrackerConsumersResponse,
     ListTrackerConsumersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTrackerConsumersRequest,
   ) => stream.Stream<
     Arn,
     ListTrackerConsumersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTrackerConsumersRequest,
@@ -5817,7 +5817,7 @@ export const verifyDevicePosition: API.OperationMethod<
   VerifyDevicePositionRequest,
   VerifyDevicePositionResponse,
   VerifyDevicePositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyDevicePositionRequest,
   output: VerifyDevicePositionResponse,

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://events.amazonaws.com/doc/2015-10-07");
 const svc = T.AwsApiService({
@@ -3763,7 +3763,7 @@ export const activateEventSource: API.OperationMethod<
   ActivateEventSourceRequest,
   ActivateEventSourceResponse,
   ActivateEventSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateEventSourceRequest,
   output: ActivateEventSourceResponse,
@@ -3788,7 +3788,7 @@ export const cancelReplay: API.OperationMethod<
   CancelReplayRequest,
   CancelReplayResponse,
   CancelReplayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelReplayRequest,
   output: CancelReplayResponse,
@@ -3819,7 +3819,7 @@ export const createApiDestination: API.OperationMethod<
   CreateApiDestinationRequest,
   CreateApiDestinationResponse,
   CreateApiDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApiDestinationRequest,
   output: CreateApiDestinationResponse,
@@ -3854,7 +3854,7 @@ export const createArchive: API.OperationMethod<
   CreateArchiveRequest,
   CreateArchiveResponse,
   CreateArchiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateArchiveRequest,
   output: CreateArchiveResponse,
@@ -3885,7 +3885,7 @@ export const createConnection: API.OperationMethod<
   CreateConnectionRequest,
   CreateConnectionResponse,
   CreateConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConnectionRequest,
   output: CreateConnectionResponse,
@@ -3915,7 +3915,7 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointRequest,
   CreateEndpointResponse,
   CreateEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEndpointRequest,
   output: CreateEndpointResponse,
@@ -3943,7 +3943,7 @@ export const createEventBus: API.OperationMethod<
   CreateEventBusRequest,
   CreateEventBusResponse,
   CreateEventBusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEventBusRequest,
   output: CreateEventBusResponse,
@@ -4005,7 +4005,7 @@ export const createPartnerEventSource: API.OperationMethod<
   CreatePartnerEventSourceRequest,
   CreatePartnerEventSourceResponse,
   CreatePartnerEventSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePartnerEventSourceRequest,
   output: CreatePartnerEventSourceResponse,
@@ -4037,7 +4037,7 @@ export const deactivateEventSource: API.OperationMethod<
   DeactivateEventSourceRequest,
   DeactivateEventSourceResponse,
   DeactivateEventSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateEventSourceRequest,
   output: DeactivateEventSourceResponse,
@@ -4062,7 +4062,7 @@ export const deauthorizeConnection: API.OperationMethod<
   DeauthorizeConnectionRequest,
   DeauthorizeConnectionResponse,
   DeauthorizeConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeauthorizeConnectionRequest,
   output: DeauthorizeConnectionResponse,
@@ -4084,7 +4084,7 @@ export const deleteApiDestination: API.OperationMethod<
   DeleteApiDestinationRequest,
   DeleteApiDestinationResponse,
   DeleteApiDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApiDestinationRequest,
   output: DeleteApiDestinationResponse,
@@ -4106,7 +4106,7 @@ export const deleteArchive: API.OperationMethod<
   DeleteArchiveRequest,
   DeleteArchiveResponse,
   DeleteArchiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteArchiveRequest,
   output: DeleteArchiveResponse,
@@ -4128,7 +4128,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionRequest,
   DeleteConnectionResponse,
   DeleteConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
@@ -4154,7 +4154,7 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointRequest,
   DeleteEndpointResponse,
   DeleteEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEndpointRequest,
   output: DeleteEndpointResponse,
@@ -4177,7 +4177,7 @@ export const deleteEventBus: API.OperationMethod<
   DeleteEventBusRequest,
   DeleteEventBusResponse,
   DeleteEventBusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEventBusRequest,
   output: DeleteEventBusResponse,
@@ -4203,7 +4203,7 @@ export const deletePartnerEventSource: API.OperationMethod<
   DeletePartnerEventSourceRequest,
   DeletePartnerEventSourceResponse,
   DeletePartnerEventSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePartnerEventSourceRequest,
   output: DeletePartnerEventSourceResponse,
@@ -4241,7 +4241,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleRequest,
   DeleteRuleResponse,
   DeleteRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
@@ -4263,7 +4263,7 @@ export const describeApiDestination: API.OperationMethod<
   DescribeApiDestinationRequest,
   DescribeApiDestinationResponse,
   DescribeApiDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeApiDestinationRequest,
   output: DescribeApiDestinationResponse,
@@ -4281,7 +4281,7 @@ export const describeArchive: API.OperationMethod<
   DescribeArchiveRequest,
   DescribeArchiveResponse,
   DescribeArchiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeArchiveRequest,
   output: DescribeArchiveResponse,
@@ -4302,7 +4302,7 @@ export const describeConnection: API.OperationMethod<
   DescribeConnectionRequest,
   DescribeConnectionResponse,
   DescribeConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeConnectionRequest,
   output: DescribeConnectionResponse,
@@ -4324,7 +4324,7 @@ export const describeEndpoint: API.OperationMethod<
   DescribeEndpointRequest,
   DescribeEndpointResponse,
   DescribeEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEndpointRequest,
   output: DescribeEndpointResponse,
@@ -4348,7 +4348,7 @@ export const describeEventBus: API.OperationMethod<
   DescribeEventBusRequest,
   DescribeEventBusResponse,
   DescribeEventBusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEventBusRequest,
   output: DescribeEventBusResponse,
@@ -4367,7 +4367,7 @@ export const describeEventSource: API.OperationMethod<
   DescribeEventSourceRequest,
   DescribeEventSourceResponse,
   DescribeEventSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEventSourceRequest,
   output: DescribeEventSourceResponse,
@@ -4391,7 +4391,7 @@ export const describePartnerEventSource: API.OperationMethod<
   DescribePartnerEventSourceRequest,
   DescribePartnerEventSourceResponse,
   DescribePartnerEventSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribePartnerEventSourceRequest,
   output: DescribePartnerEventSourceResponse,
@@ -4420,7 +4420,7 @@ export const describeReplay: API.OperationMethod<
   DescribeReplayRequest,
   DescribeReplayResponse,
   DescribeReplayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeReplayRequest,
   output: DescribeReplayResponse,
@@ -4440,7 +4440,7 @@ export const describeRule: API.OperationMethod<
   DescribeRuleRequest,
   DescribeRuleResponse,
   DescribeRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRuleRequest,
   output: DescribeRuleResponse,
@@ -4463,7 +4463,7 @@ export const disableRule: API.OperationMethod<
   DisableRuleRequest,
   DisableRuleResponse,
   DisableRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableRuleRequest,
   output: DisableRuleResponse,
@@ -4490,7 +4490,7 @@ export const enableRule: API.OperationMethod<
   EnableRuleRequest,
   EnableRuleResponse,
   EnableRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableRuleRequest,
   output: EnableRuleResponse,
@@ -4509,7 +4509,7 @@ export const listApiDestinations: API.OperationMethod<
   ListApiDestinationsRequest,
   ListApiDestinationsResponse,
   ListApiDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListApiDestinationsRequest,
   output: ListApiDestinationsResponse,
@@ -4527,7 +4527,7 @@ export const listArchives: API.OperationMethod<
   ListArchivesRequest,
   ListArchivesResponse,
   ListArchivesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListArchivesRequest,
   output: ListArchivesResponse,
@@ -4541,7 +4541,7 @@ export const listConnections: API.OperationMethod<
   ListConnectionsRequest,
   ListConnectionsResponse,
   ListConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
@@ -4560,7 +4560,7 @@ export const listEndpoints: API.OperationMethod<
   ListEndpointsRequest,
   ListEndpointsResponse,
   ListEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEndpointsRequest,
   output: ListEndpointsResponse,
@@ -4575,7 +4575,7 @@ export const listEventBuses: API.OperationMethod<
   ListEventBusesRequest,
   ListEventBusesResponse,
   ListEventBusesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEventBusesRequest,
   output: ListEventBusesResponse,
@@ -4593,7 +4593,7 @@ export const listEventSources: API.OperationMethod<
   ListEventSourcesRequest,
   ListEventSourcesResponse,
   ListEventSourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEventSourcesRequest,
   output: ListEventSourcesResponse,
@@ -4612,7 +4612,7 @@ export const listPartnerEventSourceAccounts: API.OperationMethod<
   ListPartnerEventSourceAccountsRequest,
   ListPartnerEventSourceAccountsResponse,
   ListPartnerEventSourceAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPartnerEventSourceAccountsRequest,
   output: ListPartnerEventSourceAccountsResponse,
@@ -4634,7 +4634,7 @@ export const listPartnerEventSources: API.OperationMethod<
   ListPartnerEventSourcesRequest,
   ListPartnerEventSourcesResponse,
   ListPartnerEventSourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPartnerEventSourcesRequest,
   output: ListPartnerEventSourcesResponse,
@@ -4649,7 +4649,7 @@ export const listReplays: API.OperationMethod<
   ListReplaysRequest,
   ListReplaysResponse,
   ListReplaysError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListReplaysRequest,
   output: ListReplaysResponse,
@@ -4669,7 +4669,7 @@ export const listRuleNamesByTarget: API.OperationMethod<
   ListRuleNamesByTargetRequest,
   ListRuleNamesByTargetResponse,
   ListRuleNamesByTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRuleNamesByTargetRequest,
   output: ListRuleNamesByTargetResponse,
@@ -4692,7 +4692,7 @@ export const listRules: API.OperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
@@ -4711,7 +4711,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -4730,7 +4730,7 @@ export const listTargetsByRule: API.OperationMethod<
   ListTargetsByRuleRequest,
   ListTargetsByRuleResponse,
   ListTargetsByRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTargetsByRuleRequest,
   output: ListTargetsByRuleResponse,
@@ -4757,7 +4757,7 @@ export const putEvents: API.OperationMethod<
   PutEventsRequest,
   PutEventsResponse,
   PutEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutEventsRequest,
   output: PutEventsResponse,
@@ -4777,7 +4777,7 @@ export const putPartnerEvents: API.OperationMethod<
   PutPartnerEventsRequest,
   PutPartnerEventsResponse,
   PutPartnerEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPartnerEventsRequest,
   output: PutPartnerEventsResponse,
@@ -4816,7 +4816,7 @@ export const putPermission: API.OperationMethod<
   PutPermissionRequest,
   PutPermissionResponse,
   PutPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPermissionRequest,
   output: PutPermissionResponse,
@@ -4895,7 +4895,7 @@ export const putRule: API.OperationMethod<
   PutRuleRequest,
   PutRuleResponse,
   PutRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutRuleRequest,
   output: PutRuleResponse,
@@ -5019,7 +5019,7 @@ export const putTargets: API.OperationMethod<
   PutTargetsRequest,
   PutTargetsResponse,
   PutTargetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutTargetsRequest,
   output: PutTargetsResponse,
@@ -5047,7 +5047,7 @@ export const removePermission: API.OperationMethod<
   RemovePermissionRequest,
   RemovePermissionResponse,
   RemovePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemovePermissionRequest,
   output: RemovePermissionResponse,
@@ -5084,7 +5084,7 @@ export const removeTargets: API.OperationMethod<
   RemoveTargetsRequest,
   RemoveTargetsResponse,
   RemoveTargetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveTargetsRequest,
   output: RemoveTargetsResponse,
@@ -5117,7 +5117,7 @@ export const startReplay: API.OperationMethod<
   StartReplayRequest,
   StartReplayResponse,
   StartReplayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartReplayRequest,
   output: StartReplayResponse,
@@ -5156,7 +5156,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -5184,7 +5184,7 @@ export const testEventPattern: API.OperationMethod<
   TestEventPatternRequest,
   TestEventPatternResponse,
   TestEventPatternError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestEventPatternRequest,
   output: TestEventPatternResponse,
@@ -5204,7 +5204,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -5229,7 +5229,7 @@ export const updateApiDestination: API.OperationMethod<
   UpdateApiDestinationRequest,
   UpdateApiDestinationResponse,
   UpdateApiDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApiDestinationRequest,
   output: UpdateApiDestinationResponse,
@@ -5254,7 +5254,7 @@ export const updateArchive: API.OperationMethod<
   UpdateArchiveRequest,
   UpdateArchiveResponse,
   UpdateArchiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateArchiveRequest,
   output: UpdateArchiveResponse,
@@ -5281,7 +5281,7 @@ export const updateConnection: API.OperationMethod<
   UpdateConnectionRequest,
   UpdateConnectionResponse,
   UpdateConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConnectionRequest,
   output: UpdateConnectionResponse,
@@ -5310,7 +5310,7 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointRequest,
   UpdateEndpointResponse,
   UpdateEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEndpointRequest,
   output: UpdateEndpointResponse,
@@ -5333,7 +5333,7 @@ export const updateEventBus: API.OperationMethod<
   UpdateEventBusRequest,
   UpdateEventBusResponse,
   UpdateEventBusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEventBusRequest,
   output: UpdateEventBusResponse,

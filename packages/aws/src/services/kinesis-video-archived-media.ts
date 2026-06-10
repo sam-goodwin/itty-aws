@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Kinesis Video Archived Media",
   serviceShapeName: "AWSAcuityReader",
@@ -636,7 +636,7 @@ export const getClip: API.OperationMethod<
   GetClipInput,
   GetClipOutput,
   GetClipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetClipInput,
   output: GetClipOutput,
@@ -791,7 +791,7 @@ export const getDASHStreamingSessionURL: API.OperationMethod<
   GetDASHStreamingSessionURLInput,
   GetDASHStreamingSessionURLOutput,
   GetDASHStreamingSessionURLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDASHStreamingSessionURLInput,
   output: GetDASHStreamingSessionURLOutput,
@@ -985,7 +985,7 @@ export const getHLSStreamingSessionURL: API.OperationMethod<
   GetHLSStreamingSessionURLInput,
   GetHLSStreamingSessionURLOutput,
   GetHLSStreamingSessionURLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHLSStreamingSessionURLInput,
   output: GetHLSStreamingSessionURLOutput,
@@ -1015,21 +1015,21 @@ export const getImages: API.OperationMethod<
   GetImagesInput,
   GetImagesOutput,
   GetImagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetImagesInput,
   ) => stream.Stream<
     GetImagesOutput,
     GetImagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetImagesInput,
   ) => stream.Stream<
     Image,
     GetImagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetImagesInput,
@@ -1088,7 +1088,7 @@ export const getMediaForFragmentList: API.OperationMethod<
   GetMediaForFragmentListInput,
   GetMediaForFragmentListOutput,
   GetMediaForFragmentListError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMediaForFragmentListInput,
   output: GetMediaForFragmentListOutput,
@@ -1141,21 +1141,21 @@ export const listFragments: API.OperationMethod<
   ListFragmentsInput,
   ListFragmentsOutput,
   ListFragmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFragmentsInput,
   ) => stream.Stream<
     ListFragmentsOutput,
     ListFragmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFragmentsInput,
   ) => stream.Stream<
     Fragment,
     ListFragmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFragmentsInput,

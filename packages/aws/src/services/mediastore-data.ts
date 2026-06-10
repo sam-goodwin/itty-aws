@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace(
   "https://object.mediastore.amazonaws.com/doc/2017-09-01",
 );
@@ -356,7 +356,7 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectRequest,
   DeleteObjectResponse,
   DeleteObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteObjectRequest,
   output: DeleteObjectResponse,
@@ -378,7 +378,7 @@ export const describeObject: API.OperationMethod<
   DescribeObjectRequest,
   DescribeObjectResponse,
   DescribeObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeObjectRequest,
   output: DescribeObjectResponse,
@@ -401,7 +401,7 @@ export const getObject: API.OperationMethod<
   GetObjectRequest,
   GetObjectResponse,
   GetObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetObjectRequest,
   output: GetObjectResponse,
@@ -424,21 +424,21 @@ export const listItems: API.OperationMethod<
   ListItemsRequest,
   ListItemsResponse,
   ListItemsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListItemsRequest,
   ) => stream.Stream<
     ListItemsResponse,
     ListItemsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListItemsRequest,
   ) => stream.Stream<
     unknown,
     ListItemsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListItemsRequest,
@@ -461,7 +461,7 @@ export const putObject: API.OperationMethod<
   PutObjectRequest,
   PutObjectResponse,
   PutObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutObjectRequest,
   output: PutObjectResponse,

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Marketplace Discovery",
   serviceShapeName: "AWSMarketplaceDiscovery",
@@ -2167,7 +2167,7 @@ export const getListing: API.OperationMethod<
   GetListingInput,
   GetListingOutput,
   GetListingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetListingInput,
   output: GetListingOutput,
@@ -2181,7 +2181,7 @@ export const getOffer: API.OperationMethod<
   GetOfferInput,
   GetOfferOutput,
   GetOfferError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOfferInput,
   output: GetOfferOutput,
@@ -2195,7 +2195,7 @@ export const getOfferSet: API.OperationMethod<
   GetOfferSetInput,
   GetOfferSetOutput,
   GetOfferSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOfferSetInput,
   output: GetOfferSetOutput,
@@ -2209,21 +2209,21 @@ export const getOfferTerms: API.OperationMethod<
   GetOfferTermsInput,
   GetOfferTermsOutput,
   GetOfferTermsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetOfferTermsInput,
   ) => stream.Stream<
     GetOfferTermsOutput,
     GetOfferTermsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetOfferTermsInput,
   ) => stream.Stream<
     OfferTerm,
     GetOfferTermsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetOfferTermsInput,
@@ -2243,7 +2243,7 @@ export const getProduct: API.OperationMethod<
   GetProductInput,
   GetProductOutput,
   GetProductError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProductInput,
   output: GetProductOutput,
@@ -2259,21 +2259,21 @@ export const listFulfillmentOptions: API.OperationMethod<
   ListFulfillmentOptionsInput,
   ListFulfillmentOptionsOutput,
   ListFulfillmentOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFulfillmentOptionsInput,
   ) => stream.Stream<
     ListFulfillmentOptionsOutput,
     ListFulfillmentOptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFulfillmentOptionsInput,
   ) => stream.Stream<
     FulfillmentOption,
     ListFulfillmentOptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFulfillmentOptionsInput,
@@ -2296,21 +2296,21 @@ export const listPurchaseOptions: API.OperationMethod<
   ListPurchaseOptionsInput,
   ListPurchaseOptionsOutput,
   ListPurchaseOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPurchaseOptionsInput,
   ) => stream.Stream<
     ListPurchaseOptionsOutput,
     ListPurchaseOptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPurchaseOptionsInput,
   ) => stream.Stream<
     PurchaseOptionSummary,
     ListPurchaseOptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPurchaseOptionsInput,
@@ -2330,21 +2330,21 @@ export const searchFacets: API.OperationMethod<
   SearchFacetsInput,
   SearchFacetsOutput,
   SearchFacetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchFacetsInput,
   ) => stream.Stream<
     SearchFacetsOutput,
     SearchFacetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchFacetsInput,
   ) => stream.Stream<
     unknown,
     SearchFacetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchFacetsInput,
@@ -2364,21 +2364,21 @@ export const searchListings: API.OperationMethod<
   SearchListingsInput,
   SearchListingsOutput,
   SearchListingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchListingsInput,
   ) => stream.Stream<
     SearchListingsOutput,
     SearchListingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchListingsInput,
   ) => stream.Stream<
     ListingSummary,
     SearchListingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchListingsInput,

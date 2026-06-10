@@ -5,7 +5,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("https://mediastore.amazonaws.com/doc/2017-09-01");
 const svc = T.AwsApiService({
   sdkId: "MediaStore",
@@ -775,7 +775,7 @@ export const createContainer: API.OperationMethod<
   CreateContainerInput,
   CreateContainerOutput,
   CreateContainerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContainerInput,
   output: CreateContainerOutput,
@@ -799,7 +799,7 @@ export const deleteContainer: API.OperationMethod<
   DeleteContainerInput,
   DeleteContainerOutput,
   DeleteContainerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContainerInput,
   output: DeleteContainerOutput,
@@ -822,7 +822,7 @@ export const deleteContainerPolicy: API.OperationMethod<
   DeleteContainerPolicyInput,
   DeleteContainerPolicyOutput,
   DeleteContainerPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContainerPolicyInput,
   output: DeleteContainerPolicyOutput,
@@ -851,7 +851,7 @@ export const deleteCorsPolicy: API.OperationMethod<
   DeleteCorsPolicyInput,
   DeleteCorsPolicyOutput,
   DeleteCorsPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCorsPolicyInput,
   output: DeleteCorsPolicyOutput,
@@ -875,7 +875,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
   DeleteLifecyclePolicyInput,
   DeleteLifecyclePolicyOutput,
   DeleteLifecyclePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLifecyclePolicyInput,
   output: DeleteLifecyclePolicyOutput,
@@ -899,7 +899,7 @@ export const deleteMetricPolicy: API.OperationMethod<
   DeleteMetricPolicyInput,
   DeleteMetricPolicyOutput,
   DeleteMetricPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMetricPolicyInput,
   output: DeleteMetricPolicyOutput,
@@ -927,7 +927,7 @@ export const describeContainer: API.OperationMethod<
   DescribeContainerInput,
   DescribeContainerOutput,
   DescribeContainerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeContainerInput,
   output: DescribeContainerOutput,
@@ -948,7 +948,7 @@ export const getContainerPolicy: API.OperationMethod<
   GetContainerPolicyInput,
   GetContainerPolicyOutput,
   GetContainerPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerPolicyInput,
   output: GetContainerPolicyOutput,
@@ -977,7 +977,7 @@ export const getCorsPolicy: API.OperationMethod<
   GetCorsPolicyInput,
   GetCorsPolicyOutput,
   GetCorsPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCorsPolicyInput,
   output: GetCorsPolicyOutput,
@@ -1001,7 +1001,7 @@ export const getLifecyclePolicy: API.OperationMethod<
   GetLifecyclePolicyInput,
   GetLifecyclePolicyOutput,
   GetLifecyclePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLifecyclePolicyInput,
   output: GetLifecyclePolicyOutput,
@@ -1025,7 +1025,7 @@ export const getMetricPolicy: API.OperationMethod<
   GetMetricPolicyInput,
   GetMetricPolicyOutput,
   GetMetricPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetricPolicyInput,
   output: GetMetricPolicyOutput,
@@ -1054,21 +1054,21 @@ export const listContainers: API.OperationMethod<
   ListContainersInput,
   ListContainersOutput,
   ListContainersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListContainersInput,
   ) => stream.Stream<
     ListContainersOutput,
     ListContainersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListContainersInput,
   ) => stream.Stream<
     unknown,
     ListContainersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListContainersInput,
@@ -1092,7 +1092,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1121,7 +1121,7 @@ export const putContainerPolicy: API.OperationMethod<
   PutContainerPolicyInput,
   PutContainerPolicyOutput,
   PutContainerPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutContainerPolicyInput,
   output: PutContainerPolicyOutput,
@@ -1155,7 +1155,7 @@ export const putCorsPolicy: API.OperationMethod<
   PutCorsPolicyInput,
   PutCorsPolicyOutput,
   PutCorsPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutCorsPolicyInput,
   output: PutCorsPolicyOutput,
@@ -1179,7 +1179,7 @@ export const putLifecyclePolicy: API.OperationMethod<
   PutLifecyclePolicyInput,
   PutLifecyclePolicyOutput,
   PutLifecyclePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutLifecyclePolicyInput,
   output: PutLifecyclePolicyOutput,
@@ -1201,7 +1201,7 @@ export const putMetricPolicy: API.OperationMethod<
   PutMetricPolicyInput,
   PutMetricPolicyOutput,
   PutMetricPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutMetricPolicyInput,
   output: PutMetricPolicyOutput,
@@ -1223,7 +1223,7 @@ export const startAccessLogging: API.OperationMethod<
   StartAccessLoggingInput,
   StartAccessLoggingOutput,
   StartAccessLoggingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAccessLoggingInput,
   output: StartAccessLoggingOutput,
@@ -1245,7 +1245,7 @@ export const stopAccessLogging: API.OperationMethod<
   StopAccessLoggingInput,
   StopAccessLoggingOutput,
   StopAccessLoggingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopAccessLoggingInput,
   output: StopAccessLoggingOutput,
@@ -1269,7 +1269,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1291,7 +1291,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,

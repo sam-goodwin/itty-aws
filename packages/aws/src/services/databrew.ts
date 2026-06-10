@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "DataBrew",
@@ -2794,7 +2794,7 @@ export const batchDeleteRecipeVersion: API.OperationMethod<
   BatchDeleteRecipeVersionRequest,
   BatchDeleteRecipeVersionResponse,
   BatchDeleteRecipeVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteRecipeVersionRequest,
   output: BatchDeleteRecipeVersionResponse,
@@ -2813,7 +2813,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetRequest,
   CreateDatasetResponse,
   CreateDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
@@ -2838,7 +2838,7 @@ export const createProfileJob: API.OperationMethod<
   CreateProfileJobRequest,
   CreateProfileJobResponse,
   CreateProfileJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProfileJobRequest,
   output: CreateProfileJobResponse,
@@ -2863,7 +2863,7 @@ export const createProject: API.OperationMethod<
   CreateProjectRequest,
   CreateProjectResponse,
   CreateProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectRequest,
   output: CreateProjectResponse,
@@ -2886,7 +2886,7 @@ export const createRecipe: API.OperationMethod<
   CreateRecipeRequest,
   CreateRecipeResponse,
   CreateRecipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRecipeRequest,
   output: CreateRecipeResponse,
@@ -2910,7 +2910,7 @@ export const createRecipeJob: API.OperationMethod<
   CreateRecipeJobRequest,
   CreateRecipeJobResponse,
   CreateRecipeJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRecipeJobRequest,
   output: CreateRecipeJobResponse,
@@ -2935,7 +2935,7 @@ export const createRuleset: API.OperationMethod<
   CreateRulesetRequest,
   CreateRulesetResponse,
   CreateRulesetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRulesetRequest,
   output: CreateRulesetResponse,
@@ -2958,7 +2958,7 @@ export const createSchedule: API.OperationMethod<
   CreateScheduleRequest,
   CreateScheduleResponse,
   CreateScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateScheduleRequest,
   output: CreateScheduleResponse,
@@ -2980,7 +2980,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetRequest,
   DeleteDatasetResponse,
   DeleteDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
@@ -2998,7 +2998,7 @@ export const deleteJob: API.OperationMethod<
   DeleteJobRequest,
   DeleteJobResponse,
   DeleteJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteJobRequest,
   output: DeleteJobResponse,
@@ -3016,7 +3016,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectRequest,
   DeleteProjectResponse,
   DeleteProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
@@ -3034,7 +3034,7 @@ export const deleteRecipeVersion: API.OperationMethod<
   DeleteRecipeVersionRequest,
   DeleteRecipeVersionResponse,
   DeleteRecipeVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRecipeVersionRequest,
   output: DeleteRecipeVersionResponse,
@@ -3052,7 +3052,7 @@ export const deleteRuleset: API.OperationMethod<
   DeleteRulesetRequest,
   DeleteRulesetResponse,
   DeleteRulesetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRulesetRequest,
   output: DeleteRulesetResponse,
@@ -3069,7 +3069,7 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleRequest,
   DeleteScheduleResponse,
   DeleteScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteScheduleRequest,
   output: DeleteScheduleResponse,
@@ -3086,7 +3086,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetRequest,
   DescribeDatasetResponse,
   DescribeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
@@ -3103,7 +3103,7 @@ export const describeJob: API.OperationMethod<
   DescribeJobRequest,
   DescribeJobResponse,
   DescribeJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeJobRequest,
   output: DescribeJobResponse,
@@ -3120,7 +3120,7 @@ export const describeJobRun: API.OperationMethod<
   DescribeJobRunRequest,
   DescribeJobRunResponse,
   DescribeJobRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeJobRunRequest,
   output: DescribeJobRunResponse,
@@ -3137,7 +3137,7 @@ export const describeProject: API.OperationMethod<
   DescribeProjectRequest,
   DescribeProjectResponse,
   DescribeProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeProjectRequest,
   output: DescribeProjectResponse,
@@ -3155,7 +3155,7 @@ export const describeRecipe: API.OperationMethod<
   DescribeRecipeRequest,
   DescribeRecipeResponse,
   DescribeRecipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRecipeRequest,
   output: DescribeRecipeResponse,
@@ -3172,7 +3172,7 @@ export const describeRuleset: API.OperationMethod<
   DescribeRulesetRequest,
   DescribeRulesetResponse,
   DescribeRulesetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRulesetRequest,
   output: DescribeRulesetResponse,
@@ -3189,7 +3189,7 @@ export const describeSchedule: API.OperationMethod<
   DescribeScheduleRequest,
   DescribeScheduleResponse,
   DescribeScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeScheduleRequest,
   output: DescribeScheduleResponse,
@@ -3203,21 +3203,21 @@ export const listDatasets: API.OperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDatasetsRequest,
   ) => stream.Stream<
     ListDatasetsResponse,
     ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDatasetsRequest,
   ) => stream.Stream<
     Dataset,
     ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
@@ -3241,21 +3241,21 @@ export const listJobRuns: API.OperationMethod<
   ListJobRunsRequest,
   ListJobRunsResponse,
   ListJobRunsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListJobRunsRequest,
   ) => stream.Stream<
     ListJobRunsResponse,
     ListJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListJobRunsRequest,
   ) => stream.Stream<
     JobRun,
     ListJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsRequest,
@@ -3276,21 +3276,21 @@ export const listJobs: API.OperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListJobsRequest,
   ) => stream.Stream<
     ListJobsResponse,
     ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListJobsRequest,
   ) => stream.Stream<
     Job,
     ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
@@ -3311,21 +3311,21 @@ export const listProjects: API.OperationMethod<
   ListProjectsRequest,
   ListProjectsResponse,
   ListProjectsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProjectsRequest,
   ) => stream.Stream<
     ListProjectsResponse,
     ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProjectsRequest,
   ) => stream.Stream<
     Project,
     ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
@@ -3346,21 +3346,21 @@ export const listRecipes: API.OperationMethod<
   ListRecipesRequest,
   ListRecipesResponse,
   ListRecipesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecipesRequest,
   ) => stream.Stream<
     ListRecipesResponse,
     ListRecipesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecipesRequest,
   ) => stream.Stream<
     Recipe,
     ListRecipesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecipesRequest,
@@ -3382,21 +3382,21 @@ export const listRecipeVersions: API.OperationMethod<
   ListRecipeVersionsRequest,
   ListRecipeVersionsResponse,
   ListRecipeVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecipeVersionsRequest,
   ) => stream.Stream<
     ListRecipeVersionsResponse,
     ListRecipeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecipeVersionsRequest,
   ) => stream.Stream<
     Recipe,
     ListRecipeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecipeVersionsRequest,
@@ -3421,21 +3421,21 @@ export const listRulesets: API.OperationMethod<
   ListRulesetsRequest,
   ListRulesetsResponse,
   ListRulesetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRulesetsRequest,
   ) => stream.Stream<
     ListRulesetsResponse,
     ListRulesetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRulesetsRequest,
   ) => stream.Stream<
     RulesetItem,
     ListRulesetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesetsRequest,
@@ -3456,21 +3456,21 @@ export const listSchedules: API.OperationMethod<
   ListSchedulesRequest,
   ListSchedulesResponse,
   ListSchedulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSchedulesRequest,
   ) => stream.Stream<
     ListSchedulesResponse,
     ListSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSchedulesRequest,
   ) => stream.Stream<
     Schedule,
     ListSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSchedulesRequest,
@@ -3495,7 +3495,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3517,7 +3517,7 @@ export const publishRecipe: API.OperationMethod<
   PublishRecipeRequest,
   PublishRecipeResponse,
   PublishRecipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishRecipeRequest,
   output: PublishRecipeResponse,
@@ -3540,7 +3540,7 @@ export const sendProjectSessionAction: API.OperationMethod<
   SendProjectSessionActionRequest,
   SendProjectSessionActionResponse,
   SendProjectSessionActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendProjectSessionActionRequest,
   output: SendProjectSessionActionResponse,
@@ -3559,7 +3559,7 @@ export const startJobRun: API.OperationMethod<
   StartJobRunRequest,
   StartJobRunResponse,
   StartJobRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartJobRunRequest,
   output: StartJobRunResponse,
@@ -3584,7 +3584,7 @@ export const startProjectSession: API.OperationMethod<
   StartProjectSessionRequest,
   StartProjectSessionResponse,
   StartProjectSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartProjectSessionRequest,
   output: StartProjectSessionResponse,
@@ -3606,7 +3606,7 @@ export const stopJobRun: API.OperationMethod<
   StopJobRunRequest,
   StopJobRunResponse,
   StopJobRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopJobRunRequest,
   output: StopJobRunResponse,
@@ -3625,7 +3625,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3647,7 +3647,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3669,7 +3669,7 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetRequest,
   UpdateDatasetResponse,
   UpdateDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDatasetRequest,
   output: UpdateDatasetResponse,
@@ -3691,7 +3691,7 @@ export const updateProfileJob: API.OperationMethod<
   UpdateProfileJobRequest,
   UpdateProfileJobResponse,
   UpdateProfileJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProfileJobRequest,
   output: UpdateProfileJobResponse,
@@ -3712,7 +3712,7 @@ export const updateProject: API.OperationMethod<
   UpdateProjectRequest,
   UpdateProjectResponse,
   UpdateProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectRequest,
   output: UpdateProjectResponse,
@@ -3730,7 +3730,7 @@ export const updateRecipe: API.OperationMethod<
   UpdateRecipeRequest,
   UpdateRecipeResponse,
   UpdateRecipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRecipeRequest,
   output: UpdateRecipeResponse,
@@ -3748,7 +3748,7 @@ export const updateRecipeJob: API.OperationMethod<
   UpdateRecipeJobRequest,
   UpdateRecipeJobResponse,
   UpdateRecipeJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRecipeJobRequest,
   output: UpdateRecipeJobResponse,
@@ -3769,7 +3769,7 @@ export const updateRuleset: API.OperationMethod<
   UpdateRulesetRequest,
   UpdateRulesetResponse,
   UpdateRulesetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRulesetRequest,
   output: UpdateRulesetResponse,
@@ -3787,7 +3787,7 @@ export const updateSchedule: API.OperationMethod<
   UpdateScheduleRequest,
   UpdateScheduleResponse,
   UpdateScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateScheduleRequest,
   output: UpdateScheduleResponse,

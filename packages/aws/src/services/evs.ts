@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "evs",
   serviceShapeName: "AmazonElasticVMwareService",
@@ -946,7 +946,7 @@ export const getVersions: API.OperationMethod<
   GetVersionsRequest,
   GetVersionsResponse,
   GetVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVersionsRequest,
   output: GetVersionsResponse,
@@ -960,7 +960,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -979,7 +979,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1001,7 +1001,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1023,7 +1023,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentRequest,
   CreateEnvironmentResponse,
   CreateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
@@ -1040,7 +1040,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentRequest,
   GetEnvironmentResponse,
   GetEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
@@ -1061,7 +1061,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentRequest,
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
@@ -1075,21 +1075,21 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsRequest,
   ListEnvironmentsResponse,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnvironmentsRequest,
   ) => stream.Stream<
     ListEnvironmentsResponse,
     ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnvironmentsRequest,
   ) => stream.Stream<
     EnvironmentSummary,
     ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
@@ -1114,7 +1114,7 @@ export const associateEipToVlan: API.OperationMethod<
   AssociateEipToVlanRequest,
   AssociateEipToVlanResponse,
   AssociateEipToVlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateEipToVlanRequest,
   output: AssociateEipToVlanResponse,
@@ -1141,7 +1141,7 @@ export const createEnvironmentHost: API.OperationMethod<
   CreateEnvironmentHostRequest,
   CreateEnvironmentHostResponse,
   CreateEnvironmentHostError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentHostRequest,
   output: CreateEnvironmentHostResponse,
@@ -1160,7 +1160,7 @@ export const deleteEnvironmentHost: API.OperationMethod<
   DeleteEnvironmentHostRequest,
   DeleteEnvironmentHostResponse,
   DeleteEnvironmentHostError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentHostRequest,
   output: DeleteEnvironmentHostResponse,
@@ -1178,7 +1178,7 @@ export const disassociateEipFromVlan: API.OperationMethod<
   DisassociateEipFromVlanRequest,
   DisassociateEipFromVlanResponse,
   DisassociateEipFromVlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateEipFromVlanRequest,
   output: DisassociateEipFromVlanResponse,
@@ -1195,21 +1195,21 @@ export const listEnvironmentHosts: API.OperationMethod<
   ListEnvironmentHostsRequest,
   ListEnvironmentHostsResponse,
   ListEnvironmentHostsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnvironmentHostsRequest,
   ) => stream.Stream<
     ListEnvironmentHostsResponse,
     ListEnvironmentHostsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnvironmentHostsRequest,
   ) => stream.Stream<
     Host,
     ListEnvironmentHostsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentHostsRequest,
@@ -1233,21 +1233,21 @@ export const listEnvironmentVlans: API.OperationMethod<
   ListEnvironmentVlansRequest,
   ListEnvironmentVlansResponse,
   ListEnvironmentVlansError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnvironmentVlansRequest,
   ) => stream.Stream<
     ListEnvironmentVlansResponse,
     ListEnvironmentVlansError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnvironmentVlansRequest,
   ) => stream.Stream<
     Vlan,
     ListEnvironmentVlansError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentVlansRequest,

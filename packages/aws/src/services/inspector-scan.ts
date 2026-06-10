@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Inspector Scan",
   serviceShapeName: "InspectorScan",
@@ -193,7 +193,7 @@ export const scanSbom: API.OperationMethod<
   ScanSbomRequest,
   ScanSbomResponse,
   ScanSbomError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScanSbomRequest,
   output: ScanSbomResponse,

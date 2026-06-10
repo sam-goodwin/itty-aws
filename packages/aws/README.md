@@ -16,7 +16,7 @@ import * as Stream from "effect/Stream";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import * as Lambda from "@distilled.cloud/aws/lambda";
 import * as S3 from "@distilled.cloud/aws/s3";
-import { Credentials, Region } from "@distilled.cloud/aws";
+import { Config, Credentials } from "@distilled.cloud/aws";
 
 const program = Effect.gen(function* () {
   yield* S3.putObject({
@@ -39,7 +39,7 @@ const program = Effect.gen(function* () {
 
 const AwsLive = Layer.mergeAll(
   FetchHttpClient.layer,
-  Region.fromEnv(),
+  Config.fromEnv(),
   Credentials.fromChain(),
 );
 
@@ -48,12 +48,29 @@ program.pipe(Effect.provide(AwsLive), Effect.runPromise);
 
 ## Configuration
 
-### Region
+### AWSConfig
 
-`Region.fromEnv()` reads from the `AWS_REGION` environment variable (falls back to `AWS_DEFAULT_REGION`):
+The `AWSConfig` service provides the region and an optional custom endpoint. `Config.fromEnv()` reads the region from the `AWS_REGION` environment variable (falls back to `AWS_DEFAULT_REGION`):
 
 ```bash
 AWS_REGION=us-east-1
+```
+
+You can also provide it directly — useful for custom endpoints like LocalStack:
+
+```typescript
+import { Effect } from "effect";
+import { AWSConfig } from "@distilled.cloud/aws";
+
+program.pipe(
+  Effect.provideService(
+    AWSConfig,
+    Effect.succeed({
+      region: "us-east-1",
+      endpoint: "http://localhost:4566",
+    }),
+  ),
+);
 ```
 
 ### Credentials

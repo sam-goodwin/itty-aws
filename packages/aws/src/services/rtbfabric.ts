@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "RTBFabric",
@@ -1732,21 +1732,21 @@ export const listRequesterGateways: API.OperationMethod<
   ListRequesterGatewaysRequest,
   ListRequesterGatewaysResponse,
   ListRequesterGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRequesterGatewaysRequest,
   ) => stream.Stream<
     ListRequesterGatewaysResponse,
     ListRequesterGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRequesterGatewaysRequest,
   ) => stream.Stream<
     GatewayId,
     ListRequesterGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRequesterGatewaysRequest,
@@ -1770,21 +1770,21 @@ export const listResponderGateways: API.OperationMethod<
   ListResponderGatewaysRequest,
   ListResponderGatewaysResponse,
   ListResponderGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResponderGatewaysRequest,
   ) => stream.Stream<
     ListResponderGatewaysResponse,
     ListResponderGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResponderGatewaysRequest,
   ) => stream.Stream<
     GatewayId,
     ListResponderGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResponderGatewaysRequest,
@@ -1811,7 +1811,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1837,7 +1837,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1863,7 +1863,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1893,7 +1893,7 @@ export const createLink: API.OperationMethod<
   CreateLinkRequest,
   CreateLinkResponse,
   CreateLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLinkRequest,
   output: CreateLinkResponse,
@@ -1924,7 +1924,7 @@ export const getLink: API.OperationMethod<
   GetLinkRequest,
   GetLinkResponse,
   GetLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLinkRequest,
   output: GetLinkResponse,
@@ -1954,7 +1954,7 @@ export const deleteLink: API.OperationMethod<
   DeleteLinkRequest,
   DeleteLinkResponse,
   DeleteLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLinkRequest,
   output: DeleteLinkResponse,
@@ -1983,21 +1983,21 @@ export const listLinks: API.OperationMethod<
   ListLinksRequest,
   ListLinksResponse,
   ListLinksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLinksRequest,
   ) => stream.Stream<
     ListLinksResponse,
     ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLinksRequest,
   ) => stream.Stream<
     ListLinksResponseStructure,
     ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLinksRequest,
@@ -2033,7 +2033,7 @@ export const acceptLink: API.OperationMethod<
   AcceptLinkRequest,
   AcceptLinkResponse,
   AcceptLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptLinkRequest,
   output: AcceptLinkResponse,
@@ -2063,7 +2063,7 @@ export const rejectLink: API.OperationMethod<
   RejectLinkRequest,
   RejectLinkResponse,
   RejectLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectLinkRequest,
   output: RejectLinkResponse,
@@ -2093,7 +2093,7 @@ export const updateLink: API.OperationMethod<
   UpdateLinkRequest,
   UpdateLinkResponse,
   UpdateLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLinkRequest,
   output: UpdateLinkResponse,
@@ -2122,7 +2122,7 @@ export const updateLinkModuleFlow: API.OperationMethod<
   UpdateLinkModuleFlowRequest,
   UpdateLinkModuleFlowResponse,
   UpdateLinkModuleFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLinkModuleFlowRequest,
   output: UpdateLinkModuleFlowResponse,
@@ -2151,7 +2151,7 @@ export const createRequesterGateway: API.OperationMethod<
   CreateRequesterGatewayRequest,
   CreateRequesterGatewayResponse,
   CreateRequesterGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRequesterGatewayRequest,
   output: CreateRequesterGatewayResponse,
@@ -2178,7 +2178,7 @@ export const getRequesterGateway: API.OperationMethod<
   GetRequesterGatewayRequest,
   GetRequesterGatewayResponse,
   GetRequesterGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRequesterGatewayRequest,
   output: GetRequesterGatewayResponse,
@@ -2204,7 +2204,7 @@ export const deleteRequesterGateway: API.OperationMethod<
   DeleteRequesterGatewayRequest,
   DeleteRequesterGatewayResponse,
   DeleteRequesterGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRequesterGatewayRequest,
   output: DeleteRequesterGatewayResponse,
@@ -2231,7 +2231,7 @@ export const updateRequesterGateway: API.OperationMethod<
   UpdateRequesterGatewayRequest,
   UpdateRequesterGatewayResponse,
   UpdateRequesterGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRequesterGatewayRequest,
   output: UpdateRequesterGatewayResponse,
@@ -2259,7 +2259,7 @@ export const createOutboundExternalLink: API.OperationMethod<
   CreateOutboundExternalLinkRequest,
   CreateOutboundExternalLinkResponse,
   CreateOutboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOutboundExternalLinkRequest,
   output: CreateOutboundExternalLinkResponse,
@@ -2287,7 +2287,7 @@ export const deleteOutboundExternalLink: API.OperationMethod<
   DeleteOutboundExternalLinkRequest,
   DeleteOutboundExternalLinkResponse,
   DeleteOutboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOutboundExternalLinkRequest,
   output: DeleteOutboundExternalLinkResponse,
@@ -2314,7 +2314,7 @@ export const getOutboundExternalLink: API.OperationMethod<
   GetOutboundExternalLinkRequest,
   GetOutboundExternalLinkResponse,
   GetOutboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOutboundExternalLinkRequest,
   output: GetOutboundExternalLinkResponse,
@@ -2343,7 +2343,7 @@ export const createResponderGateway: API.OperationMethod<
   CreateResponderGatewayRequest,
   CreateResponderGatewayResponse,
   CreateResponderGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResponderGatewayRequest,
   output: CreateResponderGatewayResponse,
@@ -2370,7 +2370,7 @@ export const getResponderGateway: API.OperationMethod<
   GetResponderGatewayRequest,
   GetResponderGatewayResponse,
   GetResponderGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResponderGatewayRequest,
   output: GetResponderGatewayResponse,
@@ -2396,7 +2396,7 @@ export const deleteResponderGateway: API.OperationMethod<
   DeleteResponderGatewayRequest,
   DeleteResponderGatewayResponse,
   DeleteResponderGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResponderGatewayRequest,
   output: DeleteResponderGatewayResponse,
@@ -2423,7 +2423,7 @@ export const updateResponderGateway: API.OperationMethod<
   UpdateResponderGatewayRequest,
   UpdateResponderGatewayResponse,
   UpdateResponderGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResponderGatewayRequest,
   output: UpdateResponderGatewayResponse,
@@ -2452,7 +2452,7 @@ export const createInboundExternalLink: API.OperationMethod<
   CreateInboundExternalLinkRequest,
   CreateInboundExternalLinkResponse,
   CreateInboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInboundExternalLinkRequest,
   output: CreateInboundExternalLinkResponse,
@@ -2481,7 +2481,7 @@ export const deleteInboundExternalLink: API.OperationMethod<
   DeleteInboundExternalLinkRequest,
   DeleteInboundExternalLinkResponse,
   DeleteInboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInboundExternalLinkRequest,
   output: DeleteInboundExternalLinkResponse,
@@ -2508,7 +2508,7 @@ export const getInboundExternalLink: API.OperationMethod<
   GetInboundExternalLinkRequest,
   GetInboundExternalLinkResponse,
   GetInboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInboundExternalLinkRequest,
   output: GetInboundExternalLinkResponse,

@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Nova Act",
@@ -1078,7 +1078,7 @@ export const createAct: API.OperationMethod<
   CreateActRequest,
   CreateActResponse,
   CreateActError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateActRequest,
   output: CreateActResponse,
@@ -1107,21 +1107,21 @@ export const listActs: API.OperationMethod<
   ListActsRequest,
   ListActsResponse,
   ListActsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListActsRequest,
   ) => stream.Stream<
     ListActsResponse,
     ListActsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListActsRequest,
   ) => stream.Stream<
     ActSummary,
     ListActsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListActsRequest,
@@ -1157,7 +1157,7 @@ export const invokeActStep: API.OperationMethod<
   InvokeActStepRequest,
   InvokeActStepResponse,
   InvokeActStepError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvokeActStepRequest,
   output: InvokeActStepResponse,
@@ -1186,7 +1186,7 @@ export const updateAct: API.OperationMethod<
   UpdateActRequest,
   UpdateActResponse,
   UpdateActError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateActRequest,
   output: UpdateActResponse,
@@ -1211,7 +1211,7 @@ export const listModels: API.OperationMethod<
   ListModelsRequest,
   ListModelsResponse,
   ListModelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListModelsRequest,
   output: ListModelsResponse,
@@ -1233,7 +1233,7 @@ export const createSession: API.OperationMethod<
   CreateSessionRequest,
   CreateSessionResponse,
   CreateSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSessionRequest,
   output: CreateSessionResponse,
@@ -1262,21 +1262,21 @@ export const listSessions: API.OperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSessionsRequest,
   ) => stream.Stream<
     ListSessionsResponse,
     ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSessionsRequest,
   ) => stream.Stream<
     SessionSummary,
     ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
@@ -1311,7 +1311,7 @@ export const createWorkflowDefinition: API.OperationMethod<
   CreateWorkflowDefinitionRequest,
   CreateWorkflowDefinitionResponse,
   CreateWorkflowDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkflowDefinitionRequest,
   output: CreateWorkflowDefinitionResponse,
@@ -1338,7 +1338,7 @@ export const getWorkflowDefinition: API.OperationMethod<
   GetWorkflowDefinitionRequest,
   GetWorkflowDefinitionResponse,
   GetWorkflowDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkflowDefinitionRequest,
   output: GetWorkflowDefinitionResponse,
@@ -1365,7 +1365,7 @@ export const deleteWorkflowDefinition: API.OperationMethod<
   DeleteWorkflowDefinitionRequest,
   DeleteWorkflowDefinitionResponse,
   DeleteWorkflowDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkflowDefinitionRequest,
   output: DeleteWorkflowDefinitionResponse,
@@ -1391,21 +1391,21 @@ export const listWorkflowDefinitions: API.OperationMethod<
   ListWorkflowDefinitionsRequest,
   ListWorkflowDefinitionsResponse,
   ListWorkflowDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkflowDefinitionsRequest,
   ) => stream.Stream<
     ListWorkflowDefinitionsResponse,
     ListWorkflowDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkflowDefinitionsRequest,
   ) => stream.Stream<
     WorkflowDefinitionSummary,
     ListWorkflowDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowDefinitionsRequest,
@@ -1438,7 +1438,7 @@ export const createWorkflowRun: API.OperationMethod<
   CreateWorkflowRunRequest,
   CreateWorkflowRunResponse,
   CreateWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkflowRunRequest,
   output: CreateWorkflowRunResponse,
@@ -1466,7 +1466,7 @@ export const getWorkflowRun: API.OperationMethod<
   GetWorkflowRunRequest,
   GetWorkflowRunResponse,
   GetWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkflowRunRequest,
   output: GetWorkflowRunResponse,
@@ -1494,7 +1494,7 @@ export const updateWorkflowRun: API.OperationMethod<
   UpdateWorkflowRunRequest,
   UpdateWorkflowRunResponse,
   UpdateWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkflowRunRequest,
   output: UpdateWorkflowRunResponse,
@@ -1522,7 +1522,7 @@ export const deleteWorkflowRun: API.OperationMethod<
   DeleteWorkflowRunRequest,
   DeleteWorkflowRunResponse,
   DeleteWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkflowRunRequest,
   output: DeleteWorkflowRunResponse,
@@ -1550,21 +1550,21 @@ export const listWorkflowRuns: API.OperationMethod<
   ListWorkflowRunsRequest,
   ListWorkflowRunsResponse,
   ListWorkflowRunsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkflowRunsRequest,
   ) => stream.Stream<
     ListWorkflowRunsResponse,
     ListWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkflowRunsRequest,
   ) => stream.Stream<
     WorkflowRunSummary,
     ListWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowRunsRequest,

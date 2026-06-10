@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Auto Scaling Plans",
   serviceShapeName: "AnyScaleScalingPlannerFrontendService",
@@ -683,7 +683,7 @@ export const createScalingPlan: API.OperationMethod<
   CreateScalingPlanRequest,
   CreateScalingPlanResponse,
   CreateScalingPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateScalingPlanRequest,
   output: CreateScalingPlanResponse,
@@ -713,7 +713,7 @@ export const deleteScalingPlan: API.OperationMethod<
   DeleteScalingPlanRequest,
   DeleteScalingPlanResponse,
   DeleteScalingPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteScalingPlanRequest,
   output: DeleteScalingPlanResponse,
@@ -737,7 +737,7 @@ export const describeScalingPlanResources: API.OperationMethod<
   DescribeScalingPlanResourcesRequest,
   DescribeScalingPlanResourcesResponse,
   DescribeScalingPlanResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeScalingPlanResourcesRequest,
   output: DescribeScalingPlanResourcesResponse,
@@ -761,7 +761,7 @@ export const describeScalingPlans: API.OperationMethod<
   DescribeScalingPlansRequest,
   DescribeScalingPlansResponse,
   DescribeScalingPlansError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeScalingPlansRequest,
   output: DescribeScalingPlansResponse,
@@ -787,7 +787,7 @@ export const getScalingPlanResourceForecastData: API.OperationMethod<
   GetScalingPlanResourceForecastDataRequest,
   GetScalingPlanResourceForecastDataResponse,
   GetScalingPlanResourceForecastDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetScalingPlanResourceForecastDataRequest,
   output: GetScalingPlanResourceForecastDataResponse,
@@ -809,7 +809,7 @@ export const updateScalingPlan: API.OperationMethod<
   UpdateScalingPlanRequest,
   UpdateScalingPlanResponse,
   UpdateScalingPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateScalingPlanRequest,
   output: UpdateScalingPlanResponse,

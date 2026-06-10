@@ -5,7 +5,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Resource Groups Tagging API",
   serviceShapeName: "ResourceGroupsTaggingAPI_20170126",
@@ -604,7 +604,7 @@ export const describeReportCreation: API.OperationMethod<
   DescribeReportCreationInput,
   DescribeReportCreationOutput,
   DescribeReportCreationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeReportCreationInput,
   output: DescribeReportCreationOutput,
@@ -642,21 +642,21 @@ export const getComplianceSummary: API.OperationMethod<
   GetComplianceSummaryInput,
   GetComplianceSummaryOutput,
   GetComplianceSummaryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetComplianceSummaryInput,
   ) => stream.Stream<
     GetComplianceSummaryOutput,
     GetComplianceSummaryError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetComplianceSummaryInput,
   ) => stream.Stream<
     Summary,
     GetComplianceSummaryError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetComplianceSummaryInput,
@@ -711,21 +711,21 @@ export const getResources: API.OperationMethod<
   GetResourcesInput,
   GetResourcesOutput,
   GetResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetResourcesInput,
   ) => stream.Stream<
     GetResourcesOutput,
     GetResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetResourcesInput,
   ) => stream.Stream<
     ResourceTagMapping,
     GetResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetResourcesInput,
@@ -764,21 +764,21 @@ export const getTagKeys: API.OperationMethod<
   GetTagKeysInput,
   GetTagKeysOutput,
   GetTagKeysError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetTagKeysInput,
   ) => stream.Stream<
     GetTagKeysOutput,
     GetTagKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetTagKeysInput,
   ) => stream.Stream<
     TagKey,
     GetTagKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetTagKeysInput,
@@ -816,21 +816,21 @@ export const getTagValues: API.OperationMethod<
   GetTagValuesInput,
   GetTagValuesOutput,
   GetTagValuesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetTagValuesInput,
   ) => stream.Stream<
     GetTagValuesOutput,
     GetTagValuesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetTagValuesInput,
   ) => stream.Stream<
     TagValue,
     GetTagValuesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetTagValuesInput,
@@ -860,21 +860,21 @@ export const listRequiredTags: API.OperationMethod<
   ListRequiredTagsInput,
   ListRequiredTagsOutput,
   ListRequiredTagsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRequiredTagsInput,
   ) => stream.Stream<
     ListRequiredTagsOutput,
     ListRequiredTagsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRequiredTagsInput,
   ) => stream.Stream<
     RequiredTag,
     ListRequiredTagsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRequiredTagsInput,
@@ -926,7 +926,7 @@ export const startReportCreation: API.OperationMethod<
   StartReportCreationInput,
   StartReportCreationOutput,
   StartReportCreationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartReportCreationInput,
   output: StartReportCreationOutput,
@@ -999,7 +999,7 @@ export const tagResources: API.OperationMethod<
   TagResourcesInput,
   TagResourcesOutput,
   TagResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourcesInput,
   output: TagResourcesOutput,
@@ -1050,7 +1050,7 @@ export const untagResources: API.OperationMethod<
   UntagResourcesInput,
   UntagResourcesOutput,
   UntagResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourcesInput,
   output: UntagResourcesOutput,

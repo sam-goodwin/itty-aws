@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "forecast",
@@ -3238,7 +3238,7 @@ export const createAutoPredictor: API.OperationMethod<
   CreateAutoPredictorRequest,
   CreateAutoPredictorResponse,
   CreateAutoPredictorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAutoPredictorRequest,
   output: CreateAutoPredictorResponse,
@@ -3297,7 +3297,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetRequest,
   CreateDatasetResponse,
   CreateDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
@@ -3331,7 +3331,7 @@ export const createDatasetGroup: API.OperationMethod<
   CreateDatasetGroupRequest,
   CreateDatasetGroupResponse,
   CreateDatasetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDatasetGroupRequest,
   output: CreateDatasetGroupResponse,
@@ -3378,7 +3378,7 @@ export const createDatasetImportJob: API.OperationMethod<
   CreateDatasetImportJobRequest,
   CreateDatasetImportJobResponse,
   CreateDatasetImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDatasetImportJobRequest,
   output: CreateDatasetImportJobResponse,
@@ -3483,7 +3483,7 @@ export const createExplainability: API.OperationMethod<
   CreateExplainabilityRequest,
   CreateExplainabilityResponse,
   CreateExplainabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateExplainabilityRequest,
   output: CreateExplainabilityResponse,
@@ -3517,7 +3517,7 @@ export const createExplainabilityExport: API.OperationMethod<
   CreateExplainabilityExportRequest,
   CreateExplainabilityExportResponse,
   CreateExplainabilityExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateExplainabilityExportRequest,
   output: CreateExplainabilityExportResponse,
@@ -3565,7 +3565,7 @@ export const createForecast: API.OperationMethod<
   CreateForecastRequest,
   CreateForecastResponse,
   CreateForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateForecastRequest,
   output: CreateForecastResponse,
@@ -3608,7 +3608,7 @@ export const createForecastExportJob: API.OperationMethod<
   CreateForecastExportJobRequest,
   CreateForecastExportJobResponse,
   CreateForecastExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateForecastExportJobRequest,
   output: CreateForecastExportJobResponse,
@@ -3635,7 +3635,7 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorRequest,
   CreateMonitorResponse,
   CreateMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMonitorRequest,
   output: CreateMonitorResponse,
@@ -3712,7 +3712,7 @@ export const createPredictor: API.OperationMethod<
   CreatePredictorRequest,
   CreatePredictorResponse,
   CreatePredictorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePredictorRequest,
   output: CreatePredictorResponse,
@@ -3753,7 +3753,7 @@ export const createPredictorBacktestExportJob: API.OperationMethod<
   CreatePredictorBacktestExportJobRequest,
   CreatePredictorBacktestExportJobResponse,
   CreatePredictorBacktestExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePredictorBacktestExportJobRequest,
   output: CreatePredictorBacktestExportJobResponse,
@@ -3795,7 +3795,7 @@ export const createWhatIfAnalysis: API.OperationMethod<
   CreateWhatIfAnalysisRequest,
   CreateWhatIfAnalysisResponse,
   CreateWhatIfAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWhatIfAnalysisRequest,
   output: CreateWhatIfAnalysisResponse,
@@ -3822,7 +3822,7 @@ export const createWhatIfForecast: API.OperationMethod<
   CreateWhatIfForecastRequest,
   CreateWhatIfForecastResponse,
   CreateWhatIfForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWhatIfForecastRequest,
   output: CreateWhatIfForecastResponse,
@@ -3866,7 +3866,7 @@ export const createWhatIfForecastExport: API.OperationMethod<
   CreateWhatIfForecastExportRequest,
   CreateWhatIfForecastExportResponse,
   CreateWhatIfForecastExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWhatIfForecastExportRequest,
   output: CreateWhatIfForecastExportResponse,
@@ -3896,7 +3896,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetRequest,
   DeleteDatasetResponse,
   DeleteDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
@@ -3922,7 +3922,7 @@ export const deleteDatasetGroup: API.OperationMethod<
   DeleteDatasetGroupRequest,
   DeleteDatasetGroupResponse,
   DeleteDatasetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatasetGroupRequest,
   output: DeleteDatasetGroupResponse,
@@ -3947,7 +3947,7 @@ export const deleteDatasetImportJob: API.OperationMethod<
   DeleteDatasetImportJobRequest,
   DeleteDatasetImportJobResponse,
   DeleteDatasetImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatasetImportJobRequest,
   output: DeleteDatasetImportJobResponse,
@@ -3972,7 +3972,7 @@ export const deleteExplainability: API.OperationMethod<
   DeleteExplainabilityRequest,
   DeleteExplainabilityResponse,
   DeleteExplainabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteExplainabilityRequest,
   output: DeleteExplainabilityResponse,
@@ -3994,7 +3994,7 @@ export const deleteExplainabilityExport: API.OperationMethod<
   DeleteExplainabilityExportRequest,
   DeleteExplainabilityExportResponse,
   DeleteExplainabilityExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteExplainabilityExportRequest,
   output: DeleteExplainabilityExportResponse,
@@ -4021,7 +4021,7 @@ export const deleteForecast: API.OperationMethod<
   DeleteForecastRequest,
   DeleteForecastResponse,
   DeleteForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteForecastRequest,
   output: DeleteForecastResponse,
@@ -4045,7 +4045,7 @@ export const deleteForecastExportJob: API.OperationMethod<
   DeleteForecastExportJobRequest,
   DeleteForecastExportJobResponse,
   DeleteForecastExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteForecastExportJobRequest,
   output: DeleteForecastExportJobResponse,
@@ -4067,7 +4067,7 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorRequest,
   DeleteMonitorResponse,
   DeleteMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMonitorRequest,
   output: DeleteMonitorResponse,
@@ -4090,7 +4090,7 @@ export const deletePredictor: API.OperationMethod<
   DeletePredictorRequest,
   DeletePredictorResponse,
   DeletePredictorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePredictorRequest,
   output: DeletePredictorResponse,
@@ -4112,7 +4112,7 @@ export const deletePredictorBacktestExportJob: API.OperationMethod<
   DeletePredictorBacktestExportJobRequest,
   DeletePredictorBacktestExportJobResponse,
   DeletePredictorBacktestExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePredictorBacktestExportJobRequest,
   output: DeletePredictorBacktestExportJobResponse,
@@ -4154,7 +4154,7 @@ export const deleteResourceTree: API.OperationMethod<
   DeleteResourceTreeRequest,
   DeleteResourceTreeResponse,
   DeleteResourceTreeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceTreeRequest,
   output: DeleteResourceTreeResponse,
@@ -4179,7 +4179,7 @@ export const deleteWhatIfAnalysis: API.OperationMethod<
   DeleteWhatIfAnalysisRequest,
   DeleteWhatIfAnalysisResponse,
   DeleteWhatIfAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWhatIfAnalysisRequest,
   output: DeleteWhatIfAnalysisResponse,
@@ -4204,7 +4204,7 @@ export const deleteWhatIfForecast: API.OperationMethod<
   DeleteWhatIfForecastRequest,
   DeleteWhatIfForecastResponse,
   DeleteWhatIfForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWhatIfForecastRequest,
   output: DeleteWhatIfForecastResponse,
@@ -4227,7 +4227,7 @@ export const deleteWhatIfForecastExport: API.OperationMethod<
   DeleteWhatIfForecastExportRequest,
   DeleteWhatIfForecastExportResponse,
   DeleteWhatIfForecastExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWhatIfForecastExportRequest,
   output: DeleteWhatIfForecastExportResponse,
@@ -4248,7 +4248,7 @@ export const describeAutoPredictor: API.OperationMethod<
   DescribeAutoPredictorRequest,
   DescribeAutoPredictorResponse,
   DescribeAutoPredictorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAutoPredictorRequest,
   output: DescribeAutoPredictorResponse,
@@ -4274,7 +4274,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetRequest,
   DescribeDatasetResponse,
   DescribeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
@@ -4303,7 +4303,7 @@ export const describeDatasetGroup: API.OperationMethod<
   DescribeDatasetGroupRequest,
   DescribeDatasetGroupResponse,
   DescribeDatasetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDatasetGroupRequest,
   output: DescribeDatasetGroupResponse,
@@ -4336,7 +4336,7 @@ export const describeDatasetImportJob: API.OperationMethod<
   DescribeDatasetImportJobRequest,
   DescribeDatasetImportJobResponse,
   DescribeDatasetImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDatasetImportJobRequest,
   output: DescribeDatasetImportJobResponse,
@@ -4353,7 +4353,7 @@ export const describeExplainability: API.OperationMethod<
   DescribeExplainabilityRequest,
   DescribeExplainabilityResponse,
   DescribeExplainabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeExplainabilityRequest,
   output: DescribeExplainabilityResponse,
@@ -4370,7 +4370,7 @@ export const describeExplainabilityExport: API.OperationMethod<
   DescribeExplainabilityExportRequest,
   DescribeExplainabilityExportResponse,
   DescribeExplainabilityExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeExplainabilityExportRequest,
   output: DescribeExplainabilityExportResponse,
@@ -4401,7 +4401,7 @@ export const describeForecast: API.OperationMethod<
   DescribeForecastRequest,
   DescribeForecastResponse,
   DescribeForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeForecastRequest,
   output: DescribeForecastResponse,
@@ -4430,7 +4430,7 @@ export const describeForecastExportJob: API.OperationMethod<
   DescribeForecastExportJobRequest,
   DescribeForecastExportJobResponse,
   DescribeForecastExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeForecastExportJobRequest,
   output: DescribeForecastExportJobResponse,
@@ -4461,7 +4461,7 @@ export const describeMonitor: API.OperationMethod<
   DescribeMonitorRequest,
   DescribeMonitorResponse,
   DescribeMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeMonitorRequest,
   output: DescribeMonitorResponse,
@@ -4499,7 +4499,7 @@ export const describePredictor: API.OperationMethod<
   DescribePredictorRequest,
   DescribePredictorResponse,
   DescribePredictorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribePredictorRequest,
   output: DescribePredictorResponse,
@@ -4528,7 +4528,7 @@ export const describePredictorBacktestExportJob: API.OperationMethod<
   DescribePredictorBacktestExportJobRequest,
   DescribePredictorBacktestExportJobResponse,
   DescribePredictorBacktestExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribePredictorBacktestExportJobRequest,
   output: DescribePredictorBacktestExportJobResponse,
@@ -4555,7 +4555,7 @@ export const describeWhatIfAnalysis: API.OperationMethod<
   DescribeWhatIfAnalysisRequest,
   DescribeWhatIfAnalysisResponse,
   DescribeWhatIfAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeWhatIfAnalysisRequest,
   output: DescribeWhatIfAnalysisResponse,
@@ -4582,7 +4582,7 @@ export const describeWhatIfForecast: API.OperationMethod<
   DescribeWhatIfForecastRequest,
   DescribeWhatIfForecastResponse,
   DescribeWhatIfForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeWhatIfForecastRequest,
   output: DescribeWhatIfForecastResponse,
@@ -4609,7 +4609,7 @@ export const describeWhatIfForecastExport: API.OperationMethod<
   DescribeWhatIfForecastExportRequest,
   DescribeWhatIfForecastExportResponse,
   DescribeWhatIfForecastExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeWhatIfForecastExportRequest,
   output: DescribeWhatIfForecastExportResponse,
@@ -4644,7 +4644,7 @@ export const getAccuracyMetrics: API.OperationMethod<
   GetAccuracyMetricsRequest,
   GetAccuracyMetricsResponse,
   GetAccuracyMetricsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccuracyMetricsRequest,
   output: GetAccuracyMetricsResponse,
@@ -4666,21 +4666,21 @@ export const listDatasetGroups: API.OperationMethod<
   ListDatasetGroupsRequest,
   ListDatasetGroupsResponse,
   ListDatasetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDatasetGroupsRequest,
   ) => stream.Stream<
     ListDatasetGroupsResponse,
     ListDatasetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDatasetGroupsRequest,
   ) => stream.Stream<
     DatasetGroupSummary,
     ListDatasetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetGroupsRequest,
@@ -4708,21 +4708,21 @@ export const listDatasetImportJobs: API.OperationMethod<
   ListDatasetImportJobsRequest,
   ListDatasetImportJobsResponse,
   ListDatasetImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDatasetImportJobsRequest,
   ) => stream.Stream<
     ListDatasetImportJobsResponse,
     ListDatasetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDatasetImportJobsRequest,
   ) => stream.Stream<
     DatasetImportJobSummary,
     ListDatasetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetImportJobsRequest,
@@ -4745,21 +4745,21 @@ export const listDatasets: API.OperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDatasetsRequest,
   ) => stream.Stream<
     ListDatasetsResponse,
     ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDatasetsRequest,
   ) => stream.Stream<
     DatasetSummary,
     ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
@@ -4788,21 +4788,21 @@ export const listExplainabilities: API.OperationMethod<
   ListExplainabilitiesRequest,
   ListExplainabilitiesResponse,
   ListExplainabilitiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListExplainabilitiesRequest,
   ) => stream.Stream<
     ListExplainabilitiesResponse,
     ListExplainabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListExplainabilitiesRequest,
   ) => stream.Stream<
     ExplainabilitySummary,
     ListExplainabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListExplainabilitiesRequest,
@@ -4830,21 +4830,21 @@ export const listExplainabilityExports: API.OperationMethod<
   ListExplainabilityExportsRequest,
   ListExplainabilityExportsResponse,
   ListExplainabilityExportsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListExplainabilityExportsRequest,
   ) => stream.Stream<
     ListExplainabilityExportsResponse,
     ListExplainabilityExportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListExplainabilityExportsRequest,
   ) => stream.Stream<
     ExplainabilityExportSummary,
     ListExplainabilityExportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListExplainabilityExportsRequest,
@@ -4871,21 +4871,21 @@ export const listForecastExportJobs: API.OperationMethod<
   ListForecastExportJobsRequest,
   ListForecastExportJobsResponse,
   ListForecastExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListForecastExportJobsRequest,
   ) => stream.Stream<
     ListForecastExportJobsResponse,
     ListForecastExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListForecastExportJobsRequest,
   ) => stream.Stream<
     ForecastExportJobSummary,
     ListForecastExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListForecastExportJobsRequest,
@@ -4913,21 +4913,21 @@ export const listForecasts: API.OperationMethod<
   ListForecastsRequest,
   ListForecastsResponse,
   ListForecastsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListForecastsRequest,
   ) => stream.Stream<
     ListForecastsResponse,
     ListForecastsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListForecastsRequest,
   ) => stream.Stream<
     ForecastSummary,
     ListForecastsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListForecastsRequest,
@@ -4956,21 +4956,21 @@ export const listMonitorEvaluations: API.OperationMethod<
   ListMonitorEvaluationsRequest,
   ListMonitorEvaluationsResponse,
   ListMonitorEvaluationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMonitorEvaluationsRequest,
   ) => stream.Stream<
     ListMonitorEvaluationsResponse,
     ListMonitorEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMonitorEvaluationsRequest,
   ) => stream.Stream<
     PredictorMonitorEvaluation,
     ListMonitorEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorEvaluationsRequest,
@@ -4999,21 +4999,21 @@ export const listMonitors: API.OperationMethod<
   ListMonitorsRequest,
   ListMonitorsResponse,
   ListMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMonitorsRequest,
   ) => stream.Stream<
     ListMonitorsResponse,
     ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMonitorsRequest,
   ) => stream.Stream<
     MonitorSummary,
     ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsRequest,
@@ -5041,21 +5041,21 @@ export const listPredictorBacktestExportJobs: API.OperationMethod<
   ListPredictorBacktestExportJobsRequest,
   ListPredictorBacktestExportJobsResponse,
   ListPredictorBacktestExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPredictorBacktestExportJobsRequest,
   ) => stream.Stream<
     ListPredictorBacktestExportJobsResponse,
     ListPredictorBacktestExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPredictorBacktestExportJobsRequest,
   ) => stream.Stream<
     PredictorBacktestExportJobSummary,
     ListPredictorBacktestExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPredictorBacktestExportJobsRequest,
@@ -5084,21 +5084,21 @@ export const listPredictors: API.OperationMethod<
   ListPredictorsRequest,
   ListPredictorsResponse,
   ListPredictorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPredictorsRequest,
   ) => stream.Stream<
     ListPredictorsResponse,
     ListPredictorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPredictorsRequest,
   ) => stream.Stream<
     PredictorSummary,
     ListPredictorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPredictorsRequest,
@@ -5122,7 +5122,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -5139,21 +5139,21 @@ export const listWhatIfAnalyses: API.OperationMethod<
   ListWhatIfAnalysesRequest,
   ListWhatIfAnalysesResponse,
   ListWhatIfAnalysesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWhatIfAnalysesRequest,
   ) => stream.Stream<
     ListWhatIfAnalysesResponse,
     ListWhatIfAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWhatIfAnalysesRequest,
   ) => stream.Stream<
     WhatIfAnalysisSummary,
     ListWhatIfAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWhatIfAnalysesRequest,
@@ -5177,21 +5177,21 @@ export const listWhatIfForecastExports: API.OperationMethod<
   ListWhatIfForecastExportsRequest,
   ListWhatIfForecastExportsResponse,
   ListWhatIfForecastExportsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWhatIfForecastExportsRequest,
   ) => stream.Stream<
     ListWhatIfForecastExportsResponse,
     ListWhatIfForecastExportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWhatIfForecastExportsRequest,
   ) => stream.Stream<
     WhatIfForecastExportSummary,
     ListWhatIfForecastExportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWhatIfForecastExportsRequest,
@@ -5215,21 +5215,21 @@ export const listWhatIfForecasts: API.OperationMethod<
   ListWhatIfForecastsRequest,
   ListWhatIfForecastsResponse,
   ListWhatIfForecastsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWhatIfForecastsRequest,
   ) => stream.Stream<
     ListWhatIfForecastsResponse,
     ListWhatIfForecastsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWhatIfForecastsRequest,
   ) => stream.Stream<
     WhatIfForecastSummary,
     ListWhatIfForecastsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWhatIfForecastsRequest,
@@ -5255,7 +5255,7 @@ export const resumeResource: API.OperationMethod<
   ResumeResourceRequest,
   ResumeResourceResponse,
   ResumeResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeResourceRequest,
   output: ResumeResourceResponse,
@@ -5299,7 +5299,7 @@ export const stopResource: API.OperationMethod<
   StopResourceRequest,
   StopResourceResponse,
   StopResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopResourceRequest,
   output: StopResourceResponse,
@@ -5324,7 +5324,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -5345,7 +5345,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -5367,7 +5367,7 @@ export const updateDatasetGroup: API.OperationMethod<
   UpdateDatasetGroupRequest,
   UpdateDatasetGroupResponse,
   UpdateDatasetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDatasetGroupRequest,
   output: UpdateDatasetGroupResponse,

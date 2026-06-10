@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "AmplifyBackend",
   serviceShapeName: "AmplifyBackend",
@@ -2706,7 +2706,7 @@ export const cloneBackend: API.OperationMethod<
   CloneBackendRequest,
   CloneBackendResponse,
   CloneBackendError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloneBackendRequest,
   output: CloneBackendResponse,
@@ -2730,7 +2730,7 @@ export const createBackend: API.OperationMethod<
   CreateBackendRequest,
   CreateBackendResponse,
   CreateBackendError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBackendRequest,
   output: CreateBackendResponse,
@@ -2754,7 +2754,7 @@ export const createBackendAPI: API.OperationMethod<
   CreateBackendAPIRequest,
   CreateBackendAPIResponse,
   CreateBackendAPIError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBackendAPIRequest,
   output: CreateBackendAPIResponse,
@@ -2778,7 +2778,7 @@ export const createBackendAuth: API.OperationMethod<
   CreateBackendAuthRequest,
   CreateBackendAuthResponse,
   CreateBackendAuthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBackendAuthRequest,
   output: CreateBackendAuthResponse,
@@ -2802,7 +2802,7 @@ export const createBackendConfig: API.OperationMethod<
   CreateBackendConfigRequest,
   CreateBackendConfigResponse,
   CreateBackendConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBackendConfigRequest,
   output: CreateBackendConfigResponse,
@@ -2826,7 +2826,7 @@ export const createBackendStorage: API.OperationMethod<
   CreateBackendStorageRequest,
   CreateBackendStorageResponse,
   CreateBackendStorageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBackendStorageRequest,
   output: CreateBackendStorageResponse,
@@ -2850,7 +2850,7 @@ export const createToken: API.OperationMethod<
   CreateTokenRequest,
   CreateTokenResponse,
   CreateTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTokenRequest,
   output: CreateTokenResponse,
@@ -2874,7 +2874,7 @@ export const deleteBackend: API.OperationMethod<
   DeleteBackendRequest,
   DeleteBackendResponse,
   DeleteBackendError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBackendRequest,
   output: DeleteBackendResponse,
@@ -2898,7 +2898,7 @@ export const deleteBackendAPI: API.OperationMethod<
   DeleteBackendAPIRequest,
   DeleteBackendAPIResponse,
   DeleteBackendAPIError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBackendAPIRequest,
   output: DeleteBackendAPIResponse,
@@ -2922,7 +2922,7 @@ export const deleteBackendAuth: API.OperationMethod<
   DeleteBackendAuthRequest,
   DeleteBackendAuthResponse,
   DeleteBackendAuthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBackendAuthRequest,
   output: DeleteBackendAuthResponse,
@@ -2946,7 +2946,7 @@ export const deleteBackendStorage: API.OperationMethod<
   DeleteBackendStorageRequest,
   DeleteBackendStorageResponse,
   DeleteBackendStorageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBackendStorageRequest,
   output: DeleteBackendStorageResponse,
@@ -2970,7 +2970,7 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenRequest,
   DeleteTokenResponse,
   DeleteTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTokenRequest,
   output: DeleteTokenResponse,
@@ -2994,7 +2994,7 @@ export const generateBackendAPIModels: API.OperationMethod<
   GenerateBackendAPIModelsRequest,
   GenerateBackendAPIModelsResponse,
   GenerateBackendAPIModelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateBackendAPIModelsRequest,
   output: GenerateBackendAPIModelsResponse,
@@ -3018,7 +3018,7 @@ export const getBackend: API.OperationMethod<
   GetBackendRequest,
   GetBackendResponse,
   GetBackendError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBackendRequest,
   output: GetBackendResponse,
@@ -3042,7 +3042,7 @@ export const getBackendAPI: API.OperationMethod<
   GetBackendAPIRequest,
   GetBackendAPIResponse,
   GetBackendAPIError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBackendAPIRequest,
   output: GetBackendAPIResponse,
@@ -3066,7 +3066,7 @@ export const getBackendAPIModels: API.OperationMethod<
   GetBackendAPIModelsRequest,
   GetBackendAPIModelsResponse,
   GetBackendAPIModelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBackendAPIModelsRequest,
   output: GetBackendAPIModelsResponse,
@@ -3090,7 +3090,7 @@ export const getBackendAuth: API.OperationMethod<
   GetBackendAuthRequest,
   GetBackendAuthResponse,
   GetBackendAuthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBackendAuthRequest,
   output: GetBackendAuthResponse,
@@ -3114,7 +3114,7 @@ export const getBackendJob: API.OperationMethod<
   GetBackendJobRequest,
   GetBackendJobResponse,
   GetBackendJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBackendJobRequest,
   output: GetBackendJobResponse,
@@ -3138,7 +3138,7 @@ export const getBackendStorage: API.OperationMethod<
   GetBackendStorageRequest,
   GetBackendStorageResponse,
   GetBackendStorageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBackendStorageRequest,
   output: GetBackendStorageResponse,
@@ -3162,7 +3162,7 @@ export const getToken: API.OperationMethod<
   GetTokenRequest,
   GetTokenResponse,
   GetTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTokenRequest,
   output: GetTokenResponse,
@@ -3186,7 +3186,7 @@ export const importBackendAuth: API.OperationMethod<
   ImportBackendAuthRequest,
   ImportBackendAuthResponse,
   ImportBackendAuthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportBackendAuthRequest,
   output: ImportBackendAuthResponse,
@@ -3210,7 +3210,7 @@ export const importBackendStorage: API.OperationMethod<
   ImportBackendStorageRequest,
   ImportBackendStorageResponse,
   ImportBackendStorageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportBackendStorageRequest,
   output: ImportBackendStorageResponse,
@@ -3234,7 +3234,7 @@ export const listBackendJobs: API.OperationMethod<
   ListBackendJobsRequest,
   ListBackendJobsResponse,
   ListBackendJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBackendJobsRequest,
   output: ListBackendJobsResponse,
@@ -3258,7 +3258,7 @@ export const listS3Buckets: API.OperationMethod<
   ListS3BucketsRequest,
   ListS3BucketsResponse,
   ListS3BucketsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListS3BucketsRequest,
   output: ListS3BucketsResponse,
@@ -3282,7 +3282,7 @@ export const removeAllBackends: API.OperationMethod<
   RemoveAllBackendsRequest,
   RemoveAllBackendsResponse,
   RemoveAllBackendsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAllBackendsRequest,
   output: RemoveAllBackendsResponse,
@@ -3306,7 +3306,7 @@ export const removeBackendConfig: API.OperationMethod<
   RemoveBackendConfigRequest,
   RemoveBackendConfigResponse,
   RemoveBackendConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveBackendConfigRequest,
   output: RemoveBackendConfigResponse,
@@ -3330,7 +3330,7 @@ export const updateBackendAPI: API.OperationMethod<
   UpdateBackendAPIRequest,
   UpdateBackendAPIResponse,
   UpdateBackendAPIError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBackendAPIRequest,
   output: UpdateBackendAPIResponse,
@@ -3354,7 +3354,7 @@ export const updateBackendAuth: API.OperationMethod<
   UpdateBackendAuthRequest,
   UpdateBackendAuthResponse,
   UpdateBackendAuthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBackendAuthRequest,
   output: UpdateBackendAuthResponse,
@@ -3378,7 +3378,7 @@ export const updateBackendConfig: API.OperationMethod<
   UpdateBackendConfigRequest,
   UpdateBackendConfigResponse,
   UpdateBackendConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBackendConfigRequest,
   output: UpdateBackendConfigResponse,
@@ -3402,7 +3402,7 @@ export const updateBackendJob: API.OperationMethod<
   UpdateBackendJobRequest,
   UpdateBackendJobResponse,
   UpdateBackendJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBackendJobRequest,
   output: UpdateBackendJobResponse,
@@ -3426,7 +3426,7 @@ export const updateBackendStorage: API.OperationMethod<
   UpdateBackendStorageRequest,
   UpdateBackendStorageResponse,
   UpdateBackendStorageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBackendStorageRequest,
   output: UpdateBackendStorageResponse,

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Application Signals",
   serviceShapeName: "ApplicationSignals",
@@ -2012,7 +2012,7 @@ export const batchGetServiceLevelObjectiveBudgetReport: API.OperationMethod<
   BatchGetServiceLevelObjectiveBudgetReportInput,
   BatchGetServiceLevelObjectiveBudgetReportOutput,
   BatchGetServiceLevelObjectiveBudgetReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetServiceLevelObjectiveBudgetReportInput,
   output: BatchGetServiceLevelObjectiveBudgetReportOutput,
@@ -2030,7 +2030,7 @@ export const batchUpdateExclusionWindows: API.OperationMethod<
   BatchUpdateExclusionWindowsInput,
   BatchUpdateExclusionWindowsOutput,
   BatchUpdateExclusionWindowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateExclusionWindowsInput,
   output: BatchUpdateExclusionWindowsOutput,
@@ -2048,7 +2048,7 @@ export const deleteGroupingConfiguration: API.OperationMethod<
   DeleteGroupingConfigurationRequest,
   DeleteGroupingConfigurationOutput,
   DeleteGroupingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupingConfigurationRequest,
   output: DeleteGroupingConfigurationOutput,
@@ -2065,7 +2065,7 @@ export const getService: API.OperationMethod<
   GetServiceInput,
   GetServiceOutput,
   GetServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceInput,
   output: GetServiceOutput,
@@ -2082,7 +2082,7 @@ export const listAuditFindings: API.OperationMethod<
   ListAuditFindingsInput,
   ListAuditFindingsOutput,
   ListAuditFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAuditFindingsInput,
   output: ListAuditFindingsOutput,
@@ -2099,21 +2099,21 @@ export const listEntityEvents: API.OperationMethod<
   ListEntityEventsInput,
   ListEntityEventsOutput,
   ListEntityEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEntityEventsInput,
   ) => stream.Stream<
     ListEntityEventsOutput,
     ListEntityEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEntityEventsInput,
   ) => stream.Stream<
     ChangeEvent,
     ListEntityEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEntityEventsInput,
@@ -2138,7 +2138,7 @@ export const listGroupingAttributeDefinitions: API.OperationMethod<
   ListGroupingAttributeDefinitionsInput,
   ListGroupingAttributeDefinitionsOutput,
   ListGroupingAttributeDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGroupingAttributeDefinitionsInput,
   output: ListGroupingAttributeDefinitionsOutput,
@@ -2155,21 +2155,21 @@ export const listServiceDependencies: API.OperationMethod<
   ListServiceDependenciesInput,
   ListServiceDependenciesOutput,
   ListServiceDependenciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServiceDependenciesInput,
   ) => stream.Stream<
     ListServiceDependenciesOutput,
     ListServiceDependenciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServiceDependenciesInput,
   ) => stream.Stream<
     ServiceDependency,
     ListServiceDependenciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServiceDependenciesInput,
@@ -2193,21 +2193,21 @@ export const listServiceDependents: API.OperationMethod<
   ListServiceDependentsInput,
   ListServiceDependentsOutput,
   ListServiceDependentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServiceDependentsInput,
   ) => stream.Stream<
     ListServiceDependentsOutput,
     ListServiceDependentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServiceDependentsInput,
   ) => stream.Stream<
     ServiceDependent,
     ListServiceDependentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServiceDependentsInput,
@@ -2232,21 +2232,21 @@ export const listServiceLevelObjectiveExclusionWindows: API.OperationMethod<
   ListServiceLevelObjectiveExclusionWindowsInput,
   ListServiceLevelObjectiveExclusionWindowsOutput,
   ListServiceLevelObjectiveExclusionWindowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServiceLevelObjectiveExclusionWindowsInput,
   ) => stream.Stream<
     ListServiceLevelObjectiveExclusionWindowsOutput,
     ListServiceLevelObjectiveExclusionWindowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServiceLevelObjectiveExclusionWindowsInput,
   ) => stream.Stream<
     ExclusionWindow,
     ListServiceLevelObjectiveExclusionWindowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServiceLevelObjectiveExclusionWindowsInput,
@@ -2270,21 +2270,21 @@ export const listServiceOperations: API.OperationMethod<
   ListServiceOperationsInput,
   ListServiceOperationsOutput,
   ListServiceOperationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServiceOperationsInput,
   ) => stream.Stream<
     ListServiceOperationsOutput,
     ListServiceOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServiceOperationsInput,
   ) => stream.Stream<
     ServiceOperation,
     ListServiceOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServiceOperationsInput,
@@ -2308,21 +2308,21 @@ export const listServices: API.OperationMethod<
   ListServicesInput,
   ListServicesOutput,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServicesInput,
   ) => stream.Stream<
     ListServicesOutput,
     ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServicesInput,
   ) => stream.Stream<
     ServiceSummary,
     ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesInput,
@@ -2346,21 +2346,21 @@ export const listServiceStates: API.OperationMethod<
   ListServiceStatesInput,
   ListServiceStatesOutput,
   ListServiceStatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServiceStatesInput,
   ) => stream.Stream<
     ListServiceStatesOutput,
     ListServiceStatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServiceStatesInput,
   ) => stream.Stream<
     ServiceState,
     ListServiceStatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServiceStatesInput,
@@ -2384,7 +2384,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2402,7 +2402,7 @@ export const putGroupingConfiguration: API.OperationMethod<
   PutGroupingConfigurationInput,
   PutGroupingConfigurationOutput,
   PutGroupingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutGroupingConfigurationInput,
   output: PutGroupingConfigurationOutput,
@@ -2438,7 +2438,7 @@ export const startDiscovery: API.OperationMethod<
   StartDiscoveryInput,
   StartDiscoveryOutput,
   StartDiscoveryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartDiscoveryInput,
   output: StartDiscoveryOutput,
@@ -2464,7 +2464,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2485,7 +2485,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2547,7 +2547,7 @@ export const createServiceLevelObjective: API.OperationMethod<
   CreateServiceLevelObjectiveInput,
   CreateServiceLevelObjectiveOutput,
   CreateServiceLevelObjectiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServiceLevelObjectiveInput,
   output: CreateServiceLevelObjectiveOutput,
@@ -2571,7 +2571,7 @@ export const getServiceLevelObjective: API.OperationMethod<
   GetServiceLevelObjectiveInput,
   GetServiceLevelObjectiveOutput,
   GetServiceLevelObjectiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceLevelObjectiveInput,
   output: GetServiceLevelObjectiveOutput,
@@ -2591,7 +2591,7 @@ export const updateServiceLevelObjective: API.OperationMethod<
   UpdateServiceLevelObjectiveInput,
   UpdateServiceLevelObjectiveOutput,
   UpdateServiceLevelObjectiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateServiceLevelObjectiveInput,
   output: UpdateServiceLevelObjectiveOutput,
@@ -2609,7 +2609,7 @@ export const deleteServiceLevelObjective: API.OperationMethod<
   DeleteServiceLevelObjectiveInput,
   DeleteServiceLevelObjectiveOutput,
   DeleteServiceLevelObjectiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServiceLevelObjectiveInput,
   output: DeleteServiceLevelObjectiveOutput,
@@ -2626,21 +2626,21 @@ export const listServiceLevelObjectives: API.OperationMethod<
   ListServiceLevelObjectivesInput,
   ListServiceLevelObjectivesOutput,
   ListServiceLevelObjectivesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListServiceLevelObjectivesInput,
   ) => stream.Stream<
     ListServiceLevelObjectivesOutput,
     ListServiceLevelObjectivesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListServiceLevelObjectivesInput,
   ) => stream.Stream<
     ServiceLevelObjectiveSummary,
     ListServiceLevelObjectivesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServiceLevelObjectivesInput,

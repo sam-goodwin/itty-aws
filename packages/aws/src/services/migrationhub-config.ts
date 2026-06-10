@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "MigrationHub Config",
   serviceShapeName: "AWSMigrationHubMultiAccountService",
@@ -261,7 +261,7 @@ export const createHomeRegionControl: API.OperationMethod<
   CreateHomeRegionControlRequest,
   CreateHomeRegionControlResult,
   CreateHomeRegionControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateHomeRegionControlRequest,
   output: CreateHomeRegionControlResult,
@@ -288,7 +288,7 @@ export const deleteHomeRegionControl: API.OperationMethod<
   DeleteHomeRegionControlRequest,
   DeleteHomeRegionControlResult,
   DeleteHomeRegionControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteHomeRegionControlRequest,
   output: DeleteHomeRegionControlResult,
@@ -315,21 +315,21 @@ export const describeHomeRegionControls: API.OperationMethod<
   DescribeHomeRegionControlsRequest,
   DescribeHomeRegionControlsResult,
   DescribeHomeRegionControlsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeHomeRegionControlsRequest,
   ) => stream.Stream<
     DescribeHomeRegionControlsResult,
     DescribeHomeRegionControlsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeHomeRegionControlsRequest,
   ) => stream.Stream<
     unknown,
     DescribeHomeRegionControlsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeHomeRegionControlsRequest,
@@ -365,7 +365,7 @@ export const getHomeRegion: API.OperationMethod<
   GetHomeRegionRequest,
   GetHomeRegionResult,
   GetHomeRegionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHomeRegionRequest,
   output: GetHomeRegionResult,

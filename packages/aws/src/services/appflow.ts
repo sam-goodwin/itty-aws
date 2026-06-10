@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Appflow",
@@ -3974,7 +3974,7 @@ export const cancelFlowExecutions: API.OperationMethod<
   CancelFlowExecutionsRequest,
   CancelFlowExecutionsResponse,
   CancelFlowExecutionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelFlowExecutionsRequest,
   output: CancelFlowExecutionsResponse,
@@ -4004,7 +4004,7 @@ export const createConnectorProfile: API.OperationMethod<
   CreateConnectorProfileRequest,
   CreateConnectorProfileResponse,
   CreateConnectorProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConnectorProfileRequest,
   output: CreateConnectorProfileResponse,
@@ -4037,7 +4037,7 @@ export const createFlow: API.OperationMethod<
   CreateFlowRequest,
   CreateFlowResponse,
   CreateFlowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFlowRequest,
   output: CreateFlowResponse,
@@ -4064,7 +4064,7 @@ export const deleteConnectorProfile: API.OperationMethod<
   DeleteConnectorProfileRequest,
   DeleteConnectorProfileResponse,
   DeleteConnectorProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectorProfileRequest,
   output: DeleteConnectorProfileResponse,
@@ -4087,7 +4087,7 @@ export const deleteFlow: API.OperationMethod<
   DeleteFlowRequest,
   DeleteFlowResponse,
   DeleteFlowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFlowRequest,
   output: DeleteFlowResponse,
@@ -4111,7 +4111,7 @@ export const describeConnector: API.OperationMethod<
   DescribeConnectorRequest,
   DescribeConnectorResponse,
   DescribeConnectorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeConnectorRequest,
   output: DescribeConnectorResponse,
@@ -4136,7 +4136,7 @@ export const describeConnectorEntity: API.OperationMethod<
   DescribeConnectorEntityRequest,
   DescribeConnectorEntityResponse,
   DescribeConnectorEntityError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeConnectorEntityRequest,
   output: DescribeConnectorEntityResponse,
@@ -4164,21 +4164,21 @@ export const describeConnectorProfiles: API.OperationMethod<
   DescribeConnectorProfilesRequest,
   DescribeConnectorProfilesResponse,
   DescribeConnectorProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeConnectorProfilesRequest,
   ) => stream.Stream<
     DescribeConnectorProfilesResponse,
     DescribeConnectorProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeConnectorProfilesRequest,
   ) => stream.Stream<
     unknown,
     DescribeConnectorProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeConnectorProfilesRequest,
@@ -4204,21 +4204,21 @@ export const describeConnectors: API.OperationMethod<
   DescribeConnectorsRequest,
   DescribeConnectorsResponse,
   DescribeConnectorsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeConnectorsRequest,
   ) => stream.Stream<
     DescribeConnectorsResponse,
     DescribeConnectorsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeConnectorsRequest,
   ) => stream.Stream<
     unknown,
     DescribeConnectorsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeConnectorsRequest,
@@ -4241,7 +4241,7 @@ export const describeFlow: API.OperationMethod<
   DescribeFlowRequest,
   DescribeFlowResponse,
   DescribeFlowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeFlowRequest,
   output: DescribeFlowResponse,
@@ -4259,21 +4259,21 @@ export const describeFlowExecutionRecords: API.OperationMethod<
   DescribeFlowExecutionRecordsRequest,
   DescribeFlowExecutionRecordsResponse,
   DescribeFlowExecutionRecordsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeFlowExecutionRecordsRequest,
   ) => stream.Stream<
     DescribeFlowExecutionRecordsResponse,
     DescribeFlowExecutionRecordsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeFlowExecutionRecordsRequest,
   ) => stream.Stream<
     unknown,
     DescribeFlowExecutionRecordsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeFlowExecutionRecordsRequest,
@@ -4306,7 +4306,7 @@ export const listConnectorEntities: API.OperationMethod<
   ListConnectorEntitiesRequest,
   ListConnectorEntitiesResponse,
   ListConnectorEntitiesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListConnectorEntitiesRequest,
   output: ListConnectorEntitiesResponse,
@@ -4331,21 +4331,21 @@ export const listConnectors: API.OperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
   ListConnectorsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConnectorsRequest,
   ) => stream.Stream<
     ListConnectorsResponse,
     ListConnectorsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConnectorsRequest,
   ) => stream.Stream<
     unknown,
     ListConnectorsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
@@ -4368,21 +4368,21 @@ export const listFlows: API.OperationMethod<
   ListFlowsRequest,
   ListFlowsResponse,
   ListFlowsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFlowsRequest,
   ) => stream.Stream<
     ListFlowsResponse,
     ListFlowsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFlowsRequest,
   ) => stream.Stream<
     unknown,
     ListFlowsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFlowsRequest,
@@ -4406,7 +4406,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -4436,7 +4436,7 @@ export const registerConnector: API.OperationMethod<
   RegisterConnectorRequest,
   RegisterConnectorResponse,
   RegisterConnectorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterConnectorRequest,
   output: RegisterConnectorResponse,
@@ -4472,7 +4472,7 @@ export const resetConnectorMetadataCache: API.OperationMethod<
   ResetConnectorMetadataCacheRequest,
   ResetConnectorMetadataCacheResponse,
   ResetConnectorMetadataCacheError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetConnectorMetadataCacheRequest,
   output: ResetConnectorMetadataCacheResponse,
@@ -4497,7 +4497,7 @@ export const startFlow: API.OperationMethod<
   StartFlowRequest,
   StartFlowResponse,
   StartFlowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartFlowRequest,
   output: StartFlowResponse,
@@ -4523,7 +4523,7 @@ export const stopFlow: API.OperationMethod<
   StopFlowRequest,
   StopFlowResponse,
   StopFlowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopFlowRequest,
   output: StopFlowResponse,
@@ -4546,7 +4546,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4569,7 +4569,7 @@ export const unregisterConnector: API.OperationMethod<
   UnregisterConnectorRequest,
   UnregisterConnectorResponse,
   UnregisterConnectorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnregisterConnectorRequest,
   output: UnregisterConnectorResponse,
@@ -4591,7 +4591,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4615,7 +4615,7 @@ export const updateConnectorProfile: API.OperationMethod<
   UpdateConnectorProfileRequest,
   UpdateConnectorProfileResponse,
   UpdateConnectorProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConnectorProfileRequest,
   output: UpdateConnectorProfileResponse,
@@ -4650,7 +4650,7 @@ export const updateConnectorRegistration: API.OperationMethod<
   UpdateConnectorRegistrationRequest,
   UpdateConnectorRegistrationResponse,
   UpdateConnectorRegistrationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConnectorRegistrationRequest,
   output: UpdateConnectorRegistrationResponse,
@@ -4683,7 +4683,7 @@ export const updateFlow: API.OperationMethod<
   UpdateFlowRequest,
   UpdateFlowResponse,
   UpdateFlowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFlowRequest,
   output: UpdateFlowResponse,

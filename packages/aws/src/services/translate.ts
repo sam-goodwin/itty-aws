@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Translate",
@@ -1113,7 +1113,7 @@ export const createParallelData: API.OperationMethod<
   CreateParallelDataRequest,
   CreateParallelDataResponse,
   CreateParallelDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateParallelDataRequest,
   output: CreateParallelDataResponse,
@@ -1141,7 +1141,7 @@ export const deleteParallelData: API.OperationMethod<
   DeleteParallelDataRequest,
   DeleteParallelDataResponse,
   DeleteParallelDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteParallelDataRequest,
   output: DeleteParallelDataResponse,
@@ -1165,7 +1165,7 @@ export const deleteTerminology: API.OperationMethod<
   DeleteTerminologyRequest,
   DeleteTerminologyResponse,
   DeleteTerminologyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTerminologyRequest,
   output: DeleteTerminologyResponse,
@@ -1189,7 +1189,7 @@ export const describeTextTranslationJob: API.OperationMethod<
   DescribeTextTranslationJobRequest,
   DescribeTextTranslationJobResponse,
   DescribeTextTranslationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTextTranslationJobRequest,
   output: DescribeTextTranslationJobResponse,
@@ -1212,7 +1212,7 @@ export const getParallelData: API.OperationMethod<
   GetParallelDataRequest,
   GetParallelDataResponse,
   GetParallelDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetParallelDataRequest,
   output: GetParallelDataResponse,
@@ -1236,7 +1236,7 @@ export const getTerminology: API.OperationMethod<
   GetTerminologyRequest,
   GetTerminologyResponse,
   GetTerminologyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTerminologyRequest,
   output: GetTerminologyResponse,
@@ -1270,7 +1270,7 @@ export const importTerminology: API.OperationMethod<
   ImportTerminologyRequest,
   ImportTerminologyResponse,
   ImportTerminologyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportTerminologyRequest,
   output: ImportTerminologyResponse,
@@ -1296,21 +1296,21 @@ export const listLanguages: API.OperationMethod<
   ListLanguagesRequest,
   ListLanguagesResponse,
   ListLanguagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLanguagesRequest,
   ) => stream.Stream<
     ListLanguagesResponse,
     ListLanguagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLanguagesRequest,
   ) => stream.Stream<
     unknown,
     ListLanguagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLanguagesRequest,
@@ -1339,21 +1339,21 @@ export const listParallelData: API.OperationMethod<
   ListParallelDataRequest,
   ListParallelDataResponse,
   ListParallelDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListParallelDataRequest,
   ) => stream.Stream<
     ListParallelDataResponse,
     ListParallelDataError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListParallelDataRequest,
   ) => stream.Stream<
     unknown,
     ListParallelDataError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListParallelDataRequest,
@@ -1383,7 +1383,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1405,21 +1405,21 @@ export const listTerminologies: API.OperationMethod<
   ListTerminologiesRequest,
   ListTerminologiesResponse,
   ListTerminologiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTerminologiesRequest,
   ) => stream.Stream<
     ListTerminologiesResponse,
     ListTerminologiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTerminologiesRequest,
   ) => stream.Stream<
     unknown,
     ListTerminologiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTerminologiesRequest,
@@ -1448,21 +1448,21 @@ export const listTextTranslationJobs: API.OperationMethod<
   ListTextTranslationJobsRequest,
   ListTextTranslationJobsResponse,
   ListTextTranslationJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTextTranslationJobsRequest,
   ) => stream.Stream<
     ListTextTranslationJobsResponse,
     ListTextTranslationJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTextTranslationJobsRequest,
   ) => stream.Stream<
     unknown,
     ListTextTranslationJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTextTranslationJobsRequest,
@@ -1502,7 +1502,7 @@ export const startTextTranslationJob: API.OperationMethod<
   StartTextTranslationJobRequest,
   StartTextTranslationJobResponse,
   StartTextTranslationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartTextTranslationJobRequest,
   output: StartTextTranslationJobResponse,
@@ -1535,7 +1535,7 @@ export const stopTextTranslationJob: API.OperationMethod<
   StopTextTranslationJobRequest,
   StopTextTranslationJobResponse,
   StopTextTranslationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopTextTranslationJobRequest,
   output: StopTextTranslationJobResponse,
@@ -1562,7 +1562,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1599,7 +1599,7 @@ export const translateDocument: API.OperationMethod<
   TranslateDocumentRequest,
   TranslateDocumentResponse,
   TranslateDocumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateDocumentRequest,
   output: TranslateDocumentResponse,
@@ -1631,7 +1631,7 @@ export const translateText: API.OperationMethod<
   TranslateTextRequest,
   TranslateTextResponse,
   TranslateTextError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateTextRequest,
   output: TranslateTextResponse,
@@ -1661,7 +1661,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1690,7 +1690,7 @@ export const updateParallelData: API.OperationMethod<
   UpdateParallelDataRequest,
   UpdateParallelDataResponse,
   UpdateParallelDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateParallelDataRequest,
   output: UpdateParallelDataResponse,

@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "SocialMessaging",
@@ -1281,7 +1281,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1304,7 +1304,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1326,7 +1326,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -1349,7 +1349,7 @@ export const associateWhatsAppBusinessAccount: API.OperationMethod<
   AssociateWhatsAppBusinessAccountInput,
   AssociateWhatsAppBusinessAccountOutput,
   AssociateWhatsAppBusinessAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateWhatsAppBusinessAccountInput,
   output: AssociateWhatsAppBusinessAccountOutput,
@@ -1374,7 +1374,7 @@ export const getLinkedWhatsAppBusinessAccount: API.OperationMethod<
   GetLinkedWhatsAppBusinessAccountInput,
   GetLinkedWhatsAppBusinessAccountOutput,
   GetLinkedWhatsAppBusinessAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLinkedWhatsAppBusinessAccountInput,
   output: GetLinkedWhatsAppBusinessAccountOutput,
@@ -1399,7 +1399,7 @@ export const disassociateWhatsAppBusinessAccount: API.OperationMethod<
   DisassociateWhatsAppBusinessAccountInput,
   DisassociateWhatsAppBusinessAccountOutput,
   DisassociateWhatsAppBusinessAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateWhatsAppBusinessAccountInput,
   output: DisassociateWhatsAppBusinessAccountOutput,
@@ -1423,21 +1423,21 @@ export const listLinkedWhatsAppBusinessAccounts: API.OperationMethod<
   ListLinkedWhatsAppBusinessAccountsInput,
   ListLinkedWhatsAppBusinessAccountsOutput,
   ListLinkedWhatsAppBusinessAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLinkedWhatsAppBusinessAccountsInput,
   ) => stream.Stream<
     ListLinkedWhatsAppBusinessAccountsOutput,
     ListLinkedWhatsAppBusinessAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLinkedWhatsAppBusinessAccountsInput,
   ) => stream.Stream<
     LinkedWhatsAppBusinessAccountSummary,
     ListLinkedWhatsAppBusinessAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLinkedWhatsAppBusinessAccountsInput,
@@ -1471,7 +1471,7 @@ export const createWhatsAppMessageTemplate: API.OperationMethod<
   CreateWhatsAppMessageTemplateInput,
   CreateWhatsAppMessageTemplateOutput,
   CreateWhatsAppMessageTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWhatsAppMessageTemplateInput,
   output: CreateWhatsAppMessageTemplateOutput,
@@ -1497,7 +1497,7 @@ export const createWhatsAppMessageTemplateFromLibrary: API.OperationMethod<
   CreateWhatsAppMessageTemplateFromLibraryInput,
   CreateWhatsAppMessageTemplateFromLibraryOutput,
   CreateWhatsAppMessageTemplateFromLibraryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWhatsAppMessageTemplateFromLibraryInput,
   output: CreateWhatsAppMessageTemplateFromLibraryOutput,
@@ -1523,7 +1523,7 @@ export const createWhatsAppMessageTemplateMedia: API.OperationMethod<
   CreateWhatsAppMessageTemplateMediaInput,
   CreateWhatsAppMessageTemplateMediaOutput,
   CreateWhatsAppMessageTemplateMediaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWhatsAppMessageTemplateMediaInput,
   output: CreateWhatsAppMessageTemplateMediaOutput,
@@ -1549,7 +1549,7 @@ export const deleteWhatsAppMessageTemplate: API.OperationMethod<
   DeleteWhatsAppMessageTemplateInput,
   DeleteWhatsAppMessageTemplateOutput,
   DeleteWhatsAppMessageTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWhatsAppMessageTemplateInput,
   output: DeleteWhatsAppMessageTemplateOutput,
@@ -1575,7 +1575,7 @@ export const getWhatsAppMessageTemplate: API.OperationMethod<
   GetWhatsAppMessageTemplateInput,
   GetWhatsAppMessageTemplateOutput,
   GetWhatsAppMessageTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWhatsAppMessageTemplateInput,
   output: GetWhatsAppMessageTemplateOutput,
@@ -1601,21 +1601,21 @@ export const listWhatsAppMessageTemplates: API.OperationMethod<
   ListWhatsAppMessageTemplatesInput,
   ListWhatsAppMessageTemplatesOutput,
   ListWhatsAppMessageTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWhatsAppMessageTemplatesInput,
   ) => stream.Stream<
     ListWhatsAppMessageTemplatesOutput,
     ListWhatsAppMessageTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWhatsAppMessageTemplatesInput,
   ) => stream.Stream<
     TemplateSummary,
     ListWhatsAppMessageTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWhatsAppMessageTemplatesInput,
@@ -1648,21 +1648,21 @@ export const listWhatsAppTemplateLibrary: API.OperationMethod<
   ListWhatsAppTemplateLibraryInput,
   ListWhatsAppTemplateLibraryOutput,
   ListWhatsAppTemplateLibraryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWhatsAppTemplateLibraryInput,
   ) => stream.Stream<
     ListWhatsAppTemplateLibraryOutput,
     ListWhatsAppTemplateLibraryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWhatsAppTemplateLibraryInput,
   ) => stream.Stream<
     MetaLibraryTemplateDefinition,
     ListWhatsAppTemplateLibraryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWhatsAppTemplateLibraryInput,
@@ -1693,7 +1693,7 @@ export const putWhatsAppBusinessAccountEventDestinations: API.OperationMethod<
   PutWhatsAppBusinessAccountEventDestinationsInput,
   PutWhatsAppBusinessAccountEventDestinationsOutput,
   PutWhatsAppBusinessAccountEventDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutWhatsAppBusinessAccountEventDestinationsInput,
   output: PutWhatsAppBusinessAccountEventDestinationsOutput,
@@ -1717,7 +1717,7 @@ export const updateWhatsAppMessageTemplate: API.OperationMethod<
   UpdateWhatsAppMessageTemplateInput,
   UpdateWhatsAppMessageTemplateOutput,
   UpdateWhatsAppMessageTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWhatsAppMessageTemplateInput,
   output: UpdateWhatsAppMessageTemplateOutput,
@@ -1743,7 +1743,7 @@ export const getLinkedWhatsAppBusinessAccountPhoneNumber: API.OperationMethod<
   GetLinkedWhatsAppBusinessAccountPhoneNumberInput,
   GetLinkedWhatsAppBusinessAccountPhoneNumberOutput,
   GetLinkedWhatsAppBusinessAccountPhoneNumberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLinkedWhatsAppBusinessAccountPhoneNumberInput,
   output: GetLinkedWhatsAppBusinessAccountPhoneNumberOutput,
@@ -1770,7 +1770,7 @@ export const deleteWhatsAppMessageMedia: API.OperationMethod<
   DeleteWhatsAppMessageMediaInput,
   DeleteWhatsAppMessageMediaOutput,
   DeleteWhatsAppMessageMediaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWhatsAppMessageMediaInput,
   output: DeleteWhatsAppMessageMediaOutput,
@@ -1802,7 +1802,7 @@ export const getWhatsAppMessageMedia: API.OperationMethod<
   GetWhatsAppMessageMediaInput,
   GetWhatsAppMessageMediaOutput,
   GetWhatsAppMessageMediaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWhatsAppMessageMediaInput,
   output: GetWhatsAppMessageMediaOutput,
@@ -1834,7 +1834,7 @@ export const postWhatsAppMessageMedia: API.OperationMethod<
   PostWhatsAppMessageMediaInput,
   PostWhatsAppMessageMediaOutput,
   PostWhatsAppMessageMediaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PostWhatsAppMessageMediaInput,
   output: PostWhatsAppMessageMediaOutput,
@@ -1865,7 +1865,7 @@ export const sendWhatsAppMessage: API.OperationMethod<
   SendWhatsAppMessageInput,
   SendWhatsAppMessageOutput,
   SendWhatsAppMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendWhatsAppMessageInput,
   output: SendWhatsAppMessageOutput,

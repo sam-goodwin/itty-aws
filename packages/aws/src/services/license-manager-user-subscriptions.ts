@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "License Manager User Subscriptions",
   serviceShapeName: "LicenseManagerUserSubscriptions",
@@ -1054,7 +1054,7 @@ export const associateUser: API.OperationMethod<
   AssociateUserRequest,
   AssociateUserResponse,
   AssociateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateUserRequest,
   output: AssociateUserResponse,
@@ -1084,7 +1084,7 @@ export const createLicenseServerEndpoint: API.OperationMethod<
   CreateLicenseServerEndpointRequest,
   CreateLicenseServerEndpointResponse,
   CreateLicenseServerEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLicenseServerEndpointRequest,
   output: CreateLicenseServerEndpointResponse,
@@ -1114,7 +1114,7 @@ export const deleteLicenseServerEndpoint: API.OperationMethod<
   DeleteLicenseServerEndpointRequest,
   DeleteLicenseServerEndpointResponse,
   DeleteLicenseServerEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLicenseServerEndpointRequest,
   output: DeleteLicenseServerEndpointResponse,
@@ -1144,7 +1144,7 @@ export const deregisterIdentityProvider: API.OperationMethod<
   DeregisterIdentityProviderRequest,
   DeregisterIdentityProviderResponse,
   DeregisterIdentityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeregisterIdentityProviderRequest,
   output: DeregisterIdentityProviderResponse,
@@ -1174,7 +1174,7 @@ export const disassociateUser: API.OperationMethod<
   DisassociateUserRequest,
   DisassociateUserResponse,
   DisassociateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateUserRequest,
   output: DisassociateUserResponse,
@@ -1204,21 +1204,21 @@ export const listIdentityProviders: API.OperationMethod<
   ListIdentityProvidersRequest,
   ListIdentityProvidersResponse,
   ListIdentityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIdentityProvidersRequest,
   ) => stream.Stream<
     ListIdentityProvidersResponse,
     ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListIdentityProvidersRequest,
   ) => stream.Stream<
     IdentityProviderSummary,
     ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProvidersRequest,
@@ -1255,21 +1255,21 @@ export const listInstances: API.OperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInstancesRequest,
   ) => stream.Stream<
     ListInstancesResponse,
     ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInstancesRequest,
   ) => stream.Stream<
     InstanceSummary,
     ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
@@ -1305,21 +1305,21 @@ export const listLicenseServerEndpoints: API.OperationMethod<
   ListLicenseServerEndpointsRequest,
   ListLicenseServerEndpointsResponse,
   ListLicenseServerEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLicenseServerEndpointsRequest,
   ) => stream.Stream<
     ListLicenseServerEndpointsResponse,
     ListLicenseServerEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLicenseServerEndpointsRequest,
   ) => stream.Stream<
     LicenseServerEndpoint,
     ListLicenseServerEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLicenseServerEndpointsRequest,
@@ -1355,21 +1355,21 @@ export const listProductSubscriptions: API.OperationMethod<
   ListProductSubscriptionsRequest,
   ListProductSubscriptionsResponse,
   ListProductSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProductSubscriptionsRequest,
   ) => stream.Stream<
     ListProductSubscriptionsResponse,
     ListProductSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProductSubscriptionsRequest,
   ) => stream.Stream<
     ProductUserSummary,
     ListProductSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProductSubscriptionsRequest,
@@ -1402,7 +1402,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1428,21 +1428,21 @@ export const listUserAssociations: API.OperationMethod<
   ListUserAssociationsRequest,
   ListUserAssociationsResponse,
   ListUserAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListUserAssociationsRequest,
   ) => stream.Stream<
     ListUserAssociationsResponse,
     ListUserAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListUserAssociationsRequest,
   ) => stream.Stream<
     InstanceUserSummary,
     ListUserAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserAssociationsRequest,
@@ -1479,7 +1479,7 @@ export const registerIdentityProvider: API.OperationMethod<
   RegisterIdentityProviderRequest,
   RegisterIdentityProviderResponse,
   RegisterIdentityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterIdentityProviderRequest,
   output: RegisterIdentityProviderResponse,
@@ -1511,7 +1511,7 @@ export const startProductSubscription: API.OperationMethod<
   StartProductSubscriptionRequest,
   StartProductSubscriptionResponse,
   StartProductSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartProductSubscriptionRequest,
   output: StartProductSubscriptionResponse,
@@ -1541,7 +1541,7 @@ export const stopProductSubscription: API.OperationMethod<
   StopProductSubscriptionRequest,
   StopProductSubscriptionResponse,
   StopProductSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopProductSubscriptionRequest,
   output: StopProductSubscriptionResponse,
@@ -1567,7 +1567,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1588,7 +1588,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1607,7 +1607,7 @@ export const updateIdentityProviderSettings: API.OperationMethod<
   UpdateIdentityProviderSettingsRequest,
   UpdateIdentityProviderSettingsResponse,
   UpdateIdentityProviderSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIdentityProviderSettingsRequest,
   output: UpdateIdentityProviderSettingsResponse,

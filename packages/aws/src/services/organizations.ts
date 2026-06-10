@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://organizations.amazonaws.com/doc/2016-11-28/");
 const svc = T.AwsApiService({
@@ -3220,7 +3220,7 @@ export const acceptHandshake: API.OperationMethod<
   AcceptHandshakeRequest,
   AcceptHandshakeResponse,
   AcceptHandshakeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptHandshakeRequest,
   output: AcceptHandshakeResponse,
@@ -3292,7 +3292,7 @@ export const attachPolicy: API.OperationMethod<
   AttachPolicyRequest,
   AttachPolicyResponse,
   AttachPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachPolicyRequest,
   output: AttachPolicyResponse,
@@ -3335,7 +3335,7 @@ export const cancelHandshake: API.OperationMethod<
   CancelHandshakeRequest,
   CancelHandshakeResponse,
   CancelHandshakeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelHandshakeRequest,
   output: CancelHandshakeResponse,
@@ -3410,7 +3410,7 @@ export const closeAccount: API.OperationMethod<
   CloseAccountRequest,
   CloseAccountResponse,
   CloseAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloseAccountRequest,
   output: CloseAccountResponse,
@@ -3510,7 +3510,7 @@ export const createAccount: API.OperationMethod<
   CreateAccountRequest,
   CreateAccountResponse,
   CreateAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountRequest,
   output: CreateAccountResponse,
@@ -3651,7 +3651,7 @@ export const createGovCloudAccount: API.OperationMethod<
   CreateGovCloudAccountRequest,
   CreateGovCloudAccountResponse,
   CreateGovCloudAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGovCloudAccountRequest,
   output: CreateGovCloudAccountResponse,
@@ -3696,7 +3696,7 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationRequest,
   CreateOrganizationResponse,
   CreateOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationRequest,
   output: CreateOrganizationResponse,
@@ -3741,7 +3741,7 @@ export const createOrganizationalUnit: API.OperationMethod<
   CreateOrganizationalUnitRequest,
   CreateOrganizationalUnitResponse,
   CreateOrganizationalUnitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationalUnitRequest,
   output: CreateOrganizationalUnitResponse,
@@ -3786,7 +3786,7 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyRequest,
   CreatePolicyResponse,
   CreatePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePolicyRequest,
   output: CreatePolicyResponse,
@@ -3827,7 +3827,7 @@ export const declineHandshake: API.OperationMethod<
   DeclineHandshakeRequest,
   DeclineHandshakeResponse,
   DeclineHandshakeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeclineHandshakeRequest,
   output: DeclineHandshakeResponse,
@@ -3860,7 +3860,7 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationRequest,
   DeleteOrganizationResponse,
   DeleteOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationRequest,
   output: DeleteOrganizationResponse,
@@ -3895,7 +3895,7 @@ export const deleteOrganizationalUnit: API.OperationMethod<
   DeleteOrganizationalUnitRequest,
   DeleteOrganizationalUnitResponse,
   DeleteOrganizationalUnitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationalUnitRequest,
   output: DeleteOrganizationalUnitResponse,
@@ -3932,7 +3932,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyRequest,
   DeletePolicyResponse,
   DeletePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
@@ -3967,7 +3967,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -4014,7 +4014,7 @@ export const deregisterDelegatedAdministrator: API.OperationMethod<
   DeregisterDelegatedAdministratorRequest,
   DeregisterDelegatedAdministratorResponse,
   DeregisterDelegatedAdministratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeregisterDelegatedAdministratorRequest,
   output: DeregisterDelegatedAdministratorResponse,
@@ -4048,7 +4048,7 @@ export const describeAccount: API.OperationMethod<
   DescribeAccountRequest,
   DescribeAccountResponse,
   DescribeAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAccountRequest,
   output: DescribeAccountResponse,
@@ -4079,7 +4079,7 @@ export const describeCreateAccountStatus: API.OperationMethod<
   DescribeCreateAccountStatusRequest,
   DescribeCreateAccountStatusResponse,
   DescribeCreateAccountStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCreateAccountStatusRequest,
   output: DescribeCreateAccountStatusResponse,
@@ -4123,7 +4123,7 @@ export const describeEffectivePolicy: API.OperationMethod<
   DescribeEffectivePolicyRequest,
   DescribeEffectivePolicyResponse,
   DescribeEffectivePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEffectivePolicyRequest,
   output: DescribeEffectivePolicyResponse,
@@ -4160,7 +4160,7 @@ export const describeHandshake: API.OperationMethod<
   DescribeHandshakeRequest,
   DescribeHandshakeResponse,
   DescribeHandshakeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeHandshakeRequest,
   output: DescribeHandshakeResponse,
@@ -4194,7 +4194,7 @@ export const describeOrganization: API.OperationMethod<
   DescribeOrganizationRequest,
   DescribeOrganizationResponse,
   DescribeOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeOrganizationRequest,
   output: DescribeOrganizationResponse,
@@ -4223,7 +4223,7 @@ export const describeOrganizationalUnit: API.OperationMethod<
   DescribeOrganizationalUnitRequest,
   DescribeOrganizationalUnitResponse,
   DescribeOrganizationalUnitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeOrganizationalUnitRequest,
   output: DescribeOrganizationalUnitResponse,
@@ -4254,7 +4254,7 @@ export const describePolicy: API.OperationMethod<
   DescribePolicyRequest,
   DescribePolicyResponse,
   DescribePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribePolicyRequest,
   output: DescribePolicyResponse,
@@ -4286,7 +4286,7 @@ export const describeResourcePolicy: API.OperationMethod<
   DescribeResourcePolicyRequest,
   DescribeResourcePolicyResponse,
   DescribeResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeResourcePolicyRequest,
   output: DescribeResourcePolicyResponse,
@@ -4318,7 +4318,7 @@ export const describeResponsibilityTransfer: API.OperationMethod<
   DescribeResponsibilityTransferRequest,
   DescribeResponsibilityTransferResponse,
   DescribeResponsibilityTransferError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeResponsibilityTransferRequest,
   output: DescribeResponsibilityTransferResponse,
@@ -4368,7 +4368,7 @@ export const detachPolicy: API.OperationMethod<
   DetachPolicyRequest,
   DetachPolicyResponse,
   DetachPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachPolicyRequest,
   output: DetachPolicyResponse,
@@ -4458,7 +4458,7 @@ export const disableAWSServiceAccess: API.OperationMethod<
   DisableAWSServiceAccessRequest,
   DisableAWSServiceAccessResponse,
   DisableAWSServiceAccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableAWSServiceAccessRequest,
   output: DisableAWSServiceAccessResponse,
@@ -4506,7 +4506,7 @@ export const disablePolicyType: API.OperationMethod<
   DisablePolicyTypeRequest,
   DisablePolicyTypeResponse,
   DisablePolicyTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisablePolicyTypeRequest,
   output: DisablePolicyTypeResponse,
@@ -4568,7 +4568,7 @@ export const enableAllFeatures: API.OperationMethod<
   EnableAllFeaturesRequest,
   EnableAllFeaturesResponse,
   EnableAllFeaturesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableAllFeaturesRequest,
   output: EnableAllFeaturesResponse,
@@ -4618,7 +4618,7 @@ export const enableAWSServiceAccess: API.OperationMethod<
   EnableAWSServiceAccessRequest,
   EnableAWSServiceAccessResponse,
   EnableAWSServiceAccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableAWSServiceAccessRequest,
   output: EnableAWSServiceAccessResponse,
@@ -4667,7 +4667,7 @@ export const enablePolicyType: API.OperationMethod<
   EnablePolicyTypeRequest,
   EnablePolicyTypeResponse,
   EnablePolicyTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnablePolicyTypeRequest,
   output: EnablePolicyTypeResponse,
@@ -4720,7 +4720,7 @@ export const inviteAccountToOrganization: API.OperationMethod<
   InviteAccountToOrganizationRequest,
   InviteAccountToOrganizationResponse,
   InviteAccountToOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InviteAccountToOrganizationRequest,
   output: InviteAccountToOrganizationResponse,
@@ -4761,7 +4761,7 @@ export const inviteOrganizationToTransferResponsibility: API.OperationMethod<
   InviteOrganizationToTransferResponsibilityRequest,
   InviteOrganizationToTransferResponsibilityResponse,
   InviteOrganizationToTransferResponsibilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InviteOrganizationToTransferResponsibilityRequest,
   output: InviteOrganizationToTransferResponsibilityResponse,
@@ -4844,7 +4844,7 @@ export const leaveOrganization: API.OperationMethod<
   LeaveOrganizationRequest,
   LeaveOrganizationResponse,
   LeaveOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LeaveOrganizationRequest,
   output: LeaveOrganizationResponse,
@@ -4881,21 +4881,21 @@ export const listAccounts: API.OperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccountsRequest,
   ) => stream.Stream<
     ListAccountsResponse,
     ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccountsRequest,
   ) => stream.Stream<
     unknown,
     ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
@@ -4938,21 +4938,21 @@ export const listAccountsForParent: API.OperationMethod<
   ListAccountsForParentRequest,
   ListAccountsForParentResponse,
   ListAccountsForParentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccountsForParentRequest,
   ) => stream.Stream<
     ListAccountsForParentResponse,
     ListAccountsForParentError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccountsForParentRequest,
   ) => stream.Stream<
     unknown,
     ListAccountsForParentError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsForParentRequest,
@@ -4993,21 +4993,21 @@ export const listAccountsWithInvalidEffectivePolicy: API.OperationMethod<
   ListAccountsWithInvalidEffectivePolicyRequest,
   ListAccountsWithInvalidEffectivePolicyResponse,
   ListAccountsWithInvalidEffectivePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccountsWithInvalidEffectivePolicyRequest,
   ) => stream.Stream<
     ListAccountsWithInvalidEffectivePolicyResponse,
     ListAccountsWithInvalidEffectivePolicyError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccountsWithInvalidEffectivePolicyRequest,
   ) => stream.Stream<
     Account,
     ListAccountsWithInvalidEffectivePolicyError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsWithInvalidEffectivePolicyRequest,
@@ -5053,21 +5053,21 @@ export const listAWSServiceAccessForOrganization: API.OperationMethod<
   ListAWSServiceAccessForOrganizationRequest,
   ListAWSServiceAccessForOrganizationResponse,
   ListAWSServiceAccessForOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAWSServiceAccessForOrganizationRequest,
   ) => stream.Stream<
     ListAWSServiceAccessForOrganizationResponse,
     ListAWSServiceAccessForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAWSServiceAccessForOrganizationRequest,
   ) => stream.Stream<
     unknown,
     ListAWSServiceAccessForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAWSServiceAccessForOrganizationRequest,
@@ -5110,21 +5110,21 @@ export const listChildren: API.OperationMethod<
   ListChildrenRequest,
   ListChildrenResponse,
   ListChildrenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChildrenRequest,
   ) => stream.Stream<
     ListChildrenResponse,
     ListChildrenError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChildrenRequest,
   ) => stream.Stream<
     unknown,
     ListChildrenError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChildrenRequest,
@@ -5165,21 +5165,21 @@ export const listCreateAccountStatus: API.OperationMethod<
   ListCreateAccountStatusRequest,
   ListCreateAccountStatusResponse,
   ListCreateAccountStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCreateAccountStatusRequest,
   ) => stream.Stream<
     ListCreateAccountStatusResponse,
     ListCreateAccountStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCreateAccountStatusRequest,
   ) => stream.Stream<
     unknown,
     ListCreateAccountStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCreateAccountStatusRequest,
@@ -5217,21 +5217,21 @@ export const listDelegatedAdministrators: API.OperationMethod<
   ListDelegatedAdministratorsRequest,
   ListDelegatedAdministratorsResponse,
   ListDelegatedAdministratorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDelegatedAdministratorsRequest,
   ) => stream.Stream<
     ListDelegatedAdministratorsResponse,
     ListDelegatedAdministratorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDelegatedAdministratorsRequest,
   ) => stream.Stream<
     DelegatedAdministrator,
     ListDelegatedAdministratorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDelegatedAdministratorsRequest,
@@ -5273,21 +5273,21 @@ export const listDelegatedServicesForAccount: API.OperationMethod<
   ListDelegatedServicesForAccountRequest,
   ListDelegatedServicesForAccountResponse,
   ListDelegatedServicesForAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDelegatedServicesForAccountRequest,
   ) => stream.Stream<
     ListDelegatedServicesForAccountResponse,
     ListDelegatedServicesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDelegatedServicesForAccountRequest,
   ) => stream.Stream<
     DelegatedService,
     ListDelegatedServicesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDelegatedServicesForAccountRequest,
@@ -5331,21 +5331,21 @@ export const listEffectivePolicyValidationErrors: API.OperationMethod<
   ListEffectivePolicyValidationErrorsRequest,
   ListEffectivePolicyValidationErrorsResponse,
   ListEffectivePolicyValidationErrorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEffectivePolicyValidationErrorsRequest,
   ) => stream.Stream<
     ListEffectivePolicyValidationErrorsResponse,
     ListEffectivePolicyValidationErrorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEffectivePolicyValidationErrorsRequest,
   ) => stream.Stream<
     EffectivePolicyValidationError,
     ListEffectivePolicyValidationErrorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEffectivePolicyValidationErrorsRequest,
@@ -5392,21 +5392,21 @@ export const listHandshakesForAccount: API.OperationMethod<
   ListHandshakesForAccountRequest,
   ListHandshakesForAccountResponse,
   ListHandshakesForAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListHandshakesForAccountRequest,
   ) => stream.Stream<
     ListHandshakesForAccountResponse,
     ListHandshakesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListHandshakesForAccountRequest,
   ) => stream.Stream<
     unknown,
     ListHandshakesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHandshakesForAccountRequest,
@@ -5449,21 +5449,21 @@ export const listHandshakesForOrganization: API.OperationMethod<
   ListHandshakesForOrganizationRequest,
   ListHandshakesForOrganizationResponse,
   ListHandshakesForOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListHandshakesForOrganizationRequest,
   ) => stream.Stream<
     ListHandshakesForOrganizationResponse,
     ListHandshakesForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListHandshakesForOrganizationRequest,
   ) => stream.Stream<
     unknown,
     ListHandshakesForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHandshakesForOrganizationRequest,
@@ -5504,7 +5504,7 @@ export const listInboundResponsibilityTransfers: API.OperationMethod<
   ListInboundResponsibilityTransfersRequest,
   ListInboundResponsibilityTransfersResponse,
   ListInboundResponsibilityTransfersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListInboundResponsibilityTransfersRequest,
   output: ListInboundResponsibilityTransfersResponse,
@@ -5540,21 +5540,21 @@ export const listOrganizationalUnitsForParent: API.OperationMethod<
   ListOrganizationalUnitsForParentRequest,
   ListOrganizationalUnitsForParentResponse,
   ListOrganizationalUnitsForParentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOrganizationalUnitsForParentRequest,
   ) => stream.Stream<
     ListOrganizationalUnitsForParentResponse,
     ListOrganizationalUnitsForParentError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOrganizationalUnitsForParentRequest,
   ) => stream.Stream<
     unknown,
     ListOrganizationalUnitsForParentError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationalUnitsForParentRequest,
@@ -5595,7 +5595,7 @@ export const listOutboundResponsibilityTransfers: API.OperationMethod<
   ListOutboundResponsibilityTransfersRequest,
   ListOutboundResponsibilityTransfersResponse,
   ListOutboundResponsibilityTransfersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOutboundResponsibilityTransfersRequest,
   output: ListOutboundResponsibilityTransfersResponse,
@@ -5634,21 +5634,21 @@ export const listParents: API.OperationMethod<
   ListParentsRequest,
   ListParentsResponse,
   ListParentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListParentsRequest,
   ) => stream.Stream<
     ListParentsResponse,
     ListParentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListParentsRequest,
   ) => stream.Stream<
     unknown,
     ListParentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListParentsRequest,
@@ -5688,21 +5688,21 @@ export const listPolicies: API.OperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPoliciesRequest,
   ) => stream.Stream<
     ListPoliciesResponse,
     ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPoliciesRequest,
   ) => stream.Stream<
     unknown,
     ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
@@ -5745,21 +5745,21 @@ export const listPoliciesForTarget: API.OperationMethod<
   ListPoliciesForTargetRequest,
   ListPoliciesForTargetResponse,
   ListPoliciesForTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPoliciesForTargetRequest,
   ) => stream.Stream<
     ListPoliciesForTargetResponse,
     ListPoliciesForTargetError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPoliciesForTargetRequest,
   ) => stream.Stream<
     unknown,
     ListPoliciesForTargetError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesForTargetRequest,
@@ -5805,21 +5805,21 @@ export const listRoots: API.OperationMethod<
   ListRootsRequest,
   ListRootsResponse,
   ListRootsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRootsRequest,
   ) => stream.Stream<
     ListRootsResponse,
     ListRootsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRootsRequest,
   ) => stream.Stream<
     unknown,
     ListRootsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRootsRequest,
@@ -5864,21 +5864,21 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     ListTagsForResourceResponse,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     Tag,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
@@ -5920,21 +5920,21 @@ export const listTargetsForPolicy: API.OperationMethod<
   ListTargetsForPolicyRequest,
   ListTargetsForPolicyResponse,
   ListTargetsForPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTargetsForPolicyRequest,
   ) => stream.Stream<
     ListTargetsForPolicyResponse,
     ListTargetsForPolicyError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTargetsForPolicyRequest,
   ) => stream.Stream<
     unknown,
     ListTargetsForPolicyError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetsForPolicyRequest,
@@ -5976,7 +5976,7 @@ export const moveAccount: API.OperationMethod<
   MoveAccountRequest,
   MoveAccountResponse,
   MoveAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveAccountRequest,
   output: MoveAccountResponse,
@@ -6012,7 +6012,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -6055,7 +6055,7 @@ export const registerDelegatedAdministrator: API.OperationMethod<
   RegisterDelegatedAdministratorRequest,
   RegisterDelegatedAdministratorResponse,
   RegisterDelegatedAdministratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterDelegatedAdministratorRequest,
   output: RegisterDelegatedAdministratorResponse,
@@ -6115,7 +6115,7 @@ export const removeAccountFromOrganization: API.OperationMethod<
   RemoveAccountFromOrganizationRequest,
   RemoveAccountFromOrganizationResponse,
   RemoveAccountFromOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAccountFromOrganizationRequest,
   output: RemoveAccountFromOrganizationResponse,
@@ -6160,7 +6160,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -6197,7 +6197,7 @@ export const terminateResponsibilityTransfer: API.OperationMethod<
   TerminateResponsibilityTransferRequest,
   TerminateResponsibilityTransferResponse,
   TerminateResponsibilityTransferError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TerminateResponsibilityTransferRequest,
   output: TerminateResponsibilityTransferResponse,
@@ -6244,7 +6244,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -6280,7 +6280,7 @@ export const updateOrganizationalUnit: API.OperationMethod<
   UpdateOrganizationalUnitRequest,
   UpdateOrganizationalUnitResponse,
   UpdateOrganizationalUnitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationalUnitRequest,
   output: UpdateOrganizationalUnitResponse,
@@ -6320,7 +6320,7 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyRequest,
   UpdatePolicyResponse,
   UpdatePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePolicyRequest,
   output: UpdatePolicyResponse,
@@ -6360,7 +6360,7 @@ export const updateResponsibilityTransfer: API.OperationMethod<
   UpdateResponsibilityTransferRequest,
   UpdateResponsibilityTransferResponse,
   UpdateResponsibilityTransferError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResponsibilityTransferRequest,
   output: UpdateResponsibilityTransferResponse,

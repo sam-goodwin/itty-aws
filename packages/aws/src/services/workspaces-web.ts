@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "WorkSpaces Web",
@@ -3721,7 +3721,7 @@ export const expireSession: API.OperationMethod<
   ExpireSessionRequest,
   ExpireSessionResponse,
   ExpireSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExpireSessionRequest,
   output: ExpireSessionResponse,
@@ -3747,7 +3747,7 @@ export const getSession: API.OperationMethod<
   GetSessionRequest,
   GetSessionResponse,
   GetSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
@@ -3773,21 +3773,21 @@ export const listSessions: API.OperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSessionsRequest,
   ) => stream.Stream<
     ListSessionsResponse,
     ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSessionsRequest,
   ) => stream.Stream<
     SessionSummary,
     ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
@@ -3820,7 +3820,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3847,7 +3847,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3874,7 +3874,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3902,7 +3902,7 @@ export const createBrowserSettings: API.OperationMethod<
   CreateBrowserSettingsRequest,
   CreateBrowserSettingsResponse,
   CreateBrowserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBrowserSettingsRequest,
   output: CreateBrowserSettingsResponse,
@@ -3930,7 +3930,7 @@ export const getBrowserSettings: API.OperationMethod<
   GetBrowserSettingsRequest,
   GetBrowserSettingsResponse,
   GetBrowserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBrowserSettingsRequest,
   output: GetBrowserSettingsResponse,
@@ -3956,7 +3956,7 @@ export const updateBrowserSettings: API.OperationMethod<
   UpdateBrowserSettingsRequest,
   UpdateBrowserSettingsResponse,
   UpdateBrowserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBrowserSettingsRequest,
   output: UpdateBrowserSettingsResponse,
@@ -3982,7 +3982,7 @@ export const deleteBrowserSettings: API.OperationMethod<
   DeleteBrowserSettingsRequest,
   DeleteBrowserSettingsResponse,
   DeleteBrowserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBrowserSettingsRequest,
   output: DeleteBrowserSettingsResponse,
@@ -4007,21 +4007,21 @@ export const listBrowserSettings: API.OperationMethod<
   ListBrowserSettingsRequest,
   ListBrowserSettingsResponse,
   ListBrowserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBrowserSettingsRequest,
   ) => stream.Stream<
     ListBrowserSettingsResponse,
     ListBrowserSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBrowserSettingsRequest,
   ) => stream.Stream<
     unknown,
     ListBrowserSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBrowserSettingsRequest,
@@ -4054,7 +4054,7 @@ export const createDataProtectionSettings: API.OperationMethod<
   CreateDataProtectionSettingsRequest,
   CreateDataProtectionSettingsResponse,
   CreateDataProtectionSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataProtectionSettingsRequest,
   output: CreateDataProtectionSettingsResponse,
@@ -4082,7 +4082,7 @@ export const getDataProtectionSettings: API.OperationMethod<
   GetDataProtectionSettingsRequest,
   GetDataProtectionSettingsResponse,
   GetDataProtectionSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataProtectionSettingsRequest,
   output: GetDataProtectionSettingsResponse,
@@ -4108,7 +4108,7 @@ export const updateDataProtectionSettings: API.OperationMethod<
   UpdateDataProtectionSettingsRequest,
   UpdateDataProtectionSettingsResponse,
   UpdateDataProtectionSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataProtectionSettingsRequest,
   output: UpdateDataProtectionSettingsResponse,
@@ -4134,7 +4134,7 @@ export const deleteDataProtectionSettings: API.OperationMethod<
   DeleteDataProtectionSettingsRequest,
   DeleteDataProtectionSettingsResponse,
   DeleteDataProtectionSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataProtectionSettingsRequest,
   output: DeleteDataProtectionSettingsResponse,
@@ -4159,21 +4159,21 @@ export const listDataProtectionSettings: API.OperationMethod<
   ListDataProtectionSettingsRequest,
   ListDataProtectionSettingsResponse,
   ListDataProtectionSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataProtectionSettingsRequest,
   ) => stream.Stream<
     ListDataProtectionSettingsResponse,
     ListDataProtectionSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDataProtectionSettingsRequest,
   ) => stream.Stream<
     DataProtectionSettingsSummary,
     ListDataProtectionSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataProtectionSettingsRequest,
@@ -4207,7 +4207,7 @@ export const createIdentityProvider: API.OperationMethod<
   CreateIdentityProviderRequest,
   CreateIdentityProviderResponse,
   CreateIdentityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIdentityProviderRequest,
   output: CreateIdentityProviderResponse,
@@ -4235,7 +4235,7 @@ export const getIdentityProvider: API.OperationMethod<
   GetIdentityProviderRequest,
   GetIdentityProviderResponse,
   GetIdentityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdentityProviderRequest,
   output: GetIdentityProviderResponse,
@@ -4261,7 +4261,7 @@ export const updateIdentityProvider: API.OperationMethod<
   UpdateIdentityProviderRequest,
   UpdateIdentityProviderResponse,
   UpdateIdentityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIdentityProviderRequest,
   output: UpdateIdentityProviderResponse,
@@ -4287,7 +4287,7 @@ export const deleteIdentityProvider: API.OperationMethod<
   DeleteIdentityProviderRequest,
   DeleteIdentityProviderResponse,
   DeleteIdentityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIdentityProviderRequest,
   output: DeleteIdentityProviderResponse,
@@ -4312,21 +4312,21 @@ export const listIdentityProviders: API.OperationMethod<
   ListIdentityProvidersRequest,
   ListIdentityProvidersResponse,
   ListIdentityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIdentityProvidersRequest,
   ) => stream.Stream<
     ListIdentityProvidersResponse,
     ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListIdentityProvidersRequest,
   ) => stream.Stream<
     unknown,
     ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProvidersRequest,
@@ -4358,7 +4358,7 @@ export const createIpAccessSettings: API.OperationMethod<
   CreateIpAccessSettingsRequest,
   CreateIpAccessSettingsResponse,
   CreateIpAccessSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIpAccessSettingsRequest,
   output: CreateIpAccessSettingsResponse,
@@ -4385,7 +4385,7 @@ export const getIpAccessSettings: API.OperationMethod<
   GetIpAccessSettingsRequest,
   GetIpAccessSettingsResponse,
   GetIpAccessSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIpAccessSettingsRequest,
   output: GetIpAccessSettingsResponse,
@@ -4411,7 +4411,7 @@ export const updateIpAccessSettings: API.OperationMethod<
   UpdateIpAccessSettingsRequest,
   UpdateIpAccessSettingsResponse,
   UpdateIpAccessSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIpAccessSettingsRequest,
   output: UpdateIpAccessSettingsResponse,
@@ -4437,7 +4437,7 @@ export const deleteIpAccessSettings: API.OperationMethod<
   DeleteIpAccessSettingsRequest,
   DeleteIpAccessSettingsResponse,
   DeleteIpAccessSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIpAccessSettingsRequest,
   output: DeleteIpAccessSettingsResponse,
@@ -4462,21 +4462,21 @@ export const listIpAccessSettings: API.OperationMethod<
   ListIpAccessSettingsRequest,
   ListIpAccessSettingsResponse,
   ListIpAccessSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIpAccessSettingsRequest,
   ) => stream.Stream<
     ListIpAccessSettingsResponse,
     ListIpAccessSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListIpAccessSettingsRequest,
   ) => stream.Stream<
     unknown,
     ListIpAccessSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIpAccessSettingsRequest,
@@ -4508,7 +4508,7 @@ export const createNetworkSettings: API.OperationMethod<
   CreateNetworkSettingsRequest,
   CreateNetworkSettingsResponse,
   CreateNetworkSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNetworkSettingsRequest,
   output: CreateNetworkSettingsResponse,
@@ -4535,7 +4535,7 @@ export const getNetworkSettings: API.OperationMethod<
   GetNetworkSettingsRequest,
   GetNetworkSettingsResponse,
   GetNetworkSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNetworkSettingsRequest,
   output: GetNetworkSettingsResponse,
@@ -4561,7 +4561,7 @@ export const updateNetworkSettings: API.OperationMethod<
   UpdateNetworkSettingsRequest,
   UpdateNetworkSettingsResponse,
   UpdateNetworkSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateNetworkSettingsRequest,
   output: UpdateNetworkSettingsResponse,
@@ -4587,7 +4587,7 @@ export const deleteNetworkSettings: API.OperationMethod<
   DeleteNetworkSettingsRequest,
   DeleteNetworkSettingsResponse,
   DeleteNetworkSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNetworkSettingsRequest,
   output: DeleteNetworkSettingsResponse,
@@ -4612,21 +4612,21 @@ export const listNetworkSettings: API.OperationMethod<
   ListNetworkSettingsRequest,
   ListNetworkSettingsResponse,
   ListNetworkSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListNetworkSettingsRequest,
   ) => stream.Stream<
     ListNetworkSettingsResponse,
     ListNetworkSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListNetworkSettingsRequest,
   ) => stream.Stream<
     unknown,
     ListNetworkSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkSettingsRequest,
@@ -4659,7 +4659,7 @@ export const createPortal: API.OperationMethod<
   CreatePortalRequest,
   CreatePortalResponse,
   CreatePortalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePortalRequest,
   output: CreatePortalResponse,
@@ -4687,7 +4687,7 @@ export const getPortal: API.OperationMethod<
   GetPortalRequest,
   GetPortalResponse,
   GetPortalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPortalRequest,
   output: GetPortalResponse,
@@ -4715,7 +4715,7 @@ export const updatePortal: API.OperationMethod<
   UpdatePortalRequest,
   UpdatePortalResponse,
   UpdatePortalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePortalRequest,
   output: UpdatePortalResponse,
@@ -4743,7 +4743,7 @@ export const deletePortal: API.OperationMethod<
   DeletePortalRequest,
   DeletePortalResponse,
   DeletePortalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePortalRequest,
   output: DeletePortalResponse,
@@ -4768,21 +4768,21 @@ export const listPortals: API.OperationMethod<
   ListPortalsRequest,
   ListPortalsResponse,
   ListPortalsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPortalsRequest,
   ) => stream.Stream<
     ListPortalsResponse,
     ListPortalsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPortalsRequest,
   ) => stream.Stream<
     unknown,
     ListPortalsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPortalsRequest,
@@ -4814,7 +4814,7 @@ export const associateBrowserSettings: API.OperationMethod<
   AssociateBrowserSettingsRequest,
   AssociateBrowserSettingsResponse,
   AssociateBrowserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateBrowserSettingsRequest,
   output: AssociateBrowserSettingsResponse,
@@ -4842,7 +4842,7 @@ export const associateDataProtectionSettings: API.OperationMethod<
   AssociateDataProtectionSettingsRequest,
   AssociateDataProtectionSettingsResponse,
   AssociateDataProtectionSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateDataProtectionSettingsRequest,
   output: AssociateDataProtectionSettingsResponse,
@@ -4870,7 +4870,7 @@ export const associateIpAccessSettings: API.OperationMethod<
   AssociateIpAccessSettingsRequest,
   AssociateIpAccessSettingsResponse,
   AssociateIpAccessSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateIpAccessSettingsRequest,
   output: AssociateIpAccessSettingsResponse,
@@ -4898,7 +4898,7 @@ export const associateNetworkSettings: API.OperationMethod<
   AssociateNetworkSettingsRequest,
   AssociateNetworkSettingsResponse,
   AssociateNetworkSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateNetworkSettingsRequest,
   output: AssociateNetworkSettingsResponse,
@@ -4926,7 +4926,7 @@ export const associateSessionLogger: API.OperationMethod<
   AssociateSessionLoggerRequest,
   AssociateSessionLoggerResponse,
   AssociateSessionLoggerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateSessionLoggerRequest,
   output: AssociateSessionLoggerResponse,
@@ -4954,7 +4954,7 @@ export const associateTrustStore: API.OperationMethod<
   AssociateTrustStoreRequest,
   AssociateTrustStoreResponse,
   AssociateTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateTrustStoreRequest,
   output: AssociateTrustStoreResponse,
@@ -4982,7 +4982,7 @@ export const associateUserAccessLoggingSettings: API.OperationMethod<
   AssociateUserAccessLoggingSettingsRequest,
   AssociateUserAccessLoggingSettingsResponse,
   AssociateUserAccessLoggingSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateUserAccessLoggingSettingsRequest,
   output: AssociateUserAccessLoggingSettingsResponse,
@@ -5010,7 +5010,7 @@ export const associateUserSettings: API.OperationMethod<
   AssociateUserSettingsRequest,
   AssociateUserSettingsResponse,
   AssociateUserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateUserSettingsRequest,
   output: AssociateUserSettingsResponse,
@@ -5038,7 +5038,7 @@ export const disassociateBrowserSettings: API.OperationMethod<
   DisassociateBrowserSettingsRequest,
   DisassociateBrowserSettingsResponse,
   DisassociateBrowserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateBrowserSettingsRequest,
   output: DisassociateBrowserSettingsResponse,
@@ -5066,7 +5066,7 @@ export const disassociateDataProtectionSettings: API.OperationMethod<
   DisassociateDataProtectionSettingsRequest,
   DisassociateDataProtectionSettingsResponse,
   DisassociateDataProtectionSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateDataProtectionSettingsRequest,
   output: DisassociateDataProtectionSettingsResponse,
@@ -5094,7 +5094,7 @@ export const disassociateIpAccessSettings: API.OperationMethod<
   DisassociateIpAccessSettingsRequest,
   DisassociateIpAccessSettingsResponse,
   DisassociateIpAccessSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateIpAccessSettingsRequest,
   output: DisassociateIpAccessSettingsResponse,
@@ -5122,7 +5122,7 @@ export const disassociateNetworkSettings: API.OperationMethod<
   DisassociateNetworkSettingsRequest,
   DisassociateNetworkSettingsResponse,
   DisassociateNetworkSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateNetworkSettingsRequest,
   output: DisassociateNetworkSettingsResponse,
@@ -5149,7 +5149,7 @@ export const disassociateSessionLogger: API.OperationMethod<
   DisassociateSessionLoggerRequest,
   DisassociateSessionLoggerResponse,
   DisassociateSessionLoggerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateSessionLoggerRequest,
   output: DisassociateSessionLoggerResponse,
@@ -5176,7 +5176,7 @@ export const disassociateTrustStore: API.OperationMethod<
   DisassociateTrustStoreRequest,
   DisassociateTrustStoreResponse,
   DisassociateTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateTrustStoreRequest,
   output: DisassociateTrustStoreResponse,
@@ -5204,7 +5204,7 @@ export const disassociateUserAccessLoggingSettings: API.OperationMethod<
   DisassociateUserAccessLoggingSettingsRequest,
   DisassociateUserAccessLoggingSettingsResponse,
   DisassociateUserAccessLoggingSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateUserAccessLoggingSettingsRequest,
   output: DisassociateUserAccessLoggingSettingsResponse,
@@ -5232,7 +5232,7 @@ export const disassociateUserSettings: API.OperationMethod<
   DisassociateUserSettingsRequest,
   DisassociateUserSettingsResponse,
   DisassociateUserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateUserSettingsRequest,
   output: DisassociateUserSettingsResponse,
@@ -5259,7 +5259,7 @@ export const getPortalServiceProviderMetadata: API.OperationMethod<
   GetPortalServiceProviderMetadataRequest,
   GetPortalServiceProviderMetadataResponse,
   GetPortalServiceProviderMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPortalServiceProviderMetadataRequest,
   output: GetPortalServiceProviderMetadataResponse,
@@ -5286,7 +5286,7 @@ export const createSessionLogger: API.OperationMethod<
   CreateSessionLoggerRequest,
   CreateSessionLoggerResponse,
   CreateSessionLoggerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSessionLoggerRequest,
   output: CreateSessionLoggerResponse,
@@ -5313,7 +5313,7 @@ export const getSessionLogger: API.OperationMethod<
   GetSessionLoggerRequest,
   GetSessionLoggerResponse,
   GetSessionLoggerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSessionLoggerRequest,
   output: GetSessionLoggerResponse,
@@ -5339,7 +5339,7 @@ export const updateSessionLogger: API.OperationMethod<
   UpdateSessionLoggerRequest,
   UpdateSessionLoggerResponse,
   UpdateSessionLoggerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSessionLoggerRequest,
   output: UpdateSessionLoggerResponse,
@@ -5365,7 +5365,7 @@ export const deleteSessionLogger: API.OperationMethod<
   DeleteSessionLoggerRequest,
   DeleteSessionLoggerResponse,
   DeleteSessionLoggerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSessionLoggerRequest,
   output: DeleteSessionLoggerResponse,
@@ -5390,21 +5390,21 @@ export const listSessionLoggers: API.OperationMethod<
   ListSessionLoggersRequest,
   ListSessionLoggersResponse,
   ListSessionLoggersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSessionLoggersRequest,
   ) => stream.Stream<
     ListSessionLoggersResponse,
     ListSessionLoggersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSessionLoggersRequest,
   ) => stream.Stream<
     SessionLoggerSummary,
     ListSessionLoggersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSessionLoggersRequest,
@@ -5437,7 +5437,7 @@ export const createTrustStore: API.OperationMethod<
   CreateTrustStoreRequest,
   CreateTrustStoreResponse,
   CreateTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTrustStoreRequest,
   output: CreateTrustStoreResponse,
@@ -5464,7 +5464,7 @@ export const getTrustStore: API.OperationMethod<
   GetTrustStoreRequest,
   GetTrustStoreResponse,
   GetTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTrustStoreRequest,
   output: GetTrustStoreResponse,
@@ -5491,7 +5491,7 @@ export const updateTrustStore: API.OperationMethod<
   UpdateTrustStoreRequest,
   UpdateTrustStoreResponse,
   UpdateTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTrustStoreRequest,
   output: UpdateTrustStoreResponse,
@@ -5518,7 +5518,7 @@ export const deleteTrustStore: API.OperationMethod<
   DeleteTrustStoreRequest,
   DeleteTrustStoreResponse,
   DeleteTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTrustStoreRequest,
   output: DeleteTrustStoreResponse,
@@ -5543,21 +5543,21 @@ export const listTrustStores: API.OperationMethod<
   ListTrustStoresRequest,
   ListTrustStoresResponse,
   ListTrustStoresError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTrustStoresRequest,
   ) => stream.Stream<
     ListTrustStoresResponse,
     ListTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTrustStoresRequest,
   ) => stream.Stream<
     unknown,
     ListTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTrustStoresRequest,
@@ -5588,7 +5588,7 @@ export const getTrustStoreCertificate: API.OperationMethod<
   GetTrustStoreCertificateRequest,
   GetTrustStoreCertificateResponse,
   GetTrustStoreCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTrustStoreCertificateRequest,
   output: GetTrustStoreCertificateResponse,
@@ -5614,21 +5614,21 @@ export const listTrustStoreCertificates: API.OperationMethod<
   ListTrustStoreCertificatesRequest,
   ListTrustStoreCertificatesResponse,
   ListTrustStoreCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTrustStoreCertificatesRequest,
   ) => stream.Stream<
     ListTrustStoreCertificatesResponse,
     ListTrustStoreCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTrustStoreCertificatesRequest,
   ) => stream.Stream<
     unknown,
     ListTrustStoreCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTrustStoreCertificatesRequest,
@@ -5661,7 +5661,7 @@ export const createUserAccessLoggingSettings: API.OperationMethod<
   CreateUserAccessLoggingSettingsRequest,
   CreateUserAccessLoggingSettingsResponse,
   CreateUserAccessLoggingSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUserAccessLoggingSettingsRequest,
   output: CreateUserAccessLoggingSettingsResponse,
@@ -5688,7 +5688,7 @@ export const getUserAccessLoggingSettings: API.OperationMethod<
   GetUserAccessLoggingSettingsRequest,
   GetUserAccessLoggingSettingsResponse,
   GetUserAccessLoggingSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserAccessLoggingSettingsRequest,
   output: GetUserAccessLoggingSettingsResponse,
@@ -5714,7 +5714,7 @@ export const updateUserAccessLoggingSettings: API.OperationMethod<
   UpdateUserAccessLoggingSettingsRequest,
   UpdateUserAccessLoggingSettingsResponse,
   UpdateUserAccessLoggingSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUserAccessLoggingSettingsRequest,
   output: UpdateUserAccessLoggingSettingsResponse,
@@ -5740,7 +5740,7 @@ export const deleteUserAccessLoggingSettings: API.OperationMethod<
   DeleteUserAccessLoggingSettingsRequest,
   DeleteUserAccessLoggingSettingsResponse,
   DeleteUserAccessLoggingSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserAccessLoggingSettingsRequest,
   output: DeleteUserAccessLoggingSettingsResponse,
@@ -5765,21 +5765,21 @@ export const listUserAccessLoggingSettings: API.OperationMethod<
   ListUserAccessLoggingSettingsRequest,
   ListUserAccessLoggingSettingsResponse,
   ListUserAccessLoggingSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListUserAccessLoggingSettingsRequest,
   ) => stream.Stream<
     ListUserAccessLoggingSettingsResponse,
     ListUserAccessLoggingSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListUserAccessLoggingSettingsRequest,
   ) => stream.Stream<
     unknown,
     ListUserAccessLoggingSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserAccessLoggingSettingsRequest,
@@ -5812,7 +5812,7 @@ export const createUserSettings: API.OperationMethod<
   CreateUserSettingsRequest,
   CreateUserSettingsResponse,
   CreateUserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUserSettingsRequest,
   output: CreateUserSettingsResponse,
@@ -5840,7 +5840,7 @@ export const getUserSettings: API.OperationMethod<
   GetUserSettingsRequest,
   GetUserSettingsResponse,
   GetUserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserSettingsRequest,
   output: GetUserSettingsResponse,
@@ -5866,7 +5866,7 @@ export const updateUserSettings: API.OperationMethod<
   UpdateUserSettingsRequest,
   UpdateUserSettingsResponse,
   UpdateUserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUserSettingsRequest,
   output: UpdateUserSettingsResponse,
@@ -5892,7 +5892,7 @@ export const deleteUserSettings: API.OperationMethod<
   DeleteUserSettingsRequest,
   DeleteUserSettingsResponse,
   DeleteUserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserSettingsRequest,
   output: DeleteUserSettingsResponse,
@@ -5917,21 +5917,21 @@ export const listUserSettings: API.OperationMethod<
   ListUserSettingsRequest,
   ListUserSettingsResponse,
   ListUserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListUserSettingsRequest,
   ) => stream.Stream<
     ListUserSettingsResponse,
     ListUserSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListUserSettingsRequest,
   ) => stream.Stream<
     unknown,
     ListUserSettingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserSettingsRequest,

@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "ConnectCampaignsV2",
@@ -2172,7 +2172,7 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignRequest,
   CreateCampaignResponse,
   CreateCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCampaignRequest,
   output: CreateCampaignResponse,
@@ -2199,7 +2199,7 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignRequest,
   DeleteCampaignResponse,
   DeleteCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCampaignRequest,
   output: DeleteCampaignResponse,
@@ -2224,7 +2224,7 @@ export const deleteCampaignChannelSubtypeConfig: API.OperationMethod<
   DeleteCampaignChannelSubtypeConfigRequest,
   DeleteCampaignChannelSubtypeConfigResponse,
   DeleteCampaignChannelSubtypeConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCampaignChannelSubtypeConfigRequest,
   output: DeleteCampaignChannelSubtypeConfigResponse,
@@ -2251,7 +2251,7 @@ export const deleteCampaignCommunicationLimits: API.OperationMethod<
   DeleteCampaignCommunicationLimitsRequest,
   DeleteCampaignCommunicationLimitsResponse,
   DeleteCampaignCommunicationLimitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCampaignCommunicationLimitsRequest,
   output: DeleteCampaignCommunicationLimitsResponse,
@@ -2279,7 +2279,7 @@ export const deleteCampaignCommunicationTime: API.OperationMethod<
   DeleteCampaignCommunicationTimeRequest,
   DeleteCampaignCommunicationTimeResponse,
   DeleteCampaignCommunicationTimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCampaignCommunicationTimeRequest,
   output: DeleteCampaignCommunicationTimeResponse,
@@ -2307,7 +2307,7 @@ export const deleteConnectInstanceConfig: API.OperationMethod<
   DeleteConnectInstanceConfigRequest,
   DeleteConnectInstanceConfigResponse,
   DeleteConnectInstanceConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectInstanceConfigRequest,
   output: DeleteConnectInstanceConfigResponse,
@@ -2334,7 +2334,7 @@ export const deleteConnectInstanceIntegration: API.OperationMethod<
   DeleteConnectInstanceIntegrationRequest,
   DeleteConnectInstanceIntegrationResponse,
   DeleteConnectInstanceIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectInstanceIntegrationRequest,
   output: DeleteConnectInstanceIntegrationResponse,
@@ -2360,7 +2360,7 @@ export const deleteInstanceOnboardingJob: API.OperationMethod<
   DeleteInstanceOnboardingJobRequest,
   DeleteInstanceOnboardingJobResponse,
   DeleteInstanceOnboardingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstanceOnboardingJobRequest,
   output: DeleteInstanceOnboardingJobResponse,
@@ -2385,7 +2385,7 @@ export const describeCampaign: API.OperationMethod<
   DescribeCampaignRequest,
   DescribeCampaignResponse,
   DescribeCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCampaignRequest,
   output: DescribeCampaignResponse,
@@ -2410,7 +2410,7 @@ export const getCampaignState: API.OperationMethod<
   GetCampaignStateRequest,
   GetCampaignStateResponse,
   GetCampaignStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCampaignStateRequest,
   output: GetCampaignStateResponse,
@@ -2435,7 +2435,7 @@ export const getCampaignStateBatch: API.OperationMethod<
   GetCampaignStateBatchRequest,
   GetCampaignStateBatchResponse,
   GetCampaignStateBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCampaignStateBatchRequest,
   output: GetCampaignStateBatchResponse,
@@ -2459,7 +2459,7 @@ export const getConnectInstanceConfig: API.OperationMethod<
   GetConnectInstanceConfigRequest,
   GetConnectInstanceConfigResponse,
   GetConnectInstanceConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectInstanceConfigRequest,
   output: GetConnectInstanceConfigResponse,
@@ -2483,7 +2483,7 @@ export const getInstanceCommunicationLimits: API.OperationMethod<
   GetInstanceCommunicationLimitsRequest,
   GetInstanceCommunicationLimitsResponse,
   GetInstanceCommunicationLimitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceCommunicationLimitsRequest,
   output: GetInstanceCommunicationLimitsResponse,
@@ -2507,7 +2507,7 @@ export const getInstanceOnboardingJobStatus: API.OperationMethod<
   GetInstanceOnboardingJobStatusRequest,
   GetInstanceOnboardingJobStatusResponse,
   GetInstanceOnboardingJobStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceOnboardingJobStatusRequest,
   output: GetInstanceOnboardingJobStatusResponse,
@@ -2530,21 +2530,21 @@ export const listCampaigns: API.OperationMethod<
   ListCampaignsRequest,
   ListCampaignsResponse,
   ListCampaignsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCampaignsRequest,
   ) => stream.Stream<
     ListCampaignsResponse,
     ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCampaignsRequest,
   ) => stream.Stream<
     CampaignSummary,
     ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
@@ -2571,21 +2571,21 @@ export const listConnectInstanceIntegrations: API.OperationMethod<
   ListConnectInstanceIntegrationsRequest,
   ListConnectInstanceIntegrationsResponse,
   ListConnectInstanceIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConnectInstanceIntegrationsRequest,
   ) => stream.Stream<
     ListConnectInstanceIntegrationsResponse,
     ListConnectInstanceIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConnectInstanceIntegrationsRequest,
   ) => stream.Stream<
     IntegrationSummary,
     ListConnectInstanceIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConnectInstanceIntegrationsRequest,
@@ -2618,7 +2618,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2646,7 +2646,7 @@ export const pauseCampaign: API.OperationMethod<
   PauseCampaignRequest,
   PauseCampaignResponse,
   PauseCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseCampaignRequest,
   output: PauseCampaignResponse,
@@ -2675,7 +2675,7 @@ export const putConnectInstanceIntegration: API.OperationMethod<
   PutConnectInstanceIntegrationRequest,
   PutConnectInstanceIntegrationResponse,
   PutConnectInstanceIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutConnectInstanceIntegrationRequest,
   output: PutConnectInstanceIntegrationResponse,
@@ -2702,7 +2702,7 @@ export const putInstanceCommunicationLimits: API.OperationMethod<
   PutInstanceCommunicationLimitsRequest,
   PutInstanceCommunicationLimitsResponse,
   PutInstanceCommunicationLimitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutInstanceCommunicationLimitsRequest,
   output: PutInstanceCommunicationLimitsResponse,
@@ -2730,7 +2730,7 @@ export const putOutboundRequestBatch: API.OperationMethod<
   PutOutboundRequestBatchRequest,
   PutOutboundRequestBatchResponse,
   PutOutboundRequestBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutOutboundRequestBatchRequest,
   output: PutOutboundRequestBatchResponse,
@@ -2760,7 +2760,7 @@ export const putProfileOutboundRequestBatch: API.OperationMethod<
   PutProfileOutboundRequestBatchRequest,
   PutProfileOutboundRequestBatchResponse,
   PutProfileOutboundRequestBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutProfileOutboundRequestBatchRequest,
   output: PutProfileOutboundRequestBatchResponse,
@@ -2790,7 +2790,7 @@ export const resumeCampaign: API.OperationMethod<
   ResumeCampaignRequest,
   ResumeCampaignResponse,
   ResumeCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeCampaignRequest,
   output: ResumeCampaignResponse,
@@ -2820,7 +2820,7 @@ export const startCampaign: API.OperationMethod<
   StartCampaignRequest,
   StartCampaignResponse,
   StartCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartCampaignRequest,
   output: StartCampaignResponse,
@@ -2849,7 +2849,7 @@ export const startInstanceOnboardingJob: API.OperationMethod<
   StartInstanceOnboardingJobRequest,
   StartInstanceOnboardingJobResponse,
   StartInstanceOnboardingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartInstanceOnboardingJobRequest,
   output: StartInstanceOnboardingJobResponse,
@@ -2878,7 +2878,7 @@ export const stopCampaign: API.OperationMethod<
   StopCampaignRequest,
   StopCampaignResponse,
   StopCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopCampaignRequest,
   output: StopCampaignResponse,
@@ -2906,7 +2906,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2932,7 +2932,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2958,7 +2958,7 @@ export const updateCampaignChannelSubtypeConfig: API.OperationMethod<
   UpdateCampaignChannelSubtypeConfigRequest,
   UpdateCampaignChannelSubtypeConfigResponse,
   UpdateCampaignChannelSubtypeConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCampaignChannelSubtypeConfigRequest,
   output: UpdateCampaignChannelSubtypeConfigResponse,
@@ -2985,7 +2985,7 @@ export const updateCampaignCommunicationLimits: API.OperationMethod<
   UpdateCampaignCommunicationLimitsRequest,
   UpdateCampaignCommunicationLimitsResponse,
   UpdateCampaignCommunicationLimitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCampaignCommunicationLimitsRequest,
   output: UpdateCampaignCommunicationLimitsResponse,
@@ -3013,7 +3013,7 @@ export const updateCampaignCommunicationTime: API.OperationMethod<
   UpdateCampaignCommunicationTimeRequest,
   UpdateCampaignCommunicationTimeResponse,
   UpdateCampaignCommunicationTimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCampaignCommunicationTimeRequest,
   output: UpdateCampaignCommunicationTimeResponse,
@@ -3041,7 +3041,7 @@ export const updateCampaignFlowAssociation: API.OperationMethod<
   UpdateCampaignFlowAssociationRequest,
   UpdateCampaignFlowAssociationResponse,
   UpdateCampaignFlowAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCampaignFlowAssociationRequest,
   output: UpdateCampaignFlowAssociationResponse,
@@ -3068,7 +3068,7 @@ export const updateCampaignName: API.OperationMethod<
   UpdateCampaignNameRequest,
   UpdateCampaignNameResponse,
   UpdateCampaignNameError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCampaignNameRequest,
   output: UpdateCampaignNameResponse,
@@ -3095,7 +3095,7 @@ export const updateCampaignSchedule: API.OperationMethod<
   UpdateCampaignScheduleRequest,
   UpdateCampaignScheduleResponse,
   UpdateCampaignScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCampaignScheduleRequest,
   output: UpdateCampaignScheduleResponse,
@@ -3123,7 +3123,7 @@ export const updateCampaignSource: API.OperationMethod<
   UpdateCampaignSourceRequest,
   UpdateCampaignSourceResponse,
   UpdateCampaignSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCampaignSourceRequest,
   output: UpdateCampaignSourceResponse,

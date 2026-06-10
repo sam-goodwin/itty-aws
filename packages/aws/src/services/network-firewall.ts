@@ -5,7 +5,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Network Firewall",
   serviceShapeName: "NetworkFirewall_20201112",
@@ -4503,7 +4503,7 @@ export const acceptNetworkFirewallTransitGatewayAttachment: API.OperationMethod<
   AcceptNetworkFirewallTransitGatewayAttachmentRequest,
   AcceptNetworkFirewallTransitGatewayAttachmentResponse,
   AcceptNetworkFirewallTransitGatewayAttachmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptNetworkFirewallTransitGatewayAttachmentRequest,
   output: AcceptNetworkFirewallTransitGatewayAttachmentResponse,
@@ -4532,7 +4532,7 @@ export const associateAvailabilityZones: API.OperationMethod<
   AssociateAvailabilityZonesRequest,
   AssociateAvailabilityZonesResponse,
   AssociateAvailabilityZonesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateAvailabilityZonesRequest,
   output: AssociateAvailabilityZonesResponse,
@@ -4566,7 +4566,7 @@ export const associateFirewallPolicy: API.OperationMethod<
   AssociateFirewallPolicyRequest,
   AssociateFirewallPolicyResponse,
   AssociateFirewallPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateFirewallPolicyRequest,
   output: AssociateFirewallPolicyResponse,
@@ -4601,7 +4601,7 @@ export const associateSubnets: API.OperationMethod<
   AssociateSubnetsRequest,
   AssociateSubnetsResponse,
   AssociateSubnetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateSubnetsRequest,
   output: AssociateSubnetsResponse,
@@ -4630,7 +4630,7 @@ export const attachRuleGroupsToProxyConfiguration: API.OperationMethod<
   AttachRuleGroupsToProxyConfigurationRequest,
   AttachRuleGroupsToProxyConfigurationResponse,
   AttachRuleGroupsToProxyConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachRuleGroupsToProxyConfigurationRequest,
   output: AttachRuleGroupsToProxyConfigurationResponse,
@@ -4669,7 +4669,7 @@ export const createFirewall: API.OperationMethod<
   CreateFirewallRequest,
   CreateFirewallResponse,
   CreateFirewallError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFirewallRequest,
   output: CreateFirewallResponse,
@@ -4700,7 +4700,7 @@ export const createFirewallPolicy: API.OperationMethod<
   CreateFirewallPolicyRequest,
   CreateFirewallPolicyResponse,
   CreateFirewallPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFirewallPolicyRequest,
   output: CreateFirewallPolicyResponse,
@@ -4733,7 +4733,7 @@ export const createProxy: API.OperationMethod<
   CreateProxyRequest,
   CreateProxyResponse,
   CreateProxyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProxyRequest,
   output: CreateProxyResponse,
@@ -4766,7 +4766,7 @@ export const createProxyConfiguration: API.OperationMethod<
   CreateProxyConfigurationRequest,
   CreateProxyConfigurationResponse,
   CreateProxyConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProxyConfigurationRequest,
   output: CreateProxyConfigurationResponse,
@@ -4799,7 +4799,7 @@ export const createProxyRuleGroup: API.OperationMethod<
   CreateProxyRuleGroupRequest,
   CreateProxyRuleGroupResponse,
   CreateProxyRuleGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProxyRuleGroupRequest,
   output: CreateProxyRuleGroupResponse,
@@ -4826,7 +4826,7 @@ export const createProxyRules: API.OperationMethod<
   CreateProxyRulesRequest,
   CreateProxyRulesResponse,
   CreateProxyRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProxyRulesRequest,
   output: CreateProxyRulesResponse,
@@ -4850,7 +4850,7 @@ export const createRuleGroup: API.OperationMethod<
   CreateRuleGroupRequest,
   CreateRuleGroupResponse,
   CreateRuleGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRuleGroupRequest,
   output: CreateRuleGroupResponse,
@@ -4885,7 +4885,7 @@ export const createTLSInspectionConfiguration: API.OperationMethod<
   CreateTLSInspectionConfigurationRequest,
   CreateTLSInspectionConfigurationResponse,
   CreateTLSInspectionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTLSInspectionConfigurationRequest,
   output: CreateTLSInspectionConfigurationResponse,
@@ -4913,7 +4913,7 @@ export const createVpcEndpointAssociation: API.OperationMethod<
   CreateVpcEndpointAssociationRequest,
   CreateVpcEndpointAssociationResponse,
   CreateVpcEndpointAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointAssociationRequest,
   output: CreateVpcEndpointAssociationResponse,
@@ -4954,7 +4954,7 @@ export const deleteFirewall: API.OperationMethod<
   DeleteFirewallRequest,
   DeleteFirewallResponse,
   DeleteFirewallError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFirewallRequest,
   output: DeleteFirewallResponse,
@@ -4982,7 +4982,7 @@ export const deleteFirewallPolicy: API.OperationMethod<
   DeleteFirewallPolicyRequest,
   DeleteFirewallPolicyResponse,
   DeleteFirewallPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFirewallPolicyRequest,
   output: DeleteFirewallPolicyResponse,
@@ -5012,7 +5012,7 @@ export const deleteNetworkFirewallTransitGatewayAttachment: API.OperationMethod<
   DeleteNetworkFirewallTransitGatewayAttachmentRequest,
   DeleteNetworkFirewallTransitGatewayAttachmentResponse,
   DeleteNetworkFirewallTransitGatewayAttachmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNetworkFirewallTransitGatewayAttachmentRequest,
   output: DeleteNetworkFirewallTransitGatewayAttachmentResponse,
@@ -5039,7 +5039,7 @@ export const deleteProxy: API.OperationMethod<
   DeleteProxyRequest,
   DeleteProxyResponse,
   DeleteProxyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProxyRequest,
   output: DeleteProxyResponse,
@@ -5064,7 +5064,7 @@ export const deleteProxyConfiguration: API.OperationMethod<
   DeleteProxyConfigurationRequest,
   DeleteProxyConfigurationResponse,
   DeleteProxyConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProxyConfigurationRequest,
   output: DeleteProxyConfigurationResponse,
@@ -5088,7 +5088,7 @@ export const deleteProxyRuleGroup: API.OperationMethod<
   DeleteProxyRuleGroupRequest,
   DeleteProxyRuleGroupResponse,
   DeleteProxyRuleGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProxyRuleGroupRequest,
   output: DeleteProxyRuleGroupResponse,
@@ -5112,7 +5112,7 @@ export const deleteProxyRules: API.OperationMethod<
   DeleteProxyRulesRequest,
   DeleteProxyRulesResponse,
   DeleteProxyRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProxyRulesRequest,
   output: DeleteProxyRulesResponse,
@@ -5137,7 +5137,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -5164,7 +5164,7 @@ export const deleteRuleGroup: API.OperationMethod<
   DeleteRuleGroupRequest,
   DeleteRuleGroupResponse,
   DeleteRuleGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRuleGroupRequest,
   output: DeleteRuleGroupResponse,
@@ -5191,7 +5191,7 @@ export const deleteTLSInspectionConfiguration: API.OperationMethod<
   DeleteTLSInspectionConfigurationRequest,
   DeleteTLSInspectionConfigurationResponse,
   DeleteTLSInspectionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTLSInspectionConfigurationRequest,
   output: DeleteTLSInspectionConfigurationResponse,
@@ -5224,7 +5224,7 @@ export const deleteVpcEndpointAssociation: API.OperationMethod<
   DeleteVpcEndpointAssociationRequest,
   DeleteVpcEndpointAssociationResponse,
   DeleteVpcEndpointAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointAssociationRequest,
   output: DeleteVpcEndpointAssociationResponse,
@@ -5249,7 +5249,7 @@ export const describeFirewall: API.OperationMethod<
   DescribeFirewallRequest,
   DescribeFirewallResponse,
   DescribeFirewallError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeFirewallRequest,
   output: DescribeFirewallResponse,
@@ -5274,7 +5274,7 @@ export const describeFirewallMetadata: API.OperationMethod<
   DescribeFirewallMetadataRequest,
   DescribeFirewallMetadataResponse,
   DescribeFirewallMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeFirewallMetadataRequest,
   output: DescribeFirewallMetadataResponse,
@@ -5298,7 +5298,7 @@ export const describeFirewallPolicy: API.OperationMethod<
   DescribeFirewallPolicyRequest,
   DescribeFirewallPolicyResponse,
   DescribeFirewallPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeFirewallPolicyRequest,
   output: DescribeFirewallPolicyResponse,
@@ -5322,7 +5322,7 @@ export const describeFlowOperation: API.OperationMethod<
   DescribeFlowOperationRequest,
   DescribeFlowOperationResponse,
   DescribeFlowOperationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeFlowOperationRequest,
   output: DescribeFlowOperationResponse,
@@ -5346,7 +5346,7 @@ export const describeLoggingConfiguration: API.OperationMethod<
   DescribeLoggingConfigurationRequest,
   DescribeLoggingConfigurationResponse,
   DescribeLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLoggingConfigurationRequest,
   output: DescribeLoggingConfigurationResponse,
@@ -5370,7 +5370,7 @@ export const describeProxy: API.OperationMethod<
   DescribeProxyRequest,
   DescribeProxyResponse,
   DescribeProxyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeProxyRequest,
   output: DescribeProxyResponse,
@@ -5394,7 +5394,7 @@ export const describeProxyConfiguration: API.OperationMethod<
   DescribeProxyConfigurationRequest,
   DescribeProxyConfigurationResponse,
   DescribeProxyConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeProxyConfigurationRequest,
   output: DescribeProxyConfigurationResponse,
@@ -5418,7 +5418,7 @@ export const describeProxyRule: API.OperationMethod<
   DescribeProxyRuleRequest,
   DescribeProxyRuleResponse,
   DescribeProxyRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeProxyRuleRequest,
   output: DescribeProxyRuleResponse,
@@ -5442,7 +5442,7 @@ export const describeProxyRuleGroup: API.OperationMethod<
   DescribeProxyRuleGroupRequest,
   DescribeProxyRuleGroupResponse,
   DescribeProxyRuleGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeProxyRuleGroupRequest,
   output: DescribeProxyRuleGroupResponse,
@@ -5466,7 +5466,7 @@ export const describeResourcePolicy: API.OperationMethod<
   DescribeResourcePolicyRequest,
   DescribeResourcePolicyResponse,
   DescribeResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeResourcePolicyRequest,
   output: DescribeResourcePolicyResponse,
@@ -5490,7 +5490,7 @@ export const describeRuleGroup: API.OperationMethod<
   DescribeRuleGroupRequest,
   DescribeRuleGroupResponse,
   DescribeRuleGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRuleGroupRequest,
   output: DescribeRuleGroupResponse,
@@ -5516,7 +5516,7 @@ export const describeRuleGroupMetadata: API.OperationMethod<
   DescribeRuleGroupMetadataRequest,
   DescribeRuleGroupMetadataResponse,
   DescribeRuleGroupMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRuleGroupMetadataRequest,
   output: DescribeRuleGroupMetadataResponse,
@@ -5544,7 +5544,7 @@ export const describeRuleGroupSummary: API.OperationMethod<
   DescribeRuleGroupSummaryRequest,
   DescribeRuleGroupSummaryResponse,
   DescribeRuleGroupSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRuleGroupSummaryRequest,
   output: DescribeRuleGroupSummaryResponse,
@@ -5568,7 +5568,7 @@ export const describeTLSInspectionConfiguration: API.OperationMethod<
   DescribeTLSInspectionConfigurationRequest,
   DescribeTLSInspectionConfigurationResponse,
   DescribeTLSInspectionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTLSInspectionConfigurationRequest,
   output: DescribeTLSInspectionConfigurationResponse,
@@ -5592,7 +5592,7 @@ export const describeVpcEndpointAssociation: API.OperationMethod<
   DescribeVpcEndpointAssociationRequest,
   DescribeVpcEndpointAssociationResponse,
   DescribeVpcEndpointAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeVpcEndpointAssociationRequest,
   output: DescribeVpcEndpointAssociationResponse,
@@ -5618,7 +5618,7 @@ export const detachRuleGroupsFromProxyConfiguration: API.OperationMethod<
   DetachRuleGroupsFromProxyConfigurationRequest,
   DetachRuleGroupsFromProxyConfigurationResponse,
   DetachRuleGroupsFromProxyConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachRuleGroupsFromProxyConfigurationRequest,
   output: DetachRuleGroupsFromProxyConfigurationResponse,
@@ -5648,7 +5648,7 @@ export const disassociateAvailabilityZones: API.OperationMethod<
   DisassociateAvailabilityZonesRequest,
   DisassociateAvailabilityZonesResponse,
   DisassociateAvailabilityZonesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateAvailabilityZonesRequest,
   output: DisassociateAvailabilityZonesResponse,
@@ -5678,7 +5678,7 @@ export const disassociateSubnets: API.OperationMethod<
   DisassociateSubnetsRequest,
   DisassociateSubnetsResponse,
   DisassociateSubnetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateSubnetsRequest,
   output: DisassociateSubnetsResponse,
@@ -5706,21 +5706,21 @@ export const getAnalysisReportResults: API.OperationMethod<
   GetAnalysisReportResultsRequest,
   GetAnalysisReportResultsResponse,
   GetAnalysisReportResultsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetAnalysisReportResultsRequest,
   ) => stream.Stream<
     GetAnalysisReportResultsResponse,
     GetAnalysisReportResultsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetAnalysisReportResultsRequest,
   ) => stream.Stream<
     AnalysisTypeReportResult,
     GetAnalysisReportResultsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAnalysisReportResultsRequest,
@@ -5751,21 +5751,21 @@ export const listAnalysisReports: API.OperationMethod<
   ListAnalysisReportsRequest,
   ListAnalysisReportsResponse,
   ListAnalysisReportsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAnalysisReportsRequest,
   ) => stream.Stream<
     ListAnalysisReportsResponse,
     ListAnalysisReportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAnalysisReportsRequest,
   ) => stream.Stream<
     AnalysisReport,
     ListAnalysisReportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAnalysisReportsRequest,
@@ -5797,21 +5797,21 @@ export const listFirewallPolicies: API.OperationMethod<
   ListFirewallPoliciesRequest,
   ListFirewallPoliciesResponse,
   ListFirewallPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFirewallPoliciesRequest,
   ) => stream.Stream<
     ListFirewallPoliciesResponse,
     ListFirewallPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFirewallPoliciesRequest,
   ) => stream.Stream<
     FirewallPolicyMetadata,
     ListFirewallPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallPoliciesRequest,
@@ -5840,21 +5840,21 @@ export const listFirewalls: API.OperationMethod<
   ListFirewallsRequest,
   ListFirewallsResponse,
   ListFirewallsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFirewallsRequest,
   ) => stream.Stream<
     ListFirewallsResponse,
     ListFirewallsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFirewallsRequest,
   ) => stream.Stream<
     FirewallMetadata,
     ListFirewallsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallsRequest,
@@ -5885,21 +5885,21 @@ export const listFlowOperationResults: API.OperationMethod<
   ListFlowOperationResultsRequest,
   ListFlowOperationResultsResponse,
   ListFlowOperationResultsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFlowOperationResultsRequest,
   ) => stream.Stream<
     ListFlowOperationResultsResponse,
     ListFlowOperationResultsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFlowOperationResultsRequest,
   ) => stream.Stream<
     Flow,
     ListFlowOperationResultsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFlowOperationResultsRequest,
@@ -5936,21 +5936,21 @@ export const listFlowOperations: API.OperationMethod<
   ListFlowOperationsRequest,
   ListFlowOperationsResponse,
   ListFlowOperationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFlowOperationsRequest,
   ) => stream.Stream<
     ListFlowOperationsResponse,
     ListFlowOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFlowOperationsRequest,
   ) => stream.Stream<
     FlowOperationMetadata,
     ListFlowOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFlowOperationsRequest,
@@ -5982,21 +5982,21 @@ export const listProxies: API.OperationMethod<
   ListProxiesRequest,
   ListProxiesResponse,
   ListProxiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProxiesRequest,
   ) => stream.Stream<
     ListProxiesResponse,
     ListProxiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProxiesRequest,
   ) => stream.Stream<
     ProxyMetadata,
     ListProxiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProxiesRequest,
@@ -6024,21 +6024,21 @@ export const listProxyConfigurations: API.OperationMethod<
   ListProxyConfigurationsRequest,
   ListProxyConfigurationsResponse,
   ListProxyConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProxyConfigurationsRequest,
   ) => stream.Stream<
     ListProxyConfigurationsResponse,
     ListProxyConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProxyConfigurationsRequest,
   ) => stream.Stream<
     ProxyConfigurationMetadata,
     ListProxyConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProxyConfigurationsRequest,
@@ -6071,21 +6071,21 @@ export const listProxyRuleGroups: API.OperationMethod<
   ListProxyRuleGroupsRequest,
   ListProxyRuleGroupsResponse,
   ListProxyRuleGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProxyRuleGroupsRequest,
   ) => stream.Stream<
     ListProxyRuleGroupsResponse,
     ListProxyRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProxyRuleGroupsRequest,
   ) => stream.Stream<
     ProxyRuleGroupMetadata,
     ListProxyRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProxyRuleGroupsRequest,
@@ -6117,21 +6117,21 @@ export const listRuleGroups: API.OperationMethod<
   ListRuleGroupsRequest,
   ListRuleGroupsResponse,
   ListRuleGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRuleGroupsRequest,
   ) => stream.Stream<
     ListRuleGroupsResponse,
     ListRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRuleGroupsRequest,
   ) => stream.Stream<
     RuleGroupMetadata,
     ListRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRuleGroupsRequest,
@@ -6164,21 +6164,21 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     ListTagsForResourceResponse,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     Tag,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
@@ -6208,21 +6208,21 @@ export const listTLSInspectionConfigurations: API.OperationMethod<
   ListTLSInspectionConfigurationsRequest,
   ListTLSInspectionConfigurationsResponse,
   ListTLSInspectionConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTLSInspectionConfigurationsRequest,
   ) => stream.Stream<
     ListTLSInspectionConfigurationsResponse,
     ListTLSInspectionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTLSInspectionConfigurationsRequest,
   ) => stream.Stream<
     TLSInspectionConfigurationMetadata,
     ListTLSInspectionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTLSInspectionConfigurationsRequest,
@@ -6251,21 +6251,21 @@ export const listVpcEndpointAssociations: API.OperationMethod<
   ListVpcEndpointAssociationsRequest,
   ListVpcEndpointAssociationsResponse,
   ListVpcEndpointAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVpcEndpointAssociationsRequest,
   ) => stream.Stream<
     ListVpcEndpointAssociationsResponse,
     ListVpcEndpointAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListVpcEndpointAssociationsRequest,
   ) => stream.Stream<
     VpcEndpointAssociationMetadata,
     ListVpcEndpointAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVpcEndpointAssociationsRequest,
@@ -6305,7 +6305,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -6336,7 +6336,7 @@ export const rejectNetworkFirewallTransitGatewayAttachment: API.OperationMethod<
   RejectNetworkFirewallTransitGatewayAttachmentRequest,
   RejectNetworkFirewallTransitGatewayAttachmentResponse,
   RejectNetworkFirewallTransitGatewayAttachmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectNetworkFirewallTransitGatewayAttachmentRequest,
   output: RejectNetworkFirewallTransitGatewayAttachmentResponse,
@@ -6362,7 +6362,7 @@ export const startAnalysisReport: API.OperationMethod<
   StartAnalysisReportRequest,
   StartAnalysisReportResponse,
   StartAnalysisReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAnalysisReportRequest,
   output: StartAnalysisReportResponse,
@@ -6394,7 +6394,7 @@ export const startFlowCapture: API.OperationMethod<
   StartFlowCaptureRequest,
   StartFlowCaptureResponse,
   StartFlowCaptureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartFlowCaptureRequest,
   output: StartFlowCaptureResponse,
@@ -6424,7 +6424,7 @@ export const startFlowFlush: API.OperationMethod<
   StartFlowFlushRequest,
   StartFlowFlushResponse,
   StartFlowFlushError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartFlowFlushRequest,
   output: StartFlowFlushResponse,
@@ -6454,7 +6454,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -6485,7 +6485,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -6513,7 +6513,7 @@ export const updateAvailabilityZoneChangeProtection: API.OperationMethod<
   UpdateAvailabilityZoneChangeProtectionRequest,
   UpdateAvailabilityZoneChangeProtectionResponse,
   UpdateAvailabilityZoneChangeProtectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAvailabilityZoneChangeProtectionRequest,
   output: UpdateAvailabilityZoneChangeProtectionResponse,
@@ -6540,7 +6540,7 @@ export const updateFirewallAnalysisSettings: API.OperationMethod<
   UpdateFirewallAnalysisSettingsRequest,
   UpdateFirewallAnalysisSettingsResponse,
   UpdateFirewallAnalysisSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFirewallAnalysisSettingsRequest,
   output: UpdateFirewallAnalysisSettingsResponse,
@@ -6570,7 +6570,7 @@ export const updateFirewallDeleteProtection: API.OperationMethod<
   UpdateFirewallDeleteProtectionRequest,
   UpdateFirewallDeleteProtectionResponse,
   UpdateFirewallDeleteProtectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFirewallDeleteProtectionRequest,
   output: UpdateFirewallDeleteProtectionResponse,
@@ -6598,7 +6598,7 @@ export const updateFirewallDescription: API.OperationMethod<
   UpdateFirewallDescriptionRequest,
   UpdateFirewallDescriptionResponse,
   UpdateFirewallDescriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFirewallDescriptionRequest,
   output: UpdateFirewallDescriptionResponse,
@@ -6625,7 +6625,7 @@ export const updateFirewallEncryptionConfiguration: API.OperationMethod<
   UpdateFirewallEncryptionConfigurationRequest,
   UpdateFirewallEncryptionConfigurationResponse,
   UpdateFirewallEncryptionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFirewallEncryptionConfigurationRequest,
   output: UpdateFirewallEncryptionConfigurationResponse,
@@ -6652,7 +6652,7 @@ export const updateFirewallPolicy: API.OperationMethod<
   UpdateFirewallPolicyRequest,
   UpdateFirewallPolicyResponse,
   UpdateFirewallPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFirewallPolicyRequest,
   output: UpdateFirewallPolicyResponse,
@@ -6681,7 +6681,7 @@ export const updateFirewallPolicyChangeProtection: API.OperationMethod<
   UpdateFirewallPolicyChangeProtectionRequest,
   UpdateFirewallPolicyChangeProtectionResponse,
   UpdateFirewallPolicyChangeProtectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFirewallPolicyChangeProtectionRequest,
   output: UpdateFirewallPolicyChangeProtectionResponse,
@@ -6732,7 +6732,7 @@ export const updateLoggingConfiguration: API.OperationMethod<
   UpdateLoggingConfigurationRequest,
   UpdateLoggingConfigurationResponse,
   UpdateLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLoggingConfigurationRequest,
   output: UpdateLoggingConfigurationResponse,
@@ -6759,7 +6759,7 @@ export const updateProxy: API.OperationMethod<
   UpdateProxyRequest,
   UpdateProxyResponse,
   UpdateProxyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProxyRequest,
   output: UpdateProxyResponse,
@@ -6784,7 +6784,7 @@ export const updateProxyConfiguration: API.OperationMethod<
   UpdateProxyConfigurationRequest,
   UpdateProxyConfigurationResponse,
   UpdateProxyConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProxyConfigurationRequest,
   output: UpdateProxyConfigurationResponse,
@@ -6808,7 +6808,7 @@ export const updateProxyRule: API.OperationMethod<
   UpdateProxyRuleRequest,
   UpdateProxyRuleResponse,
   UpdateProxyRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProxyRuleRequest,
   output: UpdateProxyRuleResponse,
@@ -6832,7 +6832,7 @@ export const updateProxyRuleGroupPriorities: API.OperationMethod<
   UpdateProxyRuleGroupPrioritiesRequest,
   UpdateProxyRuleGroupPrioritiesResponse,
   UpdateProxyRuleGroupPrioritiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProxyRuleGroupPrioritiesRequest,
   output: UpdateProxyRuleGroupPrioritiesResponse,
@@ -6856,7 +6856,7 @@ export const updateProxyRulePriorities: API.OperationMethod<
   UpdateProxyRulePrioritiesRequest,
   UpdateProxyRulePrioritiesResponse,
   UpdateProxyRulePrioritiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProxyRulePrioritiesRequest,
   output: UpdateProxyRulePrioritiesResponse,
@@ -6887,7 +6887,7 @@ export const updateRuleGroup: API.OperationMethod<
   UpdateRuleGroupRequest,
   UpdateRuleGroupResponse,
   UpdateRuleGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRuleGroupRequest,
   output: UpdateRuleGroupResponse,
@@ -6914,7 +6914,7 @@ export const updateSubnetChangeProtection: API.OperationMethod<
   UpdateSubnetChangeProtectionRequest,
   UpdateSubnetChangeProtectionResponse,
   UpdateSubnetChangeProtectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSubnetChangeProtectionRequest,
   output: UpdateSubnetChangeProtectionResponse,
@@ -6947,7 +6947,7 @@ export const updateTLSInspectionConfiguration: API.OperationMethod<
   UpdateTLSInspectionConfigurationRequest,
   UpdateTLSInspectionConfigurationResponse,
   UpdateTLSInspectionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTLSInspectionConfigurationRequest,
   output: UpdateTLSInspectionConfigurationResponse,

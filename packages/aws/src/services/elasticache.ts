@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://elasticache.amazonaws.com/doc/2015-02-02/");
 const svc = T.AwsApiService({
   sdkId: "ElastiCache",
@@ -5443,7 +5443,7 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceMessage,
   TagListMessage,
   AddTagsToResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTagsToResourceMessage,
   output: TagListMessage,
@@ -5485,7 +5485,7 @@ export const authorizeCacheSecurityGroupIngress: API.OperationMethod<
   AuthorizeCacheSecurityGroupIngressMessage,
   AuthorizeCacheSecurityGroupIngressResult,
   AuthorizeCacheSecurityGroupIngressError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AuthorizeCacheSecurityGroupIngressMessage,
   output: AuthorizeCacheSecurityGroupIngressResult,
@@ -5510,7 +5510,7 @@ export const batchApplyUpdateAction: API.OperationMethod<
   BatchApplyUpdateActionMessage,
   UpdateActionResultsMessage,
   BatchApplyUpdateActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchApplyUpdateActionMessage,
   output: UpdateActionResultsMessage,
@@ -5529,7 +5529,7 @@ export const batchStopUpdateAction: API.OperationMethod<
   BatchStopUpdateActionMessage,
   UpdateActionResultsMessage,
   BatchStopUpdateActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchStopUpdateActionMessage,
   output: UpdateActionResultsMessage,
@@ -5547,7 +5547,7 @@ export const completeMigration: API.OperationMethod<
   CompleteMigrationMessage,
   CompleteMigrationResponse,
   CompleteMigrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteMigrationMessage,
   output: CompleteMigrationResponse,
@@ -5574,7 +5574,7 @@ export const copyServerlessCacheSnapshot: API.OperationMethod<
   CopyServerlessCacheSnapshotRequest,
   CopyServerlessCacheSnapshotResponse,
   CopyServerlessCacheSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyServerlessCacheSnapshotRequest,
   output: CopyServerlessCacheSnapshotResponse,
@@ -5675,7 +5675,7 @@ export const copySnapshot: API.OperationMethod<
   CopySnapshotMessage,
   CopySnapshotResult,
   CopySnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopySnapshotMessage,
   output: CopySnapshotResult,
@@ -5715,7 +5715,7 @@ export const createCacheCluster: API.OperationMethod<
   CreateCacheClusterMessage,
   CreateCacheClusterResult,
   CreateCacheClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCacheClusterMessage,
   output: CreateCacheClusterResult,
@@ -5763,7 +5763,7 @@ export const createCacheParameterGroup: API.OperationMethod<
   CreateCacheParameterGroupMessage,
   CreateCacheParameterGroupResult,
   CreateCacheParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCacheParameterGroupMessage,
   output: CreateCacheParameterGroupResult,
@@ -5795,7 +5795,7 @@ export const createCacheSecurityGroup: API.OperationMethod<
   CreateCacheSecurityGroupMessage,
   CreateCacheSecurityGroupResult,
   CreateCacheSecurityGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCacheSecurityGroupMessage,
   output: CreateCacheSecurityGroupResult,
@@ -5825,7 +5825,7 @@ export const createCacheSubnetGroup: API.OperationMethod<
   CreateCacheSubnetGroupMessage,
   CreateCacheSubnetGroupResult,
   CreateCacheSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCacheSubnetGroupMessage,
   output: CreateCacheSubnetGroupResult,
@@ -5863,7 +5863,7 @@ export const createGlobalReplicationGroup: API.OperationMethod<
   CreateGlobalReplicationGroupMessage,
   CreateGlobalReplicationGroupResult,
   CreateGlobalReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGlobalReplicationGroupMessage,
   output: CreateGlobalReplicationGroupResult,
@@ -5937,7 +5937,7 @@ export const createReplicationGroup: API.OperationMethod<
   CreateReplicationGroupMessage,
   CreateReplicationGroupResult,
   CreateReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateReplicationGroupMessage,
   output: CreateReplicationGroupResult,
@@ -5983,7 +5983,7 @@ export const createServerlessCache: API.OperationMethod<
   CreateServerlessCacheRequest,
   CreateServerlessCacheResponse,
   CreateServerlessCacheError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServerlessCacheRequest,
   output: CreateServerlessCacheResponse,
@@ -6018,7 +6018,7 @@ export const createServerlessCacheSnapshot: API.OperationMethod<
   CreateServerlessCacheSnapshotRequest,
   CreateServerlessCacheSnapshotResponse,
   CreateServerlessCacheSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServerlessCacheSnapshotRequest,
   output: CreateServerlessCacheSnapshotResponse,
@@ -6055,7 +6055,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotMessage,
   CreateSnapshotResult,
   CreateSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSnapshotMessage,
   output: CreateSnapshotResult,
@@ -6089,7 +6089,7 @@ export const createUser: API.OperationMethod<
   CreateUserMessage,
   User,
   CreateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUserMessage,
   output: User,
@@ -6121,7 +6121,7 @@ export const createUserGroup: API.OperationMethod<
   CreateUserGroupMessage,
   UserGroup,
   CreateUserGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUserGroupMessage,
   output: UserGroup,
@@ -6149,7 +6149,7 @@ export const decreaseNodeGroupsInGlobalReplicationGroup: API.OperationMethod<
   DecreaseNodeGroupsInGlobalReplicationGroupMessage,
   DecreaseNodeGroupsInGlobalReplicationGroupResult,
   DecreaseNodeGroupsInGlobalReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DecreaseNodeGroupsInGlobalReplicationGroupMessage,
   output: DecreaseNodeGroupsInGlobalReplicationGroupResult,
@@ -6184,7 +6184,7 @@ export const decreaseReplicaCount: API.OperationMethod<
   DecreaseReplicaCountMessage,
   DecreaseReplicaCountResult,
   DecreaseReplicaCountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DecreaseReplicaCountMessage,
   output: DecreaseReplicaCountResult,
@@ -6238,7 +6238,7 @@ export const deleteCacheCluster: API.OperationMethod<
   DeleteCacheClusterMessage,
   DeleteCacheClusterResult,
   DeleteCacheClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCacheClusterMessage,
   output: DeleteCacheClusterResult,
@@ -6267,7 +6267,7 @@ export const deleteCacheParameterGroup: API.OperationMethod<
   DeleteCacheParameterGroupMessage,
   DeleteCacheParameterGroupResponse,
   DeleteCacheParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCacheParameterGroupMessage,
   output: DeleteCacheParameterGroupResponse,
@@ -6294,7 +6294,7 @@ export const deleteCacheSecurityGroup: API.OperationMethod<
   DeleteCacheSecurityGroupMessage,
   DeleteCacheSecurityGroupResponse,
   DeleteCacheSecurityGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCacheSecurityGroupMessage,
   output: DeleteCacheSecurityGroupResponse,
@@ -6319,7 +6319,7 @@ export const deleteCacheSubnetGroup: API.OperationMethod<
   DeleteCacheSubnetGroupMessage,
   DeleteCacheSubnetGroupResponse,
   DeleteCacheSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCacheSubnetGroupMessage,
   output: DeleteCacheSubnetGroupResponse,
@@ -6355,7 +6355,7 @@ export const deleteGlobalReplicationGroup: API.OperationMethod<
   DeleteGlobalReplicationGroupMessage,
   DeleteGlobalReplicationGroupResult,
   DeleteGlobalReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlobalReplicationGroupMessage,
   output: DeleteGlobalReplicationGroupResult,
@@ -6394,7 +6394,7 @@ export const deleteReplicationGroup: API.OperationMethod<
   DeleteReplicationGroupMessage,
   DeleteReplicationGroupResult,
   DeleteReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteReplicationGroupMessage,
   output: DeleteReplicationGroupResult,
@@ -6427,7 +6427,7 @@ export const deleteServerlessCache: API.OperationMethod<
   DeleteServerlessCacheRequest,
   DeleteServerlessCacheResponse,
   DeleteServerlessCacheError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServerlessCacheRequest,
   output: DeleteServerlessCacheResponse,
@@ -6454,7 +6454,7 @@ export const deleteServerlessCacheSnapshot: API.OperationMethod<
   DeleteServerlessCacheSnapshotRequest,
   DeleteServerlessCacheSnapshotResponse,
   DeleteServerlessCacheSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServerlessCacheSnapshotRequest,
   output: DeleteServerlessCacheSnapshotResponse,
@@ -6482,7 +6482,7 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotMessage,
   DeleteSnapshotResult,
   DeleteSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSnapshotMessage,
   output: DeleteSnapshotResult,
@@ -6509,7 +6509,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserMessage,
   User,
   DeleteUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserMessage,
   output: User,
@@ -6536,7 +6536,7 @@ export const deleteUserGroup: API.OperationMethod<
   DeleteUserGroupMessage,
   UserGroup,
   DeleteUserGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserGroupMessage,
   output: UserGroup,
@@ -6579,21 +6579,21 @@ export const describeCacheClusters: API.OperationMethod<
   DescribeCacheClustersMessage,
   CacheClusterMessage,
   DescribeCacheClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCacheClustersMessage,
   ) => stream.Stream<
     CacheClusterMessage,
     DescribeCacheClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCacheClustersMessage,
   ) => stream.Stream<
     CacheCluster,
     DescribeCacheClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheClustersMessage,
@@ -6618,21 +6618,21 @@ export const describeCacheEngineVersions: API.OperationMethod<
   DescribeCacheEngineVersionsMessage,
   CacheEngineVersionMessage,
   DescribeCacheEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCacheEngineVersionsMessage,
   ) => stream.Stream<
     CacheEngineVersionMessage,
     DescribeCacheEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCacheEngineVersionsMessage,
   ) => stream.Stream<
     CacheEngineVersion,
     DescribeCacheEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheEngineVersionsMessage,
@@ -6658,21 +6658,21 @@ export const describeCacheParameterGroups: API.OperationMethod<
   DescribeCacheParameterGroupsMessage,
   CacheParameterGroupsMessage,
   DescribeCacheParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCacheParameterGroupsMessage,
   ) => stream.Stream<
     CacheParameterGroupsMessage,
     DescribeCacheParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCacheParameterGroupsMessage,
   ) => stream.Stream<
     CacheParameterGroup,
     DescribeCacheParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheParameterGroupsMessage,
@@ -6701,21 +6701,21 @@ export const describeCacheParameters: API.OperationMethod<
   DescribeCacheParametersMessage,
   CacheParameterGroupDetails,
   DescribeCacheParametersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCacheParametersMessage,
   ) => stream.Stream<
     CacheParameterGroupDetails,
     DescribeCacheParametersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCacheParametersMessage,
   ) => stream.Stream<
     Parameter,
     DescribeCacheParametersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheParametersMessage,
@@ -6746,21 +6746,21 @@ export const describeCacheSecurityGroups: API.OperationMethod<
   DescribeCacheSecurityGroupsMessage,
   CacheSecurityGroupMessage,
   DescribeCacheSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCacheSecurityGroupsMessage,
   ) => stream.Stream<
     CacheSecurityGroupMessage,
     DescribeCacheSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCacheSecurityGroupsMessage,
   ) => stream.Stream<
     CacheSecurityGroup,
     DescribeCacheSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheSecurityGroupsMessage,
@@ -6790,21 +6790,21 @@ export const describeCacheSubnetGroups: API.OperationMethod<
   DescribeCacheSubnetGroupsMessage,
   CacheSubnetGroupMessage,
   DescribeCacheSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCacheSubnetGroupsMessage,
   ) => stream.Stream<
     CacheSubnetGroupMessage,
     DescribeCacheSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCacheSubnetGroupsMessage,
   ) => stream.Stream<
     CacheSubnetGroup,
     DescribeCacheSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheSubnetGroupsMessage,
@@ -6829,21 +6829,21 @@ export const describeEngineDefaultParameters: API.OperationMethod<
   DescribeEngineDefaultParametersMessage,
   DescribeEngineDefaultParametersResult,
   DescribeEngineDefaultParametersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEngineDefaultParametersMessage,
   ) => stream.Stream<
     DescribeEngineDefaultParametersResult,
     DescribeEngineDefaultParametersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEngineDefaultParametersMessage,
   ) => stream.Stream<
     unknown,
     DescribeEngineDefaultParametersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineDefaultParametersMessage,
@@ -6875,21 +6875,21 @@ export const describeEvents: API.OperationMethod<
   DescribeEventsMessage,
   EventsMessage,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEventsMessage,
   ) => stream.Stream<
     EventsMessage,
     DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEventsMessage,
   ) => stream.Stream<
     Event,
     DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
@@ -6918,21 +6918,21 @@ export const describeGlobalReplicationGroups: API.OperationMethod<
   DescribeGlobalReplicationGroupsMessage,
   DescribeGlobalReplicationGroupsResult,
   DescribeGlobalReplicationGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeGlobalReplicationGroupsMessage,
   ) => stream.Stream<
     DescribeGlobalReplicationGroupsResult,
     DescribeGlobalReplicationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeGlobalReplicationGroupsMessage,
   ) => stream.Stream<
     GlobalReplicationGroup,
     DescribeGlobalReplicationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeGlobalReplicationGroupsMessage,
@@ -6965,21 +6965,21 @@ export const describeReplicationGroups: API.OperationMethod<
   DescribeReplicationGroupsMessage,
   ReplicationGroupMessage,
   DescribeReplicationGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeReplicationGroupsMessage,
   ) => stream.Stream<
     ReplicationGroupMessage,
     DescribeReplicationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeReplicationGroupsMessage,
   ) => stream.Stream<
     ReplicationGroup,
     DescribeReplicationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationGroupsMessage,
@@ -7009,21 +7009,21 @@ export const describeReservedCacheNodes: API.OperationMethod<
   DescribeReservedCacheNodesMessage,
   ReservedCacheNodeMessage,
   DescribeReservedCacheNodesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeReservedCacheNodesMessage,
   ) => stream.Stream<
     ReservedCacheNodeMessage,
     DescribeReservedCacheNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeReservedCacheNodesMessage,
   ) => stream.Stream<
     ReservedCacheNode,
     DescribeReservedCacheNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedCacheNodesMessage,
@@ -7052,21 +7052,21 @@ export const describeReservedCacheNodesOfferings: API.OperationMethod<
   DescribeReservedCacheNodesOfferingsMessage,
   ReservedCacheNodesOfferingMessage,
   DescribeReservedCacheNodesOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeReservedCacheNodesOfferingsMessage,
   ) => stream.Stream<
     ReservedCacheNodesOfferingMessage,
     DescribeReservedCacheNodesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeReservedCacheNodesOfferingsMessage,
   ) => stream.Stream<
     ReservedCacheNodesOffering,
     DescribeReservedCacheNodesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedCacheNodesOfferingsMessage,
@@ -7097,21 +7097,21 @@ export const describeServerlessCaches: API.OperationMethod<
   DescribeServerlessCachesRequest,
   DescribeServerlessCachesResponse,
   DescribeServerlessCachesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeServerlessCachesRequest,
   ) => stream.Stream<
     DescribeServerlessCachesResponse,
     DescribeServerlessCachesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeServerlessCachesRequest,
   ) => stream.Stream<
     ServerlessCache,
     DescribeServerlessCachesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeServerlessCachesRequest,
@@ -7144,21 +7144,21 @@ export const describeServerlessCacheSnapshots: API.OperationMethod<
   DescribeServerlessCacheSnapshotsRequest,
   DescribeServerlessCacheSnapshotsResponse,
   DescribeServerlessCacheSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeServerlessCacheSnapshotsRequest,
   ) => stream.Stream<
     DescribeServerlessCacheSnapshotsResponse,
     DescribeServerlessCacheSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeServerlessCacheSnapshotsRequest,
   ) => stream.Stream<
     ServerlessCacheSnapshot,
     DescribeServerlessCacheSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeServerlessCacheSnapshotsRequest,
@@ -7188,21 +7188,21 @@ export const describeServiceUpdates: API.OperationMethod<
   DescribeServiceUpdatesMessage,
   ServiceUpdatesMessage,
   DescribeServiceUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeServiceUpdatesMessage,
   ) => stream.Stream<
     ServiceUpdatesMessage,
     DescribeServiceUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeServiceUpdatesMessage,
   ) => stream.Stream<
     ServiceUpdate,
     DescribeServiceUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeServiceUpdatesMessage,
@@ -7237,21 +7237,21 @@ export const describeSnapshots: API.OperationMethod<
   DescribeSnapshotsMessage,
   DescribeSnapshotsListMessage,
   DescribeSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeSnapshotsMessage,
   ) => stream.Stream<
     DescribeSnapshotsListMessage,
     DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeSnapshotsMessage,
   ) => stream.Stream<
     Snapshot,
     DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsMessage,
@@ -7280,21 +7280,21 @@ export const describeUpdateActions: API.OperationMethod<
   DescribeUpdateActionsMessage,
   UpdateActionsMessage,
   DescribeUpdateActionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeUpdateActionsMessage,
   ) => stream.Stream<
     UpdateActionsMessage,
     DescribeUpdateActionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeUpdateActionsMessage,
   ) => stream.Stream<
     UpdateAction,
     DescribeUpdateActionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeUpdateActionsMessage,
@@ -7322,21 +7322,21 @@ export const describeUserGroups: API.OperationMethod<
   DescribeUserGroupsMessage,
   DescribeUserGroupsResult,
   DescribeUserGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeUserGroupsMessage,
   ) => stream.Stream<
     DescribeUserGroupsResult,
     DescribeUserGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeUserGroupsMessage,
   ) => stream.Stream<
     UserGroup,
     DescribeUserGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeUserGroupsMessage,
@@ -7365,21 +7365,21 @@ export const describeUsers: API.OperationMethod<
   DescribeUsersMessage,
   DescribeUsersResult,
   DescribeUsersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeUsersMessage,
   ) => stream.Stream<
     DescribeUsersResult,
     DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeUsersMessage,
   ) => stream.Stream<
     User,
     DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeUsersMessage,
@@ -7411,7 +7411,7 @@ export const disassociateGlobalReplicationGroup: API.OperationMethod<
   DisassociateGlobalReplicationGroupMessage,
   DisassociateGlobalReplicationGroupResult,
   DisassociateGlobalReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateGlobalReplicationGroupMessage,
   output: DisassociateGlobalReplicationGroupResult,
@@ -7435,7 +7435,7 @@ export const exportServerlessCacheSnapshot: API.OperationMethod<
   ExportServerlessCacheSnapshotRequest,
   ExportServerlessCacheSnapshotResponse,
   ExportServerlessCacheSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportServerlessCacheSnapshotRequest,
   output: ExportServerlessCacheSnapshotResponse,
@@ -7460,7 +7460,7 @@ export const failoverGlobalReplicationGroup: API.OperationMethod<
   FailoverGlobalReplicationGroupMessage,
   FailoverGlobalReplicationGroupResult,
   FailoverGlobalReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FailoverGlobalReplicationGroupMessage,
   output: FailoverGlobalReplicationGroupResult,
@@ -7483,7 +7483,7 @@ export const increaseNodeGroupsInGlobalReplicationGroup: API.OperationMethod<
   IncreaseNodeGroupsInGlobalReplicationGroupMessage,
   IncreaseNodeGroupsInGlobalReplicationGroupResult,
   IncreaseNodeGroupsInGlobalReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IncreaseNodeGroupsInGlobalReplicationGroupMessage,
   output: IncreaseNodeGroupsInGlobalReplicationGroupResult,
@@ -7517,7 +7517,7 @@ export const increaseReplicaCount: API.OperationMethod<
   IncreaseReplicaCountMessage,
   IncreaseReplicaCountResult,
   IncreaseReplicaCountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IncreaseReplicaCountMessage,
   output: IncreaseReplicaCountResult,
@@ -7555,7 +7555,7 @@ export const listAllowedNodeTypeModifications: API.OperationMethod<
   ListAllowedNodeTypeModificationsMessage,
   AllowedNodeTypeModificationsMessage,
   ListAllowedNodeTypeModificationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAllowedNodeTypeModificationsMessage,
   output: AllowedNodeTypeModificationsMessage,
@@ -7599,7 +7599,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceMessage,
   TagListMessage,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceMessage,
   output: TagListMessage,
@@ -7642,7 +7642,7 @@ export const modifyCacheCluster: API.OperationMethod<
   ModifyCacheClusterMessage,
   ModifyCacheClusterResult,
   ModifyCacheClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyCacheClusterMessage,
   output: ModifyCacheClusterResult,
@@ -7675,7 +7675,7 @@ export const modifyCacheParameterGroup: API.OperationMethod<
   ModifyCacheParameterGroupMessage,
   CacheParameterGroupNameMessage,
   ModifyCacheParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyCacheParameterGroupMessage,
   output: CacheParameterGroupNameMessage,
@@ -7701,7 +7701,7 @@ export const modifyCacheSubnetGroup: API.OperationMethod<
   ModifyCacheSubnetGroupMessage,
   ModifyCacheSubnetGroupResult,
   ModifyCacheSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyCacheSubnetGroupMessage,
   output: ModifyCacheSubnetGroupResult,
@@ -7725,7 +7725,7 @@ export const modifyGlobalReplicationGroup: API.OperationMethod<
   ModifyGlobalReplicationGroupMessage,
   ModifyGlobalReplicationGroupResult,
   ModifyGlobalReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyGlobalReplicationGroupMessage,
   output: ModifyGlobalReplicationGroupResult,
@@ -7768,7 +7768,7 @@ export const modifyReplicationGroup: API.OperationMethod<
   ModifyReplicationGroupMessage,
   ModifyReplicationGroupResult,
   ModifyReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyReplicationGroupMessage,
   output: ModifyReplicationGroupResult,
@@ -7811,7 +7811,7 @@ export const modifyReplicationGroupShardConfiguration: API.OperationMethod<
   ModifyReplicationGroupShardConfigurationMessage,
   ModifyReplicationGroupShardConfigurationResult,
   ModifyReplicationGroupShardConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyReplicationGroupShardConfigurationMessage,
   output: ModifyReplicationGroupShardConfigurationResult,
@@ -7845,7 +7845,7 @@ export const modifyServerlessCache: API.OperationMethod<
   ModifyServerlessCacheRequest,
   ModifyServerlessCacheResponse,
   ModifyServerlessCacheError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyServerlessCacheRequest,
   output: ModifyServerlessCacheResponse,
@@ -7874,7 +7874,7 @@ export const modifyUser: API.OperationMethod<
   ModifyUserMessage,
   User,
   ModifyUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyUserMessage,
   output: User,
@@ -7903,7 +7903,7 @@ export const modifyUserGroup: API.OperationMethod<
   ModifyUserGroupMessage,
   UserGroup,
   ModifyUserGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyUserGroupMessage,
   output: UserGroup,
@@ -7934,7 +7934,7 @@ export const purchaseReservedCacheNodesOffering: API.OperationMethod<
   PurchaseReservedCacheNodesOfferingMessage,
   PurchaseReservedCacheNodesOfferingResult,
   PurchaseReservedCacheNodesOfferingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurchaseReservedCacheNodesOfferingMessage,
   output: PurchaseReservedCacheNodesOfferingResult,
@@ -7960,7 +7960,7 @@ export const rebalanceSlotsInGlobalReplicationGroup: API.OperationMethod<
   RebalanceSlotsInGlobalReplicationGroupMessage,
   RebalanceSlotsInGlobalReplicationGroupResult,
   RebalanceSlotsInGlobalReplicationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RebalanceSlotsInGlobalReplicationGroupMessage,
   output: RebalanceSlotsInGlobalReplicationGroupResult,
@@ -7996,7 +7996,7 @@ export const rebootCacheCluster: API.OperationMethod<
   RebootCacheClusterMessage,
   RebootCacheClusterResult,
   RebootCacheClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RebootCacheClusterMessage,
   output: RebootCacheClusterResult,
@@ -8031,7 +8031,7 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceMessage,
   TagListMessage,
   RemoveTagsFromResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceMessage,
   output: TagListMessage,
@@ -8071,7 +8071,7 @@ export const resetCacheParameterGroup: API.OperationMethod<
   ResetCacheParameterGroupMessage,
   CacheParameterGroupNameMessage,
   ResetCacheParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetCacheParameterGroupMessage,
   output: CacheParameterGroupNameMessage,
@@ -8098,7 +8098,7 @@ export const revokeCacheSecurityGroupIngress: API.OperationMethod<
   RevokeCacheSecurityGroupIngressMessage,
   RevokeCacheSecurityGroupIngressResult,
   RevokeCacheSecurityGroupIngressError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeCacheSecurityGroupIngressMessage,
   output: RevokeCacheSecurityGroupIngressResult,
@@ -8123,7 +8123,7 @@ export const startMigration: API.OperationMethod<
   StartMigrationMessage,
   StartMigrationResponse,
   StartMigrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartMigrationMessage,
   output: StartMigrationResponse,
@@ -8202,7 +8202,7 @@ export const testFailover: API.OperationMethod<
   TestFailoverMessage,
   TestFailoverResult,
   TestFailoverError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestFailoverMessage,
   output: TestFailoverResult,
@@ -8231,7 +8231,7 @@ export const testMigration: API.OperationMethod<
   TestMigrationMessage,
   TestMigrationResponse,
   TestMigrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestMigrationMessage,
   output: TestMigrationResponse,

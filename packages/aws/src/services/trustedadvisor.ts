@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "TrustedAdvisor",
@@ -1145,7 +1145,7 @@ export const batchUpdateRecommendationResourceExclusion: API.OperationMethod<
   BatchUpdateRecommendationResourceExclusionRequest,
   BatchUpdateRecommendationResourceExclusionResponse,
   BatchUpdateRecommendationResourceExclusionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateRecommendationResourceExclusionRequest,
   output: BatchUpdateRecommendationResourceExclusionResponse,
@@ -1171,7 +1171,7 @@ export const getOrganizationRecommendation: API.OperationMethod<
   GetOrganizationRecommendationRequest,
   GetOrganizationRecommendationResponse,
   GetOrganizationRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationRecommendationRequest,
   output: GetOrganizationRecommendationResponse,
@@ -1197,7 +1197,7 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationRequest,
   GetRecommendationResponse,
   GetRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecommendationRequest,
   output: GetRecommendationResponse,
@@ -1222,21 +1222,21 @@ export const listChecks: API.OperationMethod<
   ListChecksRequest,
   ListChecksResponse,
   ListChecksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChecksRequest,
   ) => stream.Stream<
     ListChecksResponse,
     ListChecksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChecksRequest,
   ) => stream.Stream<
     CheckSummary,
     ListChecksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChecksRequest,
@@ -1268,21 +1268,21 @@ export const listOrganizationRecommendationAccounts: API.OperationMethod<
   ListOrganizationRecommendationAccountsRequest,
   ListOrganizationRecommendationAccountsResponse,
   ListOrganizationRecommendationAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOrganizationRecommendationAccountsRequest,
   ) => stream.Stream<
     ListOrganizationRecommendationAccountsResponse,
     ListOrganizationRecommendationAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOrganizationRecommendationAccountsRequest,
   ) => stream.Stream<
     AccountRecommendationLifecycleSummary,
     ListOrganizationRecommendationAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationAccountsRequest,
@@ -1315,21 +1315,21 @@ export const listOrganizationRecommendationResources: API.OperationMethod<
   ListOrganizationRecommendationResourcesRequest,
   ListOrganizationRecommendationResourcesResponse,
   ListOrganizationRecommendationResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOrganizationRecommendationResourcesRequest,
   ) => stream.Stream<
     ListOrganizationRecommendationResourcesResponse,
     ListOrganizationRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOrganizationRecommendationResourcesRequest,
   ) => stream.Stream<
     OrganizationRecommendationResourceSummary,
     ListOrganizationRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationResourcesRequest,
@@ -1361,21 +1361,21 @@ export const listOrganizationRecommendations: API.OperationMethod<
   ListOrganizationRecommendationsRequest,
   ListOrganizationRecommendationsResponse,
   ListOrganizationRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOrganizationRecommendationsRequest,
   ) => stream.Stream<
     ListOrganizationRecommendationsResponse,
     ListOrganizationRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOrganizationRecommendationsRequest,
   ) => stream.Stream<
     OrganizationRecommendationSummary,
     ListOrganizationRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationsRequest,
@@ -1407,21 +1407,21 @@ export const listRecommendationResources: API.OperationMethod<
   ListRecommendationResourcesRequest,
   ListRecommendationResourcesResponse,
   ListRecommendationResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecommendationResourcesRequest,
   ) => stream.Stream<
     ListRecommendationResourcesResponse,
     ListRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecommendationResourcesRequest,
   ) => stream.Stream<
     RecommendationResourceSummary,
     ListRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationResourcesRequest,
@@ -1453,21 +1453,21 @@ export const listRecommendations: API.OperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecommendationsRequest,
   ) => stream.Stream<
     ListRecommendationsResponse,
     ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecommendationsRequest,
   ) => stream.Stream<
     RecommendationSummary,
     ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
@@ -1500,7 +1500,7 @@ export const updateOrganizationRecommendationLifecycle: API.OperationMethod<
   UpdateOrganizationRecommendationLifecycleRequest,
   UpdateOrganizationRecommendationLifecycleResponse,
   UpdateOrganizationRecommendationLifecycleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationRecommendationLifecycleRequest,
   output: UpdateOrganizationRecommendationLifecycleResponse,
@@ -1528,7 +1528,7 @@ export const updateRecommendationLifecycle: API.OperationMethod<
   UpdateRecommendationLifecycleRequest,
   UpdateRecommendationLifecycleResponse,
   UpdateRecommendationLifecycleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRecommendationLifecycleRequest,
   output: UpdateRecommendationLifecycleResponse,

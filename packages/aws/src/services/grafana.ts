@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "grafana",
@@ -1490,7 +1490,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1516,21 +1516,21 @@ export const listVersions: API.OperationMethod<
   ListVersionsRequest,
   ListVersionsResponse,
   ListVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVersionsRequest,
   ) => stream.Stream<
     ListVersionsResponse,
     ListVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListVersionsRequest,
   ) => stream.Stream<
     GrafanaVersion,
     ListVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsRequest,
@@ -1565,7 +1565,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1591,7 +1591,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1621,7 +1621,7 @@ export const createWorkspaceApiKey: API.OperationMethod<
   CreateWorkspaceApiKeyRequest,
   CreateWorkspaceApiKeyResponse,
   CreateWorkspaceApiKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkspaceApiKeyRequest,
   output: CreateWorkspaceApiKeyResponse,
@@ -1652,7 +1652,7 @@ export const deleteWorkspaceApiKey: API.OperationMethod<
   DeleteWorkspaceApiKeyRequest,
   DeleteWorkspaceApiKeyResponse,
   DeleteWorkspaceApiKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceApiKeyRequest,
   output: DeleteWorkspaceApiKeyResponse,
@@ -1680,7 +1680,7 @@ export const describeWorkspaceAuthentication: API.OperationMethod<
   DescribeWorkspaceAuthenticationRequest,
   DescribeWorkspaceAuthenticationResponse,
   DescribeWorkspaceAuthenticationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceAuthenticationRequest,
   output: DescribeWorkspaceAuthenticationResponse,
@@ -1710,7 +1710,7 @@ export const updateWorkspaceAuthentication: API.OperationMethod<
   UpdateWorkspaceAuthenticationRequest,
   UpdateWorkspaceAuthenticationResponse,
   UpdateWorkspaceAuthenticationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceAuthenticationRequest,
   output: UpdateWorkspaceAuthenticationResponse,
@@ -1736,7 +1736,7 @@ export const describeWorkspaceConfiguration: API.OperationMethod<
   DescribeWorkspaceConfigurationRequest,
   DescribeWorkspaceConfigurationResponse,
   DescribeWorkspaceConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceConfigurationRequest,
   output: DescribeWorkspaceConfigurationResponse,
@@ -1762,7 +1762,7 @@ export const updateWorkspaceConfiguration: API.OperationMethod<
   UpdateWorkspaceConfigurationRequest,
   UpdateWorkspaceConfigurationResponse,
   UpdateWorkspaceConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceConfigurationRequest,
   output: UpdateWorkspaceConfigurationResponse,
@@ -1789,7 +1789,7 @@ export const associateLicense: API.OperationMethod<
   AssociateLicenseRequest,
   AssociateLicenseResponse,
   AssociateLicenseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateLicenseRequest,
   output: AssociateLicenseResponse,
@@ -1815,7 +1815,7 @@ export const disassociateLicense: API.OperationMethod<
   DisassociateLicenseRequest,
   DisassociateLicenseResponse,
   DisassociateLicenseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateLicenseRequest,
   output: DisassociateLicenseResponse,
@@ -1841,21 +1841,21 @@ export const listPermissions: API.OperationMethod<
   ListPermissionsRequest,
   ListPermissionsResponse,
   ListPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPermissionsRequest,
   ) => stream.Stream<
     ListPermissionsResponse,
     ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPermissionsRequest,
   ) => stream.Stream<
     PermissionEntry,
     ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
@@ -1888,7 +1888,7 @@ export const updatePermissions: API.OperationMethod<
   UpdatePermissionsRequest,
   UpdatePermissionsResponse,
   UpdatePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePermissionsRequest,
   output: UpdatePermissionsResponse,
@@ -1922,7 +1922,7 @@ export const createWorkspaceServiceAccount: API.OperationMethod<
   CreateWorkspaceServiceAccountRequest,
   CreateWorkspaceServiceAccountResponse,
   CreateWorkspaceServiceAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkspaceServiceAccountRequest,
   output: CreateWorkspaceServiceAccountResponse,
@@ -1955,7 +1955,7 @@ export const deleteWorkspaceServiceAccount: API.OperationMethod<
   DeleteWorkspaceServiceAccountRequest,
   DeleteWorkspaceServiceAccountResponse,
   DeleteWorkspaceServiceAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceServiceAccountRequest,
   output: DeleteWorkspaceServiceAccountResponse,
@@ -1985,21 +1985,21 @@ export const listWorkspaceServiceAccounts: API.OperationMethod<
   ListWorkspaceServiceAccountsRequest,
   ListWorkspaceServiceAccountsResponse,
   ListWorkspaceServiceAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkspaceServiceAccountsRequest,
   ) => stream.Stream<
     ListWorkspaceServiceAccountsResponse,
     ListWorkspaceServiceAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkspaceServiceAccountsRequest,
   ) => stream.Stream<
     ServiceAccountSummary,
     ListWorkspaceServiceAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspaceServiceAccountsRequest,
@@ -2041,7 +2041,7 @@ export const createWorkspaceServiceAccountToken: API.OperationMethod<
   CreateWorkspaceServiceAccountTokenRequest,
   CreateWorkspaceServiceAccountTokenResponse,
   CreateWorkspaceServiceAccountTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkspaceServiceAccountTokenRequest,
   output: CreateWorkspaceServiceAccountTokenResponse,
@@ -2074,7 +2074,7 @@ export const deleteWorkspaceServiceAccountToken: API.OperationMethod<
   DeleteWorkspaceServiceAccountTokenRequest,
   DeleteWorkspaceServiceAccountTokenResponse,
   DeleteWorkspaceServiceAccountTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceServiceAccountTokenRequest,
   output: DeleteWorkspaceServiceAccountTokenResponse,
@@ -2106,21 +2106,21 @@ export const listWorkspaceServiceAccountTokens: API.OperationMethod<
   ListWorkspaceServiceAccountTokensRequest,
   ListWorkspaceServiceAccountTokensResponse,
   ListWorkspaceServiceAccountTokensError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkspaceServiceAccountTokensRequest,
   ) => stream.Stream<
     ListWorkspaceServiceAccountTokensResponse,
     ListWorkspaceServiceAccountTokensError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkspaceServiceAccountTokensRequest,
   ) => stream.Stream<
     ServiceAccountTokenSummary,
     ListWorkspaceServiceAccountTokensError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspaceServiceAccountTokensRequest,
@@ -2157,7 +2157,7 @@ export const createWorkspace: API.OperationMethod<
   CreateWorkspaceRequest,
   CreateWorkspaceResponse,
   CreateWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkspaceRequest,
   output: CreateWorkspaceResponse,
@@ -2184,7 +2184,7 @@ export const describeWorkspace: API.OperationMethod<
   DescribeWorkspaceRequest,
   DescribeWorkspaceResponse,
   DescribeWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceRequest,
   output: DescribeWorkspaceResponse,
@@ -2215,7 +2215,7 @@ export const updateWorkspace: API.OperationMethod<
   UpdateWorkspaceRequest,
   UpdateWorkspaceResponse,
   UpdateWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceRequest,
   output: UpdateWorkspaceResponse,
@@ -2243,7 +2243,7 @@ export const deleteWorkspace: API.OperationMethod<
   DeleteWorkspaceRequest,
   DeleteWorkspaceResponse,
   DeleteWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceRequest,
   output: DeleteWorkspaceResponse,
@@ -2268,21 +2268,21 @@ export const listWorkspaces: API.OperationMethod<
   ListWorkspacesRequest,
   ListWorkspacesResponse,
   ListWorkspacesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkspacesRequest,
   ) => stream.Stream<
     ListWorkspacesResponse,
     ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkspacesRequest,
   ) => stream.Stream<
     WorkspaceSummary,
     ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspacesRequest,

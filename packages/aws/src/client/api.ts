@@ -22,9 +22,8 @@ import {
   type ResponseParserOptions,
 } from "./response-parser.ts";
 
+import { AWSConfig } from "../config.ts";
 import * as Credentials from "../credentials.browser.ts";
-import * as Endpoint from "../endpoint.ts";
-import * as Region from "../region.ts";
 
 export interface MakeOptions extends ResponseParserOptions {}
 
@@ -99,7 +98,8 @@ export const make = <Op extends Operation<any, any, any>>(
 
     // Sign the request
     const credentials = yield* yield* Credentials.Credentials;
-    const region = yield* yield* Region.Region;
+    const config = yield* yield* AWSConfig;
+    const region = config.region;
     const serviceName = sigv4?.name ?? "s3";
 
     // Resolve endpoint and adjust request path if needed
@@ -107,11 +107,11 @@ export const make = <Op extends Operation<any, any, any>>(
     let resolvedRequest = request;
     let signingRegion = region; // Default to context region
     let signingServiceName = serviceName; // Default to service name from sigv4 trait
-    const customEndpoint = yield* Effect.serviceOption(Endpoint.Endpoint);
+    const customEndpoint = Option.fromUndefinedOr(config.endpoint);
 
     if (Option.isSome(customEndpoint)) {
       // User provided a custom endpoint - use it directly
-      endpoint = yield* customEndpoint.value;
+      endpoint = customEndpoint.value;
     } else if (rulesResolver) {
       // Use the rules resolver - it handles endpoint resolution AND path adjustment
       const resolved = yield* rulesResolver({

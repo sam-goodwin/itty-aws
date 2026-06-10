@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "ivs",
@@ -1861,7 +1861,7 @@ export const batchGetChannel: API.OperationMethod<
   BatchGetChannelRequest,
   BatchGetChannelResponse,
   BatchGetChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetChannelRequest,
   output: BatchGetChannelResponse,
@@ -1875,7 +1875,7 @@ export const batchGetStreamKey: API.OperationMethod<
   BatchGetStreamKeyRequest,
   BatchGetStreamKeyResponse,
   BatchGetStreamKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetStreamKeyRequest,
   output: BatchGetStreamKeyResponse,
@@ -1895,7 +1895,7 @@ export const batchStartViewerSessionRevocation: API.OperationMethod<
   BatchStartViewerSessionRevocationRequest,
   BatchStartViewerSessionRevocationResponse,
   BatchStartViewerSessionRevocationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchStartViewerSessionRevocationRequest,
   output: BatchStartViewerSessionRevocationResponse,
@@ -1920,7 +1920,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelRequest,
   CreateChannelResponse,
   CreateChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateChannelRequest,
   output: CreateChannelResponse,
@@ -1947,7 +1947,7 @@ export const createPlaybackRestrictionPolicy: API.OperationMethod<
   CreatePlaybackRestrictionPolicyRequest,
   CreatePlaybackRestrictionPolicyResponse,
   CreatePlaybackRestrictionPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePlaybackRestrictionPolicyRequest,
   output: CreatePlaybackRestrictionPolicyResponse,
@@ -1985,7 +1985,7 @@ export const createRecordingConfiguration: API.OperationMethod<
   CreateRecordingConfigurationRequest,
   CreateRecordingConfigurationResponse,
   CreateRecordingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRecordingConfigurationRequest,
   output: CreateRecordingConfigurationResponse,
@@ -2016,7 +2016,7 @@ export const createStreamKey: API.OperationMethod<
   CreateStreamKeyRequest,
   CreateStreamKeyResponse,
   CreateStreamKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateStreamKeyRequest,
   output: CreateStreamKeyResponse,
@@ -2047,7 +2047,7 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelRequest,
   DeleteChannelResponse,
   DeleteChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
@@ -2074,7 +2074,7 @@ export const deletePlaybackKeyPair: API.OperationMethod<
   DeletePlaybackKeyPairRequest,
   DeletePlaybackKeyPairResponse,
   DeletePlaybackKeyPairError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePlaybackKeyPairRequest,
   output: DeletePlaybackKeyPairResponse,
@@ -2099,7 +2099,7 @@ export const deletePlaybackRestrictionPolicy: API.OperationMethod<
   DeletePlaybackRestrictionPolicyRequest,
   DeletePlaybackRestrictionPolicyResponse,
   DeletePlaybackRestrictionPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePlaybackRestrictionPolicyRequest,
   output: DeletePlaybackRestrictionPolicyResponse,
@@ -2131,7 +2131,7 @@ export const deleteRecordingConfiguration: API.OperationMethod<
   DeleteRecordingConfigurationRequest,
   DeleteRecordingConfigurationResponse,
   DeleteRecordingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRecordingConfigurationRequest,
   output: DeleteRecordingConfigurationResponse,
@@ -2157,7 +2157,7 @@ export const deleteStreamKey: API.OperationMethod<
   DeleteStreamKeyRequest,
   DeleteStreamKeyResponse,
   DeleteStreamKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStreamKeyRequest,
   output: DeleteStreamKeyResponse,
@@ -2180,7 +2180,7 @@ export const getChannel: API.OperationMethod<
   GetChannelRequest,
   GetChannelResponse,
   GetChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetChannelRequest,
   output: GetChannelResponse,
@@ -2206,7 +2206,7 @@ export const getPlaybackKeyPair: API.OperationMethod<
   GetPlaybackKeyPairRequest,
   GetPlaybackKeyPairResponse,
   GetPlaybackKeyPairError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlaybackKeyPairRequest,
   output: GetPlaybackKeyPairResponse,
@@ -2229,7 +2229,7 @@ export const getPlaybackRestrictionPolicy: API.OperationMethod<
   GetPlaybackRestrictionPolicyRequest,
   GetPlaybackRestrictionPolicyResponse,
   GetPlaybackRestrictionPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlaybackRestrictionPolicyRequest,
   output: GetPlaybackRestrictionPolicyResponse,
@@ -2253,7 +2253,7 @@ export const getRecordingConfiguration: API.OperationMethod<
   GetRecordingConfigurationRequest,
   GetRecordingConfigurationResponse,
   GetRecordingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecordingConfigurationRequest,
   output: GetRecordingConfigurationResponse,
@@ -2277,7 +2277,7 @@ export const getStream: API.OperationMethod<
   GetStreamRequest,
   GetStreamResponse,
   GetStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStreamRequest,
   output: GetStreamResponse,
@@ -2300,7 +2300,7 @@ export const getStreamKey: API.OperationMethod<
   GetStreamKeyRequest,
   GetStreamKeyResponse,
   GetStreamKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStreamKeyRequest,
   output: GetStreamKeyResponse,
@@ -2322,7 +2322,7 @@ export const getStreamSession: API.OperationMethod<
   GetStreamSessionRequest,
   GetStreamSessionResponse,
   GetStreamSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStreamSessionRequest,
   output: GetStreamSessionResponse,
@@ -2350,7 +2350,7 @@ export const importPlaybackKeyPair: API.OperationMethod<
   ImportPlaybackKeyPairRequest,
   ImportPlaybackKeyPairResponse,
   ImportPlaybackKeyPairError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportPlaybackKeyPairRequest,
   output: ImportPlaybackKeyPairResponse,
@@ -2377,21 +2377,21 @@ export const listChannels: API.OperationMethod<
   ListChannelsRequest,
   ListChannelsResponse,
   ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChannelsRequest,
   ) => stream.Stream<
     ListChannelsResponse,
     ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChannelsRequest,
   ) => stream.Stream<
     unknown,
     ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
@@ -2415,21 +2415,21 @@ export const listPlaybackKeyPairs: API.OperationMethod<
   ListPlaybackKeyPairsRequest,
   ListPlaybackKeyPairsResponse,
   ListPlaybackKeyPairsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPlaybackKeyPairsRequest,
   ) => stream.Stream<
     ListPlaybackKeyPairsResponse,
     ListPlaybackKeyPairsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPlaybackKeyPairsRequest,
   ) => stream.Stream<
     unknown,
     ListPlaybackKeyPairsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackKeyPairsRequest,
@@ -2454,21 +2454,21 @@ export const listPlaybackRestrictionPolicies: API.OperationMethod<
   ListPlaybackRestrictionPoliciesRequest,
   ListPlaybackRestrictionPoliciesResponse,
   ListPlaybackRestrictionPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPlaybackRestrictionPoliciesRequest,
   ) => stream.Stream<
     ListPlaybackRestrictionPoliciesResponse,
     ListPlaybackRestrictionPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPlaybackRestrictionPoliciesRequest,
   ) => stream.Stream<
     unknown,
     ListPlaybackRestrictionPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackRestrictionPoliciesRequest,
@@ -2498,21 +2498,21 @@ export const listRecordingConfigurations: API.OperationMethod<
   ListRecordingConfigurationsRequest,
   ListRecordingConfigurationsResponse,
   ListRecordingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecordingConfigurationsRequest,
   ) => stream.Stream<
     ListRecordingConfigurationsResponse,
     ListRecordingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecordingConfigurationsRequest,
   ) => stream.Stream<
     unknown,
     ListRecordingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecordingConfigurationsRequest,
@@ -2536,21 +2536,21 @@ export const listStreamKeys: API.OperationMethod<
   ListStreamKeysRequest,
   ListStreamKeysResponse,
   ListStreamKeysError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStreamKeysRequest,
   ) => stream.Stream<
     ListStreamKeysResponse,
     ListStreamKeysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStreamKeysRequest,
   ) => stream.Stream<
     unknown,
     ListStreamKeysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStreamKeysRequest,
@@ -2578,21 +2578,21 @@ export const listStreams: API.OperationMethod<
   ListStreamsRequest,
   ListStreamsResponse,
   ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStreamsRequest,
   ) => stream.Stream<
     ListStreamsResponse,
     ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStreamsRequest,
   ) => stream.Stream<
     unknown,
     ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsRequest,
@@ -2617,21 +2617,21 @@ export const listStreamSessions: API.OperationMethod<
   ListStreamSessionsRequest,
   ListStreamSessionsResponse,
   ListStreamSessionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStreamSessionsRequest,
   ) => stream.Stream<
     ListStreamSessionsResponse,
     ListStreamSessionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStreamSessionsRequest,
   ) => stream.Stream<
     unknown,
     ListStreamSessionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStreamSessionsRequest,
@@ -2659,7 +2659,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2687,7 +2687,7 @@ export const putMetadata: API.OperationMethod<
   PutMetadataRequest,
   PutMetadataResponse,
   PutMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutMetadataRequest,
   output: PutMetadataResponse,
@@ -2718,7 +2718,7 @@ export const startViewerSessionRevocation: API.OperationMethod<
   StartViewerSessionRevocationRequest,
   StartViewerSessionRevocationResponse,
   StartViewerSessionRevocationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartViewerSessionRevocationRequest,
   output: StartViewerSessionRevocationResponse,
@@ -2751,7 +2751,7 @@ export const stopStream: API.OperationMethod<
   StopStreamRequest,
   StopStreamResponse,
   StopStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopStreamRequest,
   output: StopStreamResponse,
@@ -2775,7 +2775,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2797,7 +2797,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2823,7 +2823,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelRequest,
   UpdateChannelResponse,
   UpdateChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
@@ -2849,7 +2849,7 @@ export const updatePlaybackRestrictionPolicy: API.OperationMethod<
   UpdatePlaybackRestrictionPolicyRequest,
   UpdatePlaybackRestrictionPolicyResponse,
   UpdatePlaybackRestrictionPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePlaybackRestrictionPolicyRequest,
   output: UpdatePlaybackRestrictionPolicyResponse,

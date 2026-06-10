@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://firehose.amazonaws.com/doc/2015-08-04");
 const svc = T.AwsApiService({
@@ -3005,7 +3005,7 @@ export const createDeliveryStream: API.OperationMethod<
   CreateDeliveryStreamInput,
   CreateDeliveryStreamOutput,
   CreateDeliveryStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeliveryStreamInput,
   output: CreateDeliveryStreamOutput,
@@ -3042,7 +3042,7 @@ export const deleteDeliveryStream: API.OperationMethod<
   DeleteDeliveryStreamInput,
   DeleteDeliveryStreamOutput,
   DeleteDeliveryStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDeliveryStreamInput,
   output: DeleteDeliveryStreamOutput,
@@ -3065,7 +3065,7 @@ export const describeDeliveryStream: API.OperationMethod<
   DescribeDeliveryStreamInput,
   DescribeDeliveryStreamOutput,
   DescribeDeliveryStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDeliveryStreamInput,
   output: DescribeDeliveryStreamOutput,
@@ -3087,7 +3087,7 @@ export const listDeliveryStreams: API.OperationMethod<
   ListDeliveryStreamsInput,
   ListDeliveryStreamsOutput,
   ListDeliveryStreamsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDeliveryStreamsInput,
   output: ListDeliveryStreamsOutput,
@@ -3106,7 +3106,7 @@ export const listTagsForDeliveryStream: API.OperationMethod<
   ListTagsForDeliveryStreamInput,
   ListTagsForDeliveryStreamOutput,
   ListTagsForDeliveryStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForDeliveryStreamInput,
   output: ListTagsForDeliveryStreamOutput,
@@ -3178,7 +3178,7 @@ export const putRecord: API.OperationMethod<
   PutRecordInput,
   PutRecordOutput,
   PutRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutRecordInput,
   output: PutRecordOutput,
@@ -3273,7 +3273,7 @@ export const putRecordBatch: API.OperationMethod<
   PutRecordBatchInput,
   PutRecordBatchOutput,
   PutRecordBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutRecordBatchInput,
   output: PutRecordBatchOutput,
@@ -3344,7 +3344,7 @@ export const startDeliveryStreamEncryption: API.OperationMethod<
   StartDeliveryStreamEncryptionInput,
   StartDeliveryStreamEncryptionOutput,
   StartDeliveryStreamEncryptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartDeliveryStreamEncryptionInput,
   output: StartDeliveryStreamEncryptionOutput,
@@ -3391,7 +3391,7 @@ export const stopDeliveryStreamEncryption: API.OperationMethod<
   StopDeliveryStreamEncryptionInput,
   StopDeliveryStreamEncryptionOutput,
   StopDeliveryStreamEncryptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopDeliveryStreamEncryptionInput,
   output: StopDeliveryStreamEncryptionOutput,
@@ -3426,7 +3426,7 @@ export const tagDeliveryStream: API.OperationMethod<
   TagDeliveryStreamInput,
   TagDeliveryStreamOutput,
   TagDeliveryStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagDeliveryStreamInput,
   output: TagDeliveryStreamOutput,
@@ -3455,7 +3455,7 @@ export const untagDeliveryStream: API.OperationMethod<
   UntagDeliveryStreamInput,
   UntagDeliveryStreamOutput,
   UntagDeliveryStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagDeliveryStreamInput,
   output: UntagDeliveryStreamOutput,
@@ -3506,7 +3506,7 @@ export const updateDestination: API.OperationMethod<
   UpdateDestinationInput,
   UpdateDestinationOutput,
   UpdateDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDestinationInput,
   output: UpdateDestinationOutput,

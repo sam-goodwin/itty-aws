@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Timestream InfluxDB",
@@ -1606,7 +1606,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1623,7 +1623,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1637,7 +1637,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1659,7 +1659,7 @@ export const createDbCluster: API.OperationMethod<
   CreateDbClusterInput,
   CreateDbClusterOutput,
   CreateDbClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDbClusterInput,
   output: CreateDbClusterOutput,
@@ -1687,7 +1687,7 @@ export const getDbCluster: API.OperationMethod<
   GetDbClusterInput,
   GetDbClusterOutput,
   GetDbClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDbClusterInput,
   output: GetDbClusterOutput,
@@ -1714,7 +1714,7 @@ export const updateDbCluster: API.OperationMethod<
   UpdateDbClusterInput,
   UpdateDbClusterOutput,
   UpdateDbClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDbClusterInput,
   output: UpdateDbClusterOutput,
@@ -1742,7 +1742,7 @@ export const deleteDbCluster: API.OperationMethod<
   DeleteDbClusterInput,
   DeleteDbClusterOutput,
   DeleteDbClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDbClusterInput,
   output: DeleteDbClusterOutput,
@@ -1769,21 +1769,21 @@ export const listDbClusters: API.OperationMethod<
   ListDbClustersInput,
   ListDbClustersOutput,
   ListDbClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDbClustersInput,
   ) => stream.Stream<
     ListDbClustersOutput,
     ListDbClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDbClustersInput,
   ) => stream.Stream<
     DbClusterSummary,
     ListDbClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDbClustersInput,
@@ -1816,21 +1816,21 @@ export const listDbInstancesForCluster: API.OperationMethod<
   ListDbInstancesForClusterInput,
   ListDbInstancesForClusterOutput,
   ListDbInstancesForClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDbInstancesForClusterInput,
   ) => stream.Stream<
     ListDbInstancesForClusterOutput,
     ListDbInstancesForClusterError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDbInstancesForClusterInput,
   ) => stream.Stream<
     DbInstanceForClusterSummary,
     ListDbInstancesForClusterError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDbInstancesForClusterInput,
@@ -1864,7 +1864,7 @@ export const rebootDbCluster: API.OperationMethod<
   RebootDbClusterInput,
   RebootDbClusterOutput,
   RebootDbClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RebootDbClusterInput,
   output: RebootDbClusterOutput,
@@ -1893,7 +1893,7 @@ export const createDbInstance: API.OperationMethod<
   CreateDbInstanceInput,
   CreateDbInstanceOutput,
   CreateDbInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDbInstanceInput,
   output: CreateDbInstanceOutput,
@@ -1921,7 +1921,7 @@ export const getDbInstance: API.OperationMethod<
   GetDbInstanceInput,
   GetDbInstanceOutput,
   GetDbInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDbInstanceInput,
   output: GetDbInstanceOutput,
@@ -1948,7 +1948,7 @@ export const updateDbInstance: API.OperationMethod<
   UpdateDbInstanceInput,
   UpdateDbInstanceOutput,
   UpdateDbInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDbInstanceInput,
   output: UpdateDbInstanceOutput,
@@ -1976,7 +1976,7 @@ export const deleteDbInstance: API.OperationMethod<
   DeleteDbInstanceInput,
   DeleteDbInstanceOutput,
   DeleteDbInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDbInstanceInput,
   output: DeleteDbInstanceOutput,
@@ -2003,21 +2003,21 @@ export const listDbInstances: API.OperationMethod<
   ListDbInstancesInput,
   ListDbInstancesOutput,
   ListDbInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDbInstancesInput,
   ) => stream.Stream<
     ListDbInstancesOutput,
     ListDbInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDbInstancesInput,
   ) => stream.Stream<
     DbInstanceSummary,
     ListDbInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDbInstancesInput,
@@ -2051,7 +2051,7 @@ export const rebootDbInstance: API.OperationMethod<
   RebootDbInstanceInput,
   RebootDbInstanceOutput,
   RebootDbInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RebootDbInstanceInput,
   output: RebootDbInstanceOutput,
@@ -2080,7 +2080,7 @@ export const createDbParameterGroup: API.OperationMethod<
   CreateDbParameterGroupInput,
   CreateDbParameterGroupOutput,
   CreateDbParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDbParameterGroupInput,
   output: CreateDbParameterGroupOutput,
@@ -2108,7 +2108,7 @@ export const getDbParameterGroup: API.OperationMethod<
   GetDbParameterGroupInput,
   GetDbParameterGroupOutput,
   GetDbParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDbParameterGroupInput,
   output: GetDbParameterGroupOutput,
@@ -2134,21 +2134,21 @@ export const listDbParameterGroups: API.OperationMethod<
   ListDbParameterGroupsInput,
   ListDbParameterGroupsOutput,
   ListDbParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDbParameterGroupsInput,
   ) => stream.Stream<
     ListDbParameterGroupsOutput,
     ListDbParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDbParameterGroupsInput,
   ) => stream.Stream<
     DbParameterGroupSummary,
     ListDbParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDbParameterGroupsInput,

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "CodeGuru Reviewer",
   serviceShapeName: "AWSGuruFrontendService",
@@ -1210,7 +1210,7 @@ export const associateRepository: API.OperationMethod<
   AssociateRepositoryRequest,
   AssociateRepositoryResponse,
   AssociateRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateRepositoryRequest,
   output: AssociateRepositoryResponse,
@@ -1240,7 +1240,7 @@ export const createCodeReview: API.OperationMethod<
   CreateCodeReviewRequest,
   CreateCodeReviewResponse,
   CreateCodeReviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCodeReviewRequest,
   output: CreateCodeReviewResponse,
@@ -1267,7 +1267,7 @@ export const describeCodeReview: API.OperationMethod<
   DescribeCodeReviewRequest,
   DescribeCodeReviewResponse,
   DescribeCodeReviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCodeReviewRequest,
   output: DescribeCodeReviewResponse,
@@ -1293,7 +1293,7 @@ export const describeRecommendationFeedback: API.OperationMethod<
   DescribeRecommendationFeedbackRequest,
   DescribeRecommendationFeedbackResponse,
   DescribeRecommendationFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRecommendationFeedbackRequest,
   output: DescribeRecommendationFeedbackResponse,
@@ -1320,7 +1320,7 @@ export const describeRepositoryAssociation: API.OperationMethod<
   DescribeRepositoryAssociationRequest,
   DescribeRepositoryAssociationResponse,
   DescribeRepositoryAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRepositoryAssociationRequest,
   output: DescribeRepositoryAssociationResponse,
@@ -1347,7 +1347,7 @@ export const disassociateRepository: API.OperationMethod<
   DisassociateRepositoryRequest,
   DisassociateRepositoryResponse,
   DisassociateRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateRepositoryRequest,
   output: DisassociateRepositoryResponse,
@@ -1373,21 +1373,21 @@ export const listCodeReviews: API.OperationMethod<
   ListCodeReviewsRequest,
   ListCodeReviewsResponse,
   ListCodeReviewsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCodeReviewsRequest,
   ) => stream.Stream<
     ListCodeReviewsResponse,
     ListCodeReviewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCodeReviewsRequest,
   ) => stream.Stream<
     unknown,
     ListCodeReviewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCodeReviewsRequest,
@@ -1419,21 +1419,21 @@ export const listRecommendationFeedback: API.OperationMethod<
   ListRecommendationFeedbackRequest,
   ListRecommendationFeedbackResponse,
   ListRecommendationFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecommendationFeedbackRequest,
   ) => stream.Stream<
     ListRecommendationFeedbackResponse,
     ListRecommendationFeedbackError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecommendationFeedbackRequest,
   ) => stream.Stream<
     unknown,
     ListRecommendationFeedbackError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationFeedbackRequest,
@@ -1465,21 +1465,21 @@ export const listRecommendations: API.OperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecommendationsRequest,
   ) => stream.Stream<
     ListRecommendationsResponse,
     ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecommendationsRequest,
   ) => stream.Stream<
     unknown,
     ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
@@ -1510,21 +1510,21 @@ export const listRepositoryAssociations: API.OperationMethod<
   ListRepositoryAssociationsRequest,
   ListRepositoryAssociationsResponse,
   ListRepositoryAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRepositoryAssociationsRequest,
   ) => stream.Stream<
     ListRepositoryAssociationsResponse,
     ListRepositoryAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRepositoryAssociationsRequest,
   ) => stream.Stream<
     RepositoryAssociationSummary,
     ListRepositoryAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoryAssociationsRequest,
@@ -1549,7 +1549,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1574,7 +1574,7 @@ export const putRecommendationFeedback: API.OperationMethod<
   PutRecommendationFeedbackRequest,
   PutRecommendationFeedbackResponse,
   PutRecommendationFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutRecommendationFeedbackRequest,
   output: PutRecommendationFeedbackResponse,
@@ -1598,7 +1598,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1620,7 +1620,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

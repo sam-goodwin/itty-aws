@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "finspace",
@@ -3538,7 +3538,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentRequest,
   CreateEnvironmentResponse,
   CreateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
@@ -3567,7 +3567,7 @@ export const createKxChangeset: API.OperationMethod<
   CreateKxChangesetRequest,
   CreateKxChangesetResponse,
   CreateKxChangesetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKxChangesetRequest,
   output: CreateKxChangesetResponse,
@@ -3597,7 +3597,7 @@ export const createKxCluster: API.OperationMethod<
   CreateKxClusterRequest,
   CreateKxClusterResponse,
   CreateKxClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKxClusterRequest,
   output: CreateKxClusterResponse,
@@ -3628,7 +3628,7 @@ export const createKxDatabase: API.OperationMethod<
   CreateKxDatabaseRequest,
   CreateKxDatabaseResponse,
   CreateKxDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKxDatabaseRequest,
   output: CreateKxDatabaseResponse,
@@ -3660,7 +3660,7 @@ export const createKxDataview: API.OperationMethod<
   CreateKxDataviewRequest,
   CreateKxDataviewResponse,
   CreateKxDataviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKxDataviewRequest,
   output: CreateKxDataviewResponse,
@@ -3691,7 +3691,7 @@ export const createKxEnvironment: API.OperationMethod<
   CreateKxEnvironmentRequest,
   CreateKxEnvironmentResponse,
   CreateKxEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKxEnvironmentRequest,
   output: CreateKxEnvironmentResponse,
@@ -3721,7 +3721,7 @@ export const createKxScalingGroup: API.OperationMethod<
   CreateKxScalingGroupRequest,
   CreateKxScalingGroupResponse,
   CreateKxScalingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKxScalingGroupRequest,
   output: CreateKxScalingGroupResponse,
@@ -3752,7 +3752,7 @@ export const createKxUser: API.OperationMethod<
   CreateKxUserRequest,
   CreateKxUserResponse,
   CreateKxUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKxUserRequest,
   output: CreateKxUserResponse,
@@ -3784,7 +3784,7 @@ export const createKxVolume: API.OperationMethod<
   CreateKxVolumeRequest,
   CreateKxVolumeResponse,
   CreateKxVolumeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKxVolumeRequest,
   output: CreateKxVolumeResponse,
@@ -3813,7 +3813,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentRequest,
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
@@ -3841,7 +3841,7 @@ export const deleteKxCluster: API.OperationMethod<
   DeleteKxClusterRequest,
   DeleteKxClusterResponse,
   DeleteKxClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKxClusterRequest,
   output: DeleteKxClusterResponse,
@@ -3869,7 +3869,7 @@ export const deleteKxClusterNode: API.OperationMethod<
   DeleteKxClusterNodeRequest,
   DeleteKxClusterNodeResponse,
   DeleteKxClusterNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKxClusterNodeRequest,
   output: DeleteKxClusterNodeResponse,
@@ -3896,7 +3896,7 @@ export const deleteKxDatabase: API.OperationMethod<
   DeleteKxDatabaseRequest,
   DeleteKxDatabaseResponse,
   DeleteKxDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKxDatabaseRequest,
   output: DeleteKxDatabaseResponse,
@@ -3924,7 +3924,7 @@ export const deleteKxDataview: API.OperationMethod<
   DeleteKxDataviewRequest,
   DeleteKxDataviewResponse,
   DeleteKxDataviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKxDataviewRequest,
   output: DeleteKxDataviewResponse,
@@ -3952,7 +3952,7 @@ export const deleteKxEnvironment: API.OperationMethod<
   DeleteKxEnvironmentRequest,
   DeleteKxEnvironmentResponse,
   DeleteKxEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKxEnvironmentRequest,
   output: DeleteKxEnvironmentResponse,
@@ -3981,7 +3981,7 @@ export const deleteKxScalingGroup: API.OperationMethod<
   DeleteKxScalingGroupRequest,
   DeleteKxScalingGroupResponse,
   DeleteKxScalingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKxScalingGroupRequest,
   output: DeleteKxScalingGroupResponse,
@@ -4010,7 +4010,7 @@ export const deleteKxUser: API.OperationMethod<
   DeleteKxUserRequest,
   DeleteKxUserResponse,
   DeleteKxUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKxUserRequest,
   output: DeleteKxUserResponse,
@@ -4039,7 +4039,7 @@ export const deleteKxVolume: API.OperationMethod<
   DeleteKxVolumeRequest,
   DeleteKxVolumeResponse,
   DeleteKxVolumeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKxVolumeRequest,
   output: DeleteKxVolumeResponse,
@@ -4066,7 +4066,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentRequest,
   GetEnvironmentResponse,
   GetEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
@@ -4091,7 +4091,7 @@ export const getKxChangeset: API.OperationMethod<
   GetKxChangesetRequest,
   GetKxChangesetResponse,
   GetKxChangesetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKxChangesetRequest,
   output: GetKxChangesetResponse,
@@ -4119,7 +4119,7 @@ export const getKxCluster: API.OperationMethod<
   GetKxClusterRequest,
   GetKxClusterResponse,
   GetKxClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKxClusterRequest,
   output: GetKxClusterResponse,
@@ -4147,7 +4147,7 @@ export const getKxConnectionString: API.OperationMethod<
   GetKxConnectionStringRequest,
   GetKxConnectionStringResponse,
   GetKxConnectionStringError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKxConnectionStringRequest,
   output: GetKxConnectionStringResponse,
@@ -4173,7 +4173,7 @@ export const getKxDatabase: API.OperationMethod<
   GetKxDatabaseRequest,
   GetKxDatabaseResponse,
   GetKxDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKxDatabaseRequest,
   output: GetKxDatabaseResponse,
@@ -4199,7 +4199,7 @@ export const getKxDataview: API.OperationMethod<
   GetKxDataviewRequest,
   GetKxDataviewResponse,
   GetKxDataviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKxDataviewRequest,
   output: GetKxDataviewResponse,
@@ -4225,7 +4225,7 @@ export const getKxEnvironment: API.OperationMethod<
   GetKxEnvironmentRequest,
   GetKxEnvironmentResponse,
   GetKxEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKxEnvironmentRequest,
   output: GetKxEnvironmentResponse,
@@ -4253,7 +4253,7 @@ export const getKxScalingGroup: API.OperationMethod<
   GetKxScalingGroupRequest,
   GetKxScalingGroupResponse,
   GetKxScalingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKxScalingGroupRequest,
   output: GetKxScalingGroupResponse,
@@ -4281,7 +4281,7 @@ export const getKxUser: API.OperationMethod<
   GetKxUserRequest,
   GetKxUserResponse,
   GetKxUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKxUserRequest,
   output: GetKxUserResponse,
@@ -4309,7 +4309,7 @@ export const getKxVolume: API.OperationMethod<
   GetKxVolumeRequest,
   GetKxVolumeResponse,
   GetKxVolumeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKxVolumeRequest,
   output: GetKxVolumeResponse,
@@ -4335,7 +4335,7 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsRequest,
   ListEnvironmentsResponse,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
@@ -4355,21 +4355,21 @@ export const listKxChangesets: API.OperationMethod<
   ListKxChangesetsRequest,
   ListKxChangesetsResponse,
   ListKxChangesetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKxChangesetsRequest,
   ) => stream.Stream<
     ListKxChangesetsResponse,
     ListKxChangesetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKxChangesetsRequest,
   ) => stream.Stream<
     unknown,
     ListKxChangesetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKxChangesetsRequest,
@@ -4402,21 +4402,21 @@ export const listKxClusterNodes: API.OperationMethod<
   ListKxClusterNodesRequest,
   ListKxClusterNodesResponse,
   ListKxClusterNodesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKxClusterNodesRequest,
   ) => stream.Stream<
     ListKxClusterNodesResponse,
     ListKxClusterNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKxClusterNodesRequest,
   ) => stream.Stream<
     unknown,
     ListKxClusterNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKxClusterNodesRequest,
@@ -4451,7 +4451,7 @@ export const listKxClusters: API.OperationMethod<
   ListKxClustersRequest,
   ListKxClustersResponse,
   ListKxClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListKxClustersRequest,
   output: ListKxClustersResponse,
@@ -4479,21 +4479,21 @@ export const listKxDatabases: API.OperationMethod<
   ListKxDatabasesRequest,
   ListKxDatabasesResponse,
   ListKxDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKxDatabasesRequest,
   ) => stream.Stream<
     ListKxDatabasesResponse,
     ListKxDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKxDatabasesRequest,
   ) => stream.Stream<
     unknown,
     ListKxDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKxDatabasesRequest,
@@ -4525,21 +4525,21 @@ export const listKxDataviews: API.OperationMethod<
   ListKxDataviewsRequest,
   ListKxDataviewsResponse,
   ListKxDataviewsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKxDataviewsRequest,
   ) => stream.Stream<
     ListKxDataviewsResponse,
     ListKxDataviewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKxDataviewsRequest,
   ) => stream.Stream<
     unknown,
     ListKxDataviewsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKxDataviewsRequest,
@@ -4569,21 +4569,21 @@ export const listKxEnvironments: API.OperationMethod<
   ListKxEnvironmentsRequest,
   ListKxEnvironmentsResponse,
   ListKxEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKxEnvironmentsRequest,
   ) => stream.Stream<
     ListKxEnvironmentsResponse,
     ListKxEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKxEnvironmentsRequest,
   ) => stream.Stream<
     KxEnvironment,
     ListKxEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKxEnvironmentsRequest,
@@ -4612,21 +4612,21 @@ export const listKxScalingGroups: API.OperationMethod<
   ListKxScalingGroupsRequest,
   ListKxScalingGroupsResponse,
   ListKxScalingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListKxScalingGroupsRequest,
   ) => stream.Stream<
     ListKxScalingGroupsResponse,
     ListKxScalingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListKxScalingGroupsRequest,
   ) => stream.Stream<
     unknown,
     ListKxScalingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKxScalingGroupsRequest,
@@ -4660,7 +4660,7 @@ export const listKxUsers: API.OperationMethod<
   ListKxUsersRequest,
   ListKxUsersResponse,
   ListKxUsersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListKxUsersRequest,
   output: ListKxUsersResponse,
@@ -4688,7 +4688,7 @@ export const listKxVolumes: API.OperationMethod<
   ListKxVolumesRequest,
   ListKxVolumesResponse,
   ListKxVolumesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListKxVolumesRequest,
   output: ListKxVolumesResponse,
@@ -4714,7 +4714,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -4736,7 +4736,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4758,7 +4758,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4782,7 +4782,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentRequest,
   UpdateEnvironmentResponse,
   UpdateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentRequest,
   output: UpdateEnvironmentResponse,
@@ -4811,7 +4811,7 @@ export const updateKxClusterCodeConfiguration: API.OperationMethod<
   UpdateKxClusterCodeConfigurationRequest,
   UpdateKxClusterCodeConfigurationResponse,
   UpdateKxClusterCodeConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKxClusterCodeConfigurationRequest,
   output: UpdateKxClusterCodeConfigurationResponse,
@@ -4843,7 +4843,7 @@ export const updateKxClusterDatabases: API.OperationMethod<
   UpdateKxClusterDatabasesRequest,
   UpdateKxClusterDatabasesResponse,
   UpdateKxClusterDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKxClusterDatabasesRequest,
   output: UpdateKxClusterDatabasesResponse,
@@ -4872,7 +4872,7 @@ export const updateKxDatabase: API.OperationMethod<
   UpdateKxDatabaseRequest,
   UpdateKxDatabaseResponse,
   UpdateKxDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKxDatabaseRequest,
   output: UpdateKxDatabaseResponse,
@@ -4901,7 +4901,7 @@ export const updateKxDataview: API.OperationMethod<
   UpdateKxDataviewRequest,
   UpdateKxDataviewResponse,
   UpdateKxDataviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKxDataviewRequest,
   output: UpdateKxDataviewResponse,
@@ -4930,7 +4930,7 @@ export const updateKxEnvironment: API.OperationMethod<
   UpdateKxEnvironmentRequest,
   UpdateKxEnvironmentResponse,
   UpdateKxEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKxEnvironmentRequest,
   output: UpdateKxEnvironmentResponse,
@@ -4960,7 +4960,7 @@ export const updateKxEnvironmentNetwork: API.OperationMethod<
   UpdateKxEnvironmentNetworkRequest,
   UpdateKxEnvironmentNetworkResponse,
   UpdateKxEnvironmentNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKxEnvironmentNetworkRequest,
   output: UpdateKxEnvironmentNetworkResponse,
@@ -4989,7 +4989,7 @@ export const updateKxUser: API.OperationMethod<
   UpdateKxUserRequest,
   UpdateKxUserResponse,
   UpdateKxUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKxUserRequest,
   output: UpdateKxUserResponse,
@@ -5020,7 +5020,7 @@ export const updateKxVolume: API.OperationMethod<
   UpdateKxVolumeRequest,
   UpdateKxVolumeResponse,
   UpdateKxVolumeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKxVolumeRequest,
   output: UpdateKxVolumeResponse,

@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://awss3control.amazonaws.com/doc/2018-08-20/");
 const svc = T.AwsApiService({
@@ -7730,7 +7730,7 @@ export const associateAccessGrantsIdentityCenter: API.OperationMethod<
   AssociateAccessGrantsIdentityCenterRequest,
   AssociateAccessGrantsIdentityCenterResponse,
   AssociateAccessGrantsIdentityCenterError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateAccessGrantsIdentityCenterRequest,
   output: AssociateAccessGrantsIdentityCenterResponse,
@@ -7756,7 +7756,7 @@ export const createAccessGrant: API.OperationMethod<
   CreateAccessGrantRequest,
   CreateAccessGrantResult,
   CreateAccessGrantError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessGrantRequest,
   output: CreateAccessGrantResult,
@@ -7778,7 +7778,7 @@ export const createAccessGrantsInstance: API.OperationMethod<
   CreateAccessGrantsInstanceRequest,
   CreateAccessGrantsInstanceResult,
   CreateAccessGrantsInstanceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessGrantsInstanceRequest,
   output: CreateAccessGrantsInstanceResult,
@@ -7808,7 +7808,7 @@ export const createAccessGrantsLocation: API.OperationMethod<
   CreateAccessGrantsLocationRequest,
   CreateAccessGrantsLocationResult,
   CreateAccessGrantsLocationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessGrantsLocationRequest,
   output: CreateAccessGrantsLocationResult,
@@ -7847,7 +7847,7 @@ export const createAccessPoint: API.OperationMethod<
   CreateAccessPointRequest,
   CreateAccessPointResult,
   CreateAccessPointError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessPointRequest,
   output: CreateAccessPointResult,
@@ -7873,7 +7873,7 @@ export const createAccessPointForObjectLambda: API.OperationMethod<
   CreateAccessPointForObjectLambdaRequest,
   CreateAccessPointForObjectLambdaResult,
   CreateAccessPointForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessPointForObjectLambdaRequest,
   output: CreateAccessPointForObjectLambdaResult,
@@ -7926,7 +7926,7 @@ export const createBucket: API.OperationMethod<
   CreateBucketRequest,
   CreateBucketResult,
   CreateBucketError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBucketRequest,
   output: CreateBucketResult,
@@ -7966,7 +7966,7 @@ export const createJob: API.OperationMethod<
   CreateJobRequest,
   CreateJobResult,
   CreateJobError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateJobRequest,
   output: CreateJobResult,
@@ -8007,7 +8007,7 @@ export const createMultiRegionAccessPoint: API.OperationMethod<
   CreateMultiRegionAccessPointRequest,
   CreateMultiRegionAccessPointResult,
   CreateMultiRegionAccessPointError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMultiRegionAccessPointRequest,
   output: CreateMultiRegionAccessPointResult,
@@ -8035,7 +8035,7 @@ export const createStorageLensGroup: API.OperationMethod<
   CreateStorageLensGroupRequest,
   CreateStorageLensGroupResponse,
   CreateStorageLensGroupError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateStorageLensGroupRequest,
   output: CreateStorageLensGroupResponse,
@@ -8053,7 +8053,7 @@ export const deleteAccessGrant: API.OperationMethod<
   DeleteAccessGrantRequest,
   DeleteAccessGrantResponse,
   DeleteAccessGrantError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessGrantRequest,
   output: DeleteAccessGrantResponse,
@@ -8071,7 +8071,7 @@ export const deleteAccessGrantsInstance: API.OperationMethod<
   DeleteAccessGrantsInstanceRequest,
   DeleteAccessGrantsInstanceResponse,
   DeleteAccessGrantsInstanceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessGrantsInstanceRequest,
   output: DeleteAccessGrantsInstanceResponse,
@@ -8089,7 +8089,7 @@ export const deleteAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   DeleteAccessGrantsInstanceResourcePolicyRequest,
   DeleteAccessGrantsInstanceResourcePolicyResponse,
   DeleteAccessGrantsInstanceResourcePolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessGrantsInstanceResourcePolicyRequest,
   output: DeleteAccessGrantsInstanceResourcePolicyResponse,
@@ -8107,7 +8107,7 @@ export const deleteAccessGrantsLocation: API.OperationMethod<
   DeleteAccessGrantsLocationRequest,
   DeleteAccessGrantsLocationResponse,
   DeleteAccessGrantsLocationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessGrantsLocationRequest,
   output: DeleteAccessGrantsLocationResponse,
@@ -8131,7 +8131,7 @@ export const deleteAccessPoint: API.OperationMethod<
   DeleteAccessPointRequest,
   DeleteAccessPointResponse,
   DeleteAccessPointError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPointRequest,
   output: DeleteAccessPointResponse,
@@ -8156,7 +8156,7 @@ export const deleteAccessPointForObjectLambda: API.OperationMethod<
   DeleteAccessPointForObjectLambdaRequest,
   DeleteAccessPointForObjectLambdaResponse,
   DeleteAccessPointForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPointForObjectLambdaRequest,
   output: DeleteAccessPointForObjectLambdaResponse,
@@ -8178,7 +8178,7 @@ export const deleteAccessPointPolicy: API.OperationMethod<
   DeleteAccessPointPolicyRequest,
   DeleteAccessPointPolicyResponse,
   DeleteAccessPointPolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPointPolicyRequest,
   output: DeleteAccessPointPolicyResponse,
@@ -8201,7 +8201,7 @@ export const deleteAccessPointPolicyForObjectLambda: API.OperationMethod<
   DeleteAccessPointPolicyForObjectLambdaRequest,
   DeleteAccessPointPolicyForObjectLambdaResponse,
   DeleteAccessPointPolicyForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPointPolicyForObjectLambdaRequest,
   output: DeleteAccessPointPolicyForObjectLambdaResponse,
@@ -8222,7 +8222,7 @@ export const deleteAccessPointScope: API.OperationMethod<
   DeleteAccessPointScopeRequest,
   DeleteAccessPointScopeResponse,
   DeleteAccessPointScopeError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPointScopeRequest,
   output: DeleteAccessPointScopeResponse,
@@ -8251,7 +8251,7 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketRequest,
   DeleteBucketResponse,
   DeleteBucketError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketRequest,
   output: DeleteBucketResponse,
@@ -8288,7 +8288,7 @@ export const deleteBucketLifecycleConfiguration: API.OperationMethod<
   DeleteBucketLifecycleConfigurationRequest,
   DeleteBucketLifecycleConfigurationResponse,
   DeleteBucketLifecycleConfigurationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketLifecycleConfigurationRequest,
   output: DeleteBucketLifecycleConfigurationResponse,
@@ -8331,7 +8331,7 @@ export const deleteBucketPolicy: API.OperationMethod<
   DeleteBucketPolicyRequest,
   DeleteBucketPolicyResponse,
   DeleteBucketPolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketPolicyRequest,
   output: DeleteBucketPolicyResponse,
@@ -8373,7 +8373,7 @@ export const deleteBucketReplication: API.OperationMethod<
   DeleteBucketReplicationRequest,
   DeleteBucketReplicationResponse,
   DeleteBucketReplicationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketReplicationRequest,
   output: DeleteBucketReplicationResponse,
@@ -8403,7 +8403,7 @@ export const deleteBucketTagging: API.OperationMethod<
   DeleteBucketTaggingRequest,
   DeleteBucketTaggingResponse,
   DeleteBucketTaggingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketTaggingRequest,
   output: DeleteBucketTaggingResponse,
@@ -8437,7 +8437,7 @@ export const deleteJobTagging: API.OperationMethod<
   DeleteJobTaggingRequest,
   DeleteJobTaggingResult,
   DeleteJobTaggingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteJobTaggingRequest,
   output: DeleteJobTaggingResult,
@@ -8477,7 +8477,7 @@ export const deleteMultiRegionAccessPoint: API.OperationMethod<
   DeleteMultiRegionAccessPointRequest,
   DeleteMultiRegionAccessPointResult,
   DeleteMultiRegionAccessPointError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMultiRegionAccessPointRequest,
   output: DeleteMultiRegionAccessPointResult,
@@ -8505,7 +8505,7 @@ export const deletePublicAccessBlock: API.OperationMethod<
   DeletePublicAccessBlockRequest,
   DeletePublicAccessBlockResponse,
   DeletePublicAccessBlockError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePublicAccessBlockRequest,
   output: DeletePublicAccessBlockResponse,
@@ -8528,7 +8528,7 @@ export const deleteStorageLensConfiguration: API.OperationMethod<
   DeleteStorageLensConfigurationRequest,
   DeleteStorageLensConfigurationResponse,
   DeleteStorageLensConfigurationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStorageLensConfigurationRequest,
   output: DeleteStorageLensConfigurationResponse,
@@ -8552,7 +8552,7 @@ export const deleteStorageLensConfigurationTagging: API.OperationMethod<
   DeleteStorageLensConfigurationTaggingRequest,
   DeleteStorageLensConfigurationTaggingResult,
   DeleteStorageLensConfigurationTaggingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStorageLensConfigurationTaggingRequest,
   output: DeleteStorageLensConfigurationTaggingResult,
@@ -8573,7 +8573,7 @@ export const deleteStorageLensGroup: API.OperationMethod<
   DeleteStorageLensGroupRequest,
   DeleteStorageLensGroupResponse,
   DeleteStorageLensGroupError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStorageLensGroupRequest,
   output: DeleteStorageLensGroupResponse,
@@ -8607,7 +8607,7 @@ export const describeJob: API.OperationMethod<
   DescribeJobRequest,
   DescribeJobResult,
   DescribeJobError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeJobRequest,
   output: DescribeJobResult,
@@ -8639,7 +8639,7 @@ export const describeMultiRegionAccessPointOperation: API.OperationMethod<
   DescribeMultiRegionAccessPointOperationRequest,
   DescribeMultiRegionAccessPointOperationResult,
   DescribeMultiRegionAccessPointOperationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeMultiRegionAccessPointOperationRequest,
   output: DescribeMultiRegionAccessPointOperationResult,
@@ -8661,7 +8661,7 @@ export const dissociateAccessGrantsIdentityCenter: API.OperationMethod<
   DissociateAccessGrantsIdentityCenterRequest,
   DissociateAccessGrantsIdentityCenterResponse,
   DissociateAccessGrantsIdentityCenterError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DissociateAccessGrantsIdentityCenterRequest,
   output: DissociateAccessGrantsIdentityCenterResponse,
@@ -8679,7 +8679,7 @@ export const getAccessGrant: API.OperationMethod<
   GetAccessGrantRequest,
   GetAccessGrantResult,
   GetAccessGrantError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessGrantRequest,
   output: GetAccessGrantResult,
@@ -8699,7 +8699,7 @@ export const getAccessGrantsInstance: API.OperationMethod<
   GetAccessGrantsInstanceRequest,
   GetAccessGrantsInstanceResult,
   GetAccessGrantsInstanceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessGrantsInstanceRequest,
   output: GetAccessGrantsInstanceResult,
@@ -8721,7 +8721,7 @@ export const getAccessGrantsInstanceForPrefix: API.OperationMethod<
   GetAccessGrantsInstanceForPrefixRequest,
   GetAccessGrantsInstanceForPrefixResult,
   GetAccessGrantsInstanceForPrefixError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessGrantsInstanceForPrefixRequest,
   output: GetAccessGrantsInstanceForPrefixResult,
@@ -8739,7 +8739,7 @@ export const getAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   GetAccessGrantsInstanceResourcePolicyRequest,
   GetAccessGrantsInstanceResourcePolicyResult,
   GetAccessGrantsInstanceResourcePolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessGrantsInstanceResourcePolicyRequest,
   output: GetAccessGrantsInstanceResourcePolicyResult,
@@ -8757,7 +8757,7 @@ export const getAccessGrantsLocation: API.OperationMethod<
   GetAccessGrantsLocationRequest,
   GetAccessGrantsLocationResult,
   GetAccessGrantsLocationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessGrantsLocationRequest,
   output: GetAccessGrantsLocationResult,
@@ -8781,7 +8781,7 @@ export const getAccessPoint: API.OperationMethod<
   GetAccessPointRequest,
   GetAccessPointResult,
   GetAccessPointError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPointRequest,
   output: GetAccessPointResult,
@@ -8802,7 +8802,7 @@ export const getAccessPointConfigurationForObjectLambda: API.OperationMethod<
   GetAccessPointConfigurationForObjectLambdaRequest,
   GetAccessPointConfigurationForObjectLambdaResult,
   GetAccessPointConfigurationForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPointConfigurationForObjectLambdaRequest,
   output: GetAccessPointConfigurationForObjectLambdaResult,
@@ -8826,7 +8826,7 @@ export const getAccessPointForObjectLambda: API.OperationMethod<
   GetAccessPointForObjectLambdaRequest,
   GetAccessPointForObjectLambdaResult,
   GetAccessPointForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPointForObjectLambdaRequest,
   output: GetAccessPointForObjectLambdaResult,
@@ -8846,7 +8846,7 @@ export const getAccessPointPolicy: API.OperationMethod<
   GetAccessPointPolicyRequest,
   GetAccessPointPolicyResult,
   GetAccessPointPolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPointPolicyRequest,
   output: GetAccessPointPolicyResult,
@@ -8869,7 +8869,7 @@ export const getAccessPointPolicyForObjectLambda: API.OperationMethod<
   GetAccessPointPolicyForObjectLambdaRequest,
   GetAccessPointPolicyForObjectLambdaResult,
   GetAccessPointPolicyForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPointPolicyForObjectLambdaRequest,
   output: GetAccessPointPolicyForObjectLambdaResult,
@@ -8887,7 +8887,7 @@ export const getAccessPointPolicyStatus: API.OperationMethod<
   GetAccessPointPolicyStatusRequest,
   GetAccessPointPolicyStatusResult,
   GetAccessPointPolicyStatusError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPointPolicyStatusRequest,
   output: GetAccessPointPolicyStatusResult,
@@ -8903,7 +8903,7 @@ export const getAccessPointPolicyStatusForObjectLambda: API.OperationMethod<
   GetAccessPointPolicyStatusForObjectLambdaRequest,
   GetAccessPointPolicyStatusForObjectLambdaResult,
   GetAccessPointPolicyStatusForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPointPolicyStatusForObjectLambdaRequest,
   output: GetAccessPointPolicyStatusForObjectLambdaResult,
@@ -8922,7 +8922,7 @@ export const getAccessPointScope: API.OperationMethod<
   GetAccessPointScopeRequest,
   GetAccessPointScopeResult,
   GetAccessPointScopeError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPointScopeRequest,
   output: GetAccessPointScopeResult,
@@ -8957,7 +8957,7 @@ export const getBucket: API.OperationMethod<
   GetBucketRequest,
   GetBucketResult,
   GetBucketError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketRequest,
   output: GetBucketResult,
@@ -9002,7 +9002,7 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   GetBucketLifecycleConfigurationRequest,
   GetBucketLifecycleConfigurationResult,
   GetBucketLifecycleConfigurationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketLifecycleConfigurationRequest,
   output: GetBucketLifecycleConfigurationResult,
@@ -9048,7 +9048,7 @@ export const getBucketPolicy: API.OperationMethod<
   GetBucketPolicyRequest,
   GetBucketPolicyResult,
   GetBucketPolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketPolicyRequest,
   output: GetBucketPolicyResult,
@@ -9098,7 +9098,7 @@ export const getBucketReplication: API.OperationMethod<
   GetBucketReplicationRequest,
   GetBucketReplicationResult,
   GetBucketReplicationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketReplicationRequest,
   output: GetBucketReplicationResult,
@@ -9135,7 +9135,7 @@ export const getBucketTagging: API.OperationMethod<
   GetBucketTaggingRequest,
   GetBucketTaggingResult,
   GetBucketTaggingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketTaggingRequest,
   output: GetBucketTaggingResult,
@@ -9178,7 +9178,7 @@ export const getBucketVersioning: API.OperationMethod<
   GetBucketVersioningRequest,
   GetBucketVersioningResult,
   GetBucketVersioningError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketVersioningRequest,
   output: GetBucketVersioningResult,
@@ -9200,7 +9200,7 @@ export const getDataAccess: API.OperationMethod<
   GetDataAccessRequest,
   GetDataAccessResult,
   GetDataAccessError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataAccessRequest,
   output: GetDataAccessResult,
@@ -9234,7 +9234,7 @@ export const getJobTagging: API.OperationMethod<
   GetJobTaggingRequest,
   GetJobTaggingResult,
   GetJobTaggingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetJobTaggingRequest,
   output: GetJobTaggingResult,
@@ -9268,7 +9268,7 @@ export const getMultiRegionAccessPoint: API.OperationMethod<
   GetMultiRegionAccessPointRequest,
   GetMultiRegionAccessPointResult,
   GetMultiRegionAccessPointError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMultiRegionAccessPointRequest,
   output: GetMultiRegionAccessPointResult,
@@ -9295,7 +9295,7 @@ export const getMultiRegionAccessPointPolicy: API.OperationMethod<
   GetMultiRegionAccessPointPolicyRequest,
   GetMultiRegionAccessPointPolicyResult,
   GetMultiRegionAccessPointPolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMultiRegionAccessPointPolicyRequest,
   output: GetMultiRegionAccessPointPolicyResult,
@@ -9323,7 +9323,7 @@ export const getMultiRegionAccessPointPolicyStatus: API.OperationMethod<
   GetMultiRegionAccessPointPolicyStatusRequest,
   GetMultiRegionAccessPointPolicyStatusResult,
   GetMultiRegionAccessPointPolicyStatusError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMultiRegionAccessPointPolicyStatusRequest,
   output: GetMultiRegionAccessPointPolicyStatusResult,
@@ -9353,7 +9353,7 @@ export const getMultiRegionAccessPointRoutes: API.OperationMethod<
   GetMultiRegionAccessPointRoutesRequest,
   GetMultiRegionAccessPointRoutesResult,
   GetMultiRegionAccessPointRoutesError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMultiRegionAccessPointRoutesRequest,
   output: GetMultiRegionAccessPointRoutesResult,
@@ -9380,7 +9380,7 @@ export const getPublicAccessBlock: API.OperationMethod<
   GetPublicAccessBlockRequest,
   GetPublicAccessBlockOutput,
   GetPublicAccessBlockError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicAccessBlockRequest,
   output: GetPublicAccessBlockOutput,
@@ -9402,7 +9402,7 @@ export const getStorageLensConfiguration: API.OperationMethod<
   GetStorageLensConfigurationRequest,
   GetStorageLensConfigurationResult,
   GetStorageLensConfigurationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStorageLensConfigurationRequest,
   output: GetStorageLensConfigurationResult,
@@ -9426,7 +9426,7 @@ export const getStorageLensConfigurationTagging: API.OperationMethod<
   GetStorageLensConfigurationTaggingRequest,
   GetStorageLensConfigurationTaggingResult,
   GetStorageLensConfigurationTaggingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStorageLensConfigurationTaggingRequest,
   output: GetStorageLensConfigurationTaggingResult,
@@ -9447,7 +9447,7 @@ export const getStorageLensGroup: API.OperationMethod<
   GetStorageLensGroupRequest,
   GetStorageLensGroupResult,
   GetStorageLensGroupError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStorageLensGroupRequest,
   output: GetStorageLensGroupResult,
@@ -9465,21 +9465,21 @@ export const listAccessGrants: API.OperationMethod<
   ListAccessGrantsRequest,
   ListAccessGrantsResult,
   ListAccessGrantsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccessGrantsRequest,
   ) => stream.Stream<
     ListAccessGrantsResult,
     ListAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccessGrantsRequest,
   ) => stream.Stream<
     unknown,
     ListAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessGrantsRequest,
@@ -9503,21 +9503,21 @@ export const listAccessGrantsInstances: API.OperationMethod<
   ListAccessGrantsInstancesRequest,
   ListAccessGrantsInstancesResult,
   ListAccessGrantsInstancesError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccessGrantsInstancesRequest,
   ) => stream.Stream<
     ListAccessGrantsInstancesResult,
     ListAccessGrantsInstancesError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccessGrantsInstancesRequest,
   ) => stream.Stream<
     unknown,
     ListAccessGrantsInstancesError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessGrantsInstancesRequest,
@@ -9541,21 +9541,21 @@ export const listAccessGrantsLocations: API.OperationMethod<
   ListAccessGrantsLocationsRequest,
   ListAccessGrantsLocationsResult,
   ListAccessGrantsLocationsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccessGrantsLocationsRequest,
   ) => stream.Stream<
     ListAccessGrantsLocationsResult,
     ListAccessGrantsLocationsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccessGrantsLocationsRequest,
   ) => stream.Stream<
     unknown,
     ListAccessGrantsLocationsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessGrantsLocationsRequest,
@@ -9593,21 +9593,21 @@ export const listAccessPoints: API.OperationMethod<
   ListAccessPointsRequest,
   ListAccessPointsResult,
   ListAccessPointsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccessPointsRequest,
   ) => stream.Stream<
     ListAccessPointsResult,
     ListAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccessPointsRequest,
   ) => stream.Stream<
     unknown,
     ListAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPointsRequest,
@@ -9634,21 +9634,21 @@ export const listAccessPointsForDirectoryBuckets: API.OperationMethod<
   ListAccessPointsForDirectoryBucketsRequest,
   ListAccessPointsForDirectoryBucketsResult,
   ListAccessPointsForDirectoryBucketsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccessPointsForDirectoryBucketsRequest,
   ) => stream.Stream<
     ListAccessPointsForDirectoryBucketsResult,
     ListAccessPointsForDirectoryBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccessPointsForDirectoryBucketsRequest,
   ) => stream.Stream<
     AccessPoint,
     ListAccessPointsForDirectoryBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPointsForDirectoryBucketsRequest,
@@ -9682,21 +9682,21 @@ export const listAccessPointsForObjectLambda: API.OperationMethod<
   ListAccessPointsForObjectLambdaRequest,
   ListAccessPointsForObjectLambdaResult,
   ListAccessPointsForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccessPointsForObjectLambdaRequest,
   ) => stream.Stream<
     ListAccessPointsForObjectLambdaResult,
     ListAccessPointsForObjectLambdaError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccessPointsForObjectLambdaRequest,
   ) => stream.Stream<
     ObjectLambdaAccessPoint,
     ListAccessPointsForObjectLambdaError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPointsForObjectLambdaRequest,
@@ -9721,21 +9721,21 @@ export const listCallerAccessGrants: API.OperationMethod<
   ListCallerAccessGrantsRequest,
   ListCallerAccessGrantsResult,
   ListCallerAccessGrantsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCallerAccessGrantsRequest,
   ) => stream.Stream<
     ListCallerAccessGrantsResult,
     ListCallerAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCallerAccessGrantsRequest,
   ) => stream.Stream<
     ListCallerAccessGrantsEntry,
     ListCallerAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCallerAccessGrantsRequest,
@@ -9777,21 +9777,21 @@ export const listJobs: API.OperationMethod<
   ListJobsRequest,
   ListJobsResult,
   ListJobsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListJobsRequest,
   ) => stream.Stream<
     ListJobsResult,
     ListJobsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListJobsRequest,
   ) => stream.Stream<
     unknown,
     ListJobsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
@@ -9833,21 +9833,21 @@ export const listMultiRegionAccessPoints: API.OperationMethod<
   ListMultiRegionAccessPointsRequest,
   ListMultiRegionAccessPointsResult,
   ListMultiRegionAccessPointsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMultiRegionAccessPointsRequest,
   ) => stream.Stream<
     ListMultiRegionAccessPointsResult,
     ListMultiRegionAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMultiRegionAccessPointsRequest,
   ) => stream.Stream<
     unknown,
     ListMultiRegionAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMultiRegionAccessPointsRequest,
@@ -9874,21 +9874,21 @@ export const listRegionalBuckets: API.OperationMethod<
   ListRegionalBucketsRequest,
   ListRegionalBucketsResult,
   ListRegionalBucketsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRegionalBucketsRequest,
   ) => stream.Stream<
     ListRegionalBucketsResult,
     ListRegionalBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRegionalBucketsRequest,
   ) => stream.Stream<
     unknown,
     ListRegionalBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionalBucketsRequest,
@@ -9918,21 +9918,21 @@ export const listStorageLensConfigurations: API.OperationMethod<
   ListStorageLensConfigurationsRequest,
   ListStorageLensConfigurationsResult,
   ListStorageLensConfigurationsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStorageLensConfigurationsRequest,
   ) => stream.Stream<
     ListStorageLensConfigurationsResult,
     ListStorageLensConfigurationsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStorageLensConfigurationsRequest,
   ) => stream.Stream<
     unknown,
     ListStorageLensConfigurationsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStorageLensConfigurationsRequest,
@@ -9955,21 +9955,21 @@ export const listStorageLensGroups: API.OperationMethod<
   ListStorageLensGroupsRequest,
   ListStorageLensGroupsResult,
   ListStorageLensGroupsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStorageLensGroupsRequest,
   ) => stream.Stream<
     ListStorageLensGroupsResult,
     ListStorageLensGroupsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStorageLensGroupsRequest,
   ) => stream.Stream<
     unknown,
     ListStorageLensGroupsError,
-    Creds | Rgn | HttpClient.HttpClient
+    Creds | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStorageLensGroupsRequest,
@@ -10013,7 +10013,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResult,
   ListTagsForResourceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
@@ -10031,7 +10031,7 @@ export const putAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   PutAccessGrantsInstanceResourcePolicyRequest,
   PutAccessGrantsInstanceResourcePolicyResult,
   PutAccessGrantsInstanceResourcePolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccessGrantsInstanceResourcePolicyRequest,
   output: PutAccessGrantsInstanceResourcePolicyResult,
@@ -10052,7 +10052,7 @@ export const putAccessPointConfigurationForObjectLambda: API.OperationMethod<
   PutAccessPointConfigurationForObjectLambdaRequest,
   PutAccessPointConfigurationForObjectLambdaResponse,
   PutAccessPointConfigurationForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccessPointConfigurationForObjectLambdaRequest,
   output: PutAccessPointConfigurationForObjectLambdaResponse,
@@ -10076,7 +10076,7 @@ export const putAccessPointPolicy: API.OperationMethod<
   PutAccessPointPolicyRequest,
   PutAccessPointPolicyResponse,
   PutAccessPointPolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccessPointPolicyRequest,
   output: PutAccessPointPolicyResponse,
@@ -10099,7 +10099,7 @@ export const putAccessPointPolicyForObjectLambda: API.OperationMethod<
   PutAccessPointPolicyForObjectLambdaRequest,
   PutAccessPointPolicyForObjectLambdaResponse,
   PutAccessPointPolicyForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccessPointPolicyForObjectLambdaRequest,
   output: PutAccessPointPolicyForObjectLambdaResponse,
@@ -10120,7 +10120,7 @@ export const putAccessPointScope: API.OperationMethod<
   PutAccessPointScopeRequest,
   PutAccessPointScopeResponse,
   PutAccessPointScopeError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccessPointScopeRequest,
   output: PutAccessPointScopeResponse,
@@ -10149,7 +10149,7 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   PutBucketLifecycleConfigurationRequest,
   PutBucketLifecycleConfigurationResponse,
   PutBucketLifecycleConfigurationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketLifecycleConfigurationRequest,
   output: PutBucketLifecycleConfigurationResponse,
@@ -10193,7 +10193,7 @@ export const putBucketPolicy: API.OperationMethod<
   PutBucketPolicyRequest,
   PutBucketPolicyResponse,
   PutBucketPolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketPolicyRequest,
   output: PutBucketPolicyResponse,
@@ -10279,7 +10279,7 @@ export const putBucketReplication: API.OperationMethod<
   PutBucketReplicationRequest,
   PutBucketReplicationResponse,
   PutBucketReplicationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketReplicationRequest,
   output: PutBucketReplicationResponse,
@@ -10347,7 +10347,7 @@ export const putBucketTagging: API.OperationMethod<
   PutBucketTaggingRequest,
   PutBucketTaggingResponse,
   PutBucketTaggingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketTaggingRequest,
   output: PutBucketTaggingResponse,
@@ -10410,7 +10410,7 @@ export const putBucketVersioning: API.OperationMethod<
   PutBucketVersioningRequest,
   PutBucketVersioningResponse,
   PutBucketVersioningError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketVersioningRequest,
   output: PutBucketVersioningResponse,
@@ -10472,7 +10472,7 @@ export const putJobTagging: API.OperationMethod<
   PutJobTaggingRequest,
   PutJobTaggingResult,
   PutJobTaggingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutJobTaggingRequest,
   output: PutJobTaggingResult,
@@ -10506,7 +10506,7 @@ export const putMultiRegionAccessPointPolicy: API.OperationMethod<
   PutMultiRegionAccessPointPolicyRequest,
   PutMultiRegionAccessPointPolicyResult,
   PutMultiRegionAccessPointPolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutMultiRegionAccessPointPolicyRequest,
   output: PutMultiRegionAccessPointPolicyResult,
@@ -10535,7 +10535,7 @@ export const putPublicAccessBlock: API.OperationMethod<
   PutPublicAccessBlockRequest,
   PutPublicAccessBlockResponse,
   PutPublicAccessBlockError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPublicAccessBlockRequest,
   output: PutPublicAccessBlockResponse,
@@ -10556,7 +10556,7 @@ export const putStorageLensConfiguration: API.OperationMethod<
   PutStorageLensConfigurationRequest,
   PutStorageLensConfigurationResponse,
   PutStorageLensConfigurationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutStorageLensConfigurationRequest,
   output: PutStorageLensConfigurationResponse,
@@ -10579,7 +10579,7 @@ export const putStorageLensConfigurationTagging: API.OperationMethod<
   PutStorageLensConfigurationTaggingRequest,
   PutStorageLensConfigurationTaggingResult,
   PutStorageLensConfigurationTaggingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutStorageLensConfigurationTaggingRequest,
   output: PutStorageLensConfigurationTaggingResult,
@@ -10621,7 +10621,7 @@ export const submitMultiRegionAccessPointRoutes: API.OperationMethod<
   SubmitMultiRegionAccessPointRoutesRequest,
   SubmitMultiRegionAccessPointRoutesResult,
   SubmitMultiRegionAccessPointRoutesError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitMultiRegionAccessPointRoutesRequest,
   output: SubmitMultiRegionAccessPointRoutesResult,
@@ -10663,7 +10663,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResult,
   TagResourceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResult,
@@ -10706,7 +10706,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResult,
   UntagResourceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResult,
@@ -10728,7 +10728,7 @@ export const updateAccessGrantsLocation: API.OperationMethod<
   UpdateAccessGrantsLocationRequest,
   UpdateAccessGrantsLocationResult,
   UpdateAccessGrantsLocationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessGrantsLocationRequest,
   output: UpdateAccessGrantsLocationResult,
@@ -10763,7 +10763,7 @@ export const updateJobPriority: API.OperationMethod<
   UpdateJobPriorityRequest,
   UpdateJobPriorityResult,
   UpdateJobPriorityError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateJobPriorityRequest,
   output: UpdateJobPriorityResult,
@@ -10805,7 +10805,7 @@ export const updateJobStatus: API.OperationMethod<
   UpdateJobStatusRequest,
   UpdateJobStatusResult,
   UpdateJobStatusError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateJobStatusRequest,
   output: UpdateJobStatusResult,
@@ -10832,7 +10832,7 @@ export const updateStorageLensGroup: API.OperationMethod<
   UpdateStorageLensGroupRequest,
   UpdateStorageLensGroupResponse,
   UpdateStorageLensGroupError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStorageLensGroupRequest,
   output: UpdateStorageLensGroupResponse,

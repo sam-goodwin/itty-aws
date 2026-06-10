@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Redshift Data",
   serviceShapeName: "RedshiftData",
@@ -840,7 +840,7 @@ export const batchExecuteStatement: API.OperationMethod<
   BatchExecuteStatementInput,
   BatchExecuteStatementOutput,
   BatchExecuteStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchExecuteStatementInput,
   output: BatchExecuteStatementOutput,
@@ -869,7 +869,7 @@ export const cancelStatement: API.OperationMethod<
   CancelStatementRequest,
   CancelStatementResponse,
   CancelStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelStatementRequest,
   output: CancelStatementResponse,
@@ -895,7 +895,7 @@ export const describeStatement: API.OperationMethod<
   DescribeStatementRequest,
   DescribeStatementResponse,
   DescribeStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeStatementRequest,
   output: DescribeStatementResponse,
@@ -931,21 +931,21 @@ export const describeTable: API.OperationMethod<
   DescribeTableRequest,
   DescribeTableResponse,
   DescribeTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeTableRequest,
   ) => stream.Stream<
     DescribeTableResponse,
     DescribeTableError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeTableRequest,
   ) => stream.Stream<
     ColumnMetadata,
     DescribeTableError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeTableRequest,
@@ -991,7 +991,7 @@ export const executeStatement: API.OperationMethod<
   ExecuteStatementInput,
   ExecuteStatementOutput,
   ExecuteStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteStatementInput,
   output: ExecuteStatementOutput,
@@ -1018,21 +1018,21 @@ export const getStatementResult: API.OperationMethod<
   GetStatementResultRequest,
   GetStatementResultResponse,
   GetStatementResultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetStatementResultRequest,
   ) => stream.Stream<
     GetStatementResultResponse,
     GetStatementResultError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetStatementResultRequest,
   ) => stream.Stream<
     Field[],
     GetStatementResultError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetStatementResultRequest,
@@ -1062,21 +1062,21 @@ export const getStatementResultV2: API.OperationMethod<
   GetStatementResultV2Request,
   GetStatementResultV2Response,
   GetStatementResultV2Error,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetStatementResultV2Request,
   ) => stream.Stream<
     GetStatementResultV2Response,
     GetStatementResultV2Error,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetStatementResultV2Request,
   ) => stream.Stream<
     QueryRecords,
     GetStatementResultV2Error,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetStatementResultV2Request,
@@ -1118,21 +1118,21 @@ export const listDatabases: API.OperationMethod<
   ListDatabasesRequest,
   ListDatabasesResponse,
   ListDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDatabasesRequest,
   ) => stream.Stream<
     ListDatabasesResponse,
     ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDatabasesRequest,
   ) => stream.Stream<
     string,
     ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesRequest,
@@ -1177,21 +1177,21 @@ export const listSchemas: API.OperationMethod<
   ListSchemasRequest,
   ListSchemasResponse,
   ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSchemasRequest,
   ) => stream.Stream<
     ListSchemasResponse,
     ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSchemasRequest,
   ) => stream.Stream<
     string,
     ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasRequest,
@@ -1226,21 +1226,21 @@ export const listStatements: API.OperationMethod<
   ListStatementsRequest,
   ListStatementsResponse,
   ListStatementsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStatementsRequest,
   ) => stream.Stream<
     ListStatementsResponse,
     ListStatementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStatementsRequest,
   ) => stream.Stream<
     StatementData,
     ListStatementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStatementsRequest,
@@ -1283,21 +1283,21 @@ export const listTables: API.OperationMethod<
   ListTablesRequest,
   ListTablesResponse,
   ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTablesRequest,
   ) => stream.Stream<
     ListTablesResponse,
     ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTablesRequest,
   ) => stream.Stream<
     TableMember,
     ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,

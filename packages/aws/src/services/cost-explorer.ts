@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Cost Explorer",
   serviceShapeName: "AWSInsightsIndexService",
@@ -4082,7 +4082,7 @@ export const createAnomalyMonitor: API.OperationMethod<
   CreateAnomalyMonitorRequest,
   CreateAnomalyMonitorResponse,
   CreateAnomalyMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAnomalyMonitorRequest,
   output: CreateAnomalyMonitorResponse,
@@ -4101,7 +4101,7 @@ export const createAnomalySubscription: API.OperationMethod<
   CreateAnomalySubscriptionRequest,
   CreateAnomalySubscriptionResponse,
   CreateAnomalySubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAnomalySubscriptionRequest,
   output: CreateAnomalySubscriptionResponse,
@@ -4118,7 +4118,7 @@ export const createCostCategoryDefinition: API.OperationMethod<
   CreateCostCategoryDefinitionRequest,
   CreateCostCategoryDefinitionResponse,
   CreateCostCategoryDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCostCategoryDefinitionRequest,
   output: CreateCostCategoryDefinitionResponse,
@@ -4135,7 +4135,7 @@ export const deleteAnomalyMonitor: API.OperationMethod<
   DeleteAnomalyMonitorRequest,
   DeleteAnomalyMonitorResponse,
   DeleteAnomalyMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAnomalyMonitorRequest,
   output: DeleteAnomalyMonitorResponse,
@@ -4152,7 +4152,7 @@ export const deleteAnomalySubscription: API.OperationMethod<
   DeleteAnomalySubscriptionRequest,
   DeleteAnomalySubscriptionResponse,
   DeleteAnomalySubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAnomalySubscriptionRequest,
   output: DeleteAnomalySubscriptionResponse,
@@ -4170,7 +4170,7 @@ export const deleteCostCategoryDefinition: API.OperationMethod<
   DeleteCostCategoryDefinitionRequest,
   DeleteCostCategoryDefinitionResponse,
   DeleteCostCategoryDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCostCategoryDefinitionRequest,
   output: DeleteCostCategoryDefinitionResponse,
@@ -4193,7 +4193,7 @@ export const describeCostCategoryDefinition: API.OperationMethod<
   DescribeCostCategoryDefinitionRequest,
   DescribeCostCategoryDefinitionResponse,
   DescribeCostCategoryDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCostCategoryDefinitionRequest,
   output: DescribeCostCategoryDefinitionResponse,
@@ -4212,21 +4212,21 @@ export const getAnomalies: API.OperationMethod<
   GetAnomaliesRequest,
   GetAnomaliesResponse,
   GetAnomaliesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetAnomaliesRequest,
   ) => stream.Stream<
     GetAnomaliesResponse,
     GetAnomaliesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetAnomaliesRequest,
   ) => stream.Stream<
     Anomaly,
     GetAnomaliesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAnomaliesRequest,
@@ -4252,21 +4252,21 @@ export const getAnomalyMonitors: API.OperationMethod<
   GetAnomalyMonitorsRequest,
   GetAnomalyMonitorsResponse,
   GetAnomalyMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetAnomalyMonitorsRequest,
   ) => stream.Stream<
     GetAnomalyMonitorsResponse,
     GetAnomalyMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetAnomalyMonitorsRequest,
   ) => stream.Stream<
     AnomalyMonitor,
     GetAnomalyMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAnomalyMonitorsRequest,
@@ -4296,21 +4296,21 @@ export const getAnomalySubscriptions: API.OperationMethod<
   GetAnomalySubscriptionsRequest,
   GetAnomalySubscriptionsResponse,
   GetAnomalySubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetAnomalySubscriptionsRequest,
   ) => stream.Stream<
     GetAnomalySubscriptionsResponse,
     GetAnomalySubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetAnomalySubscriptionsRequest,
   ) => stream.Stream<
     AnomalySubscription,
     GetAnomalySubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAnomalySubscriptionsRequest,
@@ -4339,7 +4339,7 @@ export const getApproximateUsageRecords: API.OperationMethod<
   GetApproximateUsageRecordsRequest,
   GetApproximateUsageRecordsResponse,
   GetApproximateUsageRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApproximateUsageRecordsRequest,
   output: GetApproximateUsageRecordsResponse,
@@ -4358,7 +4358,7 @@ export const getCommitmentPurchaseAnalysis: API.OperationMethod<
   GetCommitmentPurchaseAnalysisRequest,
   GetCommitmentPurchaseAnalysisResponse,
   GetCommitmentPurchaseAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCommitmentPurchaseAnalysisRequest,
   output: GetCommitmentPurchaseAnalysisResponse,
@@ -4391,7 +4391,7 @@ export const getCostAndUsage: API.OperationMethod<
   GetCostAndUsageRequest,
   GetCostAndUsageResponse,
   GetCostAndUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCostAndUsageRequest,
   output: GetCostAndUsageResponse,
@@ -4421,21 +4421,21 @@ export const getCostAndUsageComparisons: API.OperationMethod<
   GetCostAndUsageComparisonsRequest,
   GetCostAndUsageComparisonsResponse,
   GetCostAndUsageComparisonsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetCostAndUsageComparisonsRequest,
   ) => stream.Stream<
     GetCostAndUsageComparisonsResponse,
     GetCostAndUsageComparisonsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetCostAndUsageComparisonsRequest,
   ) => stream.Stream<
     CostAndUsageComparison,
     GetCostAndUsageComparisonsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetCostAndUsageComparisonsRequest,
@@ -4483,7 +4483,7 @@ export const getCostAndUsageWithResources: API.OperationMethod<
   GetCostAndUsageWithResourcesRequest,
   GetCostAndUsageWithResourcesResponse,
   GetCostAndUsageWithResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCostAndUsageWithResourcesRequest,
   output: GetCostAndUsageWithResourcesResponse,
@@ -4516,7 +4516,7 @@ export const getCostCategories: API.OperationMethod<
   GetCostCategoriesRequest,
   GetCostCategoriesResponse,
   GetCostCategoriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCostCategoriesRequest,
   output: GetCostCategoriesResponse,
@@ -4546,21 +4546,21 @@ export const getCostComparisonDrivers: API.OperationMethod<
   GetCostComparisonDriversRequest,
   GetCostComparisonDriversResponse,
   GetCostComparisonDriversError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetCostComparisonDriversRequest,
   ) => stream.Stream<
     GetCostComparisonDriversResponse,
     GetCostComparisonDriversError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetCostComparisonDriversRequest,
   ) => stream.Stream<
     CostComparisonDriver,
     GetCostComparisonDriversError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetCostComparisonDriversRequest,
@@ -4593,7 +4593,7 @@ export const getCostForecast: API.OperationMethod<
   GetCostForecastRequest,
   GetCostForecastResponse,
   GetCostForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCostForecastRequest,
   output: GetCostForecastResponse,
@@ -4621,7 +4621,7 @@ export const getDimensionValues: API.OperationMethod<
   GetDimensionValuesRequest,
   GetDimensionValuesResponse,
   GetDimensionValuesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDimensionValuesRequest,
   output: GetDimensionValuesResponse,
@@ -4679,7 +4679,7 @@ export const getReservationCoverage: API.OperationMethod<
   GetReservationCoverageRequest,
   GetReservationCoverageResponse,
   GetReservationCoverageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReservationCoverageRequest,
   output: GetReservationCoverageResponse,
@@ -4718,21 +4718,21 @@ export const getReservationPurchaseRecommendation: API.OperationMethod<
   GetReservationPurchaseRecommendationRequest,
   GetReservationPurchaseRecommendationResponse,
   GetReservationPurchaseRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetReservationPurchaseRecommendationRequest,
   ) => stream.Stream<
     GetReservationPurchaseRecommendationResponse,
     GetReservationPurchaseRecommendationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetReservationPurchaseRecommendationRequest,
   ) => stream.Stream<
     ReservationPurchaseRecommendation,
     GetReservationPurchaseRecommendationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetReservationPurchaseRecommendationRequest,
@@ -4764,7 +4764,7 @@ export const getReservationUtilization: API.OperationMethod<
   GetReservationUtilizationRequest,
   GetReservationUtilizationResponse,
   GetReservationUtilizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReservationUtilizationRequest,
   output: GetReservationUtilizationResponse,
@@ -4790,21 +4790,21 @@ export const getRightsizingRecommendation: API.OperationMethod<
   GetRightsizingRecommendationRequest,
   GetRightsizingRecommendationResponse,
   GetRightsizingRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetRightsizingRecommendationRequest,
   ) => stream.Stream<
     GetRightsizingRecommendationResponse,
     GetRightsizingRecommendationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetRightsizingRecommendationRequest,
   ) => stream.Stream<
     RightsizingRecommendation,
     GetRightsizingRecommendationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetRightsizingRecommendationRequest,
@@ -4829,7 +4829,7 @@ export const getSavingsPlanPurchaseRecommendationDetails: API.OperationMethod<
   GetSavingsPlanPurchaseRecommendationDetailsRequest,
   GetSavingsPlanPurchaseRecommendationDetailsResponse,
   GetSavingsPlanPurchaseRecommendationDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSavingsPlanPurchaseRecommendationDetailsRequest,
   output: GetSavingsPlanPurchaseRecommendationDetailsResponse,
@@ -4862,21 +4862,21 @@ export const getSavingsPlansCoverage: API.OperationMethod<
   GetSavingsPlansCoverageRequest,
   GetSavingsPlansCoverageResponse,
   GetSavingsPlansCoverageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetSavingsPlansCoverageRequest,
   ) => stream.Stream<
     GetSavingsPlansCoverageResponse,
     GetSavingsPlansCoverageError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetSavingsPlansCoverageRequest,
   ) => stream.Stream<
     unknown,
     GetSavingsPlansCoverageError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetSavingsPlansCoverageRequest,
@@ -4906,7 +4906,7 @@ export const getSavingsPlansPurchaseRecommendation: API.OperationMethod<
   GetSavingsPlansPurchaseRecommendationRequest,
   GetSavingsPlansPurchaseRecommendationResponse,
   GetSavingsPlansPurchaseRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSavingsPlansPurchaseRecommendationRequest,
   output: GetSavingsPlansPurchaseRecommendationResponse,
@@ -4929,7 +4929,7 @@ export const getSavingsPlansUtilization: API.OperationMethod<
   GetSavingsPlansUtilizationRequest,
   GetSavingsPlansUtilizationResponse,
   GetSavingsPlansUtilizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSavingsPlansUtilizationRequest,
   output: GetSavingsPlansUtilizationResponse,
@@ -4956,21 +4956,21 @@ export const getSavingsPlansUtilizationDetails: API.OperationMethod<
   GetSavingsPlansUtilizationDetailsRequest,
   GetSavingsPlansUtilizationDetailsResponse,
   GetSavingsPlansUtilizationDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetSavingsPlansUtilizationDetailsRequest,
   ) => stream.Stream<
     GetSavingsPlansUtilizationDetailsResponse,
     GetSavingsPlansUtilizationDetailsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetSavingsPlansUtilizationDetailsRequest,
   ) => stream.Stream<
     unknown,
     GetSavingsPlansUtilizationDetailsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetSavingsPlansUtilizationDetailsRequest,
@@ -5003,7 +5003,7 @@ export const getTags: API.OperationMethod<
   GetTagsRequest,
   GetTagsResponse,
   GetTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTagsRequest,
   output: GetTagsResponse,
@@ -5032,7 +5032,7 @@ export const getUsageForecast: API.OperationMethod<
   GetUsageForecastRequest,
   GetUsageForecastResponse,
   GetUsageForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsageForecastRequest,
   output: GetUsageForecastResponse,
@@ -5056,21 +5056,21 @@ export const listCommitmentPurchaseAnalyses: API.OperationMethod<
   ListCommitmentPurchaseAnalysesRequest,
   ListCommitmentPurchaseAnalysesResponse,
   ListCommitmentPurchaseAnalysesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCommitmentPurchaseAnalysesRequest,
   ) => stream.Stream<
     ListCommitmentPurchaseAnalysesResponse,
     ListCommitmentPurchaseAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCommitmentPurchaseAnalysesRequest,
   ) => stream.Stream<
     AnalysisSummary,
     ListCommitmentPurchaseAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCommitmentPurchaseAnalysesRequest,
@@ -5098,21 +5098,21 @@ export const listCostAllocationTagBackfillHistory: API.OperationMethod<
   ListCostAllocationTagBackfillHistoryRequest,
   ListCostAllocationTagBackfillHistoryResponse,
   ListCostAllocationTagBackfillHistoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCostAllocationTagBackfillHistoryRequest,
   ) => stream.Stream<
     ListCostAllocationTagBackfillHistoryResponse,
     ListCostAllocationTagBackfillHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCostAllocationTagBackfillHistoryRequest,
   ) => stream.Stream<
     CostAllocationTagBackfillRequest,
     ListCostAllocationTagBackfillHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCostAllocationTagBackfillHistoryRequest,
@@ -5137,21 +5137,21 @@ export const listCostAllocationTags: API.OperationMethod<
   ListCostAllocationTagsRequest,
   ListCostAllocationTagsResponse,
   ListCostAllocationTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCostAllocationTagsRequest,
   ) => stream.Stream<
     ListCostAllocationTagsResponse,
     ListCostAllocationTagsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCostAllocationTagsRequest,
   ) => stream.Stream<
     CostAllocationTag,
     ListCostAllocationTagsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCostAllocationTagsRequest,
@@ -5180,21 +5180,21 @@ export const listCostCategoryDefinitions: API.OperationMethod<
   ListCostCategoryDefinitionsRequest,
   ListCostCategoryDefinitionsResponse,
   ListCostCategoryDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCostCategoryDefinitionsRequest,
   ) => stream.Stream<
     ListCostCategoryDefinitionsResponse,
     ListCostCategoryDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCostCategoryDefinitionsRequest,
   ) => stream.Stream<
     CostCategoryReference,
     ListCostCategoryDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCostCategoryDefinitionsRequest,
@@ -5218,21 +5218,21 @@ export const listCostCategoryResourceAssociations: API.OperationMethod<
   ListCostCategoryResourceAssociationsRequest,
   ListCostCategoryResourceAssociationsResponse,
   ListCostCategoryResourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCostCategoryResourceAssociationsRequest,
   ) => stream.Stream<
     ListCostCategoryResourceAssociationsResponse,
     ListCostCategoryResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCostCategoryResourceAssociationsRequest,
   ) => stream.Stream<
     CostCategoryResourceAssociation,
     ListCostCategoryResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCostCategoryResourceAssociationsRequest,
@@ -5258,21 +5258,21 @@ export const listSavingsPlansPurchaseRecommendationGeneration: API.OperationMeth
   ListSavingsPlansPurchaseRecommendationGenerationRequest,
   ListSavingsPlansPurchaseRecommendationGenerationResponse,
   ListSavingsPlansPurchaseRecommendationGenerationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSavingsPlansPurchaseRecommendationGenerationRequest,
   ) => stream.Stream<
     ListSavingsPlansPurchaseRecommendationGenerationResponse,
     ListSavingsPlansPurchaseRecommendationGenerationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSavingsPlansPurchaseRecommendationGenerationRequest,
   ) => stream.Stream<
     GenerationSummary,
     ListSavingsPlansPurchaseRecommendationGenerationError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSavingsPlansPurchaseRecommendationGenerationRequest,
@@ -5301,7 +5301,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -5315,7 +5315,7 @@ export const provideAnomalyFeedback: API.OperationMethod<
   ProvideAnomalyFeedbackRequest,
   ProvideAnomalyFeedbackResponse,
   ProvideAnomalyFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvideAnomalyFeedbackRequest,
   output: ProvideAnomalyFeedbackResponse,
@@ -5336,7 +5336,7 @@ export const startCommitmentPurchaseAnalysis: API.OperationMethod<
   StartCommitmentPurchaseAnalysisRequest,
   StartCommitmentPurchaseAnalysisResponse,
   StartCommitmentPurchaseAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartCommitmentPurchaseAnalysisRequest,
   output: StartCommitmentPurchaseAnalysisResponse,
@@ -5360,7 +5360,7 @@ export const startCostAllocationTagBackfill: API.OperationMethod<
   StartCostAllocationTagBackfillRequest,
   StartCostAllocationTagBackfillResponse,
   StartCostAllocationTagBackfillError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartCostAllocationTagBackfillRequest,
   output: StartCostAllocationTagBackfillResponse,
@@ -5385,7 +5385,7 @@ export const startSavingsPlansPurchaseRecommendationGeneration: API.OperationMet
   StartSavingsPlansPurchaseRecommendationGenerationRequest,
   StartSavingsPlansPurchaseRecommendationGenerationResponse,
   StartSavingsPlansPurchaseRecommendationGenerationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartSavingsPlansPurchaseRecommendationGenerationRequest,
   output: StartSavingsPlansPurchaseRecommendationGenerationResponse,
@@ -5416,7 +5416,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -5438,7 +5438,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -5456,7 +5456,7 @@ export const updateAnomalyMonitor: API.OperationMethod<
   UpdateAnomalyMonitorRequest,
   UpdateAnomalyMonitorResponse,
   UpdateAnomalyMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAnomalyMonitorRequest,
   output: UpdateAnomalyMonitorResponse,
@@ -5478,7 +5478,7 @@ export const updateAnomalySubscription: API.OperationMethod<
   UpdateAnomalySubscriptionRequest,
   UpdateAnomalySubscriptionResponse,
   UpdateAnomalySubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAnomalySubscriptionRequest,
   output: UpdateAnomalySubscriptionResponse,
@@ -5501,7 +5501,7 @@ export const updateCostAllocationTagsStatus: API.OperationMethod<
   UpdateCostAllocationTagsStatusRequest,
   UpdateCostAllocationTagsStatusResponse,
   UpdateCostAllocationTagsStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCostAllocationTagsStatusRequest,
   output: UpdateCostAllocationTagsStatusResponse,
@@ -5521,7 +5521,7 @@ export const updateCostCategoryDefinition: API.OperationMethod<
   UpdateCostCategoryDefinitionRequest,
   UpdateCostCategoryDefinitionResponse,
   UpdateCostCategoryDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCostCategoryDefinitionRequest,
   output: UpdateCostCategoryDefinitionResponse,

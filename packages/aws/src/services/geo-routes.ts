@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Geo Routes",
@@ -3655,7 +3655,7 @@ export const calculateIsolines: API.OperationMethod<
   CalculateIsolinesRequest,
   CalculateIsolinesResponse,
   CalculateIsolinesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateIsolinesRequest,
   output: CalculateIsolinesResponse,
@@ -3681,7 +3681,7 @@ export const calculateRouteMatrix: API.OperationMethod<
   CalculateRouteMatrixRequest,
   CalculateRouteMatrixResponse,
   CalculateRouteMatrixError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateRouteMatrixRequest,
   output: CalculateRouteMatrixResponse,
@@ -3707,7 +3707,7 @@ export const calculateRoutes: API.OperationMethod<
   CalculateRoutesRequest,
   CalculateRoutesResponse,
   CalculateRoutesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateRoutesRequest,
   output: CalculateRoutesResponse,
@@ -3733,7 +3733,7 @@ export const optimizeWaypoints: API.OperationMethod<
   OptimizeWaypointsRequest,
   OptimizeWaypointsResponse,
   OptimizeWaypointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: OptimizeWaypointsRequest,
   output: OptimizeWaypointsResponse,
@@ -3759,7 +3759,7 @@ export const snapToRoads: API.OperationMethod<
   SnapToRoadsRequest,
   SnapToRoadsResponse,
   SnapToRoadsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SnapToRoadsRequest,
   output: SnapToRoadsResponse,

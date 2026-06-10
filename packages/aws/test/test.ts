@@ -15,9 +15,8 @@ import { MinimumLogLevel } from "effect/References";
 import * as Scope from "effect/Scope";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import { AWSConfig } from "../src/config.ts";
 import * as Credentials from "../src/credentials.ts";
-import { Endpoint } from "../src/endpoint.ts";
-import { Region } from "../src/region.ts";
 import * as Retry from "../src/retry.ts";
 
 type Provided =
@@ -25,7 +24,7 @@ type Provided =
   | HttpClient.HttpClient
   | FileSystem.FileSystem
   | Path.Path
-  | Region
+  | AWSConfig
   | Credentials.Credentials;
 
 const platform = Layer.mergeAll(
@@ -121,7 +120,17 @@ function provideTestEnv<A, E, R extends Provided>(
 ) {
   let eff = effect.pipe(
     Effect.provide(platform),
-    Effect.provideService(Region, Effect.succeed("us-east-1")),
+    Effect.provideService(
+      AWSConfig,
+      Effect.succeed({
+        region: "us-east-1",
+        ...(process.env.LOCAL
+          ? {
+              endpoint: process.env.LOCALSTACK_HOST ?? "http://localhost:4566",
+            }
+          : {}),
+      }),
+    ),
     Effect.provideService(
       MinimumLogLevel,
       process.env.DEBUG ? "Debug" : "Info",
@@ -131,13 +140,7 @@ function provideTestEnv<A, E, R extends Provided>(
   );
 
   if (process.env.LOCAL) {
-    return eff.pipe(
-      Effect.provideService(
-        Endpoint,
-        Effect.succeed(process.env.LOCALSTACK_HOST ?? "http://localhost:4566"),
-      ),
-      Effect.provide(Credentials.mock),
-    );
+    return eff.pipe(Effect.provide(Credentials.mock));
   } else {
     return eff.pipe(Effect.provide(Credentials.fromChain()));
   }

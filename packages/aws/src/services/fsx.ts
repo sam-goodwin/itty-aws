@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "FSx",
@@ -5864,7 +5864,7 @@ export const associateFileSystemAliases: API.OperationMethod<
   AssociateFileSystemAliasesRequest,
   AssociateFileSystemAliasesResponse,
   AssociateFileSystemAliasesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateFileSystemAliasesRequest,
   output: AssociateFileSystemAliasesResponse,
@@ -5895,7 +5895,7 @@ export const cancelDataRepositoryTask: API.OperationMethod<
   CancelDataRepositoryTaskRequest,
   CancelDataRepositoryTaskResponse,
   CancelDataRepositoryTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelDataRepositoryTaskRequest,
   output: CancelDataRepositoryTaskResponse,
@@ -5951,7 +5951,7 @@ export const copyBackup: API.OperationMethod<
   CopyBackupRequest,
   CopyBackupResponse,
   CopyBackupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyBackupRequest,
   output: CopyBackupResponse,
@@ -5983,7 +5983,7 @@ export const copySnapshotAndUpdateVolume: API.OperationMethod<
   CopySnapshotAndUpdateVolumeRequest,
   CopySnapshotAndUpdateVolumeResponse,
   CopySnapshotAndUpdateVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopySnapshotAndUpdateVolumeRequest,
   output: CopySnapshotAndUpdateVolumeResponse,
@@ -6033,7 +6033,7 @@ export const createAndAttachS3AccessPoint: API.OperationMethod<
   CreateAndAttachS3AccessPointRequest,
   CreateAndAttachS3AccessPointResponse,
   CreateAndAttachS3AccessPointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAndAttachS3AccessPointRequest,
   output: CreateAndAttachS3AccessPointResponse,
@@ -6112,7 +6112,7 @@ export const createBackup: API.OperationMethod<
   CreateBackupRequest,
   CreateBackupResponse,
   CreateBackupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBackupRequest,
   output: CreateBackupResponse,
@@ -6158,7 +6158,7 @@ export const createDataRepositoryAssociation: API.OperationMethod<
   CreateDataRepositoryAssociationRequest,
   CreateDataRepositoryAssociationResponse,
   CreateDataRepositoryAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataRepositoryAssociationRequest,
   output: CreateDataRepositoryAssociationResponse,
@@ -6204,7 +6204,7 @@ export const createDataRepositoryTask: API.OperationMethod<
   CreateDataRepositoryTaskRequest,
   CreateDataRepositoryTaskResponse,
   CreateDataRepositoryTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataRepositoryTaskRequest,
   output: CreateDataRepositoryTaskResponse,
@@ -6253,7 +6253,7 @@ export const createFileCache: API.OperationMethod<
   CreateFileCacheRequest,
   CreateFileCacheResponse,
   CreateFileCacheError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFileCacheRequest,
   output: CreateFileCacheResponse,
@@ -6322,7 +6322,7 @@ export const createFileSystem: API.OperationMethod<
   CreateFileSystemRequest,
   CreateFileSystemResponse,
   CreateFileSystemError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFileSystemRequest,
   output: CreateFileSystemResponse,
@@ -6387,7 +6387,7 @@ export const createFileSystemFromBackup: API.OperationMethod<
   CreateFileSystemFromBackupRequest,
   CreateFileSystemFromBackupResponse,
   CreateFileSystemFromBackupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFileSystemFromBackupRequest,
   output: CreateFileSystemFromBackupResponse,
@@ -6442,7 +6442,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotRequest,
   CreateSnapshotResponse,
   CreateSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSnapshotRequest,
   output: CreateSnapshotResponse,
@@ -6469,7 +6469,7 @@ export const createStorageVirtualMachine: API.OperationMethod<
   CreateStorageVirtualMachineRequest,
   CreateStorageVirtualMachineResponse,
   CreateStorageVirtualMachineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateStorageVirtualMachineRequest,
   output: CreateStorageVirtualMachineResponse,
@@ -6500,7 +6500,7 @@ export const createVolume: API.OperationMethod<
   CreateVolumeRequest,
   CreateVolumeResponse,
   CreateVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVolumeRequest,
   output: CreateVolumeResponse,
@@ -6533,7 +6533,7 @@ export const createVolumeFromBackup: API.OperationMethod<
   CreateVolumeFromBackupRequest,
   CreateVolumeFromBackupResponse,
   CreateVolumeFromBackupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVolumeFromBackupRequest,
   output: CreateVolumeFromBackupResponse,
@@ -6571,7 +6571,7 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupRequest,
   DeleteBackupResponse,
   DeleteBackupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBackupRequest,
   output: DeleteBackupResponse,
@@ -6605,7 +6605,7 @@ export const deleteDataRepositoryAssociation: API.OperationMethod<
   DeleteDataRepositoryAssociationRequest,
   DeleteDataRepositoryAssociationResponse,
   DeleteDataRepositoryAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataRepositoryAssociationRequest,
   output: DeleteDataRepositoryAssociationResponse,
@@ -6642,7 +6642,7 @@ export const deleteFileCache: API.OperationMethod<
   DeleteFileCacheRequest,
   DeleteFileCacheResponse,
   DeleteFileCacheError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFileCacheRequest,
   output: DeleteFileCacheResponse,
@@ -6713,7 +6713,7 @@ export const deleteFileSystem: API.OperationMethod<
   DeleteFileSystemRequest,
   DeleteFileSystemResponse,
   DeleteFileSystemError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFileSystemRequest,
   output: DeleteFileSystemResponse,
@@ -6742,7 +6742,7 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotRequest,
   DeleteSnapshotResponse,
   DeleteSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSnapshotRequest,
   output: DeleteSnapshotResponse,
@@ -6762,7 +6762,7 @@ export const deleteStorageVirtualMachine: API.OperationMethod<
   DeleteStorageVirtualMachineRequest,
   DeleteStorageVirtualMachineResponse,
   DeleteStorageVirtualMachineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStorageVirtualMachineRequest,
   output: DeleteStorageVirtualMachineResponse,
@@ -6788,7 +6788,7 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeRequest,
   DeleteVolumeResponse,
   DeleteVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVolumeRequest,
   output: DeleteVolumeResponse,
@@ -6838,21 +6838,21 @@ export const describeBackups: API.OperationMethod<
   DescribeBackupsRequest,
   DescribeBackupsResponse,
   DescribeBackupsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeBackupsRequest,
   ) => stream.Stream<
     DescribeBackupsResponse,
     DescribeBackupsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeBackupsRequest,
   ) => stream.Stream<
     unknown,
     DescribeBackupsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeBackupsRequest,
@@ -6904,21 +6904,21 @@ export const describeDataRepositoryAssociations: API.OperationMethod<
   DescribeDataRepositoryAssociationsRequest,
   DescribeDataRepositoryAssociationsResponse,
   DescribeDataRepositoryAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeDataRepositoryAssociationsRequest,
   ) => stream.Stream<
     DescribeDataRepositoryAssociationsResponse,
     DescribeDataRepositoryAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeDataRepositoryAssociationsRequest,
   ) => stream.Stream<
     unknown,
     DescribeDataRepositoryAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataRepositoryAssociationsRequest,
@@ -6959,21 +6959,21 @@ export const describeDataRepositoryTasks: API.OperationMethod<
   DescribeDataRepositoryTasksRequest,
   DescribeDataRepositoryTasksResponse,
   DescribeDataRepositoryTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeDataRepositoryTasksRequest,
   ) => stream.Stream<
     DescribeDataRepositoryTasksResponse,
     DescribeDataRepositoryTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeDataRepositoryTasksRequest,
   ) => stream.Stream<
     unknown,
     DescribeDataRepositoryTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataRepositoryTasksRequest,
@@ -7028,21 +7028,21 @@ export const describeFileCaches: API.OperationMethod<
   DescribeFileCachesRequest,
   DescribeFileCachesResponse,
   DescribeFileCachesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeFileCachesRequest,
   ) => stream.Stream<
     DescribeFileCachesResponse,
     DescribeFileCachesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeFileCachesRequest,
   ) => stream.Stream<
     unknown,
     DescribeFileCachesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileCachesRequest,
@@ -7068,21 +7068,21 @@ export const describeFileSystemAliases: API.OperationMethod<
   DescribeFileSystemAliasesRequest,
   DescribeFileSystemAliasesResponse,
   DescribeFileSystemAliasesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeFileSystemAliasesRequest,
   ) => stream.Stream<
     DescribeFileSystemAliasesResponse,
     DescribeFileSystemAliasesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeFileSystemAliasesRequest,
   ) => stream.Stream<
     unknown,
     DescribeFileSystemAliasesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileSystemAliasesRequest,
@@ -7132,21 +7132,21 @@ export const describeFileSystems: API.OperationMethod<
   DescribeFileSystemsRequest,
   DescribeFileSystemsResponse,
   DescribeFileSystemsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeFileSystemsRequest,
   ) => stream.Stream<
     DescribeFileSystemsResponse,
     DescribeFileSystemsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeFileSystemsRequest,
   ) => stream.Stream<
     unknown,
     DescribeFileSystemsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileSystemsRequest,
@@ -7175,21 +7175,21 @@ export const describeS3AccessPointAttachments: API.OperationMethod<
   DescribeS3AccessPointAttachmentsRequest,
   DescribeS3AccessPointAttachmentsResponse,
   DescribeS3AccessPointAttachmentsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeS3AccessPointAttachmentsRequest,
   ) => stream.Stream<
     DescribeS3AccessPointAttachmentsResponse,
     DescribeS3AccessPointAttachmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeS3AccessPointAttachmentsRequest,
   ) => stream.Stream<
     S3AccessPointAttachment,
     DescribeS3AccessPointAttachmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeS3AccessPointAttachmentsRequest,
@@ -7219,7 +7219,7 @@ export const describeSharedVpcConfiguration: API.OperationMethod<
   DescribeSharedVpcConfigurationRequest,
   DescribeSharedVpcConfigurationResponse,
   DescribeSharedVpcConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSharedVpcConfigurationRequest,
   output: DescribeSharedVpcConfigurationResponse,
@@ -7262,21 +7262,21 @@ export const describeSnapshots: API.OperationMethod<
   DescribeSnapshotsRequest,
   DescribeSnapshotsResponse,
   DescribeSnapshotsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeSnapshotsRequest,
   ) => stream.Stream<
     DescribeSnapshotsResponse,
     DescribeSnapshotsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeSnapshotsRequest,
   ) => stream.Stream<
     Snapshot,
     DescribeSnapshotsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
@@ -7301,21 +7301,21 @@ export const describeStorageVirtualMachines: API.OperationMethod<
   DescribeStorageVirtualMachinesRequest,
   DescribeStorageVirtualMachinesResponse,
   DescribeStorageVirtualMachinesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeStorageVirtualMachinesRequest,
   ) => stream.Stream<
     DescribeStorageVirtualMachinesResponse,
     DescribeStorageVirtualMachinesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeStorageVirtualMachinesRequest,
   ) => stream.Stream<
     StorageVirtualMachine,
     DescribeStorageVirtualMachinesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeStorageVirtualMachinesRequest,
@@ -7341,21 +7341,21 @@ export const describeVolumes: API.OperationMethod<
   DescribeVolumesRequest,
   DescribeVolumesResponse,
   DescribeVolumesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeVolumesRequest,
   ) => stream.Stream<
     DescribeVolumesResponse,
     DescribeVolumesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeVolumesRequest,
   ) => stream.Stream<
     Volume,
     DescribeVolumesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumesRequest,
@@ -7388,7 +7388,7 @@ export const detachAndDeleteS3AccessPoint: API.OperationMethod<
   DetachAndDeleteS3AccessPointRequest,
   DetachAndDeleteS3AccessPointResponse,
   DetachAndDeleteS3AccessPointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachAndDeleteS3AccessPointRequest,
   output: DetachAndDeleteS3AccessPointResponse,
@@ -7421,7 +7421,7 @@ export const disassociateFileSystemAliases: API.OperationMethod<
   DisassociateFileSystemAliasesRequest,
   DisassociateFileSystemAliasesResponse,
   DisassociateFileSystemAliasesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateFileSystemAliasesRequest,
   output: DisassociateFileSystemAliasesResponse,
@@ -7463,21 +7463,21 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     ListTagsForResourceResponse,
     ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     unknown,
     ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
@@ -7510,7 +7510,7 @@ export const releaseFileSystemNfsV3Locks: API.OperationMethod<
   ReleaseFileSystemNfsV3LocksRequest,
   ReleaseFileSystemNfsV3LocksResponse,
   ReleaseFileSystemNfsV3LocksError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReleaseFileSystemNfsV3LocksRequest,
   output: ReleaseFileSystemNfsV3LocksResponse,
@@ -7535,7 +7535,7 @@ export const restoreVolumeFromSnapshot: API.OperationMethod<
   RestoreVolumeFromSnapshotRequest,
   RestoreVolumeFromSnapshotResponse,
   RestoreVolumeFromSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreVolumeFromSnapshotRequest,
   output: RestoreVolumeFromSnapshotResponse,
@@ -7554,7 +7554,7 @@ export const startMisconfiguredStateRecovery: API.OperationMethod<
   StartMisconfiguredStateRecoveryRequest,
   StartMisconfiguredStateRecoveryResponse,
   StartMisconfiguredStateRecoveryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartMisconfiguredStateRecoveryRequest,
   output: StartMisconfiguredStateRecoveryResponse,
@@ -7574,7 +7574,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -7600,7 +7600,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -7629,7 +7629,7 @@ export const updateDataRepositoryAssociation: API.OperationMethod<
   UpdateDataRepositoryAssociationRequest,
   UpdateDataRepositoryAssociationResponse,
   UpdateDataRepositoryAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataRepositoryAssociationRequest,
   output: UpdateDataRepositoryAssociationResponse,
@@ -7658,7 +7658,7 @@ export const updateFileCache: API.OperationMethod<
   UpdateFileCacheRequest,
   UpdateFileCacheResponse,
   UpdateFileCacheError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFileCacheRequest,
   output: UpdateFileCacheResponse,
@@ -7794,7 +7794,7 @@ export const updateFileSystem: API.OperationMethod<
   UpdateFileSystemRequest,
   UpdateFileSystemResponse,
   UpdateFileSystemError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFileSystemRequest,
   output: UpdateFileSystemResponse,
@@ -7829,7 +7829,7 @@ export const updateSharedVpcConfiguration: API.OperationMethod<
   UpdateSharedVpcConfigurationRequest,
   UpdateSharedVpcConfigurationResponse,
   UpdateSharedVpcConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSharedVpcConfigurationRequest,
   output: UpdateSharedVpcConfigurationResponse,
@@ -7847,7 +7847,7 @@ export const updateSnapshot: API.OperationMethod<
   UpdateSnapshotRequest,
   UpdateSnapshotResponse,
   UpdateSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSnapshotRequest,
   output: UpdateSnapshotResponse,
@@ -7867,7 +7867,7 @@ export const updateStorageVirtualMachine: API.OperationMethod<
   UpdateStorageVirtualMachineRequest,
   UpdateStorageVirtualMachineResponse,
   UpdateStorageVirtualMachineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStorageVirtualMachineRequest,
   output: UpdateStorageVirtualMachineResponse,
@@ -7893,7 +7893,7 @@ export const updateVolume: API.OperationMethod<
   UpdateVolumeRequest,
   UpdateVolumeResponse,
   UpdateVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateVolumeRequest,
   output: UpdateVolumeResponse,

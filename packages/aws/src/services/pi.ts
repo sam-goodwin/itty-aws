@@ -6,7 +6,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://pi.amazonaws.com/doc/2018-02-27/");
 const svc = T.AwsApiService({
@@ -1050,7 +1050,7 @@ export const createPerformanceAnalysisReport: API.OperationMethod<
   CreatePerformanceAnalysisReportRequest,
   CreatePerformanceAnalysisReportResponse,
   CreatePerformanceAnalysisReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePerformanceAnalysisReportRequest,
   output: CreatePerformanceAnalysisReportResponse,
@@ -1072,7 +1072,7 @@ export const deletePerformanceAnalysisReport: API.OperationMethod<
   DeletePerformanceAnalysisReportRequest,
   DeletePerformanceAnalysisReportResponse,
   DeletePerformanceAnalysisReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePerformanceAnalysisReportRequest,
   output: DeletePerformanceAnalysisReportResponse,
@@ -1097,21 +1097,21 @@ export const describeDimensionKeys: API.OperationMethod<
   DescribeDimensionKeysRequest,
   DescribeDimensionKeysResponse,
   DescribeDimensionKeysError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeDimensionKeysRequest,
   ) => stream.Stream<
     DescribeDimensionKeysResponse,
     DescribeDimensionKeysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeDimensionKeysRequest,
   ) => stream.Stream<
     unknown,
     DescribeDimensionKeysError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeDimensionKeysRequest,
@@ -1142,7 +1142,7 @@ export const getDimensionKeyDetails: API.OperationMethod<
   GetDimensionKeyDetailsRequest,
   GetDimensionKeyDetailsResponse,
   GetDimensionKeyDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDimensionKeyDetailsRequest,
   output: GetDimensionKeyDetailsResponse,
@@ -1167,7 +1167,7 @@ export const getPerformanceAnalysisReport: API.OperationMethod<
   GetPerformanceAnalysisReportRequest,
   GetPerformanceAnalysisReportResponse,
   GetPerformanceAnalysisReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPerformanceAnalysisReportRequest,
   output: GetPerformanceAnalysisReportResponse,
@@ -1190,7 +1190,7 @@ export const getResourceMetadata: API.OperationMethod<
   GetResourceMetadataRequest,
   GetResourceMetadataResponse,
   GetResourceMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceMetadataRequest,
   output: GetResourceMetadataResponse,
@@ -1217,21 +1217,21 @@ export const getResourceMetrics: API.OperationMethod<
   GetResourceMetricsRequest,
   GetResourceMetricsResponse,
   GetResourceMetricsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetResourceMetricsRequest,
   ) => stream.Stream<
     GetResourceMetricsResponse,
     GetResourceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetResourceMetricsRequest,
   ) => stream.Stream<
     unknown,
     GetResourceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetResourceMetricsRequest,
@@ -1259,21 +1259,21 @@ export const listAvailableResourceDimensions: API.OperationMethod<
   ListAvailableResourceDimensionsRequest,
   ListAvailableResourceDimensionsResponse,
   ListAvailableResourceDimensionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAvailableResourceDimensionsRequest,
   ) => stream.Stream<
     ListAvailableResourceDimensionsResponse,
     ListAvailableResourceDimensionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAvailableResourceDimensionsRequest,
   ) => stream.Stream<
     unknown,
     ListAvailableResourceDimensionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableResourceDimensionsRequest,
@@ -1301,21 +1301,21 @@ export const listAvailableResourceMetrics: API.OperationMethod<
   ListAvailableResourceMetricsRequest,
   ListAvailableResourceMetricsResponse,
   ListAvailableResourceMetricsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAvailableResourceMetricsRequest,
   ) => stream.Stream<
     ListAvailableResourceMetricsResponse,
     ListAvailableResourceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAvailableResourceMetricsRequest,
   ) => stream.Stream<
     unknown,
     ListAvailableResourceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableResourceMetricsRequest,
@@ -1343,21 +1343,21 @@ export const listPerformanceAnalysisReports: API.OperationMethod<
   ListPerformanceAnalysisReportsRequest,
   ListPerformanceAnalysisReportsResponse,
   ListPerformanceAnalysisReportsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPerformanceAnalysisReportsRequest,
   ) => stream.Stream<
     ListPerformanceAnalysisReportsResponse,
     ListPerformanceAnalysisReportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPerformanceAnalysisReportsRequest,
   ) => stream.Stream<
     unknown,
     ListPerformanceAnalysisReportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPerformanceAnalysisReportsRequest,
@@ -1385,7 +1385,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1407,7 +1407,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1429,7 +1429,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

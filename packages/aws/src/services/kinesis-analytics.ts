@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace(
   "http://analytics.kinesis.amazonaws.com/doc/2015-08-14",
 );
@@ -1592,7 +1592,7 @@ export const addApplicationCloudWatchLoggingOption: API.OperationMethod<
   AddApplicationCloudWatchLoggingOptionRequest,
   AddApplicationCloudWatchLoggingOptionResponse,
   AddApplicationCloudWatchLoggingOptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddApplicationCloudWatchLoggingOptionRequest,
   output: AddApplicationCloudWatchLoggingOptionResponse,
@@ -1634,7 +1634,7 @@ export const addApplicationInput: API.OperationMethod<
   AddApplicationInputRequest,
   AddApplicationInputResponse,
   AddApplicationInputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddApplicationInputRequest,
   output: AddApplicationInputResponse,
@@ -1665,7 +1665,7 @@ export const addApplicationInputProcessingConfiguration: API.OperationMethod<
   AddApplicationInputProcessingConfigurationRequest,
   AddApplicationInputProcessingConfigurationResponse,
   AddApplicationInputProcessingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddApplicationInputProcessingConfigurationRequest,
   output: AddApplicationInputProcessingConfigurationResponse,
@@ -1714,7 +1714,7 @@ export const addApplicationOutput: API.OperationMethod<
   AddApplicationOutputRequest,
   AddApplicationOutputResponse,
   AddApplicationOutputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddApplicationOutputRequest,
   output: AddApplicationOutputResponse,
@@ -1751,7 +1751,7 @@ export const addApplicationReferenceDataSource: API.OperationMethod<
   AddApplicationReferenceDataSourceRequest,
   AddApplicationReferenceDataSourceResponse,
   AddApplicationReferenceDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddApplicationReferenceDataSourceRequest,
   output: AddApplicationReferenceDataSourceResponse,
@@ -1800,7 +1800,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationRequest,
   CreateApplicationResponse,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
@@ -1830,7 +1830,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationRequest,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
@@ -1859,7 +1859,7 @@ export const deleteApplicationCloudWatchLoggingOption: API.OperationMethod<
   DeleteApplicationCloudWatchLoggingOptionRequest,
   DeleteApplicationCloudWatchLoggingOptionResponse,
   DeleteApplicationCloudWatchLoggingOptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationCloudWatchLoggingOptionRequest,
   output: DeleteApplicationCloudWatchLoggingOptionResponse,
@@ -1887,7 +1887,7 @@ export const deleteApplicationInputProcessingConfiguration: API.OperationMethod<
   DeleteApplicationInputProcessingConfigurationRequest,
   DeleteApplicationInputProcessingConfigurationResponse,
   DeleteApplicationInputProcessingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationInputProcessingConfigurationRequest,
   output: DeleteApplicationInputProcessingConfigurationResponse,
@@ -1918,7 +1918,7 @@ export const deleteApplicationOutput: API.OperationMethod<
   DeleteApplicationOutputRequest,
   DeleteApplicationOutputResponse,
   DeleteApplicationOutputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationOutputRequest,
   output: DeleteApplicationOutputResponse,
@@ -1952,7 +1952,7 @@ export const deleteApplicationReferenceDataSource: API.OperationMethod<
   DeleteApplicationReferenceDataSourceRequest,
   DeleteApplicationReferenceDataSourceResponse,
   DeleteApplicationReferenceDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationReferenceDataSourceRequest,
   output: DeleteApplicationReferenceDataSourceResponse,
@@ -1984,7 +1984,7 @@ export const describeApplication: API.OperationMethod<
   DescribeApplicationRequest,
   DescribeApplicationResponse,
   DescribeApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeApplicationRequest,
   output: DescribeApplicationResponse,
@@ -2014,7 +2014,7 @@ export const discoverInputSchema: API.OperationMethod<
   DiscoverInputSchemaRequest,
   DiscoverInputSchemaResponse,
   DiscoverInputSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DiscoverInputSchemaRequest,
   output: DiscoverInputSchemaResponse,
@@ -2049,7 +2049,7 @@ export const listApplications: API.OperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
@@ -2067,7 +2067,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2104,7 +2104,7 @@ export const startApplication: API.OperationMethod<
   StartApplicationRequest,
   StartApplicationResponse,
   StartApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartApplicationRequest,
   output: StartApplicationResponse,
@@ -2138,7 +2138,7 @@ export const stopApplication: API.OperationMethod<
   StopApplicationRequest,
   StopApplicationResponse,
   StopApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopApplicationRequest,
   output: StopApplicationResponse,
@@ -2163,7 +2163,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2189,7 +2189,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2226,7 +2226,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationRequest,
   UpdateApplicationResponse,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,

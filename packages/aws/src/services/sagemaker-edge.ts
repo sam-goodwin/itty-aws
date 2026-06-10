@@ -4,7 +4,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Sagemaker Edge",
   serviceShapeName: "AmazonSageMakerEdge",
@@ -354,7 +354,7 @@ export const getDeployments: API.OperationMethod<
   GetDeploymentsRequest,
   GetDeploymentsResult,
   GetDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentsRequest,
   output: GetDeploymentsResult,
@@ -370,7 +370,7 @@ export const getDeviceRegistration: API.OperationMethod<
   GetDeviceRegistrationRequest,
   GetDeviceRegistrationResult,
   GetDeviceRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeviceRegistrationRequest,
   output: GetDeviceRegistrationResult,
@@ -384,7 +384,7 @@ export const sendHeartbeat: API.OperationMethod<
   SendHeartbeatRequest,
   SendHeartbeatResponse,
   SendHeartbeatError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendHeartbeatRequest,
   output: SendHeartbeatResponse,

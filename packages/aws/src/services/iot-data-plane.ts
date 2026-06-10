@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "IoT Data Plane",
   serviceShapeName: "IotMoonrakerService",
@@ -515,7 +515,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionRequest,
   DeleteConnectionResponse,
   DeleteConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
@@ -548,7 +548,7 @@ export const deleteThingShadow: API.OperationMethod<
   DeleteThingShadowRequest,
   DeleteThingShadowResponse,
   DeleteThingShadowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteThingShadowRequest,
   output: DeleteThingShadowResponse,
@@ -588,7 +588,7 @@ export const getRetainedMessage: API.OperationMethod<
   GetRetainedMessageRequest,
   GetRetainedMessageResponse,
   GetRetainedMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRetainedMessageRequest,
   output: GetRetainedMessageResponse,
@@ -624,7 +624,7 @@ export const getThingShadow: API.OperationMethod<
   GetThingShadowRequest,
   GetThingShadowResponse,
   GetThingShadowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetThingShadowRequest,
   output: GetThingShadowResponse,
@@ -657,7 +657,7 @@ export const listNamedShadowsForThing: API.OperationMethod<
   ListNamedShadowsForThingRequest,
   ListNamedShadowsForThingResponse,
   ListNamedShadowsForThingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListNamedShadowsForThingRequest,
   output: ListNamedShadowsForThingResponse,
@@ -699,21 +699,21 @@ export const listRetainedMessages: API.OperationMethod<
   ListRetainedMessagesRequest,
   ListRetainedMessagesResponse,
   ListRetainedMessagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRetainedMessagesRequest,
   ) => stream.Stream<
     ListRetainedMessagesResponse,
     ListRetainedMessagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRetainedMessagesRequest,
   ) => stream.Stream<
     RetainedMessageSummary,
     ListRetainedMessagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRetainedMessagesRequest,
@@ -756,7 +756,7 @@ export const publish: API.OperationMethod<
   PublishRequest,
   PublishResponse,
   PublishError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishRequest,
   output: PublishResponse,
@@ -791,7 +791,7 @@ export const updateThingShadow: API.OperationMethod<
   UpdateThingShadowRequest,
   UpdateThingShadowResponse,
   UpdateThingShadowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateThingShadowRequest,
   output: UpdateThingShadowResponse,

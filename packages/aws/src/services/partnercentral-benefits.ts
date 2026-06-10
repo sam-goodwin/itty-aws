@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "PartnerCentral Benefits",
@@ -1361,7 +1361,7 @@ export const amendBenefitApplication: API.OperationMethod<
   AmendBenefitApplicationInput,
   AmendBenefitApplicationOutput,
   AmendBenefitApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AmendBenefitApplicationInput,
   output: AmendBenefitApplicationOutput,
@@ -1389,7 +1389,7 @@ export const associateBenefitApplicationResource: API.OperationMethod<
   AssociateBenefitApplicationResourceInput,
   AssociateBenefitApplicationResourceOutput,
   AssociateBenefitApplicationResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateBenefitApplicationResourceInput,
   output: AssociateBenefitApplicationResourceOutput,
@@ -1417,7 +1417,7 @@ export const cancelBenefitApplication: API.OperationMethod<
   CancelBenefitApplicationInput,
   CancelBenefitApplicationOutput,
   CancelBenefitApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelBenefitApplicationInput,
   output: CancelBenefitApplicationOutput,
@@ -1445,7 +1445,7 @@ export const createBenefitApplication: API.OperationMethod<
   CreateBenefitApplicationInput,
   CreateBenefitApplicationOutput,
   CreateBenefitApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBenefitApplicationInput,
   output: CreateBenefitApplicationOutput,
@@ -1473,7 +1473,7 @@ export const disassociateBenefitApplicationResource: API.OperationMethod<
   DisassociateBenefitApplicationResourceInput,
   DisassociateBenefitApplicationResourceOutput,
   DisassociateBenefitApplicationResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateBenefitApplicationResourceInput,
   output: DisassociateBenefitApplicationResourceOutput,
@@ -1500,7 +1500,7 @@ export const getBenefit: API.OperationMethod<
   GetBenefitInput,
   GetBenefitOutput,
   GetBenefitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBenefitInput,
   output: GetBenefitOutput,
@@ -1526,7 +1526,7 @@ export const getBenefitAllocation: API.OperationMethod<
   GetBenefitAllocationInput,
   GetBenefitAllocationOutput,
   GetBenefitAllocationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBenefitAllocationInput,
   output: GetBenefitAllocationOutput,
@@ -1553,7 +1553,7 @@ export const getBenefitApplication: API.OperationMethod<
   GetBenefitApplicationInput,
   GetBenefitApplicationOutput,
   GetBenefitApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBenefitApplicationInput,
   output: GetBenefitApplicationOutput,
@@ -1580,21 +1580,21 @@ export const listBenefitAllocations: API.OperationMethod<
   ListBenefitAllocationsInput,
   ListBenefitAllocationsOutput,
   ListBenefitAllocationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBenefitAllocationsInput,
   ) => stream.Stream<
     ListBenefitAllocationsOutput,
     ListBenefitAllocationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBenefitAllocationsInput,
   ) => stream.Stream<
     BenefitAllocationSummary,
     ListBenefitAllocationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBenefitAllocationsInput,
@@ -1627,21 +1627,21 @@ export const listBenefitApplications: API.OperationMethod<
   ListBenefitApplicationsInput,
   ListBenefitApplicationsOutput,
   ListBenefitApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBenefitApplicationsInput,
   ) => stream.Stream<
     ListBenefitApplicationsOutput,
     ListBenefitApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBenefitApplicationsInput,
   ) => stream.Stream<
     BenefitApplicationSummary,
     ListBenefitApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBenefitApplicationsInput,
@@ -1674,21 +1674,21 @@ export const listBenefits: API.OperationMethod<
   ListBenefitsInput,
   ListBenefitsOutput,
   ListBenefitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBenefitsInput,
   ) => stream.Stream<
     ListBenefitsOutput,
     ListBenefitsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBenefitsInput,
   ) => stream.Stream<
     BenefitSummary,
     ListBenefitsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBenefitsInput,
@@ -1721,7 +1721,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1748,7 +1748,7 @@ export const recallBenefitApplication: API.OperationMethod<
   RecallBenefitApplicationInput,
   RecallBenefitApplicationOutput,
   RecallBenefitApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RecallBenefitApplicationInput,
   output: RecallBenefitApplicationOutput,
@@ -1776,7 +1776,7 @@ export const submitBenefitApplication: API.OperationMethod<
   SubmitBenefitApplicationInput,
   SubmitBenefitApplicationOutput,
   SubmitBenefitApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitBenefitApplicationInput,
   output: SubmitBenefitApplicationOutput,
@@ -1805,7 +1805,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1835,7 +1835,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1864,7 +1864,7 @@ export const updateBenefitApplication: API.OperationMethod<
   UpdateBenefitApplicationInput,
   UpdateBenefitApplicationOutput,
   UpdateBenefitApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBenefitApplicationInput,
   output: UpdateBenefitApplicationOutput,

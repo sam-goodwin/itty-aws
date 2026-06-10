@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "EFS",
   serviceShapeName: "MagnolioAPIService_v20150201",
@@ -1703,7 +1703,7 @@ export const createAccessPoint: API.OperationMethod<
   CreateAccessPointRequest,
   AccessPointDescription,
   CreateAccessPointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessPointRequest,
   output: AccessPointDescription,
@@ -1793,7 +1793,7 @@ export const createFileSystem: API.OperationMethod<
   CreateFileSystemRequest,
   FileSystemDescription,
   CreateFileSystemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFileSystemRequest,
   output: FileSystemDescription,
@@ -1940,7 +1940,7 @@ export const createMountTarget: API.OperationMethod<
   CreateMountTargetRequest,
   MountTargetDescription,
   CreateMountTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMountTargetRequest,
   output: MountTargetDescription,
@@ -2001,7 +2001,7 @@ export const createReplicationConfiguration: API.OperationMethod<
   CreateReplicationConfigurationRequest,
   ReplicationConfigurationDescription,
   CreateReplicationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateReplicationConfigurationRequest,
   output: ReplicationConfigurationDescription,
@@ -2040,7 +2040,7 @@ export const createTags: API.OperationMethod<
   CreateTagsRequest,
   CreateTagsResponse,
   CreateTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTagsRequest,
   output: CreateTagsResponse,
@@ -2062,7 +2062,7 @@ export const deleteAccessPoint: API.OperationMethod<
   DeleteAccessPointRequest,
   DeleteAccessPointResponse,
   DeleteAccessPointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPointRequest,
   output: DeleteAccessPointResponse,
@@ -2101,7 +2101,7 @@ export const deleteFileSystem: API.OperationMethod<
   DeleteFileSystemRequest,
   DeleteFileSystemResponse,
   DeleteFileSystemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFileSystemRequest,
   output: DeleteFileSystemResponse,
@@ -2129,7 +2129,7 @@ export const deleteFileSystemPolicy: API.OperationMethod<
   DeleteFileSystemPolicyRequest,
   DeleteFileSystemPolicyResponse,
   DeleteFileSystemPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFileSystemPolicyRequest,
   output: DeleteFileSystemPolicyResponse,
@@ -2175,7 +2175,7 @@ export const deleteMountTarget: API.OperationMethod<
   DeleteMountTargetRequest,
   DeleteMountTargetResponse,
   DeleteMountTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMountTargetRequest,
   output: DeleteMountTargetResponse,
@@ -2205,7 +2205,7 @@ export const deleteReplicationConfiguration: API.OperationMethod<
   DeleteReplicationConfigurationRequest,
   DeleteReplicationConfigurationResponse,
   DeleteReplicationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteReplicationConfigurationRequest,
   output: DeleteReplicationConfigurationResponse,
@@ -2237,7 +2237,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsRequest,
   DeleteTagsResponse,
   DeleteTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
@@ -2262,21 +2262,21 @@ export const describeAccessPoints: API.OperationMethod<
   DescribeAccessPointsRequest,
   DescribeAccessPointsResponse,
   DescribeAccessPointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeAccessPointsRequest,
   ) => stream.Stream<
     DescribeAccessPointsResponse,
     DescribeAccessPointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeAccessPointsRequest,
   ) => stream.Stream<
     AccessPointDescription,
     DescribeAccessPointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccessPointsRequest,
@@ -2304,7 +2304,7 @@ export const describeAccountPreferences: API.OperationMethod<
   DescribeAccountPreferencesRequest,
   DescribeAccountPreferencesResponse,
   DescribeAccountPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAccountPreferencesRequest,
   output: DescribeAccountPreferencesResponse,
@@ -2324,7 +2324,7 @@ export const describeBackupPolicy: API.OperationMethod<
   DescribeBackupPolicyRequest,
   BackupPolicyDescription,
   DescribeBackupPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeBackupPolicyRequest,
   output: BackupPolicyDescription,
@@ -2352,7 +2352,7 @@ export const describeFileSystemPolicy: API.OperationMethod<
   DescribeFileSystemPolicyRequest,
   FileSystemPolicyDescription,
   DescribeFileSystemPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeFileSystemPolicyRequest,
   output: FileSystemPolicyDescription,
@@ -2393,21 +2393,21 @@ export const describeFileSystems: API.OperationMethod<
   DescribeFileSystemsRequest,
   DescribeFileSystemsResponse,
   DescribeFileSystemsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeFileSystemsRequest,
   ) => stream.Stream<
     DescribeFileSystemsResponse,
     DescribeFileSystemsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeFileSystemsRequest,
   ) => stream.Stream<
     FileSystemDescription,
     DescribeFileSystemsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileSystemsRequest,
@@ -2439,7 +2439,7 @@ export const describeLifecycleConfiguration: API.OperationMethod<
   DescribeLifecycleConfigurationRequest,
   LifecycleConfigurationDescription,
   DescribeLifecycleConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLifecycleConfigurationRequest,
   output: LifecycleConfigurationDescription,
@@ -2466,21 +2466,21 @@ export const describeMountTargets: API.OperationMethod<
   DescribeMountTargetsRequest,
   DescribeMountTargetsResponse,
   DescribeMountTargetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeMountTargetsRequest,
   ) => stream.Stream<
     DescribeMountTargetsResponse,
     DescribeMountTargetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeMountTargetsRequest,
   ) => stream.Stream<
     MountTargetDescription,
     DescribeMountTargetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeMountTargetsRequest,
@@ -2522,7 +2522,7 @@ export const describeMountTargetSecurityGroups: API.OperationMethod<
   DescribeMountTargetSecurityGroupsRequest,
   DescribeMountTargetSecurityGroupsResponse,
   DescribeMountTargetSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeMountTargetSecurityGroupsRequest,
   output: DescribeMountTargetSecurityGroupsResponse,
@@ -2549,21 +2549,21 @@ export const describeReplicationConfigurations: API.OperationMethod<
   DescribeReplicationConfigurationsRequest,
   DescribeReplicationConfigurationsResponse,
   DescribeReplicationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeReplicationConfigurationsRequest,
   ) => stream.Stream<
     DescribeReplicationConfigurationsResponse,
     DescribeReplicationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeReplicationConfigurationsRequest,
   ) => stream.Stream<
     ReplicationConfigurationDescription,
     DescribeReplicationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationConfigurationsRequest,
@@ -2603,21 +2603,21 @@ export const describeTags: API.OperationMethod<
   DescribeTagsRequest,
   DescribeTagsResponse,
   DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeTagsRequest,
   ) => stream.Stream<
     DescribeTagsResponse,
     DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeTagsRequest,
   ) => stream.Stream<
     Tag,
     DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsRequest,
@@ -2646,21 +2646,21 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     ListTagsForResourceResponse,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     unknown,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
@@ -2707,7 +2707,7 @@ export const modifyMountTargetSecurityGroups: API.OperationMethod<
   ModifyMountTargetSecurityGroupsRequest,
   ModifyMountTargetSecurityGroupsResponse,
   ModifyMountTargetSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyMountTargetSecurityGroupsRequest,
   output: ModifyMountTargetSecurityGroupsResponse,
@@ -2739,7 +2739,7 @@ export const putAccountPreferences: API.OperationMethod<
   PutAccountPreferencesRequest,
   PutAccountPreferencesResponse,
   PutAccountPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccountPreferencesRequest,
   output: PutAccountPreferencesResponse,
@@ -2759,7 +2759,7 @@ export const putBackupPolicy: API.OperationMethod<
   PutBackupPolicyRequest,
   BackupPolicyDescription,
   PutBackupPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBackupPolicyRequest,
   output: BackupPolicyDescription,
@@ -2796,7 +2796,7 @@ export const putFileSystemPolicy: API.OperationMethod<
   PutFileSystemPolicyRequest,
   FileSystemPolicyDescription,
   PutFileSystemPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutFileSystemPolicyRequest,
   output: FileSystemPolicyDescription,
@@ -2873,7 +2873,7 @@ export const putLifecycleConfiguration: API.OperationMethod<
   PutLifecycleConfigurationRequest,
   LifecycleConfigurationDescription,
   PutLifecycleConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutLifecycleConfigurationRequest,
   output: LifecycleConfigurationDescription,
@@ -2900,7 +2900,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2927,7 +2927,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2955,7 +2955,7 @@ export const updateFileSystem: API.OperationMethod<
   UpdateFileSystemRequest,
   FileSystemDescription,
   UpdateFileSystemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFileSystemRequest,
   output: FileSystemDescription,
@@ -2989,7 +2989,7 @@ export const updateFileSystemProtection: API.OperationMethod<
   UpdateFileSystemProtectionRequest,
   FileSystemProtectionDescription,
   UpdateFileSystemProtectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFileSystemProtectionRequest,
   output: FileSystemProtectionDescription,

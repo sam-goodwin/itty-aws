@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "IoTThingsGraph",
   serviceShapeName: "IotThingsGraphFrontEndService",
@@ -1419,7 +1419,7 @@ export const associateEntityToThing: API.OperationMethod<
   AssociateEntityToThingRequest,
   AssociateEntityToThingResponse,
   AssociateEntityToThingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateEntityToThingRequest,
   output: AssociateEntityToThingResponse,
@@ -1446,7 +1446,7 @@ export const createFlowTemplate: API.OperationMethod<
   CreateFlowTemplateRequest,
   CreateFlowTemplateResponse,
   CreateFlowTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFlowTemplateRequest,
   output: CreateFlowTemplateResponse,
@@ -1484,7 +1484,7 @@ export const createSystemInstance: API.OperationMethod<
   CreateSystemInstanceRequest,
   CreateSystemInstanceResponse,
   CreateSystemInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSystemInstanceRequest,
   output: CreateSystemInstanceResponse,
@@ -1510,7 +1510,7 @@ export const createSystemTemplate: API.OperationMethod<
   CreateSystemTemplateRequest,
   CreateSystemTemplateResponse,
   CreateSystemTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSystemTemplateRequest,
   output: CreateSystemTemplateResponse,
@@ -1535,7 +1535,7 @@ export const deleteFlowTemplate: API.OperationMethod<
   DeleteFlowTemplateRequest,
   DeleteFlowTemplateResponse,
   DeleteFlowTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFlowTemplateRequest,
   output: DeleteFlowTemplateResponse,
@@ -1558,7 +1558,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceRequest,
   DeleteNamespaceResponse,
   DeleteNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
@@ -1580,7 +1580,7 @@ export const deleteSystemInstance: API.OperationMethod<
   DeleteSystemInstanceRequest,
   DeleteSystemInstanceResponse,
   DeleteSystemInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSystemInstanceRequest,
   output: DeleteSystemInstanceResponse,
@@ -1605,7 +1605,7 @@ export const deleteSystemTemplate: API.OperationMethod<
   DeleteSystemTemplateRequest,
   DeleteSystemTemplateResponse,
   DeleteSystemTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSystemTemplateRequest,
   output: DeleteSystemTemplateResponse,
@@ -1642,7 +1642,7 @@ export const deploySystemInstance: API.OperationMethod<
   DeploySystemInstanceRequest,
   DeploySystemInstanceResponse,
   DeploySystemInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeploySystemInstanceRequest,
   output: DeploySystemInstanceResponse,
@@ -1667,7 +1667,7 @@ export const deprecateFlowTemplate: API.OperationMethod<
   DeprecateFlowTemplateRequest,
   DeprecateFlowTemplateResponse,
   DeprecateFlowTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeprecateFlowTemplateRequest,
   output: DeprecateFlowTemplateResponse,
@@ -1691,7 +1691,7 @@ export const deprecateSystemTemplate: API.OperationMethod<
   DeprecateSystemTemplateRequest,
   DeprecateSystemTemplateResponse,
   DeprecateSystemTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeprecateSystemTemplateRequest,
   output: DeprecateSystemTemplateResponse,
@@ -1715,7 +1715,7 @@ export const describeNamespace: API.OperationMethod<
   DescribeNamespaceRequest,
   DescribeNamespaceResponse,
   DescribeNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeNamespaceRequest,
   output: DescribeNamespaceResponse,
@@ -1740,7 +1740,7 @@ export const dissociateEntityFromThing: API.OperationMethod<
   DissociateEntityFromThingRequest,
   DissociateEntityFromThingResponse,
   DissociateEntityFromThingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DissociateEntityFromThingRequest,
   output: DissociateEntityFromThingResponse,
@@ -1785,7 +1785,7 @@ export const getEntities: API.OperationMethod<
   GetEntitiesRequest,
   GetEntitiesResponse,
   GetEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEntitiesRequest,
   output: GetEntitiesResponse,
@@ -1809,7 +1809,7 @@ export const getFlowTemplate: API.OperationMethod<
   GetFlowTemplateRequest,
   GetFlowTemplateResponse,
   GetFlowTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFlowTemplateRequest,
   output: GetFlowTemplateResponse,
@@ -1834,21 +1834,21 @@ export const getFlowTemplateRevisions: API.OperationMethod<
   GetFlowTemplateRevisionsRequest,
   GetFlowTemplateRevisionsResponse,
   GetFlowTemplateRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetFlowTemplateRevisionsRequest,
   ) => stream.Stream<
     GetFlowTemplateRevisionsResponse,
     GetFlowTemplateRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetFlowTemplateRevisionsRequest,
   ) => stream.Stream<
     FlowTemplateSummary,
     GetFlowTemplateRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetFlowTemplateRevisionsRequest,
@@ -1878,7 +1878,7 @@ export const getNamespaceDeletionStatus: API.OperationMethod<
   GetNamespaceDeletionStatusRequest,
   GetNamespaceDeletionStatusResponse,
   GetNamespaceDeletionStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNamespaceDeletionStatusRequest,
   output: GetNamespaceDeletionStatusResponse,
@@ -1901,7 +1901,7 @@ export const getSystemInstance: API.OperationMethod<
   GetSystemInstanceRequest,
   GetSystemInstanceResponse,
   GetSystemInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSystemInstanceRequest,
   output: GetSystemInstanceResponse,
@@ -1925,7 +1925,7 @@ export const getSystemTemplate: API.OperationMethod<
   GetSystemTemplateRequest,
   GetSystemTemplateResponse,
   GetSystemTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSystemTemplateRequest,
   output: GetSystemTemplateResponse,
@@ -1950,21 +1950,21 @@ export const getSystemTemplateRevisions: API.OperationMethod<
   GetSystemTemplateRevisionsRequest,
   GetSystemTemplateRevisionsResponse,
   GetSystemTemplateRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetSystemTemplateRevisionsRequest,
   ) => stream.Stream<
     GetSystemTemplateRevisionsResponse,
     GetSystemTemplateRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetSystemTemplateRevisionsRequest,
   ) => stream.Stream<
     SystemTemplateSummary,
     GetSystemTemplateRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetSystemTemplateRevisionsRequest,
@@ -1995,7 +1995,7 @@ export const getUploadStatus: API.OperationMethod<
   GetUploadStatusRequest,
   GetUploadStatusResponse,
   GetUploadStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUploadStatusRequest,
   output: GetUploadStatusResponse,
@@ -2019,21 +2019,21 @@ export const listFlowExecutionMessages: API.OperationMethod<
   ListFlowExecutionMessagesRequest,
   ListFlowExecutionMessagesResponse,
   ListFlowExecutionMessagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFlowExecutionMessagesRequest,
   ) => stream.Stream<
     ListFlowExecutionMessagesResponse,
     ListFlowExecutionMessagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFlowExecutionMessagesRequest,
   ) => stream.Stream<
     FlowExecutionMessage,
     ListFlowExecutionMessagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFlowExecutionMessagesRequest,
@@ -2064,21 +2064,21 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     ListTagsForResourceResponse,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     Tag,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
@@ -2108,21 +2108,21 @@ export const searchEntities: API.OperationMethod<
   SearchEntitiesRequest,
   SearchEntitiesResponse,
   SearchEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchEntitiesRequest,
   ) => stream.Stream<
     SearchEntitiesResponse,
     SearchEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchEntitiesRequest,
   ) => stream.Stream<
     EntityDescription,
     SearchEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchEntitiesRequest,
@@ -2152,21 +2152,21 @@ export const searchFlowExecutions: API.OperationMethod<
   SearchFlowExecutionsRequest,
   SearchFlowExecutionsResponse,
   SearchFlowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchFlowExecutionsRequest,
   ) => stream.Stream<
     SearchFlowExecutionsResponse,
     SearchFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchFlowExecutionsRequest,
   ) => stream.Stream<
     FlowExecutionSummary,
     SearchFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchFlowExecutionsRequest,
@@ -2196,21 +2196,21 @@ export const searchFlowTemplates: API.OperationMethod<
   SearchFlowTemplatesRequest,
   SearchFlowTemplatesResponse,
   SearchFlowTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchFlowTemplatesRequest,
   ) => stream.Stream<
     SearchFlowTemplatesResponse,
     SearchFlowTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchFlowTemplatesRequest,
   ) => stream.Stream<
     FlowTemplateSummary,
     SearchFlowTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchFlowTemplatesRequest,
@@ -2239,21 +2239,21 @@ export const searchSystemInstances: API.OperationMethod<
   SearchSystemInstancesRequest,
   SearchSystemInstancesResponse,
   SearchSystemInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchSystemInstancesRequest,
   ) => stream.Stream<
     SearchSystemInstancesResponse,
     SearchSystemInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchSystemInstancesRequest,
   ) => stream.Stream<
     SystemInstanceSummary,
     SearchSystemInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchSystemInstancesRequest,
@@ -2282,21 +2282,21 @@ export const searchSystemTemplates: API.OperationMethod<
   SearchSystemTemplatesRequest,
   SearchSystemTemplatesResponse,
   SearchSystemTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchSystemTemplatesRequest,
   ) => stream.Stream<
     SearchSystemTemplatesResponse,
     SearchSystemTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchSystemTemplatesRequest,
   ) => stream.Stream<
     SystemTemplateSummary,
     SearchSystemTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchSystemTemplatesRequest,
@@ -2331,21 +2331,21 @@ export const searchThings: API.OperationMethod<
   SearchThingsRequest,
   SearchThingsResponse,
   SearchThingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchThingsRequest,
   ) => stream.Stream<
     SearchThingsResponse,
     SearchThingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchThingsRequest,
   ) => stream.Stream<
     Thing,
     SearchThingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchThingsRequest,
@@ -2376,7 +2376,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2401,7 +2401,7 @@ export const undeploySystemInstance: API.OperationMethod<
   UndeploySystemInstanceRequest,
   UndeploySystemInstanceResponse,
   UndeploySystemInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeploySystemInstanceRequest,
   output: UndeploySystemInstanceResponse,
@@ -2426,7 +2426,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2451,7 +2451,7 @@ export const updateFlowTemplate: API.OperationMethod<
   UpdateFlowTemplateRequest,
   UpdateFlowTemplateResponse,
   UpdateFlowTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFlowTemplateRequest,
   output: UpdateFlowTemplateResponse,
@@ -2475,7 +2475,7 @@ export const updateSystemTemplate: API.OperationMethod<
   UpdateSystemTemplateRequest,
   UpdateSystemTemplateResponse,
   UpdateSystemTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSystemTemplateRequest,
   output: UpdateSystemTemplateResponse,
@@ -2510,7 +2510,7 @@ export const uploadEntityDefinitions: API.OperationMethod<
   UploadEntityDefinitionsRequest,
   UploadEntityDefinitionsResponse,
   UploadEntityDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadEntityDefinitionsRequest,
   output: UploadEntityDefinitionsResponse,

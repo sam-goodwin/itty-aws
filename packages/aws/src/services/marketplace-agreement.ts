@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Marketplace Agreement",
@@ -1698,7 +1698,7 @@ export const batchCreateBillingAdjustmentRequest: API.OperationMethod<
   BatchCreateBillingAdjustmentRequestInput,
   BatchCreateBillingAdjustmentRequestOutput,
   BatchCreateBillingAdjustmentRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateBillingAdjustmentRequestInput,
   output: BatchCreateBillingAdjustmentRequestOutput,
@@ -1727,7 +1727,7 @@ export const cancelAgreementCancellationRequest: API.OperationMethod<
   CancelAgreementCancellationRequestInput,
   CancelAgreementCancellationRequestOutput,
   CancelAgreementCancellationRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelAgreementCancellationRequestInput,
   output: CancelAgreementCancellationRequestOutput,
@@ -1757,7 +1757,7 @@ export const cancelAgreementPaymentRequest: API.OperationMethod<
   CancelAgreementPaymentRequestInput,
   CancelAgreementPaymentRequestOutput,
   CancelAgreementPaymentRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelAgreementPaymentRequestInput,
   output: CancelAgreementPaymentRequestOutput,
@@ -1784,7 +1784,7 @@ export const describeAgreement: API.OperationMethod<
   DescribeAgreementInput,
   DescribeAgreementOutput,
   DescribeAgreementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAgreementInput,
   output: DescribeAgreementOutput,
@@ -1812,7 +1812,7 @@ export const getAgreementCancellationRequest: API.OperationMethod<
   GetAgreementCancellationRequestInput,
   GetAgreementCancellationRequestOutput,
   GetAgreementCancellationRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAgreementCancellationRequestInput,
   output: GetAgreementCancellationRequestOutput,
@@ -1840,7 +1840,7 @@ export const getAgreementPaymentRequest: API.OperationMethod<
   GetAgreementPaymentRequestInput,
   GetAgreementPaymentRequestOutput,
   GetAgreementPaymentRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAgreementPaymentRequestInput,
   output: GetAgreementPaymentRequestOutput,
@@ -1876,21 +1876,21 @@ export const getAgreementTerms: API.OperationMethod<
   GetAgreementTermsInput,
   GetAgreementTermsOutput,
   GetAgreementTermsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetAgreementTermsInput,
   ) => stream.Stream<
     GetAgreementTermsOutput,
     GetAgreementTermsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetAgreementTermsInput,
   ) => stream.Stream<
     unknown,
     GetAgreementTermsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAgreementTermsInput,
@@ -1924,7 +1924,7 @@ export const getBillingAdjustmentRequest: API.OperationMethod<
   GetBillingAdjustmentRequestInput,
   GetBillingAdjustmentRequestOutput,
   GetBillingAdjustmentRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAdjustmentRequestInput,
   output: GetBillingAdjustmentRequestOutput,
@@ -1951,21 +1951,21 @@ export const listAgreementCancellationRequests: API.OperationMethod<
   ListAgreementCancellationRequestsInput,
   ListAgreementCancellationRequestsOutput,
   ListAgreementCancellationRequestsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAgreementCancellationRequestsInput,
   ) => stream.Stream<
     ListAgreementCancellationRequestsOutput,
     ListAgreementCancellationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAgreementCancellationRequestsInput,
   ) => stream.Stream<
     AgreementCancellationRequestSummary,
     ListAgreementCancellationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementCancellationRequestsInput,
@@ -1999,21 +1999,21 @@ export const listAgreementInvoiceLineItems: API.OperationMethod<
   ListAgreementInvoiceLineItemsInput,
   ListAgreementInvoiceLineItemsOutput,
   ListAgreementInvoiceLineItemsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAgreementInvoiceLineItemsInput,
   ) => stream.Stream<
     ListAgreementInvoiceLineItemsOutput,
     ListAgreementInvoiceLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAgreementInvoiceLineItemsInput,
   ) => stream.Stream<
     AgreementInvoiceLineItemGroupSummary,
     ListAgreementInvoiceLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementInvoiceLineItemsInput,
@@ -2047,21 +2047,21 @@ export const listAgreementPaymentRequests: API.OperationMethod<
   ListAgreementPaymentRequestsInput,
   ListAgreementPaymentRequestsOutput,
   ListAgreementPaymentRequestsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAgreementPaymentRequestsInput,
   ) => stream.Stream<
     ListAgreementPaymentRequestsOutput,
     ListAgreementPaymentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAgreementPaymentRequestsInput,
   ) => stream.Stream<
     PaymentRequestSummary,
     ListAgreementPaymentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementPaymentRequestsInput,
@@ -2094,21 +2094,21 @@ export const listBillingAdjustmentRequests: API.OperationMethod<
   ListBillingAdjustmentRequestsInput,
   ListBillingAdjustmentRequestsOutput,
   ListBillingAdjustmentRequestsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBillingAdjustmentRequestsInput,
   ) => stream.Stream<
     ListBillingAdjustmentRequestsOutput,
     ListBillingAdjustmentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListBillingAdjustmentRequestsInput,
   ) => stream.Stream<
     BillingAdjustmentSummary,
     ListBillingAdjustmentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAdjustmentRequestsInput,
@@ -2215,21 +2215,21 @@ export const searchAgreements: API.OperationMethod<
   SearchAgreementsInput,
   SearchAgreementsOutput,
   SearchAgreementsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchAgreementsInput,
   ) => stream.Stream<
     SearchAgreementsOutput,
     SearchAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchAgreementsInput,
   ) => stream.Stream<
     unknown,
     SearchAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAgreementsInput,
@@ -2261,7 +2261,7 @@ export const sendAgreementCancellationRequest: API.OperationMethod<
   SendAgreementCancellationRequestInput,
   SendAgreementCancellationRequestOutput,
   SendAgreementCancellationRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendAgreementCancellationRequestInput,
   output: SendAgreementCancellationRequestOutput,
@@ -2291,7 +2291,7 @@ export const sendAgreementPaymentRequest: API.OperationMethod<
   SendAgreementPaymentRequestInput,
   SendAgreementPaymentRequestOutput,
   SendAgreementPaymentRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendAgreementPaymentRequestInput,
   output: SendAgreementPaymentRequestOutput,

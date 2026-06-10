@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Chime SDK Messaging",
@@ -2779,7 +2779,7 @@ export const associateChannelFlow: API.OperationMethod<
   AssociateChannelFlowRequest,
   AssociateChannelFlowResponse,
   AssociateChannelFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateChannelFlowRequest,
   output: AssociateChannelFlowResponse,
@@ -2811,7 +2811,7 @@ export const batchCreateChannelMembership: API.OperationMethod<
   BatchCreateChannelMembershipRequest,
   BatchCreateChannelMembershipResponse,
   BatchCreateChannelMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateChannelMembershipRequest,
   output: BatchCreateChannelMembershipResponse,
@@ -2850,7 +2850,7 @@ export const channelFlowCallback: API.OperationMethod<
   ChannelFlowCallbackRequest,
   ChannelFlowCallbackResponse,
   ChannelFlowCallbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ChannelFlowCallbackRequest,
   output: ChannelFlowCallbackResponse,
@@ -2888,7 +2888,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelRequest,
   CreateChannelResponse,
   CreateChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateChannelRequest,
   output: CreateChannelResponse,
@@ -2930,7 +2930,7 @@ export const createChannelBan: API.OperationMethod<
   CreateChannelBanRequest,
   CreateChannelBanResponse,
   CreateChannelBanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateChannelBanRequest,
   output: CreateChannelBanResponse,
@@ -2976,7 +2976,7 @@ export const createChannelFlow: API.OperationMethod<
   CreateChannelFlowRequest,
   CreateChannelFlowResponse,
   CreateChannelFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateChannelFlowRequest,
   output: CreateChannelFlowResponse,
@@ -3031,7 +3031,7 @@ export const createChannelMembership: API.OperationMethod<
   CreateChannelMembershipRequest,
   CreateChannelMembershipResponse,
   CreateChannelMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateChannelMembershipRequest,
   output: CreateChannelMembershipResponse,
@@ -3078,7 +3078,7 @@ export const createChannelModerator: API.OperationMethod<
   CreateChannelModeratorRequest,
   CreateChannelModeratorResponse,
   CreateChannelModeratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateChannelModeratorRequest,
   output: CreateChannelModeratorResponse,
@@ -3114,7 +3114,7 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelRequest,
   DeleteChannelResponse,
   DeleteChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
@@ -3147,7 +3147,7 @@ export const deleteChannelBan: API.OperationMethod<
   DeleteChannelBanRequest,
   DeleteChannelBanResponse,
   DeleteChannelBanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteChannelBanRequest,
   output: DeleteChannelBanResponse,
@@ -3179,7 +3179,7 @@ export const deleteChannelFlow: API.OperationMethod<
   DeleteChannelFlowRequest,
   DeleteChannelFlowResponse,
   DeleteChannelFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteChannelFlowRequest,
   output: DeleteChannelFlowResponse,
@@ -3213,7 +3213,7 @@ export const deleteChannelMembership: API.OperationMethod<
   DeleteChannelMembershipRequest,
   DeleteChannelMembershipResponse,
   DeleteChannelMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteChannelMembershipRequest,
   output: DeleteChannelMembershipResponse,
@@ -3248,7 +3248,7 @@ export const deleteChannelMessage: API.OperationMethod<
   DeleteChannelMessageRequest,
   DeleteChannelMessageResponse,
   DeleteChannelMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteChannelMessageRequest,
   output: DeleteChannelMessageResponse,
@@ -3280,7 +3280,7 @@ export const deleteChannelModerator: API.OperationMethod<
   DeleteChannelModeratorRequest,
   DeleteChannelModeratorResponse,
   DeleteChannelModeratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteChannelModeratorRequest,
   output: DeleteChannelModeratorResponse,
@@ -3309,7 +3309,7 @@ export const deleteMessagingStreamingConfigurations: API.OperationMethod<
   DeleteMessagingStreamingConfigurationsRequest,
   DeleteMessagingStreamingConfigurationsResponse,
   DeleteMessagingStreamingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMessagingStreamingConfigurationsRequest,
   output: DeleteMessagingStreamingConfigurationsResponse,
@@ -3342,7 +3342,7 @@ export const describeChannel: API.OperationMethod<
   DescribeChannelRequest,
   DescribeChannelResponse,
   DescribeChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeChannelRequest,
   output: DescribeChannelResponse,
@@ -3375,7 +3375,7 @@ export const describeChannelBan: API.OperationMethod<
   DescribeChannelBanRequest,
   DescribeChannelBanResponse,
   DescribeChannelBanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeChannelBanRequest,
   output: DescribeChannelBanResponse,
@@ -3404,7 +3404,7 @@ export const describeChannelFlow: API.OperationMethod<
   DescribeChannelFlowRequest,
   DescribeChannelFlowResponse,
   DescribeChannelFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeChannelFlowRequest,
   output: DescribeChannelFlowResponse,
@@ -3437,7 +3437,7 @@ export const describeChannelMembership: API.OperationMethod<
   DescribeChannelMembershipRequest,
   DescribeChannelMembershipResponse,
   DescribeChannelMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeChannelMembershipRequest,
   output: DescribeChannelMembershipResponse,
@@ -3471,7 +3471,7 @@ export const describeChannelMembershipForAppInstanceUser: API.OperationMethod<
   DescribeChannelMembershipForAppInstanceUserRequest,
   DescribeChannelMembershipForAppInstanceUserResponse,
   DescribeChannelMembershipForAppInstanceUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeChannelMembershipForAppInstanceUserRequest,
   output: DescribeChannelMembershipForAppInstanceUserResponse,
@@ -3504,7 +3504,7 @@ export const describeChannelModeratedByAppInstanceUser: API.OperationMethod<
   DescribeChannelModeratedByAppInstanceUserRequest,
   DescribeChannelModeratedByAppInstanceUserResponse,
   DescribeChannelModeratedByAppInstanceUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeChannelModeratedByAppInstanceUserRequest,
   output: DescribeChannelModeratedByAppInstanceUserResponse,
@@ -3537,7 +3537,7 @@ export const describeChannelModerator: API.OperationMethod<
   DescribeChannelModeratorRequest,
   DescribeChannelModeratorResponse,
   DescribeChannelModeratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeChannelModeratorRequest,
   output: DescribeChannelModeratorResponse,
@@ -3575,7 +3575,7 @@ export const disassociateChannelFlow: API.OperationMethod<
   DisassociateChannelFlowRequest,
   DisassociateChannelFlowResponse,
   DisassociateChannelFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateChannelFlowRequest,
   output: DisassociateChannelFlowResponse,
@@ -3613,7 +3613,7 @@ export const getChannelMembershipPreferences: API.OperationMethod<
   GetChannelMembershipPreferencesRequest,
   GetChannelMembershipPreferencesResponse,
   GetChannelMembershipPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetChannelMembershipPreferencesRequest,
   output: GetChannelMembershipPreferencesResponse,
@@ -3646,7 +3646,7 @@ export const getChannelMessage: API.OperationMethod<
   GetChannelMessageRequest,
   GetChannelMessageResponse,
   GetChannelMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetChannelMessageRequest,
   output: GetChannelMessageResponse,
@@ -3702,7 +3702,7 @@ export const getChannelMessageStatus: API.OperationMethod<
   GetChannelMessageStatusRequest,
   GetChannelMessageStatusResponse,
   GetChannelMessageStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetChannelMessageStatusRequest,
   output: GetChannelMessageStatusResponse,
@@ -3729,7 +3729,7 @@ export const getMessagingSessionEndpoint: API.OperationMethod<
   GetMessagingSessionEndpointRequest,
   GetMessagingSessionEndpointResponse,
   GetMessagingSessionEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMessagingSessionEndpointRequest,
   output: GetMessagingSessionEndpointResponse,
@@ -3758,7 +3758,7 @@ export const getMessagingStreamingConfigurations: API.OperationMethod<
   GetMessagingStreamingConfigurationsRequest,
   GetMessagingStreamingConfigurationsResponse,
   GetMessagingStreamingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMessagingStreamingConfigurationsRequest,
   output: GetMessagingStreamingConfigurationsResponse,
@@ -3791,21 +3791,21 @@ export const listChannelBans: API.OperationMethod<
   ListChannelBansRequest,
   ListChannelBansResponse,
   ListChannelBansError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChannelBansRequest,
   ) => stream.Stream<
     ListChannelBansResponse,
     ListChannelBansError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChannelBansRequest,
   ) => stream.Stream<
     unknown,
     ListChannelBansError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelBansRequest,
@@ -3839,21 +3839,21 @@ export const listChannelFlows: API.OperationMethod<
   ListChannelFlowsRequest,
   ListChannelFlowsResponse,
   ListChannelFlowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChannelFlowsRequest,
   ) => stream.Stream<
     ListChannelFlowsResponse,
     ListChannelFlowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChannelFlowsRequest,
   ) => stream.Stream<
     unknown,
     ListChannelFlowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelFlowsRequest,
@@ -3894,21 +3894,21 @@ export const listChannelMemberships: API.OperationMethod<
   ListChannelMembershipsRequest,
   ListChannelMembershipsResponse,
   ListChannelMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChannelMembershipsRequest,
   ) => stream.Stream<
     ListChannelMembershipsResponse,
     ListChannelMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChannelMembershipsRequest,
   ) => stream.Stream<
     unknown,
     ListChannelMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelMembershipsRequest,
@@ -3947,21 +3947,21 @@ export const listChannelMembershipsForAppInstanceUser: API.OperationMethod<
   ListChannelMembershipsForAppInstanceUserRequest,
   ListChannelMembershipsForAppInstanceUserResponse,
   ListChannelMembershipsForAppInstanceUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChannelMembershipsForAppInstanceUserRequest,
   ) => stream.Stream<
     ListChannelMembershipsForAppInstanceUserResponse,
     ListChannelMembershipsForAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChannelMembershipsForAppInstanceUserRequest,
   ) => stream.Stream<
     unknown,
     ListChannelMembershipsForAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelMembershipsForAppInstanceUserRequest,
@@ -4005,21 +4005,21 @@ export const listChannelMessages: API.OperationMethod<
   ListChannelMessagesRequest,
   ListChannelMessagesResponse,
   ListChannelMessagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChannelMessagesRequest,
   ) => stream.Stream<
     ListChannelMessagesResponse,
     ListChannelMessagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChannelMessagesRequest,
   ) => stream.Stream<
     unknown,
     ListChannelMessagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelMessagesRequest,
@@ -4057,21 +4057,21 @@ export const listChannelModerators: API.OperationMethod<
   ListChannelModeratorsRequest,
   ListChannelModeratorsResponse,
   ListChannelModeratorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChannelModeratorsRequest,
   ) => stream.Stream<
     ListChannelModeratorsResponse,
     ListChannelModeratorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChannelModeratorsRequest,
   ) => stream.Stream<
     unknown,
     ListChannelModeratorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelModeratorsRequest,
@@ -4118,21 +4118,21 @@ export const listChannels: API.OperationMethod<
   ListChannelsRequest,
   ListChannelsResponse,
   ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChannelsRequest,
   ) => stream.Stream<
     ListChannelsResponse,
     ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChannelsRequest,
   ) => stream.Stream<
     unknown,
     ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
@@ -4166,21 +4166,21 @@ export const listChannelsAssociatedWithChannelFlow: API.OperationMethod<
   ListChannelsAssociatedWithChannelFlowRequest,
   ListChannelsAssociatedWithChannelFlowResponse,
   ListChannelsAssociatedWithChannelFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChannelsAssociatedWithChannelFlowRequest,
   ) => stream.Stream<
     ListChannelsAssociatedWithChannelFlowResponse,
     ListChannelsAssociatedWithChannelFlowError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChannelsAssociatedWithChannelFlowRequest,
   ) => stream.Stream<
     unknown,
     ListChannelsAssociatedWithChannelFlowError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsAssociatedWithChannelFlowRequest,
@@ -4218,21 +4218,21 @@ export const listChannelsModeratedByAppInstanceUser: API.OperationMethod<
   ListChannelsModeratedByAppInstanceUserRequest,
   ListChannelsModeratedByAppInstanceUserResponse,
   ListChannelsModeratedByAppInstanceUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListChannelsModeratedByAppInstanceUserRequest,
   ) => stream.Stream<
     ListChannelsModeratedByAppInstanceUserResponse,
     ListChannelsModeratedByAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListChannelsModeratedByAppInstanceUserRequest,
   ) => stream.Stream<
     unknown,
     ListChannelsModeratedByAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsModeratedByAppInstanceUserRequest,
@@ -4266,21 +4266,21 @@ export const listSubChannels: API.OperationMethod<
   ListSubChannelsRequest,
   ListSubChannelsResponse,
   ListSubChannelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSubChannelsRequest,
   ) => stream.Stream<
     ListSubChannelsResponse,
     ListSubChannelsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSubChannelsRequest,
   ) => stream.Stream<
     unknown,
     ListSubChannelsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubChannelsRequest,
@@ -4314,7 +4314,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -4353,7 +4353,7 @@ export const putChannelExpirationSettings: API.OperationMethod<
   PutChannelExpirationSettingsRequest,
   PutChannelExpirationSettingsResponse,
   PutChannelExpirationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutChannelExpirationSettingsRequest,
   output: PutChannelExpirationSettingsResponse,
@@ -4391,7 +4391,7 @@ export const putChannelMembershipPreferences: API.OperationMethod<
   PutChannelMembershipPreferencesRequest,
   PutChannelMembershipPreferencesResponse,
   PutChannelMembershipPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutChannelMembershipPreferencesRequest,
   output: PutChannelMembershipPreferencesResponse,
@@ -4423,7 +4423,7 @@ export const putMessagingStreamingConfigurations: API.OperationMethod<
   PutMessagingStreamingConfigurationsRequest,
   PutMessagingStreamingConfigurationsResponse,
   PutMessagingStreamingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutMessagingStreamingConfigurationsRequest,
   output: PutMessagingStreamingConfigurationsResponse,
@@ -4459,7 +4459,7 @@ export const redactChannelMessage: API.OperationMethod<
   RedactChannelMessageRequest,
   RedactChannelMessageResponse,
   RedactChannelMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RedactChannelMessageRequest,
   output: RedactChannelMessageResponse,
@@ -4496,21 +4496,21 @@ export const searchChannels: API.OperationMethod<
   SearchChannelsRequest,
   SearchChannelsResponse,
   SearchChannelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchChannelsRequest,
   ) => stream.Stream<
     SearchChannelsResponse,
     SearchChannelsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchChannelsRequest,
   ) => stream.Stream<
     unknown,
     SearchChannelsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchChannelsRequest,
@@ -4554,7 +4554,7 @@ export const sendChannelMessage: API.OperationMethod<
   SendChannelMessageRequest,
   SendChannelMessageResponse,
   SendChannelMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendChannelMessageRequest,
   output: SendChannelMessageResponse,
@@ -4584,7 +4584,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4613,7 +4613,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4648,7 +4648,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelRequest,
   UpdateChannelResponse,
   UpdateChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
@@ -4678,7 +4678,7 @@ export const updateChannelFlow: API.OperationMethod<
   UpdateChannelFlowRequest,
   UpdateChannelFlowResponse,
   UpdateChannelFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateChannelFlowRequest,
   output: UpdateChannelFlowResponse,
@@ -4712,7 +4712,7 @@ export const updateChannelMessage: API.OperationMethod<
   UpdateChannelMessageRequest,
   UpdateChannelMessageResponse,
   UpdateChannelMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateChannelMessageRequest,
   output: UpdateChannelMessageResponse,
@@ -4746,7 +4746,7 @@ export const updateChannelReadMarker: API.OperationMethod<
   UpdateChannelReadMarkerRequest,
   UpdateChannelReadMarkerResponse,
   UpdateChannelReadMarkerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateChannelReadMarkerRequest,
   output: UpdateChannelReadMarkerResponse,

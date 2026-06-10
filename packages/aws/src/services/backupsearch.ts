@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "BackupSearch",
@@ -891,21 +891,21 @@ export const listSearchJobBackups: API.OperationMethod<
   ListSearchJobBackupsInput,
   ListSearchJobBackupsOutput,
   ListSearchJobBackupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSearchJobBackupsInput,
   ) => stream.Stream<
     ListSearchJobBackupsOutput,
     ListSearchJobBackupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSearchJobBackupsInput,
   ) => stream.Stream<
     SearchJobBackupsResult,
     ListSearchJobBackupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSearchJobBackupsInput,
@@ -928,21 +928,21 @@ export const listSearchJobResults: API.OperationMethod<
   ListSearchJobResultsInput,
   ListSearchJobResultsOutput,
   ListSearchJobResultsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSearchJobResultsInput,
   ) => stream.Stream<
     ListSearchJobResultsOutput,
     ListSearchJobResultsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSearchJobResultsInput,
   ) => stream.Stream<
     ResultItem,
     ListSearchJobResultsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSearchJobResultsInput,
@@ -963,7 +963,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -977,7 +977,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -991,7 +991,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1011,7 +1011,7 @@ export const startSearchJob: API.OperationMethod<
   StartSearchJobInput,
   StartSearchJobOutput,
   StartSearchJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartSearchJobInput,
   output: StartSearchJobOutput,
@@ -1029,7 +1029,7 @@ export const getSearchJob: API.OperationMethod<
   GetSearchJobInput,
   GetSearchJobOutput,
   GetSearchJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSearchJobInput,
   output: GetSearchJobOutput,
@@ -1048,7 +1048,7 @@ export const stopSearchJob: API.OperationMethod<
   StopSearchJobInput,
   StopSearchJobOutput,
   StopSearchJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopSearchJobInput,
   output: StopSearchJobOutput,
@@ -1062,21 +1062,21 @@ export const listSearchJobs: API.OperationMethod<
   ListSearchJobsInput,
   ListSearchJobsOutput,
   ListSearchJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSearchJobsInput,
   ) => stream.Stream<
     ListSearchJobsOutput,
     ListSearchJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSearchJobsInput,
   ) => stream.Stream<
     SearchJobSummary,
     ListSearchJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSearchJobsInput,
@@ -1101,7 +1101,7 @@ export const startSearchResultExportJob: API.OperationMethod<
   StartSearchResultExportJobInput,
   StartSearchResultExportJobOutput,
   StartSearchResultExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartSearchResultExportJobInput,
   output: StartSearchResultExportJobOutput,
@@ -1125,7 +1125,7 @@ export const getSearchResultExportJob: API.OperationMethod<
   GetSearchResultExportJobInput,
   GetSearchResultExportJobOutput,
   GetSearchResultExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSearchResultExportJobInput,
   output: GetSearchResultExportJobOutput,
@@ -1142,21 +1142,21 @@ export const listSearchResultExportJobs: API.OperationMethod<
   ListSearchResultExportJobsInput,
   ListSearchResultExportJobsOutput,
   ListSearchResultExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSearchResultExportJobsInput,
   ) => stream.Stream<
     ListSearchResultExportJobsOutput,
     ListSearchResultExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSearchResultExportJobsInput,
   ) => stream.Stream<
     ExportJobSummary,
     ListSearchResultExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSearchResultExportJobsInput,

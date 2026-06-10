@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({ sdkId: "tnb", serviceShapeName: "TNB" });
 const auth = T.AwsAuthSigv4({ name: "tnb" });
 const ver = T.ServiceVersion("2008-10-21");
@@ -2025,7 +2025,7 @@ export const cancelSolNetworkOperation: API.OperationMethod<
   CancelSolNetworkOperationInput,
   CancelSolNetworkOperationResponse,
   CancelSolNetworkOperationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelSolNetworkOperationInput,
   output: CancelSolNetworkOperationResponse,
@@ -2058,7 +2058,7 @@ export const createSolFunctionPackage: API.OperationMethod<
   CreateSolFunctionPackageInput,
   CreateSolFunctionPackageOutput,
   CreateSolFunctionPackageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSolFunctionPackageInput,
   output: CreateSolFunctionPackageOutput,
@@ -2092,7 +2092,7 @@ export const createSolNetworkInstance: API.OperationMethod<
   CreateSolNetworkInstanceInput,
   CreateSolNetworkInstanceOutput,
   CreateSolNetworkInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSolNetworkInstanceInput,
   output: CreateSolNetworkInstanceOutput,
@@ -2130,7 +2130,7 @@ export const createSolNetworkPackage: API.OperationMethod<
   CreateSolNetworkPackageInput,
   CreateSolNetworkPackageOutput,
   CreateSolNetworkPackageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSolNetworkPackageInput,
   output: CreateSolNetworkPackageOutput,
@@ -2161,7 +2161,7 @@ export const deleteSolFunctionPackage: API.OperationMethod<
   DeleteSolFunctionPackageInput,
   DeleteSolFunctionPackageResponse,
   DeleteSolFunctionPackageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSolFunctionPackageInput,
   output: DeleteSolFunctionPackageResponse,
@@ -2192,7 +2192,7 @@ export const deleteSolNetworkInstance: API.OperationMethod<
   DeleteSolNetworkInstanceInput,
   DeleteSolNetworkInstanceResponse,
   DeleteSolNetworkInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSolNetworkInstanceInput,
   output: DeleteSolNetworkInstanceResponse,
@@ -2223,7 +2223,7 @@ export const deleteSolNetworkPackage: API.OperationMethod<
   DeleteSolNetworkPackageInput,
   DeleteSolNetworkPackageResponse,
   DeleteSolNetworkPackageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSolNetworkPackageInput,
   output: DeleteSolNetworkPackageResponse,
@@ -2252,7 +2252,7 @@ export const getSolFunctionInstance: API.OperationMethod<
   GetSolFunctionInstanceInput,
   GetSolFunctionInstanceOutput,
   GetSolFunctionInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSolFunctionInstanceInput,
   output: GetSolFunctionInstanceOutput,
@@ -2281,7 +2281,7 @@ export const getSolFunctionPackage: API.OperationMethod<
   GetSolFunctionPackageInput,
   GetSolFunctionPackageOutput,
   GetSolFunctionPackageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSolFunctionPackageInput,
   output: GetSolFunctionPackageOutput,
@@ -2309,7 +2309,7 @@ export const getSolFunctionPackageContent: API.OperationMethod<
   GetSolFunctionPackageContentInput,
   GetSolFunctionPackageContentOutput,
   GetSolFunctionPackageContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSolFunctionPackageContentInput,
   output: GetSolFunctionPackageContentOutput,
@@ -2339,7 +2339,7 @@ export const getSolFunctionPackageDescriptor: API.OperationMethod<
   GetSolFunctionPackageDescriptorInput,
   GetSolFunctionPackageDescriptorOutput,
   GetSolFunctionPackageDescriptorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSolFunctionPackageDescriptorInput,
   output: GetSolFunctionPackageDescriptorOutput,
@@ -2367,7 +2367,7 @@ export const getSolNetworkInstance: API.OperationMethod<
   GetSolNetworkInstanceInput,
   GetSolNetworkInstanceOutput,
   GetSolNetworkInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSolNetworkInstanceInput,
   output: GetSolNetworkInstanceOutput,
@@ -2396,7 +2396,7 @@ export const getSolNetworkOperation: API.OperationMethod<
   GetSolNetworkOperationInput,
   GetSolNetworkOperationOutput,
   GetSolNetworkOperationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSolNetworkOperationInput,
   output: GetSolNetworkOperationOutput,
@@ -2424,7 +2424,7 @@ export const getSolNetworkPackage: API.OperationMethod<
   GetSolNetworkPackageInput,
   GetSolNetworkPackageOutput,
   GetSolNetworkPackageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSolNetworkPackageInput,
   output: GetSolNetworkPackageOutput,
@@ -2452,7 +2452,7 @@ export const getSolNetworkPackageContent: API.OperationMethod<
   GetSolNetworkPackageContentInput,
   GetSolNetworkPackageContentOutput,
   GetSolNetworkPackageContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSolNetworkPackageContentInput,
   output: GetSolNetworkPackageContentOutput,
@@ -2480,7 +2480,7 @@ export const getSolNetworkPackageDescriptor: API.OperationMethod<
   GetSolNetworkPackageDescriptorInput,
   GetSolNetworkPackageDescriptorOutput,
   GetSolNetworkPackageDescriptorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSolNetworkPackageDescriptorInput,
   output: GetSolNetworkPackageDescriptorOutput,
@@ -2512,7 +2512,7 @@ export const instantiateSolNetworkInstance: API.OperationMethod<
   InstantiateSolNetworkInstanceInput,
   InstantiateSolNetworkInstanceOutput,
   InstantiateSolNetworkInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InstantiateSolNetworkInstanceInput,
   output: InstantiateSolNetworkInstanceOutput,
@@ -2540,21 +2540,21 @@ export const listSolFunctionInstances: API.OperationMethod<
   ListSolFunctionInstancesInput,
   ListSolFunctionInstancesOutput,
   ListSolFunctionInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSolFunctionInstancesInput,
   ) => stream.Stream<
     ListSolFunctionInstancesOutput,
     ListSolFunctionInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSolFunctionInstancesInput,
   ) => stream.Stream<
     ListSolFunctionInstanceInfo,
     ListSolFunctionInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSolFunctionInstancesInput,
@@ -2587,21 +2587,21 @@ export const listSolFunctionPackages: API.OperationMethod<
   ListSolFunctionPackagesInput,
   ListSolFunctionPackagesOutput,
   ListSolFunctionPackagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSolFunctionPackagesInput,
   ) => stream.Stream<
     ListSolFunctionPackagesOutput,
     ListSolFunctionPackagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSolFunctionPackagesInput,
   ) => stream.Stream<
     ListSolFunctionPackageInfo,
     ListSolFunctionPackagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSolFunctionPackagesInput,
@@ -2634,21 +2634,21 @@ export const listSolNetworkInstances: API.OperationMethod<
   ListSolNetworkInstancesInput,
   ListSolNetworkInstancesOutput,
   ListSolNetworkInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSolNetworkInstancesInput,
   ) => stream.Stream<
     ListSolNetworkInstancesOutput,
     ListSolNetworkInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSolNetworkInstancesInput,
   ) => stream.Stream<
     ListSolNetworkInstanceInfo,
     ListSolNetworkInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSolNetworkInstancesInput,
@@ -2682,21 +2682,21 @@ export const listSolNetworkOperations: API.OperationMethod<
   ListSolNetworkOperationsInput,
   ListSolNetworkOperationsOutput,
   ListSolNetworkOperationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSolNetworkOperationsInput,
   ) => stream.Stream<
     ListSolNetworkOperationsOutput,
     ListSolNetworkOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSolNetworkOperationsInput,
   ) => stream.Stream<
     ListSolNetworkOperationsInfo,
     ListSolNetworkOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSolNetworkOperationsInput,
@@ -2729,21 +2729,21 @@ export const listSolNetworkPackages: API.OperationMethod<
   ListSolNetworkPackagesInput,
   ListSolNetworkPackagesOutput,
   ListSolNetworkPackagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSolNetworkPackagesInput,
   ) => stream.Stream<
     ListSolNetworkPackagesOutput,
     ListSolNetworkPackagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSolNetworkPackagesInput,
   ) => stream.Stream<
     ListSolNetworkPackageInfo,
     ListSolNetworkPackagesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSolNetworkPackagesInput,
@@ -2775,7 +2775,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -2803,7 +2803,7 @@ export const putSolFunctionPackageContent: API.OperationMethod<
   PutSolFunctionPackageContentInput,
   PutSolFunctionPackageContentOutput,
   PutSolFunctionPackageContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSolFunctionPackageContentInput,
   output: PutSolFunctionPackageContentOutput,
@@ -2831,7 +2831,7 @@ export const putSolNetworkPackageContent: API.OperationMethod<
   PutSolNetworkPackageContentInput,
   PutSolNetworkPackageContentOutput,
   PutSolNetworkPackageContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSolNetworkPackageContentInput,
   output: PutSolNetworkPackageContentOutput,
@@ -2859,7 +2859,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -2890,7 +2890,7 @@ export const terminateSolNetworkInstance: API.OperationMethod<
   TerminateSolNetworkInstanceInput,
   TerminateSolNetworkInstanceOutput,
   TerminateSolNetworkInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TerminateSolNetworkInstanceInput,
   output: TerminateSolNetworkInstanceOutput,
@@ -2919,7 +2919,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -2947,7 +2947,7 @@ export const updateSolFunctionPackage: API.OperationMethod<
   UpdateSolFunctionPackageInput,
   UpdateSolFunctionPackageOutput,
   UpdateSolFunctionPackageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSolFunctionPackageInput,
   output: UpdateSolFunctionPackageOutput,
@@ -2978,7 +2978,7 @@ export const updateSolNetworkInstance: API.OperationMethod<
   UpdateSolNetworkInstanceInput,
   UpdateSolNetworkInstanceOutput,
   UpdateSolNetworkInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSolNetworkInstanceInput,
   output: UpdateSolNetworkInstanceOutput,
@@ -3009,7 +3009,7 @@ export const updateSolNetworkPackage: API.OperationMethod<
   UpdateSolNetworkPackageInput,
   UpdateSolNetworkPackageOutput,
   UpdateSolNetworkPackageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSolNetworkPackageInput,
   output: UpdateSolNetworkPackageOutput,
@@ -3038,7 +3038,7 @@ export const validateSolFunctionPackageContent: API.OperationMethod<
   ValidateSolFunctionPackageContentInput,
   ValidateSolFunctionPackageContentOutput,
   ValidateSolFunctionPackageContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateSolFunctionPackageContentInput,
   output: ValidateSolFunctionPackageContentOutput,
@@ -3067,7 +3067,7 @@ export const validateSolNetworkPackageContent: API.OperationMethod<
   ValidateSolNetworkPackageContentInput,
   ValidateSolNetworkPackageContentOutput,
   ValidateSolNetworkPackageContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateSolNetworkPackageContentInput,
   output: ValidateSolNetworkPackageContentOutput,

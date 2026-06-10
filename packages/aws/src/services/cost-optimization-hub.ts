@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Cost Optimization Hub",
   serviceShapeName: "CostOptimizationHubService",
@@ -1975,7 +1975,7 @@ export const getPreferences: API.OperationMethod<
   GetPreferencesRequest,
   GetPreferencesResponse,
   GetPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPreferencesRequest,
   output: GetPreferencesResponse,
@@ -2002,7 +2002,7 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationRequest,
   GetRecommendationResponse,
   GetRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecommendationRequest,
   output: GetRecommendationResponse,
@@ -2029,21 +2029,21 @@ export const listEfficiencyMetrics: API.OperationMethod<
   ListEfficiencyMetricsRequest,
   ListEfficiencyMetricsResponse,
   ListEfficiencyMetricsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEfficiencyMetricsRequest,
   ) => stream.Stream<
     ListEfficiencyMetricsResponse,
     ListEfficiencyMetricsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEfficiencyMetricsRequest,
   ) => stream.Stream<
     EfficiencyMetricsByGroup,
     ListEfficiencyMetricsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEfficiencyMetricsRequest,
@@ -2074,21 +2074,21 @@ export const listEnrollmentStatuses: API.OperationMethod<
   ListEnrollmentStatusesRequest,
   ListEnrollmentStatusesResponse,
   ListEnrollmentStatusesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEnrollmentStatusesRequest,
   ) => stream.Stream<
     ListEnrollmentStatusesResponse,
     ListEnrollmentStatusesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEnrollmentStatusesRequest,
   ) => stream.Stream<
     AccountEnrollmentStatus,
     ListEnrollmentStatusesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnrollmentStatusesRequest,
@@ -2119,21 +2119,21 @@ export const listRecommendations: API.OperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecommendationsRequest,
   ) => stream.Stream<
     ListRecommendationsResponse,
     ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecommendationsRequest,
   ) => stream.Stream<
     Recommendation,
     ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
@@ -2166,21 +2166,21 @@ export const listRecommendationSummaries: API.OperationMethod<
   ListRecommendationSummariesRequest,
   ListRecommendationSummariesResponse,
   ListRecommendationSummariesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecommendationSummariesRequest,
   ) => stream.Stream<
     ListRecommendationSummariesResponse,
     ListRecommendationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecommendationSummariesRequest,
   ) => stream.Stream<
     RecommendationSummary,
     ListRecommendationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationSummariesRequest,
@@ -2215,7 +2215,7 @@ export const updateEnrollmentStatus: API.OperationMethod<
   UpdateEnrollmentStatusRequest,
   UpdateEnrollmentStatusResponse,
   UpdateEnrollmentStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnrollmentStatusRequest,
   output: UpdateEnrollmentStatusResponse,
@@ -2239,7 +2239,7 @@ export const updatePreferences: API.OperationMethod<
   UpdatePreferencesRequest,
   UpdatePreferencesResponse,
   UpdatePreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePreferencesRequest,
   output: UpdatePreferencesResponse,

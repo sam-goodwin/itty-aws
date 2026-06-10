@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({ sdkId: "Macie2", serviceShapeName: "Macie2" });
 const auth = T.AwsAuthSigv4({ name: "macie2" });
 const ver = T.ServiceVersion("2020-01-01");
@@ -5383,7 +5383,7 @@ export const acceptInvitation: API.OperationMethod<
   AcceptInvitationRequest,
   AcceptInvitationResponse,
   AcceptInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptInvitationRequest,
   output: AcceptInvitationResponse,
@@ -5413,7 +5413,7 @@ export const batchGetCustomDataIdentifiers: API.OperationMethod<
   BatchGetCustomDataIdentifiersRequest,
   BatchGetCustomDataIdentifiersResponse,
   BatchGetCustomDataIdentifiersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetCustomDataIdentifiersRequest,
   output: BatchGetCustomDataIdentifiersResponse,
@@ -5441,7 +5441,7 @@ export const batchUpdateAutomatedDiscoveryAccounts: API.OperationMethod<
   BatchUpdateAutomatedDiscoveryAccountsRequest,
   BatchUpdateAutomatedDiscoveryAccountsResponse,
   BatchUpdateAutomatedDiscoveryAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateAutomatedDiscoveryAccountsRequest,
   output: BatchUpdateAutomatedDiscoveryAccountsResponse,
@@ -5469,7 +5469,7 @@ export const createAllowList: API.OperationMethod<
   CreateAllowListRequest,
   CreateAllowListResponse,
   CreateAllowListError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAllowListRequest,
   output: CreateAllowListResponse,
@@ -5499,7 +5499,7 @@ export const createClassificationJob: API.OperationMethod<
   CreateClassificationJobRequest,
   CreateClassificationJobResponse,
   CreateClassificationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateClassificationJobRequest,
   output: CreateClassificationJobResponse,
@@ -5529,7 +5529,7 @@ export const createCustomDataIdentifier: API.OperationMethod<
   CreateCustomDataIdentifierRequest,
   CreateCustomDataIdentifierResponse,
   CreateCustomDataIdentifierError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomDataIdentifierRequest,
   output: CreateCustomDataIdentifierResponse,
@@ -5559,7 +5559,7 @@ export const createFindingsFilter: API.OperationMethod<
   CreateFindingsFilterRequest,
   CreateFindingsFilterResponse,
   CreateFindingsFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFindingsFilterRequest,
   output: CreateFindingsFilterResponse,
@@ -5589,7 +5589,7 @@ export const createInvitations: API.OperationMethod<
   CreateInvitationsRequest,
   CreateInvitationsResponse,
   CreateInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInvitationsRequest,
   output: CreateInvitationsResponse,
@@ -5619,7 +5619,7 @@ export const createMember: API.OperationMethod<
   CreateMemberRequest,
   CreateMemberResponse,
   CreateMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMemberRequest,
   output: CreateMemberResponse,
@@ -5649,7 +5649,7 @@ export const createSampleFindings: API.OperationMethod<
   CreateSampleFindingsRequest,
   CreateSampleFindingsResponse,
   CreateSampleFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSampleFindingsRequest,
   output: CreateSampleFindingsResponse,
@@ -5679,7 +5679,7 @@ export const declineInvitations: API.OperationMethod<
   DeclineInvitationsRequest,
   DeclineInvitationsResponse,
   DeclineInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeclineInvitationsRequest,
   output: DeclineInvitationsResponse,
@@ -5707,7 +5707,7 @@ export const deleteAllowList: API.OperationMethod<
   DeleteAllowListRequest,
   DeleteAllowListResponse,
   DeleteAllowListError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAllowListRequest,
   output: DeleteAllowListResponse,
@@ -5735,7 +5735,7 @@ export const deleteCustomDataIdentifier: API.OperationMethod<
   DeleteCustomDataIdentifierRequest,
   DeleteCustomDataIdentifierResponse,
   DeleteCustomDataIdentifierError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomDataIdentifierRequest,
   output: DeleteCustomDataIdentifierResponse,
@@ -5765,7 +5765,7 @@ export const deleteFindingsFilter: API.OperationMethod<
   DeleteFindingsFilterRequest,
   DeleteFindingsFilterResponse,
   DeleteFindingsFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFindingsFilterRequest,
   output: DeleteFindingsFilterResponse,
@@ -5795,7 +5795,7 @@ export const deleteInvitations: API.OperationMethod<
   DeleteInvitationsRequest,
   DeleteInvitationsResponse,
   DeleteInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInvitationsRequest,
   output: DeleteInvitationsResponse,
@@ -5825,7 +5825,7 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberRequest,
   DeleteMemberResponse,
   DeleteMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMemberRequest,
   output: DeleteMemberResponse,
@@ -5855,21 +5855,21 @@ export const describeBuckets: API.OperationMethod<
   DescribeBucketsRequest,
   DescribeBucketsResponse,
   DescribeBucketsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeBucketsRequest,
   ) => stream.Stream<
     DescribeBucketsResponse,
     DescribeBucketsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeBucketsRequest,
   ) => stream.Stream<
     BucketMetadata,
     DescribeBucketsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeBucketsRequest,
@@ -5906,7 +5906,7 @@ export const describeClassificationJob: API.OperationMethod<
   DescribeClassificationJobRequest,
   DescribeClassificationJobResponse,
   DescribeClassificationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeClassificationJobRequest,
   output: DescribeClassificationJobResponse,
@@ -5936,7 +5936,7 @@ export const describeOrganizationConfiguration: API.OperationMethod<
   DescribeOrganizationConfigurationRequest,
   DescribeOrganizationConfigurationResponse,
   DescribeOrganizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeOrganizationConfigurationRequest,
   output: DescribeOrganizationConfigurationResponse,
@@ -5966,7 +5966,7 @@ export const disableMacie: API.OperationMethod<
   DisableMacieRequest,
   DisableMacieResponse,
   DisableMacieError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableMacieRequest,
   output: DisableMacieResponse,
@@ -5996,7 +5996,7 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
   DisableOrganizationAdminAccountRequest,
   DisableOrganizationAdminAccountResponse,
   DisableOrganizationAdminAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableOrganizationAdminAccountRequest,
   output: DisableOrganizationAdminAccountResponse,
@@ -6026,7 +6026,7 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
   DisassociateFromAdministratorAccountRequest,
   DisassociateFromAdministratorAccountResponse,
   DisassociateFromAdministratorAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateFromAdministratorAccountRequest,
   output: DisassociateFromAdministratorAccountResponse,
@@ -6056,7 +6056,7 @@ export const disassociateFromMasterAccount: API.OperationMethod<
   DisassociateFromMasterAccountRequest,
   DisassociateFromMasterAccountResponse,
   DisassociateFromMasterAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateFromMasterAccountRequest,
   output: DisassociateFromMasterAccountResponse,
@@ -6086,7 +6086,7 @@ export const disassociateMember: API.OperationMethod<
   DisassociateMemberRequest,
   DisassociateMemberResponse,
   DisassociateMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateMemberRequest,
   output: DisassociateMemberResponse,
@@ -6116,7 +6116,7 @@ export const enableMacie: API.OperationMethod<
   EnableMacieRequest,
   EnableMacieResponse,
   EnableMacieError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableMacieRequest,
   output: EnableMacieResponse,
@@ -6146,7 +6146,7 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
   EnableOrganizationAdminAccountRequest,
   EnableOrganizationAdminAccountResponse,
   EnableOrganizationAdminAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableOrganizationAdminAccountRequest,
   output: EnableOrganizationAdminAccountResponse,
@@ -6176,7 +6176,7 @@ export const getAdministratorAccount: API.OperationMethod<
   GetAdministratorAccountRequest,
   GetAdministratorAccountResponse,
   GetAdministratorAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdministratorAccountRequest,
   output: GetAdministratorAccountResponse,
@@ -6204,7 +6204,7 @@ export const getAllowList: API.OperationMethod<
   GetAllowListRequest,
   GetAllowListResponse,
   GetAllowListError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAllowListRequest,
   output: GetAllowListResponse,
@@ -6229,7 +6229,7 @@ export const getAutomatedDiscoveryConfiguration: API.OperationMethod<
   GetAutomatedDiscoveryConfigurationRequest,
   GetAutomatedDiscoveryConfigurationResponse,
   GetAutomatedDiscoveryConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAutomatedDiscoveryConfigurationRequest,
   output: GetAutomatedDiscoveryConfigurationResponse,
@@ -6256,7 +6256,7 @@ export const getBucketStatistics: API.OperationMethod<
   GetBucketStatisticsRequest,
   GetBucketStatisticsResponse,
   GetBucketStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketStatisticsRequest,
   output: GetBucketStatisticsResponse,
@@ -6286,7 +6286,7 @@ export const getClassificationExportConfiguration: API.OperationMethod<
   GetClassificationExportConfigurationRequest,
   GetClassificationExportConfigurationResponse,
   GetClassificationExportConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetClassificationExportConfigurationRequest,
   output: GetClassificationExportConfigurationResponse,
@@ -6314,7 +6314,7 @@ export const getClassificationScope: API.OperationMethod<
   GetClassificationScopeRequest,
   GetClassificationScopeResponse,
   GetClassificationScopeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetClassificationScopeRequest,
   output: GetClassificationScopeResponse,
@@ -6342,7 +6342,7 @@ export const getCustomDataIdentifier: API.OperationMethod<
   GetCustomDataIdentifierRequest,
   GetCustomDataIdentifierResponse,
   GetCustomDataIdentifierError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomDataIdentifierRequest,
   output: GetCustomDataIdentifierResponse,
@@ -6372,7 +6372,7 @@ export const getFindings: API.OperationMethod<
   GetFindingsRequest,
   GetFindingsResponse,
   GetFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFindingsRequest,
   output: GetFindingsResponse,
@@ -6402,7 +6402,7 @@ export const getFindingsFilter: API.OperationMethod<
   GetFindingsFilterRequest,
   GetFindingsFilterResponse,
   GetFindingsFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFindingsFilterRequest,
   output: GetFindingsFilterResponse,
@@ -6432,7 +6432,7 @@ export const getFindingsPublicationConfiguration: API.OperationMethod<
   GetFindingsPublicationConfigurationRequest,
   GetFindingsPublicationConfigurationResponse,
   GetFindingsPublicationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFindingsPublicationConfigurationRequest,
   output: GetFindingsPublicationConfigurationResponse,
@@ -6462,7 +6462,7 @@ export const getFindingStatistics: API.OperationMethod<
   GetFindingStatisticsRequest,
   GetFindingStatisticsResponse,
   GetFindingStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFindingStatisticsRequest,
   output: GetFindingStatisticsResponse,
@@ -6492,7 +6492,7 @@ export const getInvitationsCount: API.OperationMethod<
   GetInvitationsCountRequest,
   GetInvitationsCountResponse,
   GetInvitationsCountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInvitationsCountRequest,
   output: GetInvitationsCountResponse,
@@ -6522,7 +6522,7 @@ export const getMacieSession: API.OperationMethod<
   GetMacieSessionRequest,
   GetMacieSessionResponse,
   GetMacieSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMacieSessionRequest,
   output: GetMacieSessionResponse,
@@ -6552,7 +6552,7 @@ export const getMasterAccount: API.OperationMethod<
   GetMasterAccountRequest,
   GetMasterAccountResponse,
   GetMasterAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMasterAccountRequest,
   output: GetMasterAccountResponse,
@@ -6582,7 +6582,7 @@ export const getMember: API.OperationMethod<
   GetMemberRequest,
   GetMemberResponse,
   GetMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMemberRequest,
   output: GetMemberResponse,
@@ -6611,7 +6611,7 @@ export const getResourceProfile: API.OperationMethod<
   GetResourceProfileRequest,
   GetResourceProfileResponse,
   GetResourceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceProfileRequest,
   output: GetResourceProfileResponse,
@@ -6637,7 +6637,7 @@ export const getRevealConfiguration: API.OperationMethod<
   GetRevealConfigurationRequest,
   GetRevealConfigurationResponse,
   GetRevealConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRevealConfigurationRequest,
   output: GetRevealConfigurationResponse,
@@ -6663,7 +6663,7 @@ export const getSensitiveDataOccurrences: API.OperationMethod<
   GetSensitiveDataOccurrencesRequest,
   GetSensitiveDataOccurrencesResponse,
   GetSensitiveDataOccurrencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSensitiveDataOccurrencesRequest,
   output: GetSensitiveDataOccurrencesResponse,
@@ -6689,7 +6689,7 @@ export const getSensitiveDataOccurrencesAvailability: API.OperationMethod<
   GetSensitiveDataOccurrencesAvailabilityRequest,
   GetSensitiveDataOccurrencesAvailabilityResponse,
   GetSensitiveDataOccurrencesAvailabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSensitiveDataOccurrencesAvailabilityRequest,
   output: GetSensitiveDataOccurrencesAvailabilityResponse,
@@ -6714,7 +6714,7 @@ export const getSensitivityInspectionTemplate: API.OperationMethod<
   GetSensitivityInspectionTemplateRequest,
   GetSensitivityInspectionTemplateResponse,
   GetSensitivityInspectionTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSensitivityInspectionTemplateRequest,
   output: GetSensitivityInspectionTemplateResponse,
@@ -6742,21 +6742,21 @@ export const getUsageStatistics: API.OperationMethod<
   GetUsageStatisticsRequest,
   GetUsageStatisticsResponse,
   GetUsageStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetUsageStatisticsRequest,
   ) => stream.Stream<
     GetUsageStatisticsResponse,
     GetUsageStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetUsageStatisticsRequest,
   ) => stream.Stream<
     UsageRecord,
     GetUsageStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetUsageStatisticsRequest,
@@ -6793,7 +6793,7 @@ export const getUsageTotals: API.OperationMethod<
   GetUsageTotalsRequest,
   GetUsageTotalsResponse,
   GetUsageTotalsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsageTotalsRequest,
   output: GetUsageTotalsResponse,
@@ -6820,21 +6820,21 @@ export const listAllowLists: API.OperationMethod<
   ListAllowListsRequest,
   ListAllowListsResponse,
   ListAllowListsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAllowListsRequest,
   ) => stream.Stream<
     ListAllowListsResponse,
     ListAllowListsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAllowListsRequest,
   ) => stream.Stream<
     AllowListSummary,
     ListAllowListsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAllowListsRequest,
@@ -6866,21 +6866,21 @@ export const listAutomatedDiscoveryAccounts: API.OperationMethod<
   ListAutomatedDiscoveryAccountsRequest,
   ListAutomatedDiscoveryAccountsResponse,
   ListAutomatedDiscoveryAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAutomatedDiscoveryAccountsRequest,
   ) => stream.Stream<
     ListAutomatedDiscoveryAccountsResponse,
     ListAutomatedDiscoveryAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAutomatedDiscoveryAccountsRequest,
   ) => stream.Stream<
     AutomatedDiscoveryAccount,
     ListAutomatedDiscoveryAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedDiscoveryAccountsRequest,
@@ -6915,21 +6915,21 @@ export const listClassificationJobs: API.OperationMethod<
   ListClassificationJobsRequest,
   ListClassificationJobsResponse,
   ListClassificationJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListClassificationJobsRequest,
   ) => stream.Stream<
     ListClassificationJobsResponse,
     ListClassificationJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListClassificationJobsRequest,
   ) => stream.Stream<
     JobSummary,
     ListClassificationJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClassificationJobsRequest,
@@ -6963,21 +6963,21 @@ export const listClassificationScopes: API.OperationMethod<
   ListClassificationScopesRequest,
   ListClassificationScopesResponse,
   ListClassificationScopesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListClassificationScopesRequest,
   ) => stream.Stream<
     ListClassificationScopesResponse,
     ListClassificationScopesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListClassificationScopesRequest,
   ) => stream.Stream<
     ClassificationScopeSummary,
     ListClassificationScopesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClassificationScopesRequest,
@@ -7010,21 +7010,21 @@ export const listCustomDataIdentifiers: API.OperationMethod<
   ListCustomDataIdentifiersRequest,
   ListCustomDataIdentifiersResponse,
   ListCustomDataIdentifiersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCustomDataIdentifiersRequest,
   ) => stream.Stream<
     ListCustomDataIdentifiersResponse,
     ListCustomDataIdentifiersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCustomDataIdentifiersRequest,
   ) => stream.Stream<
     CustomDataIdentifierSummary,
     ListCustomDataIdentifiersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomDataIdentifiersRequest,
@@ -7061,21 +7061,21 @@ export const listFindings: API.OperationMethod<
   ListFindingsRequest,
   ListFindingsResponse,
   ListFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFindingsRequest,
   ) => stream.Stream<
     ListFindingsResponse,
     ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFindingsRequest,
   ) => stream.Stream<
     string,
     ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsRequest,
@@ -7112,21 +7112,21 @@ export const listFindingsFilters: API.OperationMethod<
   ListFindingsFiltersRequest,
   ListFindingsFiltersResponse,
   ListFindingsFiltersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFindingsFiltersRequest,
   ) => stream.Stream<
     ListFindingsFiltersResponse,
     ListFindingsFiltersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFindingsFiltersRequest,
   ) => stream.Stream<
     FindingsFilterListItem,
     ListFindingsFiltersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsFiltersRequest,
@@ -7163,21 +7163,21 @@ export const listInvitations: API.OperationMethod<
   ListInvitationsRequest,
   ListInvitationsResponse,
   ListInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInvitationsRequest,
   ) => stream.Stream<
     ListInvitationsResponse,
     ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInvitationsRequest,
   ) => stream.Stream<
     Invitation,
     ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInvitationsRequest,
@@ -7206,21 +7206,21 @@ export const listManagedDataIdentifiers: API.OperationMethod<
   ListManagedDataIdentifiersRequest,
   ListManagedDataIdentifiersResponse,
   ListManagedDataIdentifiersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListManagedDataIdentifiersRequest,
   ) => stream.Stream<
     ListManagedDataIdentifiersResponse,
     ListManagedDataIdentifiersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListManagedDataIdentifiersRequest,
   ) => stream.Stream<
     ManagedDataIdentifierSummary,
     ListManagedDataIdentifiersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManagedDataIdentifiersRequest,
@@ -7248,21 +7248,21 @@ export const listMembers: API.OperationMethod<
   ListMembersRequest,
   ListMembersResponse,
   ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMembersRequest,
   ) => stream.Stream<
     ListMembersResponse,
     ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMembersRequest,
   ) => stream.Stream<
     Member,
     ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
@@ -7299,21 +7299,21 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
   ListOrganizationAdminAccountsRequest,
   ListOrganizationAdminAccountsResponse,
   ListOrganizationAdminAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOrganizationAdminAccountsRequest,
   ) => stream.Stream<
     ListOrganizationAdminAccountsResponse,
     ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOrganizationAdminAccountsRequest,
   ) => stream.Stream<
     AdminAccount,
     ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationAdminAccountsRequest,
@@ -7348,21 +7348,21 @@ export const listResourceProfileArtifacts: API.OperationMethod<
   ListResourceProfileArtifactsRequest,
   ListResourceProfileArtifactsResponse,
   ListResourceProfileArtifactsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceProfileArtifactsRequest,
   ) => stream.Stream<
     ListResourceProfileArtifactsResponse,
     ListResourceProfileArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceProfileArtifactsRequest,
   ) => stream.Stream<
     ResourceProfileArtifact,
     ListResourceProfileArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceProfileArtifactsRequest,
@@ -7395,21 +7395,21 @@ export const listResourceProfileDetections: API.OperationMethod<
   ListResourceProfileDetectionsRequest,
   ListResourceProfileDetectionsResponse,
   ListResourceProfileDetectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceProfileDetectionsRequest,
   ) => stream.Stream<
     ListResourceProfileDetectionsResponse,
     ListResourceProfileDetectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceProfileDetectionsRequest,
   ) => stream.Stream<
     Detection,
     ListResourceProfileDetectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceProfileDetectionsRequest,
@@ -7443,21 +7443,21 @@ export const listSensitivityInspectionTemplates: API.OperationMethod<
   ListSensitivityInspectionTemplatesRequest,
   ListSensitivityInspectionTemplatesResponse,
   ListSensitivityInspectionTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSensitivityInspectionTemplatesRequest,
   ) => stream.Stream<
     ListSensitivityInspectionTemplatesResponse,
     ListSensitivityInspectionTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSensitivityInspectionTemplatesRequest,
   ) => stream.Stream<
     SensitivityInspectionTemplatesEntry,
     ListSensitivityInspectionTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSensitivityInspectionTemplatesRequest,
@@ -7484,7 +7484,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -7506,7 +7506,7 @@ export const putClassificationExportConfiguration: API.OperationMethod<
   PutClassificationExportConfigurationRequest,
   PutClassificationExportConfigurationResponse,
   PutClassificationExportConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutClassificationExportConfigurationRequest,
   output: PutClassificationExportConfigurationResponse,
@@ -7536,7 +7536,7 @@ export const putFindingsPublicationConfiguration: API.OperationMethod<
   PutFindingsPublicationConfigurationRequest,
   PutFindingsPublicationConfigurationResponse,
   PutFindingsPublicationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutFindingsPublicationConfigurationRequest,
   output: PutFindingsPublicationConfigurationResponse,
@@ -7566,21 +7566,21 @@ export const searchResources: API.OperationMethod<
   SearchResourcesRequest,
   SearchResourcesResponse,
   SearchResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchResourcesRequest,
   ) => stream.Stream<
     SearchResourcesResponse,
     SearchResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: SearchResourcesRequest,
   ) => stream.Stream<
     MatchingResource,
     SearchResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchResourcesRequest,
@@ -7609,7 +7609,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -7631,7 +7631,7 @@ export const testCustomDataIdentifier: API.OperationMethod<
   TestCustomDataIdentifierRequest,
   TestCustomDataIdentifierResponse,
   TestCustomDataIdentifierError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestCustomDataIdentifierRequest,
   output: TestCustomDataIdentifierResponse,
@@ -7653,7 +7653,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -7673,7 +7673,7 @@ export const updateAllowList: API.OperationMethod<
   UpdateAllowListRequest,
   UpdateAllowListResponse,
   UpdateAllowListError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAllowListRequest,
   output: UpdateAllowListResponse,
@@ -7698,7 +7698,7 @@ export const updateAutomatedDiscoveryConfiguration: API.OperationMethod<
   UpdateAutomatedDiscoveryConfigurationRequest,
   UpdateAutomatedDiscoveryConfigurationResponse,
   UpdateAutomatedDiscoveryConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAutomatedDiscoveryConfigurationRequest,
   output: UpdateAutomatedDiscoveryConfigurationResponse,
@@ -7725,7 +7725,7 @@ export const updateClassificationJob: API.OperationMethod<
   UpdateClassificationJobRequest,
   UpdateClassificationJobResponse,
   UpdateClassificationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateClassificationJobRequest,
   output: UpdateClassificationJobResponse,
@@ -7753,7 +7753,7 @@ export const updateClassificationScope: API.OperationMethod<
   UpdateClassificationScopeRequest,
   UpdateClassificationScopeResponse,
   UpdateClassificationScopeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateClassificationScopeRequest,
   output: UpdateClassificationScopeResponse,
@@ -7781,7 +7781,7 @@ export const updateFindingsFilter: API.OperationMethod<
   UpdateFindingsFilterRequest,
   UpdateFindingsFilterResponse,
   UpdateFindingsFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFindingsFilterRequest,
   output: UpdateFindingsFilterResponse,
@@ -7811,7 +7811,7 @@ export const updateMacieSession: API.OperationMethod<
   UpdateMacieSessionRequest,
   UpdateMacieSessionResponse,
   UpdateMacieSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMacieSessionRequest,
   output: UpdateMacieSessionResponse,
@@ -7841,7 +7841,7 @@ export const updateMemberSession: API.OperationMethod<
   UpdateMemberSessionRequest,
   UpdateMemberSessionResponse,
   UpdateMemberSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMemberSessionRequest,
   output: UpdateMemberSessionResponse,
@@ -7871,7 +7871,7 @@ export const updateOrganizationConfiguration: API.OperationMethod<
   UpdateOrganizationConfigurationRequest,
   UpdateOrganizationConfigurationResponse,
   UpdateOrganizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationConfigurationRequest,
   output: UpdateOrganizationConfigurationResponse,
@@ -7900,7 +7900,7 @@ export const updateResourceProfile: API.OperationMethod<
   UpdateResourceProfileRequest,
   UpdateResourceProfileResponse,
   UpdateResourceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourceProfileRequest,
   output: UpdateResourceProfileResponse,
@@ -7928,7 +7928,7 @@ export const updateResourceProfileDetections: API.OperationMethod<
   UpdateResourceProfileDetectionsRequest,
   UpdateResourceProfileDetectionsResponse,
   UpdateResourceProfileDetectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourceProfileDetectionsRequest,
   output: UpdateResourceProfileDetectionsResponse,
@@ -7954,7 +7954,7 @@ export const updateRevealConfiguration: API.OperationMethod<
   UpdateRevealConfigurationRequest,
   UpdateRevealConfigurationResponse,
   UpdateRevealConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRevealConfigurationRequest,
   output: UpdateRevealConfigurationResponse,
@@ -7979,7 +7979,7 @@ export const updateSensitivityInspectionTemplate: API.OperationMethod<
   UpdateSensitivityInspectionTemplateRequest,
   UpdateSensitivityInspectionTemplateResponse,
   UpdateSensitivityInspectionTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSensitivityInspectionTemplateRequest,
   output: UpdateSensitivityInspectionTemplateResponse,

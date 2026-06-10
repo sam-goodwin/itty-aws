@@ -3,17 +3,23 @@ import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 
-export class Region extends Context.Service<
-  Region,
-  Effect.Effect<RegionName>
->()("AWS::Region") {}
+export class AWSConfig extends Context.Service<
+  AWSConfig,
+  Effect.Effect<{
+    readonly region: RegionName;
+    readonly endpoint?: string | undefined;
+  }>
+>()("AWS::Config") {}
 
 export const fromEnv = () =>
   Layer.succeed(
-    Region,
-    Config.string("AWS_REGION")
-      .pipe(Config.orElse(() => Config.string("AWS_DEFAULT_REGION")))
-      .pipe(Effect.orDie),
+    AWSConfig,
+    Effect.map(
+      Config.string("AWS_REGION")
+        .pipe(Config.orElse(() => Config.string("AWS_DEFAULT_REGION")))
+        .pipe(Effect.orDie),
+      (region) => ({ region }),
+    ),
   );
 
 export type RegionName =

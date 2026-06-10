@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "BCM Recommended Actions",
   serviceShapeName: "AWSBillingAndCostManagementRecommendedActions",
@@ -268,21 +268,21 @@ export const listRecommendedActions: API.OperationMethod<
   ListRecommendedActionsRequest,
   ListRecommendedActionsResponse,
   ListRecommendedActionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRecommendedActionsRequest,
   ) => stream.Stream<
     ListRecommendedActionsResponse,
     ListRecommendedActionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListRecommendedActionsRequest,
   ) => stream.Stream<
     RecommendedAction,
     ListRecommendedActionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendedActionsRequest,

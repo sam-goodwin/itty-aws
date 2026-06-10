@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "CloudControl",
@@ -577,7 +577,7 @@ export const cancelResourceRequest: API.OperationMethod<
   CancelResourceRequestInput,
   CancelResourceRequestOutput,
   CancelResourceRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelResourceRequestInput,
   output: CancelResourceRequestOutput,
@@ -616,7 +616,7 @@ export const createResource: API.OperationMethod<
   CreateResourceInput,
   CreateResourceOutput,
   CreateResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResourceInput,
   output: CreateResourceOutput,
@@ -675,7 +675,7 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceInput,
   DeleteResourceOutput,
   DeleteResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceInput,
   output: DeleteResourceOutput,
@@ -731,7 +731,7 @@ export const getResource: API.OperationMethod<
   GetResourceInput,
   GetResourceOutput,
   GetResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceInput,
   output: GetResourceOutput,
@@ -767,7 +767,7 @@ export const getResourceRequestStatus: API.OperationMethod<
   GetResourceRequestStatusInput,
   GetResourceRequestStatusOutput,
   GetResourceRequestStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceRequestStatusInput,
   output: GetResourceRequestStatusOutput,
@@ -785,21 +785,21 @@ export const listResourceRequests: API.OperationMethod<
   ListResourceRequestsInput,
   ListResourceRequestsOutput,
   ListResourceRequestsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceRequestsInput,
   ) => stream.Stream<
     ListResourceRequestsOutput,
     ListResourceRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceRequestsInput,
   ) => stream.Stream<
     ProgressEvent,
     ListResourceRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceRequestsInput,
@@ -841,21 +841,21 @@ export const listResources: API.OperationMethod<
   ListResourcesInput,
   ListResourcesOutput,
   ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourcesInput,
   ) => stream.Stream<
     ListResourcesOutput,
     ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourcesInput,
   ) => stream.Stream<
     ResourceDescription,
     ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesInput,
@@ -929,7 +929,7 @@ export const updateResource: API.OperationMethod<
   UpdateResourceInput,
   UpdateResourceOutput,
   UpdateResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourceInput,
   output: UpdateResourceOutput,

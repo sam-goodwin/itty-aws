@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://rds.amazonaws.com/doc/2014-10-31/");
 const svc = T.AwsApiService({
   sdkId: "DocDB",
@@ -3585,7 +3585,7 @@ export const addSourceIdentifierToSubscription: API.OperationMethod<
   AddSourceIdentifierToSubscriptionMessage,
   AddSourceIdentifierToSubscriptionResult,
   AddSourceIdentifierToSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddSourceIdentifierToSubscriptionMessage,
   output: AddSourceIdentifierToSubscriptionResult,
@@ -3606,7 +3606,7 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceMessage,
   AddTagsToResourceResponse,
   AddTagsToResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTagsToResourceMessage,
   output: AddTagsToResourceResponse,
@@ -3629,7 +3629,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   ApplyPendingMaintenanceActionMessage,
   ApplyPendingMaintenanceActionResult,
   ApplyPendingMaintenanceActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplyPendingMaintenanceActionMessage,
   output: ApplyPendingMaintenanceActionResult,
@@ -3651,7 +3651,7 @@ export const copyDBClusterParameterGroup: API.OperationMethod<
   CopyDBClusterParameterGroupMessage,
   CopyDBClusterParameterGroupResult,
   CopyDBClusterParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyDBClusterParameterGroupMessage,
   output: CopyDBClusterParameterGroupResult,
@@ -3687,7 +3687,7 @@ export const copyDBClusterSnapshot: API.OperationMethod<
   CopyDBClusterSnapshotMessage,
   CopyDBClusterSnapshotResult,
   CopyDBClusterSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyDBClusterSnapshotMessage,
   output: CopyDBClusterSnapshotResult,
@@ -3727,7 +3727,7 @@ export const createDBCluster: API.OperationMethod<
   CreateDBClusterMessage,
   CreateDBClusterResult,
   CreateDBClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDBClusterMessage,
   output: CreateDBClusterResult,
@@ -3782,7 +3782,7 @@ export const createDBClusterParameterGroup: API.OperationMethod<
   CreateDBClusterParameterGroupMessage,
   CreateDBClusterParameterGroupResult,
   CreateDBClusterParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDBClusterParameterGroupMessage,
   output: CreateDBClusterParameterGroupResult,
@@ -3805,7 +3805,7 @@ export const createDBClusterSnapshot: API.OperationMethod<
   CreateDBClusterSnapshotMessage,
   CreateDBClusterSnapshotResult,
   CreateDBClusterSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDBClusterSnapshotMessage,
   output: CreateDBClusterSnapshotResult,
@@ -3841,7 +3841,7 @@ export const createDBInstance: API.OperationMethod<
   CreateDBInstanceMessage,
   CreateDBInstanceResult,
   CreateDBInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDBInstanceMessage,
   output: CreateDBInstanceResult,
@@ -3878,7 +3878,7 @@ export const createDBSubnetGroup: API.OperationMethod<
   CreateDBSubnetGroupMessage,
   CreateDBSubnetGroupResult,
   CreateDBSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDBSubnetGroupMessage,
   output: CreateDBSubnetGroupResult,
@@ -3910,7 +3910,7 @@ export const createEventSubscription: API.OperationMethod<
   CreateEventSubscriptionMessage,
   CreateEventSubscriptionResult,
   CreateEventSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEventSubscriptionMessage,
   output: CreateEventSubscriptionResult,
@@ -3943,7 +3943,7 @@ export const createGlobalCluster: API.OperationMethod<
   CreateGlobalClusterMessage,
   CreateGlobalClusterResult,
   CreateGlobalClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGlobalClusterMessage,
   output: CreateGlobalClusterResult,
@@ -3968,7 +3968,7 @@ export const deleteDBCluster: API.OperationMethod<
   DeleteDBClusterMessage,
   DeleteDBClusterResult,
   DeleteDBClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDBClusterMessage,
   output: DeleteDBClusterResult,
@@ -3991,7 +3991,7 @@ export const deleteDBClusterParameterGroup: API.OperationMethod<
   DeleteDBClusterParameterGroupMessage,
   DeleteDBClusterParameterGroupResponse,
   DeleteDBClusterParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDBClusterParameterGroupMessage,
   output: DeleteDBClusterParameterGroupResponse,
@@ -4010,7 +4010,7 @@ export const deleteDBClusterSnapshot: API.OperationMethod<
   DeleteDBClusterSnapshotMessage,
   DeleteDBClusterSnapshotResult,
   DeleteDBClusterSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDBClusterSnapshotMessage,
   output: DeleteDBClusterSnapshotResult,
@@ -4030,7 +4030,7 @@ export const deleteDBInstance: API.OperationMethod<
   DeleteDBInstanceMessage,
   DeleteDBInstanceResult,
   DeleteDBInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDBInstanceMessage,
   output: DeleteDBInstanceResult,
@@ -4057,7 +4057,7 @@ export const deleteDBSubnetGroup: API.OperationMethod<
   DeleteDBSubnetGroupMessage,
   DeleteDBSubnetGroupResponse,
   DeleteDBSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDBSubnetGroupMessage,
   output: DeleteDBSubnetGroupResponse,
@@ -4078,7 +4078,7 @@ export const deleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionMessage,
   DeleteEventSubscriptionResult,
   DeleteEventSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResult,
@@ -4097,7 +4097,7 @@ export const deleteGlobalCluster: API.OperationMethod<
   DeleteGlobalClusterMessage,
   DeleteGlobalClusterResult,
   DeleteGlobalClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlobalClusterMessage,
   output: DeleteGlobalClusterResult,
@@ -4111,21 +4111,21 @@ export const describeCertificates: API.OperationMethod<
   DescribeCertificatesMessage,
   CertificateMessage,
   DescribeCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCertificatesMessage,
   ) => stream.Stream<
     CertificateMessage,
     DescribeCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCertificatesMessage,
   ) => stream.Stream<
     Certificate,
     DescribeCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCertificatesMessage,
@@ -4148,21 +4148,21 @@ export const describeDBClusterParameterGroups: API.OperationMethod<
   DescribeDBClusterParameterGroupsMessage,
   DBClusterParameterGroupsMessage,
   DescribeDBClusterParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeDBClusterParameterGroupsMessage,
   ) => stream.Stream<
     DBClusterParameterGroupsMessage,
     DescribeDBClusterParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeDBClusterParameterGroupsMessage,
   ) => stream.Stream<
     DBClusterParameterGroup,
     DescribeDBClusterParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterParameterGroupsMessage,
@@ -4186,21 +4186,21 @@ export const describeDBClusterParameters: API.OperationMethod<
   DescribeDBClusterParametersMessage,
   DBClusterParameterGroupDetails,
   DescribeDBClusterParametersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeDBClusterParametersMessage,
   ) => stream.Stream<
     DBClusterParameterGroupDetails,
     DescribeDBClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeDBClusterParametersMessage,
   ) => stream.Stream<
     Parameter,
     DescribeDBClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterParametersMessage,
@@ -4226,21 +4226,21 @@ export const describeDBClusters: API.OperationMethod<
   DescribeDBClustersMessage,
   DBClusterMessage,
   DescribeDBClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeDBClustersMessage,
   ) => stream.Stream<
     DBClusterMessage,
     DescribeDBClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeDBClustersMessage,
   ) => stream.Stream<
     DBCluster,
     DescribeDBClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClustersMessage,
@@ -4267,7 +4267,7 @@ export const describeDBClusterSnapshotAttributes: API.OperationMethod<
   DescribeDBClusterSnapshotAttributesMessage,
   DescribeDBClusterSnapshotAttributesResult,
   DescribeDBClusterSnapshotAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDBClusterSnapshotAttributesMessage,
   output: DescribeDBClusterSnapshotAttributesResult,
@@ -4283,21 +4283,21 @@ export const describeDBClusterSnapshots: API.OperationMethod<
   DescribeDBClusterSnapshotsMessage,
   DBClusterSnapshotMessage,
   DescribeDBClusterSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeDBClusterSnapshotsMessage,
   ) => stream.Stream<
     DBClusterSnapshotMessage,
     DescribeDBClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeDBClusterSnapshotsMessage,
   ) => stream.Stream<
     DBClusterSnapshot,
     DescribeDBClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterSnapshotsMessage,
@@ -4318,21 +4318,21 @@ export const describeDBEngineVersions: API.OperationMethod<
   DescribeDBEngineVersionsMessage,
   DBEngineVersionMessage,
   DescribeDBEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeDBEngineVersionsMessage,
   ) => stream.Stream<
     DBEngineVersionMessage,
     DescribeDBEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeDBEngineVersionsMessage,
   ) => stream.Stream<
     DBEngineVersion,
     DescribeDBEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBEngineVersionsMessage,
@@ -4353,21 +4353,21 @@ export const describeDBInstances: API.OperationMethod<
   DescribeDBInstancesMessage,
   DBInstanceMessage,
   DescribeDBInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeDBInstancesMessage,
   ) => stream.Stream<
     DBInstanceMessage,
     DescribeDBInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeDBInstancesMessage,
   ) => stream.Stream<
     DBInstance,
     DescribeDBInstancesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBInstancesMessage,
@@ -4391,21 +4391,21 @@ export const describeDBSubnetGroups: API.OperationMethod<
   DescribeDBSubnetGroupsMessage,
   DBSubnetGroupMessage,
   DescribeDBSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeDBSubnetGroupsMessage,
   ) => stream.Stream<
     DBSubnetGroupMessage,
     DescribeDBSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeDBSubnetGroupsMessage,
   ) => stream.Stream<
     DBSubnetGroup,
     DescribeDBSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBSubnetGroupsMessage,
@@ -4427,7 +4427,7 @@ export const describeEngineDefaultClusterParameters: API.OperationMethod<
   DescribeEngineDefaultClusterParametersMessage,
   DescribeEngineDefaultClusterParametersResult,
   DescribeEngineDefaultClusterParametersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEngineDefaultClusterParametersMessage,
   output: DescribeEngineDefaultClusterParametersResult,
@@ -4442,7 +4442,7 @@ export const describeEventCategories: API.OperationMethod<
   DescribeEventCategoriesMessage,
   EventCategoriesMessage,
   DescribeEventCategoriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEventCategoriesMessage,
   output: EventCategoriesMessage,
@@ -4456,21 +4456,21 @@ export const describeEvents: API.OperationMethod<
   DescribeEventsMessage,
   EventsMessage,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEventsMessage,
   ) => stream.Stream<
     EventsMessage,
     DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEventsMessage,
   ) => stream.Stream<
     Event,
     DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
@@ -4495,21 +4495,21 @@ export const describeEventSubscriptions: API.OperationMethod<
   DescribeEventSubscriptionsMessage,
   EventSubscriptionsMessage,
   DescribeEventSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEventSubscriptionsMessage,
   ) => stream.Stream<
     EventSubscriptionsMessage,
     DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEventSubscriptionsMessage,
   ) => stream.Stream<
     EventSubscription,
     DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventSubscriptionsMessage,
@@ -4534,21 +4534,21 @@ export const describeGlobalClusters: API.OperationMethod<
   DescribeGlobalClustersMessage,
   GlobalClustersMessage,
   DescribeGlobalClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeGlobalClustersMessage,
   ) => stream.Stream<
     GlobalClustersMessage,
     DescribeGlobalClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeGlobalClustersMessage,
   ) => stream.Stream<
     GlobalCluster,
     DescribeGlobalClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeGlobalClustersMessage,
@@ -4569,21 +4569,21 @@ export const describeOrderableDBInstanceOptions: API.OperationMethod<
   DescribeOrderableDBInstanceOptionsMessage,
   OrderableDBInstanceOptionsMessage,
   DescribeOrderableDBInstanceOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeOrderableDBInstanceOptionsMessage,
   ) => stream.Stream<
     OrderableDBInstanceOptionsMessage,
     DescribeOrderableDBInstanceOptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeOrderableDBInstanceOptionsMessage,
   ) => stream.Stream<
     OrderableDBInstanceOption,
     DescribeOrderableDBInstanceOptionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrderableDBInstanceOptionsMessage,
@@ -4607,21 +4607,21 @@ export const describePendingMaintenanceActions: API.OperationMethod<
   DescribePendingMaintenanceActionsMessage,
   PendingMaintenanceActionsMessage,
   DescribePendingMaintenanceActionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribePendingMaintenanceActionsMessage,
   ) => stream.Stream<
     PendingMaintenanceActionsMessage,
     DescribePendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribePendingMaintenanceActionsMessage,
   ) => stream.Stream<
     ResourcePendingMaintenanceActions,
     DescribePendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribePendingMaintenanceActionsMessage,
@@ -4650,7 +4650,7 @@ export const failoverDBCluster: API.OperationMethod<
   FailoverDBClusterMessage,
   FailoverDBClusterResult,
   FailoverDBClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FailoverDBClusterMessage,
   output: FailoverDBClusterResult,
@@ -4677,7 +4677,7 @@ export const failoverGlobalCluster: API.OperationMethod<
   FailoverGlobalClusterMessage,
   FailoverGlobalClusterResult,
   FailoverGlobalClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FailoverGlobalClusterMessage,
   output: FailoverGlobalClusterResult,
@@ -4700,7 +4700,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceMessage,
   TagListMessage,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceMessage,
   output: TagListMessage,
@@ -4733,7 +4733,7 @@ export const modifyDBCluster: API.OperationMethod<
   ModifyDBClusterMessage,
   ModifyDBClusterResult,
   ModifyDBClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyDBClusterMessage,
   output: ModifyDBClusterResult,
@@ -4779,7 +4779,7 @@ export const modifyDBClusterParameterGroup: API.OperationMethod<
   ModifyDBClusterParameterGroupMessage,
   DBClusterParameterGroupNameMessage,
   ModifyDBClusterParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyDBClusterParameterGroupMessage,
   output: DBClusterParameterGroupNameMessage,
@@ -4799,7 +4799,7 @@ export const modifyDBClusterSnapshotAttribute: API.OperationMethod<
   ModifyDBClusterSnapshotAttributeMessage,
   ModifyDBClusterSnapshotAttributeResult,
   ModifyDBClusterSnapshotAttributeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyDBClusterSnapshotAttributeMessage,
   output: ModifyDBClusterSnapshotAttributeResult,
@@ -4831,7 +4831,7 @@ export const modifyDBInstance: API.OperationMethod<
   ModifyDBInstanceMessage,
   ModifyDBInstanceResult,
   ModifyDBInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyDBInstanceMessage,
   output: ModifyDBInstanceResult,
@@ -4865,7 +4865,7 @@ export const modifyDBSubnetGroup: API.OperationMethod<
   ModifyDBSubnetGroupMessage,
   ModifyDBSubnetGroupResult,
   ModifyDBSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyDBSubnetGroupMessage,
   output: ModifyDBSubnetGroupResult,
@@ -4892,7 +4892,7 @@ export const modifyEventSubscription: API.OperationMethod<
   ModifyEventSubscriptionMessage,
   ModifyEventSubscriptionResult,
   ModifyEventSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyEventSubscriptionMessage,
   output: ModifyEventSubscriptionResult,
@@ -4918,7 +4918,7 @@ export const modifyGlobalCluster: API.OperationMethod<
   ModifyGlobalClusterMessage,
   ModifyGlobalClusterResult,
   ModifyGlobalClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyGlobalClusterMessage,
   output: ModifyGlobalClusterResult,
@@ -4942,7 +4942,7 @@ export const rebootDBInstance: API.OperationMethod<
   RebootDBInstanceMessage,
   RebootDBInstanceResult,
   RebootDBInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RebootDBInstanceMessage,
   output: RebootDBInstanceResult,
@@ -4962,7 +4962,7 @@ export const removeFromGlobalCluster: API.OperationMethod<
   RemoveFromGlobalClusterMessage,
   RemoveFromGlobalClusterResult,
   RemoveFromGlobalClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveFromGlobalClusterMessage,
   output: RemoveFromGlobalClusterResult,
@@ -4984,7 +4984,7 @@ export const removeSourceIdentifierFromSubscription: API.OperationMethod<
   RemoveSourceIdentifierFromSubscriptionMessage,
   RemoveSourceIdentifierFromSubscriptionResult,
   RemoveSourceIdentifierFromSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveSourceIdentifierFromSubscriptionMessage,
   output: RemoveSourceIdentifierFromSubscriptionResult,
@@ -5002,7 +5002,7 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceMessage,
   RemoveTagsFromResourceResponse,
   RemoveTagsFromResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceMessage,
   output: RemoveTagsFromResourceResponse,
@@ -5031,7 +5031,7 @@ export const resetDBClusterParameterGroup: API.OperationMethod<
   ResetDBClusterParameterGroupMessage,
   DBClusterParameterGroupNameMessage,
   ResetDBClusterParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetDBClusterParameterGroupMessage,
   output: DBClusterParameterGroupNameMessage,
@@ -5065,7 +5065,7 @@ export const restoreDBClusterFromSnapshot: API.OperationMethod<
   RestoreDBClusterFromSnapshotMessage,
   RestoreDBClusterFromSnapshotResult,
   RestoreDBClusterFromSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreDBClusterFromSnapshotMessage,
   output: RestoreDBClusterFromSnapshotResult,
@@ -5116,7 +5116,7 @@ export const restoreDBClusterToPointInTime: API.OperationMethod<
   RestoreDBClusterToPointInTimeMessage,
   RestoreDBClusterToPointInTimeResult,
   RestoreDBClusterToPointInTimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreDBClusterToPointInTimeMessage,
   output: RestoreDBClusterToPointInTimeResult,
@@ -5153,7 +5153,7 @@ export const startDBCluster: API.OperationMethod<
   StartDBClusterMessage,
   StartDBClusterResult,
   StartDBClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartDBClusterMessage,
   output: StartDBClusterResult,
@@ -5178,7 +5178,7 @@ export const stopDBCluster: API.OperationMethod<
   StopDBClusterMessage,
   StopDBClusterResult,
   StopDBClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopDBClusterMessage,
   output: StopDBClusterResult,
@@ -5201,7 +5201,7 @@ export const switchoverGlobalCluster: API.OperationMethod<
   SwitchoverGlobalClusterMessage,
   SwitchoverGlobalClusterResult,
   SwitchoverGlobalClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SwitchoverGlobalClusterMessage,
   output: SwitchoverGlobalClusterResult,

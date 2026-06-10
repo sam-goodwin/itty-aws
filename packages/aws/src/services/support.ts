@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://support.amazonaws.com/doc/2013-04-15/");
 const svc = T.AwsApiService({
   sdkId: "Support",
@@ -1176,7 +1176,7 @@ export const addAttachmentsToSet: API.OperationMethod<
   AddAttachmentsToSetRequest,
   AddAttachmentsToSetResponse,
   AddAttachmentsToSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddAttachmentsToSetRequest,
   output: AddAttachmentsToSetResponse,
@@ -1213,7 +1213,7 @@ export const addCommunicationToCase: API.OperationMethod<
   AddCommunicationToCaseRequest,
   AddCommunicationToCaseResponse,
   AddCommunicationToCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddCommunicationToCaseRequest,
   output: AddCommunicationToCaseResponse,
@@ -1262,7 +1262,7 @@ export const createCase: API.OperationMethod<
   CreateCaseRequest,
   CreateCaseResponse,
   CreateCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCaseRequest,
   output: CreateCaseResponse,
@@ -1297,7 +1297,7 @@ export const describeAttachment: API.OperationMethod<
   DescribeAttachmentRequest,
   DescribeAttachmentResponse,
   DescribeAttachmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAttachmentRequest,
   output: DescribeAttachmentResponse,
@@ -1340,21 +1340,21 @@ export const describeCases: API.OperationMethod<
   DescribeCasesRequest,
   DescribeCasesResponse,
   DescribeCasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCasesRequest,
   ) => stream.Stream<
     DescribeCasesResponse,
     DescribeCasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCasesRequest,
   ) => stream.Stream<
     CaseDetails,
     DescribeCasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCasesRequest,
@@ -1397,21 +1397,21 @@ export const describeCommunications: API.OperationMethod<
   DescribeCommunicationsRequest,
   DescribeCommunicationsResponse,
   DescribeCommunicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeCommunicationsRequest,
   ) => stream.Stream<
     DescribeCommunicationsResponse,
     DescribeCommunicationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeCommunicationsRequest,
   ) => stream.Stream<
     Communication,
     DescribeCommunicationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeCommunicationsRequest,
@@ -1446,7 +1446,7 @@ export const describeCreateCaseOptions: API.OperationMethod<
   DescribeCreateCaseOptionsRequest,
   DescribeCreateCaseOptionsResponse,
   DescribeCreateCaseOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCreateCaseOptionsRequest,
   output: DescribeCreateCaseOptionsResponse,
@@ -1477,7 +1477,7 @@ export const describeServices: API.OperationMethod<
   DescribeServicesRequest,
   DescribeServicesResponse,
   DescribeServicesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeServicesRequest,
   output: DescribeServicesResponse,
@@ -1501,7 +1501,7 @@ export const describeSeverityLevels: API.OperationMethod<
   DescribeSeverityLevelsRequest,
   DescribeSeverityLevelsResponse,
   DescribeSeverityLevelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSeverityLevelsRequest,
   output: DescribeSeverityLevelsResponse,
@@ -1528,7 +1528,7 @@ export const describeSupportedLanguages: API.OperationMethod<
   DescribeSupportedLanguagesRequest,
   DescribeSupportedLanguagesResponse,
   DescribeSupportedLanguagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSupportedLanguagesRequest,
   output: DescribeSupportedLanguagesResponse,
@@ -1564,7 +1564,7 @@ export const describeTrustedAdvisorCheckRefreshStatuses: API.OperationMethod<
   DescribeTrustedAdvisorCheckRefreshStatusesRequest,
   DescribeTrustedAdvisorCheckRefreshStatusesResponse,
   DescribeTrustedAdvisorCheckRefreshStatusesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTrustedAdvisorCheckRefreshStatusesRequest,
   output: DescribeTrustedAdvisorCheckRefreshStatusesResponse,
@@ -1617,7 +1617,7 @@ export const describeTrustedAdvisorCheckResult: API.OperationMethod<
   DescribeTrustedAdvisorCheckResultRequest,
   DescribeTrustedAdvisorCheckResultResponse,
   DescribeTrustedAdvisorCheckResultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTrustedAdvisorCheckResultRequest,
   output: DescribeTrustedAdvisorCheckResultResponse,
@@ -1654,7 +1654,7 @@ export const describeTrustedAdvisorChecks: API.OperationMethod<
   DescribeTrustedAdvisorChecksRequest,
   DescribeTrustedAdvisorChecksResponse,
   DescribeTrustedAdvisorChecksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTrustedAdvisorChecksRequest,
   output: DescribeTrustedAdvisorChecksResponse,
@@ -1688,7 +1688,7 @@ export const describeTrustedAdvisorCheckSummaries: API.OperationMethod<
   DescribeTrustedAdvisorCheckSummariesRequest,
   DescribeTrustedAdvisorCheckSummariesResponse,
   DescribeTrustedAdvisorCheckSummariesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTrustedAdvisorCheckSummariesRequest,
   output: DescribeTrustedAdvisorCheckSummariesResponse,
@@ -1726,7 +1726,7 @@ export const refreshTrustedAdvisorCheck: API.OperationMethod<
   RefreshTrustedAdvisorCheckRequest,
   RefreshTrustedAdvisorCheckResponse,
   RefreshTrustedAdvisorCheckError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RefreshTrustedAdvisorCheckRequest,
   output: RefreshTrustedAdvisorCheckResponse,
@@ -1752,7 +1752,7 @@ export const resolveCase: API.OperationMethod<
   ResolveCaseRequest,
   ResolveCaseResponse,
   ResolveCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResolveCaseRequest,
   output: ResolveCaseResponse,

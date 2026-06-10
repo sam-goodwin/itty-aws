@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "IoTFleetWise",
@@ -3819,7 +3819,7 @@ export const batchCreateVehicle: API.OperationMethod<
   BatchCreateVehicleRequest,
   BatchCreateVehicleResponse,
   BatchCreateVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateVehicleRequest,
   output: BatchCreateVehicleResponse,
@@ -3851,7 +3851,7 @@ export const batchUpdateVehicle: API.OperationMethod<
   BatchUpdateVehicleRequest,
   BatchUpdateVehicleResponse,
   BatchUpdateVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateVehicleRequest,
   output: BatchUpdateVehicleResponse,
@@ -3877,7 +3877,7 @@ export const getEncryptionConfiguration: API.OperationMethod<
   GetEncryptionConfigurationRequest,
   GetEncryptionConfigurationResponse,
   GetEncryptionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEncryptionConfigurationRequest,
   output: GetEncryptionConfigurationResponse,
@@ -3900,7 +3900,7 @@ export const getLoggingOptions: API.OperationMethod<
   GetLoggingOptionsRequest,
   GetLoggingOptionsResponse,
   GetLoggingOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoggingOptionsRequest,
   output: GetLoggingOptionsResponse,
@@ -3926,7 +3926,7 @@ export const getRegisterAccountStatus: API.OperationMethod<
   GetRegisterAccountStatusRequest,
   GetRegisterAccountStatusResponse,
   GetRegisterAccountStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegisterAccountStatusRequest,
   output: GetRegisterAccountStatusResponse,
@@ -3952,21 +3952,21 @@ export const getVehicleStatus: API.OperationMethod<
   GetVehicleStatusRequest,
   GetVehicleStatusResponse,
   GetVehicleStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetVehicleStatusRequest,
   ) => stream.Stream<
     GetVehicleStatusResponse,
     GetVehicleStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetVehicleStatusRequest,
   ) => stream.Stream<
     VehicleStatus,
     GetVehicleStatusError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetVehicleStatusRequest,
@@ -3998,7 +3998,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -4028,7 +4028,7 @@ export const putEncryptionConfiguration: API.OperationMethod<
   PutEncryptionConfigurationRequest,
   PutEncryptionConfigurationResponse,
   PutEncryptionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutEncryptionConfigurationRequest,
   output: PutEncryptionConfigurationResponse,
@@ -4055,7 +4055,7 @@ export const putLoggingOptions: API.OperationMethod<
   PutLoggingOptionsRequest,
   PutLoggingOptionsResponse,
   PutLoggingOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutLoggingOptionsRequest,
   output: PutLoggingOptionsResponse,
@@ -4104,7 +4104,7 @@ export const registerAccount: API.OperationMethod<
   RegisterAccountRequest,
   RegisterAccountResponse,
   RegisterAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterAccountRequest,
   output: RegisterAccountResponse,
@@ -4132,7 +4132,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4158,7 +4158,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4193,7 +4193,7 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignRequest,
   CreateCampaignResponse,
   CreateCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCampaignRequest,
   output: CreateCampaignResponse,
@@ -4221,7 +4221,7 @@ export const getCampaign: API.OperationMethod<
   GetCampaignRequest,
   GetCampaignResponse,
   GetCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCampaignRequest,
   output: GetCampaignResponse,
@@ -4246,7 +4246,7 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignRequest,
   UpdateCampaignResponse,
   UpdateCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCampaignRequest,
   output: UpdateCampaignResponse,
@@ -4272,7 +4272,7 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignRequest,
   DeleteCampaignResponse,
   DeleteCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCampaignRequest,
   output: DeleteCampaignResponse,
@@ -4297,21 +4297,21 @@ export const listCampaigns: API.OperationMethod<
   ListCampaignsRequest,
   ListCampaignsResponse,
   ListCampaignsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCampaignsRequest,
   ) => stream.Stream<
     ListCampaignsResponse,
     ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCampaignsRequest,
   ) => stream.Stream<
     CampaignSummary,
     ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
@@ -4349,7 +4349,7 @@ export const createDecoderManifest: API.OperationMethod<
   CreateDecoderManifestRequest,
   CreateDecoderManifestResponse,
   CreateDecoderManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDecoderManifestRequest,
   output: CreateDecoderManifestResponse,
@@ -4376,7 +4376,7 @@ export const getDecoderManifest: API.OperationMethod<
   GetDecoderManifestRequest,
   GetDecoderManifestResponse,
   GetDecoderManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDecoderManifestRequest,
   output: GetDecoderManifestResponse,
@@ -4406,7 +4406,7 @@ export const updateDecoderManifest: API.OperationMethod<
   UpdateDecoderManifestRequest,
   UpdateDecoderManifestResponse,
   UpdateDecoderManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDecoderManifestRequest,
   output: UpdateDecoderManifestResponse,
@@ -4435,7 +4435,7 @@ export const deleteDecoderManifest: API.OperationMethod<
   DeleteDecoderManifestRequest,
   DeleteDecoderManifestResponse,
   DeleteDecoderManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDecoderManifestRequest,
   output: DeleteDecoderManifestResponse,
@@ -4462,21 +4462,21 @@ export const listDecoderManifests: API.OperationMethod<
   ListDecoderManifestsRequest,
   ListDecoderManifestsResponse,
   ListDecoderManifestsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDecoderManifestsRequest,
   ) => stream.Stream<
     ListDecoderManifestsResponse,
     ListDecoderManifestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDecoderManifestsRequest,
   ) => stream.Stream<
     DecoderManifestSummary,
     ListDecoderManifestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDecoderManifestsRequest,
@@ -4512,7 +4512,7 @@ export const importDecoderManifest: API.OperationMethod<
   ImportDecoderManifestRequest,
   ImportDecoderManifestResponse,
   ImportDecoderManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportDecoderManifestRequest,
   output: ImportDecoderManifestResponse,
@@ -4542,21 +4542,21 @@ export const listDecoderManifestNetworkInterfaces: API.OperationMethod<
   ListDecoderManifestNetworkInterfacesRequest,
   ListDecoderManifestNetworkInterfacesResponse,
   ListDecoderManifestNetworkInterfacesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDecoderManifestNetworkInterfacesRequest,
   ) => stream.Stream<
     ListDecoderManifestNetworkInterfacesResponse,
     ListDecoderManifestNetworkInterfacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDecoderManifestNetworkInterfacesRequest,
   ) => stream.Stream<
     NetworkInterface,
     ListDecoderManifestNetworkInterfacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDecoderManifestNetworkInterfacesRequest,
@@ -4591,21 +4591,21 @@ export const listDecoderManifestSignals: API.OperationMethod<
   ListDecoderManifestSignalsRequest,
   ListDecoderManifestSignalsResponse,
   ListDecoderManifestSignalsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDecoderManifestSignalsRequest,
   ) => stream.Stream<
     ListDecoderManifestSignalsResponse,
     ListDecoderManifestSignalsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDecoderManifestSignalsRequest,
   ) => stream.Stream<
     SignalDecoder,
     ListDecoderManifestSignalsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDecoderManifestSignalsRequest,
@@ -4645,7 +4645,7 @@ export const createFleet: API.OperationMethod<
   CreateFleetRequest,
   CreateFleetResponse,
   CreateFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFleetRequest,
   output: CreateFleetResponse,
@@ -4673,7 +4673,7 @@ export const getFleet: API.OperationMethod<
   GetFleetRequest,
   GetFleetResponse,
   GetFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFleetRequest,
   output: GetFleetResponse,
@@ -4700,7 +4700,7 @@ export const updateFleet: API.OperationMethod<
   UpdateFleetRequest,
   UpdateFleetResponse,
   UpdateFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFleetRequest,
   output: UpdateFleetResponse,
@@ -4728,7 +4728,7 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetRequest,
   DeleteFleetResponse,
   DeleteFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFleetRequest,
   output: DeleteFleetResponse,
@@ -4755,21 +4755,21 @@ export const listFleets: API.OperationMethod<
   ListFleetsRequest,
   ListFleetsResponse,
   ListFleetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFleetsRequest,
   ) => stream.Stream<
     ListFleetsResponse,
     ListFleetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFleetsRequest,
   ) => stream.Stream<
     FleetSummary,
     ListFleetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsRequest,
@@ -4804,21 +4804,21 @@ export const listVehiclesInFleet: API.OperationMethod<
   ListVehiclesInFleetRequest,
   ListVehiclesInFleetResponse,
   ListVehiclesInFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVehiclesInFleetRequest,
   ) => stream.Stream<
     ListVehiclesInFleetResponse,
     ListVehiclesInFleetError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListVehiclesInFleetRequest,
   ) => stream.Stream<
     VehicleName,
     ListVehiclesInFleetError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVehiclesInFleetRequest,
@@ -4857,7 +4857,7 @@ export const createModelManifest: API.OperationMethod<
   CreateModelManifestRequest,
   CreateModelManifestResponse,
   CreateModelManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateModelManifestRequest,
   output: CreateModelManifestResponse,
@@ -4884,7 +4884,7 @@ export const getModelManifest: API.OperationMethod<
   GetModelManifestRequest,
   GetModelManifestResponse,
   GetModelManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetModelManifestRequest,
   output: GetModelManifestResponse,
@@ -4912,7 +4912,7 @@ export const updateModelManifest: API.OperationMethod<
   UpdateModelManifestRequest,
   UpdateModelManifestResponse,
   UpdateModelManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateModelManifestRequest,
   output: UpdateModelManifestResponse,
@@ -4940,7 +4940,7 @@ export const deleteModelManifest: API.OperationMethod<
   DeleteModelManifestRequest,
   DeleteModelManifestResponse,
   DeleteModelManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteModelManifestRequest,
   output: DeleteModelManifestResponse,
@@ -4967,21 +4967,21 @@ export const listModelManifests: API.OperationMethod<
   ListModelManifestsRequest,
   ListModelManifestsResponse,
   ListModelManifestsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListModelManifestsRequest,
   ) => stream.Stream<
     ListModelManifestsResponse,
     ListModelManifestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListModelManifestsRequest,
   ) => stream.Stream<
     ModelManifestSummary,
     ListModelManifestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListModelManifestsRequest,
@@ -5016,21 +5016,21 @@ export const listModelManifestNodes: API.OperationMethod<
   ListModelManifestNodesRequest,
   ListModelManifestNodesResponse,
   ListModelManifestNodesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListModelManifestNodesRequest,
   ) => stream.Stream<
     ListModelManifestNodesResponse,
     ListModelManifestNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListModelManifestNodesRequest,
   ) => stream.Stream<
     Node,
     ListModelManifestNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListModelManifestNodesRequest,
@@ -5067,7 +5067,7 @@ export const createSignalCatalog: API.OperationMethod<
   CreateSignalCatalogRequest,
   CreateSignalCatalogResponse,
   CreateSignalCatalogError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSignalCatalogRequest,
   output: CreateSignalCatalogResponse,
@@ -5094,7 +5094,7 @@ export const getSignalCatalog: API.OperationMethod<
   GetSignalCatalogRequest,
   GetSignalCatalogResponse,
   GetSignalCatalogError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSignalCatalogRequest,
   output: GetSignalCatalogResponse,
@@ -5123,7 +5123,7 @@ export const updateSignalCatalog: API.OperationMethod<
   UpdateSignalCatalogRequest,
   UpdateSignalCatalogResponse,
   UpdateSignalCatalogError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSignalCatalogRequest,
   output: UpdateSignalCatalogResponse,
@@ -5153,7 +5153,7 @@ export const deleteSignalCatalog: API.OperationMethod<
   DeleteSignalCatalogRequest,
   DeleteSignalCatalogResponse,
   DeleteSignalCatalogError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSignalCatalogRequest,
   output: DeleteSignalCatalogResponse,
@@ -5183,21 +5183,21 @@ export const listSignalCatalogs: API.OperationMethod<
   ListSignalCatalogsRequest,
   ListSignalCatalogsResponse,
   ListSignalCatalogsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSignalCatalogsRequest,
   ) => stream.Stream<
     ListSignalCatalogsResponse,
     ListSignalCatalogsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSignalCatalogsRequest,
   ) => stream.Stream<
     SignalCatalogSummary,
     ListSignalCatalogsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSignalCatalogsRequest,
@@ -5233,7 +5233,7 @@ export const importSignalCatalog: API.OperationMethod<
   ImportSignalCatalogRequest,
   ImportSignalCatalogResponse,
   ImportSignalCatalogError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportSignalCatalogRequest,
   output: ImportSignalCatalogResponse,
@@ -5265,21 +5265,21 @@ export const listSignalCatalogNodes: API.OperationMethod<
   ListSignalCatalogNodesRequest,
   ListSignalCatalogNodesResponse,
   ListSignalCatalogNodesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSignalCatalogNodesRequest,
   ) => stream.Stream<
     ListSignalCatalogNodesResponse,
     ListSignalCatalogNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSignalCatalogNodesRequest,
   ) => stream.Stream<
     Node,
     ListSignalCatalogNodesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSignalCatalogNodesRequest,
@@ -5318,7 +5318,7 @@ export const createStateTemplate: API.OperationMethod<
   CreateStateTemplateRequest,
   CreateStateTemplateResponse,
   CreateStateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateStateTemplateRequest,
   output: CreateStateTemplateResponse,
@@ -5349,7 +5349,7 @@ export const getStateTemplate: API.OperationMethod<
   GetStateTemplateRequest,
   GetStateTemplateResponse,
   GetStateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStateTemplateRequest,
   output: GetStateTemplateResponse,
@@ -5379,7 +5379,7 @@ export const updateStateTemplate: API.OperationMethod<
   UpdateStateTemplateRequest,
   UpdateStateTemplateResponse,
   UpdateStateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStateTemplateRequest,
   output: UpdateStateTemplateResponse,
@@ -5406,7 +5406,7 @@ export const deleteStateTemplate: API.OperationMethod<
   DeleteStateTemplateRequest,
   DeleteStateTemplateResponse,
   DeleteStateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStateTemplateRequest,
   output: DeleteStateTemplateResponse,
@@ -5432,21 +5432,21 @@ export const listStateTemplates: API.OperationMethod<
   ListStateTemplatesRequest,
   ListStateTemplatesResponse,
   ListStateTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListStateTemplatesRequest,
   ) => stream.Stream<
     ListStateTemplatesResponse,
     ListStateTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListStateTemplatesRequest,
   ) => stream.Stream<
     StateTemplateSummary,
     ListStateTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStateTemplatesRequest,
@@ -5488,7 +5488,7 @@ export const createVehicle: API.OperationMethod<
   CreateVehicleRequest,
   CreateVehicleResponse,
   CreateVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVehicleRequest,
   output: CreateVehicleResponse,
@@ -5516,7 +5516,7 @@ export const getVehicle: API.OperationMethod<
   GetVehicleRequest,
   GetVehicleResponse,
   GetVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVehicleRequest,
   output: GetVehicleResponse,
@@ -5546,7 +5546,7 @@ export const updateVehicle: API.OperationMethod<
   UpdateVehicleRequest,
   UpdateVehicleResponse,
   UpdateVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateVehicleRequest,
   output: UpdateVehicleResponse,
@@ -5573,7 +5573,7 @@ export const deleteVehicle: API.OperationMethod<
   DeleteVehicleRequest,
   DeleteVehicleResponse,
   DeleteVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVehicleRequest,
   output: DeleteVehicleResponse,
@@ -5599,21 +5599,21 @@ export const listVehicles: API.OperationMethod<
   ListVehiclesRequest,
   ListVehiclesResponse,
   ListVehiclesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVehiclesRequest,
   ) => stream.Stream<
     ListVehiclesResponse,
     ListVehiclesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListVehiclesRequest,
   ) => stream.Stream<
     VehicleSummary,
     ListVehiclesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVehiclesRequest,
@@ -5646,7 +5646,7 @@ export const associateVehicleFleet: API.OperationMethod<
   AssociateVehicleFleetRequest,
   AssociateVehicleFleetResponse,
   AssociateVehicleFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateVehicleFleetRequest,
   output: AssociateVehicleFleetResponse,
@@ -5674,7 +5674,7 @@ export const disassociateVehicleFleet: API.OperationMethod<
   DisassociateVehicleFleetRequest,
   DisassociateVehicleFleetResponse,
   DisassociateVehicleFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateVehicleFleetRequest,
   output: DisassociateVehicleFleetResponse,
@@ -5702,21 +5702,21 @@ export const listFleetsForVehicle: API.OperationMethod<
   ListFleetsForVehicleRequest,
   ListFleetsForVehicleResponse,
   ListFleetsForVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFleetsForVehicleRequest,
   ) => stream.Stream<
     ListFleetsForVehicleResponse,
     ListFleetsForVehicleError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFleetsForVehicleRequest,
   ) => stream.Stream<
     FleetId,
     ListFleetsForVehicleError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsForVehicleRequest,

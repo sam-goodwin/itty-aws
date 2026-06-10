@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "SimpleDBv2",
   serviceShapeName: "SimpleDBv2",
@@ -316,7 +316,7 @@ export const getExport: API.OperationMethod<
   GetExportRequest,
   GetExportResponse,
   GetExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetExportRequest,
   output: GetExportResponse,
@@ -334,21 +334,21 @@ export const listExports: API.OperationMethod<
   ListExportsRequest,
   ListExportsResponse,
   ListExportsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListExportsRequest,
   ) => stream.Stream<
     ListExportsResponse,
     ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListExportsRequest,
   ) => stream.Stream<
     ExportSummary,
     ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListExportsRequest,
@@ -379,7 +379,7 @@ export const startDomainExport: API.OperationMethod<
   StartDomainExportRequest,
   StartDomainExportResponse,
   StartDomainExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartDomainExportRequest,
   output: StartDomainExportResponse,

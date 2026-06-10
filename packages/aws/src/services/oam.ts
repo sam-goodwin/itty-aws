@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({ sdkId: "OAM", serviceShapeName: "oamservice" });
 const auth = T.AwsAuthSigv4({ name: "oam" });
 const ver = T.ServiceVersion("2022-06-10");
@@ -766,7 +766,7 @@ export const createLink: API.OperationMethod<
   CreateLinkInput,
   CreateLinkOutput,
   CreateLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLinkInput,
   output: CreateLinkOutput,
@@ -796,7 +796,7 @@ export const createSink: API.OperationMethod<
   CreateSinkInput,
   CreateSinkOutput,
   CreateSinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSinkInput,
   output: CreateSinkOutput,
@@ -821,7 +821,7 @@ export const deleteLink: API.OperationMethod<
   DeleteLinkInput,
   DeleteLinkOutput,
   DeleteLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLinkInput,
   output: DeleteLinkOutput,
@@ -846,7 +846,7 @@ export const deleteSink: API.OperationMethod<
   DeleteSinkInput,
   DeleteSinkOutput,
   DeleteSinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSinkInput,
   output: DeleteSinkOutput,
@@ -873,7 +873,7 @@ export const getLink: API.OperationMethod<
   GetLinkInput,
   GetLinkOutput,
   GetLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLinkInput,
   output: GetLinkOutput,
@@ -899,7 +899,7 @@ export const getSink: API.OperationMethod<
   GetSinkInput,
   GetSinkOutput,
   GetSinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSinkInput,
   output: GetSinkOutput,
@@ -923,7 +923,7 @@ export const getSinkPolicy: API.OperationMethod<
   GetSinkPolicyInput,
   GetSinkPolicyOutput,
   GetSinkPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSinkPolicyInput,
   output: GetSinkPolicyOutput,
@@ -951,21 +951,21 @@ export const listAttachedLinks: API.OperationMethod<
   ListAttachedLinksInput,
   ListAttachedLinksOutput,
   ListAttachedLinksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAttachedLinksInput,
   ) => stream.Stream<
     ListAttachedLinksOutput,
     ListAttachedLinksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAttachedLinksInput,
   ) => stream.Stream<
     ListAttachedLinksItem,
     ListAttachedLinksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedLinksInput,
@@ -997,21 +997,21 @@ export const listLinks: API.OperationMethod<
   ListLinksInput,
   ListLinksOutput,
   ListLinksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLinksInput,
   ) => stream.Stream<
     ListLinksOutput,
     ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLinksInput,
   ) => stream.Stream<
     ListLinksItem,
     ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLinksInput,
@@ -1040,21 +1040,21 @@ export const listSinks: API.OperationMethod<
   ListSinksInput,
   ListSinksOutput,
   ListSinksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSinksInput,
   ) => stream.Stream<
     ListSinksOutput,
     ListSinksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSinksInput,
   ) => stream.Stream<
     ListSinksItem,
     ListSinksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSinksInput,
@@ -1082,7 +1082,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1117,7 +1117,7 @@ export const putSinkPolicy: API.OperationMethod<
   PutSinkPolicyInput,
   PutSinkPolicyOutput,
   PutSinkPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSinkPolicyInput,
   output: PutSinkPolicyOutput,
@@ -1150,7 +1150,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1173,7 +1173,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -1196,7 +1196,7 @@ export const updateLink: API.OperationMethod<
   UpdateLinkInput,
   UpdateLinkOutput,
   UpdateLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLinkInput,
   output: UpdateLinkOutput,

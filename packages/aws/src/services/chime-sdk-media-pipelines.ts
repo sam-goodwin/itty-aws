@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Chime SDK Media Pipelines",
@@ -2778,7 +2778,7 @@ export const createMediaCapturePipeline: API.OperationMethod<
   CreateMediaCapturePipelineRequest,
   CreateMediaCapturePipelineResponse,
   CreateMediaCapturePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMediaCapturePipelineRequest,
   output: CreateMediaCapturePipelineResponse,
@@ -2808,7 +2808,7 @@ export const createMediaConcatenationPipeline: API.OperationMethod<
   CreateMediaConcatenationPipelineRequest,
   CreateMediaConcatenationPipelineResponse,
   CreateMediaConcatenationPipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMediaConcatenationPipelineRequest,
   output: CreateMediaConcatenationPipelineResponse,
@@ -2839,7 +2839,7 @@ export const createMediaInsightsPipeline: API.OperationMethod<
   CreateMediaInsightsPipelineRequest,
   CreateMediaInsightsPipelineResponse,
   CreateMediaInsightsPipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMediaInsightsPipelineRequest,
   output: CreateMediaInsightsPipelineResponse,
@@ -2872,7 +2872,7 @@ export const createMediaInsightsPipelineConfiguration: API.OperationMethod<
   CreateMediaInsightsPipelineConfigurationRequest,
   CreateMediaInsightsPipelineConfigurationResponse,
   CreateMediaInsightsPipelineConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMediaInsightsPipelineConfigurationRequest,
   output: CreateMediaInsightsPipelineConfigurationResponse,
@@ -2903,7 +2903,7 @@ export const createMediaLiveConnectorPipeline: API.OperationMethod<
   CreateMediaLiveConnectorPipelineRequest,
   CreateMediaLiveConnectorPipelineResponse,
   CreateMediaLiveConnectorPipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMediaLiveConnectorPipelineRequest,
   output: CreateMediaLiveConnectorPipelineResponse,
@@ -2950,7 +2950,7 @@ export const createMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   CreateMediaPipelineKinesisVideoStreamPoolRequest,
   CreateMediaPipelineKinesisVideoStreamPoolResponse,
   CreateMediaPipelineKinesisVideoStreamPoolError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMediaPipelineKinesisVideoStreamPoolRequest,
   output: CreateMediaPipelineKinesisVideoStreamPoolResponse,
@@ -2982,7 +2982,7 @@ export const createMediaStreamPipeline: API.OperationMethod<
   CreateMediaStreamPipelineRequest,
   CreateMediaStreamPipelineResponse,
   CreateMediaStreamPipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMediaStreamPipelineRequest,
   output: CreateMediaStreamPipelineResponse,
@@ -3013,7 +3013,7 @@ export const deleteMediaCapturePipeline: API.OperationMethod<
   DeleteMediaCapturePipelineRequest,
   DeleteMediaCapturePipelineResponse,
   DeleteMediaCapturePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMediaCapturePipelineRequest,
   output: DeleteMediaCapturePipelineResponse,
@@ -3044,7 +3044,7 @@ export const deleteMediaInsightsPipelineConfiguration: API.OperationMethod<
   DeleteMediaInsightsPipelineConfigurationRequest,
   DeleteMediaInsightsPipelineConfigurationResponse,
   DeleteMediaInsightsPipelineConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMediaInsightsPipelineConfigurationRequest,
   output: DeleteMediaInsightsPipelineConfigurationResponse,
@@ -3076,7 +3076,7 @@ export const deleteMediaPipeline: API.OperationMethod<
   DeleteMediaPipelineRequest,
   DeleteMediaPipelineResponse,
   DeleteMediaPipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMediaPipelineRequest,
   output: DeleteMediaPipelineResponse,
@@ -3108,7 +3108,7 @@ export const deleteMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   DeleteMediaPipelineKinesisVideoStreamPoolRequest,
   DeleteMediaPipelineKinesisVideoStreamPoolResponse,
   DeleteMediaPipelineKinesisVideoStreamPoolError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMediaPipelineKinesisVideoStreamPoolRequest,
   output: DeleteMediaPipelineKinesisVideoStreamPoolResponse,
@@ -3139,7 +3139,7 @@ export const getMediaCapturePipeline: API.OperationMethod<
   GetMediaCapturePipelineRequest,
   GetMediaCapturePipelineResponse,
   GetMediaCapturePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMediaCapturePipelineRequest,
   output: GetMediaCapturePipelineResponse,
@@ -3169,7 +3169,7 @@ export const getMediaInsightsPipelineConfiguration: API.OperationMethod<
   GetMediaInsightsPipelineConfigurationRequest,
   GetMediaInsightsPipelineConfigurationResponse,
   GetMediaInsightsPipelineConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMediaInsightsPipelineConfigurationRequest,
   output: GetMediaInsightsPipelineConfigurationResponse,
@@ -3199,7 +3199,7 @@ export const getMediaPipeline: API.OperationMethod<
   GetMediaPipelineRequest,
   GetMediaPipelineResponse,
   GetMediaPipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMediaPipelineRequest,
   output: GetMediaPipelineResponse,
@@ -3229,7 +3229,7 @@ export const getMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   GetMediaPipelineKinesisVideoStreamPoolRequest,
   GetMediaPipelineKinesisVideoStreamPoolResponse,
   GetMediaPipelineKinesisVideoStreamPoolError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMediaPipelineKinesisVideoStreamPoolRequest,
   output: GetMediaPipelineKinesisVideoStreamPoolResponse,
@@ -3259,7 +3259,7 @@ export const getSpeakerSearchTask: API.OperationMethod<
   GetSpeakerSearchTaskRequest,
   GetSpeakerSearchTaskResponse,
   GetSpeakerSearchTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpeakerSearchTaskRequest,
   output: GetSpeakerSearchTaskResponse,
@@ -3289,7 +3289,7 @@ export const getVoiceToneAnalysisTask: API.OperationMethod<
   GetVoiceToneAnalysisTaskRequest,
   GetVoiceToneAnalysisTaskResponse,
   GetVoiceToneAnalysisTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVoiceToneAnalysisTaskRequest,
   output: GetVoiceToneAnalysisTaskResponse,
@@ -3319,21 +3319,21 @@ export const listMediaCapturePipelines: API.OperationMethod<
   ListMediaCapturePipelinesRequest,
   ListMediaCapturePipelinesResponse,
   ListMediaCapturePipelinesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMediaCapturePipelinesRequest,
   ) => stream.Stream<
     ListMediaCapturePipelinesResponse,
     ListMediaCapturePipelinesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMediaCapturePipelinesRequest,
   ) => stream.Stream<
     unknown,
     ListMediaCapturePipelinesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMediaCapturePipelinesRequest,
@@ -3369,21 +3369,21 @@ export const listMediaInsightsPipelineConfigurations: API.OperationMethod<
   ListMediaInsightsPipelineConfigurationsRequest,
   ListMediaInsightsPipelineConfigurationsResponse,
   ListMediaInsightsPipelineConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMediaInsightsPipelineConfigurationsRequest,
   ) => stream.Stream<
     ListMediaInsightsPipelineConfigurationsResponse,
     ListMediaInsightsPipelineConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMediaInsightsPipelineConfigurationsRequest,
   ) => stream.Stream<
     unknown,
     ListMediaInsightsPipelineConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMediaInsightsPipelineConfigurationsRequest,
@@ -3419,21 +3419,21 @@ export const listMediaPipelineKinesisVideoStreamPools: API.OperationMethod<
   ListMediaPipelineKinesisVideoStreamPoolsRequest,
   ListMediaPipelineKinesisVideoStreamPoolsResponse,
   ListMediaPipelineKinesisVideoStreamPoolsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMediaPipelineKinesisVideoStreamPoolsRequest,
   ) => stream.Stream<
     ListMediaPipelineKinesisVideoStreamPoolsResponse,
     ListMediaPipelineKinesisVideoStreamPoolsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMediaPipelineKinesisVideoStreamPoolsRequest,
   ) => stream.Stream<
     unknown,
     ListMediaPipelineKinesisVideoStreamPoolsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMediaPipelineKinesisVideoStreamPoolsRequest,
@@ -3469,21 +3469,21 @@ export const listMediaPipelines: API.OperationMethod<
   ListMediaPipelinesRequest,
   ListMediaPipelinesResponse,
   ListMediaPipelinesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMediaPipelinesRequest,
   ) => stream.Stream<
     ListMediaPipelinesResponse,
     ListMediaPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMediaPipelinesRequest,
   ) => stream.Stream<
     unknown,
     ListMediaPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMediaPipelinesRequest,
@@ -3519,7 +3519,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3553,7 +3553,7 @@ export const startSpeakerSearchTask: API.OperationMethod<
   StartSpeakerSearchTaskRequest,
   StartSpeakerSearchTaskResponse,
   StartSpeakerSearchTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartSpeakerSearchTaskRequest,
   output: StartSpeakerSearchTaskResponse,
@@ -3590,7 +3590,7 @@ export const startVoiceToneAnalysisTask: API.OperationMethod<
   StartVoiceToneAnalysisTaskRequest,
   StartVoiceToneAnalysisTaskResponse,
   StartVoiceToneAnalysisTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartVoiceToneAnalysisTaskRequest,
   output: StartVoiceToneAnalysisTaskResponse,
@@ -3622,7 +3622,7 @@ export const stopSpeakerSearchTask: API.OperationMethod<
   StopSpeakerSearchTaskRequest,
   StopSpeakerSearchTaskResponse,
   StopSpeakerSearchTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopSpeakerSearchTaskRequest,
   output: StopSpeakerSearchTaskResponse,
@@ -3654,7 +3654,7 @@ export const stopVoiceToneAnalysisTask: API.OperationMethod<
   StopVoiceToneAnalysisTaskRequest,
   StopVoiceToneAnalysisTaskResponse,
   StopVoiceToneAnalysisTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopVoiceToneAnalysisTaskRequest,
   output: StopVoiceToneAnalysisTaskResponse,
@@ -3685,7 +3685,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3715,7 +3715,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3746,7 +3746,7 @@ export const updateMediaInsightsPipelineConfiguration: API.OperationMethod<
   UpdateMediaInsightsPipelineConfigurationRequest,
   UpdateMediaInsightsPipelineConfigurationResponse,
   UpdateMediaInsightsPipelineConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMediaInsightsPipelineConfigurationRequest,
   output: UpdateMediaInsightsPipelineConfigurationResponse,
@@ -3778,7 +3778,7 @@ export const updateMediaInsightsPipelineStatus: API.OperationMethod<
   UpdateMediaInsightsPipelineStatusRequest,
   UpdateMediaInsightsPipelineStatusResponse,
   UpdateMediaInsightsPipelineStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMediaInsightsPipelineStatusRequest,
   output: UpdateMediaInsightsPipelineStatusResponse,
@@ -3810,7 +3810,7 @@ export const updateMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   UpdateMediaPipelineKinesisVideoStreamPoolRequest,
   UpdateMediaPipelineKinesisVideoStreamPoolResponse,
   UpdateMediaPipelineKinesisVideoStreamPoolError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMediaPipelineKinesisVideoStreamPoolRequest,
   output: UpdateMediaPipelineKinesisVideoStreamPoolResponse,

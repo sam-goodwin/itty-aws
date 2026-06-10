@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "IoT Events Data",
   serviceShapeName: "IotColumboDataService",
@@ -1055,7 +1055,7 @@ export const batchAcknowledgeAlarm: API.OperationMethod<
   BatchAcknowledgeAlarmRequest,
   BatchAcknowledgeAlarmResponse,
   BatchAcknowledgeAlarmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchAcknowledgeAlarmRequest,
   output: BatchAcknowledgeAlarmResponse,
@@ -1079,7 +1079,7 @@ export const batchDeleteDetector: API.OperationMethod<
   BatchDeleteDetectorRequest,
   BatchDeleteDetectorResponse,
   BatchDeleteDetectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteDetectorRequest,
   output: BatchDeleteDetectorResponse,
@@ -1104,7 +1104,7 @@ export const batchDisableAlarm: API.OperationMethod<
   BatchDisableAlarmRequest,
   BatchDisableAlarmResponse,
   BatchDisableAlarmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDisableAlarmRequest,
   output: BatchDisableAlarmResponse,
@@ -1129,7 +1129,7 @@ export const batchEnableAlarm: API.OperationMethod<
   BatchEnableAlarmRequest,
   BatchEnableAlarmResponse,
   BatchEnableAlarmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchEnableAlarmRequest,
   output: BatchEnableAlarmResponse,
@@ -1157,7 +1157,7 @@ export const batchPutMessage: API.OperationMethod<
   BatchPutMessageRequest,
   BatchPutMessageResponse,
   BatchPutMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchPutMessageRequest,
   output: BatchPutMessageResponse,
@@ -1182,7 +1182,7 @@ export const batchResetAlarm: API.OperationMethod<
   BatchResetAlarmRequest,
   BatchResetAlarmResponse,
   BatchResetAlarmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchResetAlarmRequest,
   output: BatchResetAlarmResponse,
@@ -1207,7 +1207,7 @@ export const batchSnoozeAlarm: API.OperationMethod<
   BatchSnoozeAlarmRequest,
   BatchSnoozeAlarmResponse,
   BatchSnoozeAlarmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchSnoozeAlarmRequest,
   output: BatchSnoozeAlarmResponse,
@@ -1232,7 +1232,7 @@ export const batchUpdateDetector: API.OperationMethod<
   BatchUpdateDetectorRequest,
   BatchUpdateDetectorResponse,
   BatchUpdateDetectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateDetectorRequest,
   output: BatchUpdateDetectorResponse,
@@ -1257,7 +1257,7 @@ export const describeAlarm: API.OperationMethod<
   DescribeAlarmRequest,
   DescribeAlarmResponse,
   DescribeAlarmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAlarmRequest,
   output: DescribeAlarmResponse,
@@ -1283,7 +1283,7 @@ export const describeDetector: API.OperationMethod<
   DescribeDetectorRequest,
   DescribeDetectorResponse,
   DescribeDetectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDetectorRequest,
   output: DescribeDetectorResponse,
@@ -1310,7 +1310,7 @@ export const listAlarms: API.OperationMethod<
   ListAlarmsRequest,
   ListAlarmsResponse,
   ListAlarmsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAlarmsRequest,
   output: ListAlarmsResponse,
@@ -1336,7 +1336,7 @@ export const listDetectors: API.OperationMethod<
   ListDetectorsRequest,
   ListDetectorsResponse,
   ListDetectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDetectorsRequest,
   output: ListDetectorsResponse,

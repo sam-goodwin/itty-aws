@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://glacier.amazonaws.com/doc/2012-06-01/");
 const svc = T.AwsApiService({ sdkId: "Glacier", serviceShapeName: "Glacier" });
 const auth = T.AwsAuthSigv4({ name: "glacier" });
@@ -1825,7 +1825,7 @@ export const abortMultipartUpload: API.OperationMethod<
   AbortMultipartUploadInput,
   AbortMultipartUploadResponse,
   AbortMultipartUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AbortMultipartUploadInput,
   output: AbortMultipartUploadResponse,
@@ -1866,7 +1866,7 @@ export const abortVaultLock: API.OperationMethod<
   AbortVaultLockInput,
   AbortVaultLockResponse,
   AbortVaultLockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AbortVaultLockInput,
   output: AbortVaultLockResponse,
@@ -1897,7 +1897,7 @@ export const addTagsToVault: API.OperationMethod<
   AddTagsToVaultInput,
   AddTagsToVaultResponse,
   AddTagsToVaultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTagsToVaultInput,
   output: AddTagsToVaultResponse,
@@ -1962,7 +1962,7 @@ export const completeMultipartUpload: API.OperationMethod<
   CompleteMultipartUploadInput,
   ArchiveCreationOutput,
   CompleteMultipartUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteMultipartUploadInput,
   output: ArchiveCreationOutput,
@@ -2003,7 +2003,7 @@ export const completeVaultLock: API.OperationMethod<
   CompleteVaultLockInput,
   CompleteVaultLockResponse,
   CompleteVaultLockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteVaultLockInput,
   output: CompleteVaultLockResponse,
@@ -2050,7 +2050,7 @@ export const createVault: API.OperationMethod<
   CreateVaultInput,
   CreateVaultOutput,
   CreateVaultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVaultInput,
   output: CreateVaultOutput,
@@ -2099,7 +2099,7 @@ export const deleteArchive: API.OperationMethod<
   DeleteArchiveInput,
   DeleteArchiveResponse,
   DeleteArchiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteArchiveInput,
   output: DeleteArchiveResponse,
@@ -2145,7 +2145,7 @@ export const deleteVault: API.OperationMethod<
   DeleteVaultInput,
   DeleteVaultResponse,
   DeleteVaultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVaultInput,
   output: DeleteVaultResponse,
@@ -2178,7 +2178,7 @@ export const deleteVaultAccessPolicy: API.OperationMethod<
   DeleteVaultAccessPolicyInput,
   DeleteVaultAccessPolicyResponse,
   DeleteVaultAccessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVaultAccessPolicyInput,
   output: DeleteVaultAccessPolicyResponse,
@@ -2217,7 +2217,7 @@ export const deleteVaultNotifications: API.OperationMethod<
   DeleteVaultNotificationsInput,
   DeleteVaultNotificationsResponse,
   DeleteVaultNotificationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVaultNotificationsInput,
   output: DeleteVaultNotificationsResponse,
@@ -2264,7 +2264,7 @@ export const describeJob: API.OperationMethod<
   DescribeJobInput,
   GlacierJobDescription,
   DescribeJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeJobInput,
   output: GlacierJobDescription,
@@ -2308,7 +2308,7 @@ export const describeVault: API.OperationMethod<
   DescribeVaultInput,
   DescribeVaultOutput,
   DescribeVaultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeVaultInput,
   output: DescribeVaultOutput,
@@ -2335,7 +2335,7 @@ export const getDataRetrievalPolicy: API.OperationMethod<
   GetDataRetrievalPolicyInput,
   GetDataRetrievalPolicyOutput,
   GetDataRetrievalPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataRetrievalPolicyInput,
   output: GetDataRetrievalPolicyOutput,
@@ -2399,7 +2399,7 @@ export const getJobOutput: API.OperationMethod<
   GetJobOutputInput,
   GetJobOutputOutput,
   GetJobOutputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetJobOutputInput,
   output: GetJobOutputOutput,
@@ -2430,7 +2430,7 @@ export const getVaultAccessPolicy: API.OperationMethod<
   GetVaultAccessPolicyInput,
   GetVaultAccessPolicyOutput,
   GetVaultAccessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVaultAccessPolicyInput,
   output: GetVaultAccessPolicyOutput,
@@ -2478,7 +2478,7 @@ export const getVaultLock: API.OperationMethod<
   GetVaultLockInput,
   GetVaultLockOutput,
   GetVaultLockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVaultLockInput,
   output: GetVaultLockOutput,
@@ -2520,7 +2520,7 @@ export const getVaultNotifications: API.OperationMethod<
   GetVaultNotificationsInput,
   GetVaultNotificationsOutput,
   GetVaultNotificationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVaultNotificationsInput,
   output: GetVaultNotificationsOutput,
@@ -2551,7 +2551,7 @@ export const initiateJob: API.OperationMethod<
   InitiateJobInput,
   InitiateJobOutput,
   InitiateJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InitiateJobInput,
   output: InitiateJobOutput,
@@ -2611,7 +2611,7 @@ export const initiateMultipartUpload: API.OperationMethod<
   InitiateMultipartUploadInput,
   InitiateMultipartUploadOutput,
   InitiateMultipartUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InitiateMultipartUploadInput,
   output: InitiateMultipartUploadOutput,
@@ -2668,7 +2668,7 @@ export const initiateVaultLock: API.OperationMethod<
   InitiateVaultLockInput,
   InitiateVaultLockOutput,
   InitiateVaultLockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InitiateVaultLockInput,
   output: InitiateVaultLockOutput,
@@ -2727,21 +2727,21 @@ export const listJobs: API.OperationMethod<
   ListJobsInput,
   ListJobsOutput,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListJobsInput,
   ) => stream.Stream<
     ListJobsOutput,
     ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListJobsInput,
   ) => stream.Stream<
     GlacierJobDescription,
     ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobsInput,
@@ -2799,21 +2799,21 @@ export const listMultipartUploads: API.OperationMethod<
   ListMultipartUploadsInput,
   ListMultipartUploadsOutput,
   ListMultipartUploadsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMultipartUploadsInput,
   ) => stream.Stream<
     ListMultipartUploadsOutput,
     ListMultipartUploadsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMultipartUploadsInput,
   ) => stream.Stream<
     UploadListElement,
     ListMultipartUploadsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMultipartUploadsInput,
@@ -2868,21 +2868,21 @@ export const listParts: API.OperationMethod<
   ListPartsInput,
   ListPartsOutput,
   ListPartsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPartsInput,
   ) => stream.Stream<
     ListPartsOutput,
     ListPartsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPartsInput,
   ) => stream.Stream<
     PartListElement,
     ListPartsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartsInput,
@@ -2915,7 +2915,7 @@ export const listProvisionedCapacity: API.OperationMethod<
   ListProvisionedCapacityInput,
   ListProvisionedCapacityOutput,
   ListProvisionedCapacityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProvisionedCapacityInput,
   output: ListProvisionedCapacityOutput,
@@ -2942,7 +2942,7 @@ export const listTagsForVault: API.OperationMethod<
   ListTagsForVaultInput,
   ListTagsForVaultOutput,
   ListTagsForVaultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForVaultInput,
   output: ListTagsForVaultOutput,
@@ -2987,21 +2987,21 @@ export const listVaults: API.OperationMethod<
   ListVaultsInput,
   ListVaultsOutput,
   ListVaultsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVaultsInput,
   ) => stream.Stream<
     ListVaultsOutput,
     ListVaultsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListVaultsInput,
   ) => stream.Stream<
     DescribeVaultOutput,
     ListVaultsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVaultsInput,
@@ -3034,7 +3034,7 @@ export const purchaseProvisionedCapacity: API.OperationMethod<
   PurchaseProvisionedCapacityInput,
   PurchaseProvisionedCapacityOutput,
   PurchaseProvisionedCapacityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurchaseProvisionedCapacityInput,
   output: PurchaseProvisionedCapacityOutput,
@@ -3063,7 +3063,7 @@ export const removeTagsFromVault: API.OperationMethod<
   RemoveTagsFromVaultInput,
   RemoveTagsFromVaultResponse,
   RemoveTagsFromVaultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveTagsFromVaultInput,
   output: RemoveTagsFromVaultResponse,
@@ -3094,7 +3094,7 @@ export const setDataRetrievalPolicy: API.OperationMethod<
   SetDataRetrievalPolicyInput,
   SetDataRetrievalPolicyResponse,
   SetDataRetrievalPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetDataRetrievalPolicyInput,
   output: SetDataRetrievalPolicyResponse,
@@ -3124,7 +3124,7 @@ export const setVaultAccessPolicy: API.OperationMethod<
   SetVaultAccessPolicyInput,
   SetVaultAccessPolicyResponse,
   SetVaultAccessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetVaultAccessPolicyInput,
   output: SetVaultAccessPolicyResponse,
@@ -3180,7 +3180,7 @@ export const setVaultNotifications: API.OperationMethod<
   SetVaultNotificationsInput,
   SetVaultNotificationsResponse,
   SetVaultNotificationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetVaultNotificationsInput,
   output: SetVaultNotificationsResponse,
@@ -3239,7 +3239,7 @@ export const uploadArchive: API.OperationMethod<
   UploadArchiveInput,
   ArchiveCreationOutput,
   UploadArchiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadArchiveInput,
   output: ArchiveCreationOutput,
@@ -3308,7 +3308,7 @@ export const uploadMultipartPart: API.OperationMethod<
   UploadMultipartPartInput,
   UploadMultipartPartOutput,
   UploadMultipartPartError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadMultipartPartInput,
   output: UploadMultipartPartOutput,

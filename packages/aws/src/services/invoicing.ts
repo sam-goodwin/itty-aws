@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Invoicing",
@@ -1295,7 +1295,7 @@ export const batchGetInvoiceProfile: API.OperationMethod<
   BatchGetInvoiceProfileRequest,
   BatchGetInvoiceProfileResponse,
   BatchGetInvoiceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetInvoiceProfileRequest,
   output: BatchGetInvoiceProfileResponse,
@@ -1320,7 +1320,7 @@ export const createInvoiceUnit: API.OperationMethod<
   CreateInvoiceUnitRequest,
   CreateInvoiceUnitResponse,
   CreateInvoiceUnitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInvoiceUnitRequest,
   output: CreateInvoiceUnitResponse,
@@ -1346,7 +1346,7 @@ export const createProcurementPortalPreference: API.OperationMethod<
   CreateProcurementPortalPreferenceRequest,
   CreateProcurementPortalPreferenceResponse,
   CreateProcurementPortalPreferenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProcurementPortalPreferenceRequest,
   output: CreateProcurementPortalPreferenceResponse,
@@ -1373,7 +1373,7 @@ export const deleteInvoiceUnit: API.OperationMethod<
   DeleteInvoiceUnitRequest,
   DeleteInvoiceUnitResponse,
   DeleteInvoiceUnitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInvoiceUnitRequest,
   output: DeleteInvoiceUnitResponse,
@@ -1400,7 +1400,7 @@ export const deleteProcurementPortalPreference: API.OperationMethod<
   DeleteProcurementPortalPreferenceRequest,
   DeleteProcurementPortalPreferenceResponse,
   DeleteProcurementPortalPreferenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProcurementPortalPreferenceRequest,
   output: DeleteProcurementPortalPreferenceResponse,
@@ -1427,7 +1427,7 @@ export const getInvoicePDF: API.OperationMethod<
   GetInvoicePDFRequest,
   GetInvoicePDFResponse,
   GetInvoicePDFError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInvoicePDFRequest,
   output: GetInvoicePDFResponse,
@@ -1453,7 +1453,7 @@ export const getInvoiceUnit: API.OperationMethod<
   GetInvoiceUnitRequest,
   GetInvoiceUnitResponse,
   GetInvoiceUnitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInvoiceUnitRequest,
   output: GetInvoiceUnitResponse,
@@ -1481,7 +1481,7 @@ export const getProcurementPortalPreference: API.OperationMethod<
   GetProcurementPortalPreferenceRequest,
   GetProcurementPortalPreferenceResponse,
   GetProcurementPortalPreferenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProcurementPortalPreferenceRequest,
   output: GetProcurementPortalPreferenceResponse,
@@ -1509,21 +1509,21 @@ export const listInvoiceSummaries: API.OperationMethod<
   ListInvoiceSummariesRequest,
   ListInvoiceSummariesResponse,
   ListInvoiceSummariesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInvoiceSummariesRequest,
   ) => stream.Stream<
     ListInvoiceSummariesResponse,
     ListInvoiceSummariesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInvoiceSummariesRequest,
   ) => stream.Stream<
     InvoiceSummary,
     ListInvoiceSummariesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInvoiceSummariesRequest,
@@ -1555,21 +1555,21 @@ export const listInvoiceUnits: API.OperationMethod<
   ListInvoiceUnitsRequest,
   ListInvoiceUnitsResponse,
   ListInvoiceUnitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListInvoiceUnitsRequest,
   ) => stream.Stream<
     ListInvoiceUnitsResponse,
     ListInvoiceUnitsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListInvoiceUnitsRequest,
   ) => stream.Stream<
     InvoiceUnit,
     ListInvoiceUnitsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInvoiceUnitsRequest,
@@ -1602,21 +1602,21 @@ export const listProcurementPortalPreferences: API.OperationMethod<
   ListProcurementPortalPreferencesRequest,
   ListProcurementPortalPreferencesResponse,
   ListProcurementPortalPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProcurementPortalPreferencesRequest,
   ) => stream.Stream<
     ListProcurementPortalPreferencesResponse,
     ListProcurementPortalPreferencesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProcurementPortalPreferencesRequest,
   ) => stream.Stream<
     ProcurementPortalPreferenceSummary,
     ListProcurementPortalPreferencesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProcurementPortalPreferencesRequest,
@@ -1650,7 +1650,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1678,7 +1678,7 @@ export const putProcurementPortalPreference: API.OperationMethod<
   PutProcurementPortalPreferenceRequest,
   PutProcurementPortalPreferenceResponse,
   PutProcurementPortalPreferenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutProcurementPortalPreferenceRequest,
   output: PutProcurementPortalPreferenceResponse,
@@ -1707,7 +1707,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1734,7 +1734,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1760,7 +1760,7 @@ export const updateInvoiceUnit: API.OperationMethod<
   UpdateInvoiceUnitRequest,
   UpdateInvoiceUnitResponse,
   UpdateInvoiceUnitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateInvoiceUnitRequest,
   output: UpdateInvoiceUnitResponse,
@@ -1788,7 +1788,7 @@ export const updateProcurementPortalPreferenceStatus: API.OperationMethod<
   UpdateProcurementPortalPreferenceStatusRequest,
   UpdateProcurementPortalPreferenceStatusResponse,
   UpdateProcurementPortalPreferenceStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProcurementPortalPreferenceStatusRequest,
   output: UpdateProcurementPortalPreferenceStatusResponse,

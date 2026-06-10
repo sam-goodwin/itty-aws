@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Artifact",
   serviceShapeName: "Artifact",
@@ -623,7 +623,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsRequest,
   GetAccountSettingsResponse,
   GetAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
@@ -653,7 +653,7 @@ export const putAccountSettings: API.OperationMethod<
   PutAccountSettingsRequest,
   PutAccountSettingsResponse,
   PutAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccountSettingsRequest,
   output: PutAccountSettingsResponse,
@@ -680,21 +680,21 @@ export const listCustomerAgreements: API.OperationMethod<
   ListCustomerAgreementsRequest,
   ListCustomerAgreementsResponse,
   ListCustomerAgreementsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCustomerAgreementsRequest,
   ) => stream.Stream<
     ListCustomerAgreementsResponse,
     ListCustomerAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCustomerAgreementsRequest,
   ) => stream.Stream<
     CustomerAgreementSummary,
     ListCustomerAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomerAgreementsRequest,
@@ -727,7 +727,7 @@ export const getReportMetadata: API.OperationMethod<
   GetReportMetadataRequest,
   GetReportMetadataResponse,
   GetReportMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReportMetadataRequest,
   output: GetReportMetadataResponse,
@@ -755,21 +755,21 @@ export const listReports: API.OperationMethod<
   ListReportsRequest,
   ListReportsResponse,
   ListReportsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListReportsRequest,
   ) => stream.Stream<
     ListReportsResponse,
     ListReportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListReportsRequest,
   ) => stream.Stream<
     ReportSummary,
     ListReportsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReportsRequest,
@@ -805,7 +805,7 @@ export const getReport: API.OperationMethod<
   GetReportRequest,
   GetReportResponse,
   GetReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReportRequest,
   output: GetReportResponse,
@@ -835,7 +835,7 @@ export const getTermForReport: API.OperationMethod<
   GetTermForReportRequest,
   GetTermForReportResponse,
   GetTermForReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTermForReportRequest,
   output: GetTermForReportResponse,
@@ -864,21 +864,21 @@ export const listReportVersions: API.OperationMethod<
   ListReportVersionsRequest,
   ListReportVersionsResponse,
   ListReportVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListReportVersionsRequest,
   ) => stream.Stream<
     ListReportVersionsResponse,
     ListReportVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListReportVersionsRequest,
   ) => stream.Stream<
     ReportSummary,
     ListReportVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReportVersionsRequest,

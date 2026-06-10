@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "SSM QuickSetup",
   serviceShapeName: "QuickSetup",
@@ -792,7 +792,7 @@ export const createConfigurationManager: API.OperationMethod<
   CreateConfigurationManagerInput,
   CreateConfigurationManagerOutput,
   CreateConfigurationManagerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConfigurationManagerInput,
   output: CreateConfigurationManagerOutput,
@@ -819,7 +819,7 @@ export const deleteConfigurationManager: API.OperationMethod<
   DeleteConfigurationManagerInput,
   DeleteConfigurationManagerResponse,
   DeleteConfigurationManagerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfigurationManagerInput,
   output: DeleteConfigurationManagerResponse,
@@ -847,7 +847,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationInput,
   GetConfigurationOutput,
   GetConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigurationInput,
   output: GetConfigurationOutput,
@@ -875,7 +875,7 @@ export const getConfigurationManager: API.OperationMethod<
   GetConfigurationManagerInput,
   GetConfigurationManagerOutput,
   GetConfigurationManagerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigurationManagerInput,
   output: GetConfigurationManagerOutput,
@@ -901,7 +901,7 @@ export const getServiceSettings: API.OperationMethod<
   GetServiceSettingsRequest,
   GetServiceSettingsOutput,
   GetServiceSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceSettingsRequest,
   output: GetServiceSettingsOutput,
@@ -926,21 +926,21 @@ export const listConfigurationManagers: API.OperationMethod<
   ListConfigurationManagersInput,
   ListConfigurationManagersOutput,
   ListConfigurationManagersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConfigurationManagersInput,
   ) => stream.Stream<
     ListConfigurationManagersOutput,
     ListConfigurationManagersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConfigurationManagersInput,
   ) => stream.Stream<
     ConfigurationManagerSummary,
     ListConfigurationManagersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationManagersInput,
@@ -973,21 +973,21 @@ export const listConfigurations: API.OperationMethod<
   ListConfigurationsInput,
   ListConfigurationsOutput,
   ListConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConfigurationsInput,
   ) => stream.Stream<
     ListConfigurationsOutput,
     ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConfigurationsInput,
   ) => stream.Stream<
     ConfigurationSummary,
     ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsInput,
@@ -1019,7 +1019,7 @@ export const listQuickSetupTypes: API.OperationMethod<
   ListQuickSetupTypesRequest,
   ListQuickSetupTypesOutput,
   ListQuickSetupTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListQuickSetupTypesRequest,
   output: ListQuickSetupTypesOutput,
@@ -1045,7 +1045,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1073,7 +1073,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
@@ -1101,7 +1101,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
@@ -1129,7 +1129,7 @@ export const updateConfigurationDefinition: API.OperationMethod<
   UpdateConfigurationDefinitionInput,
   UpdateConfigurationDefinitionResponse,
   UpdateConfigurationDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigurationDefinitionInput,
   output: UpdateConfigurationDefinitionResponse,
@@ -1157,7 +1157,7 @@ export const updateConfigurationManager: API.OperationMethod<
   UpdateConfigurationManagerInput,
   UpdateConfigurationManagerResponse,
   UpdateConfigurationManagerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigurationManagerInput,
   output: UpdateConfigurationManagerResponse,
@@ -1184,7 +1184,7 @@ export const updateServiceSettings: API.OperationMethod<
   UpdateServiceSettingsInput,
   UpdateServiceSettingsResponse,
   UpdateServiceSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateServiceSettingsInput,
   output: UpdateServiceSettingsResponse,

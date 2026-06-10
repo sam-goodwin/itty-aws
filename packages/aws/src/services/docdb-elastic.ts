@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "DocDB Elastic",
@@ -959,7 +959,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   ApplyPendingMaintenanceActionInput,
   ApplyPendingMaintenanceActionOutput,
   ApplyPendingMaintenanceActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplyPendingMaintenanceActionInput,
   output: ApplyPendingMaintenanceActionOutput,
@@ -988,7 +988,7 @@ export const copyClusterSnapshot: API.OperationMethod<
   CopyClusterSnapshotInput,
   CopyClusterSnapshotOutput,
   CopyClusterSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyClusterSnapshotInput,
   output: CopyClusterSnapshotOutput,
@@ -1017,7 +1017,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterInput,
   CreateClusterOutput,
   CreateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateClusterInput,
   output: CreateClusterOutput,
@@ -1046,7 +1046,7 @@ export const createClusterSnapshot: API.OperationMethod<
   CreateClusterSnapshotInput,
   CreateClusterSnapshotOutput,
   CreateClusterSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateClusterSnapshotInput,
   output: CreateClusterSnapshotOutput,
@@ -1075,7 +1075,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterInput,
   DeleteClusterOutput,
   DeleteClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteClusterInput,
   output: DeleteClusterOutput,
@@ -1103,7 +1103,7 @@ export const deleteClusterSnapshot: API.OperationMethod<
   DeleteClusterSnapshotInput,
   DeleteClusterSnapshotOutput,
   DeleteClusterSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteClusterSnapshotInput,
   output: DeleteClusterSnapshotOutput,
@@ -1130,7 +1130,7 @@ export const getCluster: API.OperationMethod<
   GetClusterInput,
   GetClusterOutput,
   GetClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetClusterInput,
   output: GetClusterOutput,
@@ -1156,7 +1156,7 @@ export const getClusterSnapshot: API.OperationMethod<
   GetClusterSnapshotInput,
   GetClusterSnapshotOutput,
   GetClusterSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetClusterSnapshotInput,
   output: GetClusterSnapshotOutput,
@@ -1183,7 +1183,7 @@ export const getPendingMaintenanceAction: API.OperationMethod<
   GetPendingMaintenanceActionInput,
   GetPendingMaintenanceActionOutput,
   GetPendingMaintenanceActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPendingMaintenanceActionInput,
   output: GetPendingMaintenanceActionOutput,
@@ -1209,21 +1209,21 @@ export const listClusters: API.OperationMethod<
   ListClustersInput,
   ListClustersOutput,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListClustersInput,
   ) => stream.Stream<
     ListClustersOutput,
     ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListClustersInput,
   ) => stream.Stream<
     ClusterInList,
     ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClustersInput,
@@ -1254,21 +1254,21 @@ export const listClusterSnapshots: API.OperationMethod<
   ListClusterSnapshotsInput,
   ListClusterSnapshotsOutput,
   ListClusterSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListClusterSnapshotsInput,
   ) => stream.Stream<
     ListClusterSnapshotsOutput,
     ListClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListClusterSnapshotsInput,
   ) => stream.Stream<
     ClusterSnapshotInList,
     ListClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClusterSnapshotsInput,
@@ -1299,21 +1299,21 @@ export const listPendingMaintenanceActions: API.OperationMethod<
   ListPendingMaintenanceActionsInput,
   ListPendingMaintenanceActionsOutput,
   ListPendingMaintenanceActionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPendingMaintenanceActionsInput,
   ) => stream.Stream<
     ListPendingMaintenanceActionsOutput,
     ListPendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPendingMaintenanceActionsInput,
   ) => stream.Stream<
     ResourcePendingMaintenanceAction,
     ListPendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPendingMaintenanceActionsInput,
@@ -1344,7 +1344,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1371,7 +1371,7 @@ export const restoreClusterFromSnapshot: API.OperationMethod<
   RestoreClusterFromSnapshotInput,
   RestoreClusterFromSnapshotOutput,
   RestoreClusterFromSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreClusterFromSnapshotInput,
   output: RestoreClusterFromSnapshotOutput,
@@ -1399,7 +1399,7 @@ export const startCluster: API.OperationMethod<
   StartClusterInput,
   StartClusterOutput,
   StartClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartClusterInput,
   output: StartClusterOutput,
@@ -1426,7 +1426,7 @@ export const stopCluster: API.OperationMethod<
   StopClusterInput,
   StopClusterOutput,
   StopClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopClusterInput,
   output: StopClusterOutput,
@@ -1451,7 +1451,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1475,7 +1475,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1502,7 +1502,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterInput,
   UpdateClusterOutput,
   UpdateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateClusterInput,
   output: UpdateClusterOutput,

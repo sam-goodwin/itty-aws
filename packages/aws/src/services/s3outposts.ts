@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "S3Outposts",
   serviceShapeName: "S3Outposts",
@@ -406,7 +406,7 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointRequest,
   CreateEndpointResult,
   CreateEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEndpointRequest,
   output: CreateEndpointResult,
@@ -443,7 +443,7 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointRequest,
   DeleteEndpointResponse,
   DeleteEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEndpointRequest,
   output: DeleteEndpointResponse,
@@ -476,21 +476,21 @@ export const listEndpoints: API.OperationMethod<
   ListEndpointsRequest,
   ListEndpointsResult,
   ListEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListEndpointsRequest,
   ) => stream.Stream<
     ListEndpointsResult,
     ListEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListEndpointsRequest,
   ) => stream.Stream<
     Endpoint,
     ListEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointsRequest,
@@ -524,21 +524,21 @@ export const listOutpostsWithS3: API.OperationMethod<
   ListOutpostsWithS3Request,
   ListOutpostsWithS3Result,
   ListOutpostsWithS3Error,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListOutpostsWithS3Request,
   ) => stream.Stream<
     ListOutpostsWithS3Result,
     ListOutpostsWithS3Error,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListOutpostsWithS3Request,
   ) => stream.Stream<
     Outpost,
     ListOutpostsWithS3Error,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOutpostsWithS3Request,
@@ -576,21 +576,21 @@ export const listSharedEndpoints: API.OperationMethod<
   ListSharedEndpointsRequest,
   ListSharedEndpointsResult,
   ListSharedEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSharedEndpointsRequest,
   ) => stream.Stream<
     ListSharedEndpointsResult,
     ListSharedEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSharedEndpointsRequest,
   ) => stream.Stream<
     Endpoint,
     ListSharedEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSharedEndpointsRequest,

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "ElementalInference",
   serviceShapeName: "ElementalInference",
@@ -599,7 +599,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -626,7 +626,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -654,7 +654,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -682,7 +682,7 @@ export const createFeed: API.OperationMethod<
   CreateFeedRequest,
   CreateFeedResponse,
   CreateFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFeedRequest,
   output: CreateFeedResponse,
@@ -708,7 +708,7 @@ export const getFeed: API.OperationMethod<
   GetFeedRequest,
   GetFeedResponse,
   GetFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFeedRequest,
   output: GetFeedResponse,
@@ -735,7 +735,7 @@ export const updateFeed: API.OperationMethod<
   UpdateFeedRequest,
   UpdateFeedResponse,
   UpdateFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFeedRequest,
   output: UpdateFeedResponse,
@@ -764,7 +764,7 @@ export const deleteFeed: API.OperationMethod<
   DeleteFeedRequest,
   DeleteFeedResponse,
   DeleteFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFeedRequest,
   output: DeleteFeedResponse,
@@ -791,21 +791,21 @@ export const listFeeds: API.OperationMethod<
   ListFeedsRequest,
   ListFeedsResponse,
   ListFeedsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFeedsRequest,
   ) => stream.Stream<
     ListFeedsResponse,
     ListFeedsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListFeedsRequest,
   ) => stream.Stream<
     FeedSummary,
     ListFeedsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFeedsRequest,
@@ -840,7 +840,7 @@ export const associateFeed: API.OperationMethod<
   AssociateFeedRequest,
   AssociateFeedResponse,
   AssociateFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateFeedRequest,
   output: AssociateFeedResponse,
@@ -869,7 +869,7 @@ export const disassociateFeed: API.OperationMethod<
   DisassociateFeedRequest,
   DisassociateFeedResponse,
   DisassociateFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateFeedRequest,
   output: DisassociateFeedResponse,

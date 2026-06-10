@@ -6,7 +6,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "DataSync",
@@ -2674,7 +2674,7 @@ export const cancelTaskExecution: API.OperationMethod<
   CancelTaskExecutionRequest,
   CancelTaskExecutionResponse,
   CancelTaskExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelTaskExecutionRequest,
   output: CancelTaskExecutionResponse,
@@ -2695,7 +2695,7 @@ export const createAgent: API.OperationMethod<
   CreateAgentRequest,
   CreateAgentResponse,
   CreateAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAgentRequest,
   output: CreateAgentResponse,
@@ -2717,7 +2717,7 @@ export const createLocationAzureBlob: API.OperationMethod<
   CreateLocationAzureBlobRequest,
   CreateLocationAzureBlobResponse,
   CreateLocationAzureBlobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationAzureBlobRequest,
   output: CreateLocationAzureBlobResponse,
@@ -2740,7 +2740,7 @@ export const createLocationEfs: API.OperationMethod<
   CreateLocationEfsRequest,
   CreateLocationEfsResponse,
   CreateLocationEfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationEfsRequest,
   output: CreateLocationEfsResponse,
@@ -2762,7 +2762,7 @@ export const createLocationFsxLustre: API.OperationMethod<
   CreateLocationFsxLustreRequest,
   CreateLocationFsxLustreResponse,
   CreateLocationFsxLustreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationFsxLustreRequest,
   output: CreateLocationFsxLustreResponse,
@@ -2784,7 +2784,7 @@ export const createLocationFsxOntap: API.OperationMethod<
   CreateLocationFsxOntapRequest,
   CreateLocationFsxOntapResponse,
   CreateLocationFsxOntapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationFsxOntapRequest,
   output: CreateLocationFsxOntapResponse,
@@ -2810,7 +2810,7 @@ export const createLocationFsxOpenZfs: API.OperationMethod<
   CreateLocationFsxOpenZfsRequest,
   CreateLocationFsxOpenZfsResponse,
   CreateLocationFsxOpenZfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationFsxOpenZfsRequest,
   output: CreateLocationFsxOpenZfsResponse,
@@ -2833,7 +2833,7 @@ export const createLocationFsxWindows: API.OperationMethod<
   CreateLocationFsxWindowsRequest,
   CreateLocationFsxWindowsResponse,
   CreateLocationFsxWindowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationFsxWindowsRequest,
   output: CreateLocationFsxWindowsResponse,
@@ -2856,7 +2856,7 @@ export const createLocationHdfs: API.OperationMethod<
   CreateLocationHdfsRequest,
   CreateLocationHdfsResponse,
   CreateLocationHdfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationHdfsRequest,
   output: CreateLocationHdfsResponse,
@@ -2879,7 +2879,7 @@ export const createLocationNfs: API.OperationMethod<
   CreateLocationNfsRequest,
   CreateLocationNfsResponse,
   CreateLocationNfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationNfsRequest,
   output: CreateLocationNfsResponse,
@@ -2900,7 +2900,7 @@ export const createLocationObjectStorage: API.OperationMethod<
   CreateLocationObjectStorageRequest,
   CreateLocationObjectStorageResponse,
   CreateLocationObjectStorageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationObjectStorageRequest,
   output: CreateLocationObjectStorageResponse,
@@ -2929,7 +2929,7 @@ export const createLocationS3: API.OperationMethod<
   CreateLocationS3Request,
   CreateLocationS3Response,
   CreateLocationS3Error,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationS3Request,
   output: CreateLocationS3Response,
@@ -2951,7 +2951,7 @@ export const createLocationSmb: API.OperationMethod<
   CreateLocationSmbRequest,
   CreateLocationSmbResponse,
   CreateLocationSmbError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationSmbRequest,
   output: CreateLocationSmbResponse,
@@ -2977,7 +2977,7 @@ export const createTask: API.OperationMethod<
   CreateTaskRequest,
   CreateTaskResponse,
   CreateTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTaskRequest,
   output: CreateTaskResponse,
@@ -2999,7 +2999,7 @@ export const deleteAgent: API.OperationMethod<
   DeleteAgentRequest,
   DeleteAgentResponse,
   DeleteAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAgentRequest,
   output: DeleteAgentResponse,
@@ -3016,7 +3016,7 @@ export const deleteLocation: API.OperationMethod<
   DeleteLocationRequest,
   DeleteLocationResponse,
   DeleteLocationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationRequest,
   output: DeleteLocationResponse,
@@ -3033,7 +3033,7 @@ export const deleteTask: API.OperationMethod<
   DeleteTaskRequest,
   DeleteTaskResponse,
   DeleteTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTaskRequest,
   output: DeleteTaskResponse,
@@ -3051,7 +3051,7 @@ export const describeAgent: API.OperationMethod<
   DescribeAgentRequest,
   DescribeAgentResponse,
   DescribeAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAgentRequest,
   output: DescribeAgentResponse,
@@ -3069,7 +3069,7 @@ export const describeLocationAzureBlob: API.OperationMethod<
   DescribeLocationAzureBlobRequest,
   DescribeLocationAzureBlobResponse,
   DescribeLocationAzureBlobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationAzureBlobRequest,
   output: DescribeLocationAzureBlobResponse,
@@ -3086,7 +3086,7 @@ export const describeLocationEfs: API.OperationMethod<
   DescribeLocationEfsRequest,
   DescribeLocationEfsResponse,
   DescribeLocationEfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationEfsRequest,
   output: DescribeLocationEfsResponse,
@@ -3103,7 +3103,7 @@ export const describeLocationFsxLustre: API.OperationMethod<
   DescribeLocationFsxLustreRequest,
   DescribeLocationFsxLustreResponse,
   DescribeLocationFsxLustreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationFsxLustreRequest,
   output: DescribeLocationFsxLustreResponse,
@@ -3123,7 +3123,7 @@ export const describeLocationFsxOntap: API.OperationMethod<
   DescribeLocationFsxOntapRequest,
   DescribeLocationFsxOntapResponse,
   DescribeLocationFsxOntapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationFsxOntapRequest,
   output: DescribeLocationFsxOntapResponse,
@@ -3143,7 +3143,7 @@ export const describeLocationFsxOpenZfs: API.OperationMethod<
   DescribeLocationFsxOpenZfsRequest,
   DescribeLocationFsxOpenZfsResponse,
   DescribeLocationFsxOpenZfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationFsxOpenZfsRequest,
   output: DescribeLocationFsxOpenZfsResponse,
@@ -3160,7 +3160,7 @@ export const describeLocationFsxWindows: API.OperationMethod<
   DescribeLocationFsxWindowsRequest,
   DescribeLocationFsxWindowsResponse,
   DescribeLocationFsxWindowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationFsxWindowsRequest,
   output: DescribeLocationFsxWindowsResponse,
@@ -3178,7 +3178,7 @@ export const describeLocationHdfs: API.OperationMethod<
   DescribeLocationHdfsRequest,
   DescribeLocationHdfsResponse,
   DescribeLocationHdfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationHdfsRequest,
   output: DescribeLocationHdfsResponse,
@@ -3196,7 +3196,7 @@ export const describeLocationNfs: API.OperationMethod<
   DescribeLocationNfsRequest,
   DescribeLocationNfsResponse,
   DescribeLocationNfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationNfsRequest,
   output: DescribeLocationNfsResponse,
@@ -3214,7 +3214,7 @@ export const describeLocationObjectStorage: API.OperationMethod<
   DescribeLocationObjectStorageRequest,
   DescribeLocationObjectStorageResponse,
   DescribeLocationObjectStorageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationObjectStorageRequest,
   output: DescribeLocationObjectStorageResponse,
@@ -3232,7 +3232,7 @@ export const describeLocationS3: API.OperationMethod<
   DescribeLocationS3Request,
   DescribeLocationS3Response,
   DescribeLocationS3Error,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationS3Request,
   output: DescribeLocationS3Response,
@@ -3250,7 +3250,7 @@ export const describeLocationSmb: API.OperationMethod<
   DescribeLocationSmbRequest,
   DescribeLocationSmbResponse,
   DescribeLocationSmbError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeLocationSmbRequest,
   output: DescribeLocationSmbResponse,
@@ -3268,7 +3268,7 @@ export const describeTask: API.OperationMethod<
   DescribeTaskRequest,
   DescribeTaskResponse,
   DescribeTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTaskRequest,
   output: DescribeTaskResponse,
@@ -3291,7 +3291,7 @@ export const describeTaskExecution: API.OperationMethod<
   DescribeTaskExecutionRequest,
   DescribeTaskExecutionResponse,
   DescribeTaskExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTaskExecutionRequest,
   output: DescribeTaskExecutionResponse,
@@ -3319,21 +3319,21 @@ export const listAgents: API.OperationMethod<
   ListAgentsRequest,
   ListAgentsResponse,
   ListAgentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAgentsRequest,
   ) => stream.Stream<
     ListAgentsResponse,
     ListAgentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAgentsRequest,
   ) => stream.Stream<
     AgentListEntry,
     ListAgentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAgentsRequest,
@@ -3361,21 +3361,21 @@ export const listLocations: API.OperationMethod<
   ListLocationsRequest,
   ListLocationsResponse,
   ListLocationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListLocationsRequest,
   ) => stream.Stream<
     ListLocationsResponse,
     ListLocationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListLocationsRequest,
   ) => stream.Stream<
     LocationListEntry,
     ListLocationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsRequest,
@@ -3399,21 +3399,21 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     ListTagsForResourceResponse,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTagsForResourceRequest,
   ) => stream.Stream<
     TagListEntry,
     ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
@@ -3437,21 +3437,21 @@ export const listTaskExecutions: API.OperationMethod<
   ListTaskExecutionsRequest,
   ListTaskExecutionsResponse,
   ListTaskExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTaskExecutionsRequest,
   ) => stream.Stream<
     ListTaskExecutionsResponse,
     ListTaskExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTaskExecutionsRequest,
   ) => stream.Stream<
     TaskExecutionListEntry,
     ListTaskExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTaskExecutionsRequest,
@@ -3475,21 +3475,21 @@ export const listTasks: API.OperationMethod<
   ListTasksRequest,
   ListTasksResponse,
   ListTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTasksRequest,
   ) => stream.Stream<
     ListTasksResponse,
     ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListTasksRequest,
   ) => stream.Stream<
     TaskListEntry,
     ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
@@ -3521,7 +3521,7 @@ export const startTaskExecution: API.OperationMethod<
   StartTaskExecutionRequest,
   StartTaskExecutionResponse,
   StartTaskExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartTaskExecutionRequest,
   output: StartTaskExecutionResponse,
@@ -3542,7 +3542,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3559,7 +3559,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3576,7 +3576,7 @@ export const updateAgent: API.OperationMethod<
   UpdateAgentRequest,
   UpdateAgentResponse,
   UpdateAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAgentRequest,
   output: UpdateAgentResponse,
@@ -3596,7 +3596,7 @@ export const updateLocationAzureBlob: API.OperationMethod<
   UpdateLocationAzureBlobRequest,
   UpdateLocationAzureBlobResponse,
   UpdateLocationAzureBlobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationAzureBlobRequest,
   output: UpdateLocationAzureBlobResponse,
@@ -3617,7 +3617,7 @@ export const updateLocationEfs: API.OperationMethod<
   UpdateLocationEfsRequest,
   UpdateLocationEfsResponse,
   UpdateLocationEfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationEfsRequest,
   output: UpdateLocationEfsResponse,
@@ -3638,7 +3638,7 @@ export const updateLocationFsxLustre: API.OperationMethod<
   UpdateLocationFsxLustreRequest,
   UpdateLocationFsxLustreResponse,
   UpdateLocationFsxLustreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationFsxLustreRequest,
   output: UpdateLocationFsxLustreResponse,
@@ -3659,7 +3659,7 @@ export const updateLocationFsxOntap: API.OperationMethod<
   UpdateLocationFsxOntapRequest,
   UpdateLocationFsxOntapResponse,
   UpdateLocationFsxOntapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationFsxOntapRequest,
   output: UpdateLocationFsxOntapResponse,
@@ -3683,7 +3683,7 @@ export const updateLocationFsxOpenZfs: API.OperationMethod<
   UpdateLocationFsxOpenZfsRequest,
   UpdateLocationFsxOpenZfsResponse,
   UpdateLocationFsxOpenZfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationFsxOpenZfsRequest,
   output: UpdateLocationFsxOpenZfsResponse,
@@ -3704,7 +3704,7 @@ export const updateLocationFsxWindows: API.OperationMethod<
   UpdateLocationFsxWindowsRequest,
   UpdateLocationFsxWindowsResponse,
   UpdateLocationFsxWindowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationFsxWindowsRequest,
   output: UpdateLocationFsxWindowsResponse,
@@ -3725,7 +3725,7 @@ export const updateLocationHdfs: API.OperationMethod<
   UpdateLocationHdfsRequest,
   UpdateLocationHdfsResponse,
   UpdateLocationHdfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationHdfsRequest,
   output: UpdateLocationHdfsResponse,
@@ -3746,7 +3746,7 @@ export const updateLocationNfs: API.OperationMethod<
   UpdateLocationNfsRequest,
   UpdateLocationNfsResponse,
   UpdateLocationNfsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationNfsRequest,
   output: UpdateLocationNfsResponse,
@@ -3767,7 +3767,7 @@ export const updateLocationObjectStorage: API.OperationMethod<
   UpdateLocationObjectStorageRequest,
   UpdateLocationObjectStorageResponse,
   UpdateLocationObjectStorageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationObjectStorageRequest,
   output: UpdateLocationObjectStorageResponse,
@@ -3792,7 +3792,7 @@ export const updateLocationS3: API.OperationMethod<
   UpdateLocationS3Request,
   UpdateLocationS3Response,
   UpdateLocationS3Error,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationS3Request,
   output: UpdateLocationS3Response,
@@ -3813,7 +3813,7 @@ export const updateLocationSmb: API.OperationMethod<
   UpdateLocationSmbRequest,
   UpdateLocationSmbResponse,
   UpdateLocationSmbError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLocationSmbRequest,
   output: UpdateLocationSmbResponse,
@@ -3831,7 +3831,7 @@ export const updateTask: API.OperationMethod<
   UpdateTaskRequest,
   UpdateTaskResponse,
   UpdateTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTaskRequest,
   output: UpdateTaskResponse,
@@ -3854,7 +3854,7 @@ export const updateTaskExecution: API.OperationMethod<
   UpdateTaskExecutionRequest,
   UpdateTaskExecutionResponse,
   UpdateTaskExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTaskExecutionRequest,
   output: UpdateTaskExecutionResponse,

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "signer",
   serviceShapeName: "WallabyService",
@@ -1267,7 +1267,7 @@ export const addProfilePermission: API.OperationMethod<
   AddProfilePermissionRequest,
   AddProfilePermissionResponse,
   AddProfilePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddProfilePermissionRequest,
   output: AddProfilePermissionResponse,
@@ -1296,7 +1296,7 @@ export const cancelSigningProfile: API.OperationMethod<
   CancelSigningProfileRequest,
   CancelSigningProfileResponse,
   CancelSigningProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelSigningProfileRequest,
   output: CancelSigningProfileResponse,
@@ -1322,7 +1322,7 @@ export const describeSigningJob: API.OperationMethod<
   DescribeSigningJobRequest,
   DescribeSigningJobResponse,
   DescribeSigningJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSigningJobRequest,
   output: DescribeSigningJobResponse,
@@ -1347,7 +1347,7 @@ export const getRevocationStatus: API.OperationMethod<
   GetRevocationStatusRequest,
   GetRevocationStatusResponse,
   GetRevocationStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRevocationStatusRequest,
   output: GetRevocationStatusResponse,
@@ -1371,7 +1371,7 @@ export const getSigningPlatform: API.OperationMethod<
   GetSigningPlatformRequest,
   GetSigningPlatformResponse,
   GetSigningPlatformError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSigningPlatformRequest,
   output: GetSigningPlatformResponse,
@@ -1395,7 +1395,7 @@ export const getSigningProfile: API.OperationMethod<
   GetSigningProfileRequest,
   GetSigningProfileResponse,
   GetSigningProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSigningProfileRequest,
   output: GetSigningProfileResponse,
@@ -1420,7 +1420,7 @@ export const listProfilePermissions: API.OperationMethod<
   ListProfilePermissionsRequest,
   ListProfilePermissionsResponse,
   ListProfilePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProfilePermissionsRequest,
   output: ListProfilePermissionsResponse,
@@ -1451,21 +1451,21 @@ export const listSigningJobs: API.OperationMethod<
   ListSigningJobsRequest,
   ListSigningJobsResponse,
   ListSigningJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSigningJobsRequest,
   ) => stream.Stream<
     ListSigningJobsResponse,
     ListSigningJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSigningJobsRequest,
   ) => stream.Stream<
     unknown,
     ListSigningJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSigningJobsRequest,
@@ -1501,21 +1501,21 @@ export const listSigningPlatforms: API.OperationMethod<
   ListSigningPlatformsRequest,
   ListSigningPlatformsResponse,
   ListSigningPlatformsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSigningPlatformsRequest,
   ) => stream.Stream<
     ListSigningPlatformsResponse,
     ListSigningPlatformsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSigningPlatformsRequest,
   ) => stream.Stream<
     unknown,
     ListSigningPlatformsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSigningPlatformsRequest,
@@ -1551,21 +1551,21 @@ export const listSigningProfiles: API.OperationMethod<
   ListSigningProfilesRequest,
   ListSigningProfilesResponse,
   ListSigningProfilesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSigningProfilesRequest,
   ) => stream.Stream<
     ListSigningProfilesResponse,
     ListSigningProfilesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSigningProfilesRequest,
   ) => stream.Stream<
     unknown,
     ListSigningProfilesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSigningProfilesRequest,
@@ -1594,7 +1594,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1620,7 +1620,7 @@ export const putSigningProfile: API.OperationMethod<
   PutSigningProfileRequest,
   PutSigningProfileResponse,
   PutSigningProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSigningProfileRequest,
   output: PutSigningProfileResponse,
@@ -1647,7 +1647,7 @@ export const removeProfilePermission: API.OperationMethod<
   RemoveProfilePermissionRequest,
   RemoveProfilePermissionResponse,
   RemoveProfilePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveProfilePermissionRequest,
   output: RemoveProfilePermissionResponse,
@@ -1675,7 +1675,7 @@ export const revokeSignature: API.OperationMethod<
   RevokeSignatureRequest,
   RevokeSignatureResponse,
   RevokeSignatureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeSignatureRequest,
   output: RevokeSignatureResponse,
@@ -1705,7 +1705,7 @@ export const revokeSigningProfile: API.OperationMethod<
   RevokeSigningProfileRequest,
   RevokeSigningProfileResponse,
   RevokeSigningProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeSigningProfileRequest,
   output: RevokeSigningProfileResponse,
@@ -1731,7 +1731,7 @@ export const signPayload: API.OperationMethod<
   SignPayloadRequest,
   SignPayloadResponse,
   SignPayloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignPayloadRequest,
   output: SignPayloadResponse,
@@ -1779,7 +1779,7 @@ export const startSigningJob: API.OperationMethod<
   StartSigningJobRequest,
   StartSigningJobResponse,
   StartSigningJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartSigningJobRequest,
   output: StartSigningJobResponse,
@@ -1808,7 +1808,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1833,7 +1833,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

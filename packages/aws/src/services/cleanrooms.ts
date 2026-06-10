@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "CleanRooms",
@@ -7148,7 +7148,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -7165,7 +7165,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -7182,7 +7182,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -7204,7 +7204,7 @@ export const createAnalysisTemplate: API.OperationMethod<
   CreateAnalysisTemplateInput,
   CreateAnalysisTemplateOutput,
   CreateAnalysisTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAnalysisTemplateInput,
   output: CreateAnalysisTemplateOutput,
@@ -7232,7 +7232,7 @@ export const getAnalysisTemplate: API.OperationMethod<
   GetAnalysisTemplateInput,
   GetAnalysisTemplateOutput,
   GetAnalysisTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAnalysisTemplateInput,
   output: GetAnalysisTemplateOutput,
@@ -7258,7 +7258,7 @@ export const updateAnalysisTemplate: API.OperationMethod<
   UpdateAnalysisTemplateInput,
   UpdateAnalysisTemplateOutput,
   UpdateAnalysisTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAnalysisTemplateInput,
   output: UpdateAnalysisTemplateOutput,
@@ -7284,7 +7284,7 @@ export const deleteAnalysisTemplate: API.OperationMethod<
   DeleteAnalysisTemplateInput,
   DeleteAnalysisTemplateOutput,
   DeleteAnalysisTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAnalysisTemplateInput,
   output: DeleteAnalysisTemplateOutput,
@@ -7310,21 +7310,21 @@ export const listAnalysisTemplates: API.OperationMethod<
   ListAnalysisTemplatesInput,
   ListAnalysisTemplatesOutput,
   ListAnalysisTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAnalysisTemplatesInput,
   ) => stream.Stream<
     ListAnalysisTemplatesOutput,
     ListAnalysisTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAnalysisTemplatesInput,
   ) => stream.Stream<
     AnalysisTemplateSummary,
     ListAnalysisTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAnalysisTemplatesInput,
@@ -7357,7 +7357,7 @@ export const createCollaboration: API.OperationMethod<
   CreateCollaborationInput,
   CreateCollaborationOutput,
   CreateCollaborationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCollaborationInput,
   output: CreateCollaborationOutput,
@@ -7382,7 +7382,7 @@ export const getCollaboration: API.OperationMethod<
   GetCollaborationInput,
   GetCollaborationOutput,
   GetCollaborationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCollaborationInput,
   output: GetCollaborationOutput,
@@ -7406,7 +7406,7 @@ export const updateCollaboration: API.OperationMethod<
   UpdateCollaborationInput,
   UpdateCollaborationOutput,
   UpdateCollaborationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCollaborationInput,
   output: UpdateCollaborationOutput,
@@ -7430,7 +7430,7 @@ export const deleteCollaboration: API.OperationMethod<
   DeleteCollaborationInput,
   DeleteCollaborationOutput,
   DeleteCollaborationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCollaborationInput,
   output: DeleteCollaborationOutput,
@@ -7454,21 +7454,21 @@ export const listCollaborations: API.OperationMethod<
   ListCollaborationsInput,
   ListCollaborationsOutput,
   ListCollaborationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCollaborationsInput,
   ) => stream.Stream<
     ListCollaborationsOutput,
     ListCollaborationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCollaborationsInput,
   ) => stream.Stream<
     CollaborationSummary,
     ListCollaborationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationsInput,
@@ -7500,7 +7500,7 @@ export const batchGetCollaborationAnalysisTemplate: API.OperationMethod<
   BatchGetCollaborationAnalysisTemplateInput,
   BatchGetCollaborationAnalysisTemplateOutput,
   BatchGetCollaborationAnalysisTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetCollaborationAnalysisTemplateInput,
   output: BatchGetCollaborationAnalysisTemplateOutput,
@@ -7526,7 +7526,7 @@ export const batchGetSchema: API.OperationMethod<
   BatchGetSchemaInput,
   BatchGetSchemaOutput,
   BatchGetSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetSchemaInput,
   output: BatchGetSchemaOutput,
@@ -7552,7 +7552,7 @@ export const batchGetSchemaAnalysisRule: API.OperationMethod<
   BatchGetSchemaAnalysisRuleInput,
   BatchGetSchemaAnalysisRuleOutput,
   BatchGetSchemaAnalysisRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetSchemaAnalysisRuleInput,
   output: BatchGetSchemaAnalysisRuleOutput,
@@ -7580,7 +7580,7 @@ export const createCollaborationChangeRequest: API.OperationMethod<
   CreateCollaborationChangeRequestInput,
   CreateCollaborationChangeRequestOutput,
   CreateCollaborationChangeRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCollaborationChangeRequestInput,
   output: CreateCollaborationChangeRequestOutput,
@@ -7609,7 +7609,7 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberInput,
   DeleteMemberOutput,
   DeleteMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMemberInput,
   output: DeleteMemberOutput,
@@ -7636,7 +7636,7 @@ export const getCollaborationAnalysisTemplate: API.OperationMethod<
   GetCollaborationAnalysisTemplateInput,
   GetCollaborationAnalysisTemplateOutput,
   GetCollaborationAnalysisTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCollaborationAnalysisTemplateInput,
   output: GetCollaborationAnalysisTemplateOutput,
@@ -7662,7 +7662,7 @@ export const getCollaborationChangeRequest: API.OperationMethod<
   GetCollaborationChangeRequestInput,
   GetCollaborationChangeRequestOutput,
   GetCollaborationChangeRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCollaborationChangeRequestInput,
   output: GetCollaborationChangeRequestOutput,
@@ -7688,7 +7688,7 @@ export const getCollaborationConfiguredAudienceModelAssociation: API.OperationMe
   GetCollaborationConfiguredAudienceModelAssociationInput,
   GetCollaborationConfiguredAudienceModelAssociationOutput,
   GetCollaborationConfiguredAudienceModelAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCollaborationConfiguredAudienceModelAssociationInput,
   output: GetCollaborationConfiguredAudienceModelAssociationOutput,
@@ -7714,7 +7714,7 @@ export const getCollaborationIdNamespaceAssociation: API.OperationMethod<
   GetCollaborationIdNamespaceAssociationInput,
   GetCollaborationIdNamespaceAssociationOutput,
   GetCollaborationIdNamespaceAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCollaborationIdNamespaceAssociationInput,
   output: GetCollaborationIdNamespaceAssociationOutput,
@@ -7740,7 +7740,7 @@ export const getCollaborationPrivacyBudgetTemplate: API.OperationMethod<
   GetCollaborationPrivacyBudgetTemplateInput,
   GetCollaborationPrivacyBudgetTemplateOutput,
   GetCollaborationPrivacyBudgetTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCollaborationPrivacyBudgetTemplateInput,
   output: GetCollaborationPrivacyBudgetTemplateOutput,
@@ -7766,7 +7766,7 @@ export const getSchema: API.OperationMethod<
   GetSchemaInput,
   GetSchemaOutput,
   GetSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSchemaInput,
   output: GetSchemaOutput,
@@ -7792,7 +7792,7 @@ export const getSchemaAnalysisRule: API.OperationMethod<
   GetSchemaAnalysisRuleInput,
   GetSchemaAnalysisRuleOutput,
   GetSchemaAnalysisRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSchemaAnalysisRuleInput,
   output: GetSchemaAnalysisRuleOutput,
@@ -7818,21 +7818,21 @@ export const listCollaborationAnalysisTemplates: API.OperationMethod<
   ListCollaborationAnalysisTemplatesInput,
   ListCollaborationAnalysisTemplatesOutput,
   ListCollaborationAnalysisTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCollaborationAnalysisTemplatesInput,
   ) => stream.Stream<
     ListCollaborationAnalysisTemplatesOutput,
     ListCollaborationAnalysisTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCollaborationAnalysisTemplatesInput,
   ) => stream.Stream<
     CollaborationAnalysisTemplateSummary,
     ListCollaborationAnalysisTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationAnalysisTemplatesInput,
@@ -7865,21 +7865,21 @@ export const listCollaborationChangeRequests: API.OperationMethod<
   ListCollaborationChangeRequestsInput,
   ListCollaborationChangeRequestsOutput,
   ListCollaborationChangeRequestsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCollaborationChangeRequestsInput,
   ) => stream.Stream<
     ListCollaborationChangeRequestsOutput,
     ListCollaborationChangeRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCollaborationChangeRequestsInput,
   ) => stream.Stream<
     CollaborationChangeRequestSummary,
     ListCollaborationChangeRequestsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationChangeRequestsInput,
@@ -7912,21 +7912,21 @@ export const listCollaborationConfiguredAudienceModelAssociations: API.Operation
   ListCollaborationConfiguredAudienceModelAssociationsInput,
   ListCollaborationConfiguredAudienceModelAssociationsOutput,
   ListCollaborationConfiguredAudienceModelAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCollaborationConfiguredAudienceModelAssociationsInput,
   ) => stream.Stream<
     ListCollaborationConfiguredAudienceModelAssociationsOutput,
     ListCollaborationConfiguredAudienceModelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCollaborationConfiguredAudienceModelAssociationsInput,
   ) => stream.Stream<
     CollaborationConfiguredAudienceModelAssociationSummary,
     ListCollaborationConfiguredAudienceModelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationConfiguredAudienceModelAssociationsInput,
@@ -7959,21 +7959,21 @@ export const listCollaborationIdNamespaceAssociations: API.OperationMethod<
   ListCollaborationIdNamespaceAssociationsInput,
   ListCollaborationIdNamespaceAssociationsOutput,
   ListCollaborationIdNamespaceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCollaborationIdNamespaceAssociationsInput,
   ) => stream.Stream<
     ListCollaborationIdNamespaceAssociationsOutput,
     ListCollaborationIdNamespaceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCollaborationIdNamespaceAssociationsInput,
   ) => stream.Stream<
     CollaborationIdNamespaceAssociationSummary,
     ListCollaborationIdNamespaceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationIdNamespaceAssociationsInput,
@@ -8006,21 +8006,21 @@ export const listCollaborationPrivacyBudgets: API.OperationMethod<
   ListCollaborationPrivacyBudgetsInput,
   ListCollaborationPrivacyBudgetsOutput,
   ListCollaborationPrivacyBudgetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCollaborationPrivacyBudgetsInput,
   ) => stream.Stream<
     ListCollaborationPrivacyBudgetsOutput,
     ListCollaborationPrivacyBudgetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCollaborationPrivacyBudgetsInput,
   ) => stream.Stream<
     CollaborationPrivacyBudgetSummary,
     ListCollaborationPrivacyBudgetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationPrivacyBudgetsInput,
@@ -8053,21 +8053,21 @@ export const listCollaborationPrivacyBudgetTemplates: API.OperationMethod<
   ListCollaborationPrivacyBudgetTemplatesInput,
   ListCollaborationPrivacyBudgetTemplatesOutput,
   ListCollaborationPrivacyBudgetTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCollaborationPrivacyBudgetTemplatesInput,
   ) => stream.Stream<
     ListCollaborationPrivacyBudgetTemplatesOutput,
     ListCollaborationPrivacyBudgetTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCollaborationPrivacyBudgetTemplatesInput,
   ) => stream.Stream<
     CollaborationPrivacyBudgetTemplateSummary,
     ListCollaborationPrivacyBudgetTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationPrivacyBudgetTemplatesInput,
@@ -8100,21 +8100,21 @@ export const listMembers: API.OperationMethod<
   ListMembersInput,
   ListMembersOutput,
   ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMembersInput,
   ) => stream.Stream<
     ListMembersOutput,
     ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMembersInput,
   ) => stream.Stream<
     MemberSummary,
     ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMembersInput,
@@ -8147,21 +8147,21 @@ export const listSchemas: API.OperationMethod<
   ListSchemasInput,
   ListSchemasOutput,
   ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSchemasInput,
   ) => stream.Stream<
     ListSchemasOutput,
     ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSchemasInput,
   ) => stream.Stream<
     SchemaSummary,
     ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasInput,
@@ -8197,7 +8197,7 @@ export const updateCollaborationChangeRequest: API.OperationMethod<
   UpdateCollaborationChangeRequestInput,
   UpdateCollaborationChangeRequestOutput,
   UpdateCollaborationChangeRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCollaborationChangeRequestInput,
   output: UpdateCollaborationChangeRequestOutput,
@@ -8226,7 +8226,7 @@ export const createConfiguredAudienceModelAssociation: API.OperationMethod<
   CreateConfiguredAudienceModelAssociationInput,
   CreateConfiguredAudienceModelAssociationOutput,
   CreateConfiguredAudienceModelAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConfiguredAudienceModelAssociationInput,
   output: CreateConfiguredAudienceModelAssociationOutput,
@@ -8254,7 +8254,7 @@ export const getConfiguredAudienceModelAssociation: API.OperationMethod<
   GetConfiguredAudienceModelAssociationInput,
   GetConfiguredAudienceModelAssociationOutput,
   GetConfiguredAudienceModelAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfiguredAudienceModelAssociationInput,
   output: GetConfiguredAudienceModelAssociationOutput,
@@ -8280,7 +8280,7 @@ export const updateConfiguredAudienceModelAssociation: API.OperationMethod<
   UpdateConfiguredAudienceModelAssociationInput,
   UpdateConfiguredAudienceModelAssociationOutput,
   UpdateConfiguredAudienceModelAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfiguredAudienceModelAssociationInput,
   output: UpdateConfiguredAudienceModelAssociationOutput,
@@ -8306,7 +8306,7 @@ export const deleteConfiguredAudienceModelAssociation: API.OperationMethod<
   DeleteConfiguredAudienceModelAssociationInput,
   DeleteConfiguredAudienceModelAssociationOutput,
   DeleteConfiguredAudienceModelAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfiguredAudienceModelAssociationInput,
   output: DeleteConfiguredAudienceModelAssociationOutput,
@@ -8332,21 +8332,21 @@ export const listConfiguredAudienceModelAssociations: API.OperationMethod<
   ListConfiguredAudienceModelAssociationsInput,
   ListConfiguredAudienceModelAssociationsOutput,
   ListConfiguredAudienceModelAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConfiguredAudienceModelAssociationsInput,
   ) => stream.Stream<
     ListConfiguredAudienceModelAssociationsOutput,
     ListConfiguredAudienceModelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConfiguredAudienceModelAssociationsInput,
   ) => stream.Stream<
     ConfiguredAudienceModelAssociationSummary,
     ListConfiguredAudienceModelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredAudienceModelAssociationsInput,
@@ -8381,7 +8381,7 @@ export const createConfiguredTableAssociation: API.OperationMethod<
   CreateConfiguredTableAssociationInput,
   CreateConfiguredTableAssociationOutput,
   CreateConfiguredTableAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConfiguredTableAssociationInput,
   output: CreateConfiguredTableAssociationOutput,
@@ -8409,7 +8409,7 @@ export const getConfiguredTableAssociation: API.OperationMethod<
   GetConfiguredTableAssociationInput,
   GetConfiguredTableAssociationOutput,
   GetConfiguredTableAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfiguredTableAssociationInput,
   output: GetConfiguredTableAssociationOutput,
@@ -8436,7 +8436,7 @@ export const updateConfiguredTableAssociation: API.OperationMethod<
   UpdateConfiguredTableAssociationInput,
   UpdateConfiguredTableAssociationOutput,
   UpdateConfiguredTableAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfiguredTableAssociationInput,
   output: UpdateConfiguredTableAssociationOutput,
@@ -8464,7 +8464,7 @@ export const deleteConfiguredTableAssociation: API.OperationMethod<
   DeleteConfiguredTableAssociationInput,
   DeleteConfiguredTableAssociationOutput,
   DeleteConfiguredTableAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfiguredTableAssociationInput,
   output: DeleteConfiguredTableAssociationOutput,
@@ -8491,21 +8491,21 @@ export const listConfiguredTableAssociations: API.OperationMethod<
   ListConfiguredTableAssociationsInput,
   ListConfiguredTableAssociationsOutput,
   ListConfiguredTableAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConfiguredTableAssociationsInput,
   ) => stream.Stream<
     ListConfiguredTableAssociationsOutput,
     ListConfiguredTableAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConfiguredTableAssociationsInput,
   ) => stream.Stream<
     ConfiguredTableAssociationSummary,
     ListConfiguredTableAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredTableAssociationsInput,
@@ -8539,7 +8539,7 @@ export const createConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   CreateConfiguredTableAssociationAnalysisRuleInput,
   CreateConfiguredTableAssociationAnalysisRuleOutput,
   CreateConfiguredTableAssociationAnalysisRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConfiguredTableAssociationAnalysisRuleInput,
   output: CreateConfiguredTableAssociationAnalysisRuleOutput,
@@ -8567,7 +8567,7 @@ export const deleteConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   DeleteConfiguredTableAssociationAnalysisRuleInput,
   DeleteConfiguredTableAssociationAnalysisRuleOutput,
   DeleteConfiguredTableAssociationAnalysisRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfiguredTableAssociationAnalysisRuleInput,
   output: DeleteConfiguredTableAssociationAnalysisRuleOutput,
@@ -8594,7 +8594,7 @@ export const getConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   GetConfiguredTableAssociationAnalysisRuleInput,
   GetConfiguredTableAssociationAnalysisRuleOutput,
   GetConfiguredTableAssociationAnalysisRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfiguredTableAssociationAnalysisRuleInput,
   output: GetConfiguredTableAssociationAnalysisRuleOutput,
@@ -8621,7 +8621,7 @@ export const updateConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   UpdateConfiguredTableAssociationAnalysisRuleInput,
   UpdateConfiguredTableAssociationAnalysisRuleOutput,
   UpdateConfiguredTableAssociationAnalysisRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfiguredTableAssociationAnalysisRuleInput,
   output: UpdateConfiguredTableAssociationAnalysisRuleOutput,
@@ -8650,7 +8650,7 @@ export const createConfiguredTable: API.OperationMethod<
   CreateConfiguredTableInput,
   CreateConfiguredTableOutput,
   CreateConfiguredTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConfiguredTableInput,
   output: CreateConfiguredTableOutput,
@@ -8678,7 +8678,7 @@ export const getConfiguredTable: API.OperationMethod<
   GetConfiguredTableInput,
   GetConfiguredTableOutput,
   GetConfiguredTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfiguredTableInput,
   output: GetConfiguredTableOutput,
@@ -8706,7 +8706,7 @@ export const updateConfiguredTable: API.OperationMethod<
   UpdateConfiguredTableInput,
   UpdateConfiguredTableOutput,
   UpdateConfiguredTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfiguredTableInput,
   output: UpdateConfiguredTableOutput,
@@ -8735,7 +8735,7 @@ export const deleteConfiguredTable: API.OperationMethod<
   DeleteConfiguredTableInput,
   DeleteConfiguredTableOutput,
   DeleteConfiguredTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfiguredTableInput,
   output: DeleteConfiguredTableOutput,
@@ -8761,21 +8761,21 @@ export const listConfiguredTables: API.OperationMethod<
   ListConfiguredTablesInput,
   ListConfiguredTablesOutput,
   ListConfiguredTablesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConfiguredTablesInput,
   ) => stream.Stream<
     ListConfiguredTablesOutput,
     ListConfiguredTablesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConfiguredTablesInput,
   ) => stream.Stream<
     ConfiguredTableSummary,
     ListConfiguredTablesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredTablesInput,
@@ -8809,7 +8809,7 @@ export const createConfiguredTableAnalysisRule: API.OperationMethod<
   CreateConfiguredTableAnalysisRuleInput,
   CreateConfiguredTableAnalysisRuleOutput,
   CreateConfiguredTableAnalysisRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConfiguredTableAnalysisRuleInput,
   output: CreateConfiguredTableAnalysisRuleOutput,
@@ -8838,7 +8838,7 @@ export const deleteConfiguredTableAnalysisRule: API.OperationMethod<
   DeleteConfiguredTableAnalysisRuleInput,
   DeleteConfiguredTableAnalysisRuleOutput,
   DeleteConfiguredTableAnalysisRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfiguredTableAnalysisRuleInput,
   output: DeleteConfiguredTableAnalysisRuleOutput,
@@ -8865,7 +8865,7 @@ export const getConfiguredTableAnalysisRule: API.OperationMethod<
   GetConfiguredTableAnalysisRuleInput,
   GetConfiguredTableAnalysisRuleOutput,
   GetConfiguredTableAnalysisRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfiguredTableAnalysisRuleInput,
   output: GetConfiguredTableAnalysisRuleOutput,
@@ -8892,7 +8892,7 @@ export const updateConfiguredTableAnalysisRule: API.OperationMethod<
   UpdateConfiguredTableAnalysisRuleInput,
   UpdateConfiguredTableAnalysisRuleOutput,
   UpdateConfiguredTableAnalysisRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfiguredTableAnalysisRuleInput,
   output: UpdateConfiguredTableAnalysisRuleOutput,
@@ -8921,7 +8921,7 @@ export const createIdMappingTable: API.OperationMethod<
   CreateIdMappingTableInput,
   CreateIdMappingTableOutput,
   CreateIdMappingTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIdMappingTableInput,
   output: CreateIdMappingTableOutput,
@@ -8949,7 +8949,7 @@ export const getIdMappingTable: API.OperationMethod<
   GetIdMappingTableInput,
   GetIdMappingTableOutput,
   GetIdMappingTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdMappingTableInput,
   output: GetIdMappingTableOutput,
@@ -8975,7 +8975,7 @@ export const updateIdMappingTable: API.OperationMethod<
   UpdateIdMappingTableInput,
   UpdateIdMappingTableOutput,
   UpdateIdMappingTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIdMappingTableInput,
   output: UpdateIdMappingTableOutput,
@@ -9001,7 +9001,7 @@ export const deleteIdMappingTable: API.OperationMethod<
   DeleteIdMappingTableInput,
   DeleteIdMappingTableOutput,
   DeleteIdMappingTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIdMappingTableInput,
   output: DeleteIdMappingTableOutput,
@@ -9027,21 +9027,21 @@ export const listIdMappingTables: API.OperationMethod<
   ListIdMappingTablesInput,
   ListIdMappingTablesOutput,
   ListIdMappingTablesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIdMappingTablesInput,
   ) => stream.Stream<
     ListIdMappingTablesOutput,
     ListIdMappingTablesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListIdMappingTablesInput,
   ) => stream.Stream<
     IdMappingTableSummary,
     ListIdMappingTablesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIdMappingTablesInput,
@@ -9076,7 +9076,7 @@ export const populateIdMappingTable: API.OperationMethod<
   PopulateIdMappingTableInput,
   PopulateIdMappingTableOutput,
   PopulateIdMappingTableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PopulateIdMappingTableInput,
   output: PopulateIdMappingTableOutput,
@@ -9106,7 +9106,7 @@ export const createIdNamespaceAssociation: API.OperationMethod<
   CreateIdNamespaceAssociationInput,
   CreateIdNamespaceAssociationOutput,
   CreateIdNamespaceAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIdNamespaceAssociationInput,
   output: CreateIdNamespaceAssociationOutput,
@@ -9134,7 +9134,7 @@ export const getIdNamespaceAssociation: API.OperationMethod<
   GetIdNamespaceAssociationInput,
   GetIdNamespaceAssociationOutput,
   GetIdNamespaceAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdNamespaceAssociationInput,
   output: GetIdNamespaceAssociationOutput,
@@ -9160,7 +9160,7 @@ export const updateIdNamespaceAssociation: API.OperationMethod<
   UpdateIdNamespaceAssociationInput,
   UpdateIdNamespaceAssociationOutput,
   UpdateIdNamespaceAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIdNamespaceAssociationInput,
   output: UpdateIdNamespaceAssociationOutput,
@@ -9186,7 +9186,7 @@ export const deleteIdNamespaceAssociation: API.OperationMethod<
   DeleteIdNamespaceAssociationInput,
   DeleteIdNamespaceAssociationOutput,
   DeleteIdNamespaceAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIdNamespaceAssociationInput,
   output: DeleteIdNamespaceAssociationOutput,
@@ -9212,21 +9212,21 @@ export const listIdNamespaceAssociations: API.OperationMethod<
   ListIdNamespaceAssociationsInput,
   ListIdNamespaceAssociationsOutput,
   ListIdNamespaceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIdNamespaceAssociationsInput,
   ) => stream.Stream<
     ListIdNamespaceAssociationsOutput,
     ListIdNamespaceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListIdNamespaceAssociationsInput,
   ) => stream.Stream<
     IdNamespaceAssociationSummary,
     ListIdNamespaceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIdNamespaceAssociationsInput,
@@ -9261,7 +9261,7 @@ export const createMembership: API.OperationMethod<
   CreateMembershipInput,
   CreateMembershipOutput,
   CreateMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMembershipInput,
   output: CreateMembershipOutput,
@@ -9289,7 +9289,7 @@ export const getMembership: API.OperationMethod<
   GetMembershipInput,
   GetMembershipOutput,
   GetMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMembershipInput,
   output: GetMembershipOutput,
@@ -9316,7 +9316,7 @@ export const updateMembership: API.OperationMethod<
   UpdateMembershipInput,
   UpdateMembershipOutput,
   UpdateMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMembershipInput,
   output: UpdateMembershipOutput,
@@ -9344,7 +9344,7 @@ export const deleteMembership: API.OperationMethod<
   DeleteMembershipInput,
   DeleteMembershipOutput,
   DeleteMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMembershipInput,
   output: DeleteMembershipOutput,
@@ -9370,21 +9370,21 @@ export const listMemberships: API.OperationMethod<
   ListMembershipsInput,
   ListMembershipsOutput,
   ListMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMembershipsInput,
   ) => stream.Stream<
     ListMembershipsOutput,
     ListMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMembershipsInput,
   ) => stream.Stream<
     MembershipSummary,
     ListMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMembershipsInput,
@@ -9416,7 +9416,7 @@ export const getProtectedJob: API.OperationMethod<
   GetProtectedJobInput,
   GetProtectedJobOutput,
   GetProtectedJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProtectedJobInput,
   output: GetProtectedJobOutput,
@@ -9442,7 +9442,7 @@ export const getProtectedQuery: API.OperationMethod<
   GetProtectedQueryInput,
   GetProtectedQueryOutput,
   GetProtectedQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProtectedQueryInput,
   output: GetProtectedQueryOutput,
@@ -9468,21 +9468,21 @@ export const listPrivacyBudgets: API.OperationMethod<
   ListPrivacyBudgetsInput,
   ListPrivacyBudgetsOutput,
   ListPrivacyBudgetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPrivacyBudgetsInput,
   ) => stream.Stream<
     ListPrivacyBudgetsOutput,
     ListPrivacyBudgetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPrivacyBudgetsInput,
   ) => stream.Stream<
     PrivacyBudgetSummary,
     ListPrivacyBudgetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrivacyBudgetsInput,
@@ -9515,21 +9515,21 @@ export const listProtectedJobs: API.OperationMethod<
   ListProtectedJobsInput,
   ListProtectedJobsOutput,
   ListProtectedJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProtectedJobsInput,
   ) => stream.Stream<
     ListProtectedJobsOutput,
     ListProtectedJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProtectedJobsInput,
   ) => stream.Stream<
     ProtectedJobSummary,
     ListProtectedJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProtectedJobsInput,
@@ -9562,21 +9562,21 @@ export const listProtectedQueries: API.OperationMethod<
   ListProtectedQueriesInput,
   ListProtectedQueriesOutput,
   ListProtectedQueriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProtectedQueriesInput,
   ) => stream.Stream<
     ListProtectedQueriesOutput,
     ListProtectedQueriesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProtectedQueriesInput,
   ) => stream.Stream<
     ProtectedQuerySummary,
     ListProtectedQueriesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProtectedQueriesInput,
@@ -9609,7 +9609,7 @@ export const previewPrivacyImpact: API.OperationMethod<
   PreviewPrivacyImpactInput,
   PreviewPrivacyImpactOutput,
   PreviewPrivacyImpactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PreviewPrivacyImpactInput,
   output: PreviewPrivacyImpactOutput,
@@ -9636,7 +9636,7 @@ export const startProtectedJob: API.OperationMethod<
   StartProtectedJobInput,
   StartProtectedJobOutput,
   StartProtectedJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartProtectedJobInput,
   output: StartProtectedJobOutput,
@@ -9664,7 +9664,7 @@ export const startProtectedQuery: API.OperationMethod<
   StartProtectedQueryInput,
   StartProtectedQueryOutput,
   StartProtectedQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartProtectedQueryInput,
   output: StartProtectedQueryOutput,
@@ -9692,7 +9692,7 @@ export const updateProtectedJob: API.OperationMethod<
   UpdateProtectedJobInput,
   UpdateProtectedJobOutput,
   UpdateProtectedJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProtectedJobInput,
   output: UpdateProtectedJobOutput,
@@ -9720,7 +9720,7 @@ export const updateProtectedQuery: API.OperationMethod<
   UpdateProtectedQueryInput,
   UpdateProtectedQueryOutput,
   UpdateProtectedQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProtectedQueryInput,
   output: UpdateProtectedQueryOutput,
@@ -9749,7 +9749,7 @@ export const createPrivacyBudgetTemplate: API.OperationMethod<
   CreatePrivacyBudgetTemplateInput,
   CreatePrivacyBudgetTemplateOutput,
   CreatePrivacyBudgetTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePrivacyBudgetTemplateInput,
   output: CreatePrivacyBudgetTemplateOutput,
@@ -9777,7 +9777,7 @@ export const getPrivacyBudgetTemplate: API.OperationMethod<
   GetPrivacyBudgetTemplateInput,
   GetPrivacyBudgetTemplateOutput,
   GetPrivacyBudgetTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPrivacyBudgetTemplateInput,
   output: GetPrivacyBudgetTemplateOutput,
@@ -9804,7 +9804,7 @@ export const updatePrivacyBudgetTemplate: API.OperationMethod<
   UpdatePrivacyBudgetTemplateInput,
   UpdatePrivacyBudgetTemplateOutput,
   UpdatePrivacyBudgetTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePrivacyBudgetTemplateInput,
   output: UpdatePrivacyBudgetTemplateOutput,
@@ -9831,7 +9831,7 @@ export const deletePrivacyBudgetTemplate: API.OperationMethod<
   DeletePrivacyBudgetTemplateInput,
   DeletePrivacyBudgetTemplateOutput,
   DeletePrivacyBudgetTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePrivacyBudgetTemplateInput,
   output: DeletePrivacyBudgetTemplateOutput,
@@ -9857,21 +9857,21 @@ export const listPrivacyBudgetTemplates: API.OperationMethod<
   ListPrivacyBudgetTemplatesInput,
   ListPrivacyBudgetTemplatesOutput,
   ListPrivacyBudgetTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPrivacyBudgetTemplatesInput,
   ) => stream.Stream<
     ListPrivacyBudgetTemplatesOutput,
     ListPrivacyBudgetTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPrivacyBudgetTemplatesInput,
   ) => stream.Stream<
     PrivacyBudgetTemplateSummary,
     ListPrivacyBudgetTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrivacyBudgetTemplatesInput,

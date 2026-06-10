@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "MPA",
@@ -1533,7 +1533,7 @@ export const getPolicyVersion: API.OperationMethod<
   GetPolicyVersionRequest,
   GetPolicyVersionResponse,
   GetPolicyVersionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPolicyVersionRequest,
   output: GetPolicyVersionResponse,
@@ -1559,7 +1559,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -1584,21 +1584,21 @@ export const listPolicies: API.OperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPoliciesRequest,
   ) => stream.Stream<
     ListPoliciesResponse,
     ListPoliciesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPoliciesRequest,
   ) => stream.Stream<
     Policy,
     ListPoliciesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
@@ -1630,21 +1630,21 @@ export const listPolicyVersions: API.OperationMethod<
   ListPolicyVersionsRequest,
   ListPolicyVersionsResponse,
   ListPolicyVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPolicyVersionsRequest,
   ) => stream.Stream<
     ListPolicyVersionsResponse,
     ListPolicyVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPolicyVersionsRequest,
   ) => stream.Stream<
     PolicyVersionSummary,
     ListPolicyVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyVersionsRequest,
@@ -1677,21 +1677,21 @@ export const listResourcePolicies: API.OperationMethod<
   ListResourcePoliciesRequest,
   ListResourcePoliciesResponse,
   ListResourcePoliciesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourcePoliciesRequest,
   ) => stream.Stream<
     ListResourcePoliciesResponse,
     ListResourcePoliciesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourcePoliciesRequest,
   ) => stream.Stream<
     ListResourcePoliciesResponseResourcePolicy,
     ListResourcePoliciesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePoliciesRequest,
@@ -1724,7 +1724,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1751,7 +1751,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1778,7 +1778,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1805,7 +1805,7 @@ export const createApprovalTeam: API.OperationMethod<
   CreateApprovalTeamRequest,
   CreateApprovalTeamResponse,
   CreateApprovalTeamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApprovalTeamRequest,
   output: CreateApprovalTeamResponse,
@@ -1832,7 +1832,7 @@ export const getApprovalTeam: API.OperationMethod<
   GetApprovalTeamRequest,
   GetApprovalTeamResponse,
   GetApprovalTeamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApprovalTeamRequest,
   output: GetApprovalTeamResponse,
@@ -1864,7 +1864,7 @@ export const updateApprovalTeam: API.OperationMethod<
   UpdateApprovalTeamRequest,
   UpdateApprovalTeamResponse,
   UpdateApprovalTeamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApprovalTeamRequest,
   output: UpdateApprovalTeamResponse,
@@ -1895,7 +1895,7 @@ export const deleteInactiveApprovalTeamVersion: API.OperationMethod<
   DeleteInactiveApprovalTeamVersionRequest,
   DeleteInactiveApprovalTeamVersionResponse,
   DeleteInactiveApprovalTeamVersionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInactiveApprovalTeamVersionRequest,
   output: DeleteInactiveApprovalTeamVersionResponse,
@@ -1921,21 +1921,21 @@ export const listApprovalTeams: API.OperationMethod<
   ListApprovalTeamsRequest,
   ListApprovalTeamsResponse,
   ListApprovalTeamsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListApprovalTeamsRequest,
   ) => stream.Stream<
     ListApprovalTeamsResponse,
     ListApprovalTeamsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListApprovalTeamsRequest,
   ) => stream.Stream<
     ListApprovalTeamsResponseApprovalTeam,
     ListApprovalTeamsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApprovalTeamsRequest,
@@ -1972,7 +1972,7 @@ export const startActiveApprovalTeamDeletion: API.OperationMethod<
   StartActiveApprovalTeamDeletionRequest,
   StartActiveApprovalTeamDeletionResponse,
   StartActiveApprovalTeamDeletionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartActiveApprovalTeamDeletionRequest,
   output: StartActiveApprovalTeamDeletionResponse,
@@ -1999,7 +1999,7 @@ export const startApprovalTeamBaseline: API.OperationMethod<
   StartApprovalTeamBaselineRequest,
   StartApprovalTeamBaselineResponse,
   StartApprovalTeamBaselineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartApprovalTeamBaselineRequest,
   output: StartApprovalTeamBaselineResponse,
@@ -2025,7 +2025,7 @@ export const createIdentitySource: API.OperationMethod<
   CreateIdentitySourceRequest,
   CreateIdentitySourceResponse,
   CreateIdentitySourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIdentitySourceRequest,
   output: CreateIdentitySourceResponse,
@@ -2051,7 +2051,7 @@ export const getIdentitySource: API.OperationMethod<
   GetIdentitySourceRequest,
   GetIdentitySourceResponse,
   GetIdentitySourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdentitySourceRequest,
   output: GetIdentitySourceResponse,
@@ -2077,7 +2077,7 @@ export const deleteIdentitySource: API.OperationMethod<
   DeleteIdentitySourceRequest,
   DeleteIdentitySourceResponse,
   DeleteIdentitySourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIdentitySourceRequest,
   output: DeleteIdentitySourceResponse,
@@ -2102,21 +2102,21 @@ export const listIdentitySources: API.OperationMethod<
   ListIdentitySourcesRequest,
   ListIdentitySourcesResponse,
   ListIdentitySourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIdentitySourcesRequest,
   ) => stream.Stream<
     ListIdentitySourcesResponse,
     ListIdentitySourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListIdentitySourcesRequest,
   ) => stream.Stream<
     IdentitySourceForList,
     ListIdentitySourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIdentitySourcesRequest,
@@ -2148,7 +2148,7 @@ export const getSession: API.OperationMethod<
   GetSessionRequest,
   GetSessionResponse,
   GetSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
@@ -2175,7 +2175,7 @@ export const cancelSession: API.OperationMethod<
   CancelSessionRequest,
   CancelSessionResponse,
   CancelSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelSessionRequest,
   output: CancelSessionResponse,
@@ -2202,21 +2202,21 @@ export const listSessions: API.OperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSessionsRequest,
   ) => stream.Stream<
     ListSessionsResponse,
     ListSessionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSessionsRequest,
   ) => stream.Stream<
     ListSessionsResponseSession,
     ListSessionsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,

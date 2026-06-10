@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace("http://cloudsearch.amazonaws.com/doc/2013-01-01/");
 const svc = T.AwsApiService({
   sdkId: "CloudSearch",
@@ -1507,7 +1507,7 @@ export const buildSuggesters: API.OperationMethod<
   BuildSuggestersRequest,
   BuildSuggestersResponse,
   BuildSuggestersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BuildSuggestersRequest,
   output: BuildSuggestersResponse,
@@ -1533,7 +1533,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainRequest,
   CreateDomainResponse,
   CreateDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResponse,
@@ -1560,7 +1560,7 @@ export const defineAnalysisScheme: API.OperationMethod<
   DefineAnalysisSchemeRequest,
   DefineAnalysisSchemeResponse,
   DefineAnalysisSchemeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DefineAnalysisSchemeRequest,
   output: DefineAnalysisSchemeResponse,
@@ -1588,7 +1588,7 @@ export const defineExpression: API.OperationMethod<
   DefineExpressionRequest,
   DefineExpressionResponse,
   DefineExpressionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DefineExpressionRequest,
   output: DefineExpressionResponse,
@@ -1616,7 +1616,7 @@ export const defineIndexField: API.OperationMethod<
   DefineIndexFieldRequest,
   DefineIndexFieldResponse,
   DefineIndexFieldError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DefineIndexFieldRequest,
   output: DefineIndexFieldResponse,
@@ -1644,7 +1644,7 @@ export const defineSuggester: API.OperationMethod<
   DefineSuggesterRequest,
   DefineSuggesterResponse,
   DefineSuggesterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DefineSuggesterRequest,
   output: DefineSuggesterResponse,
@@ -1671,7 +1671,7 @@ export const deleteAnalysisScheme: API.OperationMethod<
   DeleteAnalysisSchemeRequest,
   DeleteAnalysisSchemeResponse,
   DeleteAnalysisSchemeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAnalysisSchemeRequest,
   output: DeleteAnalysisSchemeResponse,
@@ -1695,7 +1695,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainRequest,
   DeleteDomainResponse,
   DeleteDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
@@ -1715,7 +1715,7 @@ export const deleteExpression: API.OperationMethod<
   DeleteExpressionRequest,
   DeleteExpressionResponse,
   DeleteExpressionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteExpressionRequest,
   output: DeleteExpressionResponse,
@@ -1741,7 +1741,7 @@ export const deleteIndexField: API.OperationMethod<
   DeleteIndexFieldRequest,
   DeleteIndexFieldResponse,
   DeleteIndexFieldError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIndexFieldRequest,
   output: DeleteIndexFieldResponse,
@@ -1767,7 +1767,7 @@ export const deleteSuggester: API.OperationMethod<
   DeleteSuggesterRequest,
   DeleteSuggesterResponse,
   DeleteSuggesterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSuggesterRequest,
   output: DeleteSuggesterResponse,
@@ -1791,7 +1791,7 @@ export const describeAnalysisSchemes: API.OperationMethod<
   DescribeAnalysisSchemesRequest,
   DescribeAnalysisSchemesResponse,
   DescribeAnalysisSchemesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAnalysisSchemesRequest,
   output: DescribeAnalysisSchemesResponse,
@@ -1812,7 +1812,7 @@ export const describeAvailabilityOptions: API.OperationMethod<
   DescribeAvailabilityOptionsRequest,
   DescribeAvailabilityOptionsResponse,
   DescribeAvailabilityOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAvailabilityOptionsRequest,
   output: DescribeAvailabilityOptionsResponse,
@@ -1839,7 +1839,7 @@ export const describeDomainEndpointOptions: API.OperationMethod<
   DescribeDomainEndpointOptionsRequest,
   DescribeDomainEndpointOptionsResponse,
   DescribeDomainEndpointOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDomainEndpointOptionsRequest,
   output: DescribeDomainEndpointOptionsResponse,
@@ -1864,7 +1864,7 @@ export const describeDomains: API.OperationMethod<
   DescribeDomainsRequest,
   DescribeDomainsResponse,
   DescribeDomainsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDomainsRequest,
   output: DescribeDomainsResponse,
@@ -1882,7 +1882,7 @@ export const describeExpressions: API.OperationMethod<
   DescribeExpressionsRequest,
   DescribeExpressionsResponse,
   DescribeExpressionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeExpressionsRequest,
   output: DescribeExpressionsResponse,
@@ -1902,7 +1902,7 @@ export const describeIndexFields: API.OperationMethod<
   DescribeIndexFieldsRequest,
   DescribeIndexFieldsResponse,
   DescribeIndexFieldsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeIndexFieldsRequest,
   output: DescribeIndexFieldsResponse,
@@ -1920,7 +1920,7 @@ export const describeScalingParameters: API.OperationMethod<
   DescribeScalingParametersRequest,
   DescribeScalingParametersResponse,
   DescribeScalingParametersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeScalingParametersRequest,
   output: DescribeScalingParametersResponse,
@@ -1939,7 +1939,7 @@ export const describeServiceAccessPolicies: API.OperationMethod<
   DescribeServiceAccessPoliciesRequest,
   DescribeServiceAccessPoliciesResponse,
   DescribeServiceAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeServiceAccessPoliciesRequest,
   output: DescribeServiceAccessPoliciesResponse,
@@ -1957,7 +1957,7 @@ export const describeSuggesters: API.OperationMethod<
   DescribeSuggestersRequest,
   DescribeSuggestersResponse,
   DescribeSuggestersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSuggestersRequest,
   output: DescribeSuggestersResponse,
@@ -1976,7 +1976,7 @@ export const indexDocuments: API.OperationMethod<
   IndexDocumentsRequest,
   IndexDocumentsResponse,
   IndexDocumentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IndexDocumentsRequest,
   output: IndexDocumentsResponse,
@@ -1995,7 +1995,7 @@ export const listDomainNames: API.OperationMethod<
   ListDomainNamesRequest,
   ListDomainNamesResponse,
   ListDomainNamesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
@@ -2017,7 +2017,7 @@ export const updateAvailabilityOptions: API.OperationMethod<
   UpdateAvailabilityOptionsRequest,
   UpdateAvailabilityOptionsResponse,
   UpdateAvailabilityOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAvailabilityOptionsRequest,
   output: UpdateAvailabilityOptionsResponse,
@@ -2047,7 +2047,7 @@ export const updateDomainEndpointOptions: API.OperationMethod<
   UpdateDomainEndpointOptionsRequest,
   UpdateDomainEndpointOptionsResponse,
   UpdateDomainEndpointOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDomainEndpointOptionsRequest,
   output: UpdateDomainEndpointOptionsResponse,
@@ -2076,7 +2076,7 @@ export const updateScalingParameters: API.OperationMethod<
   UpdateScalingParametersRequest,
   UpdateScalingParametersResponse,
   UpdateScalingParametersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateScalingParametersRequest,
   output: UpdateScalingParametersResponse,
@@ -2106,7 +2106,7 @@ export const updateServiceAccessPolicies: API.OperationMethod<
   UpdateServiceAccessPoliciesRequest,
   UpdateServiceAccessPoliciesResponse,
   UpdateServiceAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateServiceAccessPoliciesRequest,
   output: UpdateServiceAccessPoliciesResponse,

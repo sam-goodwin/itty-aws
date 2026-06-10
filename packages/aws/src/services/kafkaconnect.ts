@@ -7,7 +7,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "KafkaConnect",
@@ -1663,7 +1663,7 @@ export const createConnector: API.OperationMethod<
   CreateConnectorRequest,
   CreateConnectorResponse,
   CreateConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConnectorRequest,
   output: CreateConnectorResponse,
@@ -1695,7 +1695,7 @@ export const createCustomPlugin: API.OperationMethod<
   CreateCustomPluginRequest,
   CreateCustomPluginResponse,
   CreateCustomPluginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomPluginRequest,
   output: CreateCustomPluginResponse,
@@ -1727,7 +1727,7 @@ export const createWorkerConfiguration: API.OperationMethod<
   CreateWorkerConfigurationRequest,
   CreateWorkerConfigurationResponse,
   CreateWorkerConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWorkerConfigurationRequest,
   output: CreateWorkerConfigurationResponse,
@@ -1758,7 +1758,7 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorRequest,
   DeleteConnectorResponse,
   DeleteConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectorRequest,
   output: DeleteConnectorResponse,
@@ -1788,7 +1788,7 @@ export const deleteCustomPlugin: API.OperationMethod<
   DeleteCustomPluginRequest,
   DeleteCustomPluginResponse,
   DeleteCustomPluginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomPluginRequest,
   output: DeleteCustomPluginResponse,
@@ -1818,7 +1818,7 @@ export const deleteWorkerConfiguration: API.OperationMethod<
   DeleteWorkerConfigurationRequest,
   DeleteWorkerConfigurationResponse,
   DeleteWorkerConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWorkerConfigurationRequest,
   output: DeleteWorkerConfigurationResponse,
@@ -1848,7 +1848,7 @@ export const describeConnector: API.OperationMethod<
   DescribeConnectorRequest,
   DescribeConnectorResponse,
   DescribeConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeConnectorRequest,
   output: DescribeConnectorResponse,
@@ -1878,7 +1878,7 @@ export const describeConnectorOperation: API.OperationMethod<
   DescribeConnectorOperationRequest,
   DescribeConnectorOperationResponse,
   DescribeConnectorOperationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeConnectorOperationRequest,
   output: DescribeConnectorOperationResponse,
@@ -1908,7 +1908,7 @@ export const describeCustomPlugin: API.OperationMethod<
   DescribeCustomPluginRequest,
   DescribeCustomPluginResponse,
   DescribeCustomPluginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCustomPluginRequest,
   output: DescribeCustomPluginResponse,
@@ -1938,7 +1938,7 @@ export const describeWorkerConfiguration: API.OperationMethod<
   DescribeWorkerConfigurationRequest,
   DescribeWorkerConfigurationResponse,
   DescribeWorkerConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeWorkerConfigurationRequest,
   output: DescribeWorkerConfigurationResponse,
@@ -1968,21 +1968,21 @@ export const listConnectorOperations: API.OperationMethod<
   ListConnectorOperationsRequest,
   ListConnectorOperationsResponse,
   ListConnectorOperationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConnectorOperationsRequest,
   ) => stream.Stream<
     ListConnectorOperationsResponse,
     ListConnectorOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConnectorOperationsRequest,
   ) => stream.Stream<
     ConnectorOperationSummary,
     ListConnectorOperationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorOperationsRequest,
@@ -2019,21 +2019,21 @@ export const listConnectors: API.OperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
   ListConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListConnectorsRequest,
   ) => stream.Stream<
     ListConnectorsResponse,
     ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListConnectorsRequest,
   ) => stream.Stream<
     ConnectorSummary,
     ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
@@ -2070,21 +2070,21 @@ export const listCustomPlugins: API.OperationMethod<
   ListCustomPluginsRequest,
   ListCustomPluginsResponse,
   ListCustomPluginsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCustomPluginsRequest,
   ) => stream.Stream<
     ListCustomPluginsResponse,
     ListCustomPluginsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCustomPluginsRequest,
   ) => stream.Stream<
     CustomPluginSummary,
     ListCustomPluginsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomPluginsRequest,
@@ -2121,7 +2121,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2151,21 +2151,21 @@ export const listWorkerConfigurations: API.OperationMethod<
   ListWorkerConfigurationsRequest,
   ListWorkerConfigurationsResponse,
   ListWorkerConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListWorkerConfigurationsRequest,
   ) => stream.Stream<
     ListWorkerConfigurationsResponse,
     ListWorkerConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListWorkerConfigurationsRequest,
   ) => stream.Stream<
     WorkerConfigurationSummary,
     ListWorkerConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkerConfigurationsRequest,
@@ -2203,7 +2203,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2234,7 +2234,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2264,7 +2264,7 @@ export const updateConnector: API.OperationMethod<
   UpdateConnectorRequest,
   UpdateConnectorResponse,
   UpdateConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConnectorRequest,
   output: UpdateConnectorResponse,

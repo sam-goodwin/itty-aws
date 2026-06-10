@@ -5,7 +5,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Health",
   serviceShapeName: "AWSHealth_20160804",
@@ -1150,21 +1150,21 @@ export const describeAffectedAccountsForOrganization: API.OperationMethod<
   DescribeAffectedAccountsForOrganizationRequest,
   DescribeAffectedAccountsForOrganizationResponse,
   DescribeAffectedAccountsForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeAffectedAccountsForOrganizationRequest,
   ) => stream.Stream<
     DescribeAffectedAccountsForOrganizationResponse,
     DescribeAffectedAccountsForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeAffectedAccountsForOrganizationRequest,
   ) => stream.Stream<
     AccountId,
     DescribeAffectedAccountsForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeAffectedAccountsForOrganizationRequest,
@@ -1199,21 +1199,21 @@ export const describeAffectedEntities: API.OperationMethod<
   DescribeAffectedEntitiesRequest,
   DescribeAffectedEntitiesResponse,
   DescribeAffectedEntitiesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeAffectedEntitiesRequest,
   ) => stream.Stream<
     DescribeAffectedEntitiesResponse,
     DescribeAffectedEntitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeAffectedEntitiesRequest,
   ) => stream.Stream<
     AffectedEntity,
     DescribeAffectedEntitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeAffectedEntitiesRequest,
@@ -1251,21 +1251,21 @@ export const describeAffectedEntitiesForOrganization: API.OperationMethod<
   DescribeAffectedEntitiesForOrganizationRequest,
   DescribeAffectedEntitiesForOrganizationResponse,
   DescribeAffectedEntitiesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeAffectedEntitiesForOrganizationRequest,
   ) => stream.Stream<
     DescribeAffectedEntitiesForOrganizationResponse,
     DescribeAffectedEntitiesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeAffectedEntitiesForOrganizationRequest,
   ) => stream.Stream<
     AffectedEntity,
     DescribeAffectedEntitiesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeAffectedEntitiesForOrganizationRequest,
@@ -1286,7 +1286,7 @@ export const describeEntityAggregates: API.OperationMethod<
   DescribeEntityAggregatesRequest,
   DescribeEntityAggregatesResponse,
   DescribeEntityAggregatesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEntityAggregatesRequest,
   output: DescribeEntityAggregatesResponse,
@@ -1300,7 +1300,7 @@ export const describeEntityAggregatesForOrganization: API.OperationMethod<
   DescribeEntityAggregatesForOrganizationRequest,
   DescribeEntityAggregatesForOrganizationResponse,
   DescribeEntityAggregatesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEntityAggregatesForOrganizationRequest,
   output: DescribeEntityAggregatesForOrganizationResponse,
@@ -1320,21 +1320,21 @@ export const describeEventAggregates: API.OperationMethod<
   DescribeEventAggregatesRequest,
   DescribeEventAggregatesResponse,
   DescribeEventAggregatesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEventAggregatesRequest,
   ) => stream.Stream<
     DescribeEventAggregatesResponse,
     DescribeEventAggregatesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEventAggregatesRequest,
   ) => stream.Stream<
     EventAggregate,
     DescribeEventAggregatesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventAggregatesRequest,
@@ -1364,7 +1364,7 @@ export const describeEventDetails: API.OperationMethod<
   DescribeEventDetailsRequest,
   DescribeEventDetailsResponse,
   DescribeEventDetailsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEventDetailsRequest,
   output: DescribeEventDetailsResponse,
@@ -1407,7 +1407,7 @@ export const describeEventDetailsForOrganization: API.OperationMethod<
   DescribeEventDetailsForOrganizationRequest,
   DescribeEventDetailsForOrganizationResponse,
   DescribeEventDetailsForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEventDetailsForOrganizationRequest,
   output: DescribeEventDetailsForOrganizationResponse,
@@ -1441,21 +1441,21 @@ export const describeEvents: API.OperationMethod<
   DescribeEventsRequest,
   DescribeEventsResponse,
   DescribeEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEventsRequest,
   ) => stream.Stream<
     DescribeEventsResponse,
     DescribeEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEventsRequest,
   ) => stream.Stream<
     Event,
     DescribeEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsRequest,
@@ -1501,21 +1501,21 @@ export const describeEventsForOrganization: API.OperationMethod<
   DescribeEventsForOrganizationRequest,
   DescribeEventsForOrganizationResponse,
   DescribeEventsForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEventsForOrganizationRequest,
   ) => stream.Stream<
     DescribeEventsForOrganizationResponse,
     DescribeEventsForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEventsForOrganizationRequest,
   ) => stream.Stream<
     OrganizationEvent,
     DescribeEventsForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsForOrganizationRequest,
@@ -1545,21 +1545,21 @@ export const describeEventTypes: API.OperationMethod<
   DescribeEventTypesRequest,
   DescribeEventTypesResponse,
   DescribeEventTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEventTypesRequest,
   ) => stream.Stream<
     DescribeEventTypesResponse,
     DescribeEventTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEventTypesRequest,
   ) => stream.Stream<
     EventType,
     DescribeEventTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventTypesRequest,
@@ -1582,7 +1582,7 @@ export const describeHealthServiceStatusForOrganization: API.OperationMethod<
   DescribeHealthServiceStatusForOrganizationRequest,
   DescribeHealthServiceStatusForOrganizationResponse,
   DescribeHealthServiceStatusForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeHealthServiceStatusForOrganizationRequest,
   output: DescribeHealthServiceStatusForOrganizationResponse,
@@ -1611,7 +1611,7 @@ export const disableHealthServiceAccessForOrganization: API.OperationMethod<
   DisableHealthServiceAccessForOrganizationRequest,
   DisableHealthServiceAccessForOrganizationResponse,
   DisableHealthServiceAccessForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableHealthServiceAccessForOrganizationRequest,
   output: DisableHealthServiceAccessForOrganizationResponse,
@@ -1646,7 +1646,7 @@ export const enableHealthServiceAccessForOrganization: API.OperationMethod<
   EnableHealthServiceAccessForOrganizationRequest,
   EnableHealthServiceAccessForOrganizationResponse,
   EnableHealthServiceAccessForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableHealthServiceAccessForOrganizationRequest,
   output: EnableHealthServiceAccessForOrganizationResponse,

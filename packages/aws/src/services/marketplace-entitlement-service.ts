@@ -5,7 +5,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Marketplace Entitlement Service",
   serviceShapeName: "AWSMPEntitlementService",
@@ -238,21 +238,21 @@ export const getEntitlements: API.OperationMethod<
   GetEntitlementsRequest,
   GetEntitlementsResult,
   GetEntitlementsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetEntitlementsRequest,
   ) => stream.Stream<
     GetEntitlementsResult,
     GetEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetEntitlementsRequest,
   ) => stream.Stream<
     unknown,
     GetEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetEntitlementsRequest,

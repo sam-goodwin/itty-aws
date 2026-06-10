@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "FreeTier",
   serviceShapeName: "AWSFreeTierService",
@@ -480,7 +480,7 @@ export const getAccountActivity: API.OperationMethod<
   GetAccountActivityRequest,
   GetAccountActivityResponse,
   GetAccountActivityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountActivityRequest,
   output: GetAccountActivityResponse,
@@ -505,7 +505,7 @@ export const getAccountPlanState: API.OperationMethod<
   GetAccountPlanStateRequest,
   GetAccountPlanStateResponse,
   GetAccountPlanStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountPlanStateRequest,
   output: GetAccountPlanStateResponse,
@@ -529,21 +529,21 @@ export const getFreeTierUsage: API.OperationMethod<
   GetFreeTierUsageRequest,
   GetFreeTierUsageResponse,
   GetFreeTierUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetFreeTierUsageRequest,
   ) => stream.Stream<
     GetFreeTierUsageResponse,
     GetFreeTierUsageError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetFreeTierUsageRequest,
   ) => stream.Stream<
     FreeTierUsage,
     GetFreeTierUsageError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetFreeTierUsageRequest,
@@ -568,21 +568,21 @@ export const listAccountActivities: API.OperationMethod<
   ListAccountActivitiesRequest,
   ListAccountActivitiesResponse,
   ListAccountActivitiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAccountActivitiesRequest,
   ) => stream.Stream<
     ListAccountActivitiesResponse,
     ListAccountActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListAccountActivitiesRequest,
   ) => stream.Stream<
     ActivitySummary,
     ListAccountActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountActivitiesRequest,
@@ -609,7 +609,7 @@ export const upgradeAccountPlan: API.OperationMethod<
   UpgradeAccountPlanRequest,
   UpgradeAccountPlanResponse,
   UpgradeAccountPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpgradeAccountPlanRequest,
   output: UpgradeAccountPlanResponse,

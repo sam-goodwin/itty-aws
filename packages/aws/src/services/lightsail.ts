@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Lightsail",
@@ -8813,7 +8813,7 @@ export const allocateStaticIp: API.OperationMethod<
   AllocateStaticIpRequest,
   AllocateStaticIpResult,
   AllocateStaticIpError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AllocateStaticIpRequest,
   output: AllocateStaticIpResult,
@@ -8856,7 +8856,7 @@ export const attachCertificateToDistribution: API.OperationMethod<
   AttachCertificateToDistributionRequest,
   AttachCertificateToDistributionResult,
   AttachCertificateToDistributionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachCertificateToDistributionRequest,
   output: AttachCertificateToDistributionResult,
@@ -8891,7 +8891,7 @@ export const attachDisk: API.OperationMethod<
   AttachDiskRequest,
   AttachDiskResult,
   AttachDiskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachDiskRequest,
   output: AttachDiskResult,
@@ -8930,7 +8930,7 @@ export const attachInstancesToLoadBalancer: API.OperationMethod<
   AttachInstancesToLoadBalancerRequest,
   AttachInstancesToLoadBalancerResult,
   AttachInstancesToLoadBalancerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachInstancesToLoadBalancerRequest,
   output: AttachInstancesToLoadBalancerResult,
@@ -8972,7 +8972,7 @@ export const attachLoadBalancerTlsCertificate: API.OperationMethod<
   AttachLoadBalancerTlsCertificateRequest,
   AttachLoadBalancerTlsCertificateResult,
   AttachLoadBalancerTlsCertificateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachLoadBalancerTlsCertificateRequest,
   output: AttachLoadBalancerTlsCertificateResult,
@@ -9004,7 +9004,7 @@ export const attachStaticIp: API.OperationMethod<
   AttachStaticIpRequest,
   AttachStaticIpResult,
   AttachStaticIpError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachStaticIpRequest,
   output: AttachStaticIpResult,
@@ -9040,7 +9040,7 @@ export const closeInstancePublicPorts: API.OperationMethod<
   CloseInstancePublicPortsRequest,
   CloseInstancePublicPortsResult,
   CloseInstancePublicPortsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloseInstancePublicPortsRequest,
   output: CloseInstancePublicPortsResult,
@@ -9083,7 +9083,7 @@ export const copySnapshot: API.OperationMethod<
   CopySnapshotRequest,
   CopySnapshotResult,
   CopySnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopySnapshotRequest,
   output: CopySnapshotResult,
@@ -9117,7 +9117,7 @@ export const createBucket: API.OperationMethod<
   CreateBucketRequest,
   CreateBucketResult,
   CreateBucketError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBucketRequest,
   output: CreateBucketResult,
@@ -9155,7 +9155,7 @@ export const createBucketAccessKey: API.OperationMethod<
   CreateBucketAccessKeyRequest,
   CreateBucketAccessKeyResult,
   CreateBucketAccessKeyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBucketAccessKeyRequest,
   output: CreateBucketAccessKeyResult,
@@ -9195,7 +9195,7 @@ export const createCertificate: API.OperationMethod<
   CreateCertificateRequest,
   CreateCertificateResult,
   CreateCertificateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCertificateRequest,
   output: CreateCertificateResult,
@@ -9231,7 +9231,7 @@ export const createCloudFormationStack: API.OperationMethod<
   CreateCloudFormationStackRequest,
   CreateCloudFormationStackResult,
   CreateCloudFormationStackError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCloudFormationStackRequest,
   output: CreateCloudFormationStackResult,
@@ -9270,7 +9270,7 @@ export const createContactMethod: API.OperationMethod<
   CreateContactMethodRequest,
   CreateContactMethodResult,
   CreateContactMethodError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContactMethodRequest,
   output: CreateContactMethodResult,
@@ -9303,7 +9303,7 @@ export const createContainerService: API.OperationMethod<
   CreateContainerServiceRequest,
   CreateContainerServiceResult,
   CreateContainerServiceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContainerServiceRequest,
   output: CreateContainerServiceResult,
@@ -9342,7 +9342,7 @@ export const createContainerServiceDeployment: API.OperationMethod<
   CreateContainerServiceDeploymentRequest,
   CreateContainerServiceDeploymentResult,
   CreateContainerServiceDeploymentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContainerServiceDeploymentRequest,
   output: CreateContainerServiceDeploymentResult,
@@ -9388,7 +9388,7 @@ export const createContainerServiceRegistryLogin: API.OperationMethod<
   CreateContainerServiceRegistryLoginRequest,
   CreateContainerServiceRegistryLoginResult,
   CreateContainerServiceRegistryLoginError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContainerServiceRegistryLoginRequest,
   output: CreateContainerServiceRegistryLoginResult,
@@ -9422,7 +9422,7 @@ export const createDisk: API.OperationMethod<
   CreateDiskRequest,
   CreateDiskResult,
   CreateDiskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDiskRequest,
   output: CreateDiskResult,
@@ -9460,7 +9460,7 @@ export const createDiskFromSnapshot: API.OperationMethod<
   CreateDiskFromSnapshotRequest,
   CreateDiskFromSnapshotResult,
   CreateDiskFromSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDiskFromSnapshotRequest,
   output: CreateDiskFromSnapshotResult,
@@ -9513,7 +9513,7 @@ export const createDiskSnapshot: API.OperationMethod<
   CreateDiskSnapshotRequest,
   CreateDiskSnapshotResult,
   CreateDiskSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDiskSnapshotRequest,
   output: CreateDiskSnapshotResult,
@@ -9547,7 +9547,7 @@ export const createDistribution: API.OperationMethod<
   CreateDistributionRequest,
   CreateDistributionResult,
   CreateDistributionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDistributionRequest,
   output: CreateDistributionResult,
@@ -9580,7 +9580,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainRequest,
   CreateDomainResult,
   CreateDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResult,
@@ -9618,7 +9618,7 @@ export const createDomainEntry: API.OperationMethod<
   CreateDomainEntryRequest,
   CreateDomainEntryResult,
   CreateDomainEntryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDomainEntryRequest,
   output: CreateDomainEntryResult,
@@ -9653,7 +9653,7 @@ export const createGUISessionAccessDetails: API.OperationMethod<
   CreateGUISessionAccessDetailsRequest,
   CreateGUISessionAccessDetailsResult,
   CreateGUISessionAccessDetailsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGUISessionAccessDetailsRequest,
   output: CreateGUISessionAccessDetailsResult,
@@ -9686,7 +9686,7 @@ export const createInstances: API.OperationMethod<
   CreateInstancesRequest,
   CreateInstancesResult,
   CreateInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInstancesRequest,
   output: CreateInstancesResult,
@@ -9723,7 +9723,7 @@ export const createInstancesFromSnapshot: API.OperationMethod<
   CreateInstancesFromSnapshotRequest,
   CreateInstancesFromSnapshotResult,
   CreateInstancesFromSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInstancesFromSnapshotRequest,
   output: CreateInstancesFromSnapshotResult,
@@ -9759,7 +9759,7 @@ export const createInstanceSnapshot: API.OperationMethod<
   CreateInstanceSnapshotRequest,
   CreateInstanceSnapshotResult,
   CreateInstanceSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInstanceSnapshotRequest,
   output: CreateInstanceSnapshotResult,
@@ -9799,7 +9799,7 @@ export const createKeyPair: API.OperationMethod<
   CreateKeyPairRequest,
   CreateKeyPairResult,
   CreateKeyPairError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKeyPairRequest,
   output: CreateKeyPairResult,
@@ -9840,7 +9840,7 @@ export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerRequest,
   CreateLoadBalancerResult,
   CreateLoadBalancerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerRequest,
   output: CreateLoadBalancerResult,
@@ -9878,7 +9878,7 @@ export const createLoadBalancerTlsCertificate: API.OperationMethod<
   CreateLoadBalancerTlsCertificateRequest,
   CreateLoadBalancerTlsCertificateResult,
   CreateLoadBalancerTlsCertificateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerTlsCertificateRequest,
   output: CreateLoadBalancerTlsCertificateResult,
@@ -9913,7 +9913,7 @@ export const createRelationalDatabase: API.OperationMethod<
   CreateRelationalDatabaseRequest,
   CreateRelationalDatabaseResult,
   CreateRelationalDatabaseError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRelationalDatabaseRequest,
   output: CreateRelationalDatabaseResult,
@@ -9953,7 +9953,7 @@ export const createRelationalDatabaseFromSnapshot: API.OperationMethod<
   CreateRelationalDatabaseFromSnapshotRequest,
   CreateRelationalDatabaseFromSnapshotResult,
   CreateRelationalDatabaseFromSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRelationalDatabaseFromSnapshotRequest,
   output: CreateRelationalDatabaseFromSnapshotResult,
@@ -9989,7 +9989,7 @@ export const createRelationalDatabaseSnapshot: API.OperationMethod<
   CreateRelationalDatabaseSnapshotRequest,
   CreateRelationalDatabaseSnapshotResult,
   CreateRelationalDatabaseSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRelationalDatabaseSnapshotRequest,
   output: CreateRelationalDatabaseSnapshotResult,
@@ -10025,7 +10025,7 @@ export const deleteAlarm: API.OperationMethod<
   DeleteAlarmRequest,
   DeleteAlarmResult,
   DeleteAlarmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAlarmRequest,
   output: DeleteAlarmResult,
@@ -10055,7 +10055,7 @@ export const deleteAutoSnapshot: API.OperationMethod<
   DeleteAutoSnapshotRequest,
   DeleteAutoSnapshotResult,
   DeleteAutoSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAutoSnapshotRequest,
   output: DeleteAutoSnapshotResult,
@@ -10087,7 +10087,7 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketRequest,
   DeleteBucketResult,
   DeleteBucketError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketRequest,
   output: DeleteBucketResult,
@@ -10120,7 +10120,7 @@ export const deleteBucketAccessKey: API.OperationMethod<
   DeleteBucketAccessKeyRequest,
   DeleteBucketAccessKeyResult,
   DeleteBucketAccessKeyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketAccessKeyRequest,
   output: DeleteBucketAccessKeyResult,
@@ -10153,7 +10153,7 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateRequest,
   DeleteCertificateResult,
   DeleteCertificateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCertificateRequest,
   output: DeleteCertificateResult,
@@ -10187,7 +10187,7 @@ export const deleteContactMethod: API.OperationMethod<
   DeleteContactMethodRequest,
   DeleteContactMethodResult,
   DeleteContactMethodError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContactMethodRequest,
   output: DeleteContactMethodResult,
@@ -10217,7 +10217,7 @@ export const deleteContainerImage: API.OperationMethod<
   DeleteContainerImageRequest,
   DeleteContainerImageResult,
   DeleteContainerImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContainerImageRequest,
   output: DeleteContainerImageResult,
@@ -10245,7 +10245,7 @@ export const deleteContainerService: API.OperationMethod<
   DeleteContainerServiceRequest,
   DeleteContainerServiceResult,
   DeleteContainerServiceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContainerServiceRequest,
   output: DeleteContainerServiceResult,
@@ -10282,7 +10282,7 @@ export const deleteDisk: API.OperationMethod<
   DeleteDiskRequest,
   DeleteDiskResult,
   DeleteDiskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDiskRequest,
   output: DeleteDiskResult,
@@ -10324,7 +10324,7 @@ export const deleteDiskSnapshot: API.OperationMethod<
   DeleteDiskSnapshotRequest,
   DeleteDiskSnapshotResult,
   DeleteDiskSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDiskSnapshotRequest,
   output: DeleteDiskSnapshotResult,
@@ -10354,7 +10354,7 @@ export const deleteDistribution: API.OperationMethod<
   DeleteDistributionRequest,
   DeleteDistributionResult,
   DeleteDistributionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDistributionRequest,
   output: DeleteDistributionResult,
@@ -10388,7 +10388,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainRequest,
   DeleteDomainResult,
   DeleteDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResult,
@@ -10424,7 +10424,7 @@ export const deleteDomainEntry: API.OperationMethod<
   DeleteDomainEntryRequest,
   DeleteDomainEntryResult,
   DeleteDomainEntryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDomainEntryRequest,
   output: DeleteDomainEntryResult,
@@ -10460,7 +10460,7 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceRequest,
   DeleteInstanceResult,
   DeleteInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstanceRequest,
   output: DeleteInstanceResult,
@@ -10497,7 +10497,7 @@ export const deleteInstanceSnapshot: API.OperationMethod<
   DeleteInstanceSnapshotRequest,
   DeleteInstanceSnapshotResult,
   DeleteInstanceSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstanceSnapshotRequest,
   output: DeleteInstanceSnapshotResult,
@@ -10538,7 +10538,7 @@ export const deleteKeyPair: API.OperationMethod<
   DeleteKeyPairRequest,
   DeleteKeyPairResult,
   DeleteKeyPairError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKeyPairRequest,
   output: DeleteKeyPairResult,
@@ -10577,7 +10577,7 @@ export const deleteKnownHostKeys: API.OperationMethod<
   DeleteKnownHostKeysRequest,
   DeleteKnownHostKeysResult,
   DeleteKnownHostKeysError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKnownHostKeysRequest,
   output: DeleteKnownHostKeysResult,
@@ -10615,7 +10615,7 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerRequest,
   DeleteLoadBalancerResult,
   DeleteLoadBalancerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerRequest,
   output: DeleteLoadBalancerResult,
@@ -10651,7 +10651,7 @@ export const deleteLoadBalancerTlsCertificate: API.OperationMethod<
   DeleteLoadBalancerTlsCertificateRequest,
   DeleteLoadBalancerTlsCertificateResult,
   DeleteLoadBalancerTlsCertificateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerTlsCertificateRequest,
   output: DeleteLoadBalancerTlsCertificateResult,
@@ -10687,7 +10687,7 @@ export const deleteRelationalDatabase: API.OperationMethod<
   DeleteRelationalDatabaseRequest,
   DeleteRelationalDatabaseResult,
   DeleteRelationalDatabaseError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRelationalDatabaseRequest,
   output: DeleteRelationalDatabaseResult,
@@ -10723,7 +10723,7 @@ export const deleteRelationalDatabaseSnapshot: API.OperationMethod<
   DeleteRelationalDatabaseSnapshotRequest,
   DeleteRelationalDatabaseSnapshotResult,
   DeleteRelationalDatabaseSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRelationalDatabaseSnapshotRequest,
   output: DeleteRelationalDatabaseSnapshotResult,
@@ -10757,7 +10757,7 @@ export const detachCertificateFromDistribution: API.OperationMethod<
   DetachCertificateFromDistributionRequest,
   DetachCertificateFromDistributionResult,
   DetachCertificateFromDistributionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachCertificateFromDistributionRequest,
   output: DetachCertificateFromDistributionResult,
@@ -10793,7 +10793,7 @@ export const detachDisk: API.OperationMethod<
   DetachDiskRequest,
   DetachDiskResult,
   DetachDiskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachDiskRequest,
   output: DetachDiskResult,
@@ -10832,7 +10832,7 @@ export const detachInstancesFromLoadBalancer: API.OperationMethod<
   DetachInstancesFromLoadBalancerRequest,
   DetachInstancesFromLoadBalancerResult,
   DetachInstancesFromLoadBalancerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachInstancesFromLoadBalancerRequest,
   output: DetachInstancesFromLoadBalancerResult,
@@ -10864,7 +10864,7 @@ export const detachStaticIp: API.OperationMethod<
   DetachStaticIpRequest,
   DetachStaticIpResult,
   DetachStaticIpError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachStaticIpRequest,
   output: DetachStaticIpResult,
@@ -10895,7 +10895,7 @@ export const disableAddOn: API.OperationMethod<
   DisableAddOnRequest,
   DisableAddOnResult,
   DisableAddOnError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableAddOnRequest,
   output: DisableAddOnResult,
@@ -10929,7 +10929,7 @@ export const downloadDefaultKeyPair: API.OperationMethod<
   DownloadDefaultKeyPairRequest,
   DownloadDefaultKeyPairResult,
   DownloadDefaultKeyPairError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadDefaultKeyPairRequest,
   output: DownloadDefaultKeyPairResult,
@@ -10961,7 +10961,7 @@ export const enableAddOn: API.OperationMethod<
   EnableAddOnRequest,
   EnableAddOnResult,
   EnableAddOnError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableAddOnRequest,
   output: EnableAddOnResult,
@@ -11006,7 +11006,7 @@ export const exportSnapshot: API.OperationMethod<
   ExportSnapshotRequest,
   ExportSnapshotResult,
   ExportSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportSnapshotRequest,
   output: ExportSnapshotResult,
@@ -11038,7 +11038,7 @@ export const getActiveNames: API.OperationMethod<
   GetActiveNamesRequest,
   GetActiveNamesResult,
   GetActiveNamesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetActiveNamesRequest,
   output: GetActiveNamesResult,
@@ -11076,7 +11076,7 @@ export const getAlarms: API.OperationMethod<
   GetAlarmsRequest,
   GetAlarmsResult,
   GetAlarmsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAlarmsRequest,
   output: GetAlarmsResult,
@@ -11107,7 +11107,7 @@ export const getAutoSnapshots: API.OperationMethod<
   GetAutoSnapshotsRequest,
   GetAutoSnapshotsResult,
   GetAutoSnapshotsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAutoSnapshotsRequest,
   output: GetAutoSnapshotsResult,
@@ -11146,7 +11146,7 @@ export const getBlueprints: API.OperationMethod<
   GetBlueprintsRequest,
   GetBlueprintsResult,
   GetBlueprintsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBlueprintsRequest,
   output: GetBlueprintsResult,
@@ -11180,7 +11180,7 @@ export const getBucketAccessKeys: API.OperationMethod<
   GetBucketAccessKeysRequest,
   GetBucketAccessKeysResult,
   GetBucketAccessKeysError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketAccessKeysRequest,
   output: GetBucketAccessKeysResult,
@@ -11213,7 +11213,7 @@ export const getBucketBundles: API.OperationMethod<
   GetBucketBundlesRequest,
   GetBucketBundlesResult,
   GetBucketBundlesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketBundlesRequest,
   output: GetBucketBundlesResult,
@@ -11244,7 +11244,7 @@ export const getBucketMetricData: API.OperationMethod<
   GetBucketMetricDataRequest,
   GetBucketMetricDataResult,
   GetBucketMetricDataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketMetricDataRequest,
   output: GetBucketMetricDataResult,
@@ -11277,7 +11277,7 @@ export const getBuckets: API.OperationMethod<
   GetBucketsRequest,
   GetBucketsResult,
   GetBucketsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketsRequest,
   output: GetBucketsResult,
@@ -11315,7 +11315,7 @@ export const getBundles: API.OperationMethod<
   GetBundlesRequest,
   GetBundlesResult,
   GetBundlesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBundlesRequest,
   output: GetBundlesResult,
@@ -11349,7 +11349,7 @@ export const getCertificates: API.OperationMethod<
   GetCertificatesRequest,
   GetCertificatesResult,
   GetCertificatesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCertificatesRequest,
   output: GetCertificatesResult,
@@ -11383,7 +11383,7 @@ export const getCloudFormationStackRecords: API.OperationMethod<
   GetCloudFormationStackRecordsRequest,
   GetCloudFormationStackRecordsResult,
   GetCloudFormationStackRecordsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCloudFormationStackRecordsRequest,
   output: GetCloudFormationStackRecordsResult,
@@ -11420,7 +11420,7 @@ export const getContactMethods: API.OperationMethod<
   GetContactMethodsRequest,
   GetContactMethodsResult,
   GetContactMethodsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContactMethodsRequest,
   output: GetContactMethodsResult,
@@ -11448,7 +11448,7 @@ export const getContainerAPIMetadata: API.OperationMethod<
   GetContainerAPIMetadataRequest,
   GetContainerAPIMetadataResult,
   GetContainerAPIMetadataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerAPIMetadataRequest,
   output: GetContainerAPIMetadataResult,
@@ -11479,7 +11479,7 @@ export const getContainerImages: API.OperationMethod<
   GetContainerImagesRequest,
   GetContainerImagesResult,
   GetContainerImagesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerImagesRequest,
   output: GetContainerImagesResult,
@@ -11516,7 +11516,7 @@ export const getContainerLog: API.OperationMethod<
   GetContainerLogRequest,
   GetContainerLogResult,
   GetContainerLogError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerLogRequest,
   output: GetContainerLogResult,
@@ -11555,7 +11555,7 @@ export const getContainerServiceDeployments: API.OperationMethod<
   GetContainerServiceDeploymentsRequest,
   GetContainerServiceDeploymentsResult,
   GetContainerServiceDeploymentsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerServiceDeploymentsRequest,
   output: GetContainerServiceDeploymentsResult,
@@ -11587,7 +11587,7 @@ export const getContainerServiceMetricData: API.OperationMethod<
   GetContainerServiceMetricDataRequest,
   GetContainerServiceMetricDataResult,
   GetContainerServiceMetricDataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerServiceMetricDataRequest,
   output: GetContainerServiceMetricDataResult,
@@ -11619,7 +11619,7 @@ export const getContainerServicePowers: API.OperationMethod<
   GetContainerServicePowersRequest,
   GetContainerServicePowersResult,
   GetContainerServicePowersError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerServicePowersRequest,
   output: GetContainerServicePowersResult,
@@ -11647,7 +11647,7 @@ export const getContainerServices: API.OperationMethod<
   GetContainerServicesRequest,
   ContainerServicesListResult,
   GetContainerServicesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerServicesRequest,
   output: ContainerServicesListResult,
@@ -11676,7 +11676,7 @@ export const getCostEstimate: API.OperationMethod<
   GetCostEstimateRequest,
   GetCostEstimateResult,
   GetCostEstimateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCostEstimateRequest,
   output: GetCostEstimateResult,
@@ -11706,7 +11706,7 @@ export const getDisk: API.OperationMethod<
   GetDiskRequest,
   GetDiskResult,
   GetDiskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDiskRequest,
   output: GetDiskResult,
@@ -11738,7 +11738,7 @@ export const getDisks: API.OperationMethod<
   GetDisksRequest,
   GetDisksResult,
   GetDisksError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDisksRequest,
   output: GetDisksResult,
@@ -11770,7 +11770,7 @@ export const getDiskSnapshot: API.OperationMethod<
   GetDiskSnapshotRequest,
   GetDiskSnapshotResult,
   GetDiskSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDiskSnapshotRequest,
   output: GetDiskSnapshotResult,
@@ -11803,7 +11803,7 @@ export const getDiskSnapshots: API.OperationMethod<
   GetDiskSnapshotsRequest,
   GetDiskSnapshotsResult,
   GetDiskSnapshotsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDiskSnapshotsRequest,
   output: GetDiskSnapshotsResult,
@@ -11837,7 +11837,7 @@ export const getDistributionBundles: API.OperationMethod<
   GetDistributionBundlesRequest,
   GetDistributionBundlesResult,
   GetDistributionBundlesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDistributionBundlesRequest,
   output: GetDistributionBundlesResult,
@@ -11866,7 +11866,7 @@ export const getDistributionLatestCacheReset: API.OperationMethod<
   GetDistributionLatestCacheResetRequest,
   GetDistributionLatestCacheResetResult,
   GetDistributionLatestCacheResetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDistributionLatestCacheResetRequest,
   output: GetDistributionLatestCacheResetResult,
@@ -11899,7 +11899,7 @@ export const getDistributionMetricData: API.OperationMethod<
   GetDistributionMetricDataRequest,
   GetDistributionMetricDataResult,
   GetDistributionMetricDataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDistributionMetricDataRequest,
   output: GetDistributionMetricDataResult,
@@ -11928,7 +11928,7 @@ export const getDistributions: API.OperationMethod<
   GetDistributionsRequest,
   GetDistributionsResult,
   GetDistributionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDistributionsRequest,
   output: GetDistributionsResult,
@@ -11958,7 +11958,7 @@ export const getDomain: API.OperationMethod<
   GetDomainRequest,
   GetDomainResult,
   GetDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainRequest,
   output: GetDomainResult,
@@ -11990,7 +11990,7 @@ export const getDomains: API.OperationMethod<
   GetDomainsRequest,
   GetDomainsResult,
   GetDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainsRequest,
   output: GetDomainsResult,
@@ -12027,7 +12027,7 @@ export const getExportSnapshotRecords: API.OperationMethod<
   GetExportSnapshotRecordsRequest,
   GetExportSnapshotRecordsResult,
   GetExportSnapshotRecordsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetExportSnapshotRecordsRequest,
   output: GetExportSnapshotRecordsResult,
@@ -12060,7 +12060,7 @@ export const getInstance: API.OperationMethod<
   GetInstanceRequest,
   GetInstanceResult,
   GetInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceRequest,
   output: GetInstanceResult,
@@ -12097,7 +12097,7 @@ export const getInstanceAccessDetails: API.OperationMethod<
   GetInstanceAccessDetailsRequest,
   GetInstanceAccessDetailsResult,
   GetInstanceAccessDetailsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceAccessDetailsRequest,
   output: GetInstanceAccessDetailsResult,
@@ -12134,7 +12134,7 @@ export const getInstanceMetricData: API.OperationMethod<
   GetInstanceMetricDataRequest,
   GetInstanceMetricDataResult,
   GetInstanceMetricDataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceMetricDataRequest,
   output: GetInstanceMetricDataResult,
@@ -12167,7 +12167,7 @@ export const getInstancePortStates: API.OperationMethod<
   GetInstancePortStatesRequest,
   GetInstancePortStatesResult,
   GetInstancePortStatesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstancePortStatesRequest,
   output: GetInstancePortStatesResult,
@@ -12200,7 +12200,7 @@ export const getInstances: API.OperationMethod<
   GetInstancesRequest,
   GetInstancesResult,
   GetInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstancesRequest,
   output: GetInstancesResult,
@@ -12232,7 +12232,7 @@ export const getInstanceSnapshot: API.OperationMethod<
   GetInstanceSnapshotRequest,
   GetInstanceSnapshotResult,
   GetInstanceSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceSnapshotRequest,
   output: GetInstanceSnapshotResult,
@@ -12264,7 +12264,7 @@ export const getInstanceSnapshots: API.OperationMethod<
   GetInstanceSnapshotsRequest,
   GetInstanceSnapshotsResult,
   GetInstanceSnapshotsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceSnapshotsRequest,
   output: GetInstanceSnapshotsResult,
@@ -12296,7 +12296,7 @@ export const getInstanceState: API.OperationMethod<
   GetInstanceStateRequest,
   GetInstanceStateResult,
   GetInstanceStateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceStateRequest,
   output: GetInstanceStateResult,
@@ -12328,7 +12328,7 @@ export const getKeyPair: API.OperationMethod<
   GetKeyPairRequest,
   GetKeyPairResult,
   GetKeyPairError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKeyPairRequest,
   output: GetKeyPairResult,
@@ -12360,7 +12360,7 @@ export const getKeyPairs: API.OperationMethod<
   GetKeyPairsRequest,
   GetKeyPairsResult,
   GetKeyPairsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKeyPairsRequest,
   output: GetKeyPairsResult,
@@ -12392,7 +12392,7 @@ export const getLoadBalancer: API.OperationMethod<
   GetLoadBalancerRequest,
   GetLoadBalancerResult,
   GetLoadBalancerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoadBalancerRequest,
   output: GetLoadBalancerResult,
@@ -12428,7 +12428,7 @@ export const getLoadBalancerMetricData: API.OperationMethod<
   GetLoadBalancerMetricDataRequest,
   GetLoadBalancerMetricDataResult,
   GetLoadBalancerMetricDataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoadBalancerMetricDataRequest,
   output: GetLoadBalancerMetricDataResult,
@@ -12460,7 +12460,7 @@ export const getLoadBalancers: API.OperationMethod<
   GetLoadBalancersRequest,
   GetLoadBalancersResult,
   GetLoadBalancersError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoadBalancersRequest,
   output: GetLoadBalancersResult,
@@ -12498,7 +12498,7 @@ export const getLoadBalancerTlsCertificates: API.OperationMethod<
   GetLoadBalancerTlsCertificatesRequest,
   GetLoadBalancerTlsCertificatesResult,
   GetLoadBalancerTlsCertificatesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoadBalancerTlsCertificatesRequest,
   output: GetLoadBalancerTlsCertificatesResult,
@@ -12532,7 +12532,7 @@ export const getLoadBalancerTlsPolicies: API.OperationMethod<
   GetLoadBalancerTlsPoliciesRequest,
   GetLoadBalancerTlsPoliciesResult,
   GetLoadBalancerTlsPoliciesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoadBalancerTlsPoliciesRequest,
   output: GetLoadBalancerTlsPoliciesResult,
@@ -12563,7 +12563,7 @@ export const getOperation: API.OperationMethod<
   GetOperationRequest,
   GetOperationResult,
   GetOperationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationRequest,
   output: GetOperationResult,
@@ -12599,7 +12599,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsRequest,
   GetOperationsResult,
   GetOperationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResult,
@@ -12631,7 +12631,7 @@ export const getOperationsForResource: API.OperationMethod<
   GetOperationsForResourceRequest,
   GetOperationsForResourceResult,
   GetOperationsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsForResourceRequest,
   output: GetOperationsForResourceResult,
@@ -12665,7 +12665,7 @@ export const getRegions: API.OperationMethod<
   GetRegionsRequest,
   GetRegionsResult,
   GetRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionsRequest,
   output: GetRegionsResult,
@@ -12697,7 +12697,7 @@ export const getRelationalDatabase: API.OperationMethod<
   GetRelationalDatabaseRequest,
   GetRelationalDatabaseResult,
   GetRelationalDatabaseError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseRequest,
   output: GetRelationalDatabaseResult,
@@ -12733,7 +12733,7 @@ export const getRelationalDatabaseBlueprints: API.OperationMethod<
   GetRelationalDatabaseBlueprintsRequest,
   GetRelationalDatabaseBlueprintsResult,
   GetRelationalDatabaseBlueprintsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseBlueprintsRequest,
   output: GetRelationalDatabaseBlueprintsResult,
@@ -12769,7 +12769,7 @@ export const getRelationalDatabaseBundles: API.OperationMethod<
   GetRelationalDatabaseBundlesRequest,
   GetRelationalDatabaseBundlesResult,
   GetRelationalDatabaseBundlesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseBundlesRequest,
   output: GetRelationalDatabaseBundlesResult,
@@ -12801,7 +12801,7 @@ export const getRelationalDatabaseEvents: API.OperationMethod<
   GetRelationalDatabaseEventsRequest,
   GetRelationalDatabaseEventsResult,
   GetRelationalDatabaseEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseEventsRequest,
   output: GetRelationalDatabaseEventsResult,
@@ -12833,7 +12833,7 @@ export const getRelationalDatabaseLogEvents: API.OperationMethod<
   GetRelationalDatabaseLogEventsRequest,
   GetRelationalDatabaseLogEventsResult,
   GetRelationalDatabaseLogEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseLogEventsRequest,
   output: GetRelationalDatabaseLogEventsResult,
@@ -12865,7 +12865,7 @@ export const getRelationalDatabaseLogStreams: API.OperationMethod<
   GetRelationalDatabaseLogStreamsRequest,
   GetRelationalDatabaseLogStreamsResult,
   GetRelationalDatabaseLogStreamsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseLogStreamsRequest,
   output: GetRelationalDatabaseLogStreamsResult,
@@ -12902,7 +12902,7 @@ export const getRelationalDatabaseMasterUserPassword: API.OperationMethod<
   GetRelationalDatabaseMasterUserPasswordRequest,
   GetRelationalDatabaseMasterUserPasswordResult,
   GetRelationalDatabaseMasterUserPasswordError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseMasterUserPasswordRequest,
   output: GetRelationalDatabaseMasterUserPasswordResult,
@@ -12938,7 +12938,7 @@ export const getRelationalDatabaseMetricData: API.OperationMethod<
   GetRelationalDatabaseMetricDataRequest,
   GetRelationalDatabaseMetricDataResult,
   GetRelationalDatabaseMetricDataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseMetricDataRequest,
   output: GetRelationalDatabaseMetricDataResult,
@@ -12975,7 +12975,7 @@ export const getRelationalDatabaseParameters: API.OperationMethod<
   GetRelationalDatabaseParametersRequest,
   GetRelationalDatabaseParametersResult,
   GetRelationalDatabaseParametersError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseParametersRequest,
   output: GetRelationalDatabaseParametersResult,
@@ -13007,7 +13007,7 @@ export const getRelationalDatabases: API.OperationMethod<
   GetRelationalDatabasesRequest,
   GetRelationalDatabasesResult,
   GetRelationalDatabasesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabasesRequest,
   output: GetRelationalDatabasesResult,
@@ -13039,7 +13039,7 @@ export const getRelationalDatabaseSnapshot: API.OperationMethod<
   GetRelationalDatabaseSnapshotRequest,
   GetRelationalDatabaseSnapshotResult,
   GetRelationalDatabaseSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseSnapshotRequest,
   output: GetRelationalDatabaseSnapshotResult,
@@ -13071,7 +13071,7 @@ export const getRelationalDatabaseSnapshots: API.OperationMethod<
   GetRelationalDatabaseSnapshotsRequest,
   GetRelationalDatabaseSnapshotsResult,
   GetRelationalDatabaseSnapshotsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseSnapshotsRequest,
   output: GetRelationalDatabaseSnapshotsResult,
@@ -13102,7 +13102,7 @@ export const getSetupHistory: API.OperationMethod<
   GetSetupHistoryRequest,
   GetSetupHistoryResult,
   GetSetupHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSetupHistoryRequest,
   output: GetSetupHistoryResult,
@@ -13132,7 +13132,7 @@ export const getStaticIp: API.OperationMethod<
   GetStaticIpRequest,
   GetStaticIpResult,
   GetStaticIpError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStaticIpRequest,
   output: GetStaticIpResult,
@@ -13164,7 +13164,7 @@ export const getStaticIps: API.OperationMethod<
   GetStaticIpsRequest,
   GetStaticIpsResult,
   GetStaticIpsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStaticIpsRequest,
   output: GetStaticIpsResult,
@@ -13196,7 +13196,7 @@ export const importKeyPair: API.OperationMethod<
   ImportKeyPairRequest,
   ImportKeyPairResult,
   ImportKeyPairError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportKeyPairRequest,
   output: ImportKeyPairResult,
@@ -13228,7 +13228,7 @@ export const isVpcPeered: API.OperationMethod<
   IsVpcPeeredRequest,
   IsVpcPeeredResult,
   IsVpcPeeredError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IsVpcPeeredRequest,
   output: IsVpcPeeredResult,
@@ -13265,7 +13265,7 @@ export const openInstancePublicPorts: API.OperationMethod<
   OpenInstancePublicPortsRequest,
   OpenInstancePublicPortsResult,
   OpenInstancePublicPortsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: OpenInstancePublicPortsRequest,
   output: OpenInstancePublicPortsResult,
@@ -13297,7 +13297,7 @@ export const peerVpc: API.OperationMethod<
   PeerVpcRequest,
   PeerVpcResult,
   PeerVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PeerVpcRequest,
   output: PeerVpcResult,
@@ -13344,7 +13344,7 @@ export const putAlarm: API.OperationMethod<
   PutAlarmRequest,
   PutAlarmResult,
   PutAlarmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAlarmRequest,
   output: PutAlarmResult,
@@ -13384,7 +13384,7 @@ export const putInstancePublicPorts: API.OperationMethod<
   PutInstancePublicPortsRequest,
   PutInstancePublicPortsResult,
   PutInstancePublicPortsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutInstancePublicPortsRequest,
   output: PutInstancePublicPortsResult,
@@ -13420,7 +13420,7 @@ export const rebootInstance: API.OperationMethod<
   RebootInstanceRequest,
   RebootInstanceResult,
   RebootInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RebootInstanceRequest,
   output: RebootInstanceResult,
@@ -13456,7 +13456,7 @@ export const rebootRelationalDatabase: API.OperationMethod<
   RebootRelationalDatabaseRequest,
   RebootRelationalDatabaseResult,
   RebootRelationalDatabaseError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RebootRelationalDatabaseRequest,
   output: RebootRelationalDatabaseResult,
@@ -13491,7 +13491,7 @@ export const registerContainerImage: API.OperationMethod<
   RegisterContainerImageRequest,
   RegisterContainerImageResult,
   RegisterContainerImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterContainerImageRequest,
   output: RegisterContainerImageResult,
@@ -13521,7 +13521,7 @@ export const releaseStaticIp: API.OperationMethod<
   ReleaseStaticIpRequest,
   ReleaseStaticIpResult,
   ReleaseStaticIpError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReleaseStaticIpRequest,
   output: ReleaseStaticIpResult,
@@ -13555,7 +13555,7 @@ export const resetDistributionCache: API.OperationMethod<
   ResetDistributionCacheRequest,
   ResetDistributionCacheResult,
   ResetDistributionCacheError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetDistributionCacheRequest,
   output: ResetDistributionCacheResult,
@@ -13597,7 +13597,7 @@ export const sendContactMethodVerification: API.OperationMethod<
   SendContactMethodVerificationRequest,
   SendContactMethodVerificationResult,
   SendContactMethodVerificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendContactMethodVerificationRequest,
   output: SendContactMethodVerificationResult,
@@ -13632,7 +13632,7 @@ export const setIpAddressType: API.OperationMethod<
   SetIpAddressTypeRequest,
   SetIpAddressTypeResult,
   SetIpAddressTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIpAddressTypeRequest,
   output: SetIpAddressTypeResult,
@@ -13666,7 +13666,7 @@ export const setResourceAccessForBucket: API.OperationMethod<
   SetResourceAccessForBucketRequest,
   SetResourceAccessForBucketResult,
   SetResourceAccessForBucketError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetResourceAccessForBucketRequest,
   output: SetResourceAccessForBucketResult,
@@ -13698,7 +13698,7 @@ export const setupInstanceHttps: API.OperationMethod<
   SetupInstanceHttpsRequest,
   SetupInstanceHttpsResult,
   SetupInstanceHttpsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetupInstanceHttpsRequest,
   output: SetupInstanceHttpsResult,
@@ -13728,7 +13728,7 @@ export const startGUISession: API.OperationMethod<
   StartGUISessionRequest,
   StartGUISessionResult,
   StartGUISessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartGUISessionRequest,
   output: StartGUISessionResult,
@@ -13767,7 +13767,7 @@ export const startInstance: API.OperationMethod<
   StartInstanceRequest,
   StartInstanceResult,
   StartInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartInstanceRequest,
   output: StartInstanceResult,
@@ -13804,7 +13804,7 @@ export const startRelationalDatabase: API.OperationMethod<
   StartRelationalDatabaseRequest,
   StartRelationalDatabaseResult,
   StartRelationalDatabaseError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartRelationalDatabaseRequest,
   output: StartRelationalDatabaseResult,
@@ -13836,7 +13836,7 @@ export const stopGUISession: API.OperationMethod<
   StopGUISessionRequest,
   StopGUISessionResult,
   StopGUISessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopGUISessionRequest,
   output: StopGUISessionResult,
@@ -13874,7 +13874,7 @@ export const stopInstance: API.OperationMethod<
   StopInstanceRequest,
   StopInstanceResult,
   StopInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopInstanceRequest,
   output: StopInstanceResult,
@@ -13914,7 +13914,7 @@ export const stopRelationalDatabase: API.OperationMethod<
   StopRelationalDatabaseRequest,
   StopRelationalDatabaseResult,
   StopRelationalDatabaseError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopRelationalDatabaseRequest,
   output: StopRelationalDatabaseResult,
@@ -13952,7 +13952,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResult,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResult,
@@ -13991,7 +13991,7 @@ export const testAlarm: API.OperationMethod<
   TestAlarmRequest,
   TestAlarmResult,
   TestAlarmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestAlarmRequest,
   output: TestAlarmResult,
@@ -14022,7 +14022,7 @@ export const unpeerVpc: API.OperationMethod<
   UnpeerVpcRequest,
   UnpeerVpcResult,
   UnpeerVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnpeerVpcRequest,
   output: UnpeerVpcResult,
@@ -14059,7 +14059,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResult,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResult,
@@ -14092,7 +14092,7 @@ export const updateBucket: API.OperationMethod<
   UpdateBucketRequest,
   UpdateBucketResult,
   UpdateBucketError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBucketRequest,
   output: UpdateBucketResult,
@@ -14134,7 +14134,7 @@ export const updateBucketBundle: API.OperationMethod<
   UpdateBucketBundleRequest,
   UpdateBucketBundleResult,
   UpdateBucketBundleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBucketBundleRequest,
   output: UpdateBucketBundleResult,
@@ -14163,7 +14163,7 @@ export const updateContainerService: API.OperationMethod<
   UpdateContainerServiceRequest,
   UpdateContainerServiceResult,
   UpdateContainerServiceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContainerServiceRequest,
   output: UpdateContainerServiceResult,
@@ -14193,7 +14193,7 @@ export const updateDistribution: API.OperationMethod<
   UpdateDistributionRequest,
   UpdateDistributionResult,
   UpdateDistributionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDistributionRequest,
   output: UpdateDistributionResult,
@@ -14232,7 +14232,7 @@ export const updateDistributionBundle: API.OperationMethod<
   UpdateDistributionBundleRequest,
   UpdateDistributionBundleResult,
   UpdateDistributionBundleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDistributionBundleRequest,
   output: UpdateDistributionBundleResult,
@@ -14266,7 +14266,7 @@ export const updateDomainEntry: API.OperationMethod<
   UpdateDomainEntryRequest,
   UpdateDomainEntryResult,
   UpdateDomainEntryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDomainEntryRequest,
   output: UpdateDomainEntryResult,
@@ -14303,7 +14303,7 @@ export const updateInstanceMetadataOptions: API.OperationMethod<
   UpdateInstanceMetadataOptionsRequest,
   UpdateInstanceMetadataOptionsResult,
   UpdateInstanceMetadataOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateInstanceMetadataOptionsRequest,
   output: UpdateInstanceMetadataOptionsResult,
@@ -14340,7 +14340,7 @@ export const updateLoadBalancerAttribute: API.OperationMethod<
   UpdateLoadBalancerAttributeRequest,
   UpdateLoadBalancerAttributeResult,
   UpdateLoadBalancerAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLoadBalancerAttributeRequest,
   output: UpdateLoadBalancerAttributeResult,
@@ -14379,7 +14379,7 @@ export const updateRelationalDatabase: API.OperationMethod<
   UpdateRelationalDatabaseRequest,
   UpdateRelationalDatabaseResult,
   UpdateRelationalDatabaseError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRelationalDatabaseRequest,
   output: UpdateRelationalDatabaseResult,
@@ -14422,7 +14422,7 @@ export const updateRelationalDatabaseParameters: API.OperationMethod<
   UpdateRelationalDatabaseParametersRequest,
   UpdateRelationalDatabaseParametersResult,
   UpdateRelationalDatabaseParametersError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRelationalDatabaseParametersRequest,
   output: UpdateRelationalDatabaseParametersResult,

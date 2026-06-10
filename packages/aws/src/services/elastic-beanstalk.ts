@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const ns = T.XmlNamespace(
   "http://elasticbeanstalk.amazonaws.com/docs/2010-12-01/",
 );
@@ -3144,7 +3144,7 @@ export const abortEnvironmentUpdate: API.OperationMethod<
   AbortEnvironmentUpdateMessage,
   AbortEnvironmentUpdateResponse,
   AbortEnvironmentUpdateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AbortEnvironmentUpdateMessage,
   output: AbortEnvironmentUpdateResponse,
@@ -3163,7 +3163,7 @@ export const applyEnvironmentManagedAction: API.OperationMethod<
   ApplyEnvironmentManagedActionRequest,
   ApplyEnvironmentManagedActionResult,
   ApplyEnvironmentManagedActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplyEnvironmentManagedActionRequest,
   output: ApplyEnvironmentManagedActionResult,
@@ -3185,7 +3185,7 @@ export const associateEnvironmentOperationsRole: API.OperationMethod<
   AssociateEnvironmentOperationsRoleMessage,
   AssociateEnvironmentOperationsRoleResponse,
   AssociateEnvironmentOperationsRoleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateEnvironmentOperationsRoleMessage,
   output: AssociateEnvironmentOperationsRoleResponse,
@@ -3199,7 +3199,7 @@ export const checkDNSAvailability: API.OperationMethod<
   CheckDNSAvailabilityMessage,
   CheckDNSAvailabilityResultMessage,
   CheckDNSAvailabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckDNSAvailabilityMessage,
   output: CheckDNSAvailabilityResultMessage,
@@ -3221,7 +3221,7 @@ export const composeEnvironments: API.OperationMethod<
   ComposeEnvironmentsMessage,
   EnvironmentDescriptionsMessage,
   ComposeEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ComposeEnvironmentsMessage,
   output: EnvironmentDescriptionsMessage,
@@ -3238,7 +3238,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationMessage,
   ApplicationDescriptionMessage,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApplicationMessage,
   output: ApplicationDescriptionMessage,
@@ -3276,7 +3276,7 @@ export const createApplicationVersion: API.OperationMethod<
   CreateApplicationVersionMessage,
   ApplicationVersionDescriptionMessage,
   CreateApplicationVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApplicationVersionMessage,
   output: ApplicationVersionDescriptionMessage,
@@ -3314,7 +3314,7 @@ export const createConfigurationTemplate: API.OperationMethod<
   CreateConfigurationTemplateMessage,
   ConfigurationSettingsDescription,
   CreateConfigurationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConfigurationTemplateMessage,
   output: ConfigurationSettingsDescription,
@@ -3336,7 +3336,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentMessage,
   EnvironmentDescription,
   CreateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentMessage,
   output: EnvironmentDescription,
@@ -3354,7 +3354,7 @@ export const createPlatformVersion: API.OperationMethod<
   CreatePlatformVersionRequest,
   CreatePlatformVersionResult,
   CreatePlatformVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePlatformVersionRequest,
   output: CreatePlatformVersionResult,
@@ -3380,7 +3380,7 @@ export const createStorageLocation: API.OperationMethod<
   CreateStorageLocationRequest,
   CreateStorageLocationResultMessage,
   CreateStorageLocationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateStorageLocationRequest,
   output: CreateStorageLocationResultMessage,
@@ -3404,7 +3404,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationMessage,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationMessage,
   output: DeleteApplicationResponse,
@@ -3426,7 +3426,7 @@ export const deleteApplicationVersion: API.OperationMethod<
   DeleteApplicationVersionMessage,
   DeleteApplicationVersionResponse,
   DeleteApplicationVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteApplicationVersionMessage,
   output: DeleteApplicationVersionResponse,
@@ -3451,7 +3451,7 @@ export const deleteConfigurationTemplate: API.OperationMethod<
   DeleteConfigurationTemplateMessage,
   DeleteConfigurationTemplateResponse,
   DeleteConfigurationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfigurationTemplateMessage,
   output: DeleteConfigurationTemplateResponse,
@@ -3471,7 +3471,7 @@ export const deleteEnvironmentConfiguration: API.OperationMethod<
   DeleteEnvironmentConfigurationMessage,
   DeleteEnvironmentConfigurationResponse,
   DeleteEnvironmentConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentConfigurationMessage,
   output: DeleteEnvironmentConfigurationResponse,
@@ -3490,7 +3490,7 @@ export const deletePlatformVersion: API.OperationMethod<
   DeletePlatformVersionRequest,
   DeletePlatformVersionResult,
   DeletePlatformVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePlatformVersionRequest,
   output: DeletePlatformVersionResult,
@@ -3514,7 +3514,7 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesRequest,
   DescribeAccountAttributesResult,
   DescribeAccountAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAccountAttributesRequest,
   output: DescribeAccountAttributesResult,
@@ -3528,7 +3528,7 @@ export const describeApplications: API.OperationMethod<
   DescribeApplicationsMessage,
   ApplicationDescriptionsMessage,
   DescribeApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeApplicationsMessage,
   output: ApplicationDescriptionsMessage,
@@ -3542,7 +3542,7 @@ export const describeApplicationVersions: API.OperationMethod<
   DescribeApplicationVersionsMessage,
   ApplicationVersionDescriptionsMessage,
   DescribeApplicationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeApplicationVersionsMessage,
   output: ApplicationVersionDescriptionsMessage,
@@ -3561,7 +3561,7 @@ export const describeConfigurationOptions: API.OperationMethod<
   DescribeConfigurationOptionsMessage,
   ConfigurationOptionsDescription,
   DescribeConfigurationOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeConfigurationOptionsMessage,
   output: ConfigurationOptionsDescription,
@@ -3588,7 +3588,7 @@ export const describeConfigurationSettings: API.OperationMethod<
   DescribeConfigurationSettingsMessage,
   ConfigurationSettingsDescriptions,
   DescribeConfigurationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeConfigurationSettingsMessage,
   output: ConfigurationSettingsDescriptions,
@@ -3607,7 +3607,7 @@ export const describeEnvironmentHealth: API.OperationMethod<
   DescribeEnvironmentHealthRequest,
   DescribeEnvironmentHealthResult,
   DescribeEnvironmentHealthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentHealthRequest,
   output: DescribeEnvironmentHealthResult,
@@ -3623,21 +3623,21 @@ export const describeEnvironmentManagedActionHistory: API.OperationMethod<
   DescribeEnvironmentManagedActionHistoryRequest,
   DescribeEnvironmentManagedActionHistoryResult,
   DescribeEnvironmentManagedActionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEnvironmentManagedActionHistoryRequest,
   ) => stream.Stream<
     DescribeEnvironmentManagedActionHistoryResult,
     DescribeEnvironmentManagedActionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEnvironmentManagedActionHistoryRequest,
   ) => stream.Stream<
     ManagedActionHistoryItem,
     DescribeEnvironmentManagedActionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEnvironmentManagedActionHistoryRequest,
@@ -3660,7 +3660,7 @@ export const describeEnvironmentManagedActions: API.OperationMethod<
   DescribeEnvironmentManagedActionsRequest,
   DescribeEnvironmentManagedActionsResult,
   DescribeEnvironmentManagedActionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentManagedActionsRequest,
   output: DescribeEnvironmentManagedActionsResult,
@@ -3676,7 +3676,7 @@ export const describeEnvironmentResources: API.OperationMethod<
   DescribeEnvironmentResourcesMessage,
   EnvironmentResourceDescriptionsMessage,
   DescribeEnvironmentResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentResourcesMessage,
   output: EnvironmentResourceDescriptionsMessage,
@@ -3690,7 +3690,7 @@ export const describeEnvironments: API.OperationMethod<
   DescribeEnvironmentsMessage,
   EnvironmentDescriptionsMessage,
   DescribeEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentsMessage,
   output: EnvironmentDescriptionsMessage,
@@ -3707,21 +3707,21 @@ export const describeEvents: API.OperationMethod<
   DescribeEventsMessage,
   EventDescriptionsMessage,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeEventsMessage,
   ) => stream.Stream<
     EventDescriptionsMessage,
     DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: DescribeEventsMessage,
   ) => stream.Stream<
     EventDescription,
     DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
@@ -3747,7 +3747,7 @@ export const describeInstancesHealth: API.OperationMethod<
   DescribeInstancesHealthRequest,
   DescribeInstancesHealthResult,
   DescribeInstancesHealthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeInstancesHealthRequest,
   output: DescribeInstancesHealthResult,
@@ -3768,7 +3768,7 @@ export const describePlatformVersion: API.OperationMethod<
   DescribePlatformVersionRequest,
   DescribePlatformVersionResult,
   DescribePlatformVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribePlatformVersionRequest,
   output: DescribePlatformVersionResult,
@@ -3787,7 +3787,7 @@ export const disassociateEnvironmentOperationsRole: API.OperationMethod<
   DisassociateEnvironmentOperationsRoleMessage,
   DisassociateEnvironmentOperationsRoleResponse,
   DisassociateEnvironmentOperationsRoleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateEnvironmentOperationsRoleMessage,
   output: DisassociateEnvironmentOperationsRoleResponse,
@@ -3802,7 +3802,7 @@ export const listAvailableSolutionStacks: API.OperationMethod<
   ListAvailableSolutionStacksRequest,
   ListAvailableSolutionStacksResultMessage,
   ListAvailableSolutionStacksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAvailableSolutionStacksRequest,
   output: ListAvailableSolutionStacksResultMessage,
@@ -3820,21 +3820,21 @@ export const listPlatformBranches: API.OperationMethod<
   ListPlatformBranchesRequest,
   ListPlatformBranchesResult,
   ListPlatformBranchesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPlatformBranchesRequest,
   ) => stream.Stream<
     ListPlatformBranchesResult,
     ListPlatformBranchesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPlatformBranchesRequest,
   ) => stream.Stream<
     unknown,
     ListPlatformBranchesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformBranchesRequest,
@@ -3862,21 +3862,21 @@ export const listPlatformVersions: API.OperationMethod<
   ListPlatformVersionsRequest,
   ListPlatformVersionsResult,
   ListPlatformVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPlatformVersionsRequest,
   ) => stream.Stream<
     ListPlatformVersionsResult,
     ListPlatformVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPlatformVersionsRequest,
   ) => stream.Stream<
     PlatformSummary,
     ListPlatformVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformVersionsRequest,
@@ -3905,7 +3905,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceMessage,
   ResourceTagsDescriptionMessage,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceMessage,
   output: ResourceTagsDescriptionMessage,
@@ -3926,7 +3926,7 @@ export const rebuildEnvironment: API.OperationMethod<
   RebuildEnvironmentMessage,
   RebuildEnvironmentResponse,
   RebuildEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RebuildEnvironmentMessage,
   output: RebuildEnvironmentResponse,
@@ -3958,7 +3958,7 @@ export const requestEnvironmentInfo: API.OperationMethod<
   RequestEnvironmentInfoMessage,
   RequestEnvironmentInfoResponse,
   RequestEnvironmentInfoError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestEnvironmentInfoMessage,
   output: RequestEnvironmentInfoResponse,
@@ -3973,7 +3973,7 @@ export const restartAppServer: API.OperationMethod<
   RestartAppServerMessage,
   RestartAppServerResponse,
   RestartAppServerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestartAppServerMessage,
   output: RestartAppServerResponse,
@@ -3992,7 +3992,7 @@ export const retrieveEnvironmentInfo: API.OperationMethod<
   RetrieveEnvironmentInfoMessage,
   RetrieveEnvironmentInfoResultMessage,
   RetrieveEnvironmentInfoError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveEnvironmentInfoMessage,
   output: RetrieveEnvironmentInfoResultMessage,
@@ -4006,7 +4006,7 @@ export const swapEnvironmentCNAMEs: API.OperationMethod<
   SwapEnvironmentCNAMEsMessage,
   SwapEnvironmentCNAMEsResponse,
   SwapEnvironmentCNAMEsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SwapEnvironmentCNAMEsMessage,
   output: SwapEnvironmentCNAMEsResponse,
@@ -4022,7 +4022,7 @@ export const terminateEnvironment: API.OperationMethod<
   TerminateEnvironmentMessage,
   EnvironmentDescription,
   TerminateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TerminateEnvironmentMessage,
   output: EnvironmentDescription,
@@ -4039,7 +4039,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationMessage,
   ApplicationDescriptionMessage,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApplicationMessage,
   output: ApplicationDescriptionMessage,
@@ -4055,7 +4055,7 @@ export const updateApplicationResourceLifecycle: API.OperationMethod<
   UpdateApplicationResourceLifecycleMessage,
   ApplicationResourceLifecycleDescriptionMessage,
   UpdateApplicationResourceLifecycleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApplicationResourceLifecycleMessage,
   output: ApplicationResourceLifecycleDescriptionMessage,
@@ -4072,7 +4072,7 @@ export const updateApplicationVersion: API.OperationMethod<
   UpdateApplicationVersionMessage,
   ApplicationVersionDescriptionMessage,
   UpdateApplicationVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApplicationVersionMessage,
   output: ApplicationVersionDescriptionMessage,
@@ -4097,7 +4097,7 @@ export const updateConfigurationTemplate: API.OperationMethod<
   UpdateConfigurationTemplateMessage,
   ConfigurationSettingsDescription,
   UpdateConfigurationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigurationTemplateMessage,
   output: ConfigurationSettingsDescription,
@@ -4124,7 +4124,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentMessage,
   EnvironmentDescription,
   UpdateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentMessage,
   output: EnvironmentDescription,
@@ -4164,7 +4164,7 @@ export const updateTagsForResource: API.OperationMethod<
   UpdateTagsForResourceMessage,
   UpdateTagsForResourceResponse,
   UpdateTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTagsForResourceMessage,
   output: UpdateTagsForResourceResponse,
@@ -4191,7 +4191,7 @@ export const validateConfigurationSettings: API.OperationMethod<
   ValidateConfigurationSettingsMessage,
   ConfigurationSettingsValidationMessages,
   ValidateConfigurationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateConfigurationSettingsMessage,
   output: ConfigurationSettingsValidationMessages,

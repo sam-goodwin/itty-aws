@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "RAM",
   serviceShapeName: "AmazonResourceSharing",
@@ -2164,7 +2164,7 @@ export const acceptResourceShareInvitation: API.OperationMethod<
   AcceptResourceShareInvitationRequest,
   AcceptResourceShareInvitationResponse,
   AcceptResourceShareInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptResourceShareInvitationRequest,
   output: AcceptResourceShareInvitationResponse,
@@ -2203,7 +2203,7 @@ export const associateResourceShare: API.OperationMethod<
   AssociateResourceShareRequest,
   AssociateResourceShareResponse,
   AssociateResourceShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateResourceShareRequest,
   output: AssociateResourceShareResponse,
@@ -2240,7 +2240,7 @@ export const associateResourceSharePermission: API.OperationMethod<
   AssociateResourceSharePermissionRequest,
   AssociateResourceSharePermissionResponse,
   AssociateResourceSharePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateResourceSharePermissionRequest,
   output: AssociateResourceSharePermissionResponse,
@@ -2274,7 +2274,7 @@ export const createPermission: API.OperationMethod<
   CreatePermissionRequest,
   CreatePermissionResponse,
   CreatePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePermissionRequest,
   output: CreatePermissionResponse,
@@ -2316,7 +2316,7 @@ export const createPermissionVersion: API.OperationMethod<
   CreatePermissionVersionRequest,
   CreatePermissionVersionResponse,
   CreatePermissionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePermissionVersionRequest,
   output: CreatePermissionVersionResponse,
@@ -2361,7 +2361,7 @@ export const createResourceShare: API.OperationMethod<
   CreateResourceShareRequest,
   CreateResourceShareResponse,
   CreateResourceShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResourceShareRequest,
   output: CreateResourceShareResponse,
@@ -2399,7 +2399,7 @@ export const deletePermission: API.OperationMethod<
   DeletePermissionRequest,
   DeletePermissionResponse,
   DeletePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePermissionRequest,
   output: DeletePermissionResponse,
@@ -2434,7 +2434,7 @@ export const deletePermissionVersion: API.OperationMethod<
   DeletePermissionVersionRequest,
   DeletePermissionVersionResponse,
   DeletePermissionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePermissionVersionRequest,
   output: DeletePermissionVersionResponse,
@@ -2471,7 +2471,7 @@ export const deleteResourceShare: API.OperationMethod<
   DeleteResourceShareRequest,
   DeleteResourceShareResponse,
   DeleteResourceShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceShareRequest,
   output: DeleteResourceShareResponse,
@@ -2509,7 +2509,7 @@ export const disassociateResourceShare: API.OperationMethod<
   DisassociateResourceShareRequest,
   DisassociateResourceShareResponse,
   DisassociateResourceShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateResourceShareRequest,
   output: DisassociateResourceShareResponse,
@@ -2546,7 +2546,7 @@ export const disassociateResourceSharePermission: API.OperationMethod<
   DisassociateResourceSharePermissionRequest,
   DisassociateResourceSharePermissionResponse,
   DisassociateResourceSharePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateResourceSharePermissionRequest,
   output: DisassociateResourceSharePermissionResponse,
@@ -2583,7 +2583,7 @@ export const enableSharingWithAwsOrganization: API.OperationMethod<
   EnableSharingWithAwsOrganizationRequest,
   EnableSharingWithAwsOrganizationResponse,
   EnableSharingWithAwsOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableSharingWithAwsOrganizationRequest,
   output: EnableSharingWithAwsOrganizationResponse,
@@ -2608,7 +2608,7 @@ export const getPermission: API.OperationMethod<
   GetPermissionRequest,
   GetPermissionResponse,
   GetPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPermissionRequest,
   output: GetPermissionResponse,
@@ -2643,21 +2643,21 @@ export const getResourcePolicies: API.OperationMethod<
   GetResourcePoliciesRequest,
   GetResourcePoliciesResponse,
   GetResourcePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetResourcePoliciesRequest,
   ) => stream.Stream<
     GetResourcePoliciesResponse,
     GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetResourcePoliciesRequest,
   ) => stream.Stream<
     unknown,
     GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetResourcePoliciesRequest,
@@ -2699,21 +2699,21 @@ export const getResourceShareAssociations: API.OperationMethod<
   GetResourceShareAssociationsRequest,
   GetResourceShareAssociationsResponse,
   GetResourceShareAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetResourceShareAssociationsRequest,
   ) => stream.Stream<
     GetResourceShareAssociationsResponse,
     GetResourceShareAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetResourceShareAssociationsRequest,
   ) => stream.Stream<
     unknown,
     GetResourceShareAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetResourceShareAssociationsRequest,
@@ -2756,21 +2756,21 @@ export const getResourceShareInvitations: API.OperationMethod<
   GetResourceShareInvitationsRequest,
   GetResourceShareInvitationsResponse,
   GetResourceShareInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetResourceShareInvitationsRequest,
   ) => stream.Stream<
     GetResourceShareInvitationsResponse,
     GetResourceShareInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetResourceShareInvitationsRequest,
   ) => stream.Stream<
     unknown,
     GetResourceShareInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetResourceShareInvitationsRequest,
@@ -2812,21 +2812,21 @@ export const getResourceShares: API.OperationMethod<
   GetResourceSharesRequest,
   GetResourceSharesResponse,
   GetResourceSharesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: GetResourceSharesRequest,
   ) => stream.Stream<
     GetResourceSharesResponse,
     GetResourceSharesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: GetResourceSharesRequest,
   ) => stream.Stream<
     unknown,
     GetResourceSharesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetResourceSharesRequest,
@@ -2871,21 +2871,21 @@ export const listPendingInvitationResources: API.OperationMethod<
   ListPendingInvitationResourcesRequest,
   ListPendingInvitationResourcesResponse,
   ListPendingInvitationResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPendingInvitationResourcesRequest,
   ) => stream.Stream<
     ListPendingInvitationResourcesResponse,
     ListPendingInvitationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPendingInvitationResourcesRequest,
   ) => stream.Stream<
     unknown,
     ListPendingInvitationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPendingInvitationResourcesRequest,
@@ -2929,21 +2929,21 @@ export const listPermissionAssociations: API.OperationMethod<
   ListPermissionAssociationsRequest,
   ListPermissionAssociationsResponse,
   ListPermissionAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPermissionAssociationsRequest,
   ) => stream.Stream<
     ListPermissionAssociationsResponse,
     ListPermissionAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPermissionAssociationsRequest,
   ) => stream.Stream<
     unknown,
     ListPermissionAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionAssociationsRequest,
@@ -2982,21 +2982,21 @@ export const listPermissions: API.OperationMethod<
   ListPermissionsRequest,
   ListPermissionsResponse,
   ListPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPermissionsRequest,
   ) => stream.Stream<
     ListPermissionsResponse,
     ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPermissionsRequest,
   ) => stream.Stream<
     unknown,
     ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
@@ -3036,21 +3036,21 @@ export const listPermissionVersions: API.OperationMethod<
   ListPermissionVersionsRequest,
   ListPermissionVersionsResponse,
   ListPermissionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPermissionVersionsRequest,
   ) => stream.Stream<
     ListPermissionVersionsResponse,
     ListPermissionVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPermissionVersionsRequest,
   ) => stream.Stream<
     unknown,
     ListPermissionVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionVersionsRequest,
@@ -3092,21 +3092,21 @@ export const listPrincipals: API.OperationMethod<
   ListPrincipalsRequest,
   ListPrincipalsResponse,
   ListPrincipalsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListPrincipalsRequest,
   ) => stream.Stream<
     ListPrincipalsResponse,
     ListPrincipalsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListPrincipalsRequest,
   ) => stream.Stream<
     unknown,
     ListPrincipalsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrincipalsRequest,
@@ -3145,21 +3145,21 @@ export const listReplacePermissionAssociationsWork: API.OperationMethod<
   ListReplacePermissionAssociationsWorkRequest,
   ListReplacePermissionAssociationsWorkResponse,
   ListReplacePermissionAssociationsWorkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListReplacePermissionAssociationsWorkRequest,
   ) => stream.Stream<
     ListReplacePermissionAssociationsWorkResponse,
     ListReplacePermissionAssociationsWorkError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListReplacePermissionAssociationsWorkRequest,
   ) => stream.Stream<
     unknown,
     ListReplacePermissionAssociationsWorkError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReplacePermissionAssociationsWorkRequest,
@@ -3199,21 +3199,21 @@ export const listResources: API.OperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourcesRequest,
   ) => stream.Stream<
     ListResourcesResponse,
     ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourcesRequest,
   ) => stream.Stream<
     unknown,
     ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
@@ -3255,21 +3255,21 @@ export const listResourceSharePermissions: API.OperationMethod<
   ListResourceSharePermissionsRequest,
   ListResourceSharePermissionsResponse,
   ListResourceSharePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceSharePermissionsRequest,
   ) => stream.Stream<
     ListResourceSharePermissionsResponse,
     ListResourceSharePermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceSharePermissionsRequest,
   ) => stream.Stream<
     unknown,
     ListResourceSharePermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSharePermissionsRequest,
@@ -3302,21 +3302,21 @@ export const listResourceTypes: API.OperationMethod<
   ListResourceTypesRequest,
   ListResourceTypesResponse,
   ListResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListResourceTypesRequest,
   ) => stream.Stream<
     ListResourceTypesResponse,
     ListResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListResourceTypesRequest,
   ) => stream.Stream<
     unknown,
     ListResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTypesRequest,
@@ -3350,21 +3350,21 @@ export const listSourceAssociations: API.OperationMethod<
   ListSourceAssociationsRequest,
   ListSourceAssociationsResponse,
   ListSourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSourceAssociationsRequest,
   ) => stream.Stream<
     ListSourceAssociationsResponse,
     ListSourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSourceAssociationsRequest,
   ) => stream.Stream<
     AssociatedSource,
     ListSourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSourceAssociationsRequest,
@@ -3427,7 +3427,7 @@ export const promotePermissionCreatedFromPolicy: API.OperationMethod<
   PromotePermissionCreatedFromPolicyRequest,
   PromotePermissionCreatedFromPolicyResponse,
   PromotePermissionCreatedFromPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PromotePermissionCreatedFromPolicyRequest,
   output: PromotePermissionCreatedFromPolicyResponse,
@@ -3474,7 +3474,7 @@ export const promoteResourceShareCreatedFromPolicy: API.OperationMethod<
   PromoteResourceShareCreatedFromPolicyRequest,
   PromoteResourceShareCreatedFromPolicyResponse,
   PromoteResourceShareCreatedFromPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PromoteResourceShareCreatedFromPolicyRequest,
   output: PromoteResourceShareCreatedFromPolicyResponse,
@@ -3510,7 +3510,7 @@ export const rejectResourceShareInvitation: API.OperationMethod<
   RejectResourceShareInvitationRequest,
   RejectResourceShareInvitationResponse,
   RejectResourceShareInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectResourceShareInvitationRequest,
   output: RejectResourceShareInvitationResponse,
@@ -3559,7 +3559,7 @@ export const replacePermissionAssociations: API.OperationMethod<
   ReplacePermissionAssociationsRequest,
   ReplacePermissionAssociationsResponse,
   ReplacePermissionAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplacePermissionAssociationsRequest,
   output: ReplacePermissionAssociationsResponse,
@@ -3592,7 +3592,7 @@ export const setDefaultPermissionVersion: API.OperationMethod<
   SetDefaultPermissionVersionRequest,
   SetDefaultPermissionVersionResponse,
   SetDefaultPermissionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetDefaultPermissionVersionRequest,
   output: SetDefaultPermissionVersionResponse,
@@ -3626,7 +3626,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3655,7 +3655,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3685,7 +3685,7 @@ export const updateResourceShare: API.OperationMethod<
   UpdateResourceShareRequest,
   UpdateResourceShareResponse,
   UpdateResourceShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourceShareRequest,
   output: UpdateResourceShareResponse,

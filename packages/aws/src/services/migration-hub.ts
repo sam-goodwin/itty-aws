@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { AWSConfig } from "../config.ts";
 const svc = T.AwsApiService({
   sdkId: "Migration Hub",
   serviceShapeName: "AWSMigrationHub",
@@ -922,7 +922,7 @@ export const associateCreatedArtifact: API.OperationMethod<
   AssociateCreatedArtifactRequest,
   AssociateCreatedArtifactResult,
   AssociateCreatedArtifactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateCreatedArtifactRequest,
   output: AssociateCreatedArtifactResult,
@@ -958,7 +958,7 @@ export const associateDiscoveredResource: API.OperationMethod<
   AssociateDiscoveredResourceRequest,
   AssociateDiscoveredResourceResult,
   AssociateDiscoveredResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateDiscoveredResourceRequest,
   output: AssociateDiscoveredResourceResult,
@@ -993,7 +993,7 @@ export const associateSourceResource: API.OperationMethod<
   AssociateSourceResourceRequest,
   AssociateSourceResourceResult,
   AssociateSourceResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateSourceResourceRequest,
   output: AssociateSourceResourceResult,
@@ -1029,7 +1029,7 @@ export const createProgressUpdateStream: API.OperationMethod<
   CreateProgressUpdateStreamRequest,
   CreateProgressUpdateStreamResult,
   CreateProgressUpdateStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProgressUpdateStreamRequest,
   output: CreateProgressUpdateStreamResult,
@@ -1084,7 +1084,7 @@ export const deleteProgressUpdateStream: API.OperationMethod<
   DeleteProgressUpdateStreamRequest,
   DeleteProgressUpdateStreamResult,
   DeleteProgressUpdateStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProgressUpdateStreamRequest,
   output: DeleteProgressUpdateStreamResult,
@@ -1117,7 +1117,7 @@ export const describeApplicationState: API.OperationMethod<
   DescribeApplicationStateRequest,
   DescribeApplicationStateResult,
   DescribeApplicationStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeApplicationStateRequest,
   output: DescribeApplicationStateResult,
@@ -1148,7 +1148,7 @@ export const describeMigrationTask: API.OperationMethod<
   DescribeMigrationTaskRequest,
   DescribeMigrationTaskResult,
   DescribeMigrationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeMigrationTaskRequest,
   output: DescribeMigrationTaskResult,
@@ -1191,7 +1191,7 @@ export const disassociateCreatedArtifact: API.OperationMethod<
   DisassociateCreatedArtifactRequest,
   DisassociateCreatedArtifactResult,
   DisassociateCreatedArtifactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateCreatedArtifactRequest,
   output: DisassociateCreatedArtifactResult,
@@ -1226,7 +1226,7 @@ export const disassociateDiscoveredResource: API.OperationMethod<
   DisassociateDiscoveredResourceRequest,
   DisassociateDiscoveredResourceResult,
   DisassociateDiscoveredResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateDiscoveredResourceRequest,
   output: DisassociateDiscoveredResourceResult,
@@ -1259,7 +1259,7 @@ export const disassociateSourceResource: API.OperationMethod<
   DisassociateSourceResourceRequest,
   DisassociateSourceResourceResult,
   DisassociateSourceResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisassociateSourceResourceRequest,
   output: DisassociateSourceResourceResult,
@@ -1296,7 +1296,7 @@ export const importMigrationTask: API.OperationMethod<
   ImportMigrationTaskRequest,
   ImportMigrationTaskResult,
   ImportMigrationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportMigrationTaskRequest,
   output: ImportMigrationTaskResult,
@@ -1329,21 +1329,21 @@ export const listApplicationStates: API.OperationMethod<
   ListApplicationStatesRequest,
   ListApplicationStatesResult,
   ListApplicationStatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListApplicationStatesRequest,
   ) => stream.Stream<
     ListApplicationStatesResult,
     ListApplicationStatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListApplicationStatesRequest,
   ) => stream.Stream<
     ApplicationState,
     ListApplicationStatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationStatesRequest,
@@ -1388,21 +1388,21 @@ export const listCreatedArtifacts: API.OperationMethod<
   ListCreatedArtifactsRequest,
   ListCreatedArtifactsResult,
   ListCreatedArtifactsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCreatedArtifactsRequest,
   ) => stream.Stream<
     ListCreatedArtifactsResult,
     ListCreatedArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListCreatedArtifactsRequest,
   ) => stream.Stream<
     CreatedArtifact,
     ListCreatedArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCreatedArtifactsRequest,
@@ -1439,21 +1439,21 @@ export const listDiscoveredResources: API.OperationMethod<
   ListDiscoveredResourcesRequest,
   ListDiscoveredResourcesResult,
   ListDiscoveredResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDiscoveredResourcesRequest,
   ) => stream.Stream<
     ListDiscoveredResourcesResult,
     ListDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListDiscoveredResourcesRequest,
   ) => stream.Stream<
     DiscoveredResource,
     ListDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveredResourcesRequest,
@@ -1499,21 +1499,21 @@ export const listMigrationTasks: API.OperationMethod<
   ListMigrationTasksRequest,
   ListMigrationTasksResult,
   ListMigrationTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMigrationTasksRequest,
   ) => stream.Stream<
     ListMigrationTasksResult,
     ListMigrationTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMigrationTasksRequest,
   ) => stream.Stream<
     MigrationTaskSummary,
     ListMigrationTasksError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationTasksRequest,
@@ -1551,21 +1551,21 @@ export const listMigrationTaskUpdates: API.OperationMethod<
   ListMigrationTaskUpdatesRequest,
   ListMigrationTaskUpdatesResult,
   ListMigrationTaskUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListMigrationTaskUpdatesRequest,
   ) => stream.Stream<
     ListMigrationTaskUpdatesResult,
     ListMigrationTaskUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListMigrationTaskUpdatesRequest,
   ) => stream.Stream<
     MigrationTaskUpdate,
     ListMigrationTaskUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationTaskUpdatesRequest,
@@ -1600,21 +1600,21 @@ export const listProgressUpdateStreams: API.OperationMethod<
   ListProgressUpdateStreamsRequest,
   ListProgressUpdateStreamsResult,
   ListProgressUpdateStreamsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListProgressUpdateStreamsRequest,
   ) => stream.Stream<
     ListProgressUpdateStreamsResult,
     ListProgressUpdateStreamsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListProgressUpdateStreamsRequest,
   ) => stream.Stream<
     ProgressUpdateStreamSummary,
     ListProgressUpdateStreamsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProgressUpdateStreamsRequest,
@@ -1650,21 +1650,21 @@ export const listSourceResources: API.OperationMethod<
   ListSourceResourcesRequest,
   ListSourceResourcesResult,
   ListSourceResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > & {
   pages: (
     input: ListSourceResourcesRequest,
   ) => stream.Stream<
     ListSourceResourcesResult,
     ListSourceResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
   items: (
     input: ListSourceResourcesRequest,
   ) => stream.Stream<
     SourceResource,
     ListSourceResourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | AWSConfig | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSourceResourcesRequest,
@@ -1706,7 +1706,7 @@ export const notifyApplicationState: API.OperationMethod<
   NotifyApplicationStateRequest,
   NotifyApplicationStateResult,
   NotifyApplicationStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: NotifyApplicationStateRequest,
   output: NotifyApplicationStateResult,
@@ -1751,7 +1751,7 @@ export const notifyMigrationTaskState: API.OperationMethod<
   NotifyMigrationTaskStateRequest,
   NotifyMigrationTaskStateResult,
   NotifyMigrationTaskStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: NotifyMigrationTaskStateRequest,
   output: NotifyMigrationTaskStateResult,
@@ -1802,7 +1802,7 @@ export const putResourceAttributes: API.OperationMethod<
   PutResourceAttributesRequest,
   PutResourceAttributesResult,
   PutResourceAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | AWSConfig | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutResourceAttributesRequest,
   output: PutResourceAttributesResult,
