@@ -1,0 +1,8 @@
+{
+  "response": {
+    "properties": {
+      "records[].metadata": { "optional": true },
+      "cursor": { "type": "number", "nullable": true }
+    }
+  }
+}

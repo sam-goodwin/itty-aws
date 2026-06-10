@@ -410,7 +410,6 @@ paths:
                           type: string
                           description: Markdown of the content of the crawled URL.
                       required:
-                        - metadata
                         - status
                         - url
                     description: List of crawl job records.
@@ -427,7 +426,9 @@ paths:
                     type: number
                     description: Total current number of URLs in the crawl job.
                   cursor:
-                    type: string
+                    oneOf:
+                      - type: number
+                    nullable: true
                     description: Cursor for pagination.
                 required:
                   - id

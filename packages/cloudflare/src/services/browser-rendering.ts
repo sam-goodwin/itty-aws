@@ -412,7 +412,7 @@ export interface GetCrawlResponse {
   finished: number;
   /** List of crawl job records. */
   records: {
-    metadata: { status: number; url: string; title?: string | null };
+    metadata?: { status: number; url: string; title?: string | null } | null;
     status:
       | "queued"
       | "errored"
@@ -433,7 +433,7 @@ export interface GetCrawlResponse {
   /** Total current number of URLs in the crawl job. */
   total: number;
   /** Cursor for pagination. */
-  cursor?: string | null;
+  cursor?: number | null;
 }
 
 export const GetCrawlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -442,11 +442,16 @@ export const GetCrawlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   finished: Schema.Number,
   records: Schema.Array(
     Schema.Struct({
-      metadata: Schema.Struct({
-        status: Schema.Number,
-        url: Schema.String,
-        title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
+      metadata: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            status: Schema.Number,
+            url: Schema.String,
+            title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
       status: Schema.Union([
         Schema.Literals([
           "queued",
@@ -472,7 +477,7 @@ export const GetCrawlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   skipped: Schema.Number,
   status: Schema.String,
   total: Schema.Number,
-  cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  cursor: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
 }).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetCrawlResponse>;
 
 export type GetCrawlError = DefaultErrors;
