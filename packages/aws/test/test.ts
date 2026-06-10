@@ -134,7 +134,7 @@ function provideTestEnv<A, E, R extends Provided>(
     return eff.pipe(
       Effect.provideService(
         Endpoint,
-        process.env.LOCALSTACK_HOST ?? "http://localhost:4566",
+        Effect.succeed(process.env.LOCALSTACK_HOST ?? "http://localhost:4566"),
       ),
       Effect.provide(Credentials.mock),
     );

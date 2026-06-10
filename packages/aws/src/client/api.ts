@@ -111,7 +111,7 @@ export const make = <Op extends Operation<any, any, any>>(
 
     if (Option.isSome(customEndpoint)) {
       // User provided a custom endpoint - use it directly
-      endpoint = customEndpoint.value;
+      endpoint = yield* customEndpoint.value;
     } else if (rulesResolver) {
       // Use the rules resolver - it handles endpoint resolution AND path adjustment
       const resolved = yield* rulesResolver({
