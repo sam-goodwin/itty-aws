@@ -6,6 +6,7 @@
     "url": "https://github.com/alchemy-run/distilled",
     "directory": "packages/workos"
   },
+  "license": "Apache-2.0",
   "type": "module",
   "sideEffects": false,
   "module": "src/index.ts",
