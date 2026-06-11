@@ -7018,6 +7018,9 @@ paths:
                   - secret_id
                   - secret_preview
       x-distilled-pagination-class: ProviderConfigListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        GatewayNotFound:
+          - code: 7002
     post:
       operationId: createProviderConfig
       description: "Creates a new AI Gateway.  @example ```ts const providerConfig =
@@ -7108,6 +7111,9 @@ paths:
                   - secret_id
                   - secret_preview
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayNotFound:
+          - code: 7002
   /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/provider_configs/{id}:
     put:
       operationId: updateProviderConfig

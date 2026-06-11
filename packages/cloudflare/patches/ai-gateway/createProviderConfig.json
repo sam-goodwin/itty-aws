@@ -1,4 +1,7 @@
 {
+  "errors": {
+    "GatewayNotFound": [{ "code": 7002 }]
+  },
   "request": {
     "properties": {
       "secret": { "optional": true },

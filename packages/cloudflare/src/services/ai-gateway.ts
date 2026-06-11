@@ -8140,7 +8140,7 @@ export const ListProviderConfigsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListProviderConfigsResponse>;
 
-export type ListProviderConfigsError = DefaultErrors;
+export type ListProviderConfigsError = DefaultErrors | GatewayNotFound;
 
 export const listProviderConfigs: API.PaginatedOperationMethod<
   ListProviderConfigsRequest,
@@ -8150,7 +8150,7 @@ export const listProviderConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProviderConfigsRequest,
   output: ListProviderConfigsResponse,
-  errors: [],
+  errors: [GatewayNotFound],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -8254,7 +8254,7 @@ export const CreateProviderConfigResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateProviderConfigResponse>;
 
-export type CreateProviderConfigError = DefaultErrors;
+export type CreateProviderConfigError = DefaultErrors | GatewayNotFound;
 
 export const createProviderConfig: API.OperationMethod<
   CreateProviderConfigRequest,
@@ -8264,7 +8264,7 @@ export const createProviderConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProviderConfigRequest,
   output: CreateProviderConfigResponse,
-  errors: [],
+  errors: [GatewayNotFound],
 }));
 
 export interface UpdateProviderConfigRequest {
