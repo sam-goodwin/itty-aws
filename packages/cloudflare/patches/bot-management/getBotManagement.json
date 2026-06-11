@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "fight_mode": { "optional": false },
+      "sbfm_definitely_automated": { "optional": false }
+    }
+  }
+}

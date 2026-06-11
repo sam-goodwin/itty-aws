@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "CustomHostnameNotFound": [{ "code": 1436 }, { "status": 404 }],
+    "SaasQuotaNotAllocated": [{ "code": 1404, "status": 403 }]
+  }
+}

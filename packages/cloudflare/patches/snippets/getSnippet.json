@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "SnippetNotFound": [
+      { "status": 400, "message": { "includes": "snippet not found" } },
+      { "status": 404 }
+    ]
+  }
+}

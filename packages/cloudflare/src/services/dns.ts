@@ -14,6 +14,16 @@ import { type DefaultErrors } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // AnalyticReport
 // =============================================================================
 
@@ -4654,7 +4664,7 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetRecordResponse>;
 
-export type GetRecordError = DefaultErrors;
+export type GetRecordError = DefaultErrors | Forbidden;
 
 export const getRecord: API.OperationMethod<
   GetRecordRequest,
@@ -4664,7 +4674,7 @@ export const getRecord: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecordRequest,
   output: GetRecordResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface ListRecordsRequest {
@@ -6912,7 +6922,7 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListRecordsResponse>;
 
-export type ListRecordsError = DefaultErrors;
+export type ListRecordsError = DefaultErrors | Forbidden;
 
 export const listRecords: API.PaginatedOperationMethod<
   ListRecordsRequest,
@@ -6922,7 +6932,7 @@ export const listRecords: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecordsRequest,
   output: ListRecordsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -9060,7 +9070,7 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreateRecordResponse>;
 
-export type CreateRecordError = DefaultErrors;
+export type CreateRecordError = DefaultErrors | Forbidden;
 
 export const createRecord: API.OperationMethod<
   CreateRecordRequest,
@@ -9070,7 +9080,7 @@ export const createRecord: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRecordRequest,
   output: CreateRecordResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateRecordRequest {

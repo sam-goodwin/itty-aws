@@ -73,6 +73,11 @@ paths:
                   - num_items
                   - num_referencing_filters
       x-distilled-response-path: result
+      x-distilled-errors:
+        ListNotFound:
+          - code: 10001
+        Forbidden:
+          - status: 403
     put:
       operationId: updateList
       description: "Updates the description of a list.  @example ```ts const list =
@@ -149,6 +154,11 @@ paths:
                   - num_items
                   - num_referencing_filters
       x-distilled-response-path: result
+      x-distilled-errors:
+        ListNotFound:
+          - code: 10001
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteList
       description: "Deletes a specific list and all its items.  @example ```ts const
@@ -181,6 +191,11 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        ListNotFound:
+          - code: 10001
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/rules/lists:
     get:
       operationId: listLists
@@ -244,6 +259,9 @@ paths:
                   - num_items
                   - num_referencing_filters
       x-distilled-pagination-class: ListsListsSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createList
       description: "Creates a new list of the specified kind.  @example ```ts const
@@ -331,6 +349,11 @@ paths:
                   - num_items
                   - num_referencing_filters
       x-distilled-response-path: result
+      x-distilled-errors:
+        ListAlreadyExists:
+          - code: 10021
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/rules/lists/bulk_operations/{operationId}:
     get:
       operationId: getListBulkOperation
@@ -414,6 +437,11 @@ paths:
                       - error
                       - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        ListNotFound:
+          - code: 10001
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/rules/lists/{listId}/items/{itemId}:
     get:
       operationId: getListItem
@@ -743,6 +771,11 @@ paths:
                       - created_on
                       - modified_on
       x-distilled-pagination-class: ItemListResponsesCursorPaginationAfter
+      x-distilled-errors:
+        ListNotFound:
+          - code: 10001
+        Forbidden:
+          - status: 403
     post:
       operationId: createListItem
       description: "Appends new items to the list.  This operation is asynchronous. To
@@ -985,6 +1018,11 @@ paths:
                 required:
                   - operation_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        ListNotFound:
+          - code: 10001
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteListItem
       description: "Removes one or more items from a list.  This operation is

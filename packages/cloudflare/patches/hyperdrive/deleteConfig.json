@@ -1,7 +1,7 @@
 {
   "errors": {
     "PrivateHostNotAllowed": [{ "code": 2009 }],
-    "HyperdriveConfigNotFound": [{ "code": 2006 }],
+    "HyperdriveConfigNotFound": [{ "code": 2006 }, { "status": 404 }],
     "InvalidObjectIdentifier": [{ "code": 7003 }],
     "MethodNotAllowed": [
       { "code": 10000, "message": { "includes": "method not allowed" } },

@@ -43,6 +43,9 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putRule
       description: Updates all snippet rules belonging to the zone.
@@ -108,6 +111,11 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        SnippetRulesNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/snippets/{snippetName}:
     get:
       operationId: getSnippet
@@ -145,6 +153,12 @@ paths:
                   - created_on
                   - snippet_name
       x-distilled-response-path: result
+      x-distilled-errors:
+        SnippetNotFound:
+          - status: 400
+            message:
+              includes: snippet not found
+          - status: 404
     put:
       operationId: putSnippet
       description: Creates or updates a snippet belonging to the zone.
@@ -177,6 +191,9 @@ paths:
                   required:
                     - main_module
                   description: "Body param: Provide metadata about the snippet."
+                files:
+                  type: string
+                  format: binary
               required:
                 - metadata
       responses:
@@ -222,6 +239,12 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        SnippetNotFound:
+          - status: 400
+            message:
+              includes: snippet not found
+          - status: 404
   /zones/{zone_id}/snippets:
     get:
       operationId: listSnippets
@@ -264,3 +287,6 @@ paths:
                   - created_on
                   - snippet_name
       x-distilled-pagination-class: SnippetListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

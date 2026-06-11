@@ -15,6 +15,69 @@ paths:
           required: true
           schema:
             type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: before
+          in: query
+          required: false
+          description: "Query param: Filter entries changed before this timestamp (RFC
+            3339)."
+          schema:
+            type: string
+        - name: changed_by
+          in: query
+          required: false
+          description: "Query param: Filter by the actor that made the change."
+          schema:
+            type: string
+        - name: field_changed
+          in: query
+          required: false
+          description: "Query param: Filter by the field that was changed."
+          schema:
+            type: string
+            enum:
+              - status
+              - user_classification
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Sort order for results. Use 'asc' for oldest first or
+            'desc' for newest first."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: since
+          in: query
+          required: false
+          description: "Query param: Filter entries changed at or after this timestamp
+            (RFC 3339)."
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -67,6 +130,139 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/security-center/insights:
     get:
       operationId: listInsights
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: dismissed
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: boolean
+        - name: issue_class
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_class~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_type
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: issue_type~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: product
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: product~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: severity
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: severity~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: subject
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: subject~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
       responses:
         "200":
           description: Success
@@ -244,6 +440,70 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/security-center/insights/audit-log:
     get:
       operationId: listInsightAuditLogs
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: before
+          in: query
+          required: false
+          description: "Query param: Filter entries changed before this timestamp (RFC
+            3339)."
+          schema:
+            type: string
+        - name: changed_by
+          in: query
+          required: false
+          description: "Query param: Filter by the actor that made the change."
+          schema:
+            type: string
+        - name: field_changed
+          in: query
+          required: false
+          description: "Query param: Filter by the field that was changed."
+          schema:
+            type: string
+            enum:
+              - status
+              - user_classification
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Sort order for results. Use 'asc' for oldest first or
+            'desc' for newest first."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: since
+          in: query
+          required: false
+          description: "Query param: Filter entries changed at or after this timestamp
+            (RFC 3339)."
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -296,6 +556,129 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/security-center/insights/class:
     get:
       operationId: getInsightClass
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: dismissed
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: boolean
+        - name: issue_class
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_class~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_type
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: issue_type~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: product
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: product~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: severity
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: severity~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: subject
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: subject~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
       responses:
         "200":
           description: Success
@@ -447,6 +830,129 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/security-center/insights/severity:
     get:
       operationId: getInsightSeverity
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: dismissed
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: boolean
+        - name: issue_class
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_class~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_type
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: issue_type~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: product
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: product~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: severity
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: severity~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: subject
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: subject~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
       responses:
         "200":
           description: Success
@@ -465,6 +971,129 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/security-center/insights/type:
     get:
       operationId: getInsightType
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: dismissed
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: boolean
+        - name: issue_class
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_class~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_type
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: issue_type~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: product
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: product~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: severity
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: severity~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: subject
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
+        - name: subject~neq
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: array
+            items:
+              type: string
       responses:
         "200":
           description: Success

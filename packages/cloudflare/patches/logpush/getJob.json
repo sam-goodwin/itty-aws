@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "JobNotFound": [
+      { "code": 1000, "message": { "includes": "job not found" } },
+      { "status": 404 }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

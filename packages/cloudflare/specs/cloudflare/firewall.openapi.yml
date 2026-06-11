@@ -15,6 +15,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -143,6 +158,14 @@ paths:
                   - configuration
                   - mode
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessRuleNotFound:
+          - code: 10001
+            message:
+              includes: not_found
+          - status: 404
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchAccessRule
       description: "Updates an IP Access rule defined.  Note: This operation will
@@ -386,6 +409,14 @@ paths:
                   - configuration
                   - mode
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessRuleNotFound:
+          - code: 10001
+            message:
+              includes: not_found
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteAccessRule
       parameters:
@@ -394,6 +425,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -408,9 +454,116 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessRuleNotFound:
+          - code: 10001
+            message:
+              includes: not_found
+          - status: 404
+        Forbidden:
+          - status: 403
   /{accountOrZone}/{accountOrZoneId}/firewall/access_rules/rules:
     get:
       operationId: listAccessRules
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: configuration
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: object
+            properties:
+              target:
+                type: string
+                enum:
+                  - ip
+                  - ip_range
+                  - asn
+                  - country
+                description: Defines the target to search in existing rules.
+              value:
+                type: string
+                description: "Defines the target value to search for in existing rules: an IP
+                  address, an IP address range, or a country code, depending on
+                  the provided `configuration.target`. Notes: You can search for
+                  a single IPv4 address, an IP address range with a subnet of
+                  '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country
+                  code."
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Defines the direction used to sort returned rules."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: match
+          in: query
+          required: false
+          description: "Query param: Defines the search requirements. When set to `all`,
+            all the search requirements must match. When set to `any`, only one
+            of the search requirements has to match."
+          schema:
+            type: string
+            enum:
+              - any
+              - all
+        - name: mode
+          in: query
+          required: false
+          description: "Query param: The action to apply to a matched request."
+          schema:
+            type: string
+            enum:
+              - block
+              - challenge
+              - whitelist
+              - js_challenge
+              - managed_challenge
+        - name: notes
+          in: query
+          required: false
+          description: "Query param: Defines the string to search for in the notes of
+            existing IP Access rules. Notes: For example, the string 'attack'
+            would match IP Access rules with notes 'Attack 26/02' and 'Attack
+            27/02'. The search is case insensitive."
+          schema:
+            type: string
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Defines the field used to sort returned rules."
+          schema:
+            type: string
+            enum:
+              - configuration.target
+              - configuration.value
+              - mode
       responses:
         "200":
           description: Success
@@ -539,6 +692,9 @@ paths:
                   - configuration
                   - mode
       x-distilled-pagination-class: AccessRuleListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createAccessRule
       description: "Creates a new IP Access rule for an account or zone. The rule will
@@ -778,6 +934,13 @@ paths:
                   - configuration
                   - mode
       x-distilled-response-path: result
+      x-distilled-errors:
+        DuplicateAccessRule:
+          - code: 10009
+            message:
+              includes: duplicate_of_existing
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/firewall/lockdowns/{lockDownsId}:
     get:
       operationId: getLockdown

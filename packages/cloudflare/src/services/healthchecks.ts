@@ -13,6 +13,30 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class HealthcheckAlreadyExists extends Schema.TaggedErrorClass<HealthcheckAlreadyExists>()(
+  "HealthcheckAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(HealthcheckAlreadyExists, [
+  { message: { includes: "already exists" } },
+]);
+
+export class HealthcheckNotFound extends Schema.TaggedErrorClass<HealthcheckNotFound>()(
+  "HealthcheckNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(HealthcheckNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // Healthcheck
 // =============================================================================
 
@@ -246,7 +270,10 @@ export const GetHealthcheckResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetHealthcheckResponse>;
 
-export type GetHealthcheckError = DefaultErrors;
+export type GetHealthcheckError =
+  | DefaultErrors
+  | HealthcheckNotFound
+  | Forbidden;
 
 export const getHealthcheck: API.OperationMethod<
   GetHealthcheckRequest,
@@ -256,7 +283,7 @@ export const getHealthcheck: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHealthcheckRequest,
   output: GetHealthcheckResponse,
-  errors: [],
+  errors: [HealthcheckNotFound, Forbidden],
 }));
 
 export interface ListHealthchecksRequest {
@@ -509,7 +536,7 @@ export const ListHealthchecksResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListHealthchecksResponse>;
 
-export type ListHealthchecksError = DefaultErrors;
+export type ListHealthchecksError = DefaultErrors | Forbidden;
 
 export const listHealthchecks: API.PaginatedOperationMethod<
   ListHealthchecksRequest,
@@ -519,7 +546,7 @@ export const listHealthchecks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHealthchecksRequest,
   output: ListHealthchecksResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -902,7 +929,10 @@ export const CreateHealthcheckResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateHealthcheckResponse>;
 
-export type CreateHealthcheckError = DefaultErrors;
+export type CreateHealthcheckError =
+  | DefaultErrors
+  | HealthcheckAlreadyExists
+  | Forbidden;
 
 export const createHealthcheck: API.OperationMethod<
   CreateHealthcheckRequest,
@@ -912,7 +942,7 @@ export const createHealthcheck: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateHealthcheckRequest,
   output: CreateHealthcheckResponse,
-  errors: [],
+  errors: [HealthcheckAlreadyExists, Forbidden],
 }));
 
 export interface UpdateHealthcheckRequest {
@@ -1293,7 +1323,10 @@ export const UpdateHealthcheckResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateHealthcheckResponse>;
 
-export type UpdateHealthcheckError = DefaultErrors;
+export type UpdateHealthcheckError =
+  | DefaultErrors
+  | HealthcheckNotFound
+  | Forbidden;
 
 export const updateHealthcheck: API.OperationMethod<
   UpdateHealthcheckRequest,
@@ -1303,7 +1336,7 @@ export const updateHealthcheck: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateHealthcheckRequest,
   output: UpdateHealthcheckResponse,
-  errors: [],
+  errors: [HealthcheckNotFound, Forbidden],
 }));
 
 export interface PatchHealthcheckRequest {
@@ -1726,7 +1759,10 @@ export const DeleteHealthcheckResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteHealthcheckResponse>;
 
-export type DeleteHealthcheckError = DefaultErrors;
+export type DeleteHealthcheckError =
+  | DefaultErrors
+  | HealthcheckNotFound
+  | Forbidden;
 
 export const deleteHealthcheck: API.OperationMethod<
   DeleteHealthcheckRequest,
@@ -1736,7 +1772,7 @@ export const deleteHealthcheck: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteHealthcheckRequest,
   output: DeleteHealthcheckResponse,
-  errors: [],
+  errors: [HealthcheckNotFound, Forbidden],
 }));
 
 // =============================================================================

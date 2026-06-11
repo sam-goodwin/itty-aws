@@ -16,11 +16,14 @@ import { type DefaultErrors } from "../errors.ts";
 // Ip
 // =============================================================================
 
-export interface ListIpsRequest {}
+export interface ListIpsRequest {
+  /** Specified as `jdcloud` to list IPs used by JD Cloud data centers. */
+  networks?: string;
+}
 
-export const ListIpsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListIpsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networks: Schema.optional(Schema.String),
+}).pipe(
   T.Http({ method: "GET", path: "/ips" }),
 ) as unknown as Schema.Schema<ListIpsRequest>;
 

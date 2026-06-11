@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "ListNotFound": [{ "code": 10001 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

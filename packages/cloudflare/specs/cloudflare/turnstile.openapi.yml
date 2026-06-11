@@ -215,6 +215,12 @@ paths:
                   - secret
                   - sitekey
       x-distilled-response-path: result
+      x-distilled-errors:
+        WidgetNotFound:
+          - code: 10404
+          - code: 10407
+        Forbidden:
+          - status: 403
     put:
       operationId: updateWidget
       description: "Update the configuration of a widget.  @example ```ts const widget
@@ -464,6 +470,12 @@ paths:
                   - secret
                   - sitekey
       x-distilled-response-path: result
+      x-distilled-errors:
+        WidgetNotFound:
+          - code: 10404
+          - code: 10407
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/challenges/widgets:
     get:
       operationId: listWidgets

@@ -730,6 +730,15 @@ paths:
                   - id
                   - hostname
       x-distilled-response-path: result
+      x-distilled-errors:
+        CustomHostnameNotFound:
+          - code: 1436
+          - status: 404
+        SaasQuotaNotAllocated:
+          - code: 1404
+            status: 403
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchCustomHostname
       description: "Modify SSL configuration for a custom hostname. When sent with SSL
@@ -1187,6 +1196,13 @@ paths:
                   - id
                   - hostname
       x-distilled-response-path: result
+      x-distilled-errors:
+        CustomHostnameNotFound:
+          - code: 1436
+          - status: 404
+        SaasQuotaNotAllocated:
+          - code: 1404
+            status: 403
     delete:
       operationId: deleteCustomHostname
       description: "Permanently deletes a custom hostname and revokes any SSL
@@ -1217,6 +1233,13 @@ paths:
                   id:
                     type: string
                     description: Identifier.
+      x-distilled-errors:
+        CustomHostnameNotFound:
+          - code: 1436
+          - status: 404
+        SaasQuotaNotAllocated:
+          - code: 1404
+            status: 403
   /zones/{zone_id}/custom_hostnames:
     get:
       operationId: listCustomHostnames
@@ -1667,6 +1690,12 @@ paths:
                   - id
                   - hostname
       x-distilled-pagination-class: CustomHostnameListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        SaasQuotaNotAllocated:
+          - code: 1404
+            status: 403
+        Forbidden:
+          - status: 403
     post:
       operationId: createCustomHostname
       description: "Add a new custom hostname and request that an SSL certificate be
@@ -2116,6 +2145,10 @@ paths:
                   - id
                   - hostname
       x-distilled-response-path: result
+      x-distilled-errors:
+        SaasQuotaNotAllocated:
+          - code: 1404
+            status: 403
   /zones/{zone_id}/custom_hostnames/fallback_origin:
     get:
       operationId: getFallbackOrigin
@@ -2166,6 +2199,13 @@ paths:
                     type: string
                     description: This is the time the fallback origin was updated.
       x-distilled-response-path: result
+      x-distilled-errors:
+        FallbackOriginNotFound:
+          - status: 404
+        SaasAccessNotGranted:
+          - code: 1456
+        Forbidden:
+          - status: 403
     put:
       operationId: putFallbackOrigin
       description: "Updates the fallback origin configuration for custom hostnames on
@@ -2229,6 +2269,9 @@ paths:
                     type: string
                     description: This is the time the fallback origin was updated.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SaasAccessNotGranted:
+          - code: 1456
     delete:
       operationId: deleteFallbackOrigin
       description: "Removes the fallback origin configuration for custom hostnames on
@@ -2278,3 +2321,8 @@ paths:
                     type: string
                     description: This is the time the fallback origin was updated.
       x-distilled-response-path: result
+      x-distilled-errors:
+        FallbackOriginNotFound:
+          - status: 404
+        SaasAccessNotGranted:
+          - code: 1456

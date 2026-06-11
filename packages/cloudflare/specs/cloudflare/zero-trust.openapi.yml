@@ -1872,6 +1872,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -43747,6 +43762,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -43762,6 +43792,68 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/access/apps:
     get:
       operationId: listAccessApplications
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: aud
+          in: query
+          required: false
+          description: "Query param: The aud of the app."
+          schema:
+            type: string
+        - name: domain
+          in: query
+          required: false
+          description: "Query param: The domain of the app."
+          schema:
+            type: string
+        - name: exact
+          in: query
+          required: false
+          description: "Query param: True for only exact string matches against passed
+            name/domain query parameters."
+          schema:
+            type: boolean
+        - name: name
+          in: query
+          required: false
+          description: "Query param: The name of the app."
+          schema:
+            type: string
+        - name: search
+          in: query
+          required: false
+          description: "Query param: Search for apps by other listed query parameters."
+          schema:
+            type: string
+        - name: target_attributes
+          in: query
+          required: false
+          description: "Query param: Target Criteria attributes in key=value format."
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -85633,6 +85725,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -85660,6 +85767,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -85687,6 +85809,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -85702,6 +85839,31 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/access/apps/ca:
     get:
       operationId: listAccessApplicationCas
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -85735,6 +85897,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -88289,6 +88466,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -88310,6 +88502,30 @@ paths:
           required: true
           schema:
             type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -92333,6 +92549,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -92583,6 +92814,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -92685,6 +92931,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -92700,6 +92961,31 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/access/certificates:
     get:
       operationId: listAccessCertificates
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -92798,6 +93084,21 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/access/certificates/settings:
     get:
       operationId: getAccessCertificateSetting
+      parameters:
+        - name: account_id
+          in: query
+          required: false
+          description: The Account ID to use for this endpoint. Mutually exclusive with
+            the Zone ID.
+          schema:
+            type: string
+        - name: zone_id
+          in: query
+          required: false
+          description: The Zone ID to use for this endpoint. Mutually exclusive with the
+            Account ID.
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -93255,6 +93556,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -93987,363 +94303,7 @@ paths:
                     description: Rules evaluated with an OR logical operator. A user needs to meet
                       only one of the Include rules.
                   is_default:
-                    type: array
-                    items:
-                      oneOf:
-                        - type: object
-                          properties:
-                            group:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of a previously created Access group.
-                              required:
-                                - id
-                          required:
-                            - group
-                        - type: object
-                          properties:
-                            any_valid_service_token:
-                              type: object
-                              additionalProperties: true
-                              description: An empty object which matches on all service tokens.
-                          required:
-                            - any_valid_service_token
-                        - type: object
-                          properties:
-                            auth_context:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of an Authentication context.
-                                ac_id:
-                                  type: string
-                                  description: The ACID of an Authentication context.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Azure identity provider.
-                              required:
-                                - id
-                                - ac_id
-                                - identity_provider_id
-                          required:
-                            - auth_context
-                        - type: object
-                          properties:
-                            auth_method:
-                              type: object
-                              properties:
-                                auth_method:
-                                  type: string
-                                  description: The type of authentication method
-                                    https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-                              required:
-                                - auth_method
-                          required:
-                            - auth_method
-                        - type: object
-                          properties:
-                            azureAD:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of an Azure group.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Azure identity provider.
-                              required:
-                                - id
-                                - identity_provider_id
-                          required:
-                            - azureAD
-                        - type: object
-                          properties:
-                            certificate:
-                              type: object
-                              additionalProperties: true
-                          required:
-                            - certificate
-                        - type: object
-                          properties:
-                            common_name:
-                              type: object
-                              properties:
-                                common_name:
-                                  type: string
-                                  description: The common name to match.
-                              required:
-                                - common_name
-                          required:
-                            - common_name
-                        - type: object
-                          properties:
-                            geo:
-                              type: object
-                              properties:
-                                country_code:
-                                  type: string
-                                  description: The country code that should be matched.
-                              required:
-                                - country_code
-                          required:
-                            - geo
-                        - type: object
-                          properties:
-                            device_posture:
-                              type: object
-                              properties:
-                                integration_uid:
-                                  type: string
-                                  description: The ID of a device posture integration.
-                              required:
-                                - integration_uid
-                          required:
-                            - device_posture
-                        - type: object
-                          properties:
-                            email_domain:
-                              type: object
-                              properties:
-                                domain:
-                                  type: string
-                                  description: The email domain to match.
-                              required:
-                                - domain
-                          required:
-                            - email_domain
-                        - type: object
-                          properties:
-                            email_list:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of a previously created email list.
-                              required:
-                                - id
-                          required:
-                            - email_list
-                        - type: object
-                          properties:
-                            email:
-                              type: object
-                              properties:
-                                email:
-                                  type: string
-                                  description: The email of the user.
-                              required:
-                                - email
-                          required:
-                            - email
-                        - type: object
-                          properties:
-                            everyone:
-                              type: object
-                              additionalProperties: true
-                              description: An empty object which matches on all users.
-                          required:
-                            - everyone
-                        - type: object
-                          properties:
-                            external_evaluation:
-                              type: object
-                              properties:
-                                evaluate_url:
-                                  type: string
-                                  description: The API endpoint containing your business logic.
-                                keys_url:
-                                  type: string
-                                  description: The API endpoint containing the key that Access uses to verify that
-                                    the response came from your API.
-                              required:
-                                - evaluate_url
-                                - keys_url
-                          required:
-                            - external_evaluation
-                        - type: object
-                          properties:
-                            github-organization:
-                              type: object
-                              properties:
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Github identity provider.
-                                name:
-                                  type: string
-                                  description: The name of the organization.
-                                team:
-                                  type: string
-                                  description: The name of the team
-                              required:
-                                - identity_provider_id
-                                - name
-                          required:
-                            - github-organization
-                        - type: object
-                          properties:
-                            gsuite:
-                              type: object
-                              properties:
-                                email:
-                                  type: string
-                                  description: The email of the Google Workspace group.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Google Workspace identity provider.
-                              required:
-                                - email
-                                - identity_provider_id
-                          required:
-                            - gsuite
-                        - type: object
-                          properties:
-                            login_method:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of an identity provider.
-                              required:
-                                - id
-                          required:
-                            - login_method
-                        - type: object
-                          properties:
-                            ip_list:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of a previously created IP list.
-                              required:
-                                - id
-                          required:
-                            - ip_list
-                        - type: object
-                          properties:
-                            ip:
-                              type: object
-                              properties:
-                                ip:
-                                  type: string
-                                  description: An IPv4 or IPv6 CIDR block.
-                              required:
-                                - ip
-                          required:
-                            - ip
-                        - type: object
-                          properties:
-                            okta:
-                              type: object
-                              properties:
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Okta identity provider.
-                                name:
-                                  type: string
-                                  description: The name of the Okta group.
-                              required:
-                                - identity_provider_id
-                                - name
-                          required:
-                            - okta
-                        - type: object
-                          properties:
-                            saml:
-                              type: object
-                              properties:
-                                attribute_name:
-                                  type: string
-                                  description: The name of the SAML attribute.
-                                attribute_value:
-                                  type: string
-                                  description: The SAML attribute value to look for.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your SAML identity provider.
-                              required:
-                                - attribute_name
-                                - attribute_value
-                                - identity_provider_id
-                          required:
-                            - saml
-                        - type: object
-                          properties:
-                            oidc:
-                              type: object
-                              properties:
-                                claim_name:
-                                  type: string
-                                  description: The name of the OIDC claim.
-                                claim_value:
-                                  type: string
-                                  description: The OIDC claim value to look for.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your OIDC identity provider.
-                              required:
-                                - claim_name
-                                - claim_value
-                                - identity_provider_id
-                          required:
-                            - oidc
-                        - type: object
-                          properties:
-                            service_token:
-                              type: object
-                              properties:
-                                token_id:
-                                  type: string
-                                  description: The ID of a Service Token.
-                              required:
-                                - token_id
-                          required:
-                            - service_token
-                        - type: object
-                          properties:
-                            linked_app_token:
-                              type: object
-                              properties:
-                                app_uid:
-                                  type: string
-                                  description: The ID of an Access OIDC SaaS application
-                              required:
-                                - app_uid
-                          required:
-                            - linked_app_token
-                        - type: object
-                          properties:
-                            user_risk_score:
-                              type: object
-                              properties:
-                                user_risk_score:
-                                  type: array
-                                  items:
-                                    type: string
-                                    enum:
-                                      - low
-                                      - medium
-                                      - high
-                                      - unscored
-                                  description: A list of risk score levels to match. Values can be low, medium,
-                                    high, or unscored.
-                              required:
-                                - user_risk_score
-                          required:
-                            - user_risk_score
-                        - type: object
-                          properties:
-                            cloudflare_account_member:
-                              type: object
-                              properties:
-                                account_id:
-                                  type: string
-                                  description: Identifier.
-                          required:
-                            - cloudflare_account_member
+                    type: boolean
                     description: Rules evaluated with an AND logical operator. To match a policy, a
                       user must meet all of the Require rules.
                   name:
@@ -94710,6 +94670,9 @@ paths:
                     description: Rules evaluated with an AND logical operator. To match a policy, a
                       user must meet all of the Require rules.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessGroupNotFound:
+          - code: 12152
     put:
       operationId: updateAccessGroup
       description: "Updates a configured Access group.  @example ```ts const group =
@@ -96564,363 +96527,7 @@ paths:
                     description: Rules evaluated with an OR logical operator. A user needs to meet
                       only one of the Include rules.
                   is_default:
-                    type: array
-                    items:
-                      oneOf:
-                        - type: object
-                          properties:
-                            group:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of a previously created Access group.
-                              required:
-                                - id
-                          required:
-                            - group
-                        - type: object
-                          properties:
-                            any_valid_service_token:
-                              type: object
-                              additionalProperties: true
-                              description: An empty object which matches on all service tokens.
-                          required:
-                            - any_valid_service_token
-                        - type: object
-                          properties:
-                            auth_context:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of an Authentication context.
-                                ac_id:
-                                  type: string
-                                  description: The ACID of an Authentication context.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Azure identity provider.
-                              required:
-                                - id
-                                - ac_id
-                                - identity_provider_id
-                          required:
-                            - auth_context
-                        - type: object
-                          properties:
-                            auth_method:
-                              type: object
-                              properties:
-                                auth_method:
-                                  type: string
-                                  description: The type of authentication method
-                                    https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-                              required:
-                                - auth_method
-                          required:
-                            - auth_method
-                        - type: object
-                          properties:
-                            azureAD:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of an Azure group.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Azure identity provider.
-                              required:
-                                - id
-                                - identity_provider_id
-                          required:
-                            - azureAD
-                        - type: object
-                          properties:
-                            certificate:
-                              type: object
-                              additionalProperties: true
-                          required:
-                            - certificate
-                        - type: object
-                          properties:
-                            common_name:
-                              type: object
-                              properties:
-                                common_name:
-                                  type: string
-                                  description: The common name to match.
-                              required:
-                                - common_name
-                          required:
-                            - common_name
-                        - type: object
-                          properties:
-                            geo:
-                              type: object
-                              properties:
-                                country_code:
-                                  type: string
-                                  description: The country code that should be matched.
-                              required:
-                                - country_code
-                          required:
-                            - geo
-                        - type: object
-                          properties:
-                            device_posture:
-                              type: object
-                              properties:
-                                integration_uid:
-                                  type: string
-                                  description: The ID of a device posture integration.
-                              required:
-                                - integration_uid
-                          required:
-                            - device_posture
-                        - type: object
-                          properties:
-                            email_domain:
-                              type: object
-                              properties:
-                                domain:
-                                  type: string
-                                  description: The email domain to match.
-                              required:
-                                - domain
-                          required:
-                            - email_domain
-                        - type: object
-                          properties:
-                            email_list:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of a previously created email list.
-                              required:
-                                - id
-                          required:
-                            - email_list
-                        - type: object
-                          properties:
-                            email:
-                              type: object
-                              properties:
-                                email:
-                                  type: string
-                                  description: The email of the user.
-                              required:
-                                - email
-                          required:
-                            - email
-                        - type: object
-                          properties:
-                            everyone:
-                              type: object
-                              additionalProperties: true
-                              description: An empty object which matches on all users.
-                          required:
-                            - everyone
-                        - type: object
-                          properties:
-                            external_evaluation:
-                              type: object
-                              properties:
-                                evaluate_url:
-                                  type: string
-                                  description: The API endpoint containing your business logic.
-                                keys_url:
-                                  type: string
-                                  description: The API endpoint containing the key that Access uses to verify that
-                                    the response came from your API.
-                              required:
-                                - evaluate_url
-                                - keys_url
-                          required:
-                            - external_evaluation
-                        - type: object
-                          properties:
-                            github-organization:
-                              type: object
-                              properties:
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Github identity provider.
-                                name:
-                                  type: string
-                                  description: The name of the organization.
-                                team:
-                                  type: string
-                                  description: The name of the team
-                              required:
-                                - identity_provider_id
-                                - name
-                          required:
-                            - github-organization
-                        - type: object
-                          properties:
-                            gsuite:
-                              type: object
-                              properties:
-                                email:
-                                  type: string
-                                  description: The email of the Google Workspace group.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Google Workspace identity provider.
-                              required:
-                                - email
-                                - identity_provider_id
-                          required:
-                            - gsuite
-                        - type: object
-                          properties:
-                            login_method:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of an identity provider.
-                              required:
-                                - id
-                          required:
-                            - login_method
-                        - type: object
-                          properties:
-                            ip_list:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of a previously created IP list.
-                              required:
-                                - id
-                          required:
-                            - ip_list
-                        - type: object
-                          properties:
-                            ip:
-                              type: object
-                              properties:
-                                ip:
-                                  type: string
-                                  description: An IPv4 or IPv6 CIDR block.
-                              required:
-                                - ip
-                          required:
-                            - ip
-                        - type: object
-                          properties:
-                            okta:
-                              type: object
-                              properties:
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Okta identity provider.
-                                name:
-                                  type: string
-                                  description: The name of the Okta group.
-                              required:
-                                - identity_provider_id
-                                - name
-                          required:
-                            - okta
-                        - type: object
-                          properties:
-                            saml:
-                              type: object
-                              properties:
-                                attribute_name:
-                                  type: string
-                                  description: The name of the SAML attribute.
-                                attribute_value:
-                                  type: string
-                                  description: The SAML attribute value to look for.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your SAML identity provider.
-                              required:
-                                - attribute_name
-                                - attribute_value
-                                - identity_provider_id
-                          required:
-                            - saml
-                        - type: object
-                          properties:
-                            oidc:
-                              type: object
-                              properties:
-                                claim_name:
-                                  type: string
-                                  description: The name of the OIDC claim.
-                                claim_value:
-                                  type: string
-                                  description: The OIDC claim value to look for.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your OIDC identity provider.
-                              required:
-                                - claim_name
-                                - claim_value
-                                - identity_provider_id
-                          required:
-                            - oidc
-                        - type: object
-                          properties:
-                            service_token:
-                              type: object
-                              properties:
-                                token_id:
-                                  type: string
-                                  description: The ID of a Service Token.
-                              required:
-                                - token_id
-                          required:
-                            - service_token
-                        - type: object
-                          properties:
-                            linked_app_token:
-                              type: object
-                              properties:
-                                app_uid:
-                                  type: string
-                                  description: The ID of an Access OIDC SaaS application
-                              required:
-                                - app_uid
-                          required:
-                            - linked_app_token
-                        - type: object
-                          properties:
-                            user_risk_score:
-                              type: object
-                              properties:
-                                user_risk_score:
-                                  type: array
-                                  items:
-                                    type: string
-                                    enum:
-                                      - low
-                                      - medium
-                                      - high
-                                      - unscored
-                                  description: A list of risk score levels to match. Values can be low, medium,
-                                    high, or unscored.
-                              required:
-                                - user_risk_score
-                          required:
-                            - user_risk_score
-                        - type: object
-                          properties:
-                            cloudflare_account_member:
-                              type: object
-                              properties:
-                                account_id:
-                                  type: string
-                                  description: Identifier.
-                          required:
-                            - cloudflare_account_member
+                    type: boolean
                     description: Rules evaluated with an AND logical operator. To match a policy, a
                       user must meet all of the Require rules.
                   name:
@@ -97295,6 +96902,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -97307,9 +96929,49 @@ paths:
                     type: string
                     description: UUID.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessGroupNotFound:
+          - code: 12152
   /{accountOrZone}/{accountOrZoneId}/access/groups:
     get:
       operationId: listAccessGroups
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: name
+          in: query
+          required: false
+          description: "Query param: The name of the group."
+          schema:
+            type: string
+        - name: search
+          in: query
+          required: false
+          description: "Query param: Search for groups by other listed query parameters."
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -100613,363 +100275,7 @@ paths:
                     description: Rules evaluated with an OR logical operator. A user needs to meet
                       only one of the Include rules.
                   is_default:
-                    type: array
-                    items:
-                      oneOf:
-                        - type: object
-                          properties:
-                            group:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of a previously created Access group.
-                              required:
-                                - id
-                          required:
-                            - group
-                        - type: object
-                          properties:
-                            any_valid_service_token:
-                              type: object
-                              additionalProperties: true
-                              description: An empty object which matches on all service tokens.
-                          required:
-                            - any_valid_service_token
-                        - type: object
-                          properties:
-                            auth_context:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of an Authentication context.
-                                ac_id:
-                                  type: string
-                                  description: The ACID of an Authentication context.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Azure identity provider.
-                              required:
-                                - id
-                                - ac_id
-                                - identity_provider_id
-                          required:
-                            - auth_context
-                        - type: object
-                          properties:
-                            auth_method:
-                              type: object
-                              properties:
-                                auth_method:
-                                  type: string
-                                  description: The type of authentication method
-                                    https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-                              required:
-                                - auth_method
-                          required:
-                            - auth_method
-                        - type: object
-                          properties:
-                            azureAD:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of an Azure group.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Azure identity provider.
-                              required:
-                                - id
-                                - identity_provider_id
-                          required:
-                            - azureAD
-                        - type: object
-                          properties:
-                            certificate:
-                              type: object
-                              additionalProperties: true
-                          required:
-                            - certificate
-                        - type: object
-                          properties:
-                            common_name:
-                              type: object
-                              properties:
-                                common_name:
-                                  type: string
-                                  description: The common name to match.
-                              required:
-                                - common_name
-                          required:
-                            - common_name
-                        - type: object
-                          properties:
-                            geo:
-                              type: object
-                              properties:
-                                country_code:
-                                  type: string
-                                  description: The country code that should be matched.
-                              required:
-                                - country_code
-                          required:
-                            - geo
-                        - type: object
-                          properties:
-                            device_posture:
-                              type: object
-                              properties:
-                                integration_uid:
-                                  type: string
-                                  description: The ID of a device posture integration.
-                              required:
-                                - integration_uid
-                          required:
-                            - device_posture
-                        - type: object
-                          properties:
-                            email_domain:
-                              type: object
-                              properties:
-                                domain:
-                                  type: string
-                                  description: The email domain to match.
-                              required:
-                                - domain
-                          required:
-                            - email_domain
-                        - type: object
-                          properties:
-                            email_list:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of a previously created email list.
-                              required:
-                                - id
-                          required:
-                            - email_list
-                        - type: object
-                          properties:
-                            email:
-                              type: object
-                              properties:
-                                email:
-                                  type: string
-                                  description: The email of the user.
-                              required:
-                                - email
-                          required:
-                            - email
-                        - type: object
-                          properties:
-                            everyone:
-                              type: object
-                              additionalProperties: true
-                              description: An empty object which matches on all users.
-                          required:
-                            - everyone
-                        - type: object
-                          properties:
-                            external_evaluation:
-                              type: object
-                              properties:
-                                evaluate_url:
-                                  type: string
-                                  description: The API endpoint containing your business logic.
-                                keys_url:
-                                  type: string
-                                  description: The API endpoint containing the key that Access uses to verify that
-                                    the response came from your API.
-                              required:
-                                - evaluate_url
-                                - keys_url
-                          required:
-                            - external_evaluation
-                        - type: object
-                          properties:
-                            github-organization:
-                              type: object
-                              properties:
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Github identity provider.
-                                name:
-                                  type: string
-                                  description: The name of the organization.
-                                team:
-                                  type: string
-                                  description: The name of the team
-                              required:
-                                - identity_provider_id
-                                - name
-                          required:
-                            - github-organization
-                        - type: object
-                          properties:
-                            gsuite:
-                              type: object
-                              properties:
-                                email:
-                                  type: string
-                                  description: The email of the Google Workspace group.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Google Workspace identity provider.
-                              required:
-                                - email
-                                - identity_provider_id
-                          required:
-                            - gsuite
-                        - type: object
-                          properties:
-                            login_method:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of an identity provider.
-                              required:
-                                - id
-                          required:
-                            - login_method
-                        - type: object
-                          properties:
-                            ip_list:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: The ID of a previously created IP list.
-                              required:
-                                - id
-                          required:
-                            - ip_list
-                        - type: object
-                          properties:
-                            ip:
-                              type: object
-                              properties:
-                                ip:
-                                  type: string
-                                  description: An IPv4 or IPv6 CIDR block.
-                              required:
-                                - ip
-                          required:
-                            - ip
-                        - type: object
-                          properties:
-                            okta:
-                              type: object
-                              properties:
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your Okta identity provider.
-                                name:
-                                  type: string
-                                  description: The name of the Okta group.
-                              required:
-                                - identity_provider_id
-                                - name
-                          required:
-                            - okta
-                        - type: object
-                          properties:
-                            saml:
-                              type: object
-                              properties:
-                                attribute_name:
-                                  type: string
-                                  description: The name of the SAML attribute.
-                                attribute_value:
-                                  type: string
-                                  description: The SAML attribute value to look for.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your SAML identity provider.
-                              required:
-                                - attribute_name
-                                - attribute_value
-                                - identity_provider_id
-                          required:
-                            - saml
-                        - type: object
-                          properties:
-                            oidc:
-                              type: object
-                              properties:
-                                claim_name:
-                                  type: string
-                                  description: The name of the OIDC claim.
-                                claim_value:
-                                  type: string
-                                  description: The OIDC claim value to look for.
-                                identity_provider_id:
-                                  type: string
-                                  description: The ID of your OIDC identity provider.
-                              required:
-                                - claim_name
-                                - claim_value
-                                - identity_provider_id
-                          required:
-                            - oidc
-                        - type: object
-                          properties:
-                            service_token:
-                              type: object
-                              properties:
-                                token_id:
-                                  type: string
-                                  description: The ID of a Service Token.
-                              required:
-                                - token_id
-                          required:
-                            - service_token
-                        - type: object
-                          properties:
-                            linked_app_token:
-                              type: object
-                              properties:
-                                app_uid:
-                                  type: string
-                                  description: The ID of an Access OIDC SaaS application
-                              required:
-                                - app_uid
-                          required:
-                            - linked_app_token
-                        - type: object
-                          properties:
-                            user_risk_score:
-                              type: object
-                              properties:
-                                user_risk_score:
-                                  type: array
-                                  items:
-                                    type: string
-                                    enum:
-                                      - low
-                                      - medium
-                                      - high
-                                      - unscored
-                                  description: A list of risk score levels to match. Values can be low, medium,
-                                    high, or unscored.
-                              required:
-                                - user_risk_score
-                          required:
-                            - user_risk_score
-                        - type: object
-                          properties:
-                            cloudflare_account_member:
-                              type: object
-                              properties:
-                                account_id:
-                                  type: string
-                                  description: Identifier.
-                          required:
-                            - cloudflare_account_member
+                    type: boolean
                     description: Rules evaluated with an AND logical operator. To match a policy, a
                       user must meet all of the Require rules.
                   name:
@@ -110086,6 +109392,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -110113,6 +109434,9 @@ paths:
                     type: string
                     description: The name of the service token.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessServiceTokenNotFound:
+          - code: 12135
     put:
       operationId: updateAccessServiceToken
       description: "Updates a configured service token.  @example ```ts const
@@ -110205,6 +109529,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -110232,9 +109571,50 @@ paths:
                     type: string
                     description: The name of the service token.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessServiceTokenNotFound:
+          - code: 12135
   /{accountOrZone}/{accountOrZoneId}/access/service_tokens:
     get:
       operationId: listAccessServiceTokens
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: name
+          in: query
+          required: false
+          description: "Query param: The name of the service token."
+          schema:
+            type: string
+        - name: search
+          in: query
+          required: false
+          description: "Query param: Search for service tokens by other listed query
+            parameters."
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -146972,6 +146352,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -152069,6 +151464,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -152084,6 +151494,39 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/access/identity_providers:
     get:
       operationId: listIdentityProviders
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: scim_enabled
+          in: query
+          required: false
+          description: "Query param: Indicates to Access to only retrieve identity
+            providers that have the System for Cross-Domain Identity Management
+            (SCIM) enabled."
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -158605,18 +158048,15 @@ paths:
         client.zeroTrust.networks.subnets.cloudflareSource.update( 'v4', {
         account_id: '699d98642c564d2e855e9661899b7252' }, ); ```"
       parameters:
-        - name: addressFamily
-          in: path
-          required: true
-          schema:
-            type: string
-            enum:
-              - v4
-              - v6
         - name: account_id
           in: path
           required: true
           description: "Path param: Cloudflare account ID"
+          schema:
+            type: string
+        - name: addressFamily
+          in: path
+          required: true
           schema:
             type: string
       requestBody:
@@ -159286,6 +158726,21 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/access/organizations:
     get:
       operationId: listOrganizations
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -159473,6 +158928,9 @@ paths:
                       valid. Must be in the format `30m` or `2h45m`. Valid time
                       units are: m, h."
       x-distilled-response-path: result
+      x-distilled-errors:
+        OrganizationNotFound:
+          - status: 404
     post:
       operationId: createOrganization
       description: "Sets up a Zero Trust organization for your account or
@@ -159862,6 +159320,9 @@ paths:
                       valid. Must be in the format `30m` or `2h45m`. Valid time
                       units are: m, h."
       x-distilled-response-path: result
+      x-distilled-errors:
+        OrganizationAlreadyExists:
+          - code: 11002
     put:
       operationId: updateOrganization
       description: "Updates the configuration for your Zero Trust
@@ -162384,6 +161845,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success

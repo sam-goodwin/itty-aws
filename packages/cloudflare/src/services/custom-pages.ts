@@ -111,9 +111,15 @@ export const getAssetForZone: API.OperationMethod<
   errors: [],
 }));
 
-const ListAssetsBaseFields = {} as const;
+const ListAssetsBaseFields = {
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+} as const;
 
-interface ListAssetsBaseRequest {}
+interface ListAssetsBaseRequest {
+  page?: number;
+  perPage?: number;
+}
 
 export interface ListAssetsForAccountRequest extends ListAssetsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -514,36 +520,11 @@ export const deleteAssetForZone: API.OperationMethod<
 // =============================================================================
 
 const GetCustomPageBaseFields = {
-  identifier: Schema.Union([
-    Schema.Literals([
-      "1000_errors",
-      "500_errors",
-      "basic_challenge",
-      "country_challenge",
-      "ip_block",
-      "managed_challenge",
-      "ratelimit_block",
-      "under_attack",
-      "waf_block",
-      "waf_challenge",
-    ]),
-    Schema.String,
-  ]).pipe(T.HttpPath("identifier")),
+  identifier: Schema.String.pipe(T.HttpPath("identifier")),
 } as const;
 
 interface GetCustomPageBaseRequest {
-  identifier:
-    | "1000_errors"
-    | "500_errors"
-    | "basic_challenge"
-    | "country_challenge"
-    | "ip_block"
-    | "managed_challenge"
-    | "ratelimit_block"
-    | "under_attack"
-    | "waf_block"
-    | "waf_challenge"
-    | (string & {});
+  identifier: string;
 }
 
 export interface GetCustomPageForAccountRequest extends GetCustomPageBaseRequest {
@@ -765,21 +746,7 @@ export const listCustomPagesForZone: API.PaginatedOperationMethod<
 }));
 
 const PutCustomPageBaseFields = {
-  identifier: Schema.Union([
-    Schema.Literals([
-      "1000_errors",
-      "500_errors",
-      "basic_challenge",
-      "country_challenge",
-      "ip_block",
-      "managed_challenge",
-      "ratelimit_block",
-      "under_attack",
-      "waf_block",
-      "waf_challenge",
-    ]),
-    Schema.String,
-  ]).pipe(T.HttpPath("identifier")),
+  identifier: Schema.String.pipe(T.HttpPath("identifier")),
   state: Schema.Union([
     Schema.Literals(["default", "customized"]),
     Schema.String,
@@ -788,18 +755,7 @@ const PutCustomPageBaseFields = {
 } as const;
 
 interface PutCustomPageBaseRequest {
-  identifier:
-    | "1000_errors"
-    | "500_errors"
-    | "basic_challenge"
-    | "country_challenge"
-    | "ip_block"
-    | "managed_challenge"
-    | "ratelimit_block"
-    | "under_attack"
-    | "waf_block"
-    | "waf_challenge"
-    | (string & {});
+  identifier: string;
   /** Body param: The custom page state. */
   state: "default" | "customized" | (string & {});
   /** Body param: The URL associated with the custom page. */

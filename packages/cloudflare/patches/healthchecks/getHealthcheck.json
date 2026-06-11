@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "HealthcheckNotFound": [{ "status": 404 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

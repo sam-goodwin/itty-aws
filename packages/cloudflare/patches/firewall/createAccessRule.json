@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "DuplicateAccessRule": [
+      { "code": 10009, "message": { "includes": "duplicate_of_existing" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

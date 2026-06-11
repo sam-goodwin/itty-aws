@@ -14,6 +14,40 @@ import { type DefaultErrors } from "../errors.ts";
 import { UploadableSchema } from "../schemas.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class PagesDomainAlreadyExists extends Schema.TaggedErrorClass<PagesDomainAlreadyExists>()(
+  "PagesDomainAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PagesDomainAlreadyExists, [{ code: 8000018 }]);
+
+export class PagesDomainNotFound extends Schema.TaggedErrorClass<PagesDomainNotFound>()(
+  "PagesDomainNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PagesDomainNotFound, [{ code: 8000021 }]);
+
+export class ProjectAlreadyExists extends Schema.TaggedErrorClass<ProjectAlreadyExists>()(
+  "ProjectAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ProjectAlreadyExists, [{ code: 8000002 }]);
+
+export class ProjectNotFound extends Schema.TaggedErrorClass<ProjectNotFound>()(
+  "ProjectNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ProjectNotFound, [{ code: 8000007 }]);
+
+// =============================================================================
 // BuildCacheProject
 // =============================================================================
 
@@ -1098,7 +1132,7 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetProjectResponse>;
 
-export type GetProjectError = DefaultErrors;
+export type GetProjectError = DefaultErrors | ProjectNotFound | Forbidden;
 
 export const getProject: API.OperationMethod<
   GetProjectRequest,
@@ -1108,7 +1142,7 @@ export const getProject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectRequest,
   output: GetProjectResponse,
-  errors: [],
+  errors: [ProjectNotFound, Forbidden],
 }));
 
 export interface ListProjectsRequest {
@@ -2180,7 +2214,7 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListProjectsResponse>;
 
-export type ListProjectsError = DefaultErrors;
+export type ListProjectsError = DefaultErrors | Forbidden;
 
 export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
@@ -2190,7 +2224,7 @@ export const listProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -3580,7 +3614,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateProjectResponse>;
 
-export type CreateProjectError = DefaultErrors;
+export type CreateProjectError =
+  | DefaultErrors
+  | ProjectAlreadyExists
+  | Forbidden;
 
 export const createProject: API.OperationMethod<
   CreateProjectRequest,
@@ -3590,7 +3627,7 @@ export const createProject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectRequest,
   output: CreateProjectResponse,
-  errors: [],
+  errors: [ProjectAlreadyExists, Forbidden],
 }));
 
 export interface PatchProjectRequest {
@@ -4978,7 +5015,7 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchProjectResponse>;
 
-export type PatchProjectError = DefaultErrors;
+export type PatchProjectError = DefaultErrors | ProjectNotFound | Forbidden;
 
 export const patchProject: API.OperationMethod<
   PatchProjectRequest,
@@ -4988,7 +5025,7 @@ export const patchProject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectRequest,
   output: PatchProjectResponse,
-  errors: [],
+  errors: [ProjectNotFound, Forbidden],
 }));
 
 export interface DeleteProjectRequest {
@@ -5014,7 +5051,7 @@ export const DeleteProjectResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteProjectResponse>;
 
-export type DeleteProjectError = DefaultErrors;
+export type DeleteProjectError = DefaultErrors | ProjectNotFound | Forbidden;
 
 export const deleteProject: API.OperationMethod<
   DeleteProjectRequest,
@@ -5024,7 +5061,7 @@ export const deleteProject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
-  errors: [],
+  errors: [ProjectNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -6944,7 +6981,11 @@ export const GetProjectDomainResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetProjectDomainResponse>;
 
-export type GetProjectDomainError = DefaultErrors;
+export type GetProjectDomainError =
+  | DefaultErrors
+  | ProjectNotFound
+  | PagesDomainNotFound
+  | Forbidden;
 
 export const getProjectDomain: API.OperationMethod<
   GetProjectDomainRequest,
@@ -6954,7 +6995,7 @@ export const getProjectDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectDomainRequest,
   output: GetProjectDomainResponse,
-  errors: [],
+  errors: [ProjectNotFound, PagesDomainNotFound, Forbidden],
 }));
 
 export interface ListProjectDomainsRequest {
@@ -7105,7 +7146,10 @@ export const ListProjectDomainsResponse =
     ),
   }) as unknown as Schema.Schema<ListProjectDomainsResponse>;
 
-export type ListProjectDomainsError = DefaultErrors;
+export type ListProjectDomainsError =
+  | DefaultErrors
+  | ProjectNotFound
+  | Forbidden;
 
 export const listProjectDomains: API.PaginatedOperationMethod<
   ListProjectDomainsRequest,
@@ -7115,7 +7159,7 @@ export const listProjectDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectDomainsRequest,
   output: ListProjectDomainsResponse,
-  errors: [],
+  errors: [ProjectNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -7262,7 +7306,11 @@ export const CreateProjectDomainResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateProjectDomainResponse>;
 
-export type CreateProjectDomainError = DefaultErrors;
+export type CreateProjectDomainError =
+  | DefaultErrors
+  | ProjectNotFound
+  | PagesDomainAlreadyExists
+  | Forbidden;
 
 export const createProjectDomain: API.OperationMethod<
   CreateProjectDomainRequest,
@@ -7272,7 +7320,7 @@ export const createProjectDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectDomainRequest,
   output: CreateProjectDomainResponse,
-  errors: [],
+  errors: [ProjectNotFound, PagesDomainAlreadyExists, Forbidden],
 }));
 
 export interface PatchProjectDomainRequest {
@@ -7414,7 +7462,11 @@ export const PatchProjectDomainResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchProjectDomainResponse>;
 
-export type PatchProjectDomainError = DefaultErrors;
+export type PatchProjectDomainError =
+  | DefaultErrors
+  | ProjectNotFound
+  | PagesDomainNotFound
+  | Forbidden;
 
 export const patchProjectDomain: API.OperationMethod<
   PatchProjectDomainRequest,
@@ -7424,7 +7476,7 @@ export const patchProjectDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectDomainRequest,
   output: PatchProjectDomainResponse,
-  errors: [],
+  errors: [ProjectNotFound, PagesDomainNotFound, Forbidden],
 }));
 
 export interface DeleteProjectDomainRequest {
@@ -7453,7 +7505,11 @@ export const DeleteProjectDomainResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteProjectDomainResponse>;
 
-export type DeleteProjectDomainError = DefaultErrors;
+export type DeleteProjectDomainError =
+  | DefaultErrors
+  | ProjectNotFound
+  | PagesDomainNotFound
+  | Forbidden;
 
 export const deleteProjectDomain: API.OperationMethod<
   DeleteProjectDomainRequest,
@@ -7463,5 +7519,5 @@ export const deleteProjectDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectDomainRequest,
   output: DeleteProjectDomainResponse,
-  errors: [],
+  errors: [ProjectNotFound, PagesDomainNotFound, Forbidden],
 }));

@@ -54,6 +54,12 @@ T.applyErrorMatchers(DurableObjectMustBeSqlite, [
   { code: 10074, message: { includes: "not a SQLite Durable Object" } },
 ]);
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class HostnameAlreadyInUse extends Schema.TaggedErrorClass<HostnameAlreadyInUse>()(
   "HostnameAlreadyInUse",
   { code: Schema.Number, message: Schema.String },
@@ -95,7 +101,7 @@ export class RouteNotFound extends Schema.TaggedErrorClass<RouteNotFound>()(
   "RouteNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(RouteNotFound, [{ code: 10009 }]);
+T.applyErrorMatchers(RouteNotFound, [{ code: 10009 }, { status: 404 }]);
 
 export class ScriptModuleNotFound extends Schema.TaggedErrorClass<ScriptModuleNotFound>()(
   "ScriptModuleNotFound",
@@ -9184,7 +9190,12 @@ export const GetRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetRouteResponse>;
 
-export type GetRouteError = DefaultErrors | WorkerNotFound | InvalidRoute;
+export type GetRouteError =
+  | DefaultErrors
+  | WorkerNotFound
+  | RouteNotFound
+  | InvalidRoute
+  | Forbidden;
 
 export const getRoute: API.OperationMethod<
   GetRouteRequest,
@@ -9194,7 +9205,7 @@ export const getRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRouteRequest,
   output: GetRouteResponse,
-  errors: [WorkerNotFound, InvalidRoute],
+  errors: [WorkerNotFound, RouteNotFound, InvalidRoute, Forbidden],
 }));
 
 export interface ListRoutesRequest {
@@ -9222,7 +9233,7 @@ export const ListRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListRoutesResponse>;
 
-export type ListRoutesError = DefaultErrors | InvalidRoute;
+export type ListRoutesError = DefaultErrors | InvalidRoute | Forbidden;
 
 export const listRoutes: API.PaginatedOperationMethod<
   ListRoutesRequest,
@@ -9232,7 +9243,7 @@ export const listRoutes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRoutesRequest,
   output: ListRoutesResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -9276,7 +9287,8 @@ export const CreateRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateRouteError =
   | DefaultErrors
   | InvalidRoutePattern
-  | InvalidRoute;
+  | InvalidRoute
+  | Forbidden;
 
 export const createRoute: API.OperationMethod<
   CreateRouteRequest,
@@ -9286,7 +9298,7 @@ export const createRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRouteRequest,
   output: CreateRouteResponse,
-  errors: [InvalidRoutePattern, InvalidRoute],
+  errors: [InvalidRoutePattern, InvalidRoute, Forbidden],
 }));
 
 export interface UpdateRouteRequest {

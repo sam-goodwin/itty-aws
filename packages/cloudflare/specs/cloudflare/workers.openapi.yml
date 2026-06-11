@@ -9173,8 +9173,13 @@ paths:
       x-distilled-errors:
         WorkerNotFound:
           - code: 10007
+        RouteNotFound:
+          - code: 10009
+          - status: 404
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
     put:
       operationId: updateRoute
       description: "Updates the URL pattern or Worker associated with a
@@ -9269,6 +9274,7 @@ paths:
       x-distilled-errors:
         RouteNotFound:
           - code: 10009
+          - status: 404
   /zones/{zone_id}/workers/routes:
     get:
       operationId: listRoutes
@@ -9308,6 +9314,8 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
     post:
       operationId: createRoute
       description: "Creates a route that maps a URL pattern to a Worker.  @example
@@ -9364,6 +9372,8 @@ paths:
           - code: 10022
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/workers/scripts/{scriptName}:
     get:
       operationId: getScript

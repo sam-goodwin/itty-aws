@@ -1,0 +1,5 @@
+{
+  "errors": {
+    "OrganizationNotFound": [{ "status": 404 }]
+  }
+}

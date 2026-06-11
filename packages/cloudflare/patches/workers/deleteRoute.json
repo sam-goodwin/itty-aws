@@ -1,5 +1,5 @@
 {
   "errors": {
-    "RouteNotFound": [{ "code": 10009 }]
+    "RouteNotFound": [{ "code": 10009 }, { "status": 404 }]
   }
 }

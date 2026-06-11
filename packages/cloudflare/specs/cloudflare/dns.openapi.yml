@@ -8638,6 +8638,9 @@ paths:
                       - modified_on
                       - proxiable
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: updateRecord
       description: "Overwrite an existing DNS record.  Notes:  - A/AAAA records cannot
@@ -15707,6 +15710,9 @@ paths:
                       - modified_on
                       - proxiable
       x-distilled-pagination-class: RecordResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createRecord
       description: "Create a new DNS record for a zone.  Notes:  - A/AAAA records
@@ -18053,6 +18059,9 @@ paths:
                       - modified_on
                       - proxiable
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/dns_records/batch:
     post:
       operationId: batchRecord

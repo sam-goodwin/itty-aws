@@ -1,0 +1,10 @@
+{
+  "errors": {
+    "AccessGroupNotFound": [{ "code": 12152 }]
+  },
+  "response": {
+    "properties": {
+      "is_default": { "type": "boolean" }
+    }
+  }
+}

@@ -9,6 +9,16 @@ paths:
   /ips:
     get:
       operationId: listIps
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                networks:
+                  type: string
+                  description: Specified as `jdcloud` to list IPs used by JD Cloud data centers.
       responses:
         "200":
           description: Success

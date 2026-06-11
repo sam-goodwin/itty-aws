@@ -1,0 +1,10 @@
+{
+  "request": {
+    "properties": {
+      "files": {
+        "optional": true,
+        "definition": { "kind": "file" }
+      }
+    }
+  }
+}

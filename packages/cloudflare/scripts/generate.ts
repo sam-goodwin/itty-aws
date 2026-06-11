@@ -701,6 +701,20 @@ function resolveOperationModel(
           param.type = patchedProp.type;
           param.required = patchedProp.required;
           param.wireKey = patchedProp.wireKey;
+        } else {
+          // Property added by a patch `definition` that doesn't exist in the
+          // vendor spec (e.g. multipart file parts the OpenAPI spec omits).
+          // Surface it as a body param.
+          const added = {
+            name: patchedProp.name,
+            type: patchedProp.type,
+            location: "body" as const,
+            required: patchedProp.required,
+            wireKey: patchedProp.wireKey,
+          };
+          allParams.push(added);
+          resolvedBodyParams.push(added);
+          continue;
         }
         for (const arr of [
           resolvedPathParams,
@@ -1435,6 +1449,20 @@ function generateOperationSchemaAst(
           param.type = patchedProp.type;
           param.required = patchedProp.required;
           param.wireKey = patchedProp.wireKey;
+        } else {
+          // Property added by a patch `definition` that doesn't exist in the
+          // vendor spec (e.g. multipart file parts the OpenAPI spec omits).
+          // Surface it as a body param.
+          const added = {
+            name: patchedProp.name,
+            type: patchedProp.type,
+            location: "body" as const,
+            required: patchedProp.required,
+            wireKey: patchedProp.wireKey,
+          };
+          allParams.push(added);
+          resolvedBodyParams.push(added);
+          continue;
         }
         for (const arr of [
           resolvedPathParams,
@@ -1842,7 +1870,10 @@ function generateAccountOrZoneOperationSchema(
   const nonScopePathParams = resolved.pathParams.filter(
     (p) => !isScopeParam(p),
   );
-  const queryParams = resolved.queryParams;
+  // Stainless also emits `account_id`/`zone_id` as mutually-exclusive query
+  // params on accountOrZone operations — the per-variant scope path param
+  // replaces them, so strip them here too to avoid duplicate struct keys.
+  const queryParams = resolved.queryParams.filter((p) => !isScopeParam(p));
   const headerParams = resolved.headerParams;
   const bodyParams = resolved.bodyParams.filter((p) => !isScopeParam(p));
 
@@ -3013,8 +3044,15 @@ function generateServiceFile(
 ): string {
   const lines: string[] = [];
 
-  // Check if any operation has file uploads
-  const hasFileUploads = service.operations.some(operationHasFiles);
+  // Check if any operation has file uploads (including file params added by
+  // a request patch `definition`, e.g. multipart parts the vendor spec omits)
+  const hasFileUploads = service.operations.some(
+    (op) =>
+      operationHasFiles(op) ||
+      Object.values(
+        patches.get(op.operationName)?.request?.properties ?? {},
+      ).some((p) => p.definition !== undefined && hasFileType(p.definition)),
+  );
   // Whether any operation has a raw octet-stream request body (e.g. R2 PutObject)
   // — drives the `BinaryBodySchema` import.
   const hasBinaryRequestBodies = service.operations.some(

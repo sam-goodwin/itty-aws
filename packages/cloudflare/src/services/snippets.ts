@@ -11,6 +11,32 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+import { UploadableSchema } from "../schemas.ts";
+
+// =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class SnippetNotFound extends Schema.TaggedErrorClass<SnippetNotFound>()(
+  "SnippetNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SnippetNotFound, [
+  { status: 400, message: { includes: "snippet not found" } },
+  { status: 404 },
+]);
+
+export class SnippetRulesNotFound extends Schema.TaggedErrorClass<SnippetRulesNotFound>()(
+  "SnippetRulesNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SnippetRulesNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // Content
@@ -72,7 +98,7 @@ export const ListRulesResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ListRulesResponse>;
 
-export type ListRulesError = DefaultErrors;
+export type ListRulesError = DefaultErrors | Forbidden;
 
 export const listRules: API.OperationMethod<
   ListRulesRequest,
@@ -82,7 +108,7 @@ export const listRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutRuleRequest {
@@ -155,7 +181,7 @@ export const DeleteRuleResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteRuleResponse>;
 
-export type DeleteRuleError = DefaultErrors;
+export type DeleteRuleError = DefaultErrors | SnippetRulesNotFound | Forbidden;
 
 export const deleteRule: API.OperationMethod<
   DeleteRuleRequest,
@@ -165,7 +191,7 @@ export const deleteRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
-  errors: [],
+  errors: [SnippetRulesNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -210,7 +236,7 @@ export const GetSnippetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetSnippetResponse>;
 
-export type GetSnippetError = DefaultErrors;
+export type GetSnippetError = DefaultErrors | SnippetNotFound;
 
 export const getSnippet: API.OperationMethod<
   GetSnippetRequest,
@@ -220,7 +246,7 @@ export const getSnippet: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSnippetRequest,
   output: GetSnippetResponse,
-  errors: [],
+  errors: [SnippetNotFound],
 }));
 
 export interface ListSnippetsRequest {
@@ -288,7 +314,7 @@ export const ListSnippetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListSnippetsResponse>;
 
-export type ListSnippetsError = DefaultErrors;
+export type ListSnippetsError = DefaultErrors | Forbidden;
 
 export const listSnippets: API.PaginatedOperationMethod<
   ListSnippetsRequest,
@@ -298,7 +324,7 @@ export const listSnippets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSnippetsRequest,
   output: ListSnippetsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -314,6 +340,7 @@ export interface PutSnippetRequest {
   zoneId: string;
   /** Body param: Provide metadata about the snippet. */
   metadata: { mainModule: string };
+  files?: File | Blob;
 }
 
 export const PutSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -322,6 +349,7 @@ export const PutSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   metadata: Schema.Struct({
     mainModule: Schema.String,
   }).pipe(Schema.encodeKeys({ mainModule: "main_module" })),
+  files: Schema.optional(UploadableSchema.pipe(T.HttpFormDataFile())),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -388,7 +416,7 @@ export const DeleteSnippetResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSnippetResponse>;
 
-export type DeleteSnippetError = DefaultErrors;
+export type DeleteSnippetError = DefaultErrors | SnippetNotFound;
 
 export const deleteSnippet: API.OperationMethod<
   DeleteSnippetRequest,
@@ -398,5 +426,5 @@ export const deleteSnippet: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSnippetRequest,
   output: DeleteSnippetResponse,
-  errors: [],
+  errors: [SnippetNotFound],
 }));

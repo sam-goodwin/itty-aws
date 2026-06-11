@@ -22,6 +22,12 @@ export class DomainNotRegistered extends Schema.TaggedErrorClass<DomainNotRegist
 ) {}
 T.applyErrorMatchers(DomainNotRegistered, [{ code: 1099 }]);
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class InvalidDomain extends Schema.TaggedErrorClass<InvalidDomain>()(
   "InvalidDomain",
   { code: Schema.Number, message: Schema.String },
@@ -2895,7 +2901,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetSettingResponse>;
 
-export type GetSettingError = DefaultErrors;
+export type GetSettingError = DefaultErrors | InvalidZoneIdentifier | Forbidden;
 
 export const getSetting: API.OperationMethod<
   GetSettingRequest,
@@ -2905,7 +2911,7 @@ export const getSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingRequest,
   output: GetSettingResponse,
-  errors: [],
+  errors: [InvalidZoneIdentifier, Forbidden],
 }));
 
 export interface PatchSettingRequest {
@@ -4463,7 +4469,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PatchSettingResponse>;
 
-export type PatchSettingError = DefaultErrors;
+export type PatchSettingError =
+  | DefaultErrors
+  | InvalidZoneIdentifier
+  | Forbidden;
 
 export const patchSetting: API.OperationMethod<
   PatchSettingRequest,
@@ -4473,7 +4482,7 @@ export const patchSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSettingRequest,
   output: PatchSettingResponse,
-  errors: [],
+  errors: [InvalidZoneIdentifier, Forbidden],
 }));
 
 // =============================================================================
@@ -5436,11 +5445,73 @@ export const getZone: API.OperationMethod<
   errors: [InvalidZoneIdentifier],
 }));
 
-export interface ListZonesRequest {}
+export interface ListZonesRequest {
+  page?: number;
+  perPage?: number;
+  account?: { id?: string; name?: string };
+  /** Direction to order zones. */
+  direction?: "asc" | "desc" | (string & {});
+  /** Whether to match all search requirements or at least one (any). */
+  match?: "any" | "all" | (string & {});
+  /** A domain name. Optional filter operators can be provided to extend refine the search:  - `equal` (default) - `not_equal` - `starts_with` - `ends_with` - `contains` - `starts_with_case_sensitive` - `en */
+  name?: string;
+  /** Field to order zones by. */
+  order?:
+    | "name"
+    | "status"
+    | "account.id"
+    | "account.name"
+    | "plan.id"
+    | (string & {});
+  /** Specify a zone status to filter by. */
+  status?: "initializing" | "pending" | "active" | "moved" | (string & {});
+  /** Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type "internal" are excluded fr */
+  type?: ("full" | "partial" | "secondary" | "internal" | (string & {}))[];
+}
 
-export const ListZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  account: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+    }),
+  ).pipe(T.HttpQuery("account")),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
+  match: Schema.optional(
+    Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+  ).pipe(T.HttpQuery("match")),
+  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  order: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "name",
+        "status",
+        "account.id",
+        "account.name",
+        "plan.id",
+      ]),
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("order")),
+  status: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["initializing", "pending", "active", "moved"]),
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("status")),
+  type: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["full", "partial", "secondary", "internal"]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("type")),
+}).pipe(
   T.Http({ method: "GET", path: "/zones" }),
 ) as unknown as Schema.Schema<ListZonesRequest>;
 

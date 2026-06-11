@@ -15,6 +15,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -113,12 +128,52 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
   /{accountOrZone}/{accountOrZoneId}/custom_pages/assets:
     get:
       operationId: listAssets
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -218,17 +273,21 @@ paths:
           required: true
           schema:
             type: string
-            enum:
-              - 1000_errors
-              - 500_errors
-              - basic_challenge
-              - country_challenge
-              - ip_block
-              - managed_challenge
-              - ratelimit_block
-              - under_attack
-              - waf_block
-              - waf_challenge
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -268,22 +327,6 @@ paths:
         'ratelimit_block', { state: 'default', url: 'http://www.example.com',
         account_id: 'account_id', }, ); ```"
       parameters:
-        - name: identifier
-          in: path
-          required: true
-          schema:
-            type: string
-            enum:
-              - 1000_errors
-              - 500_errors
-              - basic_challenge
-              - country_challenge
-              - ip_block
-              - managed_challenge
-              - ratelimit_block
-              - under_attack
-              - waf_block
-              - waf_challenge
         - name: account_id
           in: path
           required: true
@@ -296,6 +339,11 @@ paths:
           required: true
           description: "Path param: The Zone ID to use for this endpoint. Mutually
             exclusive with the Account ID."
+          schema:
+            type: string
+        - name: identifier
+          in: path
+          required: true
           schema:
             type: string
       requestBody:
@@ -352,6 +400,21 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/custom_pages:
     get:
       operationId: listCustomPages
+      parameters:
+        - name: account_id
+          in: query
+          required: false
+          description: The Account ID to use for this endpoint. Mutually exclusive with
+            the Zone ID.
+          schema:
+            type: string
+        - name: zone_id
+          in: query
+          required: false
+          description: The Zone ID to use for this endpoint. Mutually exclusive with the
+            Account ID.
+          schema:
+            type: string
       responses:
         "200":
           description: Success

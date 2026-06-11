@@ -102,6 +102,8 @@ paths:
                         type: boolean
                         description: A read-only field that indicates whether the zone currently is
                           running the latest ML model.
+                    required:
+                      - fight_mode
                   - type: object
                     properties:
                       ai_bots_protection:
@@ -185,6 +187,8 @@ paths:
                         type: boolean
                         description: A read-only field that indicates whether the zone currently is
                           running the latest ML model.
+                    required:
+                      - sbfm_definitely_automated
                   - type: object
                     properties:
                       ai_bots_protection:
@@ -272,6 +276,8 @@ paths:
                         type: boolean
                         description: A read-only field that indicates whether the zone currently is
                           running the latest ML model.
+                    required:
+                      - sbfm_definitely_automated
                   - type: object
                     properties:
                       ai_bots_protection:
@@ -359,6 +365,9 @@ paths:
                         description: A read-only field that indicates whether the zone currently is
                           running the latest ML model.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putBotManagement
       description: "Updates the Bot Management configuration for a zone.  This API is
@@ -579,6 +588,8 @@ paths:
                         type: boolean
                         description: A read-only field that indicates whether the zone currently is
                           running the latest ML model.
+                    required:
+                      - fight_mode
                   - type: object
                     properties:
                       ai_bots_protection:
@@ -662,6 +673,8 @@ paths:
                         type: boolean
                         description: A read-only field that indicates whether the zone currently is
                           running the latest ML model.
+                    required:
+                      - sbfm_definitely_automated
                   - type: object
                     properties:
                       ai_bots_protection:
@@ -749,6 +762,8 @@ paths:
                         type: boolean
                         description: A read-only field that indicates whether the zone currently is
                           running the latest ML model.
+                    required:
+                      - sbfm_definitely_automated
                   - type: object
                     properties:
                       ai_bots_protection:
@@ -836,3 +851,6 @@ paths:
                         description: A read-only field that indicates whether the zone currently is
                           running the latest ML model.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

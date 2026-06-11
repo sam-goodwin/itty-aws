@@ -14,6 +14,11 @@
       {
         "code": 7003
       }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
     ]
   },
   "response": {
@@ -68,7 +73,8 @@
         "optional": true
       },
       "cache_ttl": {
-        "optional": true
+        "optional": true,
+        "type": "number"
       },
       "summarization": {
         "optional": true
@@ -116,7 +122,8 @@
         "optional": true
       },
       "sync_interval": {
-        "optional": true
+        "optional": true,
+        "type": "number"
       },
       "engine_version": {
         "optional": true
@@ -137,6 +144,18 @@
         "optional": true
       },
       "modified_at": {
+        "optional": true
+      }
+    }
+  },
+  "request": {
+    "properties": {
+      "cacheTtl": {
+        "type": "number",
+        "optional": true
+      },
+      "syncInterval": {
+        "type": "number",
         "optional": true
       }
     }

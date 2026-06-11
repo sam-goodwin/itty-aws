@@ -9362,45 +9362,14 @@ export const getPreview: API.OperationMethod<
 // =============================================================================
 
 export interface GetRegionRequest {
-  regionId:
-    | "WNAM"
-    | "ENAM"
-    | "WEU"
-    | "EEU"
-    | "NSAM"
-    | "SSAM"
-    | "OC"
-    | "ME"
-    | "NAF"
-    | "SAF"
-    | "SAS"
-    | "SEAS"
-    | "NEAS"
-    | (string & {});
   /** Identifier. */
   accountId: string;
+  regionId: string;
 }
 
 export const GetRegionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  regionId: Schema.Union([
-    Schema.Literals([
-      "WNAM",
-      "ENAM",
-      "WEU",
-      "EEU",
-      "NSAM",
-      "SSAM",
-      "OC",
-      "ME",
-      "NAF",
-      "SAF",
-      "SAS",
-      "SEAS",
-      "NEAS",
-    ]),
-    Schema.String,
-  ]).pipe(T.HttpPath("regionId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  regionId: Schema.String.pipe(T.HttpPath("regionId")),
 }).pipe(
   T.Http({
     method: "GET",

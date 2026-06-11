@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "ListAlreadyExists": [{ "code": 10021 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

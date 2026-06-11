@@ -456,10 +456,46 @@ export const getMembership: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListMembershipsRequest {}
+export interface ListMembershipsRequest {
+  page?: number;
+  perPage?: number;
+  account?: { name?: string };
+  /** Direction to order memberships. */
+  direction?: "asc" | "desc" | (string & {});
+  /** Account name */
+  name?: string;
+  /** Field to order memberships by. */
+  order?: "id" | "account.name" | "status" | (string & {});
+  /** Status of this membership. */
+  status?: "accepted" | "pending" | "rejected" | (string & {});
+}
 
 export const ListMembershipsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    account: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("account")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    order: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["id", "account.name", "status"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("order")),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["accepted", "pending", "rejected"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("status")),
+  },
 ).pipe(
   T.Http({ method: "GET", path: "/memberships" }),
 ) as unknown as Schema.Schema<ListMembershipsRequest>;

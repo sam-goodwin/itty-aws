@@ -1378,6 +1378,15 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        SinkNotFound:
+          - code: 1015
+        InvalidSinkId:
+          - code: 2
+        SinkInUse:
+          - status: 422
+            message:
+              includes: in use
   /accounts/{account_id}/pipelines/v1/sinks:
     get:
       operationId: listSinks
@@ -2308,7 +2317,6 @@ paths:
                         required:
                           - account_id
                           - bucket
-                          - credentials
                       - type: object
                         properties:
                           token:
@@ -3269,6 +3277,14 @@ paths:
       x-distilled-errors:
         PipelineNotExists:
           - code: 1000
+        StreamNotFound:
+          - code: 1016
+        InvalidStreamId:
+          - code: 2
+        StreamInUse:
+          - status: 422
+            message:
+              includes: in use
   /accounts/{account_id}/pipelines/v1/streams:
     get:
       operationId: listStreams

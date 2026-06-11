@@ -1,0 +1,5 @@
+{
+  "errors": {
+    "SaasQuotaNotAllocated": [{ "code": 1404, "status": 403 }]
+  }
+}

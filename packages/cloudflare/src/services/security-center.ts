@@ -18,10 +18,36 @@ import { type DefaultErrors } from "../errors.ts";
 
 const ListByInsightInsightAuditLogBaseFields = {
   issueId: Schema.String.pipe(T.HttpPath("issueId")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+  before: Schema.optional(Schema.String).pipe(T.HttpQuery("before")),
+  changedBy: Schema.optional(Schema.String).pipe(T.HttpQuery("changed_by")),
+  fieldChanged: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["status", "user_classification"]),
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("field_changed")),
+  order: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("order")),
+  since: Schema.optional(Schema.String).pipe(T.HttpQuery("since")),
 } as const;
 
 interface ListByInsightInsightAuditLogBaseRequest {
   issueId: string;
+  perPage?: number;
+  cursor?: string;
+  /** Query param: Filter entries changed before this timestamp (RFC 3339). */
+  before?: string;
+  /** Query param: Filter by the actor that made the change. */
+  changedBy?: string;
+  /** Query param: Filter by the field that was changed. */
+  fieldChanged?: "status" | "user_classification" | (string & {});
+  /** Query param: Sort order for results. Use 'asc' for oldest first or 'desc' for newest first. */
+  order?: "asc" | "desc" | (string & {});
+  /** Query param: Filter entries changed at or after this timestamp (RFC 3339). */
+  since?: string;
 }
 
 export interface ListByInsightInsightAuditLogForAccountRequest extends ListByInsightInsightAuditLogBaseRequest {
@@ -176,9 +202,118 @@ export const listByInsightInsightAuditLogForZone: API.PaginatedOperationMethod<
 // Insight
 // =============================================================================
 
-const ListInsightsBaseFields = {} as const;
+const ListInsightsBaseFields = {
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  dismissed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("dismissed")),
+  issueClass: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("issue_class"),
+  ),
+  issueClassNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("issue_class~neq"),
+  ),
+  issueType: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "compliance_violation",
+          "email_security",
+          "exposed_infrastructure",
+          "insecure_configuration",
+          "weak_authentication",
+          "configuration_suggestion",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("issue_type")),
+  issueTypeNeq: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "compliance_violation",
+          "email_security",
+          "exposed_infrastructure",
+          "insecure_configuration",
+          "weak_authentication",
+          "configuration_suggestion",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("issue_type~neq")),
+  product: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("product"),
+  ),
+  productNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("product~neq"),
+  ),
+  severity: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["low", "moderate", "critical"]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("severity")),
+  severityNeq: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["low", "moderate", "critical"]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("severity~neq")),
+  subject: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("subject"),
+  ),
+  subjectNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("subject~neq"),
+  ),
+} as const;
 
-interface ListInsightsBaseRequest {}
+interface ListInsightsBaseRequest {
+  page?: number;
+  perPage?: number;
+  /** Query param */
+  dismissed?: boolean;
+  /** Query param */
+  issueClass?: string[];
+  /** Query param */
+  issueClassNeq?: string[];
+  /** Query param */
+  issueType?: (
+    | "compliance_violation"
+    | "email_security"
+    | "exposed_infrastructure"
+    | "insecure_configuration"
+    | "weak_authentication"
+    | "configuration_suggestion"
+    | (string & {})
+  )[];
+  /** Query param */
+  issueTypeNeq?: (
+    | "compliance_violation"
+    | "email_security"
+    | "exposed_infrastructure"
+    | "insecure_configuration"
+    | "weak_authentication"
+    | "configuration_suggestion"
+    | (string & {})
+  )[];
+  /** Query param */
+  product?: string[];
+  /** Query param */
+  productNeq?: string[];
+  /** Query param */
+  severity?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  severityNeq?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  subject?: string[];
+  /** Query param */
+  subjectNeq?: string[];
+}
 
 export interface ListInsightsForAccountRequest extends ListInsightsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -611,9 +746,37 @@ export const dismissInsightForZone: API.OperationMethod<
 // InsightAuditLog
 // =============================================================================
 
-const ListInsightAuditLogsBaseFields = {} as const;
+const ListInsightAuditLogsBaseFields = {
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+  before: Schema.optional(Schema.String).pipe(T.HttpQuery("before")),
+  changedBy: Schema.optional(Schema.String).pipe(T.HttpQuery("changed_by")),
+  fieldChanged: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["status", "user_classification"]),
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("field_changed")),
+  order: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("order")),
+  since: Schema.optional(Schema.String).pipe(T.HttpQuery("since")),
+} as const;
 
-interface ListInsightAuditLogsBaseRequest {}
+interface ListInsightAuditLogsBaseRequest {
+  perPage?: number;
+  cursor?: string;
+  /** Query param: Filter entries changed before this timestamp (RFC 3339). */
+  before?: string;
+  /** Query param: Filter by the actor that made the change. */
+  changedBy?: string;
+  /** Query param: Filter by the field that was changed. */
+  fieldChanged?: "status" | "user_classification" | (string & {});
+  /** Query param: Sort order for results. Use 'asc' for oldest first or 'desc' for newest first. */
+  order?: "asc" | "desc" | (string & {});
+  /** Query param: Filter entries changed at or after this timestamp (RFC 3339). */
+  since?: string;
+}
 
 export interface ListInsightAuditLogsForAccountRequest extends ListInsightAuditLogsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -767,9 +930,114 @@ export const listInsightAuditLogsForZone: API.PaginatedOperationMethod<
 // InsightClass
 // =============================================================================
 
-const GetInsightClassBaseFields = {} as const;
+const GetInsightClassBaseFields = {
+  dismissed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("dismissed")),
+  issueClass: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("issue_class"),
+  ),
+  issueClassNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("issue_class~neq"),
+  ),
+  issueType: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "compliance_violation",
+          "email_security",
+          "exposed_infrastructure",
+          "insecure_configuration",
+          "weak_authentication",
+          "configuration_suggestion",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("issue_type")),
+  issueTypeNeq: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "compliance_violation",
+          "email_security",
+          "exposed_infrastructure",
+          "insecure_configuration",
+          "weak_authentication",
+          "configuration_suggestion",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("issue_type~neq")),
+  product: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("product"),
+  ),
+  productNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("product~neq"),
+  ),
+  severity: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["low", "moderate", "critical"]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("severity")),
+  severityNeq: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["low", "moderate", "critical"]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("severity~neq")),
+  subject: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("subject"),
+  ),
+  subjectNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("subject~neq"),
+  ),
+} as const;
 
-interface GetInsightClassBaseRequest {}
+interface GetInsightClassBaseRequest {
+  /** Query param */
+  dismissed?: boolean;
+  /** Query param */
+  issueClass?: string[];
+  /** Query param */
+  issueClassNeq?: string[];
+  /** Query param */
+  issueType?: (
+    | "compliance_violation"
+    | "email_security"
+    | "exposed_infrastructure"
+    | "insecure_configuration"
+    | "weak_authentication"
+    | "configuration_suggestion"
+    | (string & {})
+  )[];
+  /** Query param */
+  issueTypeNeq?: (
+    | "compliance_violation"
+    | "email_security"
+    | "exposed_infrastructure"
+    | "insecure_configuration"
+    | "weak_authentication"
+    | "configuration_suggestion"
+    | (string & {})
+  )[];
+  /** Query param */
+  product?: string[];
+  /** Query param */
+  productNeq?: string[];
+  /** Query param */
+  severity?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  severityNeq?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  subject?: string[];
+  /** Query param */
+  subjectNeq?: string[];
+}
 
 export interface GetInsightClassForAccountRequest extends GetInsightClassBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -1041,9 +1309,114 @@ export const getInsightContext: API.OperationMethod<
 // InsightSeverity
 // =============================================================================
 
-const GetInsightSeverityBaseFields = {} as const;
+const GetInsightSeverityBaseFields = {
+  dismissed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("dismissed")),
+  issueClass: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("issue_class"),
+  ),
+  issueClassNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("issue_class~neq"),
+  ),
+  issueType: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "compliance_violation",
+          "email_security",
+          "exposed_infrastructure",
+          "insecure_configuration",
+          "weak_authentication",
+          "configuration_suggestion",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("issue_type")),
+  issueTypeNeq: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "compliance_violation",
+          "email_security",
+          "exposed_infrastructure",
+          "insecure_configuration",
+          "weak_authentication",
+          "configuration_suggestion",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("issue_type~neq")),
+  product: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("product"),
+  ),
+  productNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("product~neq"),
+  ),
+  severity: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["low", "moderate", "critical"]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("severity")),
+  severityNeq: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["low", "moderate", "critical"]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("severity~neq")),
+  subject: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("subject"),
+  ),
+  subjectNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("subject~neq"),
+  ),
+} as const;
 
-interface GetInsightSeverityBaseRequest {}
+interface GetInsightSeverityBaseRequest {
+  /** Query param */
+  dismissed?: boolean;
+  /** Query param */
+  issueClass?: string[];
+  /** Query param */
+  issueClassNeq?: string[];
+  /** Query param */
+  issueType?: (
+    | "compliance_violation"
+    | "email_security"
+    | "exposed_infrastructure"
+    | "insecure_configuration"
+    | "weak_authentication"
+    | "configuration_suggestion"
+    | (string & {})
+  )[];
+  /** Query param */
+  issueTypeNeq?: (
+    | "compliance_violation"
+    | "email_security"
+    | "exposed_infrastructure"
+    | "insecure_configuration"
+    | "weak_authentication"
+    | "configuration_suggestion"
+    | (string & {})
+  )[];
+  /** Query param */
+  product?: string[];
+  /** Query param */
+  productNeq?: string[];
+  /** Query param */
+  severity?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  severityNeq?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  subject?: string[];
+  /** Query param */
+  subjectNeq?: string[];
+}
 
 export interface GetInsightSeverityForAccountRequest extends GetInsightSeverityBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -1120,9 +1493,114 @@ export const getInsightSeverityForZone: API.OperationMethod<
 // InsightType
 // =============================================================================
 
-const GetInsightTypeBaseFields = {} as const;
+const GetInsightTypeBaseFields = {
+  dismissed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("dismissed")),
+  issueClass: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("issue_class"),
+  ),
+  issueClassNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("issue_class~neq"),
+  ),
+  issueType: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "compliance_violation",
+          "email_security",
+          "exposed_infrastructure",
+          "insecure_configuration",
+          "weak_authentication",
+          "configuration_suggestion",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("issue_type")),
+  issueTypeNeq: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "compliance_violation",
+          "email_security",
+          "exposed_infrastructure",
+          "insecure_configuration",
+          "weak_authentication",
+          "configuration_suggestion",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("issue_type~neq")),
+  product: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("product"),
+  ),
+  productNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("product~neq"),
+  ),
+  severity: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["low", "moderate", "critical"]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("severity")),
+  severityNeq: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["low", "moderate", "critical"]),
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("severity~neq")),
+  subject: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("subject"),
+  ),
+  subjectNeq: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("subject~neq"),
+  ),
+} as const;
 
-interface GetInsightTypeBaseRequest {}
+interface GetInsightTypeBaseRequest {
+  /** Query param */
+  dismissed?: boolean;
+  /** Query param */
+  issueClass?: string[];
+  /** Query param */
+  issueClassNeq?: string[];
+  /** Query param */
+  issueType?: (
+    | "compliance_violation"
+    | "email_security"
+    | "exposed_infrastructure"
+    | "insecure_configuration"
+    | "weak_authentication"
+    | "configuration_suggestion"
+    | (string & {})
+  )[];
+  /** Query param */
+  issueTypeNeq?: (
+    | "compliance_violation"
+    | "email_security"
+    | "exposed_infrastructure"
+    | "insecure_configuration"
+    | "weak_authentication"
+    | "configuration_suggestion"
+    | (string & {})
+  )[];
+  /** Query param */
+  product?: string[];
+  /** Query param */
+  productNeq?: string[];
+  /** Query param */
+  severity?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  severityNeq?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  subject?: string[];
+  /** Query param */
+  subjectNeq?: string[];
+}
 
 export interface GetInsightTypeForAccountRequest extends GetInsightTypeBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */

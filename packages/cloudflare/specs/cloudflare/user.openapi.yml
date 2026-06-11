@@ -9,6 +9,87 @@ paths:
   /user/audit_logs:
     get:
       operationId: listAuditLogs
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: id
+          in: query
+          required: false
+          description: Finds a specific log by its ID.
+          schema:
+            type: string
+        - name: action
+          in: query
+          required: false
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                description: Filters by the action type.
+        - name: actor
+          in: query
+          required: false
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                description: Filters by the email address of the actor that made the change.
+              ip:
+                type: string
+                description: Filters by the IP address of the request that made the change by
+                  specific IP address or valid CIDR Range.
+        - name: before
+          in: query
+          required: false
+          description: Limits the returned results to logs older than the specified date.
+            A `full-date` that conforms to RFC3339.
+          schema: {}
+        - name: direction
+          in: query
+          required: false
+          description: Changes the direction of the chronological sorting.
+          schema:
+            type: string
+            enum:
+              - desc
+              - asc
+        - name: export
+          in: query
+          required: false
+          description: Indicates that this request is an export of logs in CSV format.
+          schema:
+            type: boolean
+        - name: hide_user_logs
+          in: query
+          required: false
+          description: Indicates whether or not to hide user level audit logs.
+          schema:
+            type: boolean
+        - name: since
+          in: query
+          required: false
+          description: Limits the returned results to logs newer than the specified date.
+            A `full-date` that conforms to RFC3339.
+          schema: {}
+        - name: zone
+          in: query
+          required: false
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Filters by the name of the zone associated to the change.
       responses:
         "200":
           description: Success
@@ -87,6 +168,45 @@ paths:
   /user/billing/history:
     get:
       operationId: listBillingHistories
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: action
+          in: query
+          required: false
+          description: The billing item action.
+          schema:
+            type: string
+        - name: occurred_at
+          in: query
+          required: false
+          description: When the billing item was created.
+          schema:
+            type: string
+        - name: order
+          in: query
+          required: false
+          description: Field to order billing history by.
+          schema:
+            type: string
+            enum:
+              - type
+              - occurred_at
+              - action
+        - name: type
+          in: query
+          required: false
+          description: The billing item type.
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -466,6 +586,61 @@ paths:
   /user/organizations:
     get:
       operationId: listOrganizations
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: direction
+          in: query
+          required: false
+          description: Direction to order organizations.
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: match
+          in: query
+          required: false
+          description: Whether to match all search requirements or at least one (any).
+          schema:
+            type: string
+            enum:
+              - any
+              - all
+        - name: name
+          in: query
+          required: false
+          description: Organization name.
+          schema:
+            type: string
+        - name: order
+          in: query
+          required: false
+          description: Field to order organizations by.
+          schema:
+            type: string
+            enum:
+              - id
+              - name
+              - status
+        - name: status
+          in: query
+          required: false
+          description: Whether the user is a member of the organization or has an
+            inivitation pending.
+          schema:
+            type: string
+            enum:
+              - member
+              - invited
       responses:
         "200":
           description: Success
@@ -1049,6 +1224,26 @@ paths:
   /user/tokens:
     get:
       operationId: listTokens
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: direction
+          in: query
+          required: false
+          description: Direction to order results.
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
       responses:
         "200":
           description: Success
@@ -1387,9 +1582,27 @@ paths:
                   - id
                   - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /user/tokens/permission_groups:
     get:
       operationId: listTokenPermissionGroups
+      parameters:
+        - name: name
+          in: query
+          required: false
+          description: Filter by the name of the permission group. The value must be
+            URL-encoded.
+          schema:
+            type: string
+        - name: scope
+          in: query
+          required: false
+          description: Filter by the scope of the permission group. The value must be
+            URL-encoded.
+          schema:
+            type: string
       responses:
         "200":
           description: Success

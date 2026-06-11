@@ -1,13 +1,29 @@
 {
   "errors": {
     "SinkAuthFailed": [
-      { "code": 1012, "message": { "includes": "could not authenticate" } }
+      {
+        "code": 1012,
+        "message": {
+          "includes": "could not authenticate"
+        }
+      }
     ],
     "InvalidSinkConfig": [
-      { "code": 1012 }
+      {
+        "code": 1012
+      }
     ],
     "SinkAlreadyExists": [
-      { "code": 1003 }
+      {
+        "code": 1003
+      }
     ]
+  },
+  "response": {
+    "properties": {
+      "config.credentials": {
+        "optional": true
+      }
+    }
   }
 }

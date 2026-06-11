@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "DomainNotFound": [{ "code": 10053 }],
+    "NoSuchBucket": [{ "code": 10006 }]
+  }
+}

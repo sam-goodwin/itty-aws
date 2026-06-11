@@ -13,6 +13,16 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // BotManagement
 // =============================================================================
 
@@ -40,7 +50,7 @@ export type GetBotManagementResponse =
       contentBotsProtection?: "block" | "disabled" | (string & {}) | null;
       crawlerProtection?: "enabled" | "disabled" | (string & {}) | null;
       enableJs?: boolean | null;
-      fightMode?: boolean | null;
+      fightMode: boolean;
       isRobotsTxtManaged?: boolean | null;
       staleZoneConfiguration?: {
         optimizeWordpress?: boolean | null;
@@ -65,12 +75,11 @@ export type GetBotManagementResponse =
       enableJs?: boolean | null;
       isRobotsTxtManaged?: boolean | null;
       optimizeWordpress?: boolean | null;
-      sbfmDefinitelyAutomated?:
+      sbfmDefinitelyAutomated:
         | "allow"
         | "block"
         | "managed_challenge"
-        | (string & {})
-        | null;
+        | (string & {});
       sbfmStaticResourceProtection?: boolean | null;
       sbfmVerifiedBots?: "allow" | "block" | (string & {}) | null;
       staleZoneConfiguration?: {
@@ -92,12 +101,11 @@ export type GetBotManagementResponse =
       enableJs?: boolean | null;
       isRobotsTxtManaged?: boolean | null;
       optimizeWordpress?: boolean | null;
-      sbfmDefinitelyAutomated?:
+      sbfmDefinitelyAutomated:
         | "allow"
         | "block"
         | "managed_challenge"
-        | (string & {})
-        | null;
+        | (string & {});
       sbfmLikelyAutomated?:
         | "allow"
         | "block"
@@ -172,7 +180,7 @@ export const GetBotManagementResponse =
         ]),
       ),
       enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      fightMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      fightMode: Schema.Boolean,
       isRobotsTxtManaged: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
@@ -267,15 +275,10 @@ export const GetBotManagementResponse =
       optimizeWordpress: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
-      sbfmDefinitelyAutomated: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["allow", "block", "managed_challenge"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
+      sbfmDefinitelyAutomated: Schema.Union([
+        Schema.Literals(["allow", "block", "managed_challenge"]),
+        Schema.String,
+      ]),
       sbfmStaticResourceProtection: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
@@ -363,15 +366,10 @@ export const GetBotManagementResponse =
       optimizeWordpress: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
-      sbfmDefinitelyAutomated: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["allow", "block", "managed_challenge"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
+      sbfmDefinitelyAutomated: Schema.Union([
+        Schema.Literals(["allow", "block", "managed_challenge"]),
+        Schema.String,
+      ]),
       sbfmLikelyAutomated: Schema.optional(
         Schema.Union([
           Schema.Union([
@@ -523,7 +521,7 @@ export const GetBotManagementResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetBotManagementResponse>;
 
-export type GetBotManagementError = DefaultErrors;
+export type GetBotManagementError = DefaultErrors | Forbidden;
 
 export const getBotManagement: API.OperationMethod<
   GetBotManagementRequest,
@@ -533,7 +531,7 @@ export const getBotManagement: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBotManagementRequest,
   output: GetBotManagementResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutBotManagementRequest {
@@ -649,7 +647,7 @@ export type PutBotManagementResponse =
       contentBotsProtection?: "block" | "disabled" | (string & {}) | null;
       crawlerProtection?: "enabled" | "disabled" | (string & {}) | null;
       enableJs?: boolean | null;
-      fightMode?: boolean | null;
+      fightMode: boolean;
       isRobotsTxtManaged?: boolean | null;
       staleZoneConfiguration?: {
         optimizeWordpress?: boolean | null;
@@ -674,12 +672,11 @@ export type PutBotManagementResponse =
       enableJs?: boolean | null;
       isRobotsTxtManaged?: boolean | null;
       optimizeWordpress?: boolean | null;
-      sbfmDefinitelyAutomated?:
+      sbfmDefinitelyAutomated:
         | "allow"
         | "block"
         | "managed_challenge"
-        | (string & {})
-        | null;
+        | (string & {});
       sbfmStaticResourceProtection?: boolean | null;
       sbfmVerifiedBots?: "allow" | "block" | (string & {}) | null;
       staleZoneConfiguration?: {
@@ -701,12 +698,11 @@ export type PutBotManagementResponse =
       enableJs?: boolean | null;
       isRobotsTxtManaged?: boolean | null;
       optimizeWordpress?: boolean | null;
-      sbfmDefinitelyAutomated?:
+      sbfmDefinitelyAutomated:
         | "allow"
         | "block"
         | "managed_challenge"
-        | (string & {})
-        | null;
+        | (string & {});
       sbfmLikelyAutomated?:
         | "allow"
         | "block"
@@ -781,7 +777,7 @@ export const PutBotManagementResponse =
         ]),
       ),
       enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      fightMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      fightMode: Schema.Boolean,
       isRobotsTxtManaged: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
@@ -876,15 +872,10 @@ export const PutBotManagementResponse =
       optimizeWordpress: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
-      sbfmDefinitelyAutomated: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["allow", "block", "managed_challenge"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
+      sbfmDefinitelyAutomated: Schema.Union([
+        Schema.Literals(["allow", "block", "managed_challenge"]),
+        Schema.String,
+      ]),
       sbfmStaticResourceProtection: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
@@ -972,15 +963,10 @@ export const PutBotManagementResponse =
       optimizeWordpress: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
-      sbfmDefinitelyAutomated: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["allow", "block", "managed_challenge"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
+      sbfmDefinitelyAutomated: Schema.Union([
+        Schema.Literals(["allow", "block", "managed_challenge"]),
+        Schema.String,
+      ]),
       sbfmLikelyAutomated: Schema.optional(
         Schema.Union([
           Schema.Union([
@@ -1132,7 +1118,7 @@ export const PutBotManagementResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutBotManagementResponse>;
 
-export type PutBotManagementError = DefaultErrors;
+export type PutBotManagementError = DefaultErrors | Forbidden;
 
 export const putBotManagement: API.OperationMethod<
   PutBotManagementRequest,
@@ -1142,5 +1128,5 @@ export const putBotManagement: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBotManagementRequest,
   output: PutBotManagementResponse,
-  errors: [],
+  errors: [Forbidden],
 }));

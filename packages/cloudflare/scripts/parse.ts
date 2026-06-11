@@ -1485,6 +1485,23 @@ function parseMethod(
       if (typeName.endsWith("Params")) {
         paramsTypeName = typeName;
       }
+    } else if (paramType && ts.isUnionTypeNode(paramType)) {
+      // Stainless emits methods whose params bag is entirely optional as
+      // overloads; the implementation signature (the only declaration with
+      // a body, which is what we parse) is typed
+      // `params: FooParams | Core.RequestOptions = {}`. Without unwrapping
+      // the union the params interface — and with it every query param,
+      // including pagination's `page` — is silently dropped, which makes
+      // `.items()` on paginated operations loop forever on page 1.
+      for (const member of paramType.types) {
+        if (ts.isTypeReferenceNode(member)) {
+          const typeName = member.typeName.getText();
+          if (typeName.endsWith("Params")) {
+            paramsTypeName = typeName;
+            break;
+          }
+        }
+      }
     } else if (paramType) {
       // This is a positional parameter like `bucketName: string`
       // Check if it's used in the URL template

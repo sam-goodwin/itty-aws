@@ -33,6 +33,14 @@ export class BucketNotFound extends Schema.TaggedErrorClass<BucketNotFound>()(
 ) {}
 T.applyErrorMatchers(BucketNotFound, [{ code: 10085 }]);
 
+export class CustomDomainInUse extends Schema.TaggedErrorClass<CustomDomainInUse>()(
+  "CustomDomainInUse",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CustomDomainInUse, [
+  { status: 409, message: { includes: "in use" } },
+]);
+
 export class DomainNotFound extends Schema.TaggedErrorClass<DomainNotFound>()(
   "DomainNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -1286,7 +1294,8 @@ export const CreateBucketDomainCustomResponse =
 export type CreateBucketDomainCustomError =
   | DefaultErrors
   | NoSuchBucket
-  | InvalidBucketName;
+  | InvalidBucketName
+  | CustomDomainInUse;
 
 export const createBucketDomainCustom: API.OperationMethod<
   CreateBucketDomainCustomRequest,
@@ -1296,7 +1305,7 @@ export const createBucketDomainCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBucketDomainCustomRequest,
   output: CreateBucketDomainCustomResponse,
-  errors: [NoSuchBucket, InvalidBucketName],
+  errors: [NoSuchBucket, InvalidBucketName, CustomDomainInUse],
 }));
 
 export interface UpdateBucketDomainCustomRequest {
@@ -1423,7 +1432,10 @@ export const DeleteBucketDomainCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteBucketDomainCustomResponse>;
 
-export type DeleteBucketDomainCustomError = DefaultErrors;
+export type DeleteBucketDomainCustomError =
+  | DefaultErrors
+  | DomainNotFound
+  | NoSuchBucket;
 
 export const deleteBucketDomainCustom: API.OperationMethod<
   DeleteBucketDomainCustomRequest,
@@ -1433,7 +1445,7 @@ export const deleteBucketDomainCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketDomainCustomRequest,
   output: DeleteBucketDomainCustomResponse,
-  errors: [],
+  errors: [DomainNotFound, NoSuchBucket],
 }));
 
 // =============================================================================

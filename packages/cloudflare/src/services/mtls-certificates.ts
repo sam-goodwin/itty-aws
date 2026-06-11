@@ -13,6 +13,27 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class CertificateAlreadyExists extends Schema.TaggedErrorClass<CertificateAlreadyExists>()(
+  "CertificateAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CertificateAlreadyExists, [
+  { code: 1471, message: { includes: "already exists" } },
+]);
+
+export class CertificateNotFound extends Schema.TaggedErrorClass<CertificateNotFound>()(
+  "CertificateNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CertificateNotFound, [
+  { code: 1472, message: { includes: "Certificate not found" } },
+  { status: 404 },
+]);
+
+// =============================================================================
 // Association
 // =============================================================================
 
@@ -147,7 +168,7 @@ export const GetMtlsCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetMtlsCertificateResponse>;
 
-export type GetMtlsCertificateError = DefaultErrors;
+export type GetMtlsCertificateError = DefaultErrors | CertificateNotFound;
 
 export const getMtlsCertificate: API.OperationMethod<
   GetMtlsCertificateRequest,
@@ -157,7 +178,7 @@ export const getMtlsCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMtlsCertificateRequest,
   output: GetMtlsCertificateResponse,
-  errors: [],
+  errors: [CertificateNotFound],
 }));
 
 export interface ListMtlsCertificatesRequest {
@@ -361,7 +382,9 @@ export const CreateMtlsCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateMtlsCertificateResponse>;
 
-export type CreateMtlsCertificateError = DefaultErrors;
+export type CreateMtlsCertificateError =
+  | DefaultErrors
+  | CertificateAlreadyExists;
 
 export const createMtlsCertificate: API.OperationMethod<
   CreateMtlsCertificateRequest,
@@ -371,7 +394,7 @@ export const createMtlsCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMtlsCertificateRequest,
   output: CreateMtlsCertificateResponse,
-  errors: [],
+  errors: [CertificateAlreadyExists],
 }));
 
 export interface DeleteMtlsCertificateRequest {
@@ -453,7 +476,7 @@ export const DeleteMtlsCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteMtlsCertificateResponse>;
 
-export type DeleteMtlsCertificateError = DefaultErrors;
+export type DeleteMtlsCertificateError = DefaultErrors | CertificateNotFound;
 
 export const deleteMtlsCertificate: API.OperationMethod<
   DeleteMtlsCertificateRequest,
@@ -463,5 +486,5 @@ export const deleteMtlsCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMtlsCertificateRequest,
   output: DeleteMtlsCertificateResponse,
-  errors: [],
+  errors: [CertificateNotFound],
 }));

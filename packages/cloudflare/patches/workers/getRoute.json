@@ -1,6 +1,8 @@
 {
   "errors": {
     "WorkerNotFound": [{ "code": 10007 }],
-    "InvalidRoute": [{ "code": 7003 }]
+    "RouteNotFound": [{ "code": 10009 }, { "status": 404 }],
+    "InvalidRoute": [{ "code": 7003 }],
+    "Forbidden": [{ "status": 403 }]
   }
 }

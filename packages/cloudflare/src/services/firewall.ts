@@ -13,6 +13,33 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class AccessRuleNotFound extends Schema.TaggedErrorClass<AccessRuleNotFound>()(
+  "AccessRuleNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AccessRuleNotFound, [
+  { code: 10001, message: { includes: "not_found" } },
+  { status: 404 },
+]);
+
+export class DuplicateAccessRule extends Schema.TaggedErrorClass<DuplicateAccessRule>()(
+  "DuplicateAccessRule",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DuplicateAccessRule, [
+  { code: 10009, message: { includes: "duplicate_of_existing" } },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // AccessRule
 // =============================================================================
 
@@ -191,7 +218,7 @@ export const GetAccessRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetAccessRuleResponse>;
 
-export type GetAccessRuleError = DefaultErrors;
+export type GetAccessRuleError = DefaultErrors | AccessRuleNotFound | Forbidden;
 
 export const getAccessRuleForAccount: API.OperationMethod<
   GetAccessRuleForAccountRequest,
@@ -201,7 +228,7 @@ export const getAccessRuleForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessRuleForAccountRequest,
   output: GetAccessRuleResponse,
-  errors: [],
+  errors: [AccessRuleNotFound, Forbidden],
 }));
 
 export const getAccessRuleForZone: API.OperationMethod<
@@ -212,12 +239,79 @@ export const getAccessRuleForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessRuleForZoneRequest,
   output: GetAccessRuleResponse,
-  errors: [],
+  errors: [AccessRuleNotFound, Forbidden],
 }));
 
-const ListAccessRulesBaseFields = {} as const;
+const ListAccessRulesBaseFields = {
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  configuration: Schema.optional(
+    Schema.Struct({
+      target: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["ip", "ip_range", "asn", "country"]),
+          Schema.String,
+        ]),
+      ),
+      value: Schema.optional(Schema.String),
+    }),
+  ).pipe(T.HttpQuery("configuration")),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
+  match: Schema.optional(
+    Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+  ).pipe(T.HttpQuery("match")),
+  mode: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "block",
+        "challenge",
+        "whitelist",
+        "js_challenge",
+        "managed_challenge",
+      ]),
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("mode")),
+  notes: Schema.optional(Schema.String).pipe(T.HttpQuery("notes")),
+  order: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["configuration.target", "configuration.value", "mode"]),
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("order")),
+} as const;
 
-interface ListAccessRulesBaseRequest {}
+interface ListAccessRulesBaseRequest {
+  page?: number;
+  perPage?: number;
+  /** Query param */
+  configuration?: {
+    target?: "ip" | "ip_range" | "asn" | "country" | (string & {});
+    value?: string;
+  };
+  /** Query param: Defines the direction used to sort returned rules. */
+  direction?: "asc" | "desc" | (string & {});
+  /** Query param: Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
+  match?: "any" | "all" | (string & {});
+  /** Query param: The action to apply to a matched request. */
+  mode?:
+    | "block"
+    | "challenge"
+    | "whitelist"
+    | "js_challenge"
+    | "managed_challenge"
+    | (string & {});
+  /** Query param: Defines the string to search for in the notes of existing IP Access rules. Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02' */
+  notes?: string;
+  /** Query param: Defines the field used to sort returned rules. */
+  order?:
+    | "configuration.target"
+    | "configuration.value"
+    | "mode"
+    | (string & {});
+}
 
 export interface ListAccessRulesForAccountRequest extends ListAccessRulesBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -411,7 +505,7 @@ export const ListAccessRulesResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListAccessRulesResponse>;
 
-export type ListAccessRulesError = DefaultErrors;
+export type ListAccessRulesError = DefaultErrors | Forbidden;
 
 export const listAccessRulesForAccount: API.PaginatedOperationMethod<
   ListAccessRulesForAccountRequest,
@@ -421,7 +515,7 @@ export const listAccessRulesForAccount: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessRulesForAccountRequest,
   output: ListAccessRulesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -439,7 +533,7 @@ export const listAccessRulesForZone: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessRulesForZoneRequest,
   output: ListAccessRulesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -673,7 +767,10 @@ export const CreateAccessRuleResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateAccessRuleResponse>;
 
-export type CreateAccessRuleError = DefaultErrors;
+export type CreateAccessRuleError =
+  | DefaultErrors
+  | DuplicateAccessRule
+  | Forbidden;
 
 export const createAccessRuleForAccount: API.OperationMethod<
   CreateAccessRuleForAccountRequest,
@@ -683,7 +780,7 @@ export const createAccessRuleForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessRuleForAccountRequest,
   output: CreateAccessRuleResponse,
-  errors: [],
+  errors: [DuplicateAccessRule, Forbidden],
 }));
 
 export const createAccessRuleForZone: API.OperationMethod<
@@ -694,7 +791,7 @@ export const createAccessRuleForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessRuleForZoneRequest,
   output: CreateAccessRuleResponse,
-  errors: [],
+  errors: [DuplicateAccessRule, Forbidden],
 }));
 
 const PatchAccessRuleBaseFields = {
@@ -923,7 +1020,10 @@ export const PatchAccessRuleResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchAccessRuleResponse>;
 
-export type PatchAccessRuleError = DefaultErrors;
+export type PatchAccessRuleError =
+  | DefaultErrors
+  | AccessRuleNotFound
+  | Forbidden;
 
 export const patchAccessRuleForAccount: API.OperationMethod<
   PatchAccessRuleForAccountRequest,
@@ -933,7 +1033,7 @@ export const patchAccessRuleForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccessRuleForAccountRequest,
   output: PatchAccessRuleResponse,
-  errors: [],
+  errors: [AccessRuleNotFound, Forbidden],
 }));
 
 export const patchAccessRuleForZone: API.OperationMethod<
@@ -944,7 +1044,7 @@ export const patchAccessRuleForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccessRuleForZoneRequest,
   output: PatchAccessRuleResponse,
-  errors: [],
+  errors: [AccessRuleNotFound, Forbidden],
 }));
 
 const DeleteAccessRuleBaseFields = {
@@ -999,7 +1099,10 @@ export const DeleteAccessRuleResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteAccessRuleResponse>;
 
-export type DeleteAccessRuleError = DefaultErrors;
+export type DeleteAccessRuleError =
+  | DefaultErrors
+  | AccessRuleNotFound
+  | Forbidden;
 
 export const deleteAccessRuleForAccount: API.OperationMethod<
   DeleteAccessRuleForAccountRequest,
@@ -1009,7 +1112,7 @@ export const deleteAccessRuleForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessRuleForAccountRequest,
   output: DeleteAccessRuleResponse,
-  errors: [],
+  errors: [AccessRuleNotFound, Forbidden],
 }));
 
 export const deleteAccessRuleForZone: API.OperationMethod<
@@ -1020,7 +1123,7 @@ export const deleteAccessRuleForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessRuleForZoneRequest,
   output: DeleteAccessRuleResponse,
-  errors: [],
+  errors: [AccessRuleNotFound, Forbidden],
 }));
 
 // =============================================================================

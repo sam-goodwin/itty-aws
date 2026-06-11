@@ -11,19 +11,15 @@ paths:
       operationId: getSettingTls
       description: List the requested TLS setting for the hostnames under this zone.
       parameters:
-        - name: settingId
-          in: path
-          required: true
-          schema:
-            type: string
-            enum:
-              - ciphers
-              - min_tls_version
-              - http2
         - name: zone_id
           in: path
           required: true
           description: Identifier.
+          schema:
+            type: string
+        - name: settingId
+          in: path
+          required: true
           schema:
             type: string
       responses:
@@ -84,15 +80,6 @@ paths:
       operationId: putSettingTls
       description: Update the tls setting value for the hostname.
       parameters:
-        - name: settingId
-          in: path
-          required: true
-          schema:
-            type: string
-            enum:
-              - ciphers
-              - min_tls_version
-              - http2
         - name: hostname
           in: path
           required: true
@@ -102,6 +89,11 @@ paths:
           in: path
           required: true
           description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: settingId
+          in: path
+          required: true
           schema:
             type: string
       requestBody:
@@ -202,15 +194,6 @@ paths:
       operationId: deleteSettingTls
       description: Delete the tls setting value for the hostname.
       parameters:
-        - name: settingId
-          in: path
-          required: true
-          schema:
-            type: string
-            enum:
-              - ciphers
-              - min_tls_version
-              - http2
         - name: hostname
           in: path
           required: true
@@ -220,6 +203,11 @@ paths:
           in: path
           required: true
           description: Identifier.
+          schema:
+            type: string
+        - name: settingId
+          in: path
+          required: true
           schema:
             type: string
       responses:

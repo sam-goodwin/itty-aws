@@ -17,17 +17,14 @@ import { type DefaultErrors } from "../errors.ts";
 // =============================================================================
 
 export interface GetSettingTlsRequest {
-  settingId: "ciphers" | "min_tls_version" | "http2" | (string & {});
   /** Identifier. */
   zoneId: string;
+  settingId: string;
 }
 
 export const GetSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  settingId: Schema.Union([
-    Schema.Literals(["ciphers", "min_tls_version", "http2"]),
-    Schema.String,
-  ]).pipe(T.HttpPath("settingId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  settingId: Schema.String.pipe(T.HttpPath("settingId")),
 }).pipe(
   T.Http({
     method: "GET",
@@ -96,21 +93,18 @@ export const getSettingTls: API.PaginatedOperationMethod<
 }));
 
 export interface PutSettingTlsRequest {
-  settingId: "ciphers" | "min_tls_version" | "http2" | (string & {});
   hostname: string;
   /** Path param: Identifier. */
   zoneId: string;
+  settingId: string;
   /** Body param: The TLS setting value. The type depends on the `setting_id` used in the request path:  - `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `["ECDHE-RSA-AES128- */
   value: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[];
 }
 
 export const PutSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  settingId: Schema.Union([
-    Schema.Literals(["ciphers", "min_tls_version", "http2"]),
-    Schema.String,
-  ]).pipe(T.HttpPath("settingId")),
   hostname: Schema.String.pipe(T.HttpPath("hostname")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  settingId: Schema.String.pipe(T.HttpPath("settingId")),
   value: Schema.Union([
     Schema.Literal("1.0"),
     Schema.Literal("1.1"),
@@ -187,20 +181,17 @@ export const putSettingTls: API.OperationMethod<
 }));
 
 export interface DeleteSettingTlsRequest {
-  settingId: "ciphers" | "min_tls_version" | "http2" | (string & {});
   hostname: string;
   /** Identifier. */
   zoneId: string;
+  settingId: string;
 }
 
 export const DeleteSettingTlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    settingId: Schema.Union([
-      Schema.Literals(["ciphers", "min_tls_version", "http2"]),
-      Schema.String,
-    ]).pipe(T.HttpPath("settingId")),
     hostname: Schema.String.pipe(T.HttpPath("hostname")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    settingId: Schema.String.pipe(T.HttpPath("settingId")),
   }).pipe(
     T.Http({
       method: "DELETE",

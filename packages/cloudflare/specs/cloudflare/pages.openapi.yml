@@ -1097,6 +1097,11 @@ paths:
                   - production_script_name
                   - uses_functions
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProjectNotFound:
+          - code: 8000007
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchProject
       description: "Set new attributes for an existing project. Modify environment
@@ -2488,6 +2493,11 @@ paths:
                   - production_script_name
                   - uses_functions
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProjectNotFound:
+          - code: 8000007
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteProject
       description: "Delete a project by name.  @example ```ts const project = await
@@ -2512,6 +2522,11 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProjectNotFound:
+          - code: 8000007
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/pages/projects:
     get:
       operationId: listProjects
@@ -3583,6 +3598,9 @@ paths:
                   - production_script_name
                   - uses_functions
       x-distilled-pagination-class: ProjectsV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createProject
       description: "Create a new project.  @example ```ts const project = await
@@ -4971,6 +4989,11 @@ paths:
                   - production_script_name
                   - uses_functions
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProjectAlreadyExists:
+          - code: 8000002
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/pages/projects/{projectName}/deployments/{deploymentId}:
     get:
       operationId: getProjectDeployment
@@ -6930,6 +6953,13 @@ paths:
                   - verification_data
                   - zone_tag
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProjectNotFound:
+          - code: 8000007
+        PagesDomainNotFound:
+          - code: 8000021
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchProjectDomain
       description: "Retry the validation status of a single domain.  @example ```ts
@@ -7037,6 +7067,13 @@ paths:
                   - verification_data
                   - zone_tag
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProjectNotFound:
+          - code: 8000007
+        PagesDomainNotFound:
+          - code: 8000021
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteProjectDomain
       description: "Delete a Pages project's domain.  @example ```ts const domain =
@@ -7067,6 +7104,13 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProjectNotFound:
+          - code: 8000007
+        PagesDomainNotFound:
+          - code: 8000021
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/pages/projects/{projectName}/domains:
     get:
       operationId: listProjectDomains
@@ -7171,6 +7215,11 @@ paths:
                   - verification_data
                   - zone_tag
       x-distilled-pagination-class: DomainListResponsesSinglePage
+      x-distilled-errors:
+        ProjectNotFound:
+          - code: 8000007
+        Forbidden:
+          - status: 403
     post:
       operationId: createProjectDomain
       description: "Add a new domain for the Pages project.  @example ```ts const
@@ -7286,3 +7335,10 @@ paths:
                   - verification_data
                   - zone_tag
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProjectNotFound:
+          - code: 8000007
+        PagesDomainAlreadyExists:
+          - code: 8000018
+        Forbidden:
+          - status: 403

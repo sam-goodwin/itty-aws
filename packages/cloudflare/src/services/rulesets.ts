@@ -14,6 +14,16 @@ import { type DefaultErrors } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class RulesetNotFound extends Schema.TaggedErrorClass<RulesetNotFound>()(
+  "RulesetNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RulesetNotFound, [{ code: 10003 }]);
+
+// =============================================================================
 // Pha
 // =============================================================================
 
@@ -4404,7 +4414,7 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetPhasResponse>;
 
-export type GetPhasError = DefaultErrors;
+export type GetPhasError = DefaultErrors | RulesetNotFound;
 
 export const getPhasForAccount: API.OperationMethod<
   GetPhasForAccountRequest,
@@ -4414,7 +4424,7 @@ export const getPhasForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPhasForAccountRequest,
   output: GetPhasResponse,
-  errors: [],
+  errors: [RulesetNotFound],
 }));
 
 export const getPhasForZone: API.OperationMethod<
@@ -4425,7 +4435,7 @@ export const getPhasForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPhasForZoneRequest,
   output: GetPhasResponse,
-  errors: [],
+  errors: [RulesetNotFound],
 }));
 
 const PutPhasBaseFields = {
@@ -11707,7 +11717,7 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<PutPhasResponse>;
 
-export type PutPhasError = DefaultErrors;
+export type PutPhasError = DefaultErrors | RulesetNotFound;
 
 export const putPhasForAccount: API.OperationMethod<
   PutPhasForAccountRequest,
@@ -11717,7 +11727,7 @@ export const putPhasForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPhasForAccountRequest,
   output: PutPhasResponse,
-  errors: [],
+  errors: [RulesetNotFound],
 }));
 
 export const putPhasForZone: API.OperationMethod<
@@ -11728,7 +11738,7 @@ export const putPhasForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPhasForZoneRequest,
   output: PutPhasResponse,
-  errors: [],
+  errors: [RulesetNotFound],
 }));
 
 // =============================================================================
@@ -35881,9 +35891,15 @@ export const getRulesetForZone: API.OperationMethod<
   errors: [],
 }));
 
-const ListRulesetsBaseFields = {} as const;
+const ListRulesetsBaseFields = {
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+} as const;
 
-interface ListRulesetsBaseRequest {}
+interface ListRulesetsBaseRequest {
+  perPage?: number;
+  cursor?: string;
+}
 
 export interface ListRulesetsForAccountRequest extends ListRulesetsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */

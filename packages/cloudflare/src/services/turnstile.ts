@@ -13,6 +13,22 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class WidgetNotFound extends Schema.TaggedErrorClass<WidgetNotFound>()(
+  "WidgetNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(WidgetNotFound, [{ code: 10404 }, { code: 10407 }]);
+
+// =============================================================================
 // SecretWidget
 // =============================================================================
 
@@ -218,7 +234,7 @@ export const GetWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetWidgetResponse>;
 
-export type GetWidgetError = DefaultErrors;
+export type GetWidgetError = DefaultErrors | WidgetNotFound | Forbidden;
 
 export const getWidget: API.OperationMethod<
   GetWidgetRequest,
@@ -228,7 +244,7 @@ export const getWidget: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWidgetRequest,
   output: GetWidgetResponse,
-  errors: [],
+  errors: [WidgetNotFound, Forbidden],
 }));
 
 export interface ListWidgetsRequest {
@@ -799,7 +815,7 @@ export const DeleteWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteWidgetResponse>;
 
-export type DeleteWidgetError = DefaultErrors;
+export type DeleteWidgetError = DefaultErrors | WidgetNotFound | Forbidden;
 
 export const deleteWidget: API.OperationMethod<
   DeleteWidgetRequest,
@@ -809,5 +825,5 @@ export const deleteWidget: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWidgetRequest,
   output: DeleteWidgetResponse,
-  errors: [],
+  errors: [WidgetNotFound, Forbidden],
 }));

@@ -1,0 +1,22 @@
+{
+  "errors": {
+    "SinkNotFound": [
+      {
+        "code": 1015
+      }
+    ],
+    "InvalidSinkId": [
+      {
+        "code": 2
+      }
+    ],
+    "SinkInUse": [
+      {
+        "status": 422,
+        "message": {
+          "includes": "in use"
+        }
+      }
+    ]
+  }
+}

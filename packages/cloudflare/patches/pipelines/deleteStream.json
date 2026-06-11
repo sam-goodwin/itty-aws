@@ -1,7 +1,27 @@
 {
   "errors": {
     "PipelineNotExists": [
-      { "code": 1000 }
+      {
+        "code": 1000
+      }
+    ],
+    "StreamNotFound": [
+      {
+        "code": 1016
+      }
+    ],
+    "InvalidStreamId": [
+      {
+        "code": 2
+      }
+    ],
+    "StreamInUse": [
+      {
+        "status": 422,
+        "message": {
+          "includes": "in use"
+        }
+      }
     ]
   }
 }

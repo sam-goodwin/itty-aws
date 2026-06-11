@@ -15,6 +15,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -3453,6 +3468,9 @@ paths:
                   - phase
                   - version
       x-distilled-response-path: result
+      x-distilled-errors:
+        RulesetNotFound:
+          - code: 10003
     put:
       operationId: putPhas
       description: "Updates an account or zone entry point ruleset, creating a new
@@ -10012,6 +10030,9 @@ paths:
                   - phase
                   - version
       x-distilled-response-path: result
+      x-distilled-errors:
+        RulesetNotFound:
+          - code: 10003
   /{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint/versions/{rulesetVersion}:
     get:
       operationId: getPhasVersion
@@ -10026,6 +10047,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -13472,6 +13508,20 @@ paths:
         - name: rulesetPhase
           in: path
           required: true
+          schema:
+            type: string
+        - name: account_id
+          in: query
+          required: false
+          description: The Account ID to use for this endpoint. Mutually exclusive with
+            the Zone ID.
+          schema:
+            type: string
+        - name: zone_id
+          in: query
+          required: false
+          description: The Zone ID to use for this endpoint. Mutually exclusive with the
+            Account ID.
           schema:
             type: string
       responses:
@@ -23366,6 +23416,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -26814,6 +26879,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -36857,12 +36937,52 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
   /{accountOrZone}/{accountOrZoneId}/rulesets:
     get:
       operationId: listRulesets
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -43538,6 +43658,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -46990,6 +47125,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -47000,6 +47150,20 @@ paths:
         - name: rulesetId
           in: path
           required: true
+          schema:
+            type: string
+        - name: account_id
+          in: query
+          required: false
+          description: The Account ID to use for this endpoint. Mutually exclusive with
+            the Zone ID.
+          schema:
+            type: string
+        - name: zone_id
+          in: query
+          required: false
+          description: The Zone ID to use for this endpoint. Mutually exclusive with the
+            Account ID.
           schema:
             type: string
       responses:

@@ -18,11 +18,20 @@ import { type DefaultErrors } from "../errors.ts";
 
 export interface GetBillingUsageRequest {
   organizationId: string;
+  /** Start date for the usage query (ISO 8601). Required if `to` is set. When omitted along with `to`, defaults to the start of the current month. Filters by charge period (when consumption happened), not  */
+  from?: string;
+  /** Filter results by billable metric id (e.g., workers_standard_requests). */
+  metric?: string;
+  /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The max */
+  to?: string;
 }
 
 export const GetBillingUsageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     organizationId: Schema.String.pipe(T.HttpPath("organizationId")),
+    from: Schema.optional(Schema.String),
+    metric: Schema.optional(Schema.String),
+    to: Schema.optional(Schema.String),
   },
 ).pipe(
   T.Http({
@@ -691,10 +700,43 @@ export const getOrganization: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListOrganizationsRequest {}
+export interface ListOrganizationsRequest {
+  /** Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements by repeating the query value. */
+  id?: string[];
+  containing?: { account?: string; organization?: string; user?: string };
+  name?: { contains?: string; endsWith?: string; startsWith?: string };
+  /** The amount of items to return. Defaults to 10. */
+  pageSize?: number;
+  /** An opaque token returned from the last list response that when provided will retrieve the next page.  Parameters used to filter the retrieved list must remain in subsequent requests with a page token. */
+  pageToken?: string;
+  parent?: { id?: unknown };
+}
 
 export const ListOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("id")),
+    containing: Schema.optional(
+      Schema.Struct({
+        account: Schema.optional(Schema.String),
+        organization: Schema.optional(Schema.String),
+        user: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("containing")),
+    name: Schema.optional(
+      Schema.Struct({
+        contains: Schema.optional(Schema.String),
+        endsWith: Schema.optional(Schema.String),
+        startsWith: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("name")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("page_size")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("page_token")),
+    parent: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.Unknown),
+      }),
+    ).pipe(T.HttpQuery("parent")),
+  }).pipe(
     T.Http({ method: "GET", path: "/organizations" }),
   ) as unknown as Schema.Schema<ListOrganizationsRequest>;
 

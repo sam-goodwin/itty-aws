@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "SnippetRulesNotFound": [{ "status": 404 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

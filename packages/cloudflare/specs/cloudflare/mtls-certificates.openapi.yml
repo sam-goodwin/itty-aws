@@ -109,6 +109,12 @@ paths:
                     type: string
                     description: This is the time the certificate was uploaded.
       x-distilled-response-path: result
+      x-distilled-errors:
+        CertificateNotFound:
+          - code: 1472
+            message:
+              includes: Certificate not found
+          - status: 404
     delete:
       operationId: deleteMtlsCertificate
       description: "Deletes the mTLS certificate unless the certificate is in use by
@@ -173,6 +179,12 @@ paths:
                     type: string
                     description: This is the time the certificate was uploaded.
       x-distilled-response-path: result
+      x-distilled-errors:
+        CertificateNotFound:
+          - code: 1472
+            message:
+              includes: Certificate not found
+          - status: 404
   /accounts/{account_id}/mtls_certificates:
     get:
       operationId: listMtlsCertificates
@@ -358,3 +370,8 @@ paths:
                     type: string
                     description: This is the time the certificate was uploaded.
       x-distilled-response-path: result
+      x-distilled-errors:
+        CertificateAlreadyExists:
+          - code: 1471
+            message:
+              includes: already exists

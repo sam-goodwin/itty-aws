@@ -15,40 +15,21 @@ paths:
           required: true
           schema:
             type: string
-            enum:
-              - access_requests
-              - audit_logs
-              - audit_logs_v2
-              - biso_user_actions
-              - casb_findings
-              - device_posture_results
-              - dex_application_tests
-              - dex_device_state_events
-              - dlp_forensic_copies
-              - dns_firewall_logs
-              - dns_logs
-              - email_security_alerts
-              - email_security_post_delivery_events
-              - firewall_events
-              - gateway_dns
-              - gateway_http
-              - gateway_network
-              - http_requests
-              - ipsec_logs
-              - magic_ids_detections
-              - mcp_portal_logs
-              - mnm_flow_logs
-              - nel_reports
-              - network_analytics_logs
-              - page_shield_events
-              - sinkhole_http_logs
-              - spectrum_events
-              - ssh_logs
-              - warp_config_changes
-              - warp_toggle_changes
-              - workers_trace_events
-              - zaraz_events
-              - zero_trust_network_sessions
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -65,40 +46,20 @@ paths:
           required: true
           schema:
             type: string
-            enum:
-              - access_requests
-              - audit_logs
-              - audit_logs_v2
-              - biso_user_actions
-              - casb_findings
-              - device_posture_results
-              - dex_application_tests
-              - dex_device_state_events
-              - dlp_forensic_copies
-              - dns_firewall_logs
-              - dns_logs
-              - email_security_alerts
-              - email_security_post_delivery_events
-              - firewall_events
-              - gateway_dns
-              - gateway_http
-              - gateway_network
-              - http_requests
-              - ipsec_logs
-              - magic_ids_detections
-              - mcp_portal_logs
-              - mnm_flow_logs
-              - nel_reports
-              - network_analytics_logs
-              - page_shield_events
-              - sinkhole_http_logs
-              - spectrum_events
-              - ssh_logs
-              - warp_config_changes
-              - warp_toggle_changes
-              - workers_trace_events
-              - zaraz_events
-              - zero_trust_network_sessions
+        - name: account_id
+          in: query
+          required: false
+          description: The Account ID to use for this endpoint. Mutually exclusive with
+            the Zone ID.
+          schema:
+            type: string
+        - name: zone_id
+          in: query
+          required: false
+          description: The Zone ID to use for this endpoint. Mutually exclusive with the
+            Account ID.
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -516,6 +477,21 @@ paths:
           required: true
           schema:
             type: number
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -772,6 +748,14 @@ paths:
                     description: The structured replacement for `logpull_options`. When including
                       this field, the `logpull_option` field will be ignored.
       x-distilled-response-path: result
+      x-distilled-errors:
+        JobNotFound:
+          - code: 1000
+            message:
+              includes: job not found
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateJob
       description: "Updates a Logpush job.  @example ```ts const logpushJob = await
@@ -1269,6 +1253,21 @@ paths:
           required: true
           schema:
             type: number
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The Account ID to use for this endpoint. Mutually exclusive with
+                    the Zone ID.
+                zone_id:
+                  type: string
+                  description: The Zone ID to use for this endpoint. Mutually exclusive with the
+                    Account ID.
       responses:
         "200":
           description: Success
@@ -1281,9 +1280,30 @@ paths:
                     type: number
                     description: Unique id of the job.
       x-distilled-response-path: result
+      x-distilled-errors:
+        JobNotFound:
+          - code: 1000
+            message:
+              includes: job not found
+          - status: 404
   /{accountOrZone}/{accountOrZoneId}/logpush/jobs:
     get:
       operationId: listJobs
+      parameters:
+        - name: account_id
+          in: query
+          required: false
+          description: The Account ID to use for this endpoint. Mutually exclusive with
+            the Zone ID.
+          schema:
+            type: string
+        - name: zone_id
+          in: query
+          required: false
+          description: The Zone ID to use for this endpoint. Mutually exclusive with the
+            Account ID.
+          schema:
+            type: string
       responses:
         "200":
           description: Success

@@ -13,6 +13,28 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class ListAlreadyExists extends Schema.TaggedErrorClass<ListAlreadyExists>()(
+  "ListAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ListAlreadyExists, [{ code: 10021 }]);
+
+export class ListNotFound extends Schema.TaggedErrorClass<ListNotFound>()(
+  "ListNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ListNotFound, [{ code: 10001 }]);
+
+// =============================================================================
 // List
 // =============================================================================
 
@@ -78,7 +100,7 @@ export const GetListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetListResponse>;
 
-export type GetListError = DefaultErrors;
+export type GetListError = DefaultErrors | ListNotFound | Forbidden;
 
 export const getList: API.OperationMethod<
   GetListRequest,
@@ -88,7 +110,7 @@ export const getList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetListRequest,
   output: GetListResponse,
-  errors: [],
+  errors: [ListNotFound, Forbidden],
 }));
 
 export interface ListListsRequest {
@@ -144,7 +166,7 @@ export const ListListsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListListsResponse>;
 
-export type ListListsError = DefaultErrors;
+export type ListListsError = DefaultErrors | Forbidden;
 
 export const listLists: API.PaginatedOperationMethod<
   ListListsRequest,
@@ -154,7 +176,7 @@ export const listLists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListListsRequest,
   output: ListListsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -232,7 +254,7 @@ export const CreateListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateListResponse>;
 
-export type CreateListError = DefaultErrors;
+export type CreateListError = DefaultErrors | ListAlreadyExists | Forbidden;
 
 export const createList: API.OperationMethod<
   CreateListRequest,
@@ -242,7 +264,7 @@ export const createList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateListRequest,
   output: CreateListResponse,
-  errors: [],
+  errors: [ListAlreadyExists, Forbidden],
 }));
 
 export interface UpdateListRequest {
@@ -312,7 +334,7 @@ export const UpdateListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateListResponse>;
 
-export type UpdateListError = DefaultErrors;
+export type UpdateListError = DefaultErrors | ListNotFound | Forbidden;
 
 export const updateList: API.OperationMethod<
   UpdateListRequest,
@@ -322,7 +344,7 @@ export const updateList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateListRequest,
   output: UpdateListResponse,
-  errors: [],
+  errors: [ListNotFound, Forbidden],
 }));
 
 export interface DeleteListRequest {
@@ -352,7 +374,7 @@ export const DeleteListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteListResponse>;
 
-export type DeleteListError = DefaultErrors;
+export type DeleteListError = DefaultErrors | ListNotFound | Forbidden;
 
 export const deleteList: API.OperationMethod<
   DeleteListRequest,
@@ -362,7 +384,7 @@ export const deleteList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteListRequest,
   output: DeleteListResponse,
-  errors: [],
+  errors: [ListNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -415,7 +437,10 @@ export const GetListBulkOperationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetListBulkOperationResponse>;
 
-export type GetListBulkOperationError = DefaultErrors;
+export type GetListBulkOperationError =
+  | DefaultErrors
+  | ListNotFound
+  | Forbidden;
 
 export const getListBulkOperation: API.OperationMethod<
   GetListBulkOperationRequest,
@@ -425,7 +450,7 @@ export const getListBulkOperation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetListBulkOperationRequest,
   output: GetListBulkOperationResponse,
-  errors: [],
+  errors: [ListNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -809,7 +834,7 @@ export const ListListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListListItemsResponse>;
 
-export type ListListItemsError = DefaultErrors;
+export type ListListItemsError = DefaultErrors | ListNotFound | Forbidden;
 
 export const listListItems: API.PaginatedOperationMethod<
   ListListItemsRequest,
@@ -819,7 +844,7 @@ export const listListItems: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListListItemsRequest,
   output: ListListItemsResponse,
-  errors: [],
+  errors: [ListNotFound, Forbidden],
   pagination: {
     mode: "cursor",
     inputToken: "cursor",
@@ -1047,7 +1072,7 @@ export const UpdateListItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateListItemResponse>;
 
-export type UpdateListItemError = DefaultErrors;
+export type UpdateListItemError = DefaultErrors | ListNotFound | Forbidden;
 
 export const updateListItem: API.OperationMethod<
   UpdateListItemRequest,
@@ -1057,7 +1082,7 @@ export const updateListItem: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateListItemRequest,
   output: UpdateListItemResponse,
-  errors: [],
+  errors: [ListNotFound, Forbidden],
 }));
 
 export interface DeleteListItemRequest {

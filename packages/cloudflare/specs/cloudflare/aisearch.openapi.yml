@@ -1506,6 +1506,8 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
     post:
       operationId: createInstance
       description: "Create a new instance.  @example ```ts const instance = await
@@ -1582,17 +1584,6 @@ paths:
                   description: Body param
                 cache_ttl:
                   type: number
-                  enum:
-                    - 600
-                    - 1800
-                    - 3600
-                    - 7200
-                    - 21600
-                    - 43200
-                    - 86400
-                    - 172800
-                    - 259200
-                    - 518400
                   description: "Body param: Cache entry TTL in seconds. Allowed values: 600
                     (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h),
                     43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400
@@ -1952,15 +1943,6 @@ paths:
                   description: Body param
                 sync_interval:
                   type: number
-                  enum:
-                    - 900
-                    - 1800
-                    - 3600
-                    - 7200
-                    - 14400
-                    - 21600
-                    - 43200
-                    - 86400
                   description: "Body param: Interval between automatic syncs, in seconds. Allowed
                     values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h),
                     14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
@@ -2042,17 +2024,6 @@ paths:
                     nullable: true
                   cache_ttl:
                     type: number
-                    enum:
-                      - 600
-                      - 1800
-                      - 3600
-                      - 7200
-                      - 21600
-                      - 43200
-                      - 86400
-                      - 172800
-                      - 259200
-                      - 518400
                     description: "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800
                       (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h),
                       86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
@@ -2424,15 +2395,6 @@ paths:
                     type: string
                   sync_interval:
                     type: number
-                    enum:
-                      - 900
-                      - 1800
-                      - 3600
-                      - 7200
-                      - 14400
-                      - 21600
-                      - 43200
-                      - 86400
                     description: "Interval between automatic syncs, in seconds. Allowed values: 900
                       (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h),
                       21600 (6h), 43200 (12h), 86400 (24h)."
@@ -2454,6 +2416,12 @@ paths:
           - code: 7002
         InvalidRoute:
           - code: 7003
+        InstanceAlreadyExists:
+          - status: 400
+            message:
+              includes: already_exist
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/ai-search/instances/{id}:
     put:
       operationId: updateInstance
@@ -2532,17 +2500,6 @@ paths:
                   description: Body param
                 cache_ttl:
                   type: number
-                  enum:
-                    - 600
-                    - 1800
-                    - 3600
-                    - 7200
-                    - 21600
-                    - 43200
-                    - 86400
-                    - 172800
-                    - 259200
-                    - 518400
                   description: "Body param: Cache entry TTL in seconds. Allowed values: 600
                     (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h),
                     43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400
@@ -2935,15 +2892,6 @@ paths:
                   description: Body param
                 sync_interval:
                   type: number
-                  enum:
-                    - 900
-                    - 1800
-                    - 3600
-                    - 7200
-                    - 14400
-                    - 21600
-                    - 43200
-                    - 86400
                   description: "Body param: Interval between automatic syncs, in seconds. Allowed
                     values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h),
                     14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
@@ -3031,17 +2979,6 @@ paths:
                     nullable: true
                   cache_ttl:
                     type: number
-                    enum:
-                      - 600
-                      - 1800
-                      - 3600
-                      - 7200
-                      - 21600
-                      - 43200
-                      - 86400
-                      - 172800
-                      - 259200
-                      - 518400
                     description: "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800
                       (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h),
                       86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
@@ -3413,15 +3350,6 @@ paths:
                     type: string
                   sync_interval:
                     type: number
-                    enum:
-                      - 900
-                      - 1800
-                      - 3600
-                      - 7200
-                      - 14400
-                      - 21600
-                      - 43200
-                      - 86400
                     description: "Interval between automatic syncs, in seconds. Allowed values: 900
                       (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h),
                       21600 (6h), 43200 (12h), 86400 (24h)."
@@ -3443,6 +3371,8 @@ paths:
           - code: 7002
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteInstance
       description: "Delete instance.  @example ```ts const instance = await
@@ -3525,17 +3455,6 @@ paths:
                     nullable: true
                   cache_ttl:
                     type: number
-                    enum:
-                      - 600
-                      - 1800
-                      - 3600
-                      - 7200
-                      - 21600
-                      - 43200
-                      - 86400
-                      - 172800
-                      - 259200
-                      - 518400
                     description: "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800
                       (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h),
                       86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
@@ -3907,15 +3826,6 @@ paths:
                     type: string
                   sync_interval:
                     type: number
-                    enum:
-                      - 900
-                      - 1800
-                      - 3600
-                      - 7200
-                      - 14400
-                      - 21600
-                      - 43200
-                      - 86400
                     description: "Interval between automatic syncs, in seconds. Allowed values: 900
                       (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h),
                       21600 (6h), 43200 (12h), 86400 (24h)."
@@ -3937,6 +3847,8 @@ paths:
           - code: 7002
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
     get:
       operationId: readInstance
       description: "Read instance.  @example ```ts const response = await
@@ -4019,17 +3931,6 @@ paths:
                     nullable: true
                   cache_ttl:
                     type: number
-                    enum:
-                      - 600
-                      - 1800
-                      - 3600
-                      - 7200
-                      - 21600
-                      - 43200
-                      - 86400
-                      - 172800
-                      - 259200
-                      - 518400
                     description: "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800
                       (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h),
                       86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
@@ -4401,15 +4302,6 @@ paths:
                     type: string
                   sync_interval:
                     type: number
-                    enum:
-                      - 900
-                      - 1800
-                      - 3600
-                      - 7200
-                      - 14400
-                      - 21600
-                      - 43200
-                      - 86400
                     description: "Interval between automatic syncs, in seconds. Allowed values: 900
                       (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h),
                       21600 (6h), 43200 (12h), 86400 (24h)."
@@ -4431,6 +4323,8 @@ paths:
           - code: 7002
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/ai-search/instances/{id}/search:
     post:
       operationId: searchInstance

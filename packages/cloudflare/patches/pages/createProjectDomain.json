@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "ProjectNotFound": [{ "code": 8000007 }],
+    "PagesDomainAlreadyExists": [{ "code": 8000018 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -228,6 +228,32 @@ paths:
   /accounts:
     get:
       operationId: listAccounts
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: direction
+          in: query
+          required: false
+          description: Direction to order results.
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: name
+          in: query
+          required: false
+          description: Name of the account.
+          schema:
+            type: string
       responses:
         "200":
           description: Success

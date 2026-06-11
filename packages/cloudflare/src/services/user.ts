@@ -16,6 +16,12 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
   "InvalidRoute",
   { code: Schema.Number, message: Schema.String },
@@ -54,11 +60,56 @@ T.applyErrorMatchers(TokenNotFound, [{ code: 1003 }]);
 // AuditLog
 // =============================================================================
 
-export interface ListAuditLogsRequest {}
+export interface ListAuditLogsRequest {
+  page?: number;
+  perPage?: number;
+  /** Finds a specific log by its ID. */
+  id?: string;
+  action?: { type?: string };
+  actor?: { email?: string; ip?: string };
+  /** Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339. */
+  before?: unknown;
+  /** Changes the direction of the chronological sorting. */
+  direction?: "desc" | "asc" | (string & {});
+  /** Indicates that this request is an export of logs in CSV format. */
+  export?: boolean;
+  /** Indicates whether or not to hide user level audit logs. */
+  hideUserLogs?: boolean;
+  /** Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339. */
+  since?: unknown;
+  zone?: { name?: string };
+}
 
-export const ListAuditLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListAuditLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+  action: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+    }),
+  ).pipe(T.HttpQuery("action")),
+  actor: Schema.optional(
+    Schema.Struct({
+      email: Schema.optional(Schema.String),
+      ip: Schema.optional(Schema.String),
+    }),
+  ).pipe(T.HttpQuery("actor")),
+  before: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("before")),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
+  export: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("export")),
+  hideUserLogs: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("hide_user_logs"),
+  ),
+  since: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("since")),
+  zone: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+    }),
+  ).pipe(T.HttpQuery("zone")),
+}).pipe(
   T.Http({ method: "GET", path: "/user/audit_logs" }),
 ) as unknown as Schema.Schema<ListAuditLogsRequest>;
 
@@ -192,10 +243,33 @@ export const listAuditLogs: API.PaginatedOperationMethod<
 // BillingHistory
 // =============================================================================
 
-export interface ListBillingHistoriesRequest {}
+export interface ListBillingHistoriesRequest {
+  page?: number;
+  perPage?: number;
+  /** The billing item action. */
+  action?: string;
+  /** When the billing item was created. */
+  occurredAt?: string;
+  /** Field to order billing history by. */
+  order?: "type" | "occurred_at" | "action" | (string & {});
+  /** The billing item type. */
+  type?: string;
+}
 
 export const ListBillingHistoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
+    occurredAt: Schema.optional(Schema.String).pipe(T.HttpQuery("occurred_at")),
+    order: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["type", "occurred_at", "action"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("order")),
+    type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
+  }).pipe(
     T.Http({ method: "GET", path: "/user/billing/history" }),
   ) as unknown as Schema.Schema<ListBillingHistoriesRequest>;
 
@@ -796,10 +870,39 @@ export const getOrganization: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListOrganizationsRequest {}
+export interface ListOrganizationsRequest {
+  page?: number;
+  perPage?: number;
+  /** Direction to order organizations. */
+  direction?: "asc" | "desc" | (string & {});
+  /** Whether to match all search requirements or at least one (any). */
+  match?: "any" | "all" | (string & {});
+  /** Organization name. */
+  name?: string;
+  /** Field to order organizations by. */
+  order?: "id" | "name" | "status" | (string & {});
+  /** Whether the user is a member of the organization or has an inivitation pending. */
+  status?: "member" | "invited" | (string & {});
+}
 
 export const ListOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    match: Schema.optional(
+      Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+    ).pipe(T.HttpQuery("match")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["id", "name", "status"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["member", "invited"]), Schema.String]),
+    ).pipe(T.HttpQuery("status")),
+  }).pipe(
     T.Http({ method: "GET", path: "/user/organizations" }),
   ) as unknown as Schema.Schema<ListOrganizationsRequest>;
 
@@ -1398,11 +1501,20 @@ export const getToken: API.OperationMethod<
   errors: [InvalidRoute, TokenNotFound],
 }));
 
-export interface ListTokensRequest {}
+export interface ListTokensRequest {
+  page?: number;
+  perPage?: number;
+  /** Direction to order results. */
+  direction?: "asc" | "desc" | (string & {});
+}
 
-export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
+}).pipe(
   T.Http({ method: "GET", path: "/user/tokens" }),
 ) as unknown as Schema.Schema<ListTokensRequest>;
 
@@ -2104,7 +2216,7 @@ export const VerifyTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<VerifyTokenResponse>;
 
-export type VerifyTokenError = DefaultErrors;
+export type VerifyTokenError = DefaultErrors | Forbidden;
 
 export const verifyToken: API.OperationMethod<
   VerifyTokenRequest,
@@ -2114,17 +2226,25 @@ export const verifyToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyTokenRequest,
   output: VerifyTokenResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================
 // TokenPermissionGroup
 // =============================================================================
 
-export interface ListTokenPermissionGroupsRequest {}
+export interface ListTokenPermissionGroupsRequest {
+  /** Filter by the name of the permission group. The value must be URL-encoded. */
+  name?: string;
+  /** Filter by the scope of the permission group. The value must be URL-encoded. */
+  scope?: string;
+}
 
 export const ListTokenPermissionGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope")),
+  }).pipe(
     T.Http({ method: "GET", path: "/user/tokens/permission_groups" }),
   ) as unknown as Schema.Schema<ListTokenPermissionGroupsRequest>;
 

@@ -233,11 +233,23 @@ export const getAccount: API.OperationMethod<
   errors: [InvalidRoute],
 }));
 
-export interface ListAccountsRequest {}
+export interface ListAccountsRequest {
+  page?: number;
+  perPage?: number;
+  /** Direction to order results. */
+  direction?: "asc" | "desc" | (string & {});
+  /** Name of the account. */
+  name?: string;
+}
 
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
+  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+}).pipe(
   T.Http({ method: "GET", path: "/accounts" }),
 ) as unknown as Schema.Schema<ListAccountsRequest>;
 

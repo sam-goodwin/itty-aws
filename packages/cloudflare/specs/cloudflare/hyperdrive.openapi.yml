@@ -875,6 +875,7 @@ paths:
           - code: 2009
         HyperdriveConfigNotFound:
           - code: 2006
+          - status: 404
         InvalidObjectIdentifier:
           - code: 7003
         MethodNotAllowed:

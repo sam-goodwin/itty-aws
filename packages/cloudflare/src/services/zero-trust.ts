@@ -17,11 +17,35 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
+export class AccessGroupNotFound extends Schema.TaggedErrorClass<AccessGroupNotFound>()(
+  "AccessGroupNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AccessGroupNotFound, [{ code: 12152 }]);
+
+export class AccessServiceTokenNotFound extends Schema.TaggedErrorClass<AccessServiceTokenNotFound>()(
+  "AccessServiceTokenNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AccessServiceTokenNotFound, [{ code: 12135 }]);
+
 export class DuplicateTunnelName extends Schema.TaggedErrorClass<DuplicateTunnelName>()(
   "DuplicateTunnelName",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(DuplicateTunnelName, [{ code: 1013 }]);
+
+export class OrganizationAlreadyExists extends Schema.TaggedErrorClass<OrganizationAlreadyExists>()(
+  "OrganizationAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(OrganizationAlreadyExists, [{ code: 11002 }]);
+
+export class OrganizationNotFound extends Schema.TaggedErrorClass<OrganizationNotFound>()(
+  "OrganizationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(OrganizationNotFound, [{ status: 404 }]);
 
 export class TunnelConfigurationNotFound extends Schema.TaggedErrorClass<TunnelConfigurationNotFound>()(
   "TunnelConfigurationNotFound",
@@ -16533,9 +16557,35 @@ export const getAccessApplicationForZone: API.OperationMethod<
   errors: [],
 }));
 
-const ListAccessApplicationsBaseFields = {} as const;
+const ListAccessApplicationsBaseFields = {
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  aud: Schema.optional(Schema.String).pipe(T.HttpQuery("aud")),
+  domain: Schema.optional(Schema.String).pipe(T.HttpQuery("domain")),
+  exact: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("exact")),
+  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+  targetAttributes: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("target_attributes"),
+  ),
+} as const;
 
-interface ListAccessApplicationsBaseRequest {}
+interface ListAccessApplicationsBaseRequest {
+  page?: number;
+  perPage?: number;
+  /** Query param: The aud of the app. */
+  aud?: string;
+  /** Query param: The domain of the app. */
+  domain?: string;
+  /** Query param: True for only exact string matches against passed name/domain query parameters. */
+  exact?: boolean;
+  /** Query param: The name of the app. */
+  name?: string;
+  /** Query param: Search for apps by other listed query parameters. */
+  search?: string;
+  /** Query param: Target Criteria attributes in key=value format. */
+  targetAttributes?: string;
+}
 
 export interface ListAccessApplicationsForAccountRequest extends ListAccessApplicationsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -62391,9 +62441,15 @@ export const getAccessApplicationCaForZone: API.OperationMethod<
   errors: [],
 }));
 
-const ListAccessApplicationCasBaseFields = {} as const;
+const ListAccessApplicationCasBaseFields = {
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+} as const;
 
-interface ListAccessApplicationCasBaseRequest {}
+interface ListAccessApplicationCasBaseRequest {
+  page?: number;
+  perPage?: number;
+}
 
 export interface ListAccessApplicationCasForAccountRequest extends ListAccessApplicationCasBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -63756,10 +63812,14 @@ export const getAccessApplicationPolicyForZone: API.OperationMethod<
 
 const ListAccessApplicationPoliciesBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 } as const;
 
 interface ListAccessApplicationPoliciesBaseRequest {
   appId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export interface ListAccessApplicationPoliciesForAccountRequest extends ListAccessApplicationPoliciesBaseRequest {
@@ -69418,9 +69478,15 @@ export const getAccessCertificateForZone: API.OperationMethod<
   errors: [],
 }));
 
-const ListAccessCertificatesBaseFields = {} as const;
+const ListAccessCertificatesBaseFields = {
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+} as const;
 
-interface ListAccessCertificatesBaseRequest {}
+interface ListAccessCertificatesBaseRequest {
+  page?: number;
+  perPage?: number;
+}
 
 export interface ListAccessCertificatesForAccountRequest extends ListAccessCertificatesBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -70706,70 +70772,7 @@ export interface GetAccessGroupResponse {
       )[]
     | null;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?:
-    | (
-        | { group: { id: string } }
-        | { anyValidServiceToken: unknown }
-        | {
-            authContext: {
-              id: string;
-              acId: string;
-              identityProviderId: string;
-            };
-          }
-        | { authMethod: { authMethod: string } }
-        | { azureAD: { id: string; identityProviderId: string } }
-        | { certificate: unknown }
-        | { commonName: { commonName: string } }
-        | { geo: { countryCode: string } }
-        | { devicePosture: { integrationUid: string } }
-        | { emailDomain: { domain: string } }
-        | { emailList: { id: string } }
-        | { email: { email: string } }
-        | { everyone: unknown }
-        | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
-        | {
-            githubOrganization: {
-              identityProviderId: string;
-              name: string;
-              team?: string | null;
-            };
-          }
-        | { gsuite: { email: string; identityProviderId: string } }
-        | { loginMethod: { id: string } }
-        | { ipList: { id: string } }
-        | { ip: { ip: string } }
-        | { okta: { identityProviderId: string; name: string } }
-        | {
-            saml: {
-              attributeName: string;
-              attributeValue: string;
-              identityProviderId: string;
-            };
-          }
-        | {
-            oidc: {
-              claimName: string;
-              claimValue: string;
-              identityProviderId: string;
-            };
-          }
-        | { serviceToken: { tokenId: string } }
-        | { linkedAppToken: { appUid: string } }
-        | {
-            userRiskScore: {
-              userRiskScore: (
-                | "low"
-                | "medium"
-                | "high"
-                | "unscored"
-                | (string & {})
-              )[];
-            };
-          }
-        | { cloudflareAccountMember: { accountId?: string | null } }
-      )[]
-    | null;
+  isDefault?: boolean | null;
   /** The name of the Access group. */
   name?: string | null;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -71262,216 +71265,7 @@ export const GetAccessGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Null,
       ]),
     ),
-    isDefault: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Union([
-            Schema.Struct({
-              group: Schema.Struct({
-                id: Schema.String,
-              }),
-            }),
-            Schema.Struct({
-              anyValidServiceToken: Schema.Unknown,
-            }).pipe(
-              Schema.encodeKeys({
-                anyValidServiceToken: "any_valid_service_token",
-              }),
-            ),
-            Schema.Struct({
-              authContext: Schema.Struct({
-                id: Schema.String,
-                acId: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  acId: "ac_id",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
-            Schema.Struct({
-              authMethod: Schema.Struct({
-                authMethod: Schema.String,
-              }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-            }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-            Schema.Struct({
-              azureAD: Schema.Struct({
-                id: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              certificate: Schema.Unknown,
-            }),
-            Schema.Struct({
-              commonName: Schema.Struct({
-                commonName: Schema.String,
-              }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-            }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-            Schema.Struct({
-              geo: Schema.Struct({
-                countryCode: Schema.String,
-              }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
-            }),
-            Schema.Struct({
-              devicePosture: Schema.Struct({
-                integrationUid: Schema.String,
-              }).pipe(Schema.encodeKeys({ integrationUid: "integration_uid" })),
-            }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
-            Schema.Struct({
-              emailDomain: Schema.Struct({
-                domain: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
-            Schema.Struct({
-              emailList: Schema.Struct({
-                id: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-            Schema.Struct({
-              email: Schema.Struct({
-                email: Schema.String,
-              }),
-            }),
-            Schema.Struct({
-              everyone: Schema.Unknown,
-            }),
-            Schema.Struct({
-              externalEvaluation: Schema.Struct({
-                evaluateUrl: Schema.String,
-                keysUrl: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  evaluateUrl: "evaluate_url",
-                  keysUrl: "keys_url",
-                }),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ externalEvaluation: "external_evaluation" }),
-            ),
-            Schema.Struct({
-              githubOrganization: Schema.Struct({
-                identityProviderId: Schema.String,
-                name: Schema.String,
-                team: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  identityProviderId: "identity_provider_id",
-                  name: "name",
-                  team: "team",
-                }),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ githubOrganization: "github-organization" }),
-            ),
-            Schema.Struct({
-              gsuite: Schema.Struct({
-                email: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  email: "email",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              loginMethod: Schema.Struct({
-                id: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
-            Schema.Struct({
-              ipList: Schema.Struct({
-                id: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-            Schema.Struct({
-              ip: Schema.Struct({
-                ip: Schema.String,
-              }),
-            }),
-            Schema.Struct({
-              okta: Schema.Struct({
-                identityProviderId: Schema.String,
-                name: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  identityProviderId: "identity_provider_id",
-                  name: "name",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              saml: Schema.Struct({
-                attributeName: Schema.String,
-                attributeValue: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  attributeName: "attribute_name",
-                  attributeValue: "attribute_value",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              oidc: Schema.Struct({
-                claimName: Schema.String,
-                claimValue: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  claimName: "claim_name",
-                  claimValue: "claim_value",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              serviceToken: Schema.Struct({
-                tokenId: Schema.String,
-              }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-            }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
-            Schema.Struct({
-              linkedAppToken: Schema.Struct({
-                appUid: Schema.String,
-              }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-            }).pipe(Schema.encodeKeys({ linkedAppToken: "linked_app_token" })),
-            Schema.Struct({
-              userRiskScore: Schema.Struct({
-                userRiskScore: Schema.Array(
-                  Schema.Union([
-                    Schema.Literals(["low", "medium", "high", "unscored"]),
-                    Schema.String,
-                  ]),
-                ),
-              }).pipe(Schema.encodeKeys({ userRiskScore: "user_risk_score" })),
-            }).pipe(Schema.encodeKeys({ userRiskScore: "user_risk_score" })),
-            Schema.Struct({
-              cloudflareAccountMember: Schema.Struct({
-                accountId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
-            }).pipe(
-              Schema.encodeKeys({
-                cloudflareAccountMember: "cloudflare_account_member",
-              }),
-            ),
-          ]),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     require: Schema.optional(
       Schema.Union([
@@ -71699,7 +71493,7 @@ export const GetAccessGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetAccessGroupResponse>;
 
-export type GetAccessGroupError = DefaultErrors;
+export type GetAccessGroupError = DefaultErrors | AccessGroupNotFound;
 
 export const getAccessGroupForAccount: API.OperationMethod<
   GetAccessGroupForAccountRequest,
@@ -71709,7 +71503,7 @@ export const getAccessGroupForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessGroupForAccountRequest,
   output: GetAccessGroupResponse,
-  errors: [],
+  errors: [AccessGroupNotFound],
 }));
 
 export const getAccessGroupForZone: API.OperationMethod<
@@ -71720,12 +71514,24 @@ export const getAccessGroupForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessGroupForZoneRequest,
   output: GetAccessGroupResponse,
-  errors: [],
+  errors: [AccessGroupNotFound],
 }));
 
-const ListAccessGroupsBaseFields = {} as const;
+const ListAccessGroupsBaseFields = {
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+} as const;
 
-interface ListAccessGroupsBaseRequest {}
+interface ListAccessGroupsBaseRequest {
+  page?: number;
+  perPage?: number;
+  /** Query param: The name of the group. */
+  name?: string;
+  /** Query param: Search for groups by other listed query parameters. */
+  search?: string;
+}
 
 export interface ListAccessGroupsForAccountRequest extends ListAccessGroupsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -71884,70 +71690,7 @@ export interface ListAccessGroupsResponse {
           | { cloudflareAccountMember: { accountId?: string | null } }
         )[]
       | null;
-    isDefault?:
-      | (
-          | { group: { id: string } }
-          | { anyValidServiceToken: unknown }
-          | {
-              authContext: {
-                id: string;
-                acId: string;
-                identityProviderId: string;
-              };
-            }
-          | { authMethod: { authMethod: string } }
-          | { azureAD: { id: string; identityProviderId: string } }
-          | { certificate: unknown }
-          | { commonName: { commonName: string } }
-          | { geo: { countryCode: string } }
-          | { devicePosture: { integrationUid: string } }
-          | { emailDomain: { domain: string } }
-          | { emailList: { id: string } }
-          | { email: { email: string } }
-          | { everyone: unknown }
-          | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
-          | {
-              githubOrganization: {
-                identityProviderId: string;
-                name: string;
-                team?: string | null;
-              };
-            }
-          | { gsuite: { email: string; identityProviderId: string } }
-          | { loginMethod: { id: string } }
-          | { ipList: { id: string } }
-          | { ip: { ip: string } }
-          | { okta: { identityProviderId: string; name: string } }
-          | {
-              saml: {
-                attributeName: string;
-                attributeValue: string;
-                identityProviderId: string;
-              };
-            }
-          | {
-              oidc: {
-                claimName: string;
-                claimValue: string;
-                identityProviderId: string;
-              };
-            }
-          | { serviceToken: { tokenId: string } }
-          | { linkedAppToken: { appUid: string } }
-          | {
-              userRiskScore: {
-                userRiskScore: (
-                  | "low"
-                  | "medium"
-                  | "high"
-                  | "unscored"
-                  | (string & {})
-                )[];
-              };
-            }
-          | { cloudflareAccountMember: { accountId?: string | null } }
-        )[]
-      | null;
+    isDefault?: boolean | null;
     name?: string | null;
     require?:
       | (
@@ -72471,228 +72214,7 @@ export const ListAccessGroupsResponse =
             Schema.Null,
           ]),
         ),
-        isDefault: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  group: Schema.Struct({
-                    id: Schema.String,
-                  }),
-                }),
-                Schema.Struct({
-                  anyValidServiceToken: Schema.Unknown,
-                }).pipe(
-                  Schema.encodeKeys({
-                    anyValidServiceToken: "any_valid_service_token",
-                  }),
-                ),
-                Schema.Struct({
-                  authContext: Schema.Struct({
-                    id: Schema.String,
-                    acId: Schema.String,
-                    identityProviderId: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      acId: "ac_id",
-                      identityProviderId: "identity_provider_id",
-                    }),
-                  ),
-                }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
-                Schema.Struct({
-                  authMethod: Schema.Struct({
-                    authMethod: Schema.String,
-                  }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                Schema.Struct({
-                  azureAD: Schema.Struct({
-                    id: Schema.String,
-                    identityProviderId: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      identityProviderId: "identity_provider_id",
-                    }),
-                  ),
-                }),
-                Schema.Struct({
-                  certificate: Schema.Unknown,
-                }),
-                Schema.Struct({
-                  commonName: Schema.Struct({
-                    commonName: Schema.String,
-                  }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                Schema.Struct({
-                  geo: Schema.Struct({
-                    countryCode: Schema.String,
-                  }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
-                }),
-                Schema.Struct({
-                  devicePosture: Schema.Struct({
-                    integrationUid: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({ integrationUid: "integration_uid" }),
-                  ),
-                }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
-                Schema.Struct({
-                  emailDomain: Schema.Struct({
-                    domain: Schema.String,
-                  }),
-                }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
-                Schema.Struct({
-                  emailList: Schema.Struct({
-                    id: Schema.String,
-                  }),
-                }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-                Schema.Struct({
-                  email: Schema.Struct({
-                    email: Schema.String,
-                  }),
-                }),
-                Schema.Struct({
-                  everyone: Schema.Unknown,
-                }),
-                Schema.Struct({
-                  externalEvaluation: Schema.Struct({
-                    evaluateUrl: Schema.String,
-                    keysUrl: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      evaluateUrl: "evaluate_url",
-                      keysUrl: "keys_url",
-                    }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    externalEvaluation: "external_evaluation",
-                  }),
-                ),
-                Schema.Struct({
-                  githubOrganization: Schema.Struct({
-                    identityProviderId: Schema.String,
-                    name: Schema.String,
-                    team: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      identityProviderId: "identity_provider_id",
-                      name: "name",
-                      team: "team",
-                    }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    githubOrganization: "github-organization",
-                  }),
-                ),
-                Schema.Struct({
-                  gsuite: Schema.Struct({
-                    email: Schema.String,
-                    identityProviderId: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      email: "email",
-                      identityProviderId: "identity_provider_id",
-                    }),
-                  ),
-                }),
-                Schema.Struct({
-                  loginMethod: Schema.Struct({
-                    id: Schema.String,
-                  }),
-                }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
-                Schema.Struct({
-                  ipList: Schema.Struct({
-                    id: Schema.String,
-                  }),
-                }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                Schema.Struct({
-                  ip: Schema.Struct({
-                    ip: Schema.String,
-                  }),
-                }),
-                Schema.Struct({
-                  okta: Schema.Struct({
-                    identityProviderId: Schema.String,
-                    name: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      identityProviderId: "identity_provider_id",
-                      name: "name",
-                    }),
-                  ),
-                }),
-                Schema.Struct({
-                  saml: Schema.Struct({
-                    attributeName: Schema.String,
-                    attributeValue: Schema.String,
-                    identityProviderId: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      attributeName: "attribute_name",
-                      attributeValue: "attribute_value",
-                      identityProviderId: "identity_provider_id",
-                    }),
-                  ),
-                }),
-                Schema.Struct({
-                  oidc: Schema.Struct({
-                    claimName: Schema.String,
-                    claimValue: Schema.String,
-                    identityProviderId: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      claimName: "claim_name",
-                      claimValue: "claim_value",
-                      identityProviderId: "identity_provider_id",
-                    }),
-                  ),
-                }),
-                Schema.Struct({
-                  serviceToken: Schema.Struct({
-                    tokenId: Schema.String,
-                  }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
-                Schema.Struct({
-                  linkedAppToken: Schema.Struct({
-                    appUid: Schema.String,
-                  }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                }).pipe(
-                  Schema.encodeKeys({ linkedAppToken: "linked_app_token" }),
-                ),
-                Schema.Struct({
-                  userRiskScore: Schema.Struct({
-                    userRiskScore: Schema.Array(
-                      Schema.Union([
-                        Schema.Literals(["low", "medium", "high", "unscored"]),
-                        Schema.String,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
-                ),
-                Schema.Struct({
-                  cloudflareAccountMember: Schema.Struct({
-                    accountId: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
-                }).pipe(
-                  Schema.encodeKeys({
-                    cloudflareAccountMember: "cloudflare_account_member",
-                  }),
-                ),
-              ]),
-            ),
-            Schema.Null,
-          ]),
-        ),
+        isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         require: Schema.optional(
           Schema.Union([
@@ -73947,70 +73469,7 @@ export interface CreateAccessGroupResponse {
       )[]
     | null;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?:
-    | (
-        | { group: { id: string } }
-        | { anyValidServiceToken: unknown }
-        | {
-            authContext: {
-              id: string;
-              acId: string;
-              identityProviderId: string;
-            };
-          }
-        | { authMethod: { authMethod: string } }
-        | { azureAD: { id: string; identityProviderId: string } }
-        | { certificate: unknown }
-        | { commonName: { commonName: string } }
-        | { geo: { countryCode: string } }
-        | { devicePosture: { integrationUid: string } }
-        | { emailDomain: { domain: string } }
-        | { emailList: { id: string } }
-        | { email: { email: string } }
-        | { everyone: unknown }
-        | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
-        | {
-            githubOrganization: {
-              identityProviderId: string;
-              name: string;
-              team?: string | null;
-            };
-          }
-        | { gsuite: { email: string; identityProviderId: string } }
-        | { loginMethod: { id: string } }
-        | { ipList: { id: string } }
-        | { ip: { ip: string } }
-        | { okta: { identityProviderId: string; name: string } }
-        | {
-            saml: {
-              attributeName: string;
-              attributeValue: string;
-              identityProviderId: string;
-            };
-          }
-        | {
-            oidc: {
-              claimName: string;
-              claimValue: string;
-              identityProviderId: string;
-            };
-          }
-        | { serviceToken: { tokenId: string } }
-        | { linkedAppToken: { appUid: string } }
-        | {
-            userRiskScore: {
-              userRiskScore: (
-                | "low"
-                | "medium"
-                | "high"
-                | "unscored"
-                | (string & {})
-              )[];
-            };
-          }
-        | { cloudflareAccountMember: { accountId?: string | null } }
-      )[]
-    | null;
+  isDefault?: boolean | null;
   /** The name of the Access group. */
   name?: string | null;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -74503,216 +73962,7 @@ export const CreateAccessGroupResponse =
         Schema.Null,
       ]),
     ),
-    isDefault: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Union([
-            Schema.Struct({
-              group: Schema.Struct({
-                id: Schema.String,
-              }),
-            }),
-            Schema.Struct({
-              anyValidServiceToken: Schema.Unknown,
-            }).pipe(
-              Schema.encodeKeys({
-                anyValidServiceToken: "any_valid_service_token",
-              }),
-            ),
-            Schema.Struct({
-              authContext: Schema.Struct({
-                id: Schema.String,
-                acId: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  acId: "ac_id",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
-            Schema.Struct({
-              authMethod: Schema.Struct({
-                authMethod: Schema.String,
-              }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-            }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-            Schema.Struct({
-              azureAD: Schema.Struct({
-                id: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              certificate: Schema.Unknown,
-            }),
-            Schema.Struct({
-              commonName: Schema.Struct({
-                commonName: Schema.String,
-              }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-            }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-            Schema.Struct({
-              geo: Schema.Struct({
-                countryCode: Schema.String,
-              }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
-            }),
-            Schema.Struct({
-              devicePosture: Schema.Struct({
-                integrationUid: Schema.String,
-              }).pipe(Schema.encodeKeys({ integrationUid: "integration_uid" })),
-            }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
-            Schema.Struct({
-              emailDomain: Schema.Struct({
-                domain: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
-            Schema.Struct({
-              emailList: Schema.Struct({
-                id: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-            Schema.Struct({
-              email: Schema.Struct({
-                email: Schema.String,
-              }),
-            }),
-            Schema.Struct({
-              everyone: Schema.Unknown,
-            }),
-            Schema.Struct({
-              externalEvaluation: Schema.Struct({
-                evaluateUrl: Schema.String,
-                keysUrl: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  evaluateUrl: "evaluate_url",
-                  keysUrl: "keys_url",
-                }),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ externalEvaluation: "external_evaluation" }),
-            ),
-            Schema.Struct({
-              githubOrganization: Schema.Struct({
-                identityProviderId: Schema.String,
-                name: Schema.String,
-                team: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  identityProviderId: "identity_provider_id",
-                  name: "name",
-                  team: "team",
-                }),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ githubOrganization: "github-organization" }),
-            ),
-            Schema.Struct({
-              gsuite: Schema.Struct({
-                email: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  email: "email",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              loginMethod: Schema.Struct({
-                id: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
-            Schema.Struct({
-              ipList: Schema.Struct({
-                id: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-            Schema.Struct({
-              ip: Schema.Struct({
-                ip: Schema.String,
-              }),
-            }),
-            Schema.Struct({
-              okta: Schema.Struct({
-                identityProviderId: Schema.String,
-                name: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  identityProviderId: "identity_provider_id",
-                  name: "name",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              saml: Schema.Struct({
-                attributeName: Schema.String,
-                attributeValue: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  attributeName: "attribute_name",
-                  attributeValue: "attribute_value",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              oidc: Schema.Struct({
-                claimName: Schema.String,
-                claimValue: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  claimName: "claim_name",
-                  claimValue: "claim_value",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              serviceToken: Schema.Struct({
-                tokenId: Schema.String,
-              }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-            }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
-            Schema.Struct({
-              linkedAppToken: Schema.Struct({
-                appUid: Schema.String,
-              }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-            }).pipe(Schema.encodeKeys({ linkedAppToken: "linked_app_token" })),
-            Schema.Struct({
-              userRiskScore: Schema.Struct({
-                userRiskScore: Schema.Array(
-                  Schema.Union([
-                    Schema.Literals(["low", "medium", "high", "unscored"]),
-                    Schema.String,
-                  ]),
-                ),
-              }).pipe(Schema.encodeKeys({ userRiskScore: "user_risk_score" })),
-            }).pipe(Schema.encodeKeys({ userRiskScore: "user_risk_score" })),
-            Schema.Struct({
-              cloudflareAccountMember: Schema.Struct({
-                accountId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
-            }).pipe(
-              Schema.encodeKeys({
-                cloudflareAccountMember: "cloudflare_account_member",
-              }),
-            ),
-          ]),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     require: Schema.optional(
       Schema.Union([
@@ -75926,70 +75176,7 @@ export interface UpdateAccessGroupResponse {
       )[]
     | null;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?:
-    | (
-        | { group: { id: string } }
-        | { anyValidServiceToken: unknown }
-        | {
-            authContext: {
-              id: string;
-              acId: string;
-              identityProviderId: string;
-            };
-          }
-        | { authMethod: { authMethod: string } }
-        | { azureAD: { id: string; identityProviderId: string } }
-        | { certificate: unknown }
-        | { commonName: { commonName: string } }
-        | { geo: { countryCode: string } }
-        | { devicePosture: { integrationUid: string } }
-        | { emailDomain: { domain: string } }
-        | { emailList: { id: string } }
-        | { email: { email: string } }
-        | { everyone: unknown }
-        | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
-        | {
-            githubOrganization: {
-              identityProviderId: string;
-              name: string;
-              team?: string | null;
-            };
-          }
-        | { gsuite: { email: string; identityProviderId: string } }
-        | { loginMethod: { id: string } }
-        | { ipList: { id: string } }
-        | { ip: { ip: string } }
-        | { okta: { identityProviderId: string; name: string } }
-        | {
-            saml: {
-              attributeName: string;
-              attributeValue: string;
-              identityProviderId: string;
-            };
-          }
-        | {
-            oidc: {
-              claimName: string;
-              claimValue: string;
-              identityProviderId: string;
-            };
-          }
-        | { serviceToken: { tokenId: string } }
-        | { linkedAppToken: { appUid: string } }
-        | {
-            userRiskScore: {
-              userRiskScore: (
-                | "low"
-                | "medium"
-                | "high"
-                | "unscored"
-                | (string & {})
-              )[];
-            };
-          }
-        | { cloudflareAccountMember: { accountId?: string | null } }
-      )[]
-    | null;
+  isDefault?: boolean | null;
   /** The name of the Access group. */
   name?: string | null;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -76482,216 +75669,7 @@ export const UpdateAccessGroupResponse =
         Schema.Null,
       ]),
     ),
-    isDefault: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Union([
-            Schema.Struct({
-              group: Schema.Struct({
-                id: Schema.String,
-              }),
-            }),
-            Schema.Struct({
-              anyValidServiceToken: Schema.Unknown,
-            }).pipe(
-              Schema.encodeKeys({
-                anyValidServiceToken: "any_valid_service_token",
-              }),
-            ),
-            Schema.Struct({
-              authContext: Schema.Struct({
-                id: Schema.String,
-                acId: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  acId: "ac_id",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
-            Schema.Struct({
-              authMethod: Schema.Struct({
-                authMethod: Schema.String,
-              }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-            }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-            Schema.Struct({
-              azureAD: Schema.Struct({
-                id: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              certificate: Schema.Unknown,
-            }),
-            Schema.Struct({
-              commonName: Schema.Struct({
-                commonName: Schema.String,
-              }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-            }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-            Schema.Struct({
-              geo: Schema.Struct({
-                countryCode: Schema.String,
-              }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
-            }),
-            Schema.Struct({
-              devicePosture: Schema.Struct({
-                integrationUid: Schema.String,
-              }).pipe(Schema.encodeKeys({ integrationUid: "integration_uid" })),
-            }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
-            Schema.Struct({
-              emailDomain: Schema.Struct({
-                domain: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
-            Schema.Struct({
-              emailList: Schema.Struct({
-                id: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-            Schema.Struct({
-              email: Schema.Struct({
-                email: Schema.String,
-              }),
-            }),
-            Schema.Struct({
-              everyone: Schema.Unknown,
-            }),
-            Schema.Struct({
-              externalEvaluation: Schema.Struct({
-                evaluateUrl: Schema.String,
-                keysUrl: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  evaluateUrl: "evaluate_url",
-                  keysUrl: "keys_url",
-                }),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ externalEvaluation: "external_evaluation" }),
-            ),
-            Schema.Struct({
-              githubOrganization: Schema.Struct({
-                identityProviderId: Schema.String,
-                name: Schema.String,
-                team: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  identityProviderId: "identity_provider_id",
-                  name: "name",
-                  team: "team",
-                }),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ githubOrganization: "github-organization" }),
-            ),
-            Schema.Struct({
-              gsuite: Schema.Struct({
-                email: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  email: "email",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              loginMethod: Schema.Struct({
-                id: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
-            Schema.Struct({
-              ipList: Schema.Struct({
-                id: Schema.String,
-              }),
-            }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-            Schema.Struct({
-              ip: Schema.Struct({
-                ip: Schema.String,
-              }),
-            }),
-            Schema.Struct({
-              okta: Schema.Struct({
-                identityProviderId: Schema.String,
-                name: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  identityProviderId: "identity_provider_id",
-                  name: "name",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              saml: Schema.Struct({
-                attributeName: Schema.String,
-                attributeValue: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  attributeName: "attribute_name",
-                  attributeValue: "attribute_value",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              oidc: Schema.Struct({
-                claimName: Schema.String,
-                claimValue: Schema.String,
-                identityProviderId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  claimName: "claim_name",
-                  claimValue: "claim_value",
-                  identityProviderId: "identity_provider_id",
-                }),
-              ),
-            }),
-            Schema.Struct({
-              serviceToken: Schema.Struct({
-                tokenId: Schema.String,
-              }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-            }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
-            Schema.Struct({
-              linkedAppToken: Schema.Struct({
-                appUid: Schema.String,
-              }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-            }).pipe(Schema.encodeKeys({ linkedAppToken: "linked_app_token" })),
-            Schema.Struct({
-              userRiskScore: Schema.Struct({
-                userRiskScore: Schema.Array(
-                  Schema.Union([
-                    Schema.Literals(["low", "medium", "high", "unscored"]),
-                    Schema.String,
-                  ]),
-                ),
-              }).pipe(Schema.encodeKeys({ userRiskScore: "user_risk_score" })),
-            }).pipe(Schema.encodeKeys({ userRiskScore: "user_risk_score" })),
-            Schema.Struct({
-              cloudflareAccountMember: Schema.Struct({
-                accountId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
-            }).pipe(
-              Schema.encodeKeys({
-                cloudflareAccountMember: "cloudflare_account_member",
-              }),
-            ),
-          ]),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     require: Schema.optional(
       Schema.Union([
@@ -76994,7 +75972,7 @@ export const DeleteAccessGroupResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteAccessGroupResponse>;
 
-export type DeleteAccessGroupError = DefaultErrors;
+export type DeleteAccessGroupError = DefaultErrors | AccessGroupNotFound;
 
 export const deleteAccessGroupForAccount: API.OperationMethod<
   DeleteAccessGroupForAccountRequest,
@@ -77004,7 +75982,7 @@ export const deleteAccessGroupForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessGroupForAccountRequest,
   output: DeleteAccessGroupResponse,
-  errors: [],
+  errors: [AccessGroupNotFound],
 }));
 
 export const deleteAccessGroupForZone: API.OperationMethod<
@@ -77015,7 +75993,7 @@ export const deleteAccessGroupForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessGroupForZoneRequest,
   output: DeleteAccessGroupResponse,
-  errors: [],
+  errors: [AccessGroupNotFound],
 }));
 
 // =============================================================================
@@ -84703,7 +83681,9 @@ export const GetAccessServiceTokenResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetAccessServiceTokenResponse>;
 
-export type GetAccessServiceTokenError = DefaultErrors;
+export type GetAccessServiceTokenError =
+  | DefaultErrors
+  | AccessServiceTokenNotFound;
 
 export const getAccessServiceTokenForAccount: API.OperationMethod<
   GetAccessServiceTokenForAccountRequest,
@@ -84713,7 +83693,7 @@ export const getAccessServiceTokenForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessServiceTokenForAccountRequest,
   output: GetAccessServiceTokenResponse,
-  errors: [],
+  errors: [AccessServiceTokenNotFound],
 }));
 
 export const getAccessServiceTokenForZone: API.OperationMethod<
@@ -84724,12 +83704,24 @@ export const getAccessServiceTokenForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessServiceTokenForZoneRequest,
   output: GetAccessServiceTokenResponse,
-  errors: [],
+  errors: [AccessServiceTokenNotFound],
 }));
 
-const ListAccessServiceTokensBaseFields = {} as const;
+const ListAccessServiceTokensBaseFields = {
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+} as const;
 
-interface ListAccessServiceTokensBaseRequest {}
+interface ListAccessServiceTokensBaseRequest {
+  page?: number;
+  perPage?: number;
+  /** Query param: The name of the service token. */
+  name?: string;
+  /** Query param: Search for service tokens by other listed query parameters. */
+  search?: string;
+}
 
 export interface ListAccessServiceTokensForAccountRequest extends ListAccessServiceTokensBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -85168,7 +84160,9 @@ export const DeleteAccessServiceTokenResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteAccessServiceTokenResponse>;
 
-export type DeleteAccessServiceTokenError = DefaultErrors;
+export type DeleteAccessServiceTokenError =
+  | DefaultErrors
+  | AccessServiceTokenNotFound;
 
 export const deleteAccessServiceTokenForAccount: API.OperationMethod<
   DeleteAccessServiceTokenForAccountRequest,
@@ -85178,7 +84172,7 @@ export const deleteAccessServiceTokenForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessServiceTokenForAccountRequest,
   output: DeleteAccessServiceTokenResponse,
-  errors: [],
+  errors: [AccessServiceTokenNotFound],
 }));
 
 export const deleteAccessServiceTokenForZone: API.OperationMethod<
@@ -85189,7 +84183,7 @@ export const deleteAccessServiceTokenForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessServiceTokenForZoneRequest,
   output: DeleteAccessServiceTokenResponse,
-  errors: [],
+  errors: [AccessServiceTokenNotFound],
 }));
 
 export interface RefreshAccessServiceTokenRequest {
@@ -132746,9 +131740,18 @@ export const getIdentityProviderForZone: API.OperationMethod<
   errors: [],
 }));
 
-const ListIdentityProvidersBaseFields = {} as const;
+const ListIdentityProvidersBaseFields = {
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  scimEnabled: Schema.optional(Schema.String).pipe(T.HttpQuery("scim_enabled")),
+} as const;
 
-interface ListIdentityProvidersBaseRequest {}
+interface ListIdentityProvidersBaseRequest {
+  page?: number;
+  perPage?: number;
+  /** Query param: Indicates to Access to only retrieve identity providers that have the System for Cross-Domain Identity Management (SCIM) enabled. */
+  scimEnabled?: string;
+}
 
 export interface ListIdentityProvidersForAccountRequest extends ListIdentityProvidersBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
@@ -142407,9 +141410,9 @@ export const listNetworkSubnets: API.PaginatedOperationMethod<
 // =============================================================================
 
 export interface PatchNetworkSubnetCloudflareSourceRequest {
-  addressFamily: "v4" | "v6" | (string & {});
   /** Path param: Cloudflare account ID */
   accountId: string;
+  addressFamily: string;
   /** Body param: An optional description of the subnet. */
   comment?: string;
   /** Body param: A user-friendly name for the subnet. */
@@ -142420,11 +141423,8 @@ export interface PatchNetworkSubnetCloudflareSourceRequest {
 
 export const PatchNetworkSubnetCloudflareSourceRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    addressFamily: Schema.Union([
-      Schema.Literals(["v4", "v6"]),
-      Schema.String,
-    ]).pipe(T.HttpPath("addressFamily")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    addressFamily: Schema.String.pipe(T.HttpPath("addressFamily")),
     comment: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
@@ -143583,7 +142583,7 @@ export const ListOrganizationsResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<ListOrganizationsResponse>;
 
-export type ListOrganizationsError = DefaultErrors;
+export type ListOrganizationsError = DefaultErrors | OrganizationNotFound;
 
 export const listOrganizationsForAccount: API.OperationMethod<
   ListOrganizationsForAccountRequest,
@@ -143593,7 +142593,7 @@ export const listOrganizationsForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsForAccountRequest,
   output: ListOrganizationsResponse,
-  errors: [],
+  errors: [OrganizationNotFound],
 }));
 
 export const listOrganizationsForZone: API.OperationMethod<
@@ -143604,7 +142604,7 @@ export const listOrganizationsForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsForZoneRequest,
   output: ListOrganizationsResponse,
-  errors: [],
+  errors: [OrganizationNotFound],
 }));
 
 const CreateOrganizationBaseFields = {
@@ -144109,7 +143109,7 @@ export const CreateOrganizationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateOrganizationResponse>;
 
-export type CreateOrganizationError = DefaultErrors;
+export type CreateOrganizationError = DefaultErrors | OrganizationAlreadyExists;
 
 export const createOrganizationForAccount: API.OperationMethod<
   CreateOrganizationForAccountRequest,
@@ -144119,7 +143119,7 @@ export const createOrganizationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationForAccountRequest,
   output: CreateOrganizationResponse,
-  errors: [],
+  errors: [OrganizationAlreadyExists],
 }));
 
 export const createOrganizationForZone: API.OperationMethod<
@@ -144130,7 +143130,7 @@ export const createOrganizationForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationForZoneRequest,
   output: CreateOrganizationResponse,
-  errors: [],
+  errors: [OrganizationAlreadyExists],
 }));
 
 const UpdateOrganizationBaseFields = {

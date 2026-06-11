@@ -2186,9 +2186,15 @@ export const getWaitingRoom: API.OperationMethod<
   errors: [],
 }));
 
-const ListWaitingRoomsBaseFields = {} as const;
+const ListWaitingRoomsBaseFields = {
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+} as const;
 
-interface ListWaitingRoomsBaseRequest {}
+interface ListWaitingRoomsBaseRequest {
+  page?: number;
+  perPage?: number;
+}
 
 export interface ListWaitingRoomsForAccountRequest extends ListWaitingRoomsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */

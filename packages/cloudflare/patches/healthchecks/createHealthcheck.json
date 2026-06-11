@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "HealthcheckAlreadyExists": [
+      { "message": { "includes": "already exists" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

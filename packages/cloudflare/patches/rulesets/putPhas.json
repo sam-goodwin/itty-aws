@@ -1,5 +1,7 @@
 {
-  "errors": {},
+  "errors": {
+    "RulesetNotFound": [{ "code": 10003 }]
+  },
   "response": {
     "properties": {
       "rules": { "optional": true }

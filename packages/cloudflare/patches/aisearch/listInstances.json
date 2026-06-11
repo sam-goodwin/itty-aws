@@ -4,6 +4,11 @@
       {
         "code": 7003
       }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
     ]
   },
   "response": {
@@ -61,7 +66,8 @@
         "optional": true
       },
       "result[].cache_ttl": {
-        "optional": true
+        "optional": true,
+        "type": "number"
       },
       "result[].summarization": {
         "optional": true
@@ -109,7 +115,8 @@
         "optional": true
       },
       "result[].sync_interval": {
-        "optional": true
+        "optional": true,
+        "type": "number"
       },
       "result[].engine_version": {
         "optional": true

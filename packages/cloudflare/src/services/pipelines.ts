@@ -73,6 +73,14 @@ T.applyErrorMatchers(SinkAuthFailed, [
   { code: 1012, message: { includes: "could not authenticate" } },
 ]);
 
+export class SinkInUse extends Schema.TaggedErrorClass<SinkInUse>()(
+  "SinkInUse",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SinkInUse, [
+  { status: 422, message: { includes: "in use" } },
+]);
+
 export class SinkNotFound extends Schema.TaggedErrorClass<SinkNotFound>()(
   "SinkNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -84,6 +92,14 @@ export class StreamAlreadyExists extends Schema.TaggedErrorClass<StreamAlreadyEx
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(StreamAlreadyExists, [{ code: 1003 }]);
+
+export class StreamInUse extends Schema.TaggedErrorClass<StreamInUse>()(
+  "StreamInUse",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(StreamInUse, [
+  { status: 422, message: { includes: "in use" } },
+]);
 
 export class StreamNotFound extends Schema.TaggedErrorClass<StreamNotFound>()(
   "StreamNotFound",
@@ -2826,7 +2842,7 @@ export interface CreateSinkResponse {
     | {
         accountId: string;
         bucket: string;
-        credentials: { accessKeyId: string; secretAccessKey: string };
+        credentials?: { accessKeyId: string; secretAccessKey: string } | null;
         fileNaming?: {
           prefix?: string | null;
           strategy?:
@@ -3036,14 +3052,19 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           accountId: Schema.String,
           bucket: Schema.String,
-          credentials: Schema.Struct({
-            accessKeyId: SensitiveString,
-            secretAccessKey: SensitiveString,
-          }).pipe(
-            Schema.encodeKeys({
-              accessKeyId: "access_key_id",
-              secretAccessKey: "secret_access_key",
-            }),
+          credentials: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                accessKeyId: SensitiveString,
+                secretAccessKey: SensitiveString,
+              }).pipe(
+                Schema.encodeKeys({
+                  accessKeyId: "access_key_id",
+                  secretAccessKey: "secret_access_key",
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
           fileNaming: Schema.optional(
             Schema.Union([
@@ -3541,7 +3562,11 @@ export const DeleteSinkResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSinkResponse>;
 
-export type DeleteSinkError = DefaultErrors;
+export type DeleteSinkError =
+  | DefaultErrors
+  | SinkNotFound
+  | InvalidSinkId
+  | SinkInUse;
 
 export const deleteSink: API.OperationMethod<
   DeleteSinkRequest,
@@ -3551,7 +3576,7 @@ export const deleteSink: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSinkRequest,
   output: DeleteSinkResponse,
-  errors: [],
+  errors: [SinkNotFound, InvalidSinkId, SinkInUse],
 }));
 
 // =============================================================================
@@ -6063,7 +6088,12 @@ export const DeleteStreamResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteStreamResponse>;
 
-export type DeleteStreamError = DefaultErrors | PipelineNotExists;
+export type DeleteStreamError =
+  | DefaultErrors
+  | PipelineNotExists
+  | StreamNotFound
+  | InvalidStreamId
+  | StreamInUse;
 
 export const deleteStream: API.OperationMethod<
   DeleteStreamRequest,
@@ -6073,7 +6103,7 @@ export const deleteStream: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStreamRequest,
   output: DeleteStreamResponse,
-  errors: [PipelineNotExists],
+  errors: [PipelineNotExists, StreamNotFound, InvalidStreamId, StreamInUse],
 }));
 
 // =============================================================================

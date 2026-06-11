@@ -1,6 +1,9 @@
 {
   "errors": {
     "NoSuchBucket": [{ "code": 10006 }],
-    "InvalidBucketName": [{ "code": 10005 }]
+    "InvalidBucketName": [{ "code": 10005 }],
+    "CustomDomainInUse": [
+      { "status": 409, "message": { "includes": "in use" } }
+    ]
   }
 }

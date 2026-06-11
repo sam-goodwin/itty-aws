@@ -17,6 +17,20 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class InstanceAlreadyExists extends Schema.TaggedErrorClass<InstanceAlreadyExists>()(
+  "InstanceAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InstanceAlreadyExists, [
+  { status: 400, message: { includes: "already_exist" } },
+]);
+
 export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
   "InvalidRoute",
   { code: Schema.Number, message: Schema.String },
@@ -1602,19 +1616,7 @@ export interface ListInstancesResponse {
       | "flexible_friend"
       | "anything_goes"
       | null;
-    cacheTtl?:
-      | "600"
-      | "1800"
-      | "3600"
-      | "7200"
-      | "21600"
-      | "43200"
-      | "86400"
-      | "172800"
-      | "259200"
-      | "518400"
-      | (string & {})
-      | null;
+    cacheTtl?: number | null;
     chunkOverlap?: number | null;
     chunkSize?: number | null;
     createdBy?: string | null;
@@ -1746,17 +1748,7 @@ export interface ListInstancesResponse {
       } | null;
     } | null;
     status?: string | null;
-    syncInterval?:
-      | "900"
-      | "1800"
-      | "3600"
-      | "7200"
-      | "14400"
-      | "21600"
-      | "43200"
-      | "86400"
-      | (string & {})
-      | null;
+    syncInterval?: number | null;
     tokenId?: string | null;
     type?: "r2" | "web-crawler" | null;
   }[];
@@ -1820,26 +1812,7 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Null,
         ]),
       ),
-      cacheTtl: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "600",
-              "1800",
-              "3600",
-              "7200",
-              "21600",
-              "43200",
-              "86400",
-              "172800",
-              "259200",
-              "518400",
-            ]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
+      cacheTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       chunkOverlap: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       chunkSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2266,24 +2239,7 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      syncInterval: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "900",
-              "1800",
-              "3600",
-              "7200",
-              "14400",
-              "21600",
-              "43200",
-              "86400",
-            ]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
+      syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       type: Schema.optional(
         Schema.Union([
@@ -2358,7 +2314,7 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListInstancesResponse>;
 
-export type ListInstancesError = DefaultErrors | InvalidRoute;
+export type ListInstancesError = DefaultErrors | InvalidRoute | Forbidden;
 
 export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
@@ -2368,7 +2324,7 @@ export const listInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -2428,18 +2384,7 @@ export interface CreateInstanceRequest {
     | "anything_goes"
     | (string & {});
   /** Body param: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?:
-    | "600"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "21600"
-    | "43200"
-    | "86400"
-    | "172800"
-    | "259200"
-    | "518400"
-    | (string & {});
+  cacheTtl?: number;
   /** Body param */
   chunk?: boolean;
   /** Body param */
@@ -2571,16 +2516,7 @@ export interface CreateInstanceRequest {
     };
   } | null;
   /** Body param: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?:
-    | "900"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "14400"
-    | "21600"
-    | "43200"
-    | "86400"
-    | (string & {});
+  syncInterval?: number;
   /** Body param */
   tokenId?: string;
   /** Body param */
@@ -2638,23 +2574,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.String,
     ]),
   ),
-  cacheTtl: Schema.optional(
-    Schema.Union([
-      Schema.Literals([
-        "600",
-        "1800",
-        "3600",
-        "7200",
-        "21600",
-        "43200",
-        "86400",
-        "172800",
-        "259200",
-        "518400",
-      ]),
-      Schema.String,
-    ]),
-  ),
+  cacheTtl: Schema.optional(Schema.Number),
   chunk: Schema.optional(Schema.Boolean),
   chunkOverlap: Schema.optional(Schema.Number),
   chunkSize: Schema.optional(Schema.Number),
@@ -2937,21 +2857,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Null,
     ]),
   ),
-  syncInterval: Schema.optional(
-    Schema.Union([
-      Schema.Literals([
-        "900",
-        "1800",
-        "3600",
-        "7200",
-        "14400",
-        "21600",
-        "43200",
-        "86400",
-      ]),
-      Schema.String,
-    ]),
-  ),
+  syncInterval: Schema.optional(Schema.Number),
   tokenId: Schema.optional(Schema.String),
   type: Schema.optional(
     Schema.Union([
@@ -3044,19 +2950,7 @@ export interface CreateInstanceResponse {
     | "anything_goes"
     | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?:
-    | "600"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "21600"
-    | "43200"
-    | "86400"
-    | "172800"
-    | "259200"
-    | "518400"
-    | (string & {})
-    | null;
+  cacheTtl?: number | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
@@ -3191,17 +3085,7 @@ export interface CreateInstanceResponse {
   } | null;
   status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?:
-    | "900"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "14400"
-    | "21600"
-    | "43200"
-    | "86400"
-    | (string & {})
-    | null;
+  syncInterval?: number | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
 }
@@ -3257,26 +3141,7 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Null,
       ]),
     ),
-    cacheTtl: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "600",
-            "1800",
-            "3600",
-            "7200",
-            "21600",
-            "43200",
-            "86400",
-            "172800",
-            "259200",
-            "518400",
-          ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
+    cacheTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     chunkOverlap: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     chunkSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3693,24 +3558,7 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ]),
     ),
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    syncInterval: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "900",
-            "1800",
-            "3600",
-            "7200",
-            "14400",
-            "21600",
-            "43200",
-            "86400",
-          ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
+    syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
       Schema.Union([
@@ -3772,7 +3620,9 @@ export type CreateInstanceError =
   | DefaultErrors
   | ValidationError
   | NotFound
-  | InvalidRoute;
+  | InvalidRoute
+  | InstanceAlreadyExists
+  | Forbidden;
 
 export const createInstance: API.OperationMethod<
   CreateInstanceRequest,
@@ -3782,7 +3632,13 @@ export const createInstance: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInstanceRequest,
   output: CreateInstanceResponse,
-  errors: [ValidationError, NotFound, InvalidRoute],
+  errors: [
+    ValidationError,
+    NotFound,
+    InvalidRoute,
+    InstanceAlreadyExists,
+    Forbidden,
+  ],
 }));
 
 export interface UpdateInstanceRequest {
@@ -3834,18 +3690,7 @@ export interface UpdateInstanceRequest {
     | "anything_goes"
     | (string & {});
   /** Body param: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?:
-    | "600"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "21600"
-    | "43200"
-    | "86400"
-    | "172800"
-    | "259200"
-    | "518400"
-    | (string & {});
+  cacheTtl?: number;
   /** Body param */
   chunk?: boolean;
   /** Body param */
@@ -4010,16 +3855,7 @@ export interface UpdateInstanceRequest {
     | ""
     | null;
   /** Body param: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?:
-    | "900"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "14400"
-    | "21600"
-    | "43200"
-    | "86400"
-    | (string & {});
+  syncInterval?: number;
   /** Body param */
   systemPromptAiSearch?: string | null;
   /** Body param */
@@ -4081,23 +3917,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.String,
     ]),
   ),
-  cacheTtl: Schema.optional(
-    Schema.Union([
-      Schema.Literals([
-        "600",
-        "1800",
-        "3600",
-        "7200",
-        "21600",
-        "43200",
-        "86400",
-        "172800",
-        "259200",
-        "518400",
-      ]),
-      Schema.String,
-    ]),
-  ),
+  cacheTtl: Schema.optional(Schema.Number),
   chunk: Schema.optional(Schema.Boolean),
   chunkOverlap: Schema.optional(Schema.Number),
   chunkSize: Schema.optional(Schema.Number),
@@ -4415,21 +4235,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Null,
     ]),
   ),
-  syncInterval: Schema.optional(
-    Schema.Union([
-      Schema.Literals([
-        "900",
-        "1800",
-        "3600",
-        "7200",
-        "14400",
-        "21600",
-        "43200",
-        "86400",
-      ]),
-      Schema.String,
-    ]),
-  ),
+  syncInterval: Schema.optional(Schema.Number),
   systemPromptAiSearch: Schema.optional(
     Schema.Union([Schema.String, Schema.Null]),
   ),
@@ -4526,19 +4332,7 @@ export interface UpdateInstanceResponse {
     | "anything_goes"
     | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?:
-    | "600"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "21600"
-    | "43200"
-    | "86400"
-    | "172800"
-    | "259200"
-    | "518400"
-    | (string & {})
-    | null;
+  cacheTtl?: number | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
@@ -4673,17 +4467,7 @@ export interface UpdateInstanceResponse {
   } | null;
   status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?:
-    | "900"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "14400"
-    | "21600"
-    | "43200"
-    | "86400"
-    | (string & {})
-    | null;
+  syncInterval?: number | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
 }
@@ -4739,26 +4523,7 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Null,
       ]),
     ),
-    cacheTtl: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "600",
-            "1800",
-            "3600",
-            "7200",
-            "21600",
-            "43200",
-            "86400",
-            "172800",
-            "259200",
-            "518400",
-          ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
+    cacheTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     chunkOverlap: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     chunkSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5175,24 +4940,7 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ]),
     ),
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    syncInterval: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "900",
-            "1800",
-            "3600",
-            "7200",
-            "14400",
-            "21600",
-            "43200",
-            "86400",
-          ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
+    syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
       Schema.Union([
@@ -5254,7 +5002,8 @@ export type UpdateInstanceError =
   | DefaultErrors
   | ValidationError
   | NotFound
-  | InvalidRoute;
+  | InvalidRoute
+  | Forbidden;
 
 export const updateInstance: API.OperationMethod<
   UpdateInstanceRequest,
@@ -5264,7 +5013,7 @@ export const updateInstance: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateInstanceRequest,
   output: UpdateInstanceResponse,
-  errors: [ValidationError, NotFound, InvalidRoute],
+  errors: [ValidationError, NotFound, InvalidRoute, Forbidden],
 }));
 
 export interface DeleteInstanceRequest {
@@ -5328,19 +5077,7 @@ export interface DeleteInstanceResponse {
     | "anything_goes"
     | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?:
-    | "600"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "21600"
-    | "43200"
-    | "86400"
-    | "172800"
-    | "259200"
-    | "518400"
-    | (string & {})
-    | null;
+  cacheTtl?: number | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
@@ -5475,17 +5212,7 @@ export interface DeleteInstanceResponse {
   } | null;
   status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?:
-    | "900"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "14400"
-    | "21600"
-    | "43200"
-    | "86400"
-    | (string & {})
-    | null;
+  syncInterval?: number | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
 }
@@ -5541,26 +5268,7 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Null,
       ]),
     ),
-    cacheTtl: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "600",
-            "1800",
-            "3600",
-            "7200",
-            "21600",
-            "43200",
-            "86400",
-            "172800",
-            "259200",
-            "518400",
-          ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
+    cacheTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     chunkOverlap: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     chunkSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5977,24 +5685,7 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ]),
     ),
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    syncInterval: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "900",
-            "1800",
-            "3600",
-            "7200",
-            "14400",
-            "21600",
-            "43200",
-            "86400",
-          ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
+    syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
       Schema.Union([
@@ -6056,7 +5747,8 @@ export type DeleteInstanceError =
   | DefaultErrors
   | ValidationError
   | NotFound
-  | InvalidRoute;
+  | InvalidRoute
+  | Forbidden;
 
 export const deleteInstance: API.OperationMethod<
   DeleteInstanceRequest,
@@ -6066,7 +5758,7 @@ export const deleteInstance: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstanceRequest,
   output: DeleteInstanceResponse,
-  errors: [ValidationError, NotFound, InvalidRoute],
+  errors: [ValidationError, NotFound, InvalidRoute, Forbidden],
 }));
 
 export interface ReadInstanceRequest {
@@ -6130,19 +5822,7 @@ export interface ReadInstanceResponse {
     | "anything_goes"
     | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?:
-    | "600"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "21600"
-    | "43200"
-    | "86400"
-    | "172800"
-    | "259200"
-    | "518400"
-    | (string & {})
-    | null;
+  cacheTtl?: number | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
@@ -6277,17 +5957,7 @@ export interface ReadInstanceResponse {
   } | null;
   status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?:
-    | "900"
-    | "1800"
-    | "3600"
-    | "7200"
-    | "14400"
-    | "21600"
-    | "43200"
-    | "86400"
-    | (string & {})
-    | null;
+  syncInterval?: number | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
 }
@@ -6342,26 +6012,7 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Null,
     ]),
   ),
-  cacheTtl: Schema.optional(
-    Schema.Union([
-      Schema.Union([
-        Schema.Literals([
-          "600",
-          "1800",
-          "3600",
-          "7200",
-          "21600",
-          "43200",
-          "86400",
-          "172800",
-          "259200",
-          "518400",
-        ]),
-        Schema.String,
-      ]),
-      Schema.Null,
-    ]),
-  ),
+  cacheTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   chunkOverlap: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   chunkSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -6765,24 +6416,7 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  syncInterval: Schema.optional(
-    Schema.Union([
-      Schema.Union([
-        Schema.Literals([
-          "900",
-          "1800",
-          "3600",
-          "7200",
-          "14400",
-          "21600",
-          "43200",
-          "86400",
-        ]),
-        Schema.String,
-      ]),
-      Schema.Null,
-    ]),
-  ),
+  syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   type: Schema.optional(
     Schema.Union([
@@ -6843,7 +6477,8 @@ export type ReadInstanceError =
   | DefaultErrors
   | ValidationError
   | NotFound
-  | InvalidRoute;
+  | InvalidRoute
+  | Forbidden;
 
 export const readInstance: API.OperationMethod<
   ReadInstanceRequest,
@@ -6853,7 +6488,7 @@ export const readInstance: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReadInstanceRequest,
   output: ReadInstanceResponse,
-  errors: [ValidationError, NotFound, InvalidRoute],
+  errors: [ValidationError, NotFound, InvalidRoute, Forbidden],
 }));
 
 export interface SearchInstanceRequest {

@@ -177,6 +177,11 @@ paths:
                     description: The protocol to use for the health check. Currently supported
                       protocols are 'HTTP', 'HTTPS' and 'TCP'.
       x-distilled-response-path: result
+      x-distilled-errors:
+        HealthcheckNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateHealthcheck
       description: "Update a configured health check.  @example ```ts const
@@ -485,6 +490,11 @@ paths:
                     description: The protocol to use for the health check. Currently supported
                       protocols are 'HTTP', 'HTTPS' and 'TCP'.
       x-distilled-response-path: result
+      x-distilled-errors:
+        HealthcheckNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchHealthcheck
       description: "Patch a configured health check.  @example ```ts const healthcheck
@@ -821,6 +831,11 @@ paths:
                     type: string
                     description: Identifier
       x-distilled-response-path: result
+      x-distilled-errors:
+        HealthcheckNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/healthchecks:
     get:
       operationId: listHealthchecks
@@ -997,6 +1012,9 @@ paths:
                     description: The protocol to use for the health check. Currently supported
                       protocols are 'HTTP', 'HTTPS' and 'TCP'.
       x-distilled-pagination-class: HealthchecksV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createHealthcheck
       description: "Create a new health check.  @example ```ts const healthcheck =
@@ -1299,6 +1317,12 @@ paths:
                     description: The protocol to use for the health check. Currently supported
                       protocols are 'HTTP', 'HTTPS' and 'TCP'.
       x-distilled-response-path: result
+      x-distilled-errors:
+        HealthcheckAlreadyExists:
+          - message:
+              includes: already exists
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/healthchecks/preview/{healthcheckId}:
     get:
       operationId: getPreview

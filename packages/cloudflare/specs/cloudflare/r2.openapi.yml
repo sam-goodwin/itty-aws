@@ -982,6 +982,11 @@ paths:
                 required:
                   - domain
       x-distilled-response-path: result
+      x-distilled-errors:
+        DomainNotFound:
+          - code: 10053
+        NoSuchBucket:
+          - code: 10006
   /accounts/{account_id}/r2/buckets/{bucketName}/domains/custom:
     get:
       operationId: listBucketDomainCustoms
@@ -1200,6 +1205,10 @@ paths:
           - code: 10006
         InvalidBucketName:
           - code: 10005
+        CustomDomainInUse:
+          - status: 409
+            message:
+              includes: in use
   /accounts/{account_id}/r2/buckets/{bucketName}/domains/managed:
     get:
       operationId: listBucketDomainManageds

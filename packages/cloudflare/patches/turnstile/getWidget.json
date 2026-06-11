@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "WidgetNotFound": [{ "code": 10404 }, { "code": 10407 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

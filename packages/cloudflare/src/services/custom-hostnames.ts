@@ -13,6 +13,40 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class CustomHostnameNotFound extends Schema.TaggedErrorClass<CustomHostnameNotFound>()(
+  "CustomHostnameNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CustomHostnameNotFound, [{ code: 1436 }, { status: 404 }]);
+
+export class FallbackOriginNotFound extends Schema.TaggedErrorClass<FallbackOriginNotFound>()(
+  "FallbackOriginNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(FallbackOriginNotFound, [{ status: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class SaasAccessNotGranted extends Schema.TaggedErrorClass<SaasAccessNotGranted>()(
+  "SaasAccessNotGranted",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SaasAccessNotGranted, [{ code: 1456 }]);
+
+export class SaasQuotaNotAllocated extends Schema.TaggedErrorClass<SaasQuotaNotAllocated>()(
+  "SaasQuotaNotAllocated",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SaasQuotaNotAllocated, [{ code: 1404, status: 403 }]);
+
+// =============================================================================
 // CertificatePackCertificate
 // =============================================================================
 
@@ -1109,7 +1143,11 @@ export const GetCustomHostnameResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetCustomHostnameResponse>;
 
-export type GetCustomHostnameError = DefaultErrors;
+export type GetCustomHostnameError =
+  | DefaultErrors
+  | CustomHostnameNotFound
+  | SaasQuotaNotAllocated
+  | Forbidden;
 
 export const getCustomHostname: API.OperationMethod<
   GetCustomHostnameRequest,
@@ -1119,7 +1157,7 @@ export const getCustomHostname: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomHostnameRequest,
   output: GetCustomHostnameResponse,
-  errors: [],
+  errors: [CustomHostnameNotFound, SaasQuotaNotAllocated, Forbidden],
 }));
 
 export interface ListCustomHostnamesRequest {
@@ -1802,7 +1840,10 @@ export const ListCustomHostnamesResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListCustomHostnamesResponse>;
 
-export type ListCustomHostnamesError = DefaultErrors;
+export type ListCustomHostnamesError =
+  | DefaultErrors
+  | SaasQuotaNotAllocated
+  | Forbidden;
 
 export const listCustomHostnames: API.PaginatedOperationMethod<
   ListCustomHostnamesRequest,
@@ -1812,7 +1853,7 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomHostnamesRequest,
   output: ListCustomHostnamesResponse,
-  errors: [],
+  errors: [SaasQuotaNotAllocated, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -2447,7 +2488,7 @@ export const CreateCustomHostnameResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateCustomHostnameResponse>;
 
-export type CreateCustomHostnameError = DefaultErrors;
+export type CreateCustomHostnameError = DefaultErrors | SaasQuotaNotAllocated;
 
 export const createCustomHostname: API.OperationMethod<
   CreateCustomHostnameRequest,
@@ -2457,7 +2498,7 @@ export const createCustomHostname: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomHostnameRequest,
   output: CreateCustomHostnameResponse,
-  errors: [],
+  errors: [SaasQuotaNotAllocated],
 }));
 
 export interface PatchCustomHostnameRequest {
@@ -3094,7 +3135,10 @@ export const PatchCustomHostnameResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchCustomHostnameResponse>;
 
-export type PatchCustomHostnameError = DefaultErrors;
+export type PatchCustomHostnameError =
+  | DefaultErrors
+  | CustomHostnameNotFound
+  | SaasQuotaNotAllocated;
 
 export const patchCustomHostname: API.OperationMethod<
   PatchCustomHostnameRequest,
@@ -3104,7 +3148,7 @@ export const patchCustomHostname: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomHostnameRequest,
   output: PatchCustomHostnameResponse,
-  errors: [],
+  errors: [CustomHostnameNotFound, SaasQuotaNotAllocated],
 }));
 
 export interface DeleteCustomHostnameRequest {
@@ -3134,7 +3178,10 @@ export const DeleteCustomHostnameResponse =
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }) as unknown as Schema.Schema<DeleteCustomHostnameResponse>;
 
-export type DeleteCustomHostnameError = DefaultErrors;
+export type DeleteCustomHostnameError =
+  | DefaultErrors
+  | CustomHostnameNotFound
+  | SaasQuotaNotAllocated;
 
 export const deleteCustomHostname: API.OperationMethod<
   DeleteCustomHostnameRequest,
@@ -3144,7 +3191,7 @@ export const deleteCustomHostname: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomHostnameRequest,
   output: DeleteCustomHostnameResponse,
-  errors: [],
+  errors: [CustomHostnameNotFound, SaasQuotaNotAllocated],
 }));
 
 // =============================================================================
@@ -3225,7 +3272,11 @@ export const GetFallbackOriginResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetFallbackOriginResponse>;
 
-export type GetFallbackOriginError = DefaultErrors;
+export type GetFallbackOriginError =
+  | DefaultErrors
+  | FallbackOriginNotFound
+  | SaasAccessNotGranted
+  | Forbidden;
 
 export const getFallbackOrigin: API.OperationMethod<
   GetFallbackOriginRequest,
@@ -3235,7 +3286,7 @@ export const getFallbackOrigin: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFallbackOriginRequest,
   output: GetFallbackOriginResponse,
-  errors: [],
+  errors: [FallbackOriginNotFound, SaasAccessNotGranted, Forbidden],
 }));
 
 export interface PutFallbackOriginRequest {
@@ -3315,7 +3366,7 @@ export const PutFallbackOriginResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PutFallbackOriginResponse>;
 
-export type PutFallbackOriginError = DefaultErrors;
+export type PutFallbackOriginError = DefaultErrors | SaasAccessNotGranted;
 
 export const putFallbackOrigin: API.OperationMethod<
   PutFallbackOriginRequest,
@@ -3325,7 +3376,7 @@ export const putFallbackOrigin: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutFallbackOriginRequest,
   output: PutFallbackOriginResponse,
-  errors: [],
+  errors: [SaasAccessNotGranted],
 }));
 
 export interface DeleteFallbackOriginRequest {
@@ -3402,7 +3453,10 @@ export const DeleteFallbackOriginResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteFallbackOriginResponse>;
 
-export type DeleteFallbackOriginError = DefaultErrors;
+export type DeleteFallbackOriginError =
+  | DefaultErrors
+  | FallbackOriginNotFound
+  | SaasAccessNotGranted;
 
 export const deleteFallbackOrigin: API.OperationMethod<
   DeleteFallbackOriginRequest,
@@ -3412,5 +3466,5 @@ export const deleteFallbackOrigin: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFallbackOriginRequest,
   output: DeleteFallbackOriginResponse,
-  errors: [],
+  errors: [FallbackOriginNotFound, SaasAccessNotGranted],
 }));

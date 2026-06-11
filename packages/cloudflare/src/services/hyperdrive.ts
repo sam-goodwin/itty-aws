@@ -21,7 +21,10 @@ export class HyperdriveConfigNotFound extends Schema.TaggedErrorClass<Hyperdrive
   "HyperdriveConfigNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(HyperdriveConfigNotFound, [{ code: 2006 }]);
+T.applyErrorMatchers(HyperdriveConfigNotFound, [
+  { code: 2006 },
+  { status: 404 },
+]);
 
 export class InvalidHyperdriveConfig extends Schema.TaggedErrorClass<InvalidHyperdriveConfig>()(
   "InvalidHyperdriveConfig",

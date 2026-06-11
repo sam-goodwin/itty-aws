@@ -9773,29 +9773,15 @@ paths:
         client.loadBalancers.regions.get( 'WNAM', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
-        - name: regionId
-          in: path
-          required: true
-          schema:
-            type: string
-            enum:
-              - WNAM
-              - ENAM
-              - WEU
-              - EEU
-              - NSAM
-              - SSAM
-              - OC
-              - ME
-              - NAF
-              - SAF
-              - SAS
-              - SEAS
-              - NEAS
         - name: account_id
           in: path
           required: true
           description: Identifier.
+          schema:
+            type: string
+        - name: regionId
+          in: path
+          required: true
           schema:
             type: string
       responses:

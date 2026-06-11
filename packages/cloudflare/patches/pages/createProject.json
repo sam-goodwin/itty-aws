@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "ProjectAlreadyExists": [{ "code": 8000002 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}
