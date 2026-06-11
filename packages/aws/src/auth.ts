@@ -73,38 +73,49 @@ export const makeAuthService = () =>
       const awsDir = path.join(ini.getHomeDir(), ".aws");
       const configPath = path.join(awsDir, "config");
 
-      if (profile.sso_session) {
-        const ssoRegion = Option.getOrUndefined(
-          yield* Effect.serviceOption(SsoRegion),
-        );
-        const ssoStartUrl = Option.getOrElse(
-          yield* Effect.serviceOption(SsoStartUrl),
-          () => profile.sso_start_url,
-        );
+      // A profile is an SSO profile in one of two config formats:
+      //   - modern: `sso_session = <name>` referencing an `[sso-session <name>]`
+      //     section that holds `sso_start_url` / `sso_region`.
+      //   - legacy inline: `sso_start_url` (and `sso_region`) set directly on the
+      //     profile, with no `sso_session`.
+      // Only the modern format needs the session lookup; both then validate the
+      // required SSO fields. (Legacy inline is still emitted by older `aws configure
+      // sso` runs and remains valid, so treat it as an SSO profile rather than
+      // reporting the profile as not found.)
+      if (profile.sso_session || profile.sso_start_url) {
+        if (profile.sso_session) {
+          const ssoRegion = Option.getOrUndefined(
+            yield* Effect.serviceOption(SsoRegion),
+          );
+          const ssoStartUrl = Option.getOrElse(
+            yield* Effect.serviceOption(SsoStartUrl),
+            () => profile.sso_start_url,
+          );
 
-        const ssoSessions = yield* fs.readFileString(configPath).pipe(
-          Effect.flatMap((config) =>
-            Effect.promise(async () => parseIni(config)),
-          ),
-          Effect.map(parseSSOSessionData),
-        );
-        const session = ssoSessions[profile.sso_session];
-        if (ssoRegion && ssoRegion !== session.sso_region) {
-          return yield* new ConflictingSSORegion({
-            message: `Conflicting SSO region`,
-            ssoRegion: ssoRegion,
-            profile: profile.sso_session,
-          });
+          const ssoSessions = yield* fs.readFileString(configPath).pipe(
+            Effect.flatMap((config) =>
+              Effect.promise(async () => parseIni(config)),
+            ),
+            Effect.map(parseSSOSessionData),
+          );
+          const session = ssoSessions[profile.sso_session];
+          if (ssoRegion && ssoRegion !== session.sso_region) {
+            return yield* new ConflictingSSORegion({
+              message: `Conflicting SSO region`,
+              ssoRegion: ssoRegion,
+              profile: profile.sso_session,
+            });
+          }
+          if (ssoStartUrl && ssoStartUrl !== session.sso_start_url) {
+            return yield* new ConflictingSSOStartUrl({
+              message: `Conflicting SSO start url`,
+              ssoStartUrl: ssoStartUrl,
+              profile: profile.sso_session,
+            });
+          }
+          profile.sso_region = session.sso_region;
+          profile.sso_start_url = session.sso_start_url;
         }
-        if (ssoStartUrl && ssoStartUrl !== session.sso_start_url) {
-          return yield* new ConflictingSSOStartUrl({
-            message: `Conflicting SSO start url`,
-            ssoStartUrl: ssoStartUrl,
-            profile: profile.sso_session,
-          });
-        }
-        profile.sso_region = session.sso_region;
-        profile.sso_start_url = session.sso_start_url;
 
         const ssoFields = [
           "sso_start_url",
@@ -141,9 +152,12 @@ export const makeAuthService = () =>
 
       const profile = yield* loadProfile(profileName);
 
-      if (profile.sso_session) {
+      // Both SSO formats cache the access token under sha1 of the cache key: the
+      // `sso_session` name (modern) or the `sso_start_url` (legacy inline format).
+      const ssoCacheKey = profile.sso_session ?? profile.sso_start_url;
+      if (ssoCacheKey) {
         const hasher = createHash("sha1");
-        const cacheName = hasher.update(profile.sso_session).digest("hex");
+        const cacheName = hasher.update(ssoCacheKey).digest("hex");
         const ssoTokenFilepath = path.join(cachePath, `${cacheName}.json`);
         const cachedCredsFilePath = path.join(
           cachePath,
@@ -199,7 +213,7 @@ export const makeAuthService = () =>
             () =>
               new InvalidSSOToken({
                 message: `The SSO session token associated with profile=${profileName} was not found or is invalid. ${REFRESH_MESSAGE}`,
-                sso_session: profile.sso_session!,
+                sso_session: ssoCacheKey,
               }),
           ),
         );
