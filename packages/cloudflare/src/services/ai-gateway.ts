@@ -28,6 +28,14 @@ export class GatewayNotFound extends Schema.TaggedErrorClass<GatewayNotFound>()(
 ) {}
 T.applyErrorMatchers(GatewayNotFound, [{ code: 7002 }]);
 
+export class NoManualTopup extends Schema.TaggedErrorClass<NoManualTopup>()(
+  "NoManualTopup",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(NoManualTopup, [
+  { code: 1000, message: { includes: "NO_MANUAL_TOPUP" } },
+]);
+
 // =============================================================================
 // AiGateway
 // =============================================================================
@@ -3365,9 +3373,9 @@ export interface CreditBalanceBillingResponse {
   paymentMethod: { brand?: string | null; last4?: string | null } | null;
   topupConfig: {
     amount: number | null;
-    disabledReason: string | null;
-    error: string | null;
-    lastFailedAt: number | null;
+    disabledReason?: string | null;
+    error?: string | null;
+    lastFailedAt?: number | null;
     threshold: number | null;
   };
   firstTopupSuccess?: boolean | null;
@@ -3386,9 +3394,11 @@ export const CreditBalanceBillingResponse =
     ]),
     topupConfig: Schema.Struct({
       amount: Schema.Union([Schema.Number, Schema.Null]),
-      disabledReason: Schema.Union([Schema.String, Schema.Null]),
-      error: Schema.Union([Schema.String, Schema.Null]),
-      lastFailedAt: Schema.Union([Schema.Number, Schema.Null]),
+      disabledReason: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastFailedAt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       threshold: Schema.Union([Schema.Number, Schema.Null]),
     }),
     firstTopupSuccess: Schema.optional(
@@ -3511,7 +3521,7 @@ export const CreateBillingSpendingLimitResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateBillingSpendingLimitResponse>;
 
-export type CreateBillingSpendingLimitError = DefaultErrors;
+export type CreateBillingSpendingLimitError = DefaultErrors | NoManualTopup;
 
 export const createBillingSpendingLimit: API.OperationMethod<
   CreateBillingSpendingLimitRequest,
@@ -3521,7 +3531,7 @@ export const createBillingSpendingLimit: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingSpendingLimitRequest,
   output: CreateBillingSpendingLimitResponse,
-  errors: [],
+  errors: [NoManualTopup],
 }));
 
 export interface DeleteBillingSpendingLimitRequest {
@@ -3704,18 +3714,18 @@ export const GetBillingTopupConfigRequest =
 
 export interface GetBillingTopupConfigResponse {
   amount: number | null;
-  disabledReason: string | null;
-  error: string | null;
-  lastFailedAt: number | null;
+  disabledReason?: string | null;
+  error?: string | null;
+  lastFailedAt?: number | null;
   threshold: number | null;
 }
 
 export const GetBillingTopupConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amount: Schema.Union([Schema.Number, Schema.Null]),
-    disabledReason: Schema.Union([Schema.String, Schema.Null]),
-    error: Schema.Union([Schema.String, Schema.Null]),
-    lastFailedAt: Schema.Union([Schema.Number, Schema.Null]),
+    disabledReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastFailedAt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     threshold: Schema.Union([Schema.Number, Schema.Null]),
   }).pipe(
     T.ResponsePath("result"),

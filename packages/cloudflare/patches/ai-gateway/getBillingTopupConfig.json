@@ -1,0 +1,9 @@
+{
+  "response": {
+    "properties": {
+      "disabledReason": { "optional": true },
+      "error": { "optional": true },
+      "lastFailedAt": { "optional": true }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "response": {
+    "properties": {
+      "topup_config.disabledReason": { "optional": true },
+      "topup_config.error": { "optional": true },
+      "topup_config.lastFailedAt": { "optional": true }
+    }
+  }
+}

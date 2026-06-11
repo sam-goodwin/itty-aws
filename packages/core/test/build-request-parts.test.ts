@@ -68,3 +68,85 @@ describe("buildRequestParts — RFC 6570 path expansion", () => {
     );
   });
 });
+
+// OpenAPI `deepObject`-style query params: Cloudflare list endpoints model
+// filters as nested structs (e.g. DNS listRecords `name: { exact }`) that
+// must serialize as `name.exact=value` — NOT `name=[object Object]`, which
+// the server treats as a filter that matches nothing.
+
+describe("buildRequestParts — deepObject query params", () => {
+  const Input = Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    name: Schema.optional(
+      Schema.Struct({
+        contains: Schema.optional(Schema.String),
+        exact: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("name")),
+    tag: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("tag")),
+    type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/dns_records" }));
+
+  const build = (input: Record<string, unknown>) =>
+    T.buildRequestParts(Input.ast, T.getHttpTrait(Input.ast)!, input, Input);
+
+  it("flattens a struct query param to dot-notation keys", () => {
+    const parts = build({
+      zoneId: "z1",
+      name: { exact: "api.example.com" },
+      type: "A",
+    });
+
+    expect(parts.query).toEqual({
+      "name.exact": "api.example.com",
+      type: "A",
+    });
+  });
+
+  it("flattens multiple members of the same struct", () => {
+    const parts = build({
+      zoneId: "z1",
+      name: { exact: "api.example.com", contains: "example" },
+    });
+
+    expect(parts.query).toEqual({
+      "name.exact": "api.example.com",
+      "name.contains": "example",
+    });
+  });
+
+  it("serializes array members as repeated dot-notation params", () => {
+    const parts = build({ zoneId: "z1", tag: { not: ["a", "b"] } });
+
+    expect(parts.query).toEqual({ "tag.not": ["a", "b"] });
+  });
+
+  it("skips undefined and null struct members", () => {
+    const parts = build({
+      zoneId: "z1",
+      name: { exact: "api.example.com", contains: undefined },
+    });
+
+    expect(parts.query).toEqual({ "name.exact": "api.example.com" });
+  });
+
+  it("keeps scalar and array query params unchanged", () => {
+    const ScalarInput = Schema.Struct({
+      type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
+      id: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("id")),
+    }).pipe(T.Http({ method: "GET", path: "/things" }));
+
+    const parts = T.buildRequestParts(
+      ScalarInput.ast,
+      T.getHttpTrait(ScalarInput.ast)!,
+      { type: "A", id: ["1", "2"] },
+      ScalarInput,
+    );
+
+    expect(parts.query).toEqual({ type: "A", id: ["1", "2"] });
+  });
+});

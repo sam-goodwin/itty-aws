@@ -1,3 +1,43 @@
+## v0.24.9
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **core**: Serialize struct query params as deepObject dot-notation &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/334 [<samp>(e392f)</samp>](https://github.com/alchemy-run/distilled/commit/e392f446)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.24.8...HEAD)
+
+---
+
+## v0.24.8
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**: Patch optional properties on getBillingTopupConfig &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(e199c)</samp>](https://github.com/alchemy-run/distilled/commit/e199ca5a)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.24.7...HEAD)
+
+---
+
+## v0.24.7
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**: Patch ai gateway creditBalanceBilling topupConfig &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(1e84a)</samp>](https://github.com/alchemy-run/distilled/commit/1e84a9f3)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.24.6...HEAD)
+
+---
+
+## v0.24.6
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**: Add NO_MANUAL_TOPUP error for createBillingSpendingLimit &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(9be77)</samp>](https://github.com/alchemy-run/distilled/commit/9be77343)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.24.5...HEAD)
+
+---
+
 ## v0.24.5
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

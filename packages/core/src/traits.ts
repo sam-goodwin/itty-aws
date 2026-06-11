@@ -690,6 +690,46 @@ const RFC3986_NEEDS_ENCODING = /[^A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=]/g;
 const encodeReserved = (v: string): string =>
   v.replace(RFC3986_NEEDS_ENCODING, encodeURIComponent);
 
+const isPlainObject = (v: unknown): v is Record<string, unknown> => {
+  if (typeof v !== "object" || v === null || Array.isArray(v)) return false;
+  const proto = Object.getPrototypeOf(v);
+  return proto === Object.prototype || proto === null;
+};
+
+/**
+ * Serialize a query-param value onto `query`, flattening plain objects
+ * using OpenAPI `deepObject`-style dot notation.
+ *
+ * Several Cloudflare list endpoints model their filters as nested structs
+ * (e.g. DNS `listRecords` takes `name: { exact, contains, ... }`) that must
+ * go over the wire as `name.exact=value`. Previously these fell through to
+ * `String(value)` and were sent as `name=[object Object]`, which the server
+ * happily treats as a filter that matches nothing — the call "succeeds"
+ * with zero results and the bug is invisible to the caller.
+ *
+ * Scalars and arrays keep their existing serialization (`k=v` /
+ * repeated `k=v` pairs). Nested plain objects recurse, so deeper filter
+ * shapes flatten to `a.b.c=value`. `undefined`/`null` members are skipped
+ * like top-level params. Non-plain objects (class instances, `Date`, …)
+ * keep the legacy `String(value)` behavior.
+ */
+const setQueryValue = (
+  query: Record<string, string | string[]>,
+  wireName: string,
+  value: unknown,
+): void => {
+  if (Array.isArray(value)) {
+    query[wireName] = value.map(String);
+  } else if (isPlainObject(value)) {
+    for (const [key, member] of Object.entries(value)) {
+      if (member === undefined || member === null) continue;
+      setQueryValue(query, `${wireName}.${key}`, member);
+    }
+  } else {
+    query[wireName] = String(value);
+  }
+};
+
 export const buildRequestParts = (
   ast: AST.AST,
   httpTrait: HttpTrait,
@@ -742,11 +782,7 @@ export const buildRequestParts = (
     if (queryParam !== undefined) {
       nonBodyKeys.add(tsName);
       const wireName = typeof queryParam === "string" ? queryParam : tsName;
-      if (Array.isArray(value)) {
-        query[wireName] = value.map(String);
-      } else {
-        query[wireName] = String(value);
-      }
+      setQueryValue(query, wireName, value);
       continue;
     }
 

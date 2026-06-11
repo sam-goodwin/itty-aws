@@ -1,11 +1,12 @@
 {
   "name": "@distilled.cloud/axiom",
-  "version": "0.24.5",
+  "version": "0.24.9",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",
     "directory": "packages/axiom"
   },
+  "license": "Apache-2.0",
   "type": "module",
   "sideEffects": false,
   "module": "src/index.ts",

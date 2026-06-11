@@ -2377,9 +2377,6 @@ paths:
                         nullable: true
                     required:
                       - amount
-                      - disabledReason
-                      - error
-                      - lastFailedAt
                       - threshold
                   first_topup_success:
                     type: boolean
@@ -2484,6 +2481,11 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        NoManualTopup:
+          - code: 1000
+            message:
+              includes: NO_MANUAL_TOPUP
     delete:
       operationId: deleteBillingSpendingLimit
       description: "Remove the spending limit for the account.  @example ```ts const
@@ -2648,9 +2650,6 @@ paths:
                     nullable: true
                 required:
                   - amount
-                  - disabledReason
-                  - error
-                  - lastFailedAt
                   - threshold
       x-distilled-response-path: result
     post:

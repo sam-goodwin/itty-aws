@@ -1,11 +1,12 @@
 {
   "name": "@distilled.cloud/gcp",
-  "version": "0.24.5",
+  "version": "0.24.9",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",
     "directory": "packages/gcp"
   },
+  "license": "Apache-2.0",
   "type": "module",
   "sideEffects": false,
   "files": [
