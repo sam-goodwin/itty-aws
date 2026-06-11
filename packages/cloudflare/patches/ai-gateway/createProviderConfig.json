@@ -1,0 +1,8 @@
+{
+  "request": {
+    "properties": {
+      "secret": { "optional": true },
+      "secretId": { "optional": true }
+    }
+  }
+}

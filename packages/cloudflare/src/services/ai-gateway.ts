@@ -36,6 +36,12 @@ T.applyErrorMatchers(NoManualTopup, [
   { code: 1000, message: { includes: "NO_MANUAL_TOPUP" } },
 ]);
 
+export class ProviderConfigNotFound extends Schema.TaggedErrorClass<ProviderConfigNotFound>()(
+  "ProviderConfigNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ProviderConfigNotFound, [{ code: 7002, status: 404 }]);
+
 // =============================================================================
 // AiGateway
 // =============================================================================
@@ -8165,9 +8171,9 @@ export interface CreateProviderConfigRequest {
   /** Body param */
   providerSlug: string;
   /** Body param */
-  secret: string;
+  secret?: string;
   /** Body param */
-  secretId: string;
+  secretId?: string;
   /** Body param */
   rateLimit?: number;
   /** Body param */
@@ -8181,8 +8187,8 @@ export const CreateProviderConfigRequest =
     alias: Schema.String,
     defaultConfig: Schema.Boolean,
     providerSlug: Schema.String,
-    secret: Schema.String,
-    secretId: Schema.String,
+    secret: Schema.optional(Schema.String),
+    secretId: Schema.optional(Schema.String),
     rateLimit: Schema.optional(Schema.Number),
     rateLimitPeriod: Schema.optional(Schema.Number),
   }).pipe(
@@ -8259,6 +8265,171 @@ export const createProviderConfig: API.OperationMethod<
   input: CreateProviderConfigRequest,
   output: CreateProviderConfigResponse,
   errors: [],
+}));
+
+export interface UpdateProviderConfigRequest {
+  /** Account identifier */
+  accountId: string;
+  /** Gateway identifier */
+  gatewayId: string;
+  /** Provider config identifier */
+  id: string;
+  /** The new secret value for the provider key */
+  secret: string;
+}
+
+export const UpdateProviderConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+    id: Schema.String.pipe(T.HttpPath("id")),
+    secret: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/provider_configs/{id}",
+    }),
+  ) as unknown as Schema.Schema<UpdateProviderConfigRequest>;
+
+export interface UpdateProviderConfigResponse {
+  id: string;
+  alias: string;
+  defaultConfig: boolean;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  providerSlug: string;
+  secretId: string;
+  secretPreview: string;
+  rateLimit?: number | null;
+  rateLimitPeriod?: number | null;
+}
+
+export const UpdateProviderConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+    alias: Schema.String,
+    defaultConfig: Schema.Boolean,
+    gatewayId: Schema.String,
+    modifiedAt: Schema.String,
+    providerSlug: Schema.String,
+    secretId: Schema.String,
+    secretPreview: Schema.String,
+    rateLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    rateLimitPeriod: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        alias: "alias",
+        defaultConfig: "default_config",
+        gatewayId: "gateway_id",
+        modifiedAt: "modified_at",
+        providerSlug: "provider_slug",
+        secretId: "secret_id",
+        secretPreview: "secret_preview",
+        rateLimit: "rate_limit",
+        rateLimitPeriod: "rate_limit_period",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<UpdateProviderConfigResponse>;
+
+export type UpdateProviderConfigError = DefaultErrors | ProviderConfigNotFound;
+
+export const updateProviderConfig: API.OperationMethod<
+  UpdateProviderConfigRequest,
+  UpdateProviderConfigResponse,
+  UpdateProviderConfigError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateProviderConfigRequest,
+  output: UpdateProviderConfigResponse,
+  errors: [ProviderConfigNotFound],
+}));
+
+export interface DeleteProviderConfigRequest {
+  /** Account identifier */
+  accountId: string;
+  /** Gateway identifier */
+  gatewayId: string;
+  /** Provider config identifier */
+  id: string;
+}
+
+export const DeleteProviderConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+    id: Schema.String.pipe(T.HttpPath("id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/provider_configs/{id}",
+    }),
+  ) as unknown as Schema.Schema<DeleteProviderConfigRequest>;
+
+export interface DeleteProviderConfigResponse {
+  id: string;
+  alias: string;
+  defaultConfig: boolean;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  providerSlug: string;
+  secretId: string;
+  secretPreview: string;
+  rateLimit?: number | null;
+  rateLimitPeriod?: number | null;
+}
+
+export const DeleteProviderConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+    alias: Schema.String,
+    defaultConfig: Schema.Boolean,
+    gatewayId: Schema.String,
+    modifiedAt: Schema.String,
+    providerSlug: Schema.String,
+    secretId: Schema.String,
+    secretPreview: Schema.String,
+    rateLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    rateLimitPeriod: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        alias: "alias",
+        defaultConfig: "default_config",
+        gatewayId: "gateway_id",
+        modifiedAt: "modified_at",
+        providerSlug: "provider_slug",
+        secretId: "secret_id",
+        secretPreview: "secret_preview",
+        rateLimit: "rate_limit",
+        rateLimitPeriod: "rate_limit_period",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<DeleteProviderConfigResponse>;
+
+export type DeleteProviderConfigError = DefaultErrors | ProviderConfigNotFound;
+
+export const deleteProviderConfig: API.OperationMethod<
+  DeleteProviderConfigRequest,
+  DeleteProviderConfigResponse,
+  DeleteProviderConfigError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProviderConfigRequest,
+  output: DeleteProviderConfigResponse,
+  errors: [ProviderConfigNotFound],
 }));
 
 // =============================================================================

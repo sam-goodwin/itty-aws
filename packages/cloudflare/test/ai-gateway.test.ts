@@ -203,4 +203,75 @@ describe("AiGateway", () => {
         Effect.map((e) => expect(e._tag).toBe("GatewayNotFound")),
       ));
   });
+
+  // --------------------------------------------------------------------------
+  // providerConfigs (BYOK provider keys)
+  // --------------------------------------------------------------------------
+  describe("providerConfigs", () => {
+    test("happy path - create, list, rotate, delete a provider config", () =>
+      withGateway(gatewayName("provider-cfg"), (name) =>
+        Effect.gen(function* () {
+          // Create a BYOK provider key with an inline (dummy) secret value.
+          // Cloudflare stores it in the account's Secrets Store under the
+          // {gateway}_{provider}_{alias} naming convention.
+          const created = yield* AiGateway.createProviderConfig({
+            accountId: accountId(),
+            gatewayId: name,
+            providerSlug: "openai",
+            alias: "default",
+            defaultConfig: true,
+            secret: "distilled-test-not-a-real-key-1",
+          });
+
+          expect(created.providerSlug).toBe("openai");
+          expect(created.alias).toBe("default");
+          expect(created.defaultConfig).toBe(true);
+          expect(created.gatewayId).toBe(name);
+          expect(typeof created.secretId).toBe("string");
+
+          // List includes the created config.
+          const listed = yield* AiGateway.listProviderConfigs({
+            accountId: accountId(),
+            gatewayId: name,
+          });
+          expect(listed.result.map((c) => c.id)).toContain(created.id);
+
+          // Rotate the secret value in place.
+          const rotated = yield* AiGateway.updateProviderConfig({
+            accountId: accountId(),
+            gatewayId: name,
+            id: created.id,
+            secret: "distilled-test-not-a-real-key-2",
+          });
+          expect(rotated.id).toBe(created.id);
+          expect(rotated.providerSlug).toBe("openai");
+
+          // Delete the config.
+          const deleted = yield* AiGateway.deleteProviderConfig({
+            accountId: accountId(),
+            gatewayId: name,
+            id: created.id,
+          });
+          expect(deleted.id).toBe(created.id);
+
+          const after = yield* AiGateway.listProviderConfigs({
+            accountId: accountId(),
+            gatewayId: name,
+          });
+          expect(after.result.map((c) => c.id)).not.toContain(created.id);
+        }),
+      ));
+
+    test("error - ProviderConfigNotFound for delete non-existent config", () =>
+      withGateway(gatewayName("provider-cfg-404"), (name) =>
+        AiGateway.deleteProviderConfig({
+          accountId: accountId(),
+          gatewayId: name,
+          id: "00000000-0000-0000-0000-000000000000",
+        }).pipe(
+          Effect.flip,
+          Effect.map((e) => expect(e._tag).toBe("ProviderConfigNotFound")),
+        ),
+      ));
+  });
 });

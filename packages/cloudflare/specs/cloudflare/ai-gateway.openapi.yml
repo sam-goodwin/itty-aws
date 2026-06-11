@@ -1,7 +1,15 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare AI-GATEWAY API
+  title: Cloudflare AI Gateway API (patch overrides)
   version: 0.0.0
+  description: |
+    Operation additions for AI Gateway endpoints that exist in the public
+    Cloudflare OpenAPI schema (api-schemas) but are missing from the upstream
+    TypeScript SDK. Currently:
+      - updateProviderConfig: PUT /provider_configs/{id} — rotates the secret
+        value stored for a BYOK provider key.
+      - deleteProviderConfig: DELETE /provider_configs/{id} — removes a BYOK
+        provider key configuration from a gateway.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: ai-gateway
@@ -7061,8 +7069,6 @@ paths:
                 - alias
                 - default_config
                 - provider_slug
-                - secret
-                - secret_id
       responses:
         "200":
           description: Success
@@ -7102,6 +7108,149 @@ paths:
                   - secret_id
                   - secret_preview
       x-distilled-response-path: result
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/provider_configs/{id}:
+    put:
+      operationId: updateProviderConfig
+      summary: Update a Provider Config (rotate the secret value)
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier
+          schema:
+            type: string
+        - name: gatewayId
+          in: path
+          required: true
+          description: Gateway identifier
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          description: Provider config identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                secret:
+                  type: string
+                  description: The new secret value for the provider key
+              required:
+                - secret
+      responses:
+        "200":
+          description: Returns the updated provider config
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  alias:
+                    type: string
+                  default_config:
+                    type: boolean
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  provider_slug:
+                    type: string
+                  secret_id:
+                    type: string
+                  secret_preview:
+                    type: string
+                  rate_limit:
+                    type: number
+                  rate_limit_period:
+                    type: number
+                required:
+                  - id
+                  - alias
+                  - default_config
+                  - gateway_id
+                  - modified_at
+                  - provider_slug
+                  - secret_id
+                  - secret_preview
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ProviderConfigNotFound:
+          - code: 7002
+            status: 404
+    delete:
+      operationId: deleteProviderConfig
+      summary: Delete a Provider Config
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier
+          schema:
+            type: string
+        - name: gatewayId
+          in: path
+          required: true
+          description: Gateway identifier
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          description: Provider config identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns the deleted provider config
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  alias:
+                    type: string
+                  default_config:
+                    type: boolean
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  provider_slug:
+                    type: string
+                  secret_id:
+                    type: string
+                  secret_preview:
+                    type: string
+                  rate_limit:
+                    type: number
+                  rate_limit_period:
+                    type: number
+                required:
+                  - id
+                  - alias
+                  - default_config
+                  - gateway_id
+                  - modified_at
+                  - provider_slug
+                  - secret_id
+                  - secret_preview
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ProviderConfigNotFound:
+          - code: 7002
+            status: 404
   /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/url/{provider}:
     get:
       operationId: getUrl
