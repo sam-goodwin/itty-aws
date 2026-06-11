@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation updateProjectMember($input: ProjectMemberUpdateInput!) {\n  projectMemberUpdate(input: $input) {\n    avatar\n    email\n    id\n    name\n    role\n  }\n}";
+  "mutation projectMemberUpdate($input: ProjectMemberUpdateInput!) {\n  projectMemberUpdate(input: $input) {\n    avatar\n    email\n    id\n    name\n    role\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateProjectMemberInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const UpdateProjectMemberInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "updateProjectMember",
+    operationName: "projectMemberUpdate",
     type: "mutation",
   }),
 );

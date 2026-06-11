@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation redeployServiceInstance($environmentId: String!, $serviceId: String!) {\n  serviceInstanceRedeploy(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "mutation serviceInstanceRedeploy($environmentId: String!, $serviceId: String!) {\n  serviceInstanceRedeploy(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RedeployServiceInstanceInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const RedeployServiceInstanceInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "redeployServiceInstance",
+    operationName: "serviceInstanceRedeploy",
     type: "mutation",
   }),
 );

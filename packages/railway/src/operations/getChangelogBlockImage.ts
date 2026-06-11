@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getChangelogBlockImage($id: String!) {\n  changelogBlockImage(id: $id) {\n    __typename\n  }\n}";
+  "query changelogBlockImage($id: String!) {\n  changelogBlockImage(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetChangelogBlockImageInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetChangelogBlockImageInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getChangelogBlockImage",
+    operationName: "changelogBlockImage",
     type: "query",
   }),
 );

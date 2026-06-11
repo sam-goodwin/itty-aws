@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation updateTrustedDomain($input: WorkspaceTrustedDomainUpdateInput!) {\n  trustedDomainUpdate(input: $input) {\n    domainName\n    id\n    role\n    status\n    verificationData {\n      dnsHost\n      domainMatch {\n        cdnMode\n        createdAt\n        deletedAt\n        domain\n        edgeId\n        environmentId\n        id\n        projectId\n        serviceId\n        targetPort\n        updatedAt\n      }\n      domainStatus {\n        cdnProvider\n        certificateErrorMessage\n        certificateErrorType\n        certificateRetryable\n        certificateStatus\n        certificateStatusDetailed\n        verificationDnsHost\n        verificationToken\n        verified\n      }\n      token\n    }\n    verificationType\n    workspaceId\n  }\n}";
+  "mutation trustedDomainUpdate($input: WorkspaceTrustedDomainUpdateInput!) {\n  trustedDomainUpdate(input: $input) {\n    domainName\n    id\n    role\n    status\n    verificationData {\n      dnsHost\n      domainMatch {\n        cdnMode\n        createdAt\n        deletedAt\n        domain\n        edgeId\n        environmentId\n        id\n        projectId\n        serviceId\n        targetPort\n        updatedAt\n      }\n      domainStatus {\n        cdnProvider\n        certificateErrorMessage\n        certificateErrorType\n        certificateRetryable\n        certificateStatus\n        certificateStatusDetailed\n        verificationDnsHost\n        verificationToken\n        verified\n      }\n      token\n    }\n    verificationType\n    workspaceId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateTrustedDomainInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const UpdateTrustedDomainInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "updateTrustedDomain",
+    operationName: "trustedDomainUpdate",
     type: "mutation",
   }),
 );

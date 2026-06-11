@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createEnvironment($input: EnvironmentCreateInput!) {\n  environmentCreate(input: $input) {\n    canAccess\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}";
+  "mutation environmentCreate($input: EnvironmentCreateInput!) {\n  environmentCreate(input: $input) {\n    canAccess\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateEnvironmentInput = Schema.Struct({
@@ -20,7 +20,7 @@ export const CreateEnvironmentInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createEnvironment",
+    operationName: "environmentCreate",
     type: "mutation",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getFunctionRuntime($name: FunctionRuntimeName!) {\n  functionRuntime(name: $name) {\n    image\n    latestVersion {\n      image\n      tag\n    }\n    name\n    versions {\n      image\n      tag\n    }\n  }\n}";
+  "query functionRuntime($name: FunctionRuntimeName!) {\n  functionRuntime(name: $name) {\n    image\n    latestVersion {\n      image\n      tag\n    }\n    name\n    versions {\n      image\n      tag\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetFunctionRuntimeInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetFunctionRuntimeInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getFunctionRuntime",
+    operationName: "functionRuntime",
     type: "query",
   }),
 );

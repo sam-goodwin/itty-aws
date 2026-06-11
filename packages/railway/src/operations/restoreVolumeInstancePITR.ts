@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation restoreVolumeInstancePITR($newServiceName: String, $sourceRepoPath: String, $targetTimestamp: DateTime!, $volumeInstanceId: String!) {\n  volumeInstancePITRRestore(newServiceName: $newServiceName, sourceRepoPath: $sourceRepoPath, targetTimestamp: $targetTimestamp, volumeInstanceId: $volumeInstanceId) {\n    workflowId\n  }\n}";
+  "mutation volumeInstancePITRRestore($newServiceName: String, $sourceRepoPath: String, $targetTimestamp: DateTime!, $volumeInstanceId: String!) {\n  volumeInstancePITRRestore(newServiceName: $newServiceName, sourceRepoPath: $sourceRepoPath, targetTimestamp: $targetTimestamp, volumeInstanceId: $volumeInstanceId) {\n    workflowId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RestoreVolumeInstancePITRInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const RestoreVolumeInstancePITRInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "restoreVolumeInstancePITR",
+    operationName: "volumeInstancePITRRestore",
     type: "mutation",
   }),
 );

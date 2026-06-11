@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getEstimatedUsage($includeDeleted: Boolean, $measurements: [MetricMeasurement!]!, $projectId: String, $workspaceId: String) {\n  estimatedUsage(includeDeleted: $includeDeleted, measurements: $measurements, projectId: $projectId, workspaceId: $workspaceId) {\n    estimatedValue\n    measurement\n    projectId\n  }\n}";
+  "query estimatedUsage($includeDeleted: Boolean, $measurements: [MetricMeasurement!]!, $projectId: String, $workspaceId: String) {\n  estimatedUsage(includeDeleted: $includeDeleted, measurements: $measurements, projectId: $projectId, workspaceId: $workspaceId) {\n    estimatedValue\n    measurement\n    projectId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetEstimatedUsageInput = Schema.Struct({
@@ -30,7 +30,7 @@ export const GetEstimatedUsageInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getEstimatedUsage",
+    operationName: "estimatedUsage",
     type: "query",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation addFeatureFlag($input: FeatureFlagToggleInput!) {\n  featureFlagAdd(input: $input) {\n    __typename\n  }\n}";
+  "mutation featureFlagAdd($input: FeatureFlagToggleInput!) {\n  featureFlagAdd(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const AddFeatureFlagInput = Schema.Struct({
@@ -22,7 +22,7 @@ export const AddFeatureFlagInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "addFeatureFlag",
+    operationName: "featureFlagAdd",
     type: "mutation",
   }),
 );

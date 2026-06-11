@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getSandboxTemplate($environmentId: String!, $id: ID!) {\n  sandboxTemplate(environmentId: $environmentId, id: $id) {\n    environmentId\n    id\n    status\n  }\n}";
+  "query sandboxTemplate($environmentId: String!, $id: ID!) {\n  sandboxTemplate(environmentId: $environmentId, id: $id) {\n    environmentId\n    id\n    status\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetSandboxTemplateInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetSandboxTemplateInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getSandboxTemplate",
+    operationName: "sandboxTemplate",
     type: "query",
   }),
 );

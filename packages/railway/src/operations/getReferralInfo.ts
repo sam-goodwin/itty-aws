@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getReferralInfo($workspaceId: String!) {\n  referralInfo(workspaceId: $workspaceId) {\n    code\n    id\n    referralStats {\n      credited\n      pending\n    }\n    status\n  }\n}";
+  "query referralInfo($workspaceId: String!) {\n  referralInfo(workspaceId: $workspaceId) {\n    code\n    id\n    referralStats {\n      credited\n      pending\n    }\n    status\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetReferralInfoInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetReferralInfoInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getReferralInfo",
+    operationName: "referralInfo",
     type: "query",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation upgradeEgressGatewayToHA($input: EgressGatewayServiceTargetInput!) {\n  egressGatewayUpgradeToHA(input: $input) {\n    ipv4\n    region\n    zone\n  }\n}";
+  "mutation egressGatewayUpgradeToHA($input: EgressGatewayServiceTargetInput!) {\n  egressGatewayUpgradeToHA(input: $input) {\n    ipv4\n    region\n    zone\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpgradeEgressGatewayToHAInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const UpgradeEgressGatewayToHAInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "upgradeEgressGatewayToHA",
+    operationName: "egressGatewayUpgradeToHA",
     type: "mutation",
   }),
 );

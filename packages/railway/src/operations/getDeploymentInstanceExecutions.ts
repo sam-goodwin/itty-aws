@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getDeploymentInstanceExecutions($after: String, $before: String, $first: Int, $input: DeploymentInstanceExecutionListInput!, $last: Int) {\n  deploymentInstanceExecutions(after: $after, before: $before, first: $first, input: $input, last: $last) {\n    edges {\n      cursor\n      node {\n        completedAt\n        createdAt\n        deploymentId\n        deploymentMeta\n        id\n        status\n        updatedAt\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query deploymentInstanceExecutions($after: String, $before: String, $first: Int, $input: DeploymentInstanceExecutionListInput!, $last: Int) {\n  deploymentInstanceExecutions(after: $after, before: $before, first: $first, input: $input, last: $last) {\n    edges {\n      cursor\n      node {\n        completedAt\n        createdAt\n        deploymentId\n        deploymentMeta\n        id\n        status\n        updatedAt\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetDeploymentInstanceExecutionsInput = Schema.Struct({
@@ -19,7 +19,7 @@ export const GetDeploymentInstanceExecutionsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getDeploymentInstanceExecutions",
+    operationName: "deploymentInstanceExecutions",
     type: "query",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createNotificationRule($input: CreateNotificationRuleInput!) {\n  notificationRuleCreate(input: $input) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}";
+  "mutation notificationRuleCreate($input: CreateNotificationRuleInput!) {\n  notificationRuleCreate(input: $input) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateNotificationRuleInput = Schema.Struct({
@@ -25,7 +25,7 @@ export const CreateNotificationRuleInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createNotificationRule",
+    operationName: "notificationRuleCreate",
     type: "mutation",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getDeployments($after: String, $before: String, $first: Int, $input: DeploymentListInput!, $last: Int) {\n  deployments(after: $after, before: $before, first: $first, input: $input, last: $last) {\n    edges {\n      cursor\n      node {\n        canRedeploy\n        canRollback\n        createdAt\n        deploymentStopped\n        diagnosis\n        environmentId\n        id\n        meta\n        projectId\n        serviceId\n        snapshotId\n        staticUrl\n        status\n        statusUpdatedAt\n        suggestAddServiceDomain\n        updatedAt\n        url\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query deployments($after: String, $before: String, $first: Int, $input: DeploymentListInput!, $last: Int) {\n  deployments(after: $after, before: $before, first: $first, input: $input, last: $last) {\n    edges {\n      cursor\n      node {\n        canRedeploy\n        canRollback\n        createdAt\n        deploymentStopped\n        diagnosis\n        environmentId\n        id\n        meta\n        projectId\n        serviceId\n        snapshotId\n        staticUrl\n        status\n        statusUpdatedAt\n        suggestAddServiceDomain\n        updatedAt\n        url\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetDeploymentsInput = Schema.Struct({
@@ -69,7 +69,7 @@ export const GetDeploymentsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getDeployments",
+    operationName: "deployments",
     type: "query",
   }),
 );

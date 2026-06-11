@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getCanvasViewMergePreview($sourceEnvironmentId: String!, $targetEnvironmentId: String!) {\n  canvasViewMergePreview(sourceEnvironmentId: $sourceEnvironmentId, targetEnvironmentId: $targetEnvironmentId) {\n    mutations\n    state\n  }\n}";
+  "query canvasViewMergePreview($sourceEnvironmentId: String!, $targetEnvironmentId: String!) {\n  canvasViewMergePreview(sourceEnvironmentId: $sourceEnvironmentId, targetEnvironmentId: $targetEnvironmentId) {\n    mutations\n    state\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetCanvasViewMergePreviewInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetCanvasViewMergePreviewInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getCanvasViewMergePreview",
+    operationName: "canvasViewMergePreview",
     type: "query",
   }),
 );

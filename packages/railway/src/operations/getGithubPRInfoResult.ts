@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getGithubPRInfoResult($prNumber: Int!, $serviceId: String!) {\n  githubPRInfoResult(prNumber: $prNumber, serviceId: $serviceId) {\n    error\n    prInfo {\n      additions\n      author\n      body\n      changedFiles\n      checks {\n        name\n        status\n      }\n      deletions\n      mergeable\n      state\n      title\n    }\n  }\n}";
+  "query githubPRInfoResult($prNumber: Int!, $serviceId: String!) {\n  githubPRInfoResult(prNumber: $prNumber, serviceId: $serviceId) {\n    error\n    prInfo {\n      additions\n      author\n      body\n      changedFiles\n      checks {\n        name\n        status\n      }\n      deletions\n      mergeable\n      state\n      title\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetGithubPRInfoResultInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetGithubPRInfoResultInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getGithubPRInfoResult",
+    operationName: "githubPRInfoResult",
     type: "query",
   }),
 );

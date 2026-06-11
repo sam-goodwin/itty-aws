@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getServiceInstanceAutoDeployStatus($environmentId: String!, $projectId: String!, $serviceId: String!) {\n  serviceInstanceAutoDeployStatus(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId) {\n    canEnable\n    enabled\n    reason\n  }\n}";
+  "query serviceInstanceAutoDeployStatus($environmentId: String!, $projectId: String!, $serviceId: String!) {\n  serviceInstanceAutoDeployStatus(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId) {\n    canEnable\n    enabled\n    reason\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetServiceInstanceAutoDeployStatusInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const GetServiceInstanceAutoDeployStatusInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getServiceInstanceAutoDeployStatus",
+    operationName: "serviceInstanceAutoDeployStatus",
     type: "query",
   }),
 );

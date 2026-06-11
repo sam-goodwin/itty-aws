@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createTwoFactorInfo($input: TwoFactorInfoCreateInput!) {\n  twoFactorInfoCreate(input: $input) {\n    recoveryCodes\n  }\n}";
+  "mutation twoFactorInfoCreate($input: TwoFactorInfoCreateInput!) {\n  twoFactorInfoCreate(input: $input) {\n    recoveryCodes\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateTwoFactorInfoInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const CreateTwoFactorInfoInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createTwoFactorInfo",
+    operationName: "twoFactorInfoCreate",
     type: "mutation",
   }),
 );

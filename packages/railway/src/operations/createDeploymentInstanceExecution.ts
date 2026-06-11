@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createDeploymentInstanceExecution($input: DeploymentInstanceExecutionCreateInput!) {\n  deploymentInstanceExecutionCreate(input: $input) {\n    __typename\n  }\n}";
+  "mutation deploymentInstanceExecutionCreate($input: DeploymentInstanceExecutionCreateInput!) {\n  deploymentInstanceExecutionCreate(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateDeploymentInstanceExecutionInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const CreateDeploymentInstanceExecutionInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createDeploymentInstanceExecution",
+    operationName: "deploymentInstanceExecutionCreate",
     type: "mutation",
   }),
 );

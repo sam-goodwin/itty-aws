@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createIntegration($input: IntegrationCreateInput!) {\n  integrationCreate(input: $input) {\n    config\n    id\n    name\n    projectId\n  }\n}";
+  "mutation integrationCreate($input: IntegrationCreateInput!) {\n  integrationCreate(input: $input) {\n    config\n    id\n    name\n    projectId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateIntegrationInput = Schema.Struct({
@@ -17,7 +17,7 @@ export const CreateIntegrationInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createIntegration",
+    operationName: "integrationCreate",
     type: "mutation",
   }),
 );

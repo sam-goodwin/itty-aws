@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deleteApiToken($id: String!) {\n  apiTokenDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation apiTokenDelete($id: String!) {\n  apiTokenDelete(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteApiTokenInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const DeleteApiTokenInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "deleteApiToken",
+    operationName: "apiTokenDelete",
     type: "mutation",
   }),
 );

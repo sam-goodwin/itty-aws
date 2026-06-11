@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation initiateEmailChange($newEmail: String!) {\n  emailChangeInitiate(newEmail: $newEmail) {\n    __typename\n  }\n}";
+  "mutation emailChangeInitiate($newEmail: String!) {\n  emailChangeInitiate(newEmail: $newEmail) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const InitiateEmailChangeInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const InitiateEmailChangeInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "initiateEmailChange",
+    operationName: "emailChangeInitiate",
     type: "mutation",
   }),
 );

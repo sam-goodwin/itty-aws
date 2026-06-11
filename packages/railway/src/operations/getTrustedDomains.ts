@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getTrustedDomains($after: String, $before: String, $first: Int, $last: Int, $workspaceId: String!) {\n  trustedDomains(after: $after, before: $before, first: $first, last: $last, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        domainName\n        id\n        role\n        status\n        verificationType\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query trustedDomains($after: String, $before: String, $first: Int, $last: Int, $workspaceId: String!) {\n  trustedDomains(after: $after, before: $before, first: $first, last: $last, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        domainName\n        id\n        role\n        status\n        verificationType\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetTrustedDomainsInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const GetTrustedDomainsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getTrustedDomains",
+    operationName: "trustedDomains",
     type: "query",
   }),
 );

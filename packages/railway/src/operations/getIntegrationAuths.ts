@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getIntegrationAuths($after: String, $before: String, $first: Int, $last: Int) {\n  integrationAuths(after: $after, before: $before, first: $first, last: $last) {\n    edges {\n      cursor\n      node {\n        id\n        provider\n        providerId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query integrationAuths($after: String, $before: String, $first: Int, $last: Int) {\n  integrationAuths(after: $after, before: $before, first: $first, last: $last) {\n    edges {\n      cursor\n      node {\n        id\n        provider\n        providerId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetIntegrationAuthsInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const GetIntegrationAuthsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getIntegrationAuths",
+    operationName: "integrationAuths",
     type: "query",
   }),
 );

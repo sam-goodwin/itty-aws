@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation trackCliAuthEvent($input: CliAuthEventTrackInput!) {\n  cliAuthEventTrack(input: $input) {\n    __typename\n  }\n}";
+  "mutation cliAuthEventTrack($input: CliAuthEventTrackInput!) {\n  cliAuthEventTrack(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const TrackCliAuthEventInput = Schema.Struct({
@@ -26,7 +26,7 @@ export const TrackCliAuthEventInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "trackCliAuthEvent",
+    operationName: "cliAuthEventTrack",
     type: "mutation",
   }),
 );

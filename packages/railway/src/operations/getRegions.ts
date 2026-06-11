@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getRegions($projectId: String) {\n  regions(projectId: $projectId) {\n    country\n    deploymentConstraints {\n      deprecationInfo {\n        isDeprecated\n        replacementRegion\n      }\n    }\n    id\n    location\n    name\n    region\n    workspaceId\n  }\n}";
+  "query regions($projectId: String) {\n  regions(projectId: $projectId) {\n    country\n    deploymentConstraints {\n      deprecationInfo {\n        isDeprecated\n        replacementRegion\n      }\n    }\n    id\n    location\n    name\n    region\n    workspaceId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetRegionsInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetRegionsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getRegions",
+    operationName: "regions",
     type: "query",
   }),
 );

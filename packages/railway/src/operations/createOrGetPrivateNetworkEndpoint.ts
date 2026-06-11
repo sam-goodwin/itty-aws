@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createOrGetPrivateNetworkEndpoint($input: PrivateNetworkEndpointCreateOrGetInput!) {\n  privateNetworkEndpointCreateOrGet(input: $input) {\n    createdAt\n    deletedAt\n    dnsName\n    newDnsName\n    privateIps\n    publicId\n    serviceInstanceId\n    syncStatus\n    tags\n  }\n}";
+  "mutation privateNetworkEndpointCreateOrGet($input: PrivateNetworkEndpointCreateOrGetInput!) {\n  privateNetworkEndpointCreateOrGet(input: $input) {\n    createdAt\n    deletedAt\n    dnsName\n    newDnsName\n    privateIps\n    publicId\n    serviceInstanceId\n    syncStatus\n    tags\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateOrGetPrivateNetworkEndpointInput = Schema.Struct({
@@ -18,7 +18,7 @@ export const CreateOrGetPrivateNetworkEndpointInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createOrGetPrivateNetworkEndpoint",
+    operationName: "privateNetworkEndpointCreateOrGet",
     type: "mutation",
   }),
 );

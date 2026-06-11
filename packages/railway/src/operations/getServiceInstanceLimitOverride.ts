@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getServiceInstanceLimitOverride($environmentId: String!, $serviceId: String!) {\n  serviceInstanceLimitOverride(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "query serviceInstanceLimitOverride($environmentId: String!, $serviceId: String!) {\n  serviceInstanceLimitOverride(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetServiceInstanceLimitOverrideInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetServiceInstanceLimitOverrideInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getServiceInstanceLimitOverride",
+    operationName: "serviceInstanceLimitOverride",
     type: "query",
   }),
 );

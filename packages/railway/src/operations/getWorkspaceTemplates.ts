@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getWorkspaceTemplates($after: String, $before: String, $first: Int, $last: Int, $workspaceId: String!) {\n  workspaceTemplates(after: $after, before: $before, first: $first, last: $last, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        activeProjects\n        canvasConfig\n        category\n        code\n        communityThreadSlug\n        config\n        createdAt\n        demoProjectId\n        description\n        health\n        id\n        image\n        isApproved\n        isV2Template\n        isVerified\n        languages\n        metadata\n        name\n        projects\n        readme\n        recentProjects\n        serializedConfig\n        status\n        supportHealthMetrics\n        tags\n        teamId\n        totalPayout\n        updatedAt\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query workspaceTemplates($after: String, $before: String, $first: Int, $last: Int, $workspaceId: String!) {\n  workspaceTemplates(after: $after, before: $before, first: $first, last: $last, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        activeProjects\n        canvasConfig\n        category\n        code\n        communityThreadSlug\n        config\n        createdAt\n        demoProjectId\n        description\n        health\n        id\n        image\n        isApproved\n        isV2Template\n        isVerified\n        languages\n        metadata\n        name\n        projects\n        readme\n        recentProjects\n        serializedConfig\n        status\n        supportHealthMetrics\n        tags\n        teamId\n        totalPayout\n        updatedAt\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetWorkspaceTemplatesInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const GetWorkspaceTemplatesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getWorkspaceTemplates",
+    operationName: "workspaceTemplates",
     type: "query",
   }),
 );

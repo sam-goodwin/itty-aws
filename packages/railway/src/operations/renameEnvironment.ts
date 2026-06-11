@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation renameEnvironment($id: String!, $input: EnvironmentRenameInput!) {\n  environmentRename(id: $id, input: $input) {\n    canAccess\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}";
+  "mutation environmentRename($id: String!, $input: EnvironmentRenameInput!) {\n  environmentRename(id: $id, input: $input) {\n    canAccess\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RenameEnvironmentInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const RenameEnvironmentInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "renameEnvironment",
+    operationName: "environmentRename",
     type: "mutation",
   }),
 );

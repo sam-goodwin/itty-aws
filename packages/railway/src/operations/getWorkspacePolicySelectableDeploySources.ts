@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getWorkspacePolicySelectableDeploySources($sourceType: WorkspacePolicyDeploySourceType!, $workspaceId: String!) {\n  workspacePolicySelectableDeploySources(sourceType: $sourceType, workspaceId: $workspaceId) {\n    sourceIcon\n    sourceId\n    sourceName\n    sourceType\n  }\n}";
+  "query workspacePolicySelectableDeploySources($sourceType: WorkspacePolicyDeploySourceType!, $workspaceId: String!) {\n  workspacePolicySelectableDeploySources(sourceType: $sourceType, workspaceId: $workspaceId) {\n    sourceIcon\n    sourceId\n    sourceName\n    sourceType\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetWorkspacePolicySelectableDeploySourcesInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetWorkspacePolicySelectableDeploySourcesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getWorkspacePolicySelectableDeploySources",
+    operationName: "workspacePolicySelectableDeploySources",
     type: "query",
   }),
 );

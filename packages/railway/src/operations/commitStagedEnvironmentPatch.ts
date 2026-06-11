@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation commitStagedEnvironmentPatch($commitMessage: String, $environmentId: String!, $skipDeploys: Boolean) {\n  environmentPatchCommitStaged(commitMessage: $commitMessage, environmentId: $environmentId, skipDeploys: $skipDeploys) {\n    __typename\n  }\n}";
+  "mutation environmentPatchCommitStaged($commitMessage: String, $environmentId: String!, $skipDeploys: Boolean) {\n  environmentPatchCommitStaged(commitMessage: $commitMessage, environmentId: $environmentId, skipDeploys: $skipDeploys) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CommitStagedEnvironmentPatchInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const CommitStagedEnvironmentPatchInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "commitStagedEnvironmentPatch",
+    operationName: "environmentPatchCommitStaged",
     type: "mutation",
   }),
 );

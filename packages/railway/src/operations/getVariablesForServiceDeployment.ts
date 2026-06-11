@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getVariablesForServiceDeployment($environmentId: String!, $projectId: String!, $serviceId: String!) {\n  variablesForServiceDeployment(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "query variablesForServiceDeployment($environmentId: String!, $projectId: String!, $serviceId: String!) {\n  variablesForServiceDeployment(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetVariablesForServiceDeploymentInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const GetVariablesForServiceDeploymentInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getVariablesForServiceDeployment",
+    operationName: "variablesForServiceDeployment",
     type: "query",
   }),
 );

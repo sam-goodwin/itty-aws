@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getMetrics($averagingWindowSeconds: Int, $endDate: DateTime, $environmentId: String, $groupBy: [MetricTag!], $includeDeleted: Boolean, $measurements: [MetricMeasurement!]!, $projectId: String, $sampleRateSeconds: Int, $serviceId: String, $startDate: DateTime!, $volumeId: String, $volumeInstanceExternalId: String, $workspaceId: String) {\n  metrics(averagingWindowSeconds: $averagingWindowSeconds, endDate: $endDate, environmentId: $environmentId, groupBy: $groupBy, includeDeleted: $includeDeleted, measurements: $measurements, projectId: $projectId, sampleRateSeconds: $sampleRateSeconds, serviceId: $serviceId, startDate: $startDate, volumeId: $volumeId, volumeInstanceExternalId: $volumeInstanceExternalId, workspaceId: $workspaceId) {\n    measurement\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      region\n      serviceId\n      volumeId\n      volumeInstanceId\n    }\n    values {\n      ts\n      value\n    }\n  }\n}";
+  "query metrics($averagingWindowSeconds: Int, $endDate: DateTime, $environmentId: String, $groupBy: [MetricTag!], $includeDeleted: Boolean, $measurements: [MetricMeasurement!]!, $projectId: String, $sampleRateSeconds: Int, $serviceId: String, $startDate: DateTime!, $volumeId: String, $volumeInstanceExternalId: String, $workspaceId: String) {\n  metrics(averagingWindowSeconds: $averagingWindowSeconds, endDate: $endDate, environmentId: $environmentId, groupBy: $groupBy, includeDeleted: $includeDeleted, measurements: $measurements, projectId: $projectId, sampleRateSeconds: $sampleRateSeconds, serviceId: $serviceId, startDate: $startDate, volumeId: $volumeId, volumeInstanceExternalId: $volumeInstanceExternalId, workspaceId: $workspaceId) {\n    measurement\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      region\n      serviceId\n      volumeId\n      volumeInstanceId\n    }\n    values {\n      ts\n      value\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetMetricsInput = Schema.Struct({
@@ -58,7 +58,7 @@ export const GetMetricsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getMetrics",
+    operationName: "metrics",
     type: "query",
   }),
 );

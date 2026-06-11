@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getPasskeys($after: String, $before: String, $first: Int, $last: Int) {\n  passkeys(after: $after, before: $before, first: $first, last: $last) {\n    edges {\n      cursor\n      node {\n        aaguid\n        backedUp\n        createdAt\n        credentialId\n        deviceName\n        deviceType\n        displayName\n        id\n        lastUsedAt\n        lastUsedDevice\n        transports\n        updatedAt\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query passkeys($after: String, $before: String, $first: Int, $last: Int) {\n  passkeys(after: $after, before: $before, first: $first, last: $last) {\n    edges {\n      cursor\n      node {\n        aaguid\n        backedUp\n        createdAt\n        credentialId\n        deviceName\n        deviceType\n        displayName\n        id\n        lastUsedAt\n        lastUsedDevice\n        transports\n        updatedAt\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetPasskeysInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const GetPasskeysInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getPasskeys",
+    operationName: "passkeys",
     type: "query",
   }),
 );

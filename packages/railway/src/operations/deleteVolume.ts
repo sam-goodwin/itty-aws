@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deleteVolume($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId) {\n    __typename\n  }\n}";
+  "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteVolumeInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const DeleteVolumeInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "deleteVolume",
+    operationName: "volumeDelete",
     type: "mutation",
   }),
 );

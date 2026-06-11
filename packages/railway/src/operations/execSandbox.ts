@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation execSandbox($command: String!, $environmentId: String!, $id: String!, $timeoutSec: Int) {\n  sandboxExec(command: $command, environmentId: $environmentId, id: $id, timeoutSec: $timeoutSec) {\n    exitCode\n    stderr\n    stdout\n    timedOut\n    truncated\n  }\n}";
+  "mutation sandboxExec($command: String!, $environmentId: String!, $id: String!, $timeoutSec: Int) {\n  sandboxExec(command: $command, environmentId: $environmentId, id: $id, timeoutSec: $timeoutSec) {\n    exitCode\n    stderr\n    stdout\n    timedOut\n    truncated\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ExecSandboxInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const ExecSandboxInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "execSandbox",
+    operationName: "sandboxExec",
     type: "mutation",
   }),
 );

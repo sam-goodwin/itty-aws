@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation restartDeployment($id: String!) {\n  deploymentRestart(id: $id) {\n    __typename\n  }\n}";
+  "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RestartDeploymentInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const RestartDeploymentInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "restartDeployment",
+    operationName: "deploymentRestart",
     type: "mutation",
   }),
 );

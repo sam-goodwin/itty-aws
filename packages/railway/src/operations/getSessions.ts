@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getSessions($after: String, $before: String, $first: Int, $last: Int) {\n  sessions(after: $after, before: $before, first: $first, last: $last) {\n    edges {\n      cursor\n      node {\n        createdAt\n        expiredAt\n        id\n        isCurrent\n        name\n        type\n        updatedAt\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query sessions($after: String, $before: String, $first: Int, $last: Int) {\n  sessions(after: $after, before: $before, first: $first, last: $last) {\n    edges {\n      cursor\n      node {\n        createdAt\n        expiredAt\n        id\n        isCurrent\n        name\n        type\n        updatedAt\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetSessionsInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const GetSessionsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getSessions",
+    operationName: "sessions",
     type: "query",
   }),
 );

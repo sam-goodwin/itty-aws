@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getPreferences($token: String) {\n  preferences(token: $token) {\n    buildFailedEmail\n    changelogEmail\n    communityEmail\n    deployCrashedEmail\n    ephemeralEnvironmentEmail\n    id\n    marketingEmail\n    subprocessorUpdatesEmail\n    templateQueueEmail\n    usageEmail\n  }\n}";
+  "query preferences($token: String) {\n  preferences(token: $token) {\n    buildFailedEmail\n    changelogEmail\n    communityEmail\n    deployCrashedEmail\n    ephemeralEnvironmentEmail\n    id\n    marketingEmail\n    subprocessorUpdatesEmail\n    templateQueueEmail\n    usageEmail\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetPreferencesInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetPreferencesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getPreferences",
+    operationName: "preferences",
     type: "query",
   }),
 );

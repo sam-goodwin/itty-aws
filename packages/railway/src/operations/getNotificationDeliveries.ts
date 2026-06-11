@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getNotificationDeliveries($after: String, $before: String, $filter: NotificationDeliveryFilterInput, $first: Int, $last: Int) {\n  notificationDeliveries(after: $after, before: $before, filter: $filter, first: $first, last: $last) {\n    edges {\n      cursor\n      node {\n        createdAt\n        id\n        readAt\n        status\n        type\n        updatedAt\n        userId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query notificationDeliveries($after: String, $before: String, $filter: NotificationDeliveryFilterInput, $first: Int, $last: Int) {\n  notificationDeliveries(after: $after, before: $before, filter: $filter, first: $first, last: $last) {\n    edges {\n      cursor\n      node {\n        createdAt\n        id\n        readAt\n        status\n        type\n        updatedAt\n        userId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetNotificationDeliveriesInput = Schema.Struct({
@@ -31,7 +31,7 @@ export const GetNotificationDeliveriesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getNotificationDeliveries",
+    operationName: "notificationDeliveries",
     type: "query",
   }),
 );

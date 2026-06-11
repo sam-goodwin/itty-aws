@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getSshPublicKeys($after: String, $before: String, $first: Int, $last: Int, $workspaceId: String) {\n  sshPublicKeys(after: $after, before: $before, first: $first, last: $last, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        createdAt\n        fingerprint\n        id\n        name\n        publicKey\n        updatedAt\n        userId\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query sshPublicKeys($after: String, $before: String, $first: Int, $last: Int, $workspaceId: String) {\n  sshPublicKeys(after: $after, before: $before, first: $first, last: $last, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        createdAt\n        fingerprint\n        id\n        name\n        publicKey\n        updatedAt\n        userId\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetSshPublicKeysInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const GetSshPublicKeysInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getSshPublicKeys",
+    operationName: "sshPublicKeys",
     type: "query",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getDeploymentSnapshot($deploymentId: String!) {\n  deploymentSnapshot(deploymentId: $deploymentId) {\n    createdAt\n    id\n    updatedAt\n    variables\n  }\n}";
+  "query deploymentSnapshot($deploymentId: String!) {\n  deploymentSnapshot(deploymentId: $deploymentId) {\n    createdAt\n    id\n    updatedAt\n    variables\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetDeploymentSnapshotInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetDeploymentSnapshotInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getDeploymentSnapshot",
+    operationName: "deploymentSnapshot",
     type: "query",
   }),
 );

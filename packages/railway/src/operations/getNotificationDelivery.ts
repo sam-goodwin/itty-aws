@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getNotificationDelivery($id: String!) {\n  notificationDelivery(id: $id) {\n    createdAt\n    id\n    notificationInstance {\n      createdAt\n      environmentId\n      event {\n        action\n        activityPayload\n        createdAt\n        environmentId\n        id\n        object\n        payload\n        projectId\n        severity\n      }\n      eventId\n      eventType\n      id\n      payload\n      projectId\n      resolvedAt\n      resourceId\n      resourceType\n      serviceId\n      severity\n      status\n      updatedAt\n      volumeId\n      workspaceId\n    }\n    readAt\n    status\n    type\n    updatedAt\n    userId\n  }\n}";
+  "query notificationDelivery($id: String!) {\n  notificationDelivery(id: $id) {\n    createdAt\n    id\n    notificationInstance {\n      createdAt\n      environmentId\n      event {\n        action\n        activityPayload\n        createdAt\n        environmentId\n        id\n        object\n        payload\n        projectId\n        severity\n      }\n      eventId\n      eventType\n      id\n      payload\n      projectId\n      resolvedAt\n      resourceId\n      resourceType\n      serviceId\n      severity\n      status\n      updatedAt\n      volumeId\n      workspaceId\n    }\n    readAt\n    status\n    type\n    updatedAt\n    userId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetNotificationDeliveryInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetNotificationDeliveryInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getNotificationDelivery",
+    operationName: "notificationDelivery",
     type: "query",
   }),
 );

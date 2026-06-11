@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getIntegrationAuth($provider: String!, $providerId: String!) {\n  integrationAuth(provider: $provider, providerId: $providerId) {\n    id\n    provider\n    providerId\n  }\n}";
+  "query integrationAuth($provider: String!, $providerId: String!) {\n  integrationAuth(provider: $provider, providerId: $providerId) {\n    id\n    provider\n    providerId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetIntegrationAuthInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetIntegrationAuthInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getIntegrationAuth",
+    operationName: "integrationAuth",
     type: "query",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getWorkspacePolicy($workspaceId: String!) {\n  workspacePolicy(workspaceId: $workspaceId) {\n    id\n    restrictDeploysToAllowedSources\n    restrictPublicTcpProxies\n    restrictRailwayDomainGeneration\n  }\n}";
+  "query workspacePolicy($workspaceId: String!) {\n  workspacePolicy(workspaceId: $workspaceId) {\n    id\n    restrictDeploysToAllowedSources\n    restrictPublicTcpProxies\n    restrictRailwayDomainGeneration\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetWorkspacePolicyInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetWorkspacePolicyInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getWorkspacePolicy",
+    operationName: "workspacePolicy",
     type: "query",
   }),
 );

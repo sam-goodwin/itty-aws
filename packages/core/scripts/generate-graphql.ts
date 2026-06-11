@@ -133,8 +133,11 @@ export interface GraphQLGeneratorConfig {
   /**
    * Rename a generated operation. Receives the schema-derived function name
    * (e.g. `trustedDomainCreate`) and the operation type; returns the name to
-   * use for the exported function, file, schemas, and GraphQL operation name
+   * use for the exported function, file, and schema identifiers
    * (e.g. `createTrustedDomain`). Must return a valid identifier.
+   *
+   * TypeScript-side only — the GraphQL document and the wire-level
+   * `operationName` keep the schema-derived name.
    */
   renameOperation?: (name: string, type: "query" | "mutation") => string;
   /**
@@ -736,9 +739,13 @@ function generateOperation(
   config: GraphQLGeneratorConfig,
   description?: string | null,
 ): GeneratedOperation {
+  // `operationName` is the schema-derived name and is what goes on the wire
+  // (GraphQL document + operationName field). `functionName` is the
+  // (optionally renamed) TypeScript-side name used for the exported function,
+  // file, and schema identifiers.
+  const operationName = pathToFunctionName(path);
   const functionName =
-    config.renameOperation?.(pathToFunctionName(path), type) ??
-    pathToFunctionName(path);
+    config.renameOperation?.(operationName, type) ?? operationName;
   const PascalName = toPascalCase(functionName);
   const inputName = `${PascalName}Input`;
   const outputName = `${PascalName}Output`;
@@ -790,7 +797,7 @@ function generateOperation(
   // ---- GraphQL document ----
   const document = buildPathDocument(
     type,
-    functionName,
+    operationName,
     path,
     selection,
     argRenames,
@@ -834,7 +841,7 @@ export const ${inputName} = ${inputSchemaCode}.pipe(
   T.Http({ method: "POST", path: ${JSON.stringify(endpoint)} }),
   T.GraphQLOp({
     query: __document,
-    operationName: ${JSON.stringify(functionName)},
+    operationName: ${JSON.stringify(operationName)},
     type: ${JSON.stringify(type)},
   }),
 );

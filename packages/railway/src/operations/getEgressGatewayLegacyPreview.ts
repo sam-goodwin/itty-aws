@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getEgressGatewayLegacyPreview($environmentId: String!, $serviceId: String!) {\n  egressGatewayLegacyPreview(environmentId: $environmentId, serviceId: $serviceId) {\n    ipv4\n    region\n    zone\n  }\n}";
+  "query egressGatewayLegacyPreview($environmentId: String!, $serviceId: String!) {\n  egressGatewayLegacyPreview(environmentId: $environmentId, serviceId: $serviceId) {\n    ipv4\n    region\n    zone\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetEgressGatewayLegacyPreviewInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetEgressGatewayLegacyPreviewInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getEgressGatewayLegacyPreview",
+    operationName: "egressGatewayLegacyPreview",
     type: "query",
   }),
 );

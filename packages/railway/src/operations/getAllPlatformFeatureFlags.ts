@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getAllPlatformFeatureFlags {\n  allPlatformFeatureFlags {\n    flag\n    rolloutPercentage\n    status\n    type\n  }\n}";
+  "query allPlatformFeatureFlags {\n  allPlatformFeatureFlags {\n    flag\n    rolloutPercentage\n    status\n    type\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetAllPlatformFeatureFlagsInput = Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getAllPlatformFeatureFlags",
+    operationName: "allPlatformFeatureFlags",
     type: "query",
   }),
 );

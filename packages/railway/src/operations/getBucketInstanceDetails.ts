@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getBucketInstanceDetails($bucketId: String!, $environmentId: String!) {\n  bucketInstanceDetails(bucketId: $bucketId, environmentId: $environmentId) {\n    objectCount\n    sizeBytes\n  }\n}";
+  "query bucketInstanceDetails($bucketId: String!, $environmentId: String!) {\n  bucketInstanceDetails(bucketId: $bucketId, environmentId: $environmentId) {\n    objectCount\n    sizeBytes\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetBucketInstanceDetailsInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetBucketInstanceDetailsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getBucketInstanceDetails",
+    operationName: "bucketInstanceDetails",
     type: "query",
   }),
 );

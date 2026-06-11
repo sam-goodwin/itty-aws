@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getTemplateMetrics($id: String!) {\n  templateMetrics(id: $id) {\n    activeDeployments\n    deploymentsLast90Days\n    earningsLast30Days\n    earningsLast90Days\n    eligibleForSupportBonus\n    supportHealth\n    templateHealth\n    totalDeployments\n    totalEarnings\n  }\n}";
+  "query templateMetrics($id: String!) {\n  templateMetrics(id: $id) {\n    activeDeployments\n    deploymentsLast90Days\n    earningsLast30Days\n    earningsLast90Days\n    eligibleForSupportBonus\n    supportHealth\n    templateHealth\n    totalDeployments\n    totalEarnings\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetTemplateMetricsInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetTemplateMetricsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getTemplateMetrics",
+    operationName: "templateMetrics",
     type: "query",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createApiToken($input: ApiTokenCreateInput!) {\n  apiTokenCreate(input: $input) {\n    __typename\n  }\n}";
+  "mutation apiTokenCreate($input: ApiTokenCreateInput!) {\n  apiTokenCreate(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateApiTokenInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const CreateApiTokenInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createApiToken",
+    operationName: "apiTokenCreate",
     type: "mutation",
   }),
 );

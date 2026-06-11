@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getAuditLogs($after: String, $before: String, $filter: AuditLogFilterInput, $first: Int, $last: Int, $sort: SortOrder, $workspaceId: String!) {\n  auditLogs(after: $after, before: $before, filter: $filter, first: $first, last: $last, sort: $sort, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        context\n        createdAt\n        environmentId\n        eventType\n        id\n        payload\n        projectId\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query auditLogs($after: String, $before: String, $filter: AuditLogFilterInput, $first: Int, $last: Int, $sort: SortOrder, $workspaceId: String!) {\n  auditLogs(after: $after, before: $before, filter: $filter, first: $first, last: $last, sort: $sort, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        context\n        createdAt\n        environmentId\n        eventType\n        id\n        payload\n        projectId\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetAuditLogsInput = Schema.Struct({
@@ -28,7 +28,7 @@ export const GetAuditLogsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getAuditLogs",
+    operationName: "auditLogs",
     type: "query",
   }),
 );

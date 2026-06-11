@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation clearEgressGatewayAssociations($input: EgressGatewayServiceTargetInput!) {\n  egressGatewayAssociationsClear(input: $input) {\n    __typename\n  }\n}";
+  "mutation egressGatewayAssociationsClear($input: EgressGatewayServiceTargetInput!) {\n  egressGatewayAssociationsClear(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ClearEgressGatewayAssociationsInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const ClearEgressGatewayAssociationsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "clearEgressGatewayAssociations",
+    operationName: "egressGatewayAssociationsClear",
     type: "mutation",
   }),
 );

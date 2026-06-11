@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation updateDeploymentTrigger($id: String!, $input: DeploymentTriggerUpdateInput!) {\n  deploymentTriggerUpdate(id: $id, input: $input) {\n    baseEnvironmentOverrideId\n    branch\n    checkSuites\n    environmentId\n    id\n    projectId\n    provider\n    repository\n    serviceId\n    validCheckSuites\n  }\n}";
+  "mutation deploymentTriggerUpdate($id: String!, $input: DeploymentTriggerUpdateInput!) {\n  deploymentTriggerUpdate(id: $id, input: $input) {\n    baseEnvironmentOverrideId\n    branch\n    checkSuites\n    environmentId\n    id\n    projectId\n    provider\n    repository\n    serviceId\n    validCheckSuites\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateDeploymentTriggerInput = Schema.Struct({
@@ -18,7 +18,7 @@ export const UpdateDeploymentTriggerInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "updateDeploymentTrigger",
+    operationName: "deploymentTriggerUpdate",
     type: "mutation",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation importDockerCompose($environmentId: String!, $projectId: String!, $skipStagingPatch: Boolean, $yaml: String!) {\n  dockerComposeImport(environmentId: $environmentId, projectId: $projectId, skipStagingPatch: $skipStagingPatch, yaml: $yaml) {\n    errors\n    patch\n  }\n}";
+  "mutation dockerComposeImport($environmentId: String!, $projectId: String!, $skipStagingPatch: Boolean, $yaml: String!) {\n  dockerComposeImport(environmentId: $environmentId, projectId: $projectId, skipStagingPatch: $skipStagingPatch, yaml: $yaml) {\n    errors\n    patch\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ImportDockerComposeInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const ImportDockerComposeInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "importDockerCompose",
+    operationName: "dockerComposeImport",
     type: "mutation",
   }),
 );

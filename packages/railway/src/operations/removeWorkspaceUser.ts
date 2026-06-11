@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation removeWorkspaceUser($input: WorkspaceUserRemoveInput!, $workspaceId: String!) {\n  workspaceUserRemove(input: $input, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
+  "mutation workspaceUserRemove($input: WorkspaceUserRemoveInput!, $workspaceId: String!) {\n  workspaceUserRemove(input: $input, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RemoveWorkspaceUserInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const RemoveWorkspaceUserInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "removeWorkspaceUser",
+    operationName: "workspaceUserRemove",
     type: "mutation",
   }),
 );

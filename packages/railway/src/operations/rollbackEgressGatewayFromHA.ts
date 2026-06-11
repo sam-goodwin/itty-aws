@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation rollbackEgressGatewayFromHA($input: EgressGatewayServiceTargetInput!) {\n  egressGatewayRollbackFromHA(input: $input) {\n    ipv4\n    region\n    zone\n  }\n}";
+  "mutation egressGatewayRollbackFromHA($input: EgressGatewayServiceTargetInput!) {\n  egressGatewayRollbackFromHA(input: $input) {\n    ipv4\n    region\n    zone\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RollbackEgressGatewayFromHAInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const RollbackEgressGatewayFromHAInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "rollbackEgressGatewayFromHA",
+    operationName: "egressGatewayRollbackFromHA",
     type: "mutation",
   }),
 );

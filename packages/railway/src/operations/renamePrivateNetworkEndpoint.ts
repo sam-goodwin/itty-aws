@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation renamePrivateNetworkEndpoint($dnsName: String!, $id: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointRename(dnsName: $dnsName, id: $id, privateNetworkId: $privateNetworkId) {\n    __typename\n  }\n}";
+  "mutation privateNetworkEndpointRename($dnsName: String!, $id: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointRename(dnsName: $dnsName, id: $id, privateNetworkId: $privateNetworkId) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RenamePrivateNetworkEndpointInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const RenamePrivateNetworkEndpointInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "renamePrivateNetworkEndpoint",
+    operationName: "privateNetworkEndpointRename",
     type: "mutation",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getHttpDurationMetrics($endDate: DateTime!, $environmentId: String!, $method: String, $path: String, $serviceId: String!, $startDate: DateTime!, $statusCode: Int, $stepSeconds: Int) {\n  httpDurationMetrics(endDate: $endDate, environmentId: $environmentId, method: $method, path: $path, serviceId: $serviceId, startDate: $startDate, statusCode: $statusCode, stepSeconds: $stepSeconds) {\n    samples {\n      p50\n      p90\n      p95\n      p99\n      ts\n    }\n  }\n}";
+  "query httpDurationMetrics($endDate: DateTime!, $environmentId: String!, $method: String, $path: String, $serviceId: String!, $startDate: DateTime!, $statusCode: Int, $stepSeconds: Int) {\n  httpDurationMetrics(endDate: $endDate, environmentId: $environmentId, method: $method, path: $path, serviceId: $serviceId, startDate: $startDate, statusCode: $statusCode, stepSeconds: $stepSeconds) {\n    samples {\n      p50\n      p90\n      p95\n      p99\n      ts\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetHttpDurationMetricsInput = Schema.Struct({
@@ -19,7 +19,7 @@ export const GetHttpDurationMetricsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getHttpDurationMetrics",
+    operationName: "httpDurationMetrics",
     type: "query",
   }),
 );

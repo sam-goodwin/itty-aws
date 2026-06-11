@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getProjectInvitation($code: String!) {\n  projectInvitation(code: $code) {\n    __typename\n  }\n}";
+  "query projectInvitation($code: String!) {\n  projectInvitation(code: $code) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetProjectInvitationInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetProjectInvitationInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getProjectInvitation",
+    operationName: "projectInvitation",
     type: "query",
   }),
 );

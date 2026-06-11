@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getPrivateNetworks($environmentId: String!) {\n  privateNetworks(environmentId: $environmentId) {\n    createdAt\n    deletedAt\n    dnsName\n    environmentId\n    name\n    networkId\n    projectId\n    publicId\n    tags\n  }\n}";
+  "query privateNetworks($environmentId: String!) {\n  privateNetworks(environmentId: $environmentId) {\n    createdAt\n    deletedAt\n    dnsName\n    environmentId\n    name\n    networkId\n    projectId\n    publicId\n    tags\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetPrivateNetworksInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetPrivateNetworksInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getPrivateNetworks",
+    operationName: "privateNetworks",
     type: "query",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation removeUsageLimit($input: UsageLimitRemoveInput!) {\n  usageLimitRemove(input: $input) {\n    __typename\n  }\n}";
+  "mutation usageLimitRemove($input: UsageLimitRemoveInput!) {\n  usageLimitRemove(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RemoveUsageLimitInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const RemoveUsageLimitInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "removeUsageLimit",
+    operationName: "usageLimitRemove",
     type: "mutation",
   }),
 );

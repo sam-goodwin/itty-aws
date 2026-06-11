@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getResourceAccess($explicitResourceOwner: ExplicitOwnerInput!) {\n  resourceAccess(explicitResourceOwner: $explicitResourceOwner) {\n    deployment {\n      disallowed\n    }\n    project {\n      disallowed\n    }\n  }\n}";
+  "query resourceAccess($explicitResourceOwner: ExplicitOwnerInput!) {\n  resourceAccess(explicitResourceOwner: $explicitResourceOwner) {\n    deployment {\n      disallowed\n    }\n    project {\n      disallowed\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetResourceAccessInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const GetResourceAccessInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getResourceAccess",
+    operationName: "resourceAccess",
     type: "query",
   }),
 );

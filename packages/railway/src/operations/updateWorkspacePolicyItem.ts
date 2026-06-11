@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation updateWorkspacePolicyItem($enabled: Boolean, $input: WorkspacePolicyItemUpdateInput, $policy: WorkspacePolicyName, $workspaceId: String!) {\n  workspacePolicyItemUpdate(enabled: $enabled, input: $input, policy: $policy, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
+  "mutation workspacePolicyItemUpdate($enabled: Boolean, $input: WorkspacePolicyItemUpdateInput, $policy: WorkspacePolicyName, $workspaceId: String!) {\n  workspacePolicyItemUpdate(enabled: $enabled, input: $input, policy: $policy, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateWorkspacePolicyItemInput = Schema.Struct({
@@ -34,7 +34,7 @@ export const UpdateWorkspacePolicyItemInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "updateWorkspacePolicyItem",
+    operationName: "workspacePolicyItemUpdate",
     type: "mutation",
   }),
 );

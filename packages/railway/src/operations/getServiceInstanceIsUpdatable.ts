@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getServiceInstanceIsUpdatable($environmentId: String!, $serviceId: String!) {\n  serviceInstanceIsUpdatable(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "query serviceInstanceIsUpdatable($environmentId: String!, $serviceId: String!) {\n  serviceInstanceIsUpdatable(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetServiceInstanceIsUpdatableInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetServiceInstanceIsUpdatableInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getServiceInstanceIsUpdatable",
+    operationName: "serviceInstanceIsUpdatable",
     type: "query",
   }),
 );

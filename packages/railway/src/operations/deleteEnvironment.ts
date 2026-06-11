@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deleteEnvironment($id: String!) {\n  environmentDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteEnvironmentInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const DeleteEnvironmentInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "deleteEnvironment",
+    operationName: "environmentDelete",
     type: "mutation",
   }),
 );

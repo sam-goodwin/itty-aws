@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation stageEnvironmentChanges($environmentId: String!, $input: EnvironmentConfig!, $merge: Boolean) {\n  environmentStageChanges(environmentId: $environmentId, input: $input, merge: $merge) {\n    appliedAt\n    appliedBy {\n      avatar\n      email\n      id\n      name\n      username\n    }\n    createdAt\n    environment {\n      canAccess\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      meta {\n        baseBranch\n        branch\n        latestSuccessfulGitHubDeploymentId\n        prCommentId\n        prNumber\n        prRepo\n        prTitle\n        skippedResourceIds\n      }\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    id\n    lastAppliedError\n    message\n    status\n    updatedAt\n  }\n}";
+  "mutation environmentStageChanges($environmentId: String!, $input: EnvironmentConfig!, $merge: Boolean) {\n  environmentStageChanges(environmentId: $environmentId, input: $input, merge: $merge) {\n    appliedAt\n    appliedBy {\n      avatar\n      email\n      id\n      name\n      username\n    }\n    createdAt\n    environment {\n      canAccess\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      meta {\n        baseBranch\n        branch\n        latestSuccessfulGitHubDeploymentId\n        prCommentId\n        prNumber\n        prRepo\n        prTitle\n        skippedResourceIds\n      }\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    id\n    lastAppliedError\n    message\n    status\n    updatedAt\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const StageEnvironmentChangesInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const StageEnvironmentChangesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "stageEnvironmentChanges",
+    operationName: "environmentStageChanges",
     type: "mutation",
   }),
 );

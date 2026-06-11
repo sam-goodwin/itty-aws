@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getUserProfile($username: String!) {\n  userProfile(username: $username) {\n    avatar\n    createdAt\n    customerId\n    id\n    isTrialing\n    name\n    profile {\n      bio\n      isPublic\n      website\n    }\n    publishedTemplates {\n      code\n      createdAt\n      creator {\n        avatar\n        hasPublicProfile\n        name\n        username\n      }\n      deploys\n      description\n      health\n      image\n      name\n      teamId\n      userId\n      workspaceId\n    }\n    state\n    totalDeploys\n    username\n  }\n}";
+  "query userProfile($username: String!) {\n  userProfile(username: $username) {\n    avatar\n    createdAt\n    customerId\n    id\n    isTrialing\n    name\n    profile {\n      bio\n      isPublic\n      website\n    }\n    publishedTemplates {\n      code\n      createdAt\n      creator {\n        avatar\n        hasPublicProfile\n        name\n        username\n      }\n      deploys\n      description\n      health\n      image\n      name\n      teamId\n      userId\n      workspaceId\n    }\n    state\n    totalDeploys\n    username\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetUserProfileInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetUserProfileInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getUserProfile",
+    operationName: "userProfile",
     type: "query",
   }),
 );

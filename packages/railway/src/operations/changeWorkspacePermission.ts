@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation changeWorkspacePermission($input: WorkspacePermissionChangeInput!) {\n  workspacePermissionChange(input: $input) {\n    __typename\n  }\n}";
+  "mutation workspacePermissionChange($input: WorkspacePermissionChangeInput!) {\n  workspacePermissionChange(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ChangeWorkspacePermissionInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const ChangeWorkspacePermissionInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "changeWorkspacePermission",
+    operationName: "workspacePermissionChange",
     type: "mutation",
   }),
 );

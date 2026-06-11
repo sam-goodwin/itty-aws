@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getPublicStats {\n  publicStats {\n    totalDeploymentsLastMonth\n    totalLogsLastMonth\n    totalProjects\n    totalRequestsLastMonth\n    totalServices\n    totalUsers\n  }\n}";
+  "query publicStats {\n  publicStats {\n    totalDeploymentsLastMonth\n    totalLogsLastMonth\n    totalProjects\n    totalRequestsLastMonth\n    totalServices\n    totalUsers\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetPublicStatsInput = Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getPublicStats",
+    operationName: "publicStats",
     type: "query",
   }),
 );

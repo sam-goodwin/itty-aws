@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getGithubRepo($fullRepoName: String!) {\n  githubRepo(fullRepoName: $fullRepoName) {\n    defaultBranch\n    description\n    fullName\n    id\n    isPrivate\n    name\n  }\n}";
+  "query githubRepo($fullRepoName: String!) {\n  githubRepo(fullRepoName: $fullRepoName) {\n    defaultBranch\n    description\n    fullName\n    id\n    isPrivate\n    name\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetGithubRepoInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetGithubRepoInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getGithubRepo",
+    operationName: "githubRepo",
     type: "query",
   }),
 );

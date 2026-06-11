@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getTemplatesCount {\n  templatesCount {\n    __typename\n  }\n}";
+  "query templatesCount {\n  templatesCount {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetTemplatesCountInput = Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getTemplatesCount",
+    operationName: "templatesCount",
     type: "query",
   }),
 );

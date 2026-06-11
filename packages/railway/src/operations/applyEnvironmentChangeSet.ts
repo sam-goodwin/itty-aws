@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation applyEnvironmentChangeSet($commitMessage: String, $environmentId: String!, $input: JSON!) {\n  environmentApplyChangeSet(commitMessage: $commitMessage, environmentId: $environmentId, input: $input) {\n    changes {\n      kind\n      outputs\n      path\n      status\n      summary\n    }\n    deploymentId\n    diagnostics\n    id\n    stagedPatchId\n    status\n  }\n}";
+  "mutation environmentApplyChangeSet($commitMessage: String, $environmentId: String!, $input: JSON!) {\n  environmentApplyChangeSet(commitMessage: $commitMessage, environmentId: $environmentId, input: $input) {\n    changes {\n      kind\n      outputs\n      path\n      status\n      summary\n    }\n    deploymentId\n    diagnostics\n    id\n    stagedPatchId\n    status\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ApplyEnvironmentChangeSetInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const ApplyEnvironmentChangeSetInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "applyEnvironmentChangeSet",
+    operationName: "environmentApplyChangeSet",
     type: "mutation",
   }),
 );

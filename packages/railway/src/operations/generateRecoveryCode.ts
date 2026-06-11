@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation generateRecoveryCode {\n  recoveryCodeGenerate {\n    recoveryCodes\n  }\n}";
+  "mutation recoveryCodeGenerate {\n  recoveryCodeGenerate {\n    recoveryCodes\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GenerateRecoveryCodeInput = Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "generateRecoveryCode",
+    operationName: "recoveryCodeGenerate",
     type: "mutation",
   }),
 );

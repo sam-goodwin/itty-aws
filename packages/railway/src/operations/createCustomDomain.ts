@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createCustomDomain($input: CustomDomainCreateInput!) {\n  customDomainCreate(input: $input) {\n    cdnMode\n    cnameCheck {\n      link\n      message\n      status\n    }\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    projectId\n    serviceId\n    status {\n      cdnProvider\n      certificateErrorMessage\n      certificateErrorType\n      certificateRetryable\n      certificateStatus\n      certificateStatusDetailed\n      certificates {\n        domainNames\n        expiresAt\n        fingerprintSha256\n        issuedAt\n        keyType\n      }\n      dnsRecords {\n        currentValue\n        fqdn\n        hostlabel\n        purpose\n        recordType\n        requiredValue\n        status\n        zone\n      }\n      verificationDnsHost\n      verificationToken\n      verified\n    }\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}";
+  "mutation customDomainCreate($input: CustomDomainCreateInput!) {\n  customDomainCreate(input: $input) {\n    cdnMode\n    cnameCheck {\n      link\n      message\n      status\n    }\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    projectId\n    serviceId\n    status {\n      cdnProvider\n      certificateErrorMessage\n      certificateErrorType\n      certificateRetryable\n      certificateStatus\n      certificateStatusDetailed\n      certificates {\n        domainNames\n        expiresAt\n        fingerprintSha256\n        issuedAt\n        keyType\n      }\n      dnsRecords {\n        currentValue\n        fqdn\n        hostlabel\n        purpose\n        recordType\n        requiredValue\n        status\n        zone\n      }\n      verificationDnsHost\n      verificationToken\n      verified\n    }\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateCustomDomainInput = Schema.Struct({
@@ -18,7 +18,7 @@ export const CreateCustomDomainInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createCustomDomain",
+    operationName: "customDomainCreate",
     type: "mutation",
   }),
 );

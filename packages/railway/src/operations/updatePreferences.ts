@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation updatePreferences($input: PreferencesUpdateData!) {\n  preferencesUpdate(input: $input) {\n    buildFailedEmail\n    changelogEmail\n    communityEmail\n    deployCrashedEmail\n    ephemeralEnvironmentEmail\n    id\n    marketingEmail\n    subprocessorUpdatesEmail\n    templateQueueEmail\n    usageEmail\n  }\n}";
+  "mutation preferencesUpdate($input: PreferencesUpdateData!) {\n  preferencesUpdate(input: $input) {\n    buildFailedEmail\n    changelogEmail\n    communityEmail\n    deployCrashedEmail\n    ephemeralEnvironmentEmail\n    id\n    marketingEmail\n    subprocessorUpdatesEmail\n    templateQueueEmail\n    usageEmail\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdatePreferencesInput = Schema.Struct({
@@ -23,7 +23,7 @@ export const UpdatePreferencesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "updatePreferences",
+    operationName: "preferencesUpdate",
     type: "mutation",
   }),
 );

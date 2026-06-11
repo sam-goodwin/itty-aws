@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation trackSetupAgentEvent($input: SetupAgentEventTrackInput!) {\n  setupAgentEventTrack(input: $input) {\n    __typename\n  }\n}";
+  "mutation setupAgentEventTrack($input: SetupAgentEventTrackInput!) {\n  setupAgentEventTrack(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const TrackSetupAgentEventInput = Schema.Struct({
@@ -27,7 +27,7 @@ export const TrackSetupAgentEventInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "trackSetupAgentEvent",
+    operationName: "setupAgentEventTrack",
     type: "mutation",
   }),
 );

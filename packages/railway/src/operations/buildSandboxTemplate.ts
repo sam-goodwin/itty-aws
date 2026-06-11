@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation buildSandboxTemplate($environmentId: String!, $input: SandboxTemplateInput!) {\n  sandboxTemplateBuild(environmentId: $environmentId, input: $input) {\n    environmentId\n    id\n    status\n  }\n}";
+  "mutation sandboxTemplateBuild($environmentId: String!, $input: SandboxTemplateInput!) {\n  sandboxTemplateBuild(environmentId: $environmentId, input: $input) {\n    environmentId\n    id\n    status\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const BuildSandboxTemplateInput = Schema.Struct({
@@ -17,7 +17,7 @@ export const BuildSandboxTemplateInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "buildSandboxTemplate",
+    operationName: "sandboxTemplateBuild",
     type: "mutation",
   }),
 );

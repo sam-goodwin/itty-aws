@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getTemplate($code: String, $id: String, $owner: String, $repo: String) {\n  template(code: $code, id: $id, owner: $owner, repo: $repo) {\n    activeProjects\n    canvasConfig\n    category\n    code\n    communityThreadSlug\n    config\n    createdAt\n    creator {\n      avatar\n      hasPublicProfile\n      name\n      username\n    }\n    demoProjectId\n    description\n    guides {\n      post\n      video\n    }\n    health\n    id\n    image\n    isApproved\n    isV2Template\n    isVerified\n    languages\n    maintainer {\n      avatar\n      id\n      name\n      partnerProfile {\n        category\n        description\n        slug\n        type\n        website\n      }\n    }\n    metadata\n    name\n    projects\n    readme\n    recentProjects\n    serializedConfig\n    similarTemplates {\n      code\n      createdAt\n      creator {\n        avatar\n        hasPublicProfile\n        name\n        username\n      }\n      deploys\n      description\n      health\n      image\n      name\n      teamId\n      userId\n      workspaceId\n    }\n    status\n    supportHealthMetrics\n    tags\n    teamId\n    totalPayout\n    updatedAt\n    workspaceId\n  }\n}";
+  "query template($code: String, $id: String, $owner: String, $repo: String) {\n  template(code: $code, id: $id, owner: $owner, repo: $repo) {\n    activeProjects\n    canvasConfig\n    category\n    code\n    communityThreadSlug\n    config\n    createdAt\n    creator {\n      avatar\n      hasPublicProfile\n      name\n      username\n    }\n    demoProjectId\n    description\n    guides {\n      post\n      video\n    }\n    health\n    id\n    image\n    isApproved\n    isV2Template\n    isVerified\n    languages\n    maintainer {\n      avatar\n      id\n      name\n      partnerProfile {\n        category\n        description\n        slug\n        type\n        website\n      }\n    }\n    metadata\n    name\n    projects\n    readme\n    recentProjects\n    serializedConfig\n    similarTemplates {\n      code\n      createdAt\n      creator {\n        avatar\n        hasPublicProfile\n        name\n        username\n      }\n      deploys\n      description\n      health\n      image\n      name\n      teamId\n      userId\n      workspaceId\n    }\n    status\n    supportHealthMetrics\n    tags\n    teamId\n    totalPayout\n    updatedAt\n    workspaceId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetTemplateInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const GetTemplateInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getTemplate",
+    operationName: "template",
     type: "query",
   }),
 );

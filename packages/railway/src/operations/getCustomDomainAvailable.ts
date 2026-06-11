@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getCustomDomainAvailable($domain: String!) {\n  customDomainAvailable(domain: $domain) {\n    available\n    message\n  }\n}";
+  "query customDomainAvailable($domain: String!) {\n  customDomainAvailable(domain: $domain) {\n    available\n    message\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetCustomDomainAvailableInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetCustomDomainAvailableInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getCustomDomainAvailable",
+    operationName: "customDomainAvailable",
     type: "query",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deleteTcpProxy($id: String!) {\n  tcpProxyDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteTcpProxyInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const DeleteTcpProxyInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "deleteTcpProxy",
+    operationName: "tcpProxyDelete",
     type: "mutation",
   }),
 );

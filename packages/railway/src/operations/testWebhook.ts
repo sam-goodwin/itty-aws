@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation testWebhook($payload: String!, $url: String!) {\n  webhookTest(payload: $payload, url: $url) {\n    __typename\n  }\n}";
+  "mutation webhookTest($payload: String!, $url: String!) {\n  webhookTest(payload: $payload, url: $url) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const TestWebhookInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const TestWebhookInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "testWebhook",
+    operationName: "webhookTest",
     type: "mutation",
   }),
 );

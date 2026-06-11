@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation unpublishTemplate($id: String!) {\n  templateUnpublish(id: $id) {\n    __typename\n  }\n}";
+  "mutation templateUnpublish($id: String!) {\n  templateUnpublish(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UnpublishTemplateInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const UnpublishTemplateInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "unpublishTemplate",
+    operationName: "templateUnpublish",
     type: "mutation",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getVolumeInstanceBackupList($volumeInstanceId: String!) {\n  volumeInstanceBackupList(volumeInstanceId: $volumeInstanceId) {\n    createdAt\n    creatorId\n    expiresAt\n    externalId\n    id\n    name\n    referencedMB\n    scheduleId\n    usedMB\n    volumeInstanceSizeMB\n  }\n}";
+  "query volumeInstanceBackupList($volumeInstanceId: String!) {\n  volumeInstanceBackupList(volumeInstanceId: $volumeInstanceId) {\n    createdAt\n    creatorId\n    expiresAt\n    externalId\n    id\n    name\n    referencedMB\n    scheduleId\n    usedMB\n    volumeInstanceSizeMB\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetVolumeInstanceBackupListInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetVolumeInstanceBackupListInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getVolumeInstanceBackupList",
+    operationName: "volumeInstanceBackupList",
     type: "query",
   }),
 );

@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getHerokuApps {\n  herokuApps {\n    id\n    name\n  }\n}";
+  "query herokuApps {\n  herokuApps {\n    id\n    name\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetHerokuAppsInput = Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getHerokuApps",
+    operationName: "herokuApps",
     type: "query",
   }),
 );

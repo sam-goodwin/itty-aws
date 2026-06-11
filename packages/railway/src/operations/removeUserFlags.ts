@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation removeUserFlags($input: UserFlagsRemoveInput!) {\n  userFlagsRemove(input: $input) {\n    __typename\n  }\n}";
+  "mutation userFlagsRemove($input: UserFlagsRemoveInput!) {\n  userFlagsRemove(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RemoveUserFlagsInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const RemoveUserFlagsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "removeUserFlags",
+    operationName: "userFlagsRemove",
     type: "mutation",
   }),
 );

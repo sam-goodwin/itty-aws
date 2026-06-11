@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getWorkflowStatus($workflowId: String!) {\n  workflowStatus(workflowId: $workflowId) {\n    error\n    status\n  }\n}";
+  "query workflowStatus($workflowId: String!) {\n  workflowStatus(workflowId: $workflowId) {\n    error\n    status\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetWorkflowStatusInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetWorkflowStatusInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getWorkflowStatus",
+    operationName: "workflowStatus",
     type: "query",
   }),
 );

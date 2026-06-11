@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation previewEnvironmentChangeSet($environmentId: String!, $input: JSON!) {\n  environmentPreviewChangeSet(environmentId: $environmentId, input: $input) {\n    changeSet\n    diagnostics\n    effects\n  }\n}";
+  "mutation environmentPreviewChangeSet($environmentId: String!, $input: JSON!) {\n  environmentPreviewChangeSet(environmentId: $environmentId, input: $input) {\n    changeSet\n    diagnostics\n    effects\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const PreviewEnvironmentChangeSetInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const PreviewEnvironmentChangeSetInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "previewEnvironmentChangeSet",
+    operationName: "environmentPreviewChangeSet",
     type: "mutation",
   }),
 );

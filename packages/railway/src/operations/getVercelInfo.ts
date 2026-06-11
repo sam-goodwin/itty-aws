@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getVercelInfo {\n  vercelInfo {\n    accounts {\n      id\n      integrationAuthId\n      isUser\n      name\n      projects {\n        accountId\n        id\n        name\n      }\n      slug\n    }\n  }\n}";
+  "query vercelInfo {\n  vercelInfo {\n    accounts {\n      id\n      integrationAuthId\n      isUser\n      name\n      projects {\n        accountId\n        id\n        name\n      }\n      slug\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetVercelInfoInput = Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getVercelInfo",
+    operationName: "vercelInfo",
     type: "query",
   }),
 );

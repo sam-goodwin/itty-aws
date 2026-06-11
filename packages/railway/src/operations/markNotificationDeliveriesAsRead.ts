@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation markNotificationDeliveriesAsRead($deliveryIds: [String!]!) {\n  notificationDeliveriesMarkAsRead(deliveryIds: $deliveryIds) {\n    __typename\n  }\n}";
+  "mutation notificationDeliveriesMarkAsRead($deliveryIds: [String!]!) {\n  notificationDeliveriesMarkAsRead(deliveryIds: $deliveryIds) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const MarkNotificationDeliveriesAsReadInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const MarkNotificationDeliveriesAsReadInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "markNotificationDeliveriesAsRead",
+    operationName: "notificationDeliveriesMarkAsRead",
     type: "mutation",
   }),
 );

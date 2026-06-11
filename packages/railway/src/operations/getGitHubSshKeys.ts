@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getGitHubSshKeys {\n  gitHubSshKeys {\n    id\n    key\n    title\n  }\n}";
+  "query gitHubSshKeys {\n  gitHubSshKeys {\n    id\n    key\n    title\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetGitHubSshKeysInput = Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getGitHubSshKeys",
+    operationName: "gitHubSshKeys",
     type: "query",
   }),
 );

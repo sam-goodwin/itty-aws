@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getHttpLogs($afterDate: String, $afterLimit: Int, $anchorDate: String, $beforeDate: String, $beforeLimit: Int, $deploymentId: String!, $endDate: String, $filter: String, $limit: Int, $startDate: String) {\n  httpLogs(afterDate: $afterDate, afterLimit: $afterLimit, anchorDate: $anchorDate, beforeDate: $beforeDate, beforeLimit: $beforeLimit, deploymentId: $deploymentId, endDate: $endDate, filter: $filter, limit: $limit, startDate: $startDate) {\n    clientUa\n    deploymentId\n    deploymentInstanceId\n    downstreamProto\n    edgeRegion\n    host\n    httpStatus\n    method\n    path\n    requestId\n    responseDetails\n    rxBytes\n    srcIp\n    timestamp\n    totalDuration\n    txBytes\n    upstreamAddress\n    upstreamErrors\n    upstreamProto\n    upstreamRqDuration\n  }\n}";
+  "query httpLogs($afterDate: String, $afterLimit: Int, $anchorDate: String, $beforeDate: String, $beforeLimit: Int, $deploymentId: String!, $endDate: String, $filter: String, $limit: Int, $startDate: String) {\n  httpLogs(afterDate: $afterDate, afterLimit: $afterLimit, anchorDate: $anchorDate, beforeDate: $beforeDate, beforeLimit: $beforeLimit, deploymentId: $deploymentId, endDate: $endDate, filter: $filter, limit: $limit, startDate: $startDate) {\n    clientUa\n    deploymentId\n    deploymentInstanceId\n    downstreamProto\n    edgeRegion\n    host\n    httpStatus\n    method\n    path\n    requestId\n    responseDetails\n    rxBytes\n    srcIp\n    timestamp\n    totalDuration\n    txBytes\n    upstreamAddress\n    upstreamErrors\n    upstreamProto\n    upstreamRqDuration\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetHttpLogsInput = Schema.Struct({
@@ -21,7 +21,7 @@ export const GetHttpLogsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getHttpLogs",
+    operationName: "httpLogs",
     type: "query",
   }),
 );

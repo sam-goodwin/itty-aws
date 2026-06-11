@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getGithubRepos {\n  githubRepos {\n    defaultBranch\n    description\n    fullName\n    id\n    installationId\n    isPrivate\n    name\n    ownerAvatarUrl\n  }\n}";
+  "query githubRepos {\n  githubRepos {\n    defaultBranch\n    description\n    fullName\n    id\n    installationId\n    isPrivate\n    name\n    ownerAvatarUrl\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetGithubReposInput = Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getGithubRepos",
+    operationName: "githubRepos",
     type: "query",
   }),
 );

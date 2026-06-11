@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation removeWorkspacePolicyDeploySourceAllowlist($id: String!) {\n  workspacePolicyDeploySourceAllowlistRemove(id: $id) {\n    __typename\n  }\n}";
+  "mutation workspacePolicyDeploySourceAllowlistRemove($id: String!) {\n  workspacePolicyDeploySourceAllowlistRemove(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RemoveWorkspacePolicyDeploySourceAllowlistInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const RemoveWorkspacePolicyDeploySourceAllowlistInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "removeWorkspacePolicyDeploySourceAllowlist",
+    operationName: "workspacePolicyDeploySourceAllowlistRemove",
     type: "mutation",
   }),
 );

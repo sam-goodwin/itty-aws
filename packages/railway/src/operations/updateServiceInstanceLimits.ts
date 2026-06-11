@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation updateServiceInstanceLimits($input: ServiceInstanceLimitsUpdateInput!) {\n  serviceInstanceLimitsUpdate(input: $input) {\n    __typename\n  }\n}";
+  "mutation serviceInstanceLimitsUpdate($input: ServiceInstanceLimitsUpdateInput!) {\n  serviceInstanceLimitsUpdate(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateServiceInstanceLimitsInput = Schema.Struct({
@@ -17,7 +17,7 @@ export const UpdateServiceInstanceLimitsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "updateServiceInstanceLimits",
+    operationName: "serviceInstanceLimitsUpdate",
     type: "mutation",
   }),
 );

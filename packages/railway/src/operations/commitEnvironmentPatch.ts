@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation commitEnvironmentPatch($commitMessage: String, $environmentId: String!, $patch: EnvironmentConfig) {\n  environmentPatchCommit(commitMessage: $commitMessage, environmentId: $environmentId, patch: $patch) {\n    __typename\n  }\n}";
+  "mutation environmentPatchCommit($commitMessage: String, $environmentId: String!, $patch: EnvironmentConfig) {\n  environmentPatchCommit(commitMessage: $commitMessage, environmentId: $environmentId, patch: $patch) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CommitEnvironmentPatchInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const CommitEnvironmentPatchInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "commitEnvironmentPatch",
+    operationName: "environmentPatchCommit",
     type: "mutation",
   }),
 );

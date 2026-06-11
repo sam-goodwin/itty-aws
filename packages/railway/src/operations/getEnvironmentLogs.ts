@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getEnvironmentLogs($afterDate: String, $afterLimit: Int, $anchorDate: String, $beforeDate: String, $beforeLimit: Int, $environmentId: String!, $filter: String) {\n  environmentLogs(afterDate: $afterDate, afterLimit: $afterLimit, anchorDate: $anchorDate, beforeDate: $beforeDate, beforeLimit: $beforeLimit, environmentId: $environmentId, filter: $filter) {\n    attributes {\n      key\n      value\n    }\n    message\n    severity\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      serviceId\n      snapshotId\n    }\n    timestamp\n  }\n}";
+  "query environmentLogs($afterDate: String, $afterLimit: Int, $anchorDate: String, $beforeDate: String, $beforeLimit: Int, $environmentId: String!, $filter: String) {\n  environmentLogs(afterDate: $afterDate, afterLimit: $afterLimit, anchorDate: $anchorDate, beforeDate: $beforeDate, beforeLimit: $beforeLimit, environmentId: $environmentId, filter: $filter) {\n    attributes {\n      key\n      value\n    }\n    message\n    severity\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      serviceId\n      snapshotId\n    }\n    timestamp\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetEnvironmentLogsInput = Schema.Struct({
@@ -18,7 +18,7 @@ export const GetEnvironmentLogsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getEnvironmentLogs",
+    operationName: "environmentLogs",
     type: "query",
   }),
 );

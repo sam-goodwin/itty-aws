@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation overrideBaseEnvironment($id: String!, $input: BaseEnvironmentOverrideInput!) {\n  baseEnvironmentOverride(id: $id, input: $input) {\n    __typename\n  }\n}";
+  "mutation baseEnvironmentOverride($id: String!, $input: BaseEnvironmentOverrideInput!) {\n  baseEnvironmentOverride(id: $id, input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const OverrideBaseEnvironmentInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const OverrideBaseEnvironmentInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "overrideBaseEnvironment",
+    operationName: "baseEnvironmentOverride",
     type: "mutation",
   }),
 );

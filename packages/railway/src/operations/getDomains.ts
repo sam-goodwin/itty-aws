@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getDomains($environmentId: String!, $projectId: String!, $serviceId: String!) {\n  domains(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId) {\n    customDomains {\n      cdnMode\n      cnameCheck {\n        link\n        message\n        status\n      }\n      createdAt\n      deletedAt\n      domain\n      edgeId\n      environmentId\n      id\n      projectId\n      serviceId\n      status {\n        cdnProvider\n        certificateErrorMessage\n        certificateErrorType\n        certificateRetryable\n        certificateStatus\n        certificateStatusDetailed\n        verificationDnsHost\n        verificationToken\n        verified\n      }\n      syncStatus\n      targetPort\n      updatedAt\n    }\n    serviceDomains {\n      cdnMode\n      createdAt\n      deletedAt\n      domain\n      edgeId\n      environmentId\n      id\n      newDomainName\n      newHostLabel\n      projectId\n      serviceId\n      suffix\n      syncStatus\n      targetPort\n      updatedAt\n    }\n  }\n}";
+  "query domains($environmentId: String!, $projectId: String!, $serviceId: String!) {\n  domains(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId) {\n    customDomains {\n      cdnMode\n      cnameCheck {\n        link\n        message\n        status\n      }\n      createdAt\n      deletedAt\n      domain\n      edgeId\n      environmentId\n      id\n      projectId\n      serviceId\n      status {\n        cdnProvider\n        certificateErrorMessage\n        certificateErrorType\n        certificateRetryable\n        certificateStatus\n        certificateStatusDetailed\n        verificationDnsHost\n        verificationToken\n        verified\n      }\n      syncStatus\n      targetPort\n      updatedAt\n    }\n    serviceDomains {\n      cdnMode\n      createdAt\n      deletedAt\n      domain\n      edgeId\n      environmentId\n      id\n      newDomainName\n      newHostLabel\n      projectId\n      serviceId\n      suffix\n      syncStatus\n      targetPort\n      updatedAt\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetDomainsInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const GetDomainsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getDomains",
+    operationName: "domains",
     type: "query",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createVolumeInstanceBackup($name: String, $volumeInstanceId: String!) {\n  volumeInstanceBackupCreate(name: $name, volumeInstanceId: $volumeInstanceId) {\n    workflowId\n  }\n}";
+  "mutation volumeInstanceBackupCreate($name: String, $volumeInstanceId: String!) {\n  volumeInstanceBackupCreate(name: $name, volumeInstanceId: $volumeInstanceId) {\n    workflowId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateVolumeInstanceBackupInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const CreateVolumeInstanceBackupInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createVolumeInstanceBackup",
+    operationName: "volumeInstanceBackupCreate",
     type: "mutation",
   }),
 );

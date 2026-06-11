@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deletePasskey($id: String!) {\n  passkeyDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation passkeyDelete($id: String!) {\n  passkeyDelete(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeletePasskeyInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const DeletePasskeyInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "deletePasskey",
+    operationName: "passkeyDelete",
     type: "mutation",
   }),
 );

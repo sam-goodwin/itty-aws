@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation consumeLoginSession($code: String!) {\n  loginSessionConsume(code: $code) {\n    __typename\n  }\n}";
+  "mutation loginSessionConsume($code: String!) {\n  loginSessionConsume(code: $code) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ConsumeLoginSessionInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const ConsumeLoginSessionInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "consumeLoginSession",
+    operationName: "loginSessionConsume",
     type: "mutation",
   }),
 );

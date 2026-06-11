@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation importHerokuVariables($input: HerokuImportVariablesInput!) {\n  herokuImportVariables(input: $input) {\n    __typename\n  }\n}";
+  "mutation herokuImportVariables($input: HerokuImportVariablesInput!) {\n  herokuImportVariables(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ImportHerokuVariablesInput = Schema.Struct({
@@ -17,7 +17,7 @@ export const ImportHerokuVariablesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "importHerokuVariables",
+    operationName: "herokuImportVariables",
     type: "mutation",
   }),
 );

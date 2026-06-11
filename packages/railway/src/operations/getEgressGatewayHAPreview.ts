@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getEgressGatewayHAPreview($environmentId: String!, $serviceId: String!) {\n  egressGatewayHAPreview(environmentId: $environmentId, serviceId: $serviceId) {\n    ipv4\n    region\n    zone\n  }\n}";
+  "query egressGatewayHAPreview($environmentId: String!, $serviceId: String!) {\n  egressGatewayHAPreview(environmentId: $environmentId, serviceId: $serviceId) {\n    ipv4\n    region\n    zone\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetEgressGatewayHAPreviewInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetEgressGatewayHAPreviewInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getEgressGatewayHAPreview",
+    operationName: "egressGatewayHAPreview",
     type: "query",
   }),
 );

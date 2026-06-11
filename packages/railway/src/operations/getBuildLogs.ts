@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getBuildLogs($deploymentId: String!, $endDate: DateTime, $filter: String, $limit: Int, $startDate: DateTime) {\n  buildLogs(deploymentId: $deploymentId, endDate: $endDate, filter: $filter, limit: $limit, startDate: $startDate) {\n    attributes {\n      key\n      value\n    }\n    message\n    severity\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      serviceId\n      snapshotId\n    }\n    timestamp\n  }\n}";
+  "query buildLogs($deploymentId: String!, $endDate: DateTime, $filter: String, $limit: Int, $startDate: DateTime) {\n  buildLogs(deploymentId: $deploymentId, endDate: $endDate, filter: $filter, limit: $limit, startDate: $startDate) {\n    attributes {\n      key\n      value\n    }\n    message\n    severity\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      serviceId\n      snapshotId\n    }\n    timestamp\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetBuildLogsInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const GetBuildLogsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getBuildLogs",
+    operationName: "buildLogs",
     type: "query",
   }),
 );

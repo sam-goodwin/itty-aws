@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getNotificationRules($projectId: String, $workspaceId: String!) {\n  notificationRules(projectId: $projectId, workspaceId: $workspaceId) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}";
+  "query notificationRules($projectId: String, $workspaceId: String!) {\n  notificationRules(projectId: $projectId, workspaceId: $workspaceId) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetNotificationRulesInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetNotificationRulesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getNotificationRules",
+    operationName: "notificationRules",
     type: "query",
   }),
 );

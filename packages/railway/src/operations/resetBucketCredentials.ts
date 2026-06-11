@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation resetBucketCredentials($bucketId: String!, $environmentId: String!, $projectId: String!) {\n  bucketCredentialsReset(bucketId: $bucketId, environmentId: $environmentId, projectId: $projectId) {\n    accessKeyId\n    bucketName\n    createdAt\n    endpoint\n    region\n    secretAccessKey\n    urlStyle\n  }\n}";
+  "mutation bucketCredentialsReset($bucketId: String!, $environmentId: String!, $projectId: String!) {\n  bucketCredentialsReset(bucketId: $bucketId, environmentId: $environmentId, projectId: $projectId) {\n    accessKeyId\n    bucketName\n    createdAt\n    endpoint\n    region\n    secretAccessKey\n    urlStyle\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ResetBucketCredentialsInput = Schema.Struct({
@@ -14,7 +14,7 @@ export const ResetBucketCredentialsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "resetBucketCredentials",
+    operationName: "bucketCredentialsReset",
     type: "mutation",
   }),
 );

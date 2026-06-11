@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getTwoFactorInfo {\n  twoFactorInfo {\n    hasRecoveryCodes\n    isVerified\n  }\n}";
+  "query twoFactorInfo {\n  twoFactorInfo {\n    hasRecoveryCodes\n    isVerified\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetTwoFactorInfoInput = Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getTwoFactorInfo",
+    operationName: "twoFactorInfo",
     type: "query",
   }),
 );

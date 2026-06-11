@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getComplianceAgreements($workspaceId: String!) {\n  complianceAgreements(workspaceId: $workspaceId) {\n    hasBAA\n    hasDPA\n  }\n}";
+  "query complianceAgreements($workspaceId: String!) {\n  complianceAgreements(workspaceId: $workspaceId) {\n    hasBAA\n    hasDPA\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetComplianceAgreementsInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const GetComplianceAgreementsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getComplianceAgreements",
+    operationName: "complianceAgreements",
     type: "query",
   }),
 );

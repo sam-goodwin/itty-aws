@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getGithubRepoBranches($owner: String!, $repo: String!) {\n  githubRepoBranches(owner: $owner, repo: $repo) {\n    name\n  }\n}";
+  "query githubRepoBranches($owner: String!, $repo: String!) {\n  githubRepoBranches(owner: $owner, repo: $repo) {\n    name\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetGithubRepoBranchesInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetGithubRepoBranchesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getGithubRepoBranches",
+    operationName: "githubRepoBranches",
     type: "query",
   }),
 );

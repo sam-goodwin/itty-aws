@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation destroySandbox($environmentId: String!, $id: String!) {\n  sandboxDestroy(environmentId: $environmentId, id: $id) {\n    createdAt\n    environmentId\n    id\n    idleTimeoutMinutes\n    networkIsolation\n    region\n    status\n  }\n}";
+  "mutation sandboxDestroy($environmentId: String!, $id: String!) {\n  sandboxDestroy(environmentId: $environmentId, id: $id) {\n    createdAt\n    environmentId\n    id\n    idleTimeoutMinutes\n    networkIsolation\n    region\n    status\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DestroySandboxInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const DestroySandboxInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "destroySandbox",
+    operationName: "sandboxDestroy",
     type: "mutation",
   }),
 );

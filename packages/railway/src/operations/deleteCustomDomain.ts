@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deleteCustomDomain($id: String!) {\n  customDomainDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation customDomainDelete($id: String!) {\n  customDomainDelete(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteCustomDomainInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const DeleteCustomDomainInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "deleteCustomDomain",
+    operationName: "customDomainDelete",
     type: "mutation",
   }),
 );

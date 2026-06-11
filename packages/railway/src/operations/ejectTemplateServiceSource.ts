@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation ejectTemplateServiceSource($input: TemplateServiceSourceEjectInput!) {\n  templateServiceSourceEject(input: $input) {\n    __typename\n  }\n}";
+  "mutation templateServiceSourceEject($input: TemplateServiceSourceEjectInput!) {\n  templateServiceSourceEject(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const EjectTemplateServiceSourceInput = Schema.Struct({
@@ -18,7 +18,7 @@ export const EjectTemplateServiceSourceInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "ejectTemplateServiceSource",
+    operationName: "templateServiceSourceEject",
     type: "mutation",
   }),
 );

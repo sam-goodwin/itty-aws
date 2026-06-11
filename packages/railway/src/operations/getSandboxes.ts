@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getSandboxes($after: String, $before: String, $environmentId: String!, $first: Int, $last: Int) {\n  sandboxes(after: $after, before: $before, environmentId: $environmentId, first: $first, last: $last) {\n    edges {\n      cursor\n      node {\n        createdAt\n        environmentId\n        id\n        idleTimeoutMinutes\n        networkIsolation\n        region\n        status\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query sandboxes($after: String, $before: String, $environmentId: String!, $first: Int, $last: Int) {\n  sandboxes(after: $after, before: $before, environmentId: $environmentId, first: $first, last: $last) {\n    edges {\n      cursor\n      node {\n        createdAt\n        environmentId\n        id\n        idleTimeoutMinutes\n        networkIsolation\n        region\n        status\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetSandboxesInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const GetSandboxesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getSandboxes",
+    operationName: "sandboxes",
     type: "query",
   }),
 );

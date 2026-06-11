@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getProjects($after: String, $before: String, $first: Int, $includeDeleted: Boolean, $last: Int, $orderBy: ProjectsOrderBy, $userId: String, $workspaceId: String) {\n  projects(after: $after, before: $before, first: $first, includeDeleted: $includeDeleted, last: $last, orderBy: $orderBy, userId: $userId, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        baseEnvironmentId\n        botPrEnvironments\n        createdAt\n        deletedAt\n        description\n        expiredAt\n        featureFlags\n        focusedPrEnvironments\n        id\n        isPublic\n        isTempProject\n        name\n        prDeploys\n        primaryEnvironmentId\n        subscriptionPlanLimit\n        subscriptionType\n        teamId\n        updatedAt\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query projects($after: String, $before: String, $first: Int, $includeDeleted: Boolean, $last: Int, $orderBy: ProjectsOrderBy, $userId: String, $workspaceId: String) {\n  projects(after: $after, before: $before, first: $first, includeDeleted: $includeDeleted, last: $last, orderBy: $orderBy, userId: $userId, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        baseEnvironmentId\n        botPrEnvironments\n        createdAt\n        deletedAt\n        description\n        expiredAt\n        featureFlags\n        focusedPrEnvironments\n        id\n        isPublic\n        isTempProject\n        name\n        prDeploys\n        primaryEnvironmentId\n        subscriptionPlanLimit\n        subscriptionType\n        teamId\n        updatedAt\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetProjectsInput = Schema.Struct({
@@ -23,7 +23,7 @@ export const GetProjectsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getProjects",
+    operationName: "projects",
     type: "query",
   }),
 );

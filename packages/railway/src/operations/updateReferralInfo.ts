@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation updateReferralInfo($input: ReferralInfoUpdateInput!) {\n  referralInfoUpdate(input: $input) {\n    code\n    id\n    referralStats {\n      credited\n      pending\n    }\n    status\n  }\n}";
+  "mutation referralInfoUpdate($input: ReferralInfoUpdateInput!) {\n  referralInfoUpdate(input: $input) {\n    code\n    id\n    referralStats {\n      credited\n      pending\n    }\n    status\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateReferralInfoInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const UpdateReferralInfoInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "updateReferralInfo",
+    operationName: "referralInfoUpdate",
     type: "mutation",
   }),
 );

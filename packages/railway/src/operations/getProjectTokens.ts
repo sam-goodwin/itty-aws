@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getProjectTokens($after: String, $before: String, $first: Int, $last: Int, $projectId: String!) {\n  projectTokens(after: $after, before: $before, first: $first, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        createdAt\n        displayToken\n        environmentId\n        id\n        name\n        projectId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query projectTokens($after: String, $before: String, $first: Int, $last: Int, $projectId: String!) {\n  projectTokens(after: $after, before: $before, first: $first, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        createdAt\n        displayToken\n        environmentId\n        id\n        name\n        projectId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetProjectTokensInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const GetProjectTokensInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getProjectTokens",
+    operationName: "projectTokens",
     type: "query",
   }),
 );

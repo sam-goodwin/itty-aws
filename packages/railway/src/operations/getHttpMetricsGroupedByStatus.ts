@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getHttpMetricsGroupedByStatus($endDate: DateTime!, $environmentId: String!, $method: String, $path: String, $serviceId: String!, $startDate: DateTime!, $stepSeconds: Int) {\n  httpMetricsGroupedByStatus(endDate: $endDate, environmentId: $environmentId, method: $method, path: $path, serviceId: $serviceId, startDate: $startDate, stepSeconds: $stepSeconds) {\n    samples {\n      ts\n      value\n    }\n    statusCode\n  }\n}";
+  "query httpMetricsGroupedByStatus($endDate: DateTime!, $environmentId: String!, $method: String, $path: String, $serviceId: String!, $startDate: DateTime!, $stepSeconds: Int) {\n  httpMetricsGroupedByStatus(endDate: $endDate, environmentId: $environmentId, method: $method, path: $path, serviceId: $serviceId, startDate: $startDate, stepSeconds: $stepSeconds) {\n    samples {\n      ts\n      value\n    }\n    statusCode\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetHttpMetricsGroupedByStatusInput = Schema.Struct({
@@ -18,7 +18,7 @@ export const GetHttpMetricsGroupedByStatusInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getHttpMetricsGroupedByStatus",
+    operationName: "httpMetricsGroupedByStatus",
     type: "query",
   }),
 );

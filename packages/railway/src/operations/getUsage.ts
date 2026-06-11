@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getUsage($endDate: DateTime, $groupBy: [MetricTag!], $includeDeleted: Boolean, $measurements: [MetricMeasurement!]!, $projectId: String, $startDate: DateTime, $workspaceId: String) {\n  usage(endDate: $endDate, groupBy: $groupBy, includeDeleted: $includeDeleted, measurements: $measurements, projectId: $projectId, startDate: $startDate, workspaceId: $workspaceId) {\n    measurement\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      region\n      serviceId\n      volumeId\n      volumeInstanceId\n    }\n    value\n  }\n}";
+  "query usage($endDate: DateTime, $groupBy: [MetricTag!], $includeDeleted: Boolean, $measurements: [MetricMeasurement!]!, $projectId: String, $startDate: DateTime, $workspaceId: String) {\n  usage(endDate: $endDate, groupBy: $groupBy, includeDeleted: $includeDeleted, measurements: $measurements, projectId: $projectId, startDate: $startDate, workspaceId: $workspaceId) {\n    measurement\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      region\n      serviceId\n      volumeId\n      volumeInstanceId\n    }\n    value\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetUsageInput = Schema.Struct({
@@ -52,7 +52,7 @@ export const GetUsageInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getUsage",
+    operationName: "usage",
     type: "query",
   }),
 );

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deployTemplateV2($input: TemplateDeployV2Input!) {\n  templateDeployV2(input: $input) {\n    projectId\n    workflowId\n  }\n}";
+  "mutation templateDeployV2($input: TemplateDeployV2Input!) {\n  templateDeployV2(input: $input) {\n    projectId\n    workflowId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeployTemplateV2Input = Schema.Struct({
@@ -18,7 +18,7 @@ export const DeployTemplateV2Input = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "deployTemplateV2",
+    operationName: "templateDeployV2",
     type: "mutation",
   }),
 );

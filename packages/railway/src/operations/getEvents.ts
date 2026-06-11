@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getEvents($after: String, $before: String, $environmentId: String, $filter: EventFilterInput, $first: Int, $last: Int, $projectId: String!) {\n  events(after: $after, before: $before, environmentId: $environmentId, filter: $filter, first: $first, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        action\n        activityPayload\n        createdAt\n        environmentId\n        id\n        object\n        payload\n        projectId\n        severity\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query events($after: String, $before: String, $environmentId: String, $filter: EventFilterInput, $first: Int, $last: Int, $projectId: String!) {\n  events(after: $after, before: $before, environmentId: $environmentId, filter: $filter, first: $first, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        action\n        activityPayload\n        createdAt\n        environmentId\n        id\n        object\n        payload\n        projectId\n        severity\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetEventsInput = Schema.Struct({
@@ -53,7 +53,7 @@ export const GetEventsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getEvents",
+    operationName: "events",
     type: "query",
   }),
 );

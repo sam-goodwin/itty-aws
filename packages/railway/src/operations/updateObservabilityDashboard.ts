@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation updateObservabilityDashboard($id: String!, $input: [ObservabilityDashboardUpdateInput!]!) {\n  observabilityDashboardUpdate(id: $id, input: $input) {\n    __typename\n  }\n}";
+  "mutation observabilityDashboardUpdate($id: String!, $input: [ObservabilityDashboardUpdateInput!]!) {\n  observabilityDashboardUpdate(id: $id, input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateObservabilityDashboardInput = Schema.Struct({
@@ -70,7 +70,7 @@ export const UpdateObservabilityDashboardInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "updateObservabilityDashboard",
+    operationName: "observabilityDashboardUpdate",
     type: "mutation",
   }),
 );

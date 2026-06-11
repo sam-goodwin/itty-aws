@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deleteTrustedDomain($id: String!) {\n  trustedDomainDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation trustedDomainDelete($id: String!) {\n  trustedDomainDelete(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteTrustedDomainInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const DeleteTrustedDomainInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "deleteTrustedDomain",
+    operationName: "trustedDomainDelete",
     type: "mutation",
   }),
 );

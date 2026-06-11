@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation upsertWorkspaceSlackChannel($id: String!) {\n  workspaceUpsertSlackChannel(id: $id) {\n    __typename\n  }\n}";
+  "mutation workspaceUpsertSlackChannel($id: String!) {\n  workspaceUpsertSlackChannel(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpsertWorkspaceSlackChannelInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const UpsertWorkspaceSlackChannelInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "upsertWorkspaceSlackChannel",
+    operationName: "workspaceUpsertSlackChannel",
     type: "mutation",
   }),
 );

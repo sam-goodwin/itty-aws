@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation upsertVariable($input: VariableUpsertInput!) {\n  variableUpsert(input: $input) {\n    __typename\n  }\n}";
+  "mutation variableUpsert($input: VariableUpsertInput!) {\n  variableUpsert(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpsertVariableInput = Schema.Struct({
@@ -19,7 +19,7 @@ export const UpsertVariableInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "upsertVariable",
+    operationName: "variableUpsert",
     type: "mutation",
   }),
 );

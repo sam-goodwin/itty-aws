@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getAuditLogEventTypeInfo {\n  auditLogEventTypeInfo {\n    description\n    eventType\n  }\n}";
+  "query auditLogEventTypeInfo {\n  auditLogEventTypeInfo {\n    description\n    eventType\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetAuditLogEventTypeInfoInput = Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getAuditLogEventTypeInfo",
+    operationName: "auditLogEventTypeInfo",
     type: "query",
   }),
 );

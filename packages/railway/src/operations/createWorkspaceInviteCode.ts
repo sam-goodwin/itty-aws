@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createWorkspaceInviteCode($input: WorkspaceInviteCodeCreateInput!, $workspaceId: String!) {\n  workspaceInviteCodeCreate(input: $input, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
+  "mutation workspaceInviteCodeCreate($input: WorkspaceInviteCodeCreateInput!, $workspaceId: String!) {\n  workspaceInviteCodeCreate(input: $input, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateWorkspaceInviteCodeInput = Schema.Struct({
@@ -15,7 +15,7 @@ export const CreateWorkspaceInviteCodeInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createWorkspaceInviteCode",
+    operationName: "workspaceInviteCodeCreate",
     type: "mutation",
   }),
 );

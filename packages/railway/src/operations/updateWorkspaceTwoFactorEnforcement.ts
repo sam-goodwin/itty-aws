@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation updateWorkspaceTwoFactorEnforcement($enabled: Boolean!, $workspaceId: String!) {\n  workspaceTwoFactorEnforcementUpdate(enabled: $enabled, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
+  "mutation workspaceTwoFactorEnforcementUpdate($enabled: Boolean!, $workspaceId: String!) {\n  workspaceTwoFactorEnforcementUpdate(enabled: $enabled, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateWorkspaceTwoFactorEnforcementInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const UpdateWorkspaceTwoFactorEnforcementInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "updateWorkspaceTwoFactorEnforcement",
+    operationName: "workspaceTwoFactorEnforcementUpdate",
     type: "mutation",
   }),
 );

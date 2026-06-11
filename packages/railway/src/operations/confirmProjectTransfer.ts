@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation confirmProjectTransfer($input: ProjectTransferConfirmInput!) {\n  projectTransferConfirm(input: $input) {\n    __typename\n  }\n}";
+  "mutation projectTransferConfirm($input: ProjectTransferConfirmInput!) {\n  projectTransferConfirm(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ConfirmProjectTransferInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const ConfirmProjectTransferInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "confirmProjectTransfer",
+    operationName: "projectTransferConfirm",
     type: "mutation",
   }),
 );

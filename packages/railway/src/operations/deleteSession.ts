@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deleteSession($id: String!) {\n  sessionDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation sessionDelete($id: String!) {\n  sessionDelete(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteSessionInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const DeleteSessionInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "deleteSession",
+    operationName: "sessionDelete",
     type: "mutation",
   }),
 );

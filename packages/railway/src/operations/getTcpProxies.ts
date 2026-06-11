@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getTcpProxies($environmentId: String!, $serviceId: String!) {\n  tcpProxies(environmentId: $environmentId, serviceId: $serviceId) {\n    applicationPort\n    createdAt\n    deletedAt\n    domain\n    environmentId\n    id\n    proxyPort\n    serviceId\n    syncStatus\n    updatedAt\n  }\n}";
+  "query tcpProxies($environmentId: String!, $serviceId: String!) {\n  tcpProxies(environmentId: $environmentId, serviceId: $serviceId) {\n    applicationPort\n    createdAt\n    deletedAt\n    domain\n    environmentId\n    id\n    proxyPort\n    serviceId\n    syncStatus\n    updatedAt\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetTcpProxiesInput = Schema.Struct({
@@ -13,7 +13,7 @@ export const GetTcpProxiesInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getTcpProxies",
+    operationName: "tcpProxies",
     type: "query",
   }),
 );

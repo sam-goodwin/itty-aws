@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation approveDeployment($id: String!) {\n  deploymentApprove(id: $id) {\n    __typename\n  }\n}";
+  "mutation deploymentApprove($id: String!) {\n  deploymentApprove(id: $id) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ApproveDeploymentInput = Schema.Struct({
@@ -12,7 +12,7 @@ export const ApproveDeploymentInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "approveDeployment",
+    operationName: "deploymentApprove",
     type: "mutation",
   }),
 );

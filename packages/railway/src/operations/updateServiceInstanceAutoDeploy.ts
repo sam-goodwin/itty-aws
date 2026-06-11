@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation updateServiceInstanceAutoDeploy($input: ServiceInstanceAutoDeployUpdateInput!) {\n  serviceInstanceAutoDeployUpdate(input: $input) {\n    enabled\n  }\n}";
+  "mutation serviceInstanceAutoDeployUpdate($input: ServiceInstanceAutoDeployUpdateInput!) {\n  serviceInstanceAutoDeployUpdate(input: $input) {\n    enabled\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateServiceInstanceAutoDeployInput = Schema.Struct({
@@ -17,7 +17,7 @@ export const UpdateServiceInstanceAutoDeployInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "updateServiceInstanceAutoDeploy",
+    operationName: "serviceInstanceAutoDeployUpdate",
     type: "mutation",
   }),
 );

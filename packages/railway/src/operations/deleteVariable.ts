@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deleteVariable($input: VariableDeleteInput!) {\n  variableDelete(input: $input) {\n    __typename\n  }\n}";
+  "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input) {\n    __typename\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteVariableInput = Schema.Struct({
@@ -17,7 +17,7 @@ export const DeleteVariableInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "deleteVariable",
+    operationName: "variableDelete",
     type: "mutation",
   }),
 );

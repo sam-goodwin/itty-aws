@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getDeploymentEvents($after: String, $before: String, $first: Int, $id: String!, $last: Int) {\n  deploymentEvents(after: $after, before: $before, first: $first, id: $id, last: $last) {\n    edges {\n      cursor\n      node {\n        completedAt\n        createdAt\n        id\n        step\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query deploymentEvents($after: String, $before: String, $first: Int, $id: String!, $last: Int) {\n  deploymentEvents(after: $after, before: $before, first: $first, id: $id, last: $last) {\n    edges {\n      cursor\n      node {\n        completedAt\n        createdAt\n        id\n        step\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetDeploymentEventsInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const GetDeploymentEventsInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getDeploymentEvents",
+    operationName: "deploymentEvents",
     type: "query",
   }),
 );

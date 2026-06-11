@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getDeploymentTriggers($after: String, $before: String, $environmentId: String!, $first: Int, $last: Int, $projectId: String!, $serviceId: String!) {\n  deploymentTriggers(after: $after, before: $before, environmentId: $environmentId, first: $first, last: $last, projectId: $projectId, serviceId: $serviceId) {\n    edges {\n      cursor\n      node {\n        baseEnvironmentOverrideId\n        branch\n        checkSuites\n        environmentId\n        id\n        projectId\n        provider\n        repository\n        serviceId\n        validCheckSuites\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query deploymentTriggers($after: String, $before: String, $environmentId: String!, $first: Int, $last: Int, $projectId: String!, $serviceId: String!) {\n  deploymentTriggers(after: $after, before: $before, environmentId: $environmentId, first: $first, last: $last, projectId: $projectId, serviceId: $serviceId) {\n    edges {\n      cursor\n      node {\n        baseEnvironmentOverrideId\n        branch\n        checkSuites\n        environmentId\n        id\n        projectId\n        provider\n        repository\n        serviceId\n        validCheckSuites\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetDeploymentTriggersInput = Schema.Struct({
@@ -18,7 +18,7 @@ export const GetDeploymentTriggersInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getDeploymentTriggers",
+    operationName: "deploymentTriggers",
     type: "query",
   }),
 );

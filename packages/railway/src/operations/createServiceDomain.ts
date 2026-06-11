@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createServiceDomain($input: ServiceDomainCreateInput!) {\n  serviceDomainCreate(input: $input) {\n    cdnMode\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    newDomainName\n    newHostLabel\n    projectId\n    serviceId\n    suffix\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}";
+  "mutation serviceDomainCreate($input: ServiceDomainCreateInput!) {\n  serviceDomainCreate(input: $input) {\n    cdnMode\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    newDomainName\n    newHostLabel\n    projectId\n    serviceId\n    suffix\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateServiceDomainInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const CreateServiceDomainInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createServiceDomain",
+    operationName: "serviceDomainCreate",
     type: "mutation",
   }),
 );

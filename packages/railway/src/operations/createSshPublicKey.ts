@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation createSshPublicKey($input: SshPublicKeyCreateInput!) {\n  sshPublicKeyCreate(input: $input) {\n    createdAt\n    fingerprint\n    id\n    name\n    publicKey\n    updatedAt\n    userId\n    workspaceId\n  }\n}";
+  "mutation sshPublicKeyCreate($input: SshPublicKeyCreateInput!) {\n  sshPublicKeyCreate(input: $input) {\n    createdAt\n    fingerprint\n    id\n    name\n    publicKey\n    updatedAt\n    userId\n    workspaceId\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateSshPublicKeyInput = Schema.Struct({
@@ -16,7 +16,7 @@ export const CreateSshPublicKeyInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "createSshPublicKey",
+    operationName: "sshPublicKeyCreate",
     type: "mutation",
   }),
 );

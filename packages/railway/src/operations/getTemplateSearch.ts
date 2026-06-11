@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query getTemplateSearch($after: String, $before: String, $category: String, $first: Int, $last: Int, $query: String!, $verified: Boolean) {\n  templateSearch(after: $after, before: $before, category: $category, first: $first, last: $last, query: $query, verified: $verified) {\n    edges {\n      cursor\n      node {\n        code\n        creatorName\n        deploymentCount\n        description\n        healthScore\n        id\n        image\n        isVerified\n        name\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+  "query templateSearch($after: String, $before: String, $category: String, $first: Int, $last: Int, $query: String!, $verified: Boolean) {\n  templateSearch(after: $after, before: $before, category: $category, first: $first, last: $last, query: $query, verified: $verified) {\n    edges {\n      cursor\n      node {\n        code\n        creatorName\n        deploymentCount\n        description\n        healthScore\n        id\n        image\n        isVerified\n        name\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const GetTemplateSearchInput = Schema.Struct({
@@ -18,7 +18,7 @@ export const GetTemplateSearchInput = Schema.Struct({
   T.Http({ method: "POST", path: "/graphql/v2" }),
   T.GraphQLOp({
     query: __document,
-    operationName: "getTemplateSearch",
+    operationName: "templateSearch",
     type: "query",
   }),
 );
