@@ -730,6 +730,33 @@ const setQueryValue = (
   }
 };
 
+/**
+ * Build query params for the non-annotated leftover fields that the client
+ * appends to GET requests (the `method === "GET" && parts.body !== undefined`
+ * fallback in `client.ts`).
+ *
+ * Mirrors the annotated-query fix above: plain objects flatten to OpenAPI
+ * `deepObject` dot-notation instead of serializing as `[object Object]`.
+ * Everything else keeps the legacy `String(value)` serialization — including
+ * top-level arrays, which have always joined with `,` on this path (unlike
+ * annotated query params, which send repeated pairs); changing that here
+ * would alter working behavior for existing callers.
+ */
+export const buildExtraQueryParams = (
+  body: Record<string, unknown>,
+): Record<string, string | string[]> => {
+  const query: Record<string, string | string[]> = {};
+  for (const [key, value] of Object.entries(body)) {
+    if (value === undefined) continue;
+    if (isPlainObject(value)) {
+      setQueryValue(query, key, value);
+    } else {
+      query[key] = String(value);
+    }
+  }
+  return query;
+};
+
 export const buildRequestParts = (
   ast: AST.AST,
   httpTrait: HttpTrait,

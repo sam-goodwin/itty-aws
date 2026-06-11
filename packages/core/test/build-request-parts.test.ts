@@ -150,3 +150,59 @@ describe("buildRequestParts — deepObject query params", () => {
     expect(parts.query).toEqual({ type: "A", id: ["1", "2"] });
   });
 });
+
+// The GET fallback in client.ts puts non-annotated leftover fields into the
+// query string. It must flatten plain objects like the annotated path, but
+// preserve its own legacy serialization for everything else (notably
+// top-level arrays, which have always comma-joined via String()).
+
+describe("buildExtraQueryParams — GET leftover-field fallback", () => {
+  it("flattens plain objects to dot-notation", () => {
+    expect(
+      T.buildExtraQueryParams({ filter: { exact: "a", contains: "b" } }),
+    ).toEqual({ "filter.exact": "a", "filter.contains": "b" });
+  });
+
+  it("recurses into nested plain objects", () => {
+    expect(T.buildExtraQueryParams({ a: { b: { c: 1 } } })).toEqual({
+      "a.b.c": "1",
+    });
+  });
+
+  it("serializes array members of objects as repeated params", () => {
+    expect(T.buildExtraQueryParams({ tag: { not: ["a", "b"] } })).toEqual({
+      "tag.not": ["a", "b"],
+    });
+  });
+
+  it("keeps legacy String() serialization for scalars and top-level arrays", () => {
+    expect(
+      T.buildExtraQueryParams({
+        type: "A",
+        count: 3,
+        flag: false,
+        ids: ["1", "2"],
+        nul: null,
+      }),
+    ).toEqual({
+      type: "A",
+      count: "3",
+      flag: "false",
+      ids: "1,2",
+      nul: "null",
+    });
+  });
+
+  it("keeps legacy String() serialization for non-plain objects", () => {
+    const date = new Date("2026-01-02T03:04:05.000Z");
+    expect(T.buildExtraQueryParams({ before: date })).toEqual({
+      before: String(date),
+    });
+  });
+
+  it("skips undefined fields", () => {
+    expect(T.buildExtraQueryParams({ a: undefined, b: "x" })).toEqual({
+      b: "x",
+    });
+  });
+});

@@ -645,15 +645,12 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
               request = yield* HttpClientRequest.bodyJson(parts.body)(request);
             }
           } else if (method === "GET" && parts.body !== undefined) {
-            // For GET requests, remaining non-annotated fields go as query params
-            const extraQuery: Record<string, string> = {};
-            for (const [key, value] of Object.entries(
+            // For GET requests, remaining non-annotated fields go as query
+            // params. Plain objects flatten to deepObject dot-notation
+            // (`filter.exact=v`) instead of `[object Object]`.
+            const extraQuery = Traits.buildExtraQueryParams(
               parts.body as Record<string, unknown>,
-            )) {
-              if (value !== undefined) {
-                extraQuery[key] = String(value);
-              }
-            }
+            );
             if (Object.keys(extraQuery).length > 0) {
               request = HttpClientRequest.setUrlParams(request, extraQuery);
             }
