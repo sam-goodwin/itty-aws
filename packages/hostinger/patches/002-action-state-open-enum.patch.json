@@ -1,0 +1,13 @@
+{
+  "description": "Drop the closed enum on action state. The published spec declares success|error|delayed|sent|created, but the live API also returns at least \"started\" (observed on a ct_set_hostname action during live testing, 2026-06-11), which made schema decoding fail. The set of states is provably open — treat it as a plain string and let clients pattern-match the terminal states they know.",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/components/schemas/VPS.V1.Action.ActionResource/properties/state/enum"
+    },
+    {
+      "op": "remove",
+      "path": "/components/schemas/VPS.V1.Action.ActionResource/properties/state/x-enum-descriptions"
+    }
+  ]
+}

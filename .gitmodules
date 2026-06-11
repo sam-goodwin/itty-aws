@@ -107,3 +107,6 @@
 	shallow = true
 	ignore = dirty
 	fetchRecurseSubmodules = false
+[submodule "packages/hostinger/specs/api"]
+	path = packages/hostinger/specs/api
+	url = https://github.com/hostinger/api.git
