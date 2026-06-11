@@ -1,0 +1,58 @@
+import * as Schema from "effect/Schema";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+
+const __document =
+  "query getDeploymentLogs($deploymentId: String!, $endDate: DateTime, $filter: String, $limit: Int, $startDate: DateTime) {\n  deploymentLogs(deploymentId: $deploymentId, endDate: $endDate, filter: $filter, limit: $limit, startDate: $startDate) {\n    attributes {\n      key\n      value\n    }\n    message\n    severity\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      serviceId\n      snapshotId\n    }\n    timestamp\n  }\n}";
+
+// Input Schema (GraphQL variables)
+export const GetDeploymentLogsInput = Schema.Struct({
+  deploymentId: Schema.String,
+  endDate: Schema.optional(Schema.NullOr(Schema.String)),
+  filter: Schema.optional(Schema.NullOr(Schema.String)),
+  limit: Schema.optional(Schema.NullOr(Schema.Number)),
+  startDate: Schema.optional(Schema.NullOr(Schema.String)),
+}).pipe(
+  T.Http({ method: "POST", path: "/graphql/v2" }),
+  T.GraphQLOp({
+    query: __document,
+    operationName: "getDeploymentLogs",
+    type: "query",
+  }),
+);
+export type GetDeploymentLogsInput = typeof GetDeploymentLogsInput.Type;
+
+// Output Schema (GraphQL selection set)
+export const GetDeploymentLogsOutput = Schema.Array(
+  Schema.Struct({
+    attributes: Schema.Array(
+      Schema.Struct({
+        key: Schema.String,
+        value: Schema.String,
+      }),
+    ),
+    message: Schema.String,
+    severity: Schema.NullOr(Schema.String),
+    tags: Schema.NullOr(
+      Schema.Struct({
+        deploymentId: Schema.NullOr(Schema.String),
+        deploymentInstanceId: Schema.NullOr(Schema.String),
+        environmentId: Schema.NullOr(Schema.String),
+        pluginId: Schema.NullOr(Schema.String),
+        projectId: Schema.NullOr(Schema.String),
+        serviceId: Schema.NullOr(Schema.String),
+        snapshotId: Schema.NullOr(Schema.String),
+      }),
+    ),
+    timestamp: Schema.String,
+  }),
+).pipe(T.ResponsePath("deploymentLogs"));
+export type GetDeploymentLogsOutput = typeof GetDeploymentLogsOutput.Type;
+
+/**
+ * Fetch logs for a deployment
+ */
+export const getDeploymentLogs = API.make(() => ({
+  inputSchema: GetDeploymentLogsInput,
+  outputSchema: GetDeploymentLogsOutput,
+}));

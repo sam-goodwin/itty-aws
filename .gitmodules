@@ -107,3 +107,6 @@
 	shallow = true
 	ignore = dirty
 	fetchRecurseSubmodules = false
+[submodule "packages/railway/specs/distilled-spec-railway"]
+	path = packages/railway/specs/distilled-spec-railway
+	url = https://github.com/alchemy-run/distilled-spec-railway.git

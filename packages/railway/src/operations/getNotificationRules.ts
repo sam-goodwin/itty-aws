@@ -1,0 +1,56 @@
+import * as Schema from "effect/Schema";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+
+const __document =
+  "query getNotificationRules($projectId: String, $workspaceId: String!) {\n  notificationRules(projectId: $projectId, workspaceId: $workspaceId) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}";
+
+// Input Schema (GraphQL variables)
+export const GetNotificationRulesInput = Schema.Struct({
+  projectId: Schema.optional(Schema.NullOr(Schema.String)),
+  workspaceId: Schema.String,
+}).pipe(
+  T.Http({ method: "POST", path: "/graphql/v2" }),
+  T.GraphQLOp({
+    query: __document,
+    operationName: "getNotificationRules",
+    type: "query",
+  }),
+);
+export type GetNotificationRulesInput = typeof GetNotificationRulesInput.Type;
+
+// Output Schema (GraphQL selection set)
+export const GetNotificationRulesOutput = Schema.Array(
+  Schema.Struct({
+    channels: Schema.Array(
+      Schema.Struct({
+        config: Schema.Unknown,
+        createdAt: Schema.String,
+        id: Schema.String,
+        updatedAt: Schema.String,
+        workspaceId: Schema.String,
+      }),
+    ),
+    createdAt: Schema.String,
+    environmentId: Schema.NullOr(Schema.String),
+    ephemeralEnvironments: Schema.NullOr(Schema.Boolean),
+    eventTypes: Schema.Array(Schema.String),
+    id: Schema.String,
+    projectId: Schema.NullOr(Schema.String),
+    serviceId: Schema.NullOr(Schema.String),
+    severities: Schema.Array(
+      Schema.Literals(["CRITICAL", "INFO", "NOTICE", "WARNING"]),
+    ),
+    updatedAt: Schema.String,
+    workspaceId: Schema.String,
+  }),
+).pipe(T.ResponsePath("notificationRules"));
+export type GetNotificationRulesOutput = typeof GetNotificationRulesOutput.Type;
+
+/**
+ * Get all notification rules for a workspace and project
+ */
+export const getNotificationRules = API.make(() => ({
+  inputSchema: GetNotificationRulesInput,
+  outputSchema: GetNotificationRulesOutput,
+}));

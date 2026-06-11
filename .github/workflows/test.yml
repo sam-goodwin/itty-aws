@@ -29,6 +29,7 @@ jobs:
       neon: ${{ steps.force.outputs.all || steps.changes.outputs.neon }}
       planetscale: ${{ steps.force.outputs.all || steps.changes.outputs.planetscale }}
       prisma-postgres: ${{ steps.force.outputs.all || steps.changes.outputs.prisma-postgres }}
+      railway: ${{ steps.force.outputs.all || steps.changes.outputs.railway }}
       stripe: ${{ steps.force.outputs.all || steps.changes.outputs.stripe }}
       supabase: ${{ steps.force.outputs.all || steps.changes.outputs.supabase }}
       posthog: ${{ steps.force.outputs.all || steps.changes.outputs.posthog }}
@@ -70,6 +71,9 @@ jobs:
               - 'packages/core/**'
             prisma-postgres:
               - 'packages/prisma-postgres/**'
+              - 'packages/core/**'
+            railway:
+              - 'packages/railway/**'
               - 'packages/core/**'
             stripe:
               - 'packages/stripe/**'
@@ -260,6 +264,25 @@ jobs:
         working-directory: packages/prisma-postgres
         env:
           PRISMA_POSTGRES_API_TOKEN: ${{ secrets.PRISMA_POSTGRES_API_TOKEN }}
+
+  ci-railway:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.railway == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - run: bun run check
+        working-directory: packages/railway
+      - run: bun run test
+        working-directory: packages/railway
+        env:
+          RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
 
   ci-stripe:
     needs: detect-changes

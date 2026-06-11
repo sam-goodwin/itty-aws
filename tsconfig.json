@@ -18,6 +18,8 @@
         { "path": "./packages/posthog/tsconfig.json" },
         { "path": "./packages/posthog/tsconfig.test.json" },
         { "path": "./packages/prisma-postgres/tsconfig.json" },
+        { "path": "./packages/railway/tsconfig.json" },
+        { "path": "./packages/railway/tsconfig.test.json" },
         { "path": "./packages/stripe/tsconfig.json" },
         { "path": "./packages/supabase/tsconfig.json" },
         { "path": "./packages/turso/tsconfig.json" },

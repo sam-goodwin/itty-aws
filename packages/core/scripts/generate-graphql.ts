@@ -130,6 +130,23 @@ export interface GraphQLGeneratorConfig {
   skipDeprecated?: boolean;
   /** Custom scalar name → Effect Schema expression (e.g. { DateTime: "Schema.String" }) */
   customScalars?: Record<string, string>;
+  /**
+   * Rename a generated operation. Receives the schema-derived function name
+   * (e.g. `trustedDomainCreate`) and the operation type; returns the name to
+   * use for the exported function, file, schemas, and GraphQL operation name
+   * (e.g. `createTrustedDomain`). Must return a valid identifier.
+   */
+  renameOperation?: (name: string, type: "query" | "mutation") => string;
+  /**
+   * Per-operation typed error patches. Given the generated operation function
+   * name (after `renameOperation`), return the error class identifiers to
+   * declare on the operation (emitted as `errors: [...]` in the `API.make`
+   * config) and the import lines needed to bring them into scope in the
+   * generated file.
+   */
+  operationErrors?: (
+    operationName: string,
+  ) => { imports?: string[]; errors?: string[] } | undefined;
 }
 
 // ============================================================================
@@ -719,7 +736,9 @@ function generateOperation(
   config: GraphQLGeneratorConfig,
   description?: string | null,
 ): GeneratedOperation {
-  const functionName = pathToFunctionName(path);
+  const functionName =
+    config.renameOperation?.(pathToFunctionName(path), type) ??
+    pathToFunctionName(path);
   const PascalName = toPascalCase(functionName);
   const inputName = `${PascalName}Input`;
   const outputName = `${PascalName}Output`;
@@ -795,10 +814,19 @@ function generateOperation(
   // runtime client now leaves all unwrapping to `T.ResponsePath`.
   const responsePath = path.map((s) => s.name).join(".");
 
+  // Per-operation error patches (typed errors discovered via live testing).
+  const errorPatch = config.operationErrors?.(functionName);
+  const errorImports = errorPatch?.imports?.length
+    ? `${errorPatch.imports.join("\n")}\n`
+    : "";
+  const errorsLine = errorPatch?.errors?.length
+    ? `\n  errors: [${errorPatch.errors.join(", ")}],`
+    : "";
+
   const code = `import * as Schema from "effect/Schema";
 import { API } from "${clientImport}.ts";
 import * as T from "${traitsImport}.ts";
-
+${errorImports}
 const __document = ${JSON.stringify(document)};
 
 // Input Schema (GraphQL variables)
@@ -820,7 +848,7 @@ export type ${outputName} = typeof ${outputName}.Type;
 
 ${docDescription}export const ${functionName} = API.make(() => ({
   inputSchema: ${inputName},
-  outputSchema: ${outputName},
+  outputSchema: ${outputName},${errorsLine}
 }));
 `;
 

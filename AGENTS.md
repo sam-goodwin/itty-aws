@@ -17,6 +17,7 @@ distilled/
 │   ├── neon/             # @distilled.cloud/neon — Neon SDK from OpenAPI spec
 │   ├── planetscale/      # @distilled.cloud/planetscale — PlanetScale SDK from OpenAPI spec
 │   ├── prisma-postgres/  # @distilled.cloud/prisma-postgres — Prisma Postgres SDK from OpenAPI spec
+│   ├── railway/          # @distilled.cloud/railway — Railway SDK from GraphQL introspection
 │   ├── stripe/           # @distilled.cloud/stripe — Stripe SDK from OpenAPI spec
 │   ├── supabase/         # @distilled.cloud/supabase — Supabase SDK from OpenAPI spec
 │   └── turso/            # @distilled.cloud/turso — Turso SDK from OpenAPI spec
@@ -128,6 +129,7 @@ Each SDK package has vendor API specifications stored as git submodules under `s
 | `neon` | `specs/distilled-spec-neon` | Neon OpenAPI spec |
 | `planetscale` | `specs/distilled-spec-planetscale` | PlanetScale OpenAPI spec |
 | `prisma-postgres` | `specs/distilled-spec-prisma-postgres` | Prisma Postgres OpenAPI spec |
+| `railway` | `specs/distilled-spec-railway` | Railway GraphQL introspection schema |
 | `stripe` | `specs/stripe-openapi` | Stripe OpenAPI spec |
 | `supabase` | `specs/distilled-spec-supabase` | Supabase OpenAPI spec |
 | `turso` | `specs/turso-docs` | Turso API docs |
@@ -161,6 +163,7 @@ Each SDK uses a patch system to fix vendor spec inaccuracies. When you encounter
 | `neon` | JSON Patch (RFC 6902) | `specs/*.patch.json` |
 | `planetscale` | JSON Patch (RFC 6902) | `specs/*.patch.json` |
 | `prisma-postgres` | JSON Patch (RFC 6902) | `specs/*.patch.json` |
+| `railway` | GraphQL error matchers | `patches/{operation}.json` |
 
 ## Effect 4 (IMPORTANT)
 

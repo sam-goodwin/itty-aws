@@ -1,0 +1,46 @@
+import * as Schema from "effect/Schema";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+
+const __document =
+  "mutation removeServiceFeatureFlag($input: ServiceFeatureFlagToggleInput!) {\n  serviceFeatureFlagRemove(input: $input) {\n    __typename\n  }\n}";
+
+// Input Schema (GraphQL variables)
+export const RemoveServiceFeatureFlagInput = Schema.Struct({
+  input: Schema.Struct({
+    flag: Schema.Literals([
+      "COPY_VOLUME_TO_ENVIRONMENT",
+      "ENABLE_DOCKER_EXTENSION",
+      "PLACEHOLDER",
+      "SKIPPED_BUILDS",
+      "USE_EXPRESS_DEPLOY",
+      "USE_HA_STATIC_EGRESS",
+      "USE_VM_RUNTIME",
+    ]),
+    serviceId: Schema.String,
+  }),
+}).pipe(
+  T.Http({ method: "POST", path: "/graphql/v2" }),
+  T.GraphQLOp({
+    query: __document,
+    operationName: "removeServiceFeatureFlag",
+    type: "mutation",
+  }),
+);
+export type RemoveServiceFeatureFlagInput =
+  typeof RemoveServiceFeatureFlagInput.Type;
+
+// Output Schema (GraphQL selection set)
+export const RemoveServiceFeatureFlagOutput = Schema.Boolean.pipe(
+  T.ResponsePath("serviceFeatureFlagRemove"),
+);
+export type RemoveServiceFeatureFlagOutput =
+  typeof RemoveServiceFeatureFlagOutput.Type;
+
+/**
+ * Remove a feature flag for a service
+ */
+export const removeServiceFeatureFlag = API.make(() => ({
+  inputSchema: RemoveServiceFeatureFlagInput,
+  outputSchema: RemoveServiceFeatureFlagOutput,
+}));
