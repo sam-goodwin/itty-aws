@@ -146,6 +146,17 @@ export interface HttpTrait {
    * and differs per resource provider.
    */
   apiVersion?: string;
+  /**
+   * Marks an operation as an asynchronous long-running operation (LRO). When
+   * set, an async ack response (`201`/`202`) is handed to the SDK client's
+   * `pollLongRunning` hook, which drives the operation to a terminal state
+   * before the result is decoded. `finalStateVia` is an opaque, SDK-defined
+   * hint for where the final resource lives once polling completes (e.g. Azure
+   * ARM's `x-ms-long-running-operation-options.final-state-via`).
+   */
+  longRunning?: {
+    finalStateVia?: string;
+  };
 }
 
 /**
@@ -686,7 +697,7 @@ const unwrapRedactedDeep = (value: unknown): unknown => {
  * RFC 6570 §3.2.3 reserved-expansion: encode everything outside the RFC 3986
  * unreserved (`A-Za-z0-9-._~`) and reserved (`:/?#[]@!$&'()*+,;=`) sets.
  */
-const RFC3986_NEEDS_ENCODING = /[^A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=]/g;
+const RFC3986_NEEDS_ENCODING = /[^A-Za-z0-9\-._~:/?#[\]@!$&'()*+,;=]/g;
 const encodeReserved = (v: string): string =>
   v.replace(RFC3986_NEEDS_ENCODING, encodeURIComponent);
 

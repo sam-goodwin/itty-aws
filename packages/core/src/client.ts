@@ -41,6 +41,7 @@ import * as HttpBody from "effect/unstable/http/HttpBody";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as HttpClientError from "effect/unstable/http/HttpClientError";
 import * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
+import type * as HttpClientResponse from "effect/unstable/http/HttpClientResponse";
 import { SingleShotGen } from "effect/Utils";
 import {
   extractItems,
@@ -176,6 +177,24 @@ export interface ClientConfig<Creds> {
     pathTemplate: string;
     parts: Traits.RequestParts;
   }) => Traits.RequestParts;
+
+  /**
+   * Optional hook for asynchronous long-running operations (LROs). When an
+   * operation's `Http` trait carries a `longRunning` marker and the server
+   * returns an async ack (`201`/`202`), the core client delegates to this hook
+   * instead of decoding the ack body. The hook drives the SDK-specific polling
+   * protocol (e.g. ARM's `Azure-AsyncOperation` / `Location` monitors) to a
+   * terminal state and returns the final raw resource body, which the core
+   * client then decodes through the operation's output schema.
+   */
+  pollLongRunning?: (args: {
+    response: HttpClientResponse.HttpClientResponse;
+    request: HttpClientRequest.HttpClientRequest;
+    client: HttpClient.HttpClient;
+    method: string;
+    authHeaders: Record<string, string>;
+    finalStateVia?: string;
+  }) => Effect.Effect<unknown, unknown>;
 
   /**
    * The SDK's `Retry` Context.Service tag. Each per-SDK client wires its
@@ -509,6 +528,17 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
 
       const spanName = `${method} ${httpTrait.path}`;
 
+      // Decode a response body through the output schema, wrapping schema
+      // failures in the SDK's ParseError. `errorBody` is what the ParseError
+      // reports — it defaults to the decoded body and differs only when the
+      // raw body is more useful than a transformed one.
+      const decodeOutput = (body: unknown, errorBody: unknown = body) =>
+        Schema.decodeUnknownEffect(outputSchema)(body).pipe(
+          Effect.catchTag("SchemaError", (cause) =>
+            Effect.fail(new config.ParseError({ body: errorBody, cause })),
+          ),
+        );
+
       const innerFn = (input: Input): Effect.Effect<any, any, any> =>
         Effect.gen(function* () {
           const credentials = yield* config.credentials;
@@ -694,15 +724,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
               const synthBody = {
                 [noFollowRedirect.locationField ?? "url"]: location,
               };
-              return yield* Schema.decodeUnknownEffect(outputSchema)(
-                synthBody,
-              ).pipe(
-                Effect.catchTag("SchemaError", (cause) =>
-                  Effect.fail(
-                    new config.ParseError({ body: synthBody, cause }),
-                  ),
-                ),
-              );
+              return yield* decodeOutput(synthBody);
             }
           }
 
@@ -734,6 +756,27 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
               opConfig.errors,
               response.headers,
             );
+          }
+
+          // Long-running operation: an async ack (`201`/`202`) for an op whose
+          // `Http` trait carries a `longRunning` marker. Hand the response to the
+          // SDK's poller, which drives the protocol to a terminal state and
+          // returns the final raw resource body; decode that through the output
+          // schema (skipping the immediate-response decode path below).
+          if (
+            httpTrait.longRunning &&
+            config.pollLongRunning &&
+            (response.status === 201 || response.status === 202)
+          ) {
+            const finalBody = yield* config.pollLongRunning({
+              response,
+              request,
+              client,
+              method,
+              authHeaders,
+              finalStateVia: httpTrait.longRunning.finalStateVia,
+            });
+            return yield* decodeOutput(finalBody);
           }
 
           // For void-returning operations (e.g. DELETE 204 No Content)
@@ -840,13 +883,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             responseBody = (responseBody as Record<string, unknown>).items;
           }
 
-          return yield* Schema.decodeUnknownEffect(outputSchema)(
-            responseBody,
-          ).pipe(
-            Effect.catchTag("SchemaError", (cause) =>
-              Effect.fail(new config.ParseError({ body: rawBody, cause })),
-            ),
-          );
+          return yield* decodeOutput(responseBody, rawBody);
         });
 
       // Auto-retry every operation using the SDK's per-client `Retry`

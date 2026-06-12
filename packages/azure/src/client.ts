@@ -32,6 +32,7 @@ import {
   AzureParseError,
 } from "./errors.ts";
 import { Credentials } from "./credentials.ts";
+import { pollLongRunning } from "./lro.ts";
 
 // Re-export for backwards compatibility
 export { UnknownAzureError } from "./errors.ts";
@@ -194,4 +195,11 @@ export const API = makeAPI<Credentials>({
     }
     return parts;
   },
+
+  /**
+   * Drive ARM long-running operations (ops whose `Http` trait carries a
+   * `longRunning` marker) to completion: poll the async monitor and resolve the
+   * provisioned resource before the result is decoded. See `./lro.ts`.
+   */
+  pollLongRunning,
 });
