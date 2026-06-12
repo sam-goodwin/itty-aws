@@ -13,6 +13,31 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class CustomCertificateNotFound extends Schema.TaggedErrorClass<CustomCertificateNotFound>()(
+  "CustomCertificateNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CustomCertificateNotFound, [
+  { status: 404 },
+  { code: 1002, message: { includes: "Invalid certificate" } },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class PlanLevelNotAllowed extends Schema.TaggedErrorClass<PlanLevelNotAllowed>()(
+  "PlanLevelNotAllowed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PlanLevelNotAllowed, [{ code: 1011 }]);
+
+// =============================================================================
 // CustomCertificate
 // =============================================================================
 
@@ -211,7 +236,11 @@ export const GetCustomCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetCustomCertificateResponse>;
 
-export type GetCustomCertificateError = DefaultErrors;
+export type GetCustomCertificateError =
+  | DefaultErrors
+  | CustomCertificateNotFound
+  | PlanLevelNotAllowed
+  | Forbidden;
 
 export const getCustomCertificate: API.OperationMethod<
   GetCustomCertificateRequest,
@@ -221,7 +250,7 @@ export const getCustomCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomCertificateRequest,
   output: GetCustomCertificateResponse,
-  errors: [],
+  errors: [CustomCertificateNotFound, PlanLevelNotAllowed, Forbidden],
 }));
 
 export interface ListCustomCertificatesRequest {
@@ -462,7 +491,10 @@ export const ListCustomCertificatesResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListCustomCertificatesResponse>;
 
-export type ListCustomCertificatesError = DefaultErrors;
+export type ListCustomCertificatesError =
+  | DefaultErrors
+  | PlanLevelNotAllowed
+  | Forbidden;
 
 export const listCustomCertificates: API.PaginatedOperationMethod<
   ListCustomCertificatesRequest,
@@ -472,7 +504,7 @@ export const listCustomCertificates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomCertificatesRequest,
   output: ListCustomCertificatesResponse,
-  errors: [],
+  errors: [PlanLevelNotAllowed, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -729,7 +761,10 @@ export const CreateCustomCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateCustomCertificateResponse>;
 
-export type CreateCustomCertificateError = DefaultErrors;
+export type CreateCustomCertificateError =
+  | DefaultErrors
+  | PlanLevelNotAllowed
+  | Forbidden;
 
 export const createCustomCertificate: API.OperationMethod<
   CreateCustomCertificateRequest,
@@ -739,7 +774,7 @@ export const createCustomCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomCertificateRequest,
   output: CreateCustomCertificateResponse,
-  errors: [],
+  errors: [PlanLevelNotAllowed, Forbidden],
 }));
 
 export interface PatchCustomCertificateRequest {
@@ -985,7 +1020,11 @@ export const PatchCustomCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchCustomCertificateResponse>;
 
-export type PatchCustomCertificateError = DefaultErrors;
+export type PatchCustomCertificateError =
+  | DefaultErrors
+  | CustomCertificateNotFound
+  | PlanLevelNotAllowed
+  | Forbidden;
 
 export const patchCustomCertificate: API.OperationMethod<
   PatchCustomCertificateRequest,
@@ -995,7 +1034,7 @@ export const patchCustomCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomCertificateRequest,
   output: PatchCustomCertificateResponse,
-  errors: [],
+  errors: [CustomCertificateNotFound, PlanLevelNotAllowed, Forbidden],
 }));
 
 export interface DeleteCustomCertificateRequest {
@@ -1027,7 +1066,11 @@ export const DeleteCustomCertificateResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteCustomCertificateResponse>;
 
-export type DeleteCustomCertificateError = DefaultErrors;
+export type DeleteCustomCertificateError =
+  | DefaultErrors
+  | CustomCertificateNotFound
+  | PlanLevelNotAllowed
+  | Forbidden;
 
 export const deleteCustomCertificate: API.OperationMethod<
   DeleteCustomCertificateRequest,
@@ -1037,7 +1080,7 @@ export const deleteCustomCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomCertificateRequest,
   output: DeleteCustomCertificateResponse,
-  errors: [],
+  errors: [CustomCertificateNotFound, PlanLevelNotAllowed, Forbidden],
 }));
 
 // =============================================================================
@@ -1232,7 +1275,10 @@ export const PutPrioritizeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<PutPrioritizeResponse>;
 
-export type PutPrioritizeError = DefaultErrors;
+export type PutPrioritizeError =
+  | DefaultErrors
+  | PlanLevelNotAllowed
+  | Forbidden;
 
 export const putPrioritize: API.PaginatedOperationMethod<
   PutPrioritizeRequest,
@@ -1242,7 +1288,7 @@ export const putPrioritize: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutPrioritizeRequest,
   output: PutPrioritizeResponse,
-  errors: [],
+  errors: [PlanLevelNotAllowed, Forbidden],
   pagination: {
     mode: "single",
     items: "result",

@@ -13,6 +13,32 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class KeylessCertificateNotFound extends Schema.TaggedErrorClass<KeylessCertificateNotFound>()(
+  "KeylessCertificateNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(KeylessCertificateNotFound, [
+  { code: 1005, message: { includes: "Invalid or missing Keyless SSL" } },
+]);
+
+export class KeylessSslNotAvailable extends Schema.TaggedErrorClass<KeylessSslNotAvailable>()(
+  "KeylessSslNotAvailable",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(KeylessSslNotAvailable, [
+  { code: 1067, message: { includes: "Keyless SSL is not available" } },
+]);
+
+// =============================================================================
 // KeylessCertificate
 // =============================================================================
 
@@ -102,7 +128,10 @@ export const GetKeylessCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetKeylessCertificateResponse>;
 
-export type GetKeylessCertificateError = DefaultErrors;
+export type GetKeylessCertificateError =
+  | DefaultErrors
+  | KeylessCertificateNotFound
+  | Forbidden;
 
 export const getKeylessCertificate: API.OperationMethod<
   GetKeylessCertificateRequest,
@@ -112,7 +141,7 @@ export const getKeylessCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKeylessCertificateRequest,
   output: GetKeylessCertificateResponse,
-  errors: [],
+  errors: [KeylessCertificateNotFound, Forbidden],
 }));
 
 export interface ListKeylessCertificatesRequest {
@@ -186,7 +215,7 @@ export const ListKeylessCertificatesResponse =
     ),
   }) as unknown as Schema.Schema<ListKeylessCertificatesResponse>;
 
-export type ListKeylessCertificatesError = DefaultErrors;
+export type ListKeylessCertificatesError = DefaultErrors | Forbidden;
 
 export const listKeylessCertificates: API.PaginatedOperationMethod<
   ListKeylessCertificatesRequest,
@@ -196,7 +225,7 @@ export const listKeylessCertificates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKeylessCertificatesRequest,
   output: ListKeylessCertificatesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -320,7 +349,10 @@ export const CreateKeylessCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateKeylessCertificateResponse>;
 
-export type CreateKeylessCertificateError = DefaultErrors;
+export type CreateKeylessCertificateError =
+  | DefaultErrors
+  | KeylessSslNotAvailable
+  | Forbidden;
 
 export const createKeylessCertificate: API.OperationMethod<
   CreateKeylessCertificateRequest,
@@ -330,7 +362,7 @@ export const createKeylessCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateKeylessCertificateRequest,
   output: CreateKeylessCertificateResponse,
-  errors: [],
+  errors: [KeylessSslNotAvailable, Forbidden],
 }));
 
 export interface PatchKeylessCertificateRequest {
@@ -441,7 +473,10 @@ export const PatchKeylessCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchKeylessCertificateResponse>;
 
-export type PatchKeylessCertificateError = DefaultErrors;
+export type PatchKeylessCertificateError =
+  | DefaultErrors
+  | KeylessCertificateNotFound
+  | Forbidden;
 
 export const patchKeylessCertificate: API.OperationMethod<
   PatchKeylessCertificateRequest,
@@ -451,7 +486,7 @@ export const patchKeylessCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchKeylessCertificateRequest,
   output: PatchKeylessCertificateResponse,
-  errors: [],
+  errors: [KeylessCertificateNotFound, Forbidden],
 }));
 
 export interface DeleteKeylessCertificateRequest {
@@ -485,7 +520,10 @@ export const DeleteKeylessCertificateResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteKeylessCertificateResponse>;
 
-export type DeleteKeylessCertificateError = DefaultErrors;
+export type DeleteKeylessCertificateError =
+  | DefaultErrors
+  | KeylessCertificateNotFound
+  | Forbidden;
 
 export const deleteKeylessCertificate: API.OperationMethod<
   DeleteKeylessCertificateRequest,
@@ -495,5 +533,5 @@ export const deleteKeylessCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteKeylessCertificateRequest,
   output: DeleteKeylessCertificateResponse,
-  errors: [],
+  errors: [KeylessCertificateNotFound, Forbidden],
 }));

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }],
+    "TagPreconditionFailed": [{ "status": 412 }]
+  }
+}

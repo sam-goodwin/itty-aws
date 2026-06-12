@@ -1,5 +1,10 @@
 {
-  "errors": {},
+  "errors": {
+    "UserGroupNotFound": [
+      { "code": 404, "message": { "includes": "User group" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  },
   "response": {
     "properties": {
       "policies[].resource_groups[].scope": { "type": "unknown" }

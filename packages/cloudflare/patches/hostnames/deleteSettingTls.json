@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "AdvancedCertificateManagerRequired": [{ "code": 1450 }],
+    "HostnameTlsSettingNotFound": [{ "status": 404 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

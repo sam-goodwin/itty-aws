@@ -2,6 +2,9 @@
   "errors": {
     "ImagesAccessNotEnabled": [{ "code": 5403 }],
     "VariantNameNotAllowed": [{ "code": 5400 }],
-    "VariantNotFound": [{ "code": 5401 }]
+    "VariantNotFound": [
+      { "code": 5401 },
+      { "status": 404, "message": { "includes": "not found" } }
+    ]
   }
 }

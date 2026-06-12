@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "LockdownNotFound": [
+      { "code": 10001, "message": { "includes": "zonelockdown.api.not_found" } },
+      { "status": 404 }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

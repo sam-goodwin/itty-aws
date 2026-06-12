@@ -1,0 +1,15 @@
+{
+  "errors": {
+    "SilenceNotFound": [
+      { "code": 0, "message": { "includes": "silence not found" } }
+    ],
+    "InvalidSilence": [
+      { "code": 0, "message": { "includes": "invalid silence" } }
+    ]
+  },
+  "response": {
+    "properties": {
+      "result": { "nullable": true }
+    }
+  }
+}

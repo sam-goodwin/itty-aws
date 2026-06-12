@@ -1,0 +1,40 @@
+{
+  "errors": {
+    "LockdownNotFound": [
+      { "code": 10001, "message": { "includes": "zonelockdown.api.not_found" } },
+      { "status": 404 }
+    ],
+    "DuplicateLockdown": [
+      {
+        "code": 10009,
+        "message": { "includes": "zonelockdown.api.duplicate_of_existing" }
+      }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "request": {
+    "properties": {
+      "description": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "string" }
+      },
+      "paused": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "boolean" }
+      },
+      "priority": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "number" }
+      }
+    }
+  },
+  "response": {
+    "properties": {
+      "description": { "optional": true },
+      "priority": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "number" }
+      }
+    }
+  }
+}

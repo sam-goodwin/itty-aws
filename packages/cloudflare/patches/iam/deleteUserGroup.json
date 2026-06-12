@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "UserGroupNotFound": [
+      { "code": 404, "message": { "includes": "User group" } }
+    ]
+  }
+}

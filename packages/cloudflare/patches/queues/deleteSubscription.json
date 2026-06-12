@@ -1,5 +1,6 @@
 {
   "errors": {
-    "UnrecognizedEventType": [{ "code": 0, "message": { "includes": "Unrecognized event types" } }]
+    "UnrecognizedEventType": [{ "code": 0, "message": { "includes": "Unrecognized event types" } }],
+    "SubscriptionNotFound": [{ "status": 404, "message": { "includes": "No subscription with this ID" } }]
   }
 }

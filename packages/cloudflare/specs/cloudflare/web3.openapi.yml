@@ -64,6 +64,11 @@ paths:
                       - ipfs_universal_path
                     description: Specify the target gateway of the hostname.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Web3HostnameNotFound:
+          - code: 1002
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchHostname
       description: "Edit Web3 Hostname  @example ```ts const hostname = await
@@ -134,6 +139,11 @@ paths:
                       - ipfs_universal_path
                     description: Specify the target gateway of the hostname.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Web3HostnameNotFound:
+          - code: 1002
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteHostname
       description: "Delete Web3 Hostname  @example ```ts const hostname = await
@@ -165,6 +175,11 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        Web3HostnameNotFound:
+          - code: 1002
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/web3/hostnames:
     get:
       operationId: listHostnames
@@ -219,6 +234,9 @@ paths:
                       - ipfs_universal_path
                     description: Specify the target gateway of the hostname.
       x-distilled-pagination-class: HostnamesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createHostname
       description: "Create Web3 Hostname  @example ```ts const hostname = await
@@ -299,6 +317,13 @@ paths:
                       - ipfs_universal_path
                     description: Specify the target gateway of the hostname.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Web3HostnameNotEntitled:
+          - code: 1010
+            message:
+              includes: not entitled
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list:
     get:
       operationId: getHostnameIpfsUniversalPathContentList
@@ -333,6 +358,13 @@ paths:
                       - block
                     description: Behavior of the content list.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Web3HostnameNotFound:
+          - code: 1002
+        InvalidWeb3HostnameTarget:
+          - code: 1006
+        Forbidden:
+          - status: 403
     put:
       operationId: putHostnameIpfsUniversalPathContentList
       description: "Update IPFS Universal Path Gateway Content List  @example ```ts
@@ -400,6 +432,13 @@ paths:
                       - block
                     description: Behavior of the content list.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Web3HostnameNotFound:
+          - code: 1002
+        InvalidWeb3HostnameTarget:
+          - code: 1006
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{contentListEntryIdentifier}:
     get:
       operationId: getHostnameIpfsUniversalPathContentListEntry
@@ -622,6 +661,13 @@ paths:
                           description: Specify the type of content list entry to block.
                     description: Provides content list entries.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Web3HostnameNotFound:
+          - code: 1002
+        InvalidWeb3HostnameTarget:
+          - code: 1006
+        Forbidden:
+          - status: 403
     post:
       operationId: createHostnameIpfsUniversalPathContentListEntry
       description: "Create IPFS Universal Path Gateway Content List Entry  @example

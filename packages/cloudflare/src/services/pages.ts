@@ -17,6 +17,18 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
+export class ActiveProductionDeployment extends Schema.TaggedErrorClass<ActiveProductionDeployment>()(
+  "ActiveProductionDeployment",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ActiveProductionDeployment, [{ code: 8000034 }]);
+
+export class DeploymentNotFound extends Schema.TaggedErrorClass<DeploymentNotFound>()(
+  "DeploymentNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DeploymentNotFound, [{ code: 8000009 }]);
+
 export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
   "Forbidden",
   { code: Schema.Number, message: Schema.String },
@@ -5368,7 +5380,11 @@ export const GetProjectDeploymentResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetProjectDeploymentResponse>;
 
-export type GetProjectDeploymentError = DefaultErrors;
+export type GetProjectDeploymentError =
+  | DefaultErrors
+  | DeploymentNotFound
+  | ProjectNotFound
+  | Forbidden;
 
 export const getProjectDeployment: API.OperationMethod<
   GetProjectDeploymentRequest,
@@ -5378,7 +5394,7 @@ export const getProjectDeployment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectDeploymentRequest,
   output: GetProjectDeploymentResponse,
-  errors: [],
+  errors: [DeploymentNotFound, ProjectNotFound, Forbidden],
 }));
 
 export interface ListProjectDeploymentsRequest {
@@ -6093,7 +6109,10 @@ export const CreateProjectDeploymentResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateProjectDeploymentResponse>;
 
-export type CreateProjectDeploymentError = DefaultErrors;
+export type CreateProjectDeploymentError =
+  | DefaultErrors
+  | ProjectNotFound
+  | Forbidden;
 
 export const createProjectDeployment: API.OperationMethod<
   CreateProjectDeploymentRequest,
@@ -6103,7 +6122,7 @@ export const createProjectDeployment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectDeploymentRequest,
   output: CreateProjectDeploymentResponse,
-  errors: [],
+  errors: [ProjectNotFound, Forbidden],
 }));
 
 export interface DeleteProjectDeploymentRequest {
@@ -6135,7 +6154,12 @@ export const DeleteProjectDeploymentResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteProjectDeploymentResponse>;
 
-export type DeleteProjectDeploymentError = DefaultErrors;
+export type DeleteProjectDeploymentError =
+  | DefaultErrors
+  | DeploymentNotFound
+  | ProjectNotFound
+  | ActiveProductionDeployment
+  | Forbidden;
 
 export const deleteProjectDeployment: API.OperationMethod<
   DeleteProjectDeploymentRequest,
@@ -6145,7 +6169,12 @@ export const deleteProjectDeployment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectDeploymentRequest,
   output: DeleteProjectDeploymentResponse,
-  errors: [],
+  errors: [
+    DeploymentNotFound,
+    ProjectNotFound,
+    ActiveProductionDeployment,
+    Forbidden,
+  ],
 }));
 
 export interface RetryProjectDeploymentRequest {

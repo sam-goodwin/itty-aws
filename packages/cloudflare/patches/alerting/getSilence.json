@@ -1,6 +1,9 @@
 {
   "errors": {
     "InvalidRoute": [{ "code": 7003 }],
-    "InternalServerError": [{ "code": 15000 }]
+    "InternalServerError": [{ "code": 15000 }],
+    "SilenceNotFound": [
+      { "code": 0, "message": { "includes": "silence not found" } }
+    ]
   }
 }

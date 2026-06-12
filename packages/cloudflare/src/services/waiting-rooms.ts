@@ -13,6 +13,28 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class WaitingRoomNotFound extends Schema.TaggedErrorClass<WaitingRoomNotFound>()(
+  "WaitingRoomNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(WaitingRoomNotFound, [{ code: 1001 }]);
+
+export class ZoneNotEntitled extends Schema.TaggedErrorClass<ZoneNotEntitled>()(
+  "ZoneNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ZoneNotEntitled, [{ code: 1034 }]);
+
+// =============================================================================
 // Event
 // =============================================================================
 
@@ -1658,7 +1680,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetSettingResponse>;
 
-export type GetSettingError = DefaultErrors;
+export type GetSettingError = DefaultErrors | Forbidden;
 
 export const getSetting: API.OperationMethod<
   GetSettingRequest,
@@ -1668,7 +1690,7 @@ export const getSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingRequest,
   output: GetSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutSettingRequest {
@@ -1705,7 +1727,7 @@ export const PutSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutSettingResponse>;
 
-export type PutSettingError = DefaultErrors;
+export type PutSettingError = DefaultErrors | ZoneNotEntitled | Forbidden;
 
 export const putSetting: API.OperationMethod<
   PutSettingRequest,
@@ -1715,7 +1737,7 @@ export const putSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSettingRequest,
   output: PutSettingResponse,
-  errors: [],
+  errors: [ZoneNotEntitled, Forbidden],
 }));
 
 export interface PatchSettingRequest {
@@ -2173,7 +2195,10 @@ export const GetWaitingRoomResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetWaitingRoomResponse>;
 
-export type GetWaitingRoomError = DefaultErrors;
+export type GetWaitingRoomError =
+  | DefaultErrors
+  | WaitingRoomNotFound
+  | Forbidden;
 
 export const getWaitingRoom: API.OperationMethod<
   GetWaitingRoomRequest,
@@ -2183,7 +2208,7 @@ export const getWaitingRoom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWaitingRoomRequest,
   output: GetWaitingRoomResponse,
-  errors: [],
+  errors: [WaitingRoomNotFound, Forbidden],
 }));
 
 const ListWaitingRoomsBaseFields = {
@@ -2543,7 +2568,7 @@ export const ListWaitingRoomsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListWaitingRoomsResponse>;
 
-export type ListWaitingRoomsError = DefaultErrors;
+export type ListWaitingRoomsError = DefaultErrors | Forbidden;
 
 export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
   ListWaitingRoomsForAccountRequest,
@@ -2553,7 +2578,7 @@ export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWaitingRoomsForAccountRequest,
   output: ListWaitingRoomsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -2571,7 +2596,7 @@ export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWaitingRoomsForZoneRequest,
   output: ListWaitingRoomsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -3114,7 +3139,10 @@ export const CreateWaitingRoomResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateWaitingRoomResponse>;
 
-export type CreateWaitingRoomError = DefaultErrors;
+export type CreateWaitingRoomError =
+  | DefaultErrors
+  | ZoneNotEntitled
+  | Forbidden;
 
 export const createWaitingRoom: API.OperationMethod<
   CreateWaitingRoomRequest,
@@ -3124,7 +3152,7 @@ export const createWaitingRoom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWaitingRoomRequest,
   output: CreateWaitingRoomResponse,
-  errors: [],
+  errors: [ZoneNotEntitled, Forbidden],
 }));
 
 export interface UpdateWaitingRoomRequest {
@@ -3665,7 +3693,11 @@ export const UpdateWaitingRoomResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateWaitingRoomResponse>;
 
-export type UpdateWaitingRoomError = DefaultErrors;
+export type UpdateWaitingRoomError =
+  | DefaultErrors
+  | WaitingRoomNotFound
+  | ZoneNotEntitled
+  | Forbidden;
 
 export const updateWaitingRoom: API.OperationMethod<
   UpdateWaitingRoomRequest,
@@ -3675,7 +3707,7 @@ export const updateWaitingRoom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWaitingRoomRequest,
   output: UpdateWaitingRoomResponse,
-  errors: [],
+  errors: [WaitingRoomNotFound, ZoneNotEntitled, Forbidden],
 }));
 
 export interface PatchWaitingRoomRequest {
@@ -4257,7 +4289,10 @@ export const DeleteWaitingRoomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteWaitingRoomResponse>;
 
-export type DeleteWaitingRoomError = DefaultErrors;
+export type DeleteWaitingRoomError =
+  | DefaultErrors
+  | WaitingRoomNotFound
+  | Forbidden;
 
 export const deleteWaitingRoom: API.OperationMethod<
   DeleteWaitingRoomRequest,
@@ -4267,5 +4302,5 @@ export const deleteWaitingRoom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWaitingRoomRequest,
   output: DeleteWaitingRoomResponse,
-  errors: [],
+  errors: [WaitingRoomNotFound, Forbidden],
 }));

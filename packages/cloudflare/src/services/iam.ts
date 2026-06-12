@@ -16,11 +16,41 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class InvalidMember extends Schema.TaggedErrorClass<InvalidMember>()(
   "InvalidMember",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(InvalidMember, [{ code: 400 }]);
+
+export class ResourceGroupNotFound extends Schema.TaggedErrorClass<ResourceGroupNotFound>()(
+  "ResourceGroupNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ResourceGroupNotFound, [
+  { code: 404, message: { includes: "Resource group" } },
+]);
+
+export class UserGroupMemberNotFound extends Schema.TaggedErrorClass<UserGroupMemberNotFound>()(
+  "UserGroupMemberNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(UserGroupMemberNotFound, [
+  { code: 404, message: { includes: "not found in user group" } },
+]);
+
+export class UserGroupNotFound extends Schema.TaggedErrorClass<UserGroupNotFound>()(
+  "UserGroupNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(UserGroupNotFound, [
+  { code: 404, message: { includes: "User group" } },
+]);
 
 // =============================================================================
 // PermissionGroup
@@ -237,7 +267,10 @@ export const GetResourceGroupResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetResourceGroupResponse>;
 
-export type GetResourceGroupError = DefaultErrors;
+export type GetResourceGroupError =
+  | DefaultErrors
+  | ResourceGroupNotFound
+  | Forbidden;
 
 export const getResourceGroup: API.OperationMethod<
   GetResourceGroupRequest,
@@ -247,7 +280,7 @@ export const getResourceGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceGroupRequest,
   output: GetResourceGroupResponse,
-  errors: [],
+  errors: [ResourceGroupNotFound, Forbidden],
 }));
 
 export interface ListResourceGroupsRequest {
@@ -450,7 +483,7 @@ export const UpdateResourceGroupResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateResourceGroupResponse>;
 
-export type UpdateResourceGroupError = DefaultErrors;
+export type UpdateResourceGroupError = DefaultErrors | ResourceGroupNotFound;
 
 export const updateResourceGroup: API.OperationMethod<
   UpdateResourceGroupRequest,
@@ -460,7 +493,7 @@ export const updateResourceGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourceGroupRequest,
   output: UpdateResourceGroupResponse,
-  errors: [],
+  errors: [ResourceGroupNotFound],
 }));
 
 export interface DeleteResourceGroupRequest {
@@ -492,7 +525,7 @@ export const DeleteResourceGroupResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteResourceGroupResponse>;
 
-export type DeleteResourceGroupError = DefaultErrors;
+export type DeleteResourceGroupError = DefaultErrors | ResourceGroupNotFound;
 
 export const deleteResourceGroup: API.OperationMethod<
   DeleteResourceGroupRequest,
@@ -502,7 +535,7 @@ export const deleteResourceGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceGroupRequest,
   output: DeleteResourceGroupResponse,
-  errors: [],
+  errors: [ResourceGroupNotFound],
 }));
 
 // =============================================================================
@@ -1090,7 +1123,7 @@ export const GetUserGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetUserGroupResponse>;
 
-export type GetUserGroupError = DefaultErrors;
+export type GetUserGroupError = DefaultErrors | UserGroupNotFound | Forbidden;
 
 export const getUserGroup: API.OperationMethod<
   GetUserGroupRequest,
@@ -1100,7 +1133,7 @@ export const getUserGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserGroupRequest,
   output: GetUserGroupResponse,
-  errors: [],
+  errors: [UserGroupNotFound, Forbidden],
 }));
 
 export interface ListUserGroupsRequest {
@@ -1511,7 +1544,7 @@ export interface UpdateUserGroupRequest {
   name?: string;
   /** Body param: Policies attached to the User group */
   policies?: {
-    id: string;
+    id?: string;
     access: "allow" | "deny" | (string & {});
     permissionGroups: { id: string }[];
     resourceGroups: { id: string }[];
@@ -1526,7 +1559,7 @@ export const UpdateUserGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     policies: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          id: Schema.String,
+          id: Schema.optional(Schema.String),
           access: Schema.Union([
             Schema.Literals(["allow", "deny"]),
             Schema.String,
@@ -1691,7 +1724,7 @@ export const UpdateUserGroupResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateUserGroupResponse>;
 
-export type UpdateUserGroupError = DefaultErrors;
+export type UpdateUserGroupError = DefaultErrors | UserGroupNotFound;
 
 export const updateUserGroup: API.OperationMethod<
   UpdateUserGroupRequest,
@@ -1701,7 +1734,7 @@ export const updateUserGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUserGroupRequest,
   output: UpdateUserGroupResponse,
-  errors: [],
+  errors: [UserGroupNotFound],
 }));
 
 export interface DeleteUserGroupRequest {
@@ -1734,7 +1767,7 @@ export const DeleteUserGroupResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteUserGroupResponse>;
 
-export type DeleteUserGroupError = DefaultErrors;
+export type DeleteUserGroupError = DefaultErrors | UserGroupNotFound;
 
 export const deleteUserGroup: API.OperationMethod<
   DeleteUserGroupRequest,
@@ -1744,7 +1777,7 @@ export const deleteUserGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserGroupRequest,
   output: DeleteUserGroupResponse,
-  errors: [],
+  errors: [UserGroupNotFound],
 }));
 
 // =============================================================================
@@ -1833,7 +1866,11 @@ export const GetUserGroupMemberResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetUserGroupMemberResponse>;
 
-export type GetUserGroupMemberError = DefaultErrors;
+export type GetUserGroupMemberError =
+  | DefaultErrors
+  | UserGroupMemberNotFound
+  | UserGroupNotFound
+  | Forbidden;
 
 export const getUserGroupMember: API.OperationMethod<
   GetUserGroupMemberRequest,
@@ -1843,7 +1880,7 @@ export const getUserGroupMember: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserGroupMemberRequest,
   output: GetUserGroupMemberResponse,
-  errors: [],
+  errors: [UserGroupMemberNotFound, UserGroupNotFound, Forbidden],
 }));
 
 export interface ListUserGroupMembersRequest {
@@ -1930,7 +1967,7 @@ export const ListUserGroupMembersResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListUserGroupMembersResponse>;
 
-export type ListUserGroupMembersError = DefaultErrors;
+export type ListUserGroupMembersError = DefaultErrors | UserGroupNotFound;
 
 export const listUserGroupMembers: API.PaginatedOperationMethod<
   ListUserGroupMembersRequest,
@@ -1940,7 +1977,7 @@ export const listUserGroupMembers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserGroupMembersRequest,
   output: ListUserGroupMembersResponse,
-  errors: [],
+  errors: [UserGroupNotFound],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -2001,7 +2038,10 @@ export const CreateUserGroupMemberResponse =
     ),
   }) as unknown as Schema.Schema<CreateUserGroupMemberResponse>;
 
-export type CreateUserGroupMemberError = DefaultErrors | InvalidMember;
+export type CreateUserGroupMemberError =
+  | DefaultErrors
+  | InvalidMember
+  | UserGroupNotFound;
 
 export const createUserGroupMember: API.PaginatedOperationMethod<
   CreateUserGroupMemberRequest,
@@ -2011,7 +2051,7 @@ export const createUserGroupMember: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateUserGroupMemberRequest,
   output: CreateUserGroupMemberResponse,
-  errors: [InvalidMember],
+  errors: [InvalidMember, UserGroupNotFound],
   pagination: {
     mode: "single",
     items: "result",
@@ -2128,7 +2168,11 @@ export const DeleteUserGroupMemberResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteUserGroupMemberResponse>;
 
-export type DeleteUserGroupMemberError = DefaultErrors | InvalidMember;
+export type DeleteUserGroupMemberError =
+  | DefaultErrors
+  | InvalidMember
+  | UserGroupMemberNotFound
+  | UserGroupNotFound;
 
 export const deleteUserGroupMember: API.OperationMethod<
   DeleteUserGroupMemberRequest,
@@ -2138,7 +2182,7 @@ export const deleteUserGroupMember: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserGroupMemberRequest,
   output: DeleteUserGroupMemberResponse,
-  errors: [InvalidMember],
+  errors: [InvalidMember, UserGroupMemberNotFound, UserGroupNotFound],
 }));
 
 // =============================================================================

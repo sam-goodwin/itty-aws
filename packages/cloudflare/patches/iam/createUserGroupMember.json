@@ -1,5 +1,8 @@
 {
   "errors": {
-    "InvalidMember": [{ "code": 400 }]
+    "InvalidMember": [{ "code": 400 }],
+    "UserGroupNotFound": [
+      { "code": 404, "message": { "includes": "User group" } }
+    ]
   }
 }

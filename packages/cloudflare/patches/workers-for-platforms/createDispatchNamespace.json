@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "DispatchNamespaceAlreadyExists": [{ "code": 100120 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

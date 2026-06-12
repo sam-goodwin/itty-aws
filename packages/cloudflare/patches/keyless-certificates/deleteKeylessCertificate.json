@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "KeylessCertificateNotFound": [
+      { "code": 1005, "message": { "includes": "Invalid or missing Keyless SSL" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

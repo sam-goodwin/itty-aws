@@ -1,0 +1,16 @@
+{
+  "errors": {
+    "InvalidZoneIdentifier": [
+      { "code": 9109, "message": { "includes": "Invalid zone identifier" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "responsePath": "result",
+  "response": {
+    "properties": {
+      "errors": { "optional": true },
+      "messages": { "optional": true },
+      "success": { "optional": true }
+    }
+  }
+}

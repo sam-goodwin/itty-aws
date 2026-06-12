@@ -1,0 +1,9 @@
+{
+  "response": {
+    "properties": {
+      "result": {
+        "nullable": true
+      }
+    }
+  }
+}

@@ -433,7 +433,7 @@ export const GetDnssecResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetDnssecResponse>;
 
-export type GetDnssecError = DefaultErrors;
+export type GetDnssecError = DefaultErrors | Forbidden;
 
 export const getDnssec: API.OperationMethod<
   GetDnssecRequest,
@@ -443,7 +443,7 @@ export const getDnssec: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDnssecRequest,
   output: GetDnssecResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchDnssecRequest {
@@ -569,7 +569,7 @@ export const PatchDnssecResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchDnssecResponse>;
 
-export type PatchDnssecError = DefaultErrors;
+export type PatchDnssecError = DefaultErrors | Forbidden;
 
 export const patchDnssec: API.OperationMethod<
   PatchDnssecRequest,
@@ -579,7 +579,7 @@ export const patchDnssec: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDnssecRequest,
   output: PatchDnssecResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface DeleteDnssecRequest {
@@ -600,7 +600,7 @@ export const DeleteDnssecResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDnssecResponse>;
 
-export type DeleteDnssecError = DefaultErrors;
+export type DeleteDnssecError = DefaultErrors | Forbidden;
 
 export const deleteDnssec: API.OperationMethod<
   DeleteDnssecRequest,
@@ -610,7 +610,7 @@ export const deleteDnssec: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDnssecRequest,
   output: DeleteDnssecResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================
@@ -29099,7 +29099,7 @@ export const GetSettingZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetSettingZoneResponse>;
 
-export type GetSettingZoneError = DefaultErrors;
+export type GetSettingZoneError = DefaultErrors | Forbidden;
 
 export const getSettingZone: API.OperationMethod<
   GetSettingZoneRequest,
@@ -29109,7 +29109,7 @@ export const getSettingZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingZoneRequest,
   output: GetSettingZoneResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchSettingZoneRequest {
@@ -29324,7 +29324,7 @@ export const PatchSettingZoneResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSettingZoneResponse>;
 
-export type PatchSettingZoneError = DefaultErrors;
+export type PatchSettingZoneError = DefaultErrors | Forbidden;
 
 export const patchSettingZone: API.OperationMethod<
   PatchSettingZoneRequest,
@@ -29334,7 +29334,7 @@ export const patchSettingZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSettingZoneRequest,
   output: PatchSettingZoneResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================

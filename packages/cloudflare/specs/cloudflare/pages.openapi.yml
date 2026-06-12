@@ -5331,6 +5331,13 @@ paths:
                   - stages
                   - url
       x-distilled-response-path: result
+      x-distilled-errors:
+        DeploymentNotFound:
+          - code: 8000009
+        ProjectNotFound:
+          - code: 8000007
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteProjectDeployment
       description: "Delete a deployment.  @example ```ts const deployment = await
@@ -5368,6 +5375,15 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        DeploymentNotFound:
+          - code: 8000009
+        ProjectNotFound:
+          - code: 8000007
+        ActiveProductionDeployment:
+          - code: 8000034
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/pages/projects/{projectName}/deployments:
     get:
       operationId: listProjectDeployments
@@ -6117,6 +6133,11 @@ paths:
                   - stages
                   - url
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProjectNotFound:
+          - code: 8000007
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/pages/projects/{projectName}/deployments/{deploymentId}/retry:
     post:
       operationId: retryProjectDeployment

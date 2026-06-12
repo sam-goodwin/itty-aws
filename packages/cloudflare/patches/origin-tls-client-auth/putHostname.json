@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "HostnameCertificateIdRequired": [
+      { "code": 1404, "message": { "includes": "Certificate ID required" } }
+    ],
+    "InvalidHostnameConfig": [{ "code": 1415 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

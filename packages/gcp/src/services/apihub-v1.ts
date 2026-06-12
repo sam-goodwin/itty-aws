@@ -6129,9 +6129,7 @@ export const ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListDiscoveredApiOperationsResponse;
 
 export type ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the DiscoveredAPIOperations in a given project, location and ApiObservation. */
 export const listProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperations: API.PaginatedOperationMethod<
@@ -6170,9 +6168,7 @@ export const GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperation
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1DiscoveredApiOperation;
 
 export type GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets a DiscoveredAPIOperation in a given project, location, ApiObservation and ApiOperation. */
 export const getProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperations: API.OperationMethod<

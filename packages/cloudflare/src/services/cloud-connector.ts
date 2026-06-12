@@ -13,6 +13,24 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class CloudConnectorRulesNotFound extends Schema.TaggedErrorClass<CloudConnectorRulesNotFound>()(
+  "CloudConnectorRulesNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CloudConnectorRulesNotFound, [
+  { code: 10003, message: { includes: "could not find entrypoint ruleset" } },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // Rule
 // =============================================================================
 
@@ -77,7 +95,10 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListRulesResponse>;
 
-export type ListRulesError = DefaultErrors;
+export type ListRulesError =
+  | DefaultErrors
+  | Forbidden
+  | CloudConnectorRulesNotFound;
 
 export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
@@ -87,7 +108,7 @@ export const listRules: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
-  errors: [],
+  errors: [Forbidden, CloudConnectorRulesNotFound],
   pagination: {
     mode: "single",
     items: "result",
@@ -140,7 +161,7 @@ export const PutRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
       }),
     ),
-  ),
+  ).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "PUT", path: "/zones/{zone_id}/cloud_connector/rules" }),
 ) as unknown as Schema.Schema<PutRuleRequest>;
@@ -195,7 +216,7 @@ export const PutRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<PutRuleResponse>;
 
-export type PutRuleError = DefaultErrors;
+export type PutRuleError = DefaultErrors | Forbidden;
 
 export const putRule: API.PaginatedOperationMethod<
   PutRuleRequest,
@@ -205,7 +226,7 @@ export const putRule: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutRuleRequest,
   output: PutRuleResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",

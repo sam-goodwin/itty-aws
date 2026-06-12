@@ -13,6 +13,41 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class TestScheduleAlreadyExists extends Schema.TaggedErrorClass<TestScheduleAlreadyExists>()(
+  "TestScheduleAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TestScheduleAlreadyExists, [
+  { code: 400, message: { includes: "scheduled_test_already_exists" } },
+]);
+
+export class TestScheduleNotFound extends Schema.TaggedErrorClass<TestScheduleNotFound>()(
+  "TestScheduleNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TestScheduleNotFound, [
+  { code: 404, message: { includes: "schedule_not_found" } },
+  { status: 404 },
+]);
+
+export class TestScheduleQuotaReached extends Schema.TaggedErrorClass<TestScheduleQuotaReached>()(
+  "TestScheduleQuotaReached",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TestScheduleQuotaReached, [
+  { code: 429, message: { includes: "quota reached" } },
+]);
+
+// =============================================================================
 // Availability
 // =============================================================================
 
@@ -2400,7 +2435,7 @@ export const GetScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetScheduleResponse>;
 
-export type GetScheduleError = DefaultErrors;
+export type GetScheduleError = DefaultErrors | TestScheduleNotFound | Forbidden;
 
 export const getSchedule: API.OperationMethod<
   GetScheduleRequest,
@@ -2410,7 +2445,7 @@ export const getSchedule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetScheduleRequest,
   output: GetScheduleResponse,
-  errors: [],
+  errors: [TestScheduleNotFound, Forbidden],
 }));
 
 export interface CreateScheduleRequest {
@@ -2869,7 +2904,11 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreateScheduleResponse>;
 
-export type CreateScheduleError = DefaultErrors;
+export type CreateScheduleError =
+  | DefaultErrors
+  | TestScheduleAlreadyExists
+  | TestScheduleQuotaReached
+  | Forbidden;
 
 export const createSchedule: API.OperationMethod<
   CreateScheduleRequest,
@@ -2879,7 +2918,7 @@ export const createSchedule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateScheduleRequest,
   output: CreateScheduleResponse,
-  errors: [],
+  errors: [TestScheduleAlreadyExists, TestScheduleQuotaReached, Forbidden],
 }));
 
 export interface DeleteScheduleRequest {
@@ -2963,7 +3002,10 @@ export const DeleteScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteScheduleResponse>;
 
-export type DeleteScheduleError = DefaultErrors;
+export type DeleteScheduleError =
+  | DefaultErrors
+  | TestScheduleNotFound
+  | Forbidden;
 
 export const deleteSchedule: API.OperationMethod<
   DeleteScheduleRequest,
@@ -2973,5 +3015,5 @@ export const deleteSchedule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteScheduleRequest,
   output: DeleteScheduleResponse,
-  errors: [],
+  errors: [TestScheduleNotFound, Forbidden],
 }));

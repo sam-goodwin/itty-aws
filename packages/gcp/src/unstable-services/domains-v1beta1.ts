@@ -1400,9 +1400,7 @@ export const RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations
   /*@__PURE__*/ /*#__PURE__*/ RetrieveGoogleDomainsForwardingConfigResponse;
 
 export type RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists the deprecated domain and email forwarding configurations you set up in the deprecated Google Domains UI. The configuration is present only for domains with the `google_domains_redirects_data_available` set to `true` in the `Registration`'s `dns_settings`. A forwarding configuration might not work correctly if required DNS records are not present in the domain's authoritative DNS Zone. */
 export const retrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations: API.OperationMethod<
@@ -1908,9 +1906,7 @@ export const RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRespon
   /*@__PURE__*/ /*#__PURE__*/ RetrieveGoogleDomainsDnsRecordsResponse;
 
 export type RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists the DNS records from the Google Domains DNS zone for domains that use the deprecated `google_domains_dns` in the `Registration`'s `dns_settings`. */
 export const retrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrations: API.PaginatedOperationMethod<

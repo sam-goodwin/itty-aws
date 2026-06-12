@@ -696,6 +696,11 @@ paths:
                   - meta
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        OrganizationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateOrganization
       description: Modify organization. (Currently in Public Beta - see
@@ -817,6 +822,11 @@ paths:
                   - meta
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        OrganizationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteOrganization
       description: Delete an organization. The organization MUST be empty before
@@ -842,6 +852,11 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        OrganizationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /organizations:
     get:
       operationId: listOrganizations
@@ -995,6 +1010,9 @@ paths:
                   - meta
                   - name
       x-distilled-pagination-class: OrganizationsSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createOrganization
       description: Create a new organization for a user. (Currently in Public Beta -
@@ -1110,6 +1128,9 @@ paths:
                   - meta
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /organizations/{organizationId}/profile:
     get:
       operationId: getOrganizationProfile
@@ -1147,6 +1168,11 @@ paths:
                   - business_phone
                   - external_metadata
       x-distilled-response-path: result
+      x-distilled-errors:
+        OrganizationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: putOrganizationProfile
       description: Modify organization profile. (Currently in Public Beta - see
@@ -1183,3 +1209,8 @@ paths:
       responses:
         "200":
           description: Success
+      x-distilled-errors:
+        OrganizationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403

@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "CertificateNotFound": [{ "code": 1101 }],
+    "CertificateAlreadyRevoked": [{ "code": 1014 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

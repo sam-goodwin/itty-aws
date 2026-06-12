@@ -13,6 +13,24 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class SecurityTxtInvalid extends Schema.TaggedErrorClass<SecurityTxtInvalid>()(
+  "SecurityTxtInvalid",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SecurityTxtInvalid, [
+  { code: 10400, message: { includes: "invalid or missing values" } },
+]);
+
+// =============================================================================
 // SecurityTxt
 // =============================================================================
 
@@ -30,20 +48,22 @@ export const GetSecurityTxtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<GetSecurityTxtRequest>;
 
-export interface GetSecurityTxtResponse {
-  acknowledgments?: string[] | null;
-  canonical?: string[] | null;
-  contact?: string[] | null;
-  enabled?: boolean | null;
-  encryption?: string[] | null;
-  expires?: string | null;
-  hiring?: string[] | null;
-  policy?: string[] | null;
-  preferredLanguages?: string | null;
-}
+export type GetSecurityTxtResponse =
+  | {
+      acknowledgments?: string[] | null;
+      canonical?: string[] | null;
+      contact?: string[] | null;
+      enabled?: boolean | null;
+      encryption?: string[] | null;
+      expires?: string | null;
+      hiring?: string[] | null;
+      policy?: string[] | null;
+      preferredLanguages?: string | null;
+    }
+  | string;
 
-export const GetSecurityTxtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const GetSecurityTxtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  Schema.Struct({
     acknowledgments: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
@@ -67,9 +87,7 @@ export const GetSecurityTxtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     preferredLanguages: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
-  },
-)
-  .pipe(
+  }).pipe(
     Schema.encodeKeys({
       acknowledgments: "acknowledgments",
       canonical: "canonical",
@@ -81,12 +99,13 @@ export const GetSecurityTxtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       policy: "policy",
       preferredLanguages: "preferred_languages",
     }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetSecurityTxtResponse>;
+  ),
+  Schema.String,
+]).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetSecurityTxtResponse>;
 
-export type GetSecurityTxtError = DefaultErrors;
+export type GetSecurityTxtError = DefaultErrors | Forbidden;
 
 export const getSecurityTxt: API.OperationMethod<
   GetSecurityTxtRequest,
@@ -96,7 +115,7 @@ export const getSecurityTxt: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecurityTxtRequest,
   output: GetSecurityTxtResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutSecurityTxtRequest {
@@ -226,7 +245,10 @@ export const PutSecurityTxtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ) as unknown as Schema.Schema<PutSecurityTxtResponse>;
 
-export type PutSecurityTxtError = DefaultErrors;
+export type PutSecurityTxtError =
+  | DefaultErrors
+  | Forbidden
+  | SecurityTxtInvalid;
 
 export const putSecurityTxt: API.OperationMethod<
   PutSecurityTxtRequest,
@@ -236,7 +258,7 @@ export const putSecurityTxt: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSecurityTxtRequest,
   output: PutSecurityTxtResponse,
-  errors: [],
+  errors: [Forbidden, SecurityTxtInvalid],
 }));
 
 export interface DeleteSecurityTxtRequest {
@@ -328,7 +350,7 @@ export const DeleteSecurityTxtResponse =
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteSecurityTxtResponse>;
 
-export type DeleteSecurityTxtError = DefaultErrors;
+export type DeleteSecurityTxtError = DefaultErrors | Forbidden;
 
 export const deleteSecurityTxt: API.OperationMethod<
   DeleteSecurityTxtRequest,
@@ -338,5 +360,5 @@ export const deleteSecurityTxt: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSecurityTxtRequest,
   output: DeleteSecurityTxtResponse,
-  errors: [],
+  errors: [Forbidden],
 }));

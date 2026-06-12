@@ -173,6 +173,8 @@ paths:
       x-distilled-errors:
         InvalidObjectIdentifier:
           - code: 7003
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchTieredCaching
       description: "Tiered Cache works by dividing Cloudflare's data centers into a
@@ -246,3 +248,5 @@ paths:
       x-distilled-errors:
         InvalidObjectIdentifier:
           - code: 7003
+        Forbidden:
+          - status: 403

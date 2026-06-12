@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "DetectionQuotaExceeded": [{ "code": 50001 }],
+    "LeakedCredentialChecksDisabled": [{ "code": 11001 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

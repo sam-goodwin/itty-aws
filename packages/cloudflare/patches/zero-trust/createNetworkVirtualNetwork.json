@@ -1,0 +1,5 @@
+{
+  "errors": {
+    "VirtualNetworkConflict": [{ "code": 1014 }]
+  }
+}

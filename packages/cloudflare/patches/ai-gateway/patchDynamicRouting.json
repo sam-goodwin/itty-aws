@@ -1,0 +1,17 @@
+{
+  "errors": {
+    "RouteNotFound": [
+      { "code": 7005, "message": { "includes": "not found" } }
+    ],
+    "RouteAlreadyExists": [
+      { "code": 7005, "message": { "includes": "already exists" } }
+    ]
+  },
+  "response": {
+    "properties": {
+      "route.elements": { "optional": true },
+      "route.deployment": { "optional": true },
+      "route.version.data": { "optional": true, "type": "unknown" }
+    }
+  }
+}

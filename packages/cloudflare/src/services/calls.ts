@@ -13,6 +13,28 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class CallsAppNotFound extends Schema.TaggedErrorClass<CallsAppNotFound>()(
+  "CallsAppNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CallsAppNotFound, [{ code: 20007 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class TurnKeyNotFound extends Schema.TaggedErrorClass<TurnKeyNotFound>()(
+  "TurnKeyNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TurnKeyNotFound, [{ code: 20008 }]);
+
+// =============================================================================
 // Sfu
 // =============================================================================
 
@@ -47,7 +69,7 @@ export const GetSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetSfuResponse>;
 
-export type GetSfuError = DefaultErrors;
+export type GetSfuError = DefaultErrors | CallsAppNotFound | Forbidden;
 
 export const getSfu: API.OperationMethod<
   GetSfuRequest,
@@ -57,7 +79,7 @@ export const getSfu: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSfuRequest,
   output: GetSfuResponse,
-  errors: [],
+  errors: [CallsAppNotFound, Forbidden],
 }));
 
 export interface CreateSfuRequest {
@@ -97,7 +119,7 @@ export const CreateSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreateSfuResponse>;
 
-export type CreateSfuError = DefaultErrors;
+export type CreateSfuError = DefaultErrors | Forbidden;
 
 export const createSfu: API.OperationMethod<
   CreateSfuRequest,
@@ -107,7 +129,7 @@ export const createSfu: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSfuRequest,
   output: CreateSfuResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateSfuRequest {
@@ -146,7 +168,7 @@ export const UpdateSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<UpdateSfuResponse>;
 
-export type UpdateSfuError = DefaultErrors;
+export type UpdateSfuError = DefaultErrors | CallsAppNotFound | Forbidden;
 
 export const updateSfu: API.OperationMethod<
   UpdateSfuRequest,
@@ -156,7 +178,7 @@ export const updateSfu: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSfuRequest,
   output: UpdateSfuResponse,
-  errors: [],
+  errors: [CallsAppNotFound, Forbidden],
 }));
 
 export interface DeleteSfuRequest {
@@ -195,7 +217,7 @@ export const DeleteSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteSfuResponse>;
 
-export type DeleteSfuError = DefaultErrors;
+export type DeleteSfuError = DefaultErrors | CallsAppNotFound | Forbidden;
 
 export const deleteSfu: API.OperationMethod<
   DeleteSfuRequest,
@@ -205,7 +227,7 @@ export const deleteSfu: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSfuRequest,
   output: DeleteSfuResponse,
-  errors: [],
+  errors: [CallsAppNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -298,7 +320,7 @@ export const GetTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetTurnResponse>;
 
-export type GetTurnError = DefaultErrors;
+export type GetTurnError = DefaultErrors | TurnKeyNotFound | Forbidden;
 
 export const getTurn: API.OperationMethod<
   GetTurnRequest,
@@ -308,7 +330,7 @@ export const getTurn: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTurnRequest,
   output: GetTurnResponse,
-  errors: [],
+  errors: [TurnKeyNotFound, Forbidden],
 }));
 
 export interface ListTurnsRequest {
@@ -392,11 +414,21 @@ export const CreateTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-}).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<CreateTurnResponse>;
+})
+  .pipe(
+    Schema.encodeKeys({
+      created: "created",
+      key: "secret",
+      modified: "modified",
+      name: "name",
+      uid: "uid",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateTurnResponse>;
 
-export type CreateTurnError = DefaultErrors;
+export type CreateTurnError = DefaultErrors | Forbidden;
 
 export const createTurn: API.OperationMethod<
   CreateTurnRequest,
@@ -406,7 +438,7 @@ export const createTurn: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTurnRequest,
   output: CreateTurnResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateTurnRequest {
@@ -448,7 +480,7 @@ export const UpdateTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<UpdateTurnResponse>;
 
-export type UpdateTurnError = DefaultErrors;
+export type UpdateTurnError = DefaultErrors | TurnKeyNotFound | Forbidden;
 
 export const updateTurn: API.OperationMethod<
   UpdateTurnRequest,
@@ -458,7 +490,7 @@ export const updateTurn: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTurnRequest,
   output: UpdateTurnResponse,
-  errors: [],
+  errors: [TurnKeyNotFound, Forbidden],
 }));
 
 export interface DeleteTurnRequest {
@@ -497,7 +529,7 @@ export const DeleteTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteTurnResponse>;
 
-export type DeleteTurnError = DefaultErrors;
+export type DeleteTurnError = DefaultErrors | TurnKeyNotFound | Forbidden;
 
 export const deleteTurn: API.OperationMethod<
   DeleteTurnRequest,
@@ -507,5 +539,5 @@ export const deleteTurn: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTurnRequest,
   output: DeleteTurnResponse,
-  errors: [],
+  errors: [TurnKeyNotFound, Forbidden],
 }));

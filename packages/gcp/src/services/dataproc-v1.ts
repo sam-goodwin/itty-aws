@@ -8549,9 +8549,7 @@ export const SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRespon
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationStageAttemptsResponse;
 
 export type SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtain data corresponding to a spark stage attempts for a Spark Application. */
 export const searchStageAttemptsProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -8605,9 +8603,7 @@ export const SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplication
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationExecutorStageSummaryResponse;
 
 export type SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtain executor summary with respect to a spark stage attempt. */
 export const searchExecutorStageSummaryProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -8903,9 +8899,7 @@ export const SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplication
   /*@__PURE__*/ /*#__PURE__*/ SummarizeSessionSparkApplicationStageAttemptTasksResponse;
 
 export type SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtain summary of Tasks for a Spark Application Stage Attempt */
 export const summarizeStageAttemptTasksProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -8997,9 +8991,7 @@ export const AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRespon
   /*@__PURE__*/ /*#__PURE__*/ AccessSessionSparkApplicationStageRddOperationGraphResponse;
 
 export type AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtain RDD operation graph for a Spark Application Stage. Limits the number of clusters returned as part of the graph to 10000. */
 export const accessStageRddGraphProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9035,9 +9027,7 @@ export const AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsResp
   /*@__PURE__*/ /*#__PURE__*/ AccessSessionSparkApplicationEnvironmentInfoResponse;
 
 export type AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtain environment details for a Spark Application */
 export const accessEnvironmentInfoProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9202,9 +9192,7 @@ export const SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRe
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationStageAttemptTasksResponse;
 
 export type SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtain data corresponding to tasks for a spark stage attempt for a Spark Application. */
 export const searchStageAttemptTasksProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -10554,9 +10542,7 @@ export const SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplications
   /*@__PURE__*/ /*#__PURE__*/ SearchSparkApplicationExecutorStageSummaryResponse;
 
 export type SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtain executor summary with respect to a spark stage attempt. */
 export const searchExecutorStageSummaryProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
@@ -10843,9 +10829,7 @@ export const AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRespo
   /*@__PURE__*/ /*#__PURE__*/ AccessSparkApplicationEnvironmentInfoResponse;
 
 export type AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtain environment details for a Spark Application */
 export const accessEnvironmentInfoProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -10911,9 +10895,7 @@ export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRes
   /*@__PURE__*/ /*#__PURE__*/ SearchSparkApplicationStageAttemptTasksResponse;
 
 export type SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtain data corresponding to tasks for a spark stage attempt for a Spark Application. */
 export const searchStageAttemptTasksProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
@@ -11124,9 +11106,7 @@ export const SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplications
   /*@__PURE__*/ /*#__PURE__*/ SummarizeSparkApplicationStageAttemptTasksResponse;
 
 export type SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtain summary of Tasks for a Spark Application Stage Attempt */
 export const summarizeStageAttemptTasksProjectsLocationsBatchesSparkApplications: API.OperationMethod<

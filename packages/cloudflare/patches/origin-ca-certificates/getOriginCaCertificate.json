@@ -1,0 +1,17 @@
+{
+  "errors": {
+    "CertificateNotFound": [{ "code": 1101 }],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "csr": { "optional": true },
+      "requested_validity": { "optional": true, "type": "number" },
+      "revoked_at": {
+        "optional": true,
+        "nullable": true,
+        "definition": { "kind": "primitive", "value": "string" }
+      }
+    }
+  }
+}

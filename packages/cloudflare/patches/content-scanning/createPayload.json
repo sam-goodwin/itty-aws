@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "ContentScanningNotEnabled": [
+      { "status": 400, "message": { "includes": "File Upload Scan not enabled" } }
+    ],
+    "ContentScanningNotEntitled": [
+      { "status": 400, "message": { "includes": "not entitled" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

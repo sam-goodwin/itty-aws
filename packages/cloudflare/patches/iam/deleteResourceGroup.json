@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "ResourceGroupNotFound": [
+      { "code": 404, "message": { "includes": "Resource group" } }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "errors": {
+    "PrefixNotFound": [
+      { "code": 1002, "message": { "includes": "forbidden" } }
+    ],
+    "InvalidAccountId": [
+      { "code": 7003, "message": { "includes": "Could not route" } }
+    ]
+  }
+}

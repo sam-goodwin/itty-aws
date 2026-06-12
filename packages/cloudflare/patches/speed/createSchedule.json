@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "TestScheduleAlreadyExists": [
+      {
+        "code": 400,
+        "message": { "includes": "scheduled_test_already_exists" }
+      }
+    ],
+    "TestScheduleQuotaReached": [
+      { "code": 429, "message": { "includes": "quota reached" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

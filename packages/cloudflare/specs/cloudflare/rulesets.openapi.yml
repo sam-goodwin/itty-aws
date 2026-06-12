@@ -10033,6 +10033,11 @@ paths:
       x-distilled-errors:
         RulesetNotFound:
           - code: 10003
+        PhaseNotEntitled:
+          - code: 50002
+          - status: 400
+            message:
+              includes: not entitled
   /{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint/versions/{rulesetVersion}:
     get:
       operationId: getPhasVersion
@@ -30330,9 +30335,11 @@ paths:
                   - last_updated
                   - name
                   - phase
-                  - rules
                   - version
       x-distilled-response-path: result
+      x-distilled-errors:
+        RulesetNotFound:
+          - code: 10001
     put:
       operationId: updateRuleset
       description: "Updates an account or zone ruleset, creating a new
@@ -36926,9 +36933,11 @@ paths:
                   - last_updated
                   - name
                   - phase
-                  - rules
                   - version
       x-distilled-response-path: result
+      x-distilled-errors:
+        RulesetNotFound:
+          - code: 10001
     delete:
       operationId: deleteRuleset
       parameters:
@@ -36955,6 +36964,9 @@ paths:
       responses:
         "200":
           description: Success
+      x-distilled-errors:
+        RulesetNotFound:
+          - code: 10001
   /{accountOrZone}/{accountOrZoneId}/rulesets:
     get:
       operationId: listRulesets
@@ -43641,9 +43653,14 @@ paths:
                   - last_updated
                   - name
                   - phase
-                  - rules
                   - version
       x-distilled-response-path: result
+      x-distilled-errors:
+        PhaseNotEntitled:
+          - code: 50002
+          - status: 400
+            message:
+              includes: not entitled
   /{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/versions/{rulesetVersion}:
     get:
       operationId: getVersion

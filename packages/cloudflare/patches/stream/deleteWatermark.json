@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "WatermarkNotFound": [{ "code": 10003 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

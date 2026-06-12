@@ -471,6 +471,9 @@ paths:
                     description: Status of DNSSEC, based on user-desired state and presence of
                       necessary records.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchDnssec
       description: "Enable or disable DNSSEC.  @example ```ts const dnssec = await
@@ -622,6 +625,9 @@ paths:
                     description: Status of DNSSEC, based on user-desired state and presence of
                       necessary records.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDnssec
       description: "Delete DNSSEC.  @example ```ts const dnssec = await
@@ -642,6 +648,9 @@ paths:
               schema:
                 type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/dns_records/scan/review:
     get:
       operationId: scanListRecord
@@ -32409,6 +32418,9 @@ paths:
                   - soa
                   - zone_mode
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSettingZone
       description: "Update DNS settings for a zone  @example ```ts const response =
@@ -32622,6 +32634,9 @@ paths:
                   - soa
                   - zone_mode
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/dns_records/scan/trigger:
     post:
       operationId: scanTriggerRecord

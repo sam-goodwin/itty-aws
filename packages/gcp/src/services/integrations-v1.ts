@@ -9406,11 +9406,7 @@ export const TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse;
 
 export type TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Clears the `locked_by` and `locked_at_timestamp`in the DRAFT version of this integration. It then performs the same action as the CreateDraftIntegrationVersion (i.e., copies the DRAFT version of the integration as a SNAPSHOT and then creates a new DRAFT version with the `locked_by` set to the `user_taking_over` and the `locked_at_timestamp` set to the current timestamp). Both the `locked_by` and `user_taking_over` are notified via email about the takeover. This RPC throws an exception if the integration is not in DRAFT status or if the `locked_by` and `locked_at_timestamp` fields are not set.The TakeoverEdit lock is treated the same as an edit of the integration, and hence shares ACLs with edit. Audit fields updated include last_modified_timestamp, last_modified_by. */
 export const takeoverEditLockProjectsLocationsProductsIntegrationsVersions: API.OperationMethod<
@@ -9687,11 +9683,7 @@ export const ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaResolveSuspensionResponse;
 
 export type ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** * Resolves (lifts/rejects) any number of suspensions. If the integration is already running, only the status of the suspension is updated. Otherwise, the suspended integration will begin execution again. */
 export const resolveProjectsLocationsProductsIntegrationsExecutionsSuspensions: API.OperationMethod<
@@ -9738,9 +9730,7 @@ export const ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListSuspensionsResponse;
 
 export type ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** * Lists suspensions associated with a specific execution. Only those with permissions to resolve the relevant suspensions will be able to view them. */
 export const listProjectsLocationsProductsIntegrationsExecutionsSuspensions: API.PaginatedOperationMethod<
@@ -9783,11 +9773,7 @@ export const LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaLiftSuspensionResponse;
 
 export type LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** * Lifts suspension for the Suspension task. Fetch corresponding suspension with provided suspension Id, resolve suspension, and set up suspension result for the Suspension Task. */
 export const liftProjectsLocationsProductsIntegrationsExecutionsSuspensions: API.OperationMethod<
@@ -12079,11 +12065,7 @@ export const TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTestCase;
 
 export type TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Clear the lock fields and assign them to current user */
 export const takeoverEditLockProjectsLocationsIntegrationsVersionsTestCases: API.OperationMethod<

@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "ObservabilityDestinationNotFound": [{ "status": 404 }],
+    "ObservabilityDestinationPreflightFailed": [
+      { "status": 400, "message": "Bad Request" }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "NamespaceAlreadyExists": [{ "code": 7064 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -35,6 +35,9 @@ paths:
                     type: string
                     description: Defines the status of Content Scanning.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putContentScanning
       description: "Update the Content Scanning status.  @example ```ts const
@@ -78,6 +81,13 @@ paths:
                     type: string
                     description: Defines the status of Content Scanning.
       x-distilled-response-path: result
+      x-distilled-errors:
+        ContentScanningNotEntitled:
+          - status: 400
+            message:
+              includes: not entitled
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/content-upload-scan/enable:
     post:
       operationId: enableContentScanning
@@ -148,6 +158,13 @@ paths:
                     type: string
                     description: Defines the ruleset expression to use in matching content objects.
       x-distilled-pagination-class: PayloadListResponsesSinglePage
+      x-distilled-errors:
+        ContentScanningNotEnabled:
+          - status: 400
+            message:
+              includes: File Upload Scan not enabled
+        Forbidden:
+          - status: 403
     post:
       operationId: createPayload
       description: "Add custom scan expressions for Content Scanning.  @example ```ts
@@ -192,6 +209,17 @@ paths:
                     type: string
                     description: Defines the ruleset expression to use in matching content objects.
       x-distilled-pagination-class: PayloadCreateResponsesSinglePage
+      x-distilled-errors:
+        ContentScanningNotEnabled:
+          - status: 400
+            message:
+              includes: File Upload Scan not enabled
+        ContentScanningNotEntitled:
+          - status: 400
+            message:
+              includes: not entitled
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/content-upload-scan/payloads/{expressionId}:
     delete:
       operationId: deletePayload
@@ -227,3 +255,10 @@ paths:
                     type: string
                     description: Defines the ruleset expression to use in matching content objects.
       x-distilled-pagination-class: PayloadDeleteResponsesSinglePage
+      x-distilled-errors:
+        ContentScanningNotEnabled:
+          - status: 400
+            message:
+              includes: File Upload Scan not enabled
+        Forbidden:
+          - status: 403

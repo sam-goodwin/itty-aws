@@ -16,6 +16,12 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class InvalidCredential extends Schema.TaggedErrorClass<InvalidCredential>()(
   "InvalidCredential",
   { code: Schema.Number, message: Schema.String },
@@ -32,7 +38,7 @@ export class NoSuchBucket extends Schema.TaggedErrorClass<NoSuchBucket>()(
   "NoSuchBucket",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(NoSuchBucket, [{ code: 10006 }]);
+T.applyErrorMatchers(NoSuchBucket, [{ code: 10006 }, { code: 40406 }]);
 
 export class TableNotFound extends Schema.TaggedErrorClass<TableNotFound>()(
   "TableNotFound",
@@ -1009,7 +1015,12 @@ export const GetR2DataCatalogResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetR2DataCatalogResponse>;
 
-export type GetR2DataCatalogError = DefaultErrors | NoSuchBucket | InvalidRoute;
+export type GetR2DataCatalogError =
+  | DefaultErrors
+  | NoSuchBucket
+  | InvalidRoute
+  | WarehouseNotFound
+  | Forbidden;
 
 export const getR2DataCatalog: API.OperationMethod<
   GetR2DataCatalogRequest,
@@ -1019,7 +1030,7 @@ export const getR2DataCatalog: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetR2DataCatalogRequest,
   output: GetR2DataCatalogResponse,
-  errors: [NoSuchBucket, InvalidRoute],
+  errors: [NoSuchBucket, InvalidRoute, WarehouseNotFound, Forbidden],
 }));
 
 export interface ListR2DataCatalogsRequest {
@@ -1226,7 +1237,9 @@ export const DisableR2DataCatalogResponse =
 export type DisableR2DataCatalogError =
   | DefaultErrors
   | NoSuchBucket
-  | InvalidRoute;
+  | InvalidRoute
+  | WarehouseNotFound
+  | Forbidden;
 
 export const disableR2DataCatalog: API.OperationMethod<
   DisableR2DataCatalogRequest,
@@ -1236,5 +1249,5 @@ export const disableR2DataCatalog: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableR2DataCatalogRequest,
   output: DisableR2DataCatalogResponse,
-  errors: [NoSuchBucket, InvalidRoute],
+  errors: [NoSuchBucket, InvalidRoute, WarehouseNotFound, Forbidden],
 }));

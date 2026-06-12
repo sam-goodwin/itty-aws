@@ -49,6 +49,13 @@ paths:
                       - azure_storage
                     description: Cloud Provider type
       x-distilled-pagination-class: RuleListResponsesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        CloudConnectorRulesNotFound:
+          - code: 10003
+            message:
+              includes: could not find entrypoint ruleset
     put:
       operationId: putRule
       description: Put Rules
@@ -64,37 +71,33 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                rules:
-                  type: array
-                  items:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  description:
+                    type: string
+                  enabled:
+                    type: boolean
+                  expression:
+                    type: string
+                  parameters:
                     type: object
                     properties:
-                      id:
+                      host:
                         type: string
-                      description:
-                        type: string
-                      enabled:
-                        type: boolean
-                      expression:
-                        type: string
-                      parameters:
-                        type: object
-                        properties:
-                          host:
-                            type: string
-                            description: Host to perform Cloud Connection to
-                        description: Parameters of Cloud Connector Rule
-                      provider:
-                        type: string
-                        enum:
-                          - aws_s3
-                          - cloudflare_r2
-                          - gcp_storage
-                          - azure_storage
-                        description: Cloud Provider type
-                  description: Body param
+                        description: Host to perform Cloud Connection to
+                    description: Parameters of Cloud Connector Rule
+                  provider:
+                    type: string
+                    enum:
+                      - aws_s3
+                      - cloudflare_r2
+                      - gcp_storage
+                      - azure_storage
+                    description: Cloud Provider type
       responses:
         "200":
           description: Success
@@ -127,3 +130,6 @@ paths:
                       - azure_storage
                     description: Cloud Provider type
       x-distilled-pagination-class: RuleUpdateResponsesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

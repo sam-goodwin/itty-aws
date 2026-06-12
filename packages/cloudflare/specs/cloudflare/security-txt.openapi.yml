@@ -26,39 +26,44 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  acknowledgments:
-                    type: array
-                    items:
-                      type: string
-                  canonical:
-                    type: array
-                    items:
-                      type: string
-                  contact:
-                    type: array
-                    items:
-                      type: string
-                  enabled:
-                    type: boolean
-                  encryption:
-                    type: array
-                    items:
-                      type: string
-                  expires:
-                    type: string
-                  hiring:
-                    type: array
-                    items:
-                      type: string
-                  policy:
-                    type: array
-                    items:
-                      type: string
-                  preferred_languages:
-                    type: string
+                oneOf:
+                  - type: object
+                    properties:
+                      acknowledgments:
+                        type: array
+                        items:
+                          type: string
+                      canonical:
+                        type: array
+                        items:
+                          type: string
+                      contact:
+                        type: array
+                        items:
+                          type: string
+                      enabled:
+                        type: boolean
+                      encryption:
+                        type: array
+                        items:
+                          type: string
+                      expires:
+                        type: string
+                      hiring:
+                        type: array
+                        items:
+                          type: string
+                      policy:
+                        type: array
+                        items:
+                          type: string
+                      preferred_languages:
+                        type: string
+                  - type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putSecurityTxt
       description: "Updates the security.txt file configuration for a zone, which
@@ -174,6 +179,13 @@ paths:
                   - errors
                   - messages
                   - success
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        SecurityTxtInvalid:
+          - code: 10400
+            message:
+              includes: invalid or missing values
     delete:
       operationId: deleteSecurityTxt
       description: "Removes the security.txt file configuration for a zone. The
@@ -242,3 +254,6 @@ paths:
                   - errors
                   - messages
                   - success
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

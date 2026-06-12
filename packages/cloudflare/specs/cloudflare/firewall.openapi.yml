@@ -1024,15 +1024,24 @@ paths:
                     description: The URLs to include in the rule definition. You can use wildcards.
                       Each entered URL will be escaped before use, which means
                       you can only use simple wildcard patterns.
+                  priority:
+                    type: number
                 required:
                   - id
                   - configurations
                   - created_on
-                  - description
                   - modified_on
                   - paused
                   - urls
       x-distilled-response-path: result
+      x-distilled-errors:
+        LockdownNotFound:
+          - code: 10001
+            message:
+              includes: zonelockdown.api.not_found
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateLockdown
       description: "Updates an existing Zone Lockdown rule.  @example ```ts const
@@ -1100,6 +1109,12 @@ paths:
                   description: "Body param: The URLs to include in the current WAF override. You
                     can use wildcards. Each entered URL will be escaped before
                     use, which means you can only use simple wildcard patterns."
+                description:
+                  type: string
+                paused:
+                  type: boolean
+                priority:
+                  type: number
               required:
                 - configurations
                 - urls
@@ -1167,15 +1182,28 @@ paths:
                     description: The URLs to include in the rule definition. You can use wildcards.
                       Each entered URL will be escaped before use, which means
                       you can only use simple wildcard patterns.
+                  priority:
+                    type: number
                 required:
                   - id
                   - configurations
                   - created_on
-                  - description
                   - modified_on
                   - paused
                   - urls
       x-distilled-response-path: result
+      x-distilled-errors:
+        LockdownNotFound:
+          - code: 10001
+            message:
+              includes: zonelockdown.api.not_found
+          - status: 404
+        DuplicateLockdown:
+          - code: 10009
+            message:
+              includes: zonelockdown.api.duplicate_of_existing
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteLockdown
       description: "Deletes an existing Zone Lockdown rule.  @example ```ts const
@@ -1206,6 +1234,14 @@ paths:
                     type: string
                     description: The unique identifier of the Zone Lockdown rule.
       x-distilled-response-path: result
+      x-distilled-errors:
+        LockdownNotFound:
+          - code: 10001
+            message:
+              includes: zonelockdown.api.not_found
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/firewall/lockdowns:
     get:
       operationId: listLockdowns
@@ -1365,6 +1401,9 @@ paths:
                   - paused
                   - urls
       x-distilled-pagination-class: LockdownsV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createLockdown
       description: "Creates a new Zone Lockdown rule.  @example ```ts const lockdown =
@@ -1507,15 +1546,23 @@ paths:
                     description: The URLs to include in the rule definition. You can use wildcards.
                       Each entered URL will be escaped before use, which means
                       you can only use simple wildcard patterns.
+                  priority:
+                    type: number
                 required:
                   - id
                   - configurations
                   - created_on
-                  - description
                   - modified_on
                   - paused
                   - urls
       x-distilled-response-path: result
+      x-distilled-errors:
+        DuplicateLockdown:
+          - code: 10009
+            message:
+              includes: zonelockdown.api.duplicate_of_existing
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/firewall/rules:
     put:
       operationId: bulkPutRules
@@ -2637,6 +2684,14 @@ paths:
                     type: boolean
                     description: When true, indicates that the rule is currently paused.
       x-distilled-response-path: result
+      x-distilled-errors:
+        UaRuleNotFound:
+          - code: 10001
+            message:
+              includes: firewalluablock.api.not_found
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateUaRule
       description: "Updates an existing User Agent Blocking rule.  @example ```ts
@@ -2727,6 +2782,14 @@ paths:
                             information, refer to [IP Access rules:
                             Parameters](https://developers.cloudflare.com/waf/t\
                             ools/ip-access-rules/parameters/#country)."
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - ua
+                        value:
+                          type: string
                   description: "Body param: The rule configuration."
                 mode:
                   type: string
@@ -2786,6 +2849,18 @@ paths:
                     type: boolean
                     description: When true, indicates that the rule is currently paused.
       x-distilled-response-path: result
+      x-distilled-errors:
+        UaRuleNotFound:
+          - code: 10001
+            message:
+              includes: firewalluablock.api.not_found
+          - status: 404
+        DuplicateUaRule:
+          - code: 10009
+            message:
+              includes: firewalluablock.api.duplicate_of_existing
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteUaRule
       description: "Deletes an existing User Agent Blocking rule.  @example ```ts
@@ -2842,6 +2917,14 @@ paths:
                     type: boolean
                     description: When true, indicates that the rule is currently paused.
       x-distilled-response-path: result
+      x-distilled-errors:
+        UaRuleNotFound:
+          - code: 10001
+            message:
+              includes: firewalluablock.api.not_found
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/firewall/ua_rules:
     get:
       operationId: listUaRules
@@ -2926,6 +3009,9 @@ paths:
                     type: boolean
                     description: When true, indicates that the rule is currently paused.
       x-distilled-pagination-class: UARuleListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createUaRule
       description: "Creates a new User Agent Blocking rule in a zone.  @example ```ts
@@ -3017,6 +3103,13 @@ paths:
                     type: boolean
                     description: When true, indicates that the rule is currently paused.
       x-distilled-response-path: result
+      x-distilled-errors:
+        DuplicateUaRule:
+          - code: 10009
+            message:
+              includes: firewalluablock.api.duplicate_of_existing
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/firewall/waf/overrides/{overridesId}:
     get:
       operationId: getWafOverride

@@ -42493,11 +42493,7 @@ export const ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResponse;
 
 export type ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Process the given campaign lifecycle configurations. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CampaignLifecycleGoalConfigError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]() */
 export const configureCampaignLifecycleGoalsCustomersCampaignLifecycleGoal: API.OperationMethod<
@@ -42585,11 +42581,7 @@ export const MutateRecommendationSubscriptionCustomersRecommendationSubscription
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResponse;
 
 export type MutateRecommendationSubscriptionCustomersRecommendationSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Mutates given subscription with corresponding apply parameters. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RecommendationError]() [RecommendationSubscriptionError]() [RequestError]() [UrlFieldError]() */
 export const mutateRecommendationSubscriptionCustomersRecommendationSubscriptions: API.OperationMethod<
@@ -45418,11 +45410,7 @@ export const ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResponse;
 
 export type ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Process the given customer lifecycle configurations. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CustomerLifecycleGoalConfigError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]() */
 export const configureCustomerLifecycleGoalsCustomersCustomerLifecycleGoal: API.OperationMethod<
@@ -47291,11 +47279,7 @@ export const RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdResponse;
 
 export type RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Regenerate ThirdPartyAppAnalyticsLink.shareable_link_id that should be provided to the third party when setting up app analytics. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]() */
 export const regenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinks: API.OperationMethod<

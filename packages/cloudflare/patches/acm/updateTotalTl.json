@@ -3,7 +3,8 @@
     "InvalidObjectIdentifier": [{ "code": 7003 }],
     "AdvancedCertificateManagerRequired": [{ "code": 1450 }],
     "NoStateChange": [{ "code": 1467 }],
-    "PreviousJobInProgress": [{ "code": 1482 }]
+    "PreviousJobInProgress": [{ "code": 1482 }],
+    "Forbidden": [{ "status": 403 }]
   },
   "response": {
     "properties": {

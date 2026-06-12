@@ -7613,11 +7613,7 @@ export const EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersion
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Evaluates a ProcessorVersion against annotated documents, producing an Evaluation. */
 export const evaluateProcessorVersionProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<
@@ -7661,11 +7657,7 @@ export const ImportProcessorVersionProjectsLocationsProcessorsProcessorVersionsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProcessorVersionProjectsLocationsProcessorsProcessorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Imports a processor version from source processor version. */
 export const importProcessorVersionProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<

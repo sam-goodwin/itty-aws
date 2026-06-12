@@ -3867,9 +3867,7 @@ export const GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRes
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4004,11 +4002,7 @@ export const SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRes
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4050,11 +4044,7 @@ export const TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePo
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4156,9 +4146,7 @@ export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsR
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations: API.PaginatedOperationMethod<
@@ -4197,9 +4185,7 @@ export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRe
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations: API.OperationMethod<
@@ -5083,11 +5069,7 @@ export const TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRes
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<

@@ -1,14 +1,42 @@
 {
   "errors": {
-    "ValidationError": [{ "code": 7001 }],
-    "NotFound": [{ "code": 7002 }],
-    "InvalidRoute": [{ "code": 7003 }]
+    "ValidationError": [
+      {
+        "code": 7001
+      }
+    ],
+    "NotFound": [
+      {
+        "code": 7002
+      }
+    ],
+    "InvalidRoute": [
+      {
+        "code": 7003
+      }
+    ],
+    "InvalidTokenCredentials": [
+      {
+        "code": 7012
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
   },
   "response": {
     "properties": {
-      "account_id": { "optional": true },
-      "account_tag": { "optional": true },
-      "cf_api_key": { "optional": true }
+      "account_id": {
+        "optional": true
+      },
+      "account_tag": {
+        "optional": true
+      },
+      "cf_api_key": {
+        "optional": true
+      }
     }
   }
 }

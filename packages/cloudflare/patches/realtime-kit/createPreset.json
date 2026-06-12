@@ -1,0 +1,15 @@
+{
+  "request": {
+    "properties": {
+      "permissions.plugins.config": { "type": "unknown" }
+    }
+  },
+  "response": {
+    "properties": {
+      "data.permissions.plugins.config": { "type": "unknown" }
+    }
+  },
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  }
+}

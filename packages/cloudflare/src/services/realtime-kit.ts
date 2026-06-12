@@ -14,6 +14,28 @@ import { type DefaultErrors } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class RealtimeKitPresetNotFound extends Schema.TaggedErrorClass<RealtimeKitPresetNotFound>()(
+  "RealtimeKitPresetNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RealtimeKitPresetNotFound, [{ status: 404 }]);
+
+export class RealtimeKitWebhookNotFound extends Schema.TaggedErrorClass<RealtimeKitWebhookNotFound>()(
+  "RealtimeKitWebhookNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RealtimeKitWebhookNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // ActiveLivestreamsForLivestreamIdLivestream
 // =============================================================================
 
@@ -686,7 +708,7 @@ export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
 }) as unknown as Schema.Schema<GetAppResponse>;
 
-export type GetAppError = DefaultErrors;
+export type GetAppError = DefaultErrors | Forbidden;
 
 export const getApp: API.OperationMethod<
   GetAppRequest,
@@ -696,7 +718,7 @@ export const getApp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppRequest,
   output: GetAppResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PostAppRequest {
@@ -753,7 +775,7 @@ export const PostAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
 }) as unknown as Schema.Schema<PostAppResponse>;
 
-export type PostAppError = DefaultErrors;
+export type PostAppError = DefaultErrors | Forbidden;
 
 export const postApp: API.OperationMethod<
   PostAppRequest,
@@ -763,7 +785,7 @@ export const postApp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PostAppRequest,
   output: PostAppResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================
@@ -7344,7 +7366,7 @@ export const GetPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.Boolean,
 }) as unknown as Schema.Schema<GetPresetResponse>;
 
-export type GetPresetError = DefaultErrors;
+export type GetPresetError = DefaultErrors | Forbidden;
 
 export const getPreset: API.OperationMethod<
   GetPresetRequest,
@@ -7354,7 +7376,7 @@ export const getPreset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPresetRequest,
   output: GetPresetResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface CreatePresetRequest {
@@ -7457,12 +7479,7 @@ export interface CreatePresetRequest {
       canClose: boolean;
       canEditConfig: boolean;
       canStart: boolean;
-      config:
-        | string
-        | {
-            accessControl: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
-            handlesViewOnly: boolean;
-          };
+      config: unknown;
     };
     polls: { canCreate: boolean; canView: boolean; canVote: boolean };
     recorderType: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
@@ -7662,21 +7679,7 @@ export const CreatePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         canClose: Schema.Boolean,
         canEditConfig: Schema.Boolean,
         canStart: Schema.Boolean,
-        config: Schema.Union([
-          Schema.Struct({
-            accessControl: Schema.Union([
-              Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
-              Schema.String,
-            ]),
-            handlesViewOnly: Schema.Boolean,
-          }).pipe(
-            Schema.encodeKeys({
-              accessControl: "access_control",
-              handlesViewOnly: "handles_view_only",
-            }),
-          ),
-          Schema.String,
-        ]),
+        config: Schema.Unknown,
       }).pipe(
         Schema.encodeKeys({
           canClose: "can_close",
@@ -7839,12 +7842,7 @@ export interface CreatePresetResponse {
         canClose: boolean;
         canEditConfig: boolean;
         canStart: boolean;
-        config:
-          | string
-          | {
-              accessControl: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
-              handlesViewOnly: boolean;
-            };
+        config: unknown;
       };
       polls: { canCreate: boolean; canView: boolean; canVote: boolean };
       recorderType: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
@@ -8055,21 +8053,7 @@ export const CreatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             canClose: Schema.Boolean,
             canEditConfig: Schema.Boolean,
             canStart: Schema.Boolean,
-            config: Schema.Union([
-              Schema.Struct({
-                accessControl: Schema.Union([
-                  Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
-                  Schema.String,
-                ]),
-                handlesViewOnly: Schema.Boolean,
-              }).pipe(
-                Schema.encodeKeys({
-                  accessControl: "access_control",
-                  handlesViewOnly: "handles_view_only",
-                }),
-              ),
-              Schema.String,
-            ]),
+            config: Schema.Unknown,
           }).pipe(
             Schema.encodeKeys({
               canClose: "can_close",
@@ -8140,7 +8124,7 @@ export const CreatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.Boolean,
 }) as unknown as Schema.Schema<CreatePresetResponse>;
 
-export type CreatePresetError = DefaultErrors;
+export type CreatePresetError = DefaultErrors | Forbidden;
 
 export const createPreset: API.OperationMethod<
   CreatePresetRequest,
@@ -8150,7 +8134,7 @@ export const createPreset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePresetRequest,
   output: CreatePresetResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchPresetRequest {
@@ -8221,12 +8205,7 @@ export interface PatchPresetRequest {
       canClose?: boolean;
       canEditConfig?: boolean;
       canStart?: boolean;
-      config?:
-        | string
-        | {
-            accessControl?: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
-            handlesViewOnly?: boolean;
-          };
+      config?: unknown;
     };
     polls?: { canCreate?: boolean; canView?: boolean; canVote?: boolean };
     recorderType?: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
@@ -8437,25 +8416,7 @@ export const PatchPresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           canClose: Schema.optional(Schema.Boolean),
           canEditConfig: Schema.optional(Schema.Boolean),
           canStart: Schema.optional(Schema.Boolean),
-          config: Schema.optional(
-            Schema.Union([
-              Schema.String,
-              Schema.Struct({
-                accessControl: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
-                    Schema.String,
-                  ]),
-                ),
-                handlesViewOnly: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  accessControl: "access_control",
-                  handlesViewOnly: "handles_view_only",
-                }),
-              ),
-            ]),
-          ),
+          config: Schema.optional(Schema.Unknown),
         }).pipe(
           Schema.encodeKeys({
             canClose: "can_close",
@@ -8598,405 +8559,20 @@ export const PatchPresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PatchPresetResponse {
   /** Data returned by the operation */
-  data: {
-    id: string;
-    config: {
-      maxScreenshareCount: number;
-      maxVideoStreams: { desktop: number; mobile: number };
-      media: {
-        screenshare: {
-          frameRate: number;
-          quality: "hd" | "vga" | "qvga" | (string & {});
-        };
-        video: {
-          frameRate: number;
-          quality: "hd" | "vga" | "qvga" | (string & {});
-        };
-        audio?: {
-          enableHighBitrate?: boolean | null;
-          enableStereo?: boolean | null;
-        } | null;
-      };
-      viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
-    };
-    name: string;
-    ui: {
-      designTokens: {
-        borderRadius: "rounded";
-        borderWidth: "thin";
-        colors: {
-          background: {
-            "1000": string;
-            "600": string;
-            "700": string;
-            "800": string;
-            "900": string;
-          };
-          brand: {
-            "300": string;
-            "400": string;
-            "500": string;
-            "600": string;
-            "700": string;
-          };
-          danger: string;
-          success: string;
-          text: string;
-          textOnBrand: string;
-          videoBg: string;
-          warning: string;
-        };
-        logo: string;
-        spacingBase: number;
-        theme: "dark";
-      };
-      configDiff?: unknown | null;
-    };
-    permissions?: {
-      acceptWaitingRequests: boolean;
-      canAcceptProductionRequests: boolean;
-      canChangeParticipantPermissions: boolean;
-      canEditDisplayName: boolean;
-      canLivestream: boolean;
-      canRecord: boolean;
-      canSpotlight: boolean;
-      chat: {
-        private: {
-          canReceive: boolean;
-          canSend: boolean;
-          files: boolean;
-          text: boolean;
-        };
-        public: { canSend: boolean; files: boolean; text: boolean };
-      };
-      connectedMeetings: {
-        canAlterConnectedMeetings: boolean;
-        canSwitchConnectedMeetings: boolean;
-        canSwitchToParentMeeting: boolean;
-      };
-      disableParticipantAudio: boolean;
-      disableParticipantScreensharing: boolean;
-      disableParticipantVideo: boolean;
-      hiddenParticipant: boolean;
-      kickParticipant: boolean;
-      media: {
-        audio: {
-          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
-        };
-        screenshare: {
-          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
-        };
-        video: {
-          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
-        };
-      };
-      pinParticipant: boolean;
-      plugins: {
-        canClose: boolean;
-        canEditConfig: boolean;
-        canStart: boolean;
-        config:
-          | string
-          | {
-              accessControl: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
-              handlesViewOnly: boolean;
-            };
-      };
-      polls: { canCreate: boolean; canView: boolean; canVote: boolean };
-      recorderType: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
-      showParticipantList: boolean;
-      waitingRoomType:
-        | "SKIP"
-        | "ON_PRIVILEGED_USER_ENTRY"
-        | "SKIP_ON_ACCEPT"
-        | (string & {});
-      isRecorder?: boolean | null;
-    } | null;
-  };
+  data: unknown;
   /** Success status of the operation */
   success: boolean;
 }
 
 export const PatchPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Struct({
-    id: Schema.String,
-    config: Schema.Struct({
-      maxScreenshareCount: Schema.Number,
-      maxVideoStreams: Schema.Struct({
-        desktop: Schema.Number,
-        mobile: Schema.Number,
-      }),
-      media: Schema.Struct({
-        screenshare: Schema.Struct({
-          frameRate: Schema.Number,
-          quality: Schema.Union([
-            Schema.Literals(["hd", "vga", "qvga"]),
-            Schema.String,
-          ]),
-        }).pipe(
-          Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
-        ),
-        video: Schema.Struct({
-          frameRate: Schema.Number,
-          quality: Schema.Union([
-            Schema.Literals(["hd", "vga", "qvga"]),
-            Schema.String,
-          ]),
-        }).pipe(
-          Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
-        ),
-        audio: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              enableHighBitrate: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              enableStereo: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                enableHighBitrate: "enable_high_bitrate",
-                enableStereo: "enable_stereo",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      viewType: Schema.Union([
-        Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
-        Schema.String,
-      ]),
-    }).pipe(
-      Schema.encodeKeys({
-        maxScreenshareCount: "max_screenshare_count",
-        maxVideoStreams: "max_video_streams",
-        media: "media",
-        viewType: "view_type",
-      }),
-    ),
-    name: Schema.String,
-    ui: Schema.Struct({
-      designTokens: Schema.Struct({
-        borderRadius: Schema.Literal("rounded"),
-        borderWidth: Schema.Literal("thin"),
-        colors: Schema.Struct({
-          background: Schema.Struct({
-            "1000": Schema.String,
-            "600": Schema.String,
-            "700": Schema.String,
-            "800": Schema.String,
-            "900": Schema.String,
-          }),
-          brand: Schema.Struct({
-            "300": Schema.String,
-            "400": Schema.String,
-            "500": Schema.String,
-            "600": Schema.String,
-            "700": Schema.String,
-          }),
-          danger: Schema.String,
-          success: Schema.String,
-          text: Schema.String,
-          textOnBrand: Schema.String,
-          videoBg: Schema.String,
-          warning: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            background: "background",
-            brand: "brand",
-            danger: "danger",
-            success: "success",
-            text: "text",
-            textOnBrand: "text_on_brand",
-            videoBg: "video_bg",
-            warning: "warning",
-          }),
-        ),
-        logo: Schema.String,
-        spacingBase: Schema.Number,
-        theme: Schema.Literal("dark"),
-      }).pipe(
-        Schema.encodeKeys({
-          borderRadius: "border_radius",
-          borderWidth: "border_width",
-          colors: "colors",
-          logo: "logo",
-          spacingBase: "spacing_base",
-          theme: "theme",
-        }),
-      ),
-      configDiff: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        designTokens: "design_tokens",
-        configDiff: "config_diff",
-      }),
-    ),
-    permissions: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          acceptWaitingRequests: Schema.Boolean,
-          canAcceptProductionRequests: Schema.Boolean,
-          canChangeParticipantPermissions: Schema.Boolean,
-          canEditDisplayName: Schema.Boolean,
-          canLivestream: Schema.Boolean,
-          canRecord: Schema.Boolean,
-          canSpotlight: Schema.Boolean,
-          chat: Schema.Struct({
-            private: Schema.Struct({
-              canReceive: Schema.Boolean,
-              canSend: Schema.Boolean,
-              files: Schema.Boolean,
-              text: Schema.Boolean,
-            }).pipe(
-              Schema.encodeKeys({
-                canReceive: "can_receive",
-                canSend: "can_send",
-                files: "files",
-                text: "text",
-              }),
-            ),
-            public: Schema.Struct({
-              canSend: Schema.Boolean,
-              files: Schema.Boolean,
-              text: Schema.Boolean,
-            }).pipe(
-              Schema.encodeKeys({
-                canSend: "can_send",
-                files: "files",
-                text: "text",
-              }),
-            ),
-          }),
-          connectedMeetings: Schema.Struct({
-            canAlterConnectedMeetings: Schema.Boolean,
-            canSwitchConnectedMeetings: Schema.Boolean,
-            canSwitchToParentMeeting: Schema.Boolean,
-          }).pipe(
-            Schema.encodeKeys({
-              canAlterConnectedMeetings: "can_alter_connected_meetings",
-              canSwitchConnectedMeetings: "can_switch_connected_meetings",
-              canSwitchToParentMeeting: "can_switch_to_parent_meeting",
-            }),
-          ),
-          disableParticipantAudio: Schema.Boolean,
-          disableParticipantScreensharing: Schema.Boolean,
-          disableParticipantVideo: Schema.Boolean,
-          hiddenParticipant: Schema.Boolean,
-          kickParticipant: Schema.Boolean,
-          media: Schema.Struct({
-            audio: Schema.Struct({
-              canProduce: Schema.Union([
-                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
-                Schema.String,
-              ]),
-            }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
-            screenshare: Schema.Struct({
-              canProduce: Schema.Union([
-                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
-                Schema.String,
-              ]),
-            }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
-            video: Schema.Struct({
-              canProduce: Schema.Union([
-                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
-                Schema.String,
-              ]),
-            }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
-          }),
-          pinParticipant: Schema.Boolean,
-          plugins: Schema.Struct({
-            canClose: Schema.Boolean,
-            canEditConfig: Schema.Boolean,
-            canStart: Schema.Boolean,
-            config: Schema.Union([
-              Schema.Struct({
-                accessControl: Schema.Union([
-                  Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
-                  Schema.String,
-                ]),
-                handlesViewOnly: Schema.Boolean,
-              }).pipe(
-                Schema.encodeKeys({
-                  accessControl: "access_control",
-                  handlesViewOnly: "handles_view_only",
-                }),
-              ),
-              Schema.String,
-            ]),
-          }).pipe(
-            Schema.encodeKeys({
-              canClose: "can_close",
-              canEditConfig: "can_edit_config",
-              canStart: "can_start",
-              config: "config",
-            }),
-          ),
-          polls: Schema.Struct({
-            canCreate: Schema.Boolean,
-            canView: Schema.Boolean,
-            canVote: Schema.Boolean,
-          }).pipe(
-            Schema.encodeKeys({
-              canCreate: "can_create",
-              canView: "can_view",
-              canVote: "can_vote",
-            }),
-          ),
-          recorderType: Schema.Union([
-            Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
-            Schema.String,
-          ]),
-          showParticipantList: Schema.Boolean,
-          waitingRoomType: Schema.Union([
-            Schema.Literals([
-              "SKIP",
-              "ON_PRIVILEGED_USER_ENTRY",
-              "SKIP_ON_ACCEPT",
-            ]),
-            Schema.String,
-          ]),
-          isRecorder: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            acceptWaitingRequests: "accept_waiting_requests",
-            canAcceptProductionRequests: "can_accept_production_requests",
-            canChangeParticipantPermissions:
-              "can_change_participant_permissions",
-            canEditDisplayName: "can_edit_display_name",
-            canLivestream: "can_livestream",
-            canRecord: "can_record",
-            canSpotlight: "can_spotlight",
-            chat: "chat",
-            connectedMeetings: "connected_meetings",
-            disableParticipantAudio: "disable_participant_audio",
-            disableParticipantScreensharing:
-              "disable_participant_screensharing",
-            disableParticipantVideo: "disable_participant_video",
-            hiddenParticipant: "hidden_participant",
-            kickParticipant: "kick_participant",
-            media: "media",
-            pinParticipant: "pin_participant",
-            plugins: "plugins",
-            polls: "polls",
-            recorderType: "recorder_type",
-            showParticipantList: "show_participant_list",
-            waitingRoomType: "waiting_room_type",
-            isRecorder: "is_recorder",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  data: Schema.Unknown,
   success: Schema.Boolean,
 }) as unknown as Schema.Schema<PatchPresetResponse>;
 
-export type PatchPresetError = DefaultErrors;
+export type PatchPresetError =
+  | DefaultErrors
+  | RealtimeKitPresetNotFound
+  | Forbidden;
 
 export const patchPreset: API.OperationMethod<
   PatchPresetRequest,
@@ -9006,7 +8582,7 @@ export const patchPreset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPresetRequest,
   output: PatchPresetResponse,
-  errors: [],
+  errors: [RealtimeKitPresetNotFound, Forbidden],
 }));
 
 export interface DeletePresetRequest {
@@ -9029,405 +8605,20 @@ export const DeletePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeletePresetResponse {
   /** Data returned by the operation */
-  data: {
-    id: string;
-    config: {
-      maxScreenshareCount: number;
-      maxVideoStreams: { desktop: number; mobile: number };
-      media: {
-        screenshare: {
-          frameRate: number;
-          quality: "hd" | "vga" | "qvga" | (string & {});
-        };
-        video: {
-          frameRate: number;
-          quality: "hd" | "vga" | "qvga" | (string & {});
-        };
-        audio?: {
-          enableHighBitrate?: boolean | null;
-          enableStereo?: boolean | null;
-        } | null;
-      };
-      viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
-    };
-    name: string;
-    ui: {
-      designTokens: {
-        borderRadius: "rounded";
-        borderWidth: "thin";
-        colors: {
-          background: {
-            "1000": string;
-            "600": string;
-            "700": string;
-            "800": string;
-            "900": string;
-          };
-          brand: {
-            "300": string;
-            "400": string;
-            "500": string;
-            "600": string;
-            "700": string;
-          };
-          danger: string;
-          success: string;
-          text: string;
-          textOnBrand: string;
-          videoBg: string;
-          warning: string;
-        };
-        logo: string;
-        spacingBase: number;
-        theme: "dark";
-      };
-      configDiff?: unknown | null;
-    };
-    permissions?: {
-      acceptWaitingRequests: boolean;
-      canAcceptProductionRequests: boolean;
-      canChangeParticipantPermissions: boolean;
-      canEditDisplayName: boolean;
-      canLivestream: boolean;
-      canRecord: boolean;
-      canSpotlight: boolean;
-      chat: {
-        private: {
-          canReceive: boolean;
-          canSend: boolean;
-          files: boolean;
-          text: boolean;
-        };
-        public: { canSend: boolean; files: boolean; text: boolean };
-      };
-      connectedMeetings: {
-        canAlterConnectedMeetings: boolean;
-        canSwitchConnectedMeetings: boolean;
-        canSwitchToParentMeeting: boolean;
-      };
-      disableParticipantAudio: boolean;
-      disableParticipantScreensharing: boolean;
-      disableParticipantVideo: boolean;
-      hiddenParticipant: boolean;
-      kickParticipant: boolean;
-      media: {
-        audio: {
-          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
-        };
-        screenshare: {
-          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
-        };
-        video: {
-          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
-        };
-      };
-      pinParticipant: boolean;
-      plugins: {
-        canClose: boolean;
-        canEditConfig: boolean;
-        canStart: boolean;
-        config:
-          | string
-          | {
-              accessControl: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
-              handlesViewOnly: boolean;
-            };
-      };
-      polls: { canCreate: boolean; canView: boolean; canVote: boolean };
-      recorderType: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
-      showParticipantList: boolean;
-      waitingRoomType:
-        | "SKIP"
-        | "ON_PRIVILEGED_USER_ENTRY"
-        | "SKIP_ON_ACCEPT"
-        | (string & {});
-      isRecorder?: boolean | null;
-    } | null;
-  };
+  data: unknown;
   /** Success status of the operation */
   success: boolean;
 }
 
 export const DeletePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Struct({
-    id: Schema.String,
-    config: Schema.Struct({
-      maxScreenshareCount: Schema.Number,
-      maxVideoStreams: Schema.Struct({
-        desktop: Schema.Number,
-        mobile: Schema.Number,
-      }),
-      media: Schema.Struct({
-        screenshare: Schema.Struct({
-          frameRate: Schema.Number,
-          quality: Schema.Union([
-            Schema.Literals(["hd", "vga", "qvga"]),
-            Schema.String,
-          ]),
-        }).pipe(
-          Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
-        ),
-        video: Schema.Struct({
-          frameRate: Schema.Number,
-          quality: Schema.Union([
-            Schema.Literals(["hd", "vga", "qvga"]),
-            Schema.String,
-          ]),
-        }).pipe(
-          Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
-        ),
-        audio: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              enableHighBitrate: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              enableStereo: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                enableHighBitrate: "enable_high_bitrate",
-                enableStereo: "enable_stereo",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      viewType: Schema.Union([
-        Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
-        Schema.String,
-      ]),
-    }).pipe(
-      Schema.encodeKeys({
-        maxScreenshareCount: "max_screenshare_count",
-        maxVideoStreams: "max_video_streams",
-        media: "media",
-        viewType: "view_type",
-      }),
-    ),
-    name: Schema.String,
-    ui: Schema.Struct({
-      designTokens: Schema.Struct({
-        borderRadius: Schema.Literal("rounded"),
-        borderWidth: Schema.Literal("thin"),
-        colors: Schema.Struct({
-          background: Schema.Struct({
-            "1000": Schema.String,
-            "600": Schema.String,
-            "700": Schema.String,
-            "800": Schema.String,
-            "900": Schema.String,
-          }),
-          brand: Schema.Struct({
-            "300": Schema.String,
-            "400": Schema.String,
-            "500": Schema.String,
-            "600": Schema.String,
-            "700": Schema.String,
-          }),
-          danger: Schema.String,
-          success: Schema.String,
-          text: Schema.String,
-          textOnBrand: Schema.String,
-          videoBg: Schema.String,
-          warning: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            background: "background",
-            brand: "brand",
-            danger: "danger",
-            success: "success",
-            text: "text",
-            textOnBrand: "text_on_brand",
-            videoBg: "video_bg",
-            warning: "warning",
-          }),
-        ),
-        logo: Schema.String,
-        spacingBase: Schema.Number,
-        theme: Schema.Literal("dark"),
-      }).pipe(
-        Schema.encodeKeys({
-          borderRadius: "border_radius",
-          borderWidth: "border_width",
-          colors: "colors",
-          logo: "logo",
-          spacingBase: "spacing_base",
-          theme: "theme",
-        }),
-      ),
-      configDiff: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        designTokens: "design_tokens",
-        configDiff: "config_diff",
-      }),
-    ),
-    permissions: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          acceptWaitingRequests: Schema.Boolean,
-          canAcceptProductionRequests: Schema.Boolean,
-          canChangeParticipantPermissions: Schema.Boolean,
-          canEditDisplayName: Schema.Boolean,
-          canLivestream: Schema.Boolean,
-          canRecord: Schema.Boolean,
-          canSpotlight: Schema.Boolean,
-          chat: Schema.Struct({
-            private: Schema.Struct({
-              canReceive: Schema.Boolean,
-              canSend: Schema.Boolean,
-              files: Schema.Boolean,
-              text: Schema.Boolean,
-            }).pipe(
-              Schema.encodeKeys({
-                canReceive: "can_receive",
-                canSend: "can_send",
-                files: "files",
-                text: "text",
-              }),
-            ),
-            public: Schema.Struct({
-              canSend: Schema.Boolean,
-              files: Schema.Boolean,
-              text: Schema.Boolean,
-            }).pipe(
-              Schema.encodeKeys({
-                canSend: "can_send",
-                files: "files",
-                text: "text",
-              }),
-            ),
-          }),
-          connectedMeetings: Schema.Struct({
-            canAlterConnectedMeetings: Schema.Boolean,
-            canSwitchConnectedMeetings: Schema.Boolean,
-            canSwitchToParentMeeting: Schema.Boolean,
-          }).pipe(
-            Schema.encodeKeys({
-              canAlterConnectedMeetings: "can_alter_connected_meetings",
-              canSwitchConnectedMeetings: "can_switch_connected_meetings",
-              canSwitchToParentMeeting: "can_switch_to_parent_meeting",
-            }),
-          ),
-          disableParticipantAudio: Schema.Boolean,
-          disableParticipantScreensharing: Schema.Boolean,
-          disableParticipantVideo: Schema.Boolean,
-          hiddenParticipant: Schema.Boolean,
-          kickParticipant: Schema.Boolean,
-          media: Schema.Struct({
-            audio: Schema.Struct({
-              canProduce: Schema.Union([
-                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
-                Schema.String,
-              ]),
-            }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
-            screenshare: Schema.Struct({
-              canProduce: Schema.Union([
-                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
-                Schema.String,
-              ]),
-            }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
-            video: Schema.Struct({
-              canProduce: Schema.Union([
-                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
-                Schema.String,
-              ]),
-            }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
-          }),
-          pinParticipant: Schema.Boolean,
-          plugins: Schema.Struct({
-            canClose: Schema.Boolean,
-            canEditConfig: Schema.Boolean,
-            canStart: Schema.Boolean,
-            config: Schema.Union([
-              Schema.Struct({
-                accessControl: Schema.Union([
-                  Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
-                  Schema.String,
-                ]),
-                handlesViewOnly: Schema.Boolean,
-              }).pipe(
-                Schema.encodeKeys({
-                  accessControl: "access_control",
-                  handlesViewOnly: "handles_view_only",
-                }),
-              ),
-              Schema.String,
-            ]),
-          }).pipe(
-            Schema.encodeKeys({
-              canClose: "can_close",
-              canEditConfig: "can_edit_config",
-              canStart: "can_start",
-              config: "config",
-            }),
-          ),
-          polls: Schema.Struct({
-            canCreate: Schema.Boolean,
-            canView: Schema.Boolean,
-            canVote: Schema.Boolean,
-          }).pipe(
-            Schema.encodeKeys({
-              canCreate: "can_create",
-              canView: "can_view",
-              canVote: "can_vote",
-            }),
-          ),
-          recorderType: Schema.Union([
-            Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
-            Schema.String,
-          ]),
-          showParticipantList: Schema.Boolean,
-          waitingRoomType: Schema.Union([
-            Schema.Literals([
-              "SKIP",
-              "ON_PRIVILEGED_USER_ENTRY",
-              "SKIP_ON_ACCEPT",
-            ]),
-            Schema.String,
-          ]),
-          isRecorder: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            acceptWaitingRequests: "accept_waiting_requests",
-            canAcceptProductionRequests: "can_accept_production_requests",
-            canChangeParticipantPermissions:
-              "can_change_participant_permissions",
-            canEditDisplayName: "can_edit_display_name",
-            canLivestream: "can_livestream",
-            canRecord: "can_record",
-            canSpotlight: "can_spotlight",
-            chat: "chat",
-            connectedMeetings: "connected_meetings",
-            disableParticipantAudio: "disable_participant_audio",
-            disableParticipantScreensharing:
-              "disable_participant_screensharing",
-            disableParticipantVideo: "disable_participant_video",
-            hiddenParticipant: "hidden_participant",
-            kickParticipant: "kick_participant",
-            media: "media",
-            pinParticipant: "pin_participant",
-            plugins: "plugins",
-            polls: "polls",
-            recorderType: "recorder_type",
-            showParticipantList: "show_participant_list",
-            waitingRoomType: "waiting_room_type",
-            isRecorder: "is_recorder",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  data: Schema.Unknown,
   success: Schema.Boolean,
 }) as unknown as Schema.Schema<DeletePresetResponse>;
 
-export type DeletePresetError = DefaultErrors;
+export type DeletePresetError =
+  | DefaultErrors
+  | RealtimeKitPresetNotFound
+  | Forbidden;
 
 export const deletePreset: API.OperationMethod<
   DeletePresetRequest,
@@ -9437,7 +8628,7 @@ export const deletePreset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePresetRequest,
   output: DeletePresetResponse,
-  errors: [],
+  errors: [RealtimeKitPresetNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -9562,12 +8753,7 @@ export interface GetPresetByIdPresetResponse {
         canClose: boolean;
         canEditConfig: boolean;
         canStart: boolean;
-        config:
-          | string
-          | {
-              accessControl: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
-              handlesViewOnly: boolean;
-            };
+        config: unknown;
       };
       polls: { canCreate: boolean; canView: boolean; canVote: boolean };
       recorderType: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
@@ -9781,21 +8967,7 @@ export const GetPresetByIdPresetResponse =
               canClose: Schema.Boolean,
               canEditConfig: Schema.Boolean,
               canStart: Schema.Boolean,
-              config: Schema.Union([
-                Schema.Struct({
-                  accessControl: Schema.Union([
-                    Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
-                    Schema.String,
-                  ]),
-                  handlesViewOnly: Schema.Boolean,
-                }).pipe(
-                  Schema.encodeKeys({
-                    accessControl: "access_control",
-                    handlesViewOnly: "handles_view_only",
-                  }),
-                ),
-                Schema.String,
-              ]),
+              config: Schema.Unknown,
             }).pipe(
               Schema.encodeKeys({
                 canClose: "can_close",
@@ -9866,7 +9038,10 @@ export const GetPresetByIdPresetResponse =
     success: Schema.Boolean,
   }) as unknown as Schema.Schema<GetPresetByIdPresetResponse>;
 
-export type GetPresetByIdPresetError = DefaultErrors;
+export type GetPresetByIdPresetError =
+  | DefaultErrors
+  | RealtimeKitPresetNotFound
+  | Forbidden;
 
 export const getPresetByIdPreset: API.OperationMethod<
   GetPresetByIdPresetRequest,
@@ -9876,7 +9051,7 @@ export const getPresetByIdPreset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPresetByIdPresetRequest,
   output: GetPresetByIdPresetResponse,
-  errors: [],
+  errors: [RealtimeKitPresetNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -12319,7 +11494,10 @@ export const GetWebhookByIdWebhookResponse =
     success: Schema.Boolean,
   }) as unknown as Schema.Schema<GetWebhookByIdWebhookResponse>;
 
-export type GetWebhookByIdWebhookError = DefaultErrors;
+export type GetWebhookByIdWebhookError =
+  | DefaultErrors
+  | RealtimeKitWebhookNotFound
+  | Forbidden;
 
 export const getWebhookByIdWebhook: API.OperationMethod<
   GetWebhookByIdWebhookRequest,
@@ -12329,7 +11507,7 @@ export const getWebhookByIdWebhook: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWebhookByIdWebhookRequest,
   output: GetWebhookByIdWebhookResponse,
-  errors: [],
+  errors: [RealtimeKitWebhookNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -12418,7 +11596,10 @@ export const GetWebhooksWebhookResponse =
     success: Schema.Boolean,
   }) as unknown as Schema.Schema<GetWebhooksWebhookResponse>;
 
-export type GetWebhooksWebhookError = DefaultErrors;
+export type GetWebhooksWebhookError =
+  | DefaultErrors
+  | RealtimeKitWebhookNotFound
+  | Forbidden;
 
 export const getWebhooksWebhook: API.OperationMethod<
   GetWebhooksWebhookRequest,
@@ -12428,7 +11609,7 @@ export const getWebhooksWebhook: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWebhooksWebhookRequest,
   output: GetWebhooksWebhookResponse,
-  errors: [],
+  errors: [RealtimeKitWebhookNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -12553,7 +11734,7 @@ export const CreateWebhookWebhookResponse =
     success: Schema.Boolean,
   }) as unknown as Schema.Schema<CreateWebhookWebhookResponse>;
 
-export type CreateWebhookWebhookError = DefaultErrors;
+export type CreateWebhookWebhookError = DefaultErrors | Forbidden;
 
 export const createWebhookWebhook: API.OperationMethod<
   CreateWebhookWebhookRequest,
@@ -12563,7 +11744,7 @@ export const createWebhookWebhook: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWebhookWebhookRequest,
   output: CreateWebhookWebhookResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface DeleteWebhookWebhookRequest {
@@ -12586,69 +11767,20 @@ export const DeleteWebhookWebhookRequest =
   ) as unknown as Schema.Schema<DeleteWebhookWebhookRequest>;
 
 export interface DeleteWebhookWebhookResponse {
-  data: {
-    id: string;
-    createdAt: string;
-    enabled: boolean;
-    events: (
-      | "meeting.started"
-      | "meeting.ended"
-      | "meeting.participantJoined"
-      | "meeting.participantLeft"
-      | "meeting.chatSynced"
-      | "recording.statusUpdate"
-      | "livestreaming.statusUpdate"
-      | "meeting.transcript"
-      | "meeting.summary"
-      | (string & {})
-    )[];
-    name: string;
-    updatedAt: string;
-    url: string;
-  };
+  data: unknown;
   success: boolean;
 }
 
 export const DeleteWebhookWebhookResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      events: Schema.Array(
-        Schema.Union([
-          Schema.Literals([
-            "meeting.started",
-            "meeting.ended",
-            "meeting.participantJoined",
-            "meeting.participantLeft",
-            "meeting.chatSynced",
-            "recording.statusUpdate",
-            "livestreaming.statusUpdate",
-            "meeting.transcript",
-            "meeting.summary",
-          ]),
-          Schema.String,
-        ]),
-      ),
-      name: Schema.String,
-      updatedAt: Schema.String,
-      url: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        events: "events",
-        name: "name",
-        updatedAt: "updated_at",
-        url: "url",
-      }),
-    ),
+    data: Schema.Unknown,
     success: Schema.Boolean,
   }) as unknown as Schema.Schema<DeleteWebhookWebhookResponse>;
 
-export type DeleteWebhookWebhookError = DefaultErrors;
+export type DeleteWebhookWebhookError =
+  | DefaultErrors
+  | RealtimeKitWebhookNotFound
+  | Forbidden;
 
 export const deleteWebhookWebhook: API.OperationMethod<
   DeleteWebhookWebhookRequest,
@@ -12658,7 +11790,7 @@ export const deleteWebhookWebhook: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWebhookWebhookRequest,
   output: DeleteWebhookWebhookResponse,
-  errors: [],
+  errors: [RealtimeKitWebhookNotFound, Forbidden],
 }));
 
 export interface EditWebhookWebhookRequest {
@@ -12854,69 +11986,20 @@ export const ReplaceWebhookWebhookRequest =
   ) as unknown as Schema.Schema<ReplaceWebhookWebhookRequest>;
 
 export interface ReplaceWebhookWebhookResponse {
-  data: {
-    id: string;
-    createdAt: string;
-    enabled: boolean;
-    events: (
-      | "meeting.started"
-      | "meeting.ended"
-      | "meeting.participantJoined"
-      | "meeting.participantLeft"
-      | "meeting.chatSynced"
-      | "recording.statusUpdate"
-      | "livestreaming.statusUpdate"
-      | "meeting.transcript"
-      | "meeting.summary"
-      | (string & {})
-    )[];
-    name: string;
-    updatedAt: string;
-    url: string;
-  };
+  data: unknown;
   success: boolean;
 }
 
 export const ReplaceWebhookWebhookResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      events: Schema.Array(
-        Schema.Union([
-          Schema.Literals([
-            "meeting.started",
-            "meeting.ended",
-            "meeting.participantJoined",
-            "meeting.participantLeft",
-            "meeting.chatSynced",
-            "recording.statusUpdate",
-            "livestreaming.statusUpdate",
-            "meeting.transcript",
-            "meeting.summary",
-          ]),
-          Schema.String,
-        ]),
-      ),
-      name: Schema.String,
-      updatedAt: Schema.String,
-      url: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        events: "events",
-        name: "name",
-        updatedAt: "updated_at",
-        url: "url",
-      }),
-    ),
+    data: Schema.Unknown,
     success: Schema.Boolean,
   }) as unknown as Schema.Schema<ReplaceWebhookWebhookResponse>;
 
-export type ReplaceWebhookWebhookError = DefaultErrors;
+export type ReplaceWebhookWebhookError =
+  | DefaultErrors
+  | RealtimeKitWebhookNotFound
+  | Forbidden;
 
 export const replaceWebhookWebhook: API.OperationMethod<
   ReplaceWebhookWebhookRequest,
@@ -12926,5 +12009,5 @@ export const replaceWebhookWebhook: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplaceWebhookWebhookRequest,
   output: ReplaceWebhookWebhookResponse,
-  errors: [],
+  errors: [RealtimeKitWebhookNotFound, Forbidden],
 }));

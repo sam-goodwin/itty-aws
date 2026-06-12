@@ -2844,11 +2844,7 @@ export const BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestComm
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Batch creates pull request comments. This function is used to create multiple PullRequestComments for code review. There needs to be exactly one PullRequestComment of type Review, and at most 100 PullRequestComments of type Code per request. The Position of the code comments must be unique within the request. */
 export const batchCreateProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -2889,11 +2885,7 @@ export const PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRe
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Updates a pull request comment. */
 export const patchProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -2928,9 +2920,7 @@ export const GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResp
   /*@__PURE__*/ /*#__PURE__*/ PullRequestComment;
 
 export type GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets a pull request comment. */
 export const getProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -2964,11 +2954,7 @@ export const DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsR
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a pull request comment. */
 export const deleteProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -3010,11 +2996,7 @@ export const ResolveProjectsLocationsRepositoriesPullRequestsPullRequestComments
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Resolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be resolved. */
 export const resolveProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -3056,11 +3038,7 @@ export const CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsR
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Creates a pull request comment. This function is used to create a single PullRequestComment of type Comment, or a single PullRequestComment of type Code that's replying to another PullRequestComment of type Code. Use BatchCreatePullRequestComments to create multiple PullRequestComments for code reviews. */
 export const createProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -3104,11 +3082,7 @@ export const UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommen
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Unresolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be unresolved. */
 export const unresolveProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -3149,9 +3123,7 @@ export const ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRes
   /*@__PURE__*/ /*#__PURE__*/ ListPullRequestCommentsResponse;
 
 export type ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists pull request comments. */
 export const listProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.PaginatedOperationMethod<

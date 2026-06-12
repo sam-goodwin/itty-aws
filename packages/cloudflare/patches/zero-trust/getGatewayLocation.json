@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "GatewayLocationNotFound": [{ "code": 1103 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

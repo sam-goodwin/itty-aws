@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "CustomCertificateNotFound": [{ "status": 404 }],
+    "PlanLevelNotAllowed": [{ "code": 1011 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

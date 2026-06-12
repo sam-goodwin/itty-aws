@@ -2215,9 +2215,7 @@ export const ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesResp
   /*@__PURE__*/ /*#__PURE__*/ ListMetricsScopesByMonitoredProjectResponse;
 
 export type ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of every Metrics Scope that a specific MonitoredProject has been added to. The metrics scope representing the specified monitored project will always be the first entry in the response. */
 export const listMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopes: API.OperationMethod<

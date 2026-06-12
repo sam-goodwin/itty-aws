@@ -1097,6 +1097,9 @@ paths:
                     type: number
                 required:
                   - default_asn
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putSetting
       description: "Update the current settings for the active account  @example ```ts
@@ -1133,6 +1136,9 @@ paths:
                     type: number
                 required:
                   - default_asn
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/cni/slots/{slot}:
     get:
       operationId: getSlot

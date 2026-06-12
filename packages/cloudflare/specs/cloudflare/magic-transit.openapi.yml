@@ -88,6 +88,11 @@ paths:
                     required:
                       - managed_app_id
       x-distilled-pagination-class: AppListResponsesSinglePage
+      x-distilled-errors:
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     post:
       operationId: createApp
       description: "Creates a new App for an account  @example ```ts const app = await
@@ -171,6 +176,11 @@ paths:
                 required:
                   - account_app_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/apps/{accountAppId}:
     put:
       operationId: updateApp
@@ -256,6 +266,13 @@ paths:
                 required:
                   - account_app_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        AppNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchApp
       description: "Updates an Account App  @example ```ts const response = await
@@ -340,6 +357,13 @@ paths:
                 required:
                   - account_app_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        AppNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteApp
       description: "Deletes specific Account App.  @example ```ts const app = await
@@ -394,6 +418,13 @@ paths:
                 required:
                   - account_app_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        AppNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/cf_interconnects/{cfInterconnectId}:
     get:
       operationId: getCfInterconnect
@@ -4338,6 +4369,13 @@ paths:
                       - interface_address
                       - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        GreTunnelNotFound:
+          - code: 1029
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     put:
       operationId: updateGreTunnel
       description: "Updates a specific GRE tunnel. Use `?validate_only=true` as an
@@ -4665,6 +4703,13 @@ paths:
                       - interface_address
                       - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        GreTunnelNotFound:
+          - code: 1029
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteGreTunnel
       description: "Disables and removes a specific static GRE tunnel. Use
@@ -4882,6 +4927,13 @@ paths:
                       - interface_address
                       - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        GreTunnelNotFound:
+          - code: 1029
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/gre_tunnels:
     get:
       operationId: listGreTunnels
@@ -5097,6 +5149,11 @@ paths:
                         - interface_address
                         - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     post:
       operationId: createGreTunnel
       description: "Creates a new GRE tunnel. Use `?validate_only=true` as an optional
@@ -5443,6 +5500,11 @@ paths:
                   - interface_address
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     put:
       operationId: bulkPutGreTunnels
       description: "Updates multiple GRE tunnels. Use `?validate_only=true` as an
@@ -5902,6 +5964,13 @@ paths:
                       - interface_address
                       - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        IpsecTunnelNotFound:
+          - code: 1032
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     put:
       operationId: updateIpsecTunnel
       description: "Updates a specific IPsec tunnel associated with an account. Use
@@ -6297,6 +6366,13 @@ paths:
                       - interface_address
                       - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        IpsecTunnelNotFound:
+          - code: 1032
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteIpsecTunnel
       description: "Disables and removes a specific static IPsec Tunnel associated
@@ -6536,6 +6612,13 @@ paths:
                       - interface_address
                       - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        IpsecTunnelNotFound:
+          - code: 1032
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/ipsec_tunnels:
     get:
       operationId: listIpsecTunnels
@@ -6774,6 +6857,11 @@ paths:
                         - interface_address
                         - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     post:
       operationId: createIpsecTunnel
       description: "Creates a new IPsec tunnel associated with an account. Use
@@ -7155,6 +7243,11 @@ paths:
                   - interface_address
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     put:
       operationId: bulkPutIpsecTunnels
       description: "Update multiple IPsec tunnels associated with an account. Use
@@ -8426,6 +8519,11 @@ paths:
                         - prefix
                         - priority
       x-distilled-response-path: result
+      x-distilled-errors:
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     post:
       operationId: createRoute
       description: "Creates a new Magic static route. Use `?validate_only=true` as an
@@ -8534,6 +8632,11 @@ paths:
                   - prefix
                   - priority
       x-distilled-response-path: result
+      x-distilled-errors:
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     delete:
       operationId: emptyRoute
       description: "Delete multiple Magic static routes.  @example ```ts const
@@ -8679,6 +8782,13 @@ paths:
                       - prefix
                       - priority
       x-distilled-response-path: result
+      x-distilled-errors:
+        RouteNotFound:
+          - code: 1020
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     put:
       operationId: updateRoute
       description: "Update a specific Magic static route. Use `?validate_only=true` as
@@ -8797,6 +8907,13 @@ paths:
                       - prefix
                       - priority
       x-distilled-response-path: result
+      x-distilled-errors:
+        RouteNotFound:
+          - code: 1020
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteRoute
       description: "Disable and remove a specific Magic static route.  @example ```ts
@@ -8872,6 +8989,13 @@ paths:
                       - prefix
                       - priority
       x-distilled-response-path: result
+      x-distilled-errors:
+        RouteNotFound:
+          - code: 1020
+        MagicTransitNotOnboarded:
+          - code: 1012
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/sites/{siteId}:
     get:
       operationId: getSite
@@ -8936,6 +9060,13 @@ paths:
                     description: Magic Connector identifier tag. Used when high availability mode is
                       on.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     put:
       operationId: updateSite
       description: "Update a specific Site.  @example ```ts const site = await
@@ -9021,6 +9152,13 @@ paths:
                     description: Magic Connector identifier tag. Used when high availability mode is
                       on.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSite
       description: "Patch a specific Site.  @example ```ts const site = await
@@ -9106,6 +9244,13 @@ paths:
                     description: Magic Connector identifier tag. Used when high availability mode is
                       on.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSite
       description: "Remove a specific Site.  @example ```ts const site = await
@@ -9161,6 +9306,13 @@ paths:
                     description: Magic Connector identifier tag. Used when high availability mode is
                       on.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/sites:
     get:
       operationId: listSites
@@ -9221,6 +9373,11 @@ paths:
                     description: Magic Connector identifier tag. Used when high availability mode is
                       on.
       x-distilled-pagination-class: SitesSinglePage
+      x-distilled-errors:
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     post:
       operationId: createSite
       description: "Creates a new Site  @example ```ts const site = await
@@ -9307,6 +9464,11 @@ paths:
                     description: Magic Connector identifier tag. Used when high availability mode is
                       on.
       x-distilled-response-path: result
+      x-distilled-errors:
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/sites/{siteId}/acls/{aclId}:
     get:
       operationId: getSiteAcl
@@ -9435,6 +9597,13 @@ paths:
                       direction. If not included in request, will default to
                       false.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteAclNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     put:
       operationId: updateSiteAcl
       description: "Update a specific Site ACL.  @example ```ts const acl = await
@@ -9664,6 +9833,13 @@ paths:
                       direction. If not included in request, will default to
                       false.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteAclNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSiteAcl
       description: "Patch a specific Site ACL.  @example ```ts const acl = await
@@ -9893,6 +10069,13 @@ paths:
                       direction. If not included in request, will default to
                       false.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteAclNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSiteAcl
       description: "Remove a specific Site ACL.  @example ```ts const acl = await
@@ -10020,6 +10203,13 @@ paths:
                       direction. If not included in request, will default to
                       false.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteAclNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/sites/{siteId}/acls:
     get:
       operationId: listSiteAcls
@@ -10143,6 +10333,11 @@ paths:
                       direction. If not included in request, will default to
                       false.
       x-distilled-pagination-class: ACLsSinglePage
+      x-distilled-errors:
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     post:
       operationId: createSiteAcl
       description: "Creates a new Site ACL.  @example ```ts const acl = await
@@ -10372,6 +10567,11 @@ paths:
                       direction. If not included in request, will default to
                       false.
       x-distilled-response-path: result
+      x-distilled-errors:
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/sites/{siteId}/lans/{lanId}:
     get:
       operationId: getSiteLan
@@ -10538,6 +10738,13 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteLanNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     put:
       operationId: updateSiteLan
       description: "Update a specific Site LAN.  @example ```ts const lan = await
@@ -10840,6 +11047,13 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteLanNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSiteLan
       description: "Patch a specific Site LAN.  @example ```ts const lan = await
@@ -11142,6 +11356,13 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteLanNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSiteLan
       description: "Remove a specific Site LAN.  @example ```ts const lan = await
@@ -11307,6 +11528,13 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteLanNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/sites/{siteId}/lans:
     get:
       operationId: listSiteLans
@@ -11468,6 +11696,11 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-pagination-class: LANsSinglePage
+      x-distilled-errors:
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     post:
       operationId: createSiteLan
       description: "Creates a new Site LAN. If the site is in high availability mode,
@@ -11772,6 +12005,11 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-pagination-class: LANsSinglePage
+      x-distilled-errors:
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/sites/{siteId}/wans/{wanId}:
     get:
       operationId: getSiteWan
@@ -11846,6 +12084,13 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteWanNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     put:
       operationId: updateSiteWan
       description: "Update a specific Site WAN.  @example ```ts const wan = await
@@ -11955,6 +12200,13 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteWanNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSiteWan
       description: "Patch a specific Site WAN.  @example ```ts const wan = await
@@ -12064,6 +12316,13 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteWanNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSiteWan
       description: "Remove a specific Site WAN.  @example ```ts const wan = await
@@ -12137,6 +12396,13 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteWanNotFound:
+          - status: 404
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/sites/{siteId}/wans:
     get:
       operationId: listSiteWans
@@ -12206,6 +12472,11 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-pagination-class: WANsSinglePage
+      x-distilled-errors:
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403
     post:
       operationId: createSiteWan
       description: "Creates a new Site WAN.  @example ```ts // Automatically fetches
@@ -12313,3 +12584,8 @@ paths:
                     type: number
                     description: VLAN ID. Use zero for untagged.
       x-distilled-pagination-class: WANsSinglePage
+      x-distilled-errors:
+        MagicWanUnauthorized:
+          - code: 1025
+        Forbidden:
+          - status: 403

@@ -1,0 +1,41 @@
+{
+  "errors": {
+    "UaRuleNotFound": [
+      {
+        "code": 10001,
+        "message": { "includes": "firewalluablock.api.not_found" }
+      },
+      { "status": 404 }
+    ],
+    "DuplicateUaRule": [
+      {
+        "code": 10009,
+        "message": { "includes": "firewalluablock.api.duplicate_of_existing" }
+      }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "request": {
+    "properties": {
+      "configuration": {
+        "appendUnion": [
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "target",
+                "required": false,
+                "type": { "kind": "literal", "value": "ua" }
+              },
+              {
+                "name": "value",
+                "required": false,
+                "type": { "kind": "primitive", "value": "string" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

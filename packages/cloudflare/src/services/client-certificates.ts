@@ -13,6 +13,33 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class ClientCertificateAlreadyRevoked extends Schema.TaggedErrorClass<ClientCertificateAlreadyRevoked>()(
+  "ClientCertificateAlreadyRevoked",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ClientCertificateAlreadyRevoked, [
+  { code: 1407, message: { includes: "already deleted" } },
+]);
+
+export class ClientCertificateNotFound extends Schema.TaggedErrorClass<ClientCertificateNotFound>()(
+  "ClientCertificateNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ClientCertificateNotFound, [
+  { code: 1415, message: { includes: "Invalid Certificate ID" } },
+  { status: 404 },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // ClientCertificate
 // =============================================================================
 
@@ -150,7 +177,10 @@ export const GetClientCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetClientCertificateResponse>;
 
-export type GetClientCertificateError = DefaultErrors;
+export type GetClientCertificateError =
+  | DefaultErrors
+  | ClientCertificateNotFound
+  | Forbidden;
 
 export const getClientCertificate: API.OperationMethod<
   GetClientCertificateRequest,
@@ -160,7 +190,7 @@ export const getClientCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetClientCertificateRequest,
   output: GetClientCertificateResponse,
-  errors: [],
+  errors: [ClientCertificateNotFound, Forbidden],
 }));
 
 export interface ListClientCertificatesRequest {
@@ -342,7 +372,7 @@ export const ListClientCertificatesResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListClientCertificatesResponse>;
 
-export type ListClientCertificatesError = DefaultErrors;
+export type ListClientCertificatesError = DefaultErrors | Forbidden;
 
 export const listClientCertificates: API.PaginatedOperationMethod<
   ListClientCertificatesRequest,
@@ -352,7 +382,7 @@ export const listClientCertificates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClientCertificatesRequest,
   output: ListClientCertificatesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -498,7 +528,7 @@ export const CreateClientCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateClientCertificateResponse>;
 
-export type CreateClientCertificateError = DefaultErrors;
+export type CreateClientCertificateError = DefaultErrors | Forbidden;
 
 export const createClientCertificate: API.OperationMethod<
   CreateClientCertificateRequest,
@@ -508,7 +538,7 @@ export const createClientCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateClientCertificateRequest,
   output: CreateClientCertificateResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchClientCertificateRequest {
@@ -648,7 +678,10 @@ export const PatchClientCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchClientCertificateResponse>;
 
-export type PatchClientCertificateError = DefaultErrors;
+export type PatchClientCertificateError =
+  | DefaultErrors
+  | ClientCertificateNotFound
+  | Forbidden;
 
 export const patchClientCertificate: API.OperationMethod<
   PatchClientCertificateRequest,
@@ -658,7 +691,7 @@ export const patchClientCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchClientCertificateRequest,
   output: PatchClientCertificateResponse,
-  errors: [],
+  errors: [ClientCertificateNotFound, Forbidden],
 }));
 
 export interface DeleteClientCertificateRequest {
@@ -795,7 +828,11 @@ export const DeleteClientCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteClientCertificateResponse>;
 
-export type DeleteClientCertificateError = DefaultErrors;
+export type DeleteClientCertificateError =
+  | DefaultErrors
+  | ClientCertificateNotFound
+  | ClientCertificateAlreadyRevoked
+  | Forbidden;
 
 export const deleteClientCertificate: API.OperationMethod<
   DeleteClientCertificateRequest,
@@ -805,5 +842,9 @@ export const deleteClientCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteClientCertificateRequest,
   output: DeleteClientCertificateResponse,
-  errors: [],
+  errors: [
+    ClientCertificateNotFound,
+    ClientCertificateAlreadyRevoked,
+    Forbidden,
+  ],
 }));

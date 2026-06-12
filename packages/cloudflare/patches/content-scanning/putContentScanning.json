@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "ContentScanningNotEntitled": [
+      { "status": 400, "message": { "includes": "not entitled" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -39633,11 +39633,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentsOperation
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsReasoningEnginesSandboxEnvironmentsOperations: API.OperationMethod<
@@ -39675,11 +39671,7 @@ export const WaitProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type WaitProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsLocationsReasoningEnginesSandboxEnvironmentsOperations: API.OperationMethod<
@@ -39714,9 +39706,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsReasoningEnginesSandboxEnvironmentsOperations: API.OperationMethod<
@@ -39751,11 +39741,7 @@ export const CancelProjectsLocationsReasoningEnginesSandboxEnvironmentsOperation
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsReasoningEnginesSandboxEnvironmentsOperations: API.OperationMethod<
@@ -40557,11 +40543,7 @@ export const CreateProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesR
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Creates a SandboxEnvironmentTemplate in a given reasoning engine. */
 export const createProjectsLocationsReasoningEnginesSandboxEnvironmentTemplates: API.OperationMethod<
@@ -40596,11 +40578,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesR
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes the specific SandboxEnvironmentTemplate. */
 export const deleteProjectsLocationsReasoningEnginesSandboxEnvironmentTemplates: API.OperationMethod<
@@ -40644,9 +40622,7 @@ export const ListProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse;
 
 export type ListProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists SandboxEnvironmentTemplates in a given reasoning engine. */
 export const listProjectsLocationsReasoningEnginesSandboxEnvironmentTemplates: API.PaginatedOperationMethod<
@@ -40685,9 +40661,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1SandboxEnvironmentTemplate;
 
 export type GetProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets details of the specific SandboxEnvironmentTemplate. */
 export const getProjectsLocationsReasoningEnginesSandboxEnvironmentTemplates: API.OperationMethod<
@@ -40721,9 +40695,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOper
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperations: API.OperationMethod<
@@ -40758,11 +40730,7 @@ export const CancelProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesO
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperations: API.OperationMethod<
@@ -40797,11 +40765,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesO
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperations: API.OperationMethod<
@@ -40839,11 +40803,7 @@ export const WaitProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOpe
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type WaitProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperations: API.OperationMethod<
@@ -41080,11 +41040,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes the specific SandboxEnvironmentSnapshot. */
 export const deleteProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshots: API.OperationMethod<
@@ -41128,9 +41084,7 @@ export const ListProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse;
 
 export type ListProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists SandboxEnvironmentSnapshots in a given reasoning engine. */
 export const listProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshots: API.PaginatedOperationMethod<
@@ -41169,9 +41123,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1SandboxEnvironmentSnapshot;
 
 export type GetProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets details of the specific SandboxEnvironmentSnapshot. */
 export const getProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshots: API.OperationMethod<
@@ -41205,11 +41157,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsO
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperations: API.OperationMethod<
@@ -41247,11 +41195,7 @@ export const WaitProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOpe
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type WaitProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperations: API.OperationMethod<
@@ -41286,9 +41230,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOper
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperations: API.OperationMethod<
@@ -41323,11 +41265,7 @@ export const CancelProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsO
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperations: API.OperationMethod<
@@ -43232,11 +43170,7 @@ export const StreamingReadFeatureValuesProjectsLocationsFeaturestoresEntityTypes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1ReadFeatureValuesResponse;
 
 export type StreamingReadFeatureValuesProjectsLocationsFeaturestoresEntityTypesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Reads Feature values for multiple entities. Depending on their size, data for different entities may be broken up across multiple responses. */
 export const streamingReadFeatureValuesProjectsLocationsFeaturestoresEntityTypes: API.OperationMethod<
@@ -43867,11 +43801,7 @@ export const CancelProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsFeaturestoresEntityTypesFeaturesOperations: API.OperationMethod<
@@ -43906,11 +43836,7 @@ export const DeleteProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsFeaturestoresEntityTypesFeaturesOperations: API.OperationMethod<
@@ -43945,9 +43871,7 @@ export const GetProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsFeaturestoresEntityTypesFeaturesOperations: API.OperationMethod<
@@ -43995,9 +43919,7 @@ export const ListProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsFeaturestoresEntityTypesFeaturesOperations: API.PaginatedOperationMethod<
@@ -44038,11 +43960,7 @@ export const WaitProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type WaitProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsLocationsFeaturestoresEntityTypesFeaturesOperations: API.OperationMethod<
@@ -46675,11 +46593,7 @@ export const SearchModelDeploymentMonitoringStatsAnomaliesProjectsLocationsModel
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesResponse;
 
 export type SearchModelDeploymentMonitoringStatsAnomaliesProjectsLocationsModelDeploymentMonitoringJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Searches Model Monitoring Statistics generated within a given time window. */
 export const searchModelDeploymentMonitoringStatsAnomaliesProjectsLocationsModelDeploymentMonitoringJobs: API.OperationMethod<
@@ -46890,11 +46804,7 @@ export const DeleteProjectsLocationsModelDeploymentMonitoringJobsOperationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsModelDeploymentMonitoringJobsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsModelDeploymentMonitoringJobsOperations: API.OperationMethod<
@@ -46928,11 +46838,7 @@ export const CancelProjectsLocationsModelDeploymentMonitoringJobsOperationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsModelDeploymentMonitoringJobsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsModelDeploymentMonitoringJobsOperations: API.OperationMethod<
@@ -54204,9 +54110,7 @@ export const QueryContextLineageSubgraphProjectsLocationsMetadataStoresContextsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1LineageSubgraph;
 
 export type QueryContextLineageSubgraphProjectsLocationsMetadataStoresContextsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves Artifacts and Executions within the specified Context, connected by Event edges and returned as a LineageSubgraph. */
 export const queryContextLineageSubgraphProjectsLocationsMetadataStoresContexts: API.OperationMethod<
@@ -54298,11 +54202,7 @@ export const AddContextArtifactsAndExecutionsProjectsLocationsMetadataStoresCont
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsResponse;
 
 export type AddContextArtifactsAndExecutionsProjectsLocationsMetadataStoresContextsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Adds a set of Artifacts and Executions to a Context. If any of the Artifacts or Executions have already been added to a Context, they are simply skipped. */
 export const addContextArtifactsAndExecutionsProjectsLocationsMetadataStoresContexts: API.OperationMethod<
@@ -54994,9 +54894,7 @@ export const QueryArtifactLineageSubgraphProjectsLocationsMetadataStoresArtifact
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1LineageSubgraph;
 
 export type QueryArtifactLineageSubgraphProjectsLocationsMetadataStoresArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves lineage of an Artifact represented through Artifacts and Executions connected by Event edges and returned as a LineageSubgraph. */
 export const queryArtifactLineageSubgraphProjectsLocationsMetadataStoresArtifacts: API.OperationMethod<
@@ -55681,9 +55579,7 @@ export const QueryExecutionInputsAndOutputsProjectsLocationsMetadataStoresExecut
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1LineageSubgraph;
 
 export type QueryExecutionInputsAndOutputsProjectsLocationsMetadataStoresExecutionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Obtains the set of input and output Artifacts for this Execution, in the form of LineageSubgraph that also contains the Execution and connecting Events. */
 export const queryExecutionInputsAndOutputsProjectsLocationsMetadataStoresExecutions: API.OperationMethod<
@@ -57442,11 +57338,7 @@ export const GenerateFetchAccessTokenProjectsLocationsFeatureOnlineStoresFeature
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1GenerateFetchAccessTokenResponse;
 
 export type GenerateFetchAccessTokenProjectsLocationsFeatureOnlineStoresFeatureViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** RPC to generate an access token for the given feature view. FeatureViews under the same FeatureOnlineStore share the same access token. */
 export const generateFetchAccessTokenProjectsLocationsFeatureOnlineStoresFeatureViews: API.OperationMethod<
@@ -57583,11 +57475,7 @@ export const TestIamPermissionsProjectsLocationsFeatureOnlineStoresFeatureViewsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsFeatureOnlineStoresFeatureViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsFeatureOnlineStoresFeatureViews: API.OperationMethod<
@@ -57711,11 +57599,7 @@ export const SearchNearestEntitiesProjectsLocationsFeatureOnlineStoresFeatureVie
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1SearchNearestEntitiesResponse;
 
 export type SearchNearestEntitiesProjectsLocationsFeatureOnlineStoresFeatureViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Search the nearest entities under a FeatureView. Search only works for indexable feature view; if a feature view isn't indexable, returns Invalid argument response. */
 export const searchNearestEntitiesProjectsLocationsFeatureOnlineStoresFeatureViews: API.OperationMethod<
@@ -57803,11 +57687,7 @@ export const FetchFeatureValuesProjectsLocationsFeatureOnlineStoresFeatureViewsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1FetchFeatureValuesResponse;
 
 export type FetchFeatureValuesProjectsLocationsFeatureOnlineStoresFeatureViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Fetch feature values under a FeatureView. */
 export const fetchFeatureValuesProjectsLocationsFeatureOnlineStoresFeatureViews: API.OperationMethod<
@@ -57976,9 +57856,7 @@ export const GetProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsFeatureOnlineStoresFeatureViewsOperations: API.OperationMethod<
@@ -58025,9 +57903,7 @@ export const ListWaitProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListWaitProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listWaitProjectsLocationsFeatureOnlineStoresFeatureViewsOperations: API.PaginatedOperationMethod<
@@ -58066,11 +57942,7 @@ export const DeleteProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsFeatureOnlineStoresFeatureViewsOperations: API.OperationMethod<
@@ -58108,11 +57980,7 @@ export const WaitProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type WaitProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsLocationsFeatureOnlineStoresFeatureViewsOperations: API.OperationMethod<
@@ -58146,9 +58014,7 @@ export const GetProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncs
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1FeatureViewSync;
 
 export type GetProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets details of a single FeatureViewSync. */
 export const getProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncs: API.OperationMethod<
@@ -58195,9 +58061,7 @@ export const ListProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSync
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1ListFeatureViewSyncsResponse;
 
 export type ListProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists FeatureViewSyncs in a given FeatureView. */
 export const listProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncs: API.PaginatedOperationMethod<
@@ -62298,11 +62162,7 @@ export const CancelProjectsLocationsDatasetsDataItemsAnnotationsOperationsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsDatasetsDataItemsAnnotationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsDatasetsDataItemsAnnotationsOperations: API.OperationMethod<
@@ -62335,11 +62195,7 @@ export const DeleteProjectsLocationsDatasetsDataItemsAnnotationsOperationsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsDatasetsDataItemsAnnotationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsDatasetsDataItemsAnnotationsOperations: API.OperationMethod<
@@ -64924,9 +64780,7 @@ export const ReadBlobDataProjectsLocationsTensorboardsExperimentsRunsTimeSeriesR
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1ReadTensorboardBlobDataResponse;
 
 export type ReadBlobDataProjectsLocationsTensorboardsExperimentsRunsTimeSeriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets bytes of TensorboardBlobs. This is to allow reading blob data stored in consumer project's Cloud Storage bucket without users having to obtain Cloud Storage access permission. */
 export const readBlobDataProjectsLocationsTensorboardsExperimentsRunsTimeSeries: API.OperationMethod<
@@ -65101,11 +64955,7 @@ export const ExportTensorboardTimeSeriesProjectsLocationsTensorboardsExperiments
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataResponse;
 
 export type ExportTensorboardTimeSeriesProjectsLocationsTensorboardsExperimentsRunsTimeSeriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Exports a TensorboardTimeSeries' data. Data is returned in paginated responses. */
 export const exportTensorboardTimeSeriesProjectsLocationsTensorboardsExperimentsRunsTimeSeries: API.OperationMethod<
@@ -65274,11 +65124,7 @@ export const DeleteProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperati
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperations: API.OperationMethod<
@@ -65313,11 +65159,7 @@ export const CancelProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperati
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperations: API.OperationMethod<
@@ -65355,11 +65197,7 @@ export const WaitProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperation
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type WaitProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperations: API.OperationMethod<
@@ -65408,9 +65246,7 @@ export const ListProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperation
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperations: API.PaginatedOperationMethod<
@@ -65449,9 +65285,7 @@ export const GetProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperations
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperations: API.OperationMethod<

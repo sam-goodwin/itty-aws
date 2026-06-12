@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "PoolNotFound": [{ "code": 1001 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

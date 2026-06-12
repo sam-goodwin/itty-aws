@@ -2269,6 +2269,10 @@ paths:
           - code: 7003
         InternalServerError:
           - code: 15000
+        SilenceNotFound:
+          - code: 0
+            message:
+              includes: silence not found
     delete:
       operationId: deleteSilence
       description: "Deletes an existing silence for an account.  @example ```ts const
@@ -2329,6 +2333,10 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        SilenceNotFound:
+          - code: 0
+            message:
+              includes: silence not found
   /accounts/{account_id}/alerting/v3/silences:
     get:
       operationId: listSilences
@@ -2442,6 +2450,12 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        InvalidSilence:
+          - code: 0
+            message:
+              includes: invalid silence
+        SilenceAlreadyExists:
+          - code: 15000
     put:
       operationId: updateSilence
       description: "Updates existing silences for an account.  @example ```ts //
@@ -2500,3 +2514,12 @@ paths:
                     type: string
                     description: When the silence was modified.
       x-distilled-pagination-class: SilenceUpdateResponsesSinglePage
+      x-distilled-errors:
+        SilenceNotFound:
+          - code: 0
+            message:
+              includes: silence not found
+        InvalidSilence:
+          - code: 0
+            message:
+              includes: invalid silence

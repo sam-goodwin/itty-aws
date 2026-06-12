@@ -1434,6 +1434,14 @@ paths:
                     type: string
                     description: A URL.
       x-distilled-response-path: result
+      x-distilled-errors:
+        TestScheduleNotFound:
+          - code: 404
+            message:
+              includes: schedule_not_found
+          - status: 404
+        Forbidden:
+          - status: 403
     post:
       operationId: createSchedule
       description: "Creates a scheduled test for a page.  @example ```ts const
@@ -1708,6 +1716,17 @@ paths:
                         type: string
                         description: A URL.
       x-distilled-response-path: result
+      x-distilled-errors:
+        TestScheduleAlreadyExists:
+          - code: 400
+            message:
+              includes: scheduled_test_already_exists
+        TestScheduleQuotaReached:
+          - code: 429
+            message:
+              includes: quota reached
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSchedule
       description: "Deletes a scheduled test for a page.  @example ```ts const
@@ -1765,3 +1784,10 @@ paths:
                     type: number
                     description: Number of items affected.
       x-distilled-response-path: result
+      x-distilled-errors:
+        TestScheduleNotFound:
+          - code: 404
+            message:
+              includes: schedule_not_found
+        Forbidden:
+          - status: 403

@@ -65,6 +65,13 @@ paths:
                   - status
                   - zone_tag
       x-distilled-pagination-class: CustomNameserversSinglePage
+      x-distilled-errors:
+        CustomNameserversNotEnabled:
+          - code: 1002
+            message:
+              includes: not enabled
+        Forbidden:
+          - status: 403
     post:
       operationId: createCustomNameserver
       description: "Add Account Custom Nameserver  @example ```ts const
@@ -138,6 +145,16 @@ paths:
                   - status
                   - zone_tag
       x-distilled-response-path: result
+      x-distilled-errors:
+        CustomNameserversNotEnabled:
+          - code: 1002
+            message:
+              includes: not enabled
+        CustomNameserverAlreadyExists:
+          - message:
+              includes: already exist
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/custom_ns/{customNSId}:
     delete:
       operationId: deleteCustomNameserver
@@ -166,3 +183,12 @@ paths:
               schema:
                 type: string
       x-distilled-pagination-class: CustomNameserverDeleteResponsesSinglePage
+      x-distilled-errors:
+        CustomNameserversNotEnabled:
+          - code: 1002
+            message:
+              includes: not enabled
+        CustomNameserverNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403

@@ -1,5 +1,9 @@
 {
-  "errors": {},
+  "errors": {
+    "ResourceGroupNotFound": [
+      { "code": 404, "message": { "includes": "Resource group" } }
+    ]
+  },
   "response": {
     "properties": {
       "scope": { "type": "unknown" }

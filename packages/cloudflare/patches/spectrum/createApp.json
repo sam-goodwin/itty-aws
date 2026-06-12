@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "SpectrumProtocolNotAvailable": [{ "code": 13002 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

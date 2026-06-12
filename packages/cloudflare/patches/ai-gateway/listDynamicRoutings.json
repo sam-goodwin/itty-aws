@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "GatewayNotFound": [{ "code": 7002 }]
+  },
+  "response": {
+    "properties": {
+      "data.routes[].elements": { "optional": true },
+      "data.routes[].version.data": { "optional": true, "type": "unknown" }
+    }
+  }
+}

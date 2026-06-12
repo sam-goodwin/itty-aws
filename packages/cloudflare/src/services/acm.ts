@@ -22,11 +22,35 @@ export class AdvancedCertificateManagerRequired extends Schema.TaggedErrorClass<
 ) {}
 T.applyErrorMatchers(AdvancedCertificateManagerRequired, [{ code: 1450 }]);
 
+export class CustomTrustStoreNotFound extends Schema.TaggedErrorClass<CustomTrustStoreNotFound>()(
+  "CustomTrustStoreNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CustomTrustStoreNotFound, [{ status: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class InvalidObjectIdentifier extends Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
   "InvalidObjectIdentifier",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(InvalidObjectIdentifier, [{ code: 7003 }]);
+
+export class NoStateChange extends Schema.TaggedErrorClass<NoStateChange>()(
+  "NoStateChange",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(NoStateChange, [{ code: 1467 }]);
+
+export class PreviousJobInProgress extends Schema.TaggedErrorClass<PreviousJobInProgress>()(
+  "PreviousJobInProgress",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PreviousJobInProgress, [{ code: 1482 }]);
 
 // =============================================================================
 // CustomTrustStore
@@ -114,7 +138,12 @@ export const GetCustomTrustStoreResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetCustomTrustStoreResponse>;
 
-export type GetCustomTrustStoreError = DefaultErrors;
+export type GetCustomTrustStoreError =
+  | DefaultErrors
+  | InvalidObjectIdentifier
+  | AdvancedCertificateManagerRequired
+  | CustomTrustStoreNotFound
+  | Forbidden;
 
 export const getCustomTrustStore: API.OperationMethod<
   GetCustomTrustStoreRequest,
@@ -124,7 +153,12 @@ export const getCustomTrustStore: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomTrustStoreRequest,
   output: GetCustomTrustStoreResponse,
-  errors: [],
+  errors: [
+    InvalidObjectIdentifier,
+    AdvancedCertificateManagerRequired,
+    CustomTrustStoreNotFound,
+    Forbidden,
+  ],
 }));
 
 export interface ListCustomTrustStoresRequest {
@@ -234,7 +268,10 @@ export const ListCustomTrustStoresResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListCustomTrustStoresResponse>;
 
-export type ListCustomTrustStoresError = DefaultErrors;
+export type ListCustomTrustStoresError =
+  | DefaultErrors
+  | AdvancedCertificateManagerRequired
+  | Forbidden;
 
 export const listCustomTrustStores: API.PaginatedOperationMethod<
   ListCustomTrustStoresRequest,
@@ -244,7 +281,7 @@ export const listCustomTrustStores: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomTrustStoresRequest,
   output: ListCustomTrustStoresResponse,
-  errors: [],
+  errors: [AdvancedCertificateManagerRequired, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -332,7 +369,11 @@ export const CreateCustomTrustStoreResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateCustomTrustStoreResponse>;
 
-export type CreateCustomTrustStoreError = DefaultErrors;
+export type CreateCustomTrustStoreError =
+  | DefaultErrors
+  | InvalidObjectIdentifier
+  | AdvancedCertificateManagerRequired
+  | Forbidden;
 
 export const createCustomTrustStore: API.OperationMethod<
   CreateCustomTrustStoreRequest,
@@ -342,7 +383,11 @@ export const createCustomTrustStore: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomTrustStoreRequest,
   output: CreateCustomTrustStoreResponse,
-  errors: [],
+  errors: [
+    InvalidObjectIdentifier,
+    AdvancedCertificateManagerRequired,
+    Forbidden,
+  ],
 }));
 
 export interface DeleteCustomTrustStoreRequest {
@@ -376,7 +421,12 @@ export const DeleteCustomTrustStoreResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteCustomTrustStoreResponse>;
 
-export type DeleteCustomTrustStoreError = DefaultErrors;
+export type DeleteCustomTrustStoreError =
+  | DefaultErrors
+  | InvalidObjectIdentifier
+  | AdvancedCertificateManagerRequired
+  | CustomTrustStoreNotFound
+  | Forbidden;
 
 export const deleteCustomTrustStore: API.OperationMethod<
   DeleteCustomTrustStoreRequest,
@@ -386,7 +436,12 @@ export const deleteCustomTrustStore: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomTrustStoreRequest,
   output: DeleteCustomTrustStoreResponse,
-  errors: [],
+  errors: [
+    InvalidObjectIdentifier,
+    AdvancedCertificateManagerRequired,
+    CustomTrustStoreNotFound,
+    Forbidden,
+  ],
 }));
 
 // =============================================================================
@@ -445,7 +500,8 @@ export const GetTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTotalTlError =
   | DefaultErrors
   | InvalidObjectIdentifier
-  | AdvancedCertificateManagerRequired;
+  | AdvancedCertificateManagerRequired
+  | Forbidden;
 
 export const getTotalTl: API.OperationMethod<
   GetTotalTlRequest,
@@ -455,7 +511,11 @@ export const getTotalTl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTotalTlRequest,
   output: GetTotalTlResponse,
-  errors: [InvalidObjectIdentifier, AdvancedCertificateManagerRequired],
+  errors: [
+    InvalidObjectIdentifier,
+    AdvancedCertificateManagerRequired,
+    Forbidden,
+  ],
 }));
 
 export interface UpdateTotalTlRequest {
@@ -495,7 +555,7 @@ export interface UpdateTotalTlResponse {
   /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled?: boolean | null;
   /** The validity period in days for the certificates ordered via Total TLS. */
-  validityPeriod?: "90" | null;
+  validityPeriod?: number | null;
 }
 
 export const UpdateTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -509,9 +569,7 @@ export const UpdateTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  validityPeriod: Schema.optional(
-    Schema.Union([Schema.Literal("90"), Schema.Null]),
-  ),
+  validityPeriod: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
 })
   .pipe(
     Schema.encodeKeys({
@@ -524,7 +582,13 @@ export const UpdateTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateTotalTlResponse>;
 
-export type UpdateTotalTlError = DefaultErrors;
+export type UpdateTotalTlError =
+  | DefaultErrors
+  | InvalidObjectIdentifier
+  | AdvancedCertificateManagerRequired
+  | NoStateChange
+  | PreviousJobInProgress
+  | Forbidden;
 
 export const updateTotalTl: API.OperationMethod<
   UpdateTotalTlRequest,
@@ -534,7 +598,13 @@ export const updateTotalTl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTotalTlRequest,
   output: UpdateTotalTlResponse,
-  errors: [],
+  errors: [
+    InvalidObjectIdentifier,
+    AdvancedCertificateManagerRequired,
+    NoStateChange,
+    PreviousJobInProgress,
+    Forbidden,
+  ],
 }));
 
 export interface EditTotalTlRequest {

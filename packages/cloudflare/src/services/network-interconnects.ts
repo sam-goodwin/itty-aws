@@ -13,6 +13,16 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // Cni
 // =============================================================================
 
@@ -1115,7 +1125,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ defaultAsn: "default_asn" }),
 ) as unknown as Schema.Schema<GetSettingResponse>;
 
-export type GetSettingError = DefaultErrors;
+export type GetSettingError = DefaultErrors | Forbidden;
 
 export const getSetting: API.OperationMethod<
   GetSettingRequest,
@@ -1125,7 +1135,7 @@ export const getSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingRequest,
   output: GetSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutSettingRequest {
@@ -1153,7 +1163,7 @@ export const PutSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ defaultAsn: "default_asn" }),
 ) as unknown as Schema.Schema<PutSettingResponse>;
 
-export type PutSettingError = DefaultErrors;
+export type PutSettingError = DefaultErrors | Forbidden;
 
 export const putSetting: API.OperationMethod<
   PutSettingRequest,
@@ -1163,7 +1173,7 @@ export const putSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSettingRequest,
   output: PutSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================

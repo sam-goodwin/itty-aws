@@ -13,6 +13,16 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // HostnameAssociation
 // =============================================================================
 
@@ -49,7 +59,7 @@ export const GetHostnameAssociationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetHostnameAssociationResponse>;
 
-export type GetHostnameAssociationError = DefaultErrors;
+export type GetHostnameAssociationError = DefaultErrors | Forbidden;
 
 export const getHostnameAssociation: API.OperationMethod<
   GetHostnameAssociationRequest,
@@ -59,7 +69,7 @@ export const getHostnameAssociation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHostnameAssociationRequest,
   output: GetHostnameAssociationResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutHostnameAssociationRequest {
@@ -100,7 +110,7 @@ export const PutHostnameAssociationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutHostnameAssociationResponse>;
 
-export type PutHostnameAssociationError = DefaultErrors;
+export type PutHostnameAssociationError = DefaultErrors | Forbidden;
 
 export const putHostnameAssociation: API.OperationMethod<
   PutHostnameAssociationRequest,
@@ -110,5 +120,5 @@ export const putHostnameAssociation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutHostnameAssociationRequest,
   output: PutHostnameAssociationResponse,
-  errors: [],
+  errors: [Forbidden],
 }));

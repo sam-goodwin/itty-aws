@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "WatermarkImageInvalid": [{ "code": 10004 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -31,6 +31,17 @@ paths:
                     type: boolean
                     description: Whether AI Security for Apps is enabled on the zone.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AiSecurityNotEntitled:
+          - code: 13101
+            message:
+              includes: not entitled
+        ZoneNotAuthorized:
+          - code: 10000
+            message:
+              includes: Authentication error
+        Forbidden:
+          - status: 403
     put:
       operationId: putAiSecurity
       description: "Enable or disable AI Security for Apps for a zone.  Changes can
@@ -66,6 +77,17 @@ paths:
                     type: boolean
                     description: Whether AI Security for Apps is enabled on the zone.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AiSecurityNotEntitled:
+          - code: 13101
+            message:
+              includes: not entitled
+        ZoneNotAuthorized:
+          - code: 10000
+            message:
+              includes: Authentication error
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/ai-security/custom-topics:
     get:
       operationId: getCustomTopic
@@ -106,6 +128,17 @@ paths:
                         - topic
                     description: Custom topic categories for AI Security for Apps content detection.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AiSecurityNotEntitled:
+          - code: 13101
+            message:
+              includes: not entitled
+        ZoneNotAuthorized:
+          - code: 10000
+            message:
+              includes: Authentication error
+        Forbidden:
+          - status: 403
     put:
       operationId: putCustomTopic
       description: "Set the AI Security for Apps custom topic categories for a
@@ -174,3 +207,14 @@ paths:
                         - topic
                     description: Custom topic categories for AI Security for Apps content detection.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AiSecurityNotEntitled:
+          - code: 13101
+            message:
+              includes: not entitled
+        ZoneNotAuthorized:
+          - code: 10000
+            message:
+              includes: Authentication error
+        Forbidden:
+          - status: 403

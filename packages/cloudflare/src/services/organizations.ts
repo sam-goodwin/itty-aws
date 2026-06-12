@@ -13,6 +13,22 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class OrganizationNotFound extends Schema.TaggedErrorClass<OrganizationNotFound>()(
+  "OrganizationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(OrganizationNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // BillingUsage
 // =============================================================================
 
@@ -687,7 +703,10 @@ export const GetOrganizationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetOrganizationResponse>;
 
-export type GetOrganizationError = DefaultErrors;
+export type GetOrganizationError =
+  | DefaultErrors
+  | OrganizationNotFound
+  | Forbidden;
 
 export const getOrganization: API.OperationMethod<
   GetOrganizationRequest,
@@ -697,7 +716,7 @@ export const getOrganization: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationRequest,
   output: GetOrganizationResponse,
-  errors: [],
+  errors: [OrganizationNotFound, Forbidden],
 }));
 
 export interface ListOrganizationsRequest {
@@ -840,7 +859,7 @@ export const ListOrganizationsResponse =
     ),
   }) as unknown as Schema.Schema<ListOrganizationsResponse>;
 
-export type ListOrganizationsError = DefaultErrors;
+export type ListOrganizationsError = DefaultErrors | Forbidden;
 
 export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsRequest,
@@ -850,7 +869,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -994,7 +1013,7 @@ export const CreateOrganizationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateOrganizationResponse>;
 
-export type CreateOrganizationError = DefaultErrors;
+export type CreateOrganizationError = DefaultErrors | Forbidden;
 
 export const createOrganization: API.OperationMethod<
   CreateOrganizationRequest,
@@ -1004,7 +1023,7 @@ export const createOrganization: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationRequest,
   output: CreateOrganizationResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateOrganizationRequest {
@@ -1146,7 +1165,10 @@ export const UpdateOrganizationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateOrganizationResponse>;
 
-export type UpdateOrganizationError = DefaultErrors;
+export type UpdateOrganizationError =
+  | DefaultErrors
+  | OrganizationNotFound
+  | Forbidden;
 
 export const updateOrganization: API.OperationMethod<
   UpdateOrganizationRequest,
@@ -1156,7 +1178,7 @@ export const updateOrganization: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationRequest,
   output: UpdateOrganizationResponse,
-  errors: [],
+  errors: [OrganizationNotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationRequest {
@@ -1181,7 +1203,10 @@ export const DeleteOrganizationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteOrganizationResponse>;
 
-export type DeleteOrganizationError = DefaultErrors;
+export type DeleteOrganizationError =
+  | DefaultErrors
+  | OrganizationNotFound
+  | Forbidden;
 
 export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationRequest,
@@ -1191,7 +1216,7 @@ export const deleteOrganization: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationRequest,
   output: DeleteOrganizationResponse,
-  errors: [],
+  errors: [OrganizationNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -1238,7 +1263,10 @@ export const GetOrganizationProfileResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetOrganizationProfileResponse>;
 
-export type GetOrganizationProfileError = DefaultErrors;
+export type GetOrganizationProfileError =
+  | DefaultErrors
+  | OrganizationNotFound
+  | Forbidden;
 
 export const getOrganizationProfile: API.OperationMethod<
   GetOrganizationProfileRequest,
@@ -1248,7 +1276,7 @@ export const getOrganizationProfile: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationProfileRequest,
   output: GetOrganizationProfileResponse,
-  errors: [],
+  errors: [OrganizationNotFound, Forbidden],
 }));
 
 export interface PutOrganizationProfileRequest {
@@ -1284,7 +1312,10 @@ export type PutOrganizationProfileResponse = unknown;
 export const PutOrganizationProfileResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<PutOrganizationProfileResponse>;
 
-export type PutOrganizationProfileError = DefaultErrors;
+export type PutOrganizationProfileError =
+  | DefaultErrors
+  | OrganizationNotFound
+  | Forbidden;
 
 export const putOrganizationProfile: API.OperationMethod<
   PutOrganizationProfileRequest,
@@ -1294,5 +1325,5 @@ export const putOrganizationProfile: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutOrganizationProfileRequest,
   output: PutOrganizationProfileResponse,
-  errors: [],
+  errors: [OrganizationNotFound, Forbidden],
 }));

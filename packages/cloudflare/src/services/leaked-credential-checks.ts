@@ -14,6 +14,34 @@ import { type DefaultErrors } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class DetectionNotFound extends Schema.TaggedErrorClass<DetectionNotFound>()(
+  "DetectionNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DetectionNotFound, [{ code: 11002 }]);
+
+export class DetectionQuotaExceeded extends Schema.TaggedErrorClass<DetectionQuotaExceeded>()(
+  "DetectionQuotaExceeded",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DetectionQuotaExceeded, [{ code: 50001 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class LeakedCredentialChecksDisabled extends Schema.TaggedErrorClass<LeakedCredentialChecksDisabled>()(
+  "LeakedCredentialChecksDisabled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(LeakedCredentialChecksDisabled, [{ code: 11001 }]);
+
+// =============================================================================
 // Detection
 // =============================================================================
 
@@ -50,7 +78,11 @@ export const GetDetectionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetDetectionResponse>;
 
-export type GetDetectionError = DefaultErrors;
+export type GetDetectionError =
+  | DefaultErrors
+  | DetectionNotFound
+  | LeakedCredentialChecksDisabled
+  | Forbidden;
 
 export const getDetection: API.OperationMethod<
   GetDetectionRequest,
@@ -60,7 +92,7 @@ export const getDetection: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDetectionRequest,
   output: GetDetectionResponse,
-  errors: [],
+  errors: [DetectionNotFound, LeakedCredentialChecksDisabled, Forbidden],
 }));
 
 export interface ListDetectionsRequest {
@@ -97,7 +129,10 @@ export const ListDetectionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ) as unknown as Schema.Schema<ListDetectionsResponse>;
 
-export type ListDetectionsError = DefaultErrors;
+export type ListDetectionsError =
+  | DefaultErrors
+  | LeakedCredentialChecksDisabled
+  | Forbidden;
 
 export const listDetections: API.PaginatedOperationMethod<
   ListDetectionsRequest,
@@ -107,7 +142,7 @@ export const listDetections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDetectionsRequest,
   output: ListDetectionsResponse,
-  errors: [],
+  errors: [LeakedCredentialChecksDisabled, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -154,7 +189,11 @@ export const CreateDetectionResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateDetectionResponse>;
 
-export type CreateDetectionError = DefaultErrors;
+export type CreateDetectionError =
+  | DefaultErrors
+  | DetectionQuotaExceeded
+  | LeakedCredentialChecksDisabled
+  | Forbidden;
 
 export const createDetection: API.OperationMethod<
   CreateDetectionRequest,
@@ -164,7 +203,7 @@ export const createDetection: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDetectionRequest,
   output: CreateDetectionResponse,
-  errors: [],
+  errors: [DetectionQuotaExceeded, LeakedCredentialChecksDisabled, Forbidden],
 }));
 
 export interface UpdateDetectionRequest {
@@ -209,7 +248,11 @@ export const UpdateDetectionResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateDetectionResponse>;
 
-export type UpdateDetectionError = DefaultErrors;
+export type UpdateDetectionError =
+  | DefaultErrors
+  | DetectionNotFound
+  | LeakedCredentialChecksDisabled
+  | Forbidden;
 
 export const updateDetection: API.OperationMethod<
   UpdateDetectionRequest,
@@ -219,7 +262,7 @@ export const updateDetection: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDetectionRequest,
   output: UpdateDetectionResponse,
-  errors: [],
+  errors: [DetectionNotFound, LeakedCredentialChecksDisabled, Forbidden],
 }));
 
 export interface DeleteDetectionRequest {
@@ -247,7 +290,11 @@ export const DeleteDetectionResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDetectionResponse>;
 
-export type DeleteDetectionError = DefaultErrors;
+export type DeleteDetectionError =
+  | DefaultErrors
+  | DetectionNotFound
+  | LeakedCredentialChecksDisabled
+  | Forbidden;
 
 export const deleteDetection: API.OperationMethod<
   DeleteDetectionRequest,
@@ -257,7 +304,7 @@ export const deleteDetection: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDetectionRequest,
   output: DeleteDetectionResponse,
-  errors: [],
+  errors: [DetectionNotFound, LeakedCredentialChecksDisabled, Forbidden],
 }));
 
 // =============================================================================
@@ -291,7 +338,7 @@ export const GetLeakedCredentialCheckResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetLeakedCredentialCheckResponse>;
 
-export type GetLeakedCredentialCheckError = DefaultErrors;
+export type GetLeakedCredentialCheckError = DefaultErrors | Forbidden;
 
 export const getLeakedCredentialCheck: API.OperationMethod<
   GetLeakedCredentialCheckRequest,
@@ -301,7 +348,7 @@ export const getLeakedCredentialCheck: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLeakedCredentialCheckRequest,
   output: GetLeakedCredentialCheckResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface CreateLeakedCredentialCheckRequest {
@@ -334,7 +381,7 @@ export const CreateLeakedCredentialCheckResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateLeakedCredentialCheckResponse>;
 
-export type CreateLeakedCredentialCheckError = DefaultErrors;
+export type CreateLeakedCredentialCheckError = DefaultErrors | Forbidden;
 
 export const createLeakedCredentialCheck: API.OperationMethod<
   CreateLeakedCredentialCheckRequest,
@@ -344,5 +391,5 @@ export const createLeakedCredentialCheck: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLeakedCredentialCheckRequest,
   output: CreateLeakedCredentialCheckResponse,
-  errors: [],
+  errors: [Forbidden],
 }));

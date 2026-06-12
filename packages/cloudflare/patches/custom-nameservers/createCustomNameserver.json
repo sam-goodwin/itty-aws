@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "CustomNameserversNotEnabled": [
+      { "code": 1002, "message": { "includes": "not enabled" } }
+    ],
+    "CustomNameserverAlreadyExists": [
+      { "message": { "includes": "already exist" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

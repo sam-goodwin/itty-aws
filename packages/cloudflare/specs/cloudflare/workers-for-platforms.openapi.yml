@@ -64,6 +64,11 @@ paths:
                       the zone, and `request.cf` is undefined. By default,
                       Workers in a namespace are "untrusted".
       x-distilled-response-path: result
+      x-distilled-errors:
+        DispatchNamespaceNotFound:
+          - code: 100119
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDispatchNamespace
       description: "Delete a Workers for Platforms namespace.  @example ```ts const
@@ -89,6 +94,11 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        DispatchNamespaceNotFound:
+          - code: 100119
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/workers/dispatch/namespaces:
     get:
       operationId: listDispatchNamespaces
@@ -205,6 +215,11 @@ paths:
                       the zone, and `request.cf` is undefined. By default,
                       Workers in a namespace are "untrusted".
       x-distilled-response-path: result
+      x-distilled-errors:
+        DispatchNamespaceAlreadyExists:
+          - code: 100120
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/workers/dispatch/namespaces/{dispatchNamespace}/scripts/{scriptName}:
     get:
       operationId: getDispatchNamespaceScript
@@ -657,6 +672,13 @@ paths:
                           - unbound
                         description: Usage model for the Worker invocations.
       x-distilled-response-path: result
+      x-distilled-errors:
+        DispatchNamespaceNotFound:
+          - code: 100119
+        DispatchNamespaceScriptNotFound:
+          - code: 10007
+        Forbidden:
+          - status: 403
     put:
       operationId: putDispatchNamespaceScript
       description: "Upload a worker module to a Workers for Platforms namespace. You
@@ -2316,6 +2338,11 @@ paths:
                 required:
                   - startup_time_ms
       x-distilled-response-path: result
+      x-distilled-errors:
+        DispatchNamespaceNotFound:
+          - code: 100119
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDispatchNamespaceScript
       description: "Delete a worker from a Workers for Platforms namespace. This call
@@ -2357,6 +2384,13 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        DispatchNamespaceScriptNotFound:
+          - code: 10007
+        DispatchNamespaceNotFound:
+          - code: 100119
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/workers/dispatch/namespaces/{dispatchNamespace}/scripts/{scriptName}/assets-upload-session:
     post:
       operationId: createDispatchNamespaceScriptAssetUpload

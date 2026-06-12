@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "AdvancedCertificateManagerRequired": [{ "code": 1450 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

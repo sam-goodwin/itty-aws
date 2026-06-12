@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "DeploymentNotFound": [{ "code": 8000009 }],
+    "ProjectNotFound": [{ "code": 8000007 }],
+    "ActiveProductionDeployment": [{ "code": 8000034 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

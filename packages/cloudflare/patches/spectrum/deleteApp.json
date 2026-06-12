@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "SpectrumAppNotFound": [{ "code": 10006 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "AccessIdentityProviderNotFound": [{ "code": 12135 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

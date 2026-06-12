@@ -6079,9 +6079,7 @@ export const DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWork
   /*@__PURE__*/ /*#__PURE__*/ DescribeConversionWorkspaceRevisionsResponse;
 
 export type DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of committed revisions of a specific conversion workspace. */
 export const describeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspaces: API.OperationMethod<
@@ -6296,9 +6294,7 @@ export const DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesRespon
   /*@__PURE__*/ /*#__PURE__*/ DescribeDatabaseEntitiesResponse;
 
 export type DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Describes the database entities tree for a specific conversion workspace and a specific tree type. Database entities are not resources like conversion workspaces or mapping rules, and they can't be created, updated or deleted. Instead, they are simple data objects describing the structure of the client database. */
 export const describeDatabaseEntitiesProjectsLocationsConversionWorkspaces: API.PaginatedOperationMethod<

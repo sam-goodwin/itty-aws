@@ -1,0 +1,10 @@
+{
+  "errors": {
+    "CustomCertificateNotFound": [
+      { "status": 404 },
+      { "code": 1002, "message": { "includes": "Invalid certificate" } }
+    ],
+    "PlanLevelNotAllowed": [{ "code": 1011 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

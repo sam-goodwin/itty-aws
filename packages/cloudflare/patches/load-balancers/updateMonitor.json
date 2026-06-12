@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "MonitorNotFound": [{ "code": 1001 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

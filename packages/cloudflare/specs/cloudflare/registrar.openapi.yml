@@ -31,6 +31,9 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putDomain
       description: Update individual domain.  @deprecated This operation is deprecated
@@ -73,6 +76,16 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        RegistrarDomainNotOwned:
+          - code: 10000
+            status: 403
+            message:
+              includes: Domain doesn't belong to the user
+        RegistrarUpdateNotAllowed:
+          - status: 422
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/registrar/domains:
     get:
       operationId: listDomains
@@ -242,6 +255,9 @@ paths:
                     type: string
                     description: Last updated.
       x-distilled-pagination-class: DomainsSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/registrar/domain-check:
     post:
       operationId: checkRegistrar

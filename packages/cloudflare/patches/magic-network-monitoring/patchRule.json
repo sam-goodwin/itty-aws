@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "MnmRuleNotFound": [{ "code": 1009 }],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "id": { "optional": true }
+    }
+  }
+}

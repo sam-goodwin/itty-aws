@@ -13,6 +13,52 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class AdvancedTcpProtectionNotEntitled extends Schema.TaggedErrorClass<AdvancedTcpProtectionNotEntitled>()(
+  "AdvancedTcpProtectionNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AdvancedTcpProtectionNotEntitled, [{ code: 8888 }]);
+
+export class AllowlistEntryNotFound extends Schema.TaggedErrorClass<AllowlistEntryNotFound>()(
+  "AllowlistEntryNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AllowlistEntryNotFound, [{ status: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class SynProtectionFilterNotFound extends Schema.TaggedErrorClass<SynProtectionFilterNotFound>()(
+  "SynProtectionFilterNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SynProtectionFilterNotFound, [{ status: 404 }]);
+
+export class SynProtectionRuleNotFound extends Schema.TaggedErrorClass<SynProtectionRuleNotFound>()(
+  "SynProtectionRuleNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SynProtectionRuleNotFound, [{ status: 404 }]);
+
+export class TcpFlowProtectionFilterNotFound extends Schema.TaggedErrorClass<TcpFlowProtectionFilterNotFound>()(
+  "TcpFlowProtectionFilterNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TcpFlowProtectionFilterNotFound, [{ status: 404 }]);
+
+export class TcpFlowProtectionRuleNotFound extends Schema.TaggedErrorClass<TcpFlowProtectionRuleNotFound>()(
+  "TcpFlowProtectionRuleNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TcpFlowProtectionRuleNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // AdvancedTcpProtectionAllowlist
 // =============================================================================
 
@@ -103,7 +149,10 @@ export const ListAdvancedTcpProtectionAllowlistsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionAllowlistsResponse>;
 
-export type ListAdvancedTcpProtectionAllowlistsError = DefaultErrors;
+export type ListAdvancedTcpProtectionAllowlistsError =
+  | DefaultErrors
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const listAdvancedTcpProtectionAllowlists: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionAllowlistsRequest,
@@ -113,7 +162,7 @@ export const listAdvancedTcpProtectionAllowlists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionAllowlistsRequest,
   output: ListAdvancedTcpProtectionAllowlistsResponse,
-  errors: [],
+  errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -185,7 +234,10 @@ export const CreateAdvancedTcpProtectionAllowlistResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionAllowlistResponse>;
 
-export type CreateAdvancedTcpProtectionAllowlistError = DefaultErrors;
+export type CreateAdvancedTcpProtectionAllowlistError =
+  | DefaultErrors
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const createAdvancedTcpProtectionAllowlist: API.OperationMethod<
   CreateAdvancedTcpProtectionAllowlistRequest,
@@ -195,7 +247,7 @@ export const createAdvancedTcpProtectionAllowlist: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionAllowlistRequest,
   output: CreateAdvancedTcpProtectionAllowlistResponse,
-  errors: [],
+  errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
 }));
 
 export interface BulkDeleteAdvancedTcpProtectionAllowlistsRequest {
@@ -359,7 +411,11 @@ export const GetAdvancedTcpProtectionAllowlistItemResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetAdvancedTcpProtectionAllowlistItemResponse>;
 
-export type GetAdvancedTcpProtectionAllowlistItemError = DefaultErrors;
+export type GetAdvancedTcpProtectionAllowlistItemError =
+  | DefaultErrors
+  | AllowlistEntryNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const getAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
   GetAdvancedTcpProtectionAllowlistItemRequest,
@@ -369,7 +425,7 @@ export const getAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionAllowlistItemRequest,
   output: GetAdvancedTcpProtectionAllowlistItemResponse,
-  errors: [],
+  errors: [AllowlistEntryNotFound, AdvancedTcpProtectionNotEntitled, Forbidden],
 }));
 
 export interface PatchAdvancedTcpProtectionAllowlistItemRequest {
@@ -433,7 +489,11 @@ export const PatchAdvancedTcpProtectionAllowlistItemResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionAllowlistItemResponse>;
 
-export type PatchAdvancedTcpProtectionAllowlistItemError = DefaultErrors;
+export type PatchAdvancedTcpProtectionAllowlistItemError =
+  | DefaultErrors
+  | AllowlistEntryNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const patchAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
   PatchAdvancedTcpProtectionAllowlistItemRequest,
@@ -443,7 +503,7 @@ export const patchAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionAllowlistItemRequest,
   output: PatchAdvancedTcpProtectionAllowlistItemResponse,
-  errors: [],
+  errors: [AllowlistEntryNotFound, AdvancedTcpProtectionNotEntitled, Forbidden],
 }));
 
 export interface DeleteAdvancedTcpProtectionAllowlistItemRequest {
@@ -537,7 +597,11 @@ export const DeleteAdvancedTcpProtectionAllowlistItemResponse =
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionAllowlistItemResponse>;
 
-export type DeleteAdvancedTcpProtectionAllowlistItemError = DefaultErrors;
+export type DeleteAdvancedTcpProtectionAllowlistItemError =
+  | DefaultErrors
+  | AllowlistEntryNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const deleteAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionAllowlistItemRequest,
@@ -547,7 +611,7 @@ export const deleteAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionAllowlistItemRequest,
   output: DeleteAdvancedTcpProtectionAllowlistItemResponse,
-  errors: [],
+  errors: [AllowlistEntryNotFound, AdvancedTcpProtectionNotEntitled, Forbidden],
 }));
 
 // =============================================================================
@@ -1339,7 +1403,10 @@ export const ListAdvancedTcpProtectionSynProtectionFiltersResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionSynProtectionFiltersResponse>;
 
-export type ListAdvancedTcpProtectionSynProtectionFiltersError = DefaultErrors;
+export type ListAdvancedTcpProtectionSynProtectionFiltersError =
+  | DefaultErrors
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const listAdvancedTcpProtectionSynProtectionFilters: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionSynProtectionFiltersRequest,
@@ -1349,7 +1416,7 @@ export const listAdvancedTcpProtectionSynProtectionFilters: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionSynProtectionFiltersRequest,
   output: ListAdvancedTcpProtectionSynProtectionFiltersResponse,
-  errors: [],
+  errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -1414,7 +1481,10 @@ export const CreateAdvancedTcpProtectionSynProtectionFilterResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionSynProtectionFilterResponse>;
 
-export type CreateAdvancedTcpProtectionSynProtectionFilterError = DefaultErrors;
+export type CreateAdvancedTcpProtectionSynProtectionFilterError =
+  | DefaultErrors
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const createAdvancedTcpProtectionSynProtectionFilter: API.OperationMethod<
   CreateAdvancedTcpProtectionSynProtectionFilterRequest,
@@ -1424,7 +1494,7 @@ export const createAdvancedTcpProtectionSynProtectionFilter: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionSynProtectionFilterRequest,
   output: CreateAdvancedTcpProtectionSynProtectionFilterResponse,
-  errors: [],
+  errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
 }));
 
 export interface BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest {
@@ -1586,7 +1656,10 @@ export const GetAdvancedTcpProtectionSynProtectionFilterItemResponse =
     ) as unknown as Schema.Schema<GetAdvancedTcpProtectionSynProtectionFilterItemResponse>;
 
 export type GetAdvancedTcpProtectionSynProtectionFilterItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | SynProtectionFilterNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const getAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMethod<
   GetAdvancedTcpProtectionSynProtectionFilterItemRequest,
@@ -1596,7 +1669,11 @@ export const getAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionSynProtectionFilterItemRequest,
   output: GetAdvancedTcpProtectionSynProtectionFilterItemResponse,
-  errors: [],
+  errors: [
+    SynProtectionFilterNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 export interface PatchAdvancedTcpProtectionSynProtectionFilterItemRequest {
@@ -1657,7 +1734,10 @@ export const PatchAdvancedTcpProtectionSynProtectionFilterItemResponse =
     ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemResponse>;
 
 export type PatchAdvancedTcpProtectionSynProtectionFilterItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | SynProtectionFilterNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const patchAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMethod<
   PatchAdvancedTcpProtectionSynProtectionFilterItemRequest,
@@ -1667,7 +1747,11 @@ export const patchAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionSynProtectionFilterItemRequest,
   output: PatchAdvancedTcpProtectionSynProtectionFilterItemResponse,
-  errors: [],
+  errors: [
+    SynProtectionFilterNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest {
@@ -1762,7 +1846,10 @@ export const DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse =
   }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse>;
 
 export type DeleteAdvancedTcpProtectionSynProtectionFilterItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | SynProtectionFilterNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const deleteAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest,
@@ -1772,7 +1859,11 @@ export const deleteAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest,
   output: DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse,
-  errors: [],
+  errors: [
+    SynProtectionFilterNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 // =============================================================================
@@ -1875,7 +1966,10 @@ export const ListAdvancedTcpProtectionSynProtectionRulesResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionSynProtectionRulesResponse>;
 
-export type ListAdvancedTcpProtectionSynProtectionRulesError = DefaultErrors;
+export type ListAdvancedTcpProtectionSynProtectionRulesError =
+  | DefaultErrors
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const listAdvancedTcpProtectionSynProtectionRules: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionSynProtectionRulesRequest,
@@ -1885,7 +1979,7 @@ export const listAdvancedTcpProtectionSynProtectionRules: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionSynProtectionRulesRequest,
   output: ListAdvancedTcpProtectionSynProtectionRulesResponse,
-  errors: [],
+  errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -1986,7 +2080,10 @@ export const CreateAdvancedTcpProtectionSynProtectionRuleResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionSynProtectionRuleResponse>;
 
-export type CreateAdvancedTcpProtectionSynProtectionRuleError = DefaultErrors;
+export type CreateAdvancedTcpProtectionSynProtectionRuleError =
+  | DefaultErrors
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const createAdvancedTcpProtectionSynProtectionRule: API.OperationMethod<
   CreateAdvancedTcpProtectionSynProtectionRuleRequest,
@@ -1996,7 +2093,7 @@ export const createAdvancedTcpProtectionSynProtectionRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionSynProtectionRuleRequest,
   output: CreateAdvancedTcpProtectionSynProtectionRuleResponse,
-  errors: [],
+  errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
 }));
 
 export interface BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest {
@@ -2173,7 +2270,11 @@ export const GetAdvancedTcpProtectionSynProtectionRuleItemResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemResponse>;
 
-export type GetAdvancedTcpProtectionSynProtectionRuleItemError = DefaultErrors;
+export type GetAdvancedTcpProtectionSynProtectionRuleItemError =
+  | DefaultErrors
+  | SynProtectionRuleNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const getAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMethod<
   GetAdvancedTcpProtectionSynProtectionRuleItemRequest,
@@ -2183,7 +2284,11 @@ export const getAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionSynProtectionRuleItemRequest,
   output: GetAdvancedTcpProtectionSynProtectionRuleItemResponse,
-  errors: [],
+  errors: [
+    SynProtectionRuleNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 export interface PatchAdvancedTcpProtectionSynProtectionRuleItemRequest {
@@ -2272,7 +2377,10 @@ export const PatchAdvancedTcpProtectionSynProtectionRuleItemResponse =
     ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionSynProtectionRuleItemResponse>;
 
 export type PatchAdvancedTcpProtectionSynProtectionRuleItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | SynProtectionRuleNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const patchAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMethod<
   PatchAdvancedTcpProtectionSynProtectionRuleItemRequest,
@@ -2282,7 +2390,11 @@ export const patchAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionSynProtectionRuleItemRequest,
   output: PatchAdvancedTcpProtectionSynProtectionRuleItemResponse,
-  errors: [],
+  errors: [
+    SynProtectionRuleNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest {
@@ -2377,7 +2489,10 @@ export const DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse =
   }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse>;
 
 export type DeleteAdvancedTcpProtectionSynProtectionRuleItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | SynProtectionRuleNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const deleteAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest,
@@ -2387,7 +2502,11 @@ export const deleteAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest,
   output: DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse,
-  errors: [],
+  errors: [
+    SynProtectionRuleNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 // =============================================================================
@@ -2482,7 +2601,9 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse>;
 
 export type ListAdvancedTcpProtectionTcpFlowProtectionFiltersError =
-  DefaultErrors;
+  | DefaultErrors
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const listAdvancedTcpProtectionTcpFlowProtectionFilters: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
@@ -2492,7 +2613,7 @@ export const listAdvancedTcpProtectionTcpFlowProtectionFilters: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
   output: ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
-  errors: [],
+  errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -2558,7 +2679,9 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse =
     ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse>;
 
 export type CreateAdvancedTcpProtectionTcpFlowProtectionFilterError =
-  DefaultErrors;
+  | DefaultErrors
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const createAdvancedTcpProtectionTcpFlowProtectionFilter: API.OperationMethod<
   CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest,
@@ -2568,7 +2691,7 @@ export const createAdvancedTcpProtectionTcpFlowProtectionFilter: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest,
   output: CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse,
-  errors: [],
+  errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
 }));
 
 export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest {
@@ -2730,7 +2853,10 @@ export const GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
     ) as unknown as Schema.Schema<GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
 
 export type GetAdvancedTcpProtectionTcpFlowProtectionFilterItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | TcpFlowProtectionFilterNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const getAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.OperationMethod<
   GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
@@ -2740,7 +2866,11 @@ export const getAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
   output: GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
-  errors: [],
+  errors: [
+    TcpFlowProtectionFilterNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
@@ -2801,7 +2931,10 @@ export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
     ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
 
 export type PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | TcpFlowProtectionFilterNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const patchAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.OperationMethod<
   PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
@@ -2811,7 +2944,11 @@ export const patchAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
   output: PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
-  errors: [],
+  errors: [
+    TcpFlowProtectionFilterNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
@@ -2906,7 +3043,10 @@ export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
   }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
 
 export type DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | TcpFlowProtectionFilterNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const deleteAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
@@ -2916,7 +3056,11 @@ export const deleteAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
   output: DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
-  errors: [],
+  errors: [
+    TcpFlowProtectionFilterNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 // =============================================================================
@@ -3017,7 +3161,9 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse>;
 
 export type ListAdvancedTcpProtectionTcpFlowProtectionRulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const listAdvancedTcpProtectionTcpFlowProtectionRules: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
@@ -3027,7 +3173,7 @@ export const listAdvancedTcpProtectionTcpFlowProtectionRules: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
   output: ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
-  errors: [],
+  errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -3121,7 +3267,9 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse =
     ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse>;
 
 export type CreateAdvancedTcpProtectionTcpFlowProtectionRuleError =
-  DefaultErrors;
+  | DefaultErrors
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const createAdvancedTcpProtectionTcpFlowProtectionRule: API.OperationMethod<
   CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest,
@@ -3131,7 +3279,7 @@ export const createAdvancedTcpProtectionTcpFlowProtectionRule: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest,
   output: CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse,
-  errors: [],
+  errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
 }));
 
 export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest {
@@ -3305,7 +3453,10 @@ export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
     ) as unknown as Schema.Schema<GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
 
 export type GetAdvancedTcpProtectionTcpFlowProtectionRuleItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | TcpFlowProtectionRuleNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const getAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.OperationMethod<
   GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
@@ -3315,7 +3466,11 @@ export const getAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
   output: GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
-  errors: [],
+  errors: [
+    TcpFlowProtectionRuleNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 export interface PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
@@ -3396,7 +3551,10 @@ export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
     ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
 
 export type PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | TcpFlowProtectionRuleNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const patchAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.OperationMethod<
   PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
@@ -3406,7 +3564,11 @@ export const patchAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
   output: PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
-  errors: [],
+  errors: [
+    TcpFlowProtectionRuleNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
@@ -3501,7 +3663,10 @@ export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
   }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
 
 export type DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemError =
-  DefaultErrors;
+  | DefaultErrors
+  | TcpFlowProtectionRuleNotFound
+  | AdvancedTcpProtectionNotEntitled
+  | Forbidden;
 
 export const deleteAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
@@ -3511,5 +3676,9 @@ export const deleteAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
   output: DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
-  errors: [],
+  errors: [
+    TcpFlowProtectionRuleNotFound,
+    AdvancedTcpProtectionNotEntitled,
+    Forbidden,
+  ],
 }));

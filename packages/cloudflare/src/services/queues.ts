@@ -32,6 +32,12 @@ T.applyErrorMatchers(ConsumerNotFound, [
   { code: 11006 },
 ]);
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class InvalidMessageBody extends Schema.TaggedErrorClass<InvalidMessageBody>()(
   "InvalidMessageBody",
   { code: Schema.Number, message: Schema.String },
@@ -77,6 +83,12 @@ T.applyErrorMatchers(QueueHandlerMissing, [
   { status: 400, message: { includes: "queue handler is missing" } },
 ]);
 
+export class QueueInUseByEventNotification extends Schema.TaggedErrorClass<QueueInUseByEventNotification>()(
+  "QueueInUseByEventNotification",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(QueueInUseByEventNotification, [{ code: 11017 }]);
+
 export class QueueNotFound extends Schema.TaggedErrorClass<QueueNotFound>()(
   "QueueNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -84,6 +96,26 @@ export class QueueNotFound extends Schema.TaggedErrorClass<QueueNotFound>()(
 T.applyErrorMatchers(QueueNotFound, [
   { code: 11000 },
   { code: 0, message: { includes: "Queue does not exist" } },
+  { status: 404, message: { includes: "Queue does not exist" } },
+]);
+
+export class SubscriptionAlreadyExists extends Schema.TaggedErrorClass<SubscriptionAlreadyExists>()(
+  "SubscriptionAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SubscriptionAlreadyExists, [
+  {
+    status: 405,
+    message: { includes: "do not support multiple subscriptions" },
+  },
+]);
+
+export class SubscriptionNotFound extends Schema.TaggedErrorClass<SubscriptionNotFound>()(
+  "SubscriptionNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SubscriptionNotFound, [
+  { status: 404, message: { includes: "No subscription with this ID" } },
 ]);
 
 export class UnrecognizedEventType extends Schema.TaggedErrorClass<UnrecognizedEventType>()(
@@ -3287,7 +3319,11 @@ export const DeleteQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
 }) as unknown as Schema.Schema<DeleteQueueResponse>;
 
-export type DeleteQueueError = DefaultErrors | QueueNotFound | InvalidRoute;
+export type DeleteQueueError =
+  | DefaultErrors
+  | QueueNotFound
+  | QueueInUseByEventNotification
+  | InvalidRoute;
 
 export const deleteQueue: API.OperationMethod<
   DeleteQueueRequest,
@@ -3297,7 +3333,7 @@ export const deleteQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
-  errors: [QueueNotFound, InvalidRoute],
+  errors: [QueueNotFound, QueueInUseByEventNotification, InvalidRoute],
 }));
 
 // =============================================================================
@@ -3427,7 +3463,11 @@ export const GetSubscriptionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSubscriptionResponse>;
 
-export type GetSubscriptionError = DefaultErrors | UnrecognizedEventType;
+export type GetSubscriptionError =
+  | DefaultErrors
+  | UnrecognizedEventType
+  | SubscriptionNotFound
+  | Forbidden;
 
 export const getSubscription: API.OperationMethod<
   GetSubscriptionRequest,
@@ -3437,7 +3477,7 @@ export const getSubscription: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
-  errors: [UnrecognizedEventType],
+  errors: [UnrecognizedEventType, SubscriptionNotFound, Forbidden],
 }));
 
 export interface ListSubscriptionsRequest {
@@ -3608,7 +3648,7 @@ export const ListSubscriptionsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListSubscriptionsResponse>;
 
-export type ListSubscriptionsError = DefaultErrors;
+export type ListSubscriptionsError = DefaultErrors | Forbidden;
 
 export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
@@ -3618,7 +3658,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -3808,7 +3848,11 @@ export const CreateSubscriptionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateSubscriptionResponse>;
 
-export type CreateSubscriptionError = DefaultErrors | UnrecognizedEventType;
+export type CreateSubscriptionError =
+  | DefaultErrors
+  | UnrecognizedEventType
+  | SubscriptionAlreadyExists
+  | QueueNotFound;
 
 export const createSubscription: API.OperationMethod<
   CreateSubscriptionRequest,
@@ -3818,7 +3862,7 @@ export const createSubscription: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
-  errors: [UnrecognizedEventType],
+  errors: [UnrecognizedEventType, SubscriptionAlreadyExists, QueueNotFound],
 }));
 
 export interface PatchSubscriptionRequest {
@@ -3960,7 +4004,11 @@ export const PatchSubscriptionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSubscriptionResponse>;
 
-export type PatchSubscriptionError = DefaultErrors | UnrecognizedEventType;
+export type PatchSubscriptionError =
+  | DefaultErrors
+  | UnrecognizedEventType
+  | SubscriptionNotFound
+  | QueueNotFound;
 
 export const patchSubscription: API.OperationMethod<
   PatchSubscriptionRequest,
@@ -3970,7 +4018,7 @@ export const patchSubscription: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSubscriptionRequest,
   output: PatchSubscriptionResponse,
-  errors: [UnrecognizedEventType],
+  errors: [UnrecognizedEventType, SubscriptionNotFound, QueueNotFound],
 }));
 
 export interface DeleteSubscriptionRequest {
@@ -4095,7 +4143,10 @@ export const DeleteSubscriptionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteSubscriptionResponse>;
 
-export type DeleteSubscriptionError = DefaultErrors | UnrecognizedEventType;
+export type DeleteSubscriptionError =
+  | DefaultErrors
+  | UnrecognizedEventType
+  | SubscriptionNotFound;
 
 export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionRequest,
@@ -4105,5 +4156,5 @@ export const deleteSubscription: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionRequest,
   output: DeleteSubscriptionResponse,
-  errors: [UnrecognizedEventType],
+  errors: [UnrecognizedEventType, SubscriptionNotFound],
 }));

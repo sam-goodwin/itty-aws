@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "ContentScanningNotEnabled": [
+      { "status": 400, "message": { "includes": "File Upload Scan not enabled" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

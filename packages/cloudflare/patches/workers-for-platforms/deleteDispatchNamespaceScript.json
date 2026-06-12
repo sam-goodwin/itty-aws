@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "DispatchNamespaceScriptNotFound": [{ "code": 10007 }],
+    "DispatchNamespaceNotFound": [{ "code": 100119 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "GatewayListNotFound": [{ "code": 2218 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

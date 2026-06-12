@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "Web3HostnameNotFound": [{ "code": 1002 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

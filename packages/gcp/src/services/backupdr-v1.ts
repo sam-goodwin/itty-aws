@@ -5673,9 +5673,7 @@ export const FetchForResourceTypeProjectsLocationsBackupVaultsDataSourcesBackups
   /*@__PURE__*/ /*#__PURE__*/ FetchBackupsForResourceTypeResponse;
 
 export type FetchForResourceTypeProjectsLocationsBackupVaultsDataSourcesBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Fetch Backups for a given resource type. */
 export const fetchForResourceTypeProjectsLocationsBackupVaultsDataSourcesBackups: API.PaginatedOperationMethod<

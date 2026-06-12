@@ -1,0 +1,12 @@
+{
+  "errors": {
+    "HostnameAssociationNotFound": [
+      {
+        "code": 1553,
+        "message": { "includes": "setting for this hostname not found" }
+      },
+      { "status": 404 }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -939,6 +939,9 @@ paths:
                       - type
                       - zone_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putAccountTag
       description: "Creates or updates tags for a specific account-level
@@ -1892,6 +1895,11 @@ paths:
                       - type
                       - zone_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        TagPreconditionFailed:
+          - status: 412
     delete:
       operationId: deleteAccountTag
       description: Removes all tags from a specific account-level resource.
@@ -1912,9 +1920,28 @@ paths:
             header for unconditional writes."
           schema:
             type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resource_id:
+                  type: string
+                resource_type:
+                  type: string
+                worker_id:
+                  type: string
+              required:
+                - resource_id
+                - resource_type
       responses:
         "200":
           description: Success
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/tags/keys:
     get:
       operationId: listKeys
@@ -3878,6 +3905,9 @@ paths:
                       - type
                       - zone_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putZoneTag
       description: "Creates or updates tags for a specific zone-level resource.
@@ -4817,6 +4847,11 @@ paths:
                       - type
                       - zone_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        TagPreconditionFailed:
+          - status: 412
     delete:
       operationId: deleteZoneTag
       description: Removes all tags from a specific zone-level resource.
@@ -4837,6 +4872,25 @@ paths:
             header for unconditional writes."
           schema:
             type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resource_id:
+                  type: string
+                resource_type:
+                  type: string
+                access_application_id:
+                  type: string
+              required:
+                - resource_id
+                - resource_type
       responses:
         "200":
           description: Success
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

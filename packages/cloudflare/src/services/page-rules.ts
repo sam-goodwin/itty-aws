@@ -13,6 +13,22 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class PageRuleNotFound extends Schema.TaggedErrorClass<PageRuleNotFound>()(
+  "PageRuleNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PageRuleNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // PageRule
 // =============================================================================
 
@@ -727,7 +743,7 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetPageRuleResponse>;
 
-export type GetPageRuleError = DefaultErrors;
+export type GetPageRuleError = DefaultErrors | PageRuleNotFound | Forbidden;
 
 export const getPageRule: API.OperationMethod<
   GetPageRuleRequest,
@@ -737,7 +753,7 @@ export const getPageRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPageRuleRequest,
   output: GetPageRuleResponse,
-  errors: [],
+  errors: [PageRuleNotFound, Forbidden],
 }));
 
 export interface ListPageRulesRequest {
@@ -1495,7 +1511,7 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<ListPageRulesResponse>;
 
-export type ListPageRulesError = DefaultErrors;
+export type ListPageRulesError = DefaultErrors | Forbidden;
 
 export const listPageRules: API.OperationMethod<
   ListPageRulesRequest,
@@ -1505,7 +1521,7 @@ export const listPageRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPageRulesRequest,
   output: ListPageRulesResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface CreatePageRuleRequest {
@@ -2663,7 +2679,7 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreatePageRuleResponse>;
 
-export type CreatePageRuleError = DefaultErrors;
+export type CreatePageRuleError = DefaultErrors | Forbidden;
 
 export const createPageRule: API.OperationMethod<
   CreatePageRuleRequest,
@@ -2673,7 +2689,7 @@ export const createPageRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePageRuleRequest,
   output: CreatePageRuleResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdatePageRuleRequest {
@@ -3833,7 +3849,7 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdatePageRuleResponse>;
 
-export type UpdatePageRuleError = DefaultErrors;
+export type UpdatePageRuleError = DefaultErrors | PageRuleNotFound | Forbidden;
 
 export const updatePageRule: API.OperationMethod<
   UpdatePageRuleRequest,
@@ -3843,7 +3859,7 @@ export const updatePageRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePageRuleRequest,
   output: UpdatePageRuleResponse,
-  errors: [],
+  errors: [PageRuleNotFound, Forbidden],
 }));
 
 export interface PatchPageRuleRequest {
@@ -4974,7 +4990,7 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchPageRuleResponse>;
 
-export type PatchPageRuleError = DefaultErrors;
+export type PatchPageRuleError = DefaultErrors | PageRuleNotFound | Forbidden;
 
 export const patchPageRule: API.OperationMethod<
   PatchPageRuleRequest,
@@ -4984,7 +5000,7 @@ export const patchPageRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPageRuleRequest,
   output: PatchPageRuleResponse,
-  errors: [],
+  errors: [PageRuleNotFound, Forbidden],
 }));
 
 export interface DeletePageRuleRequest {
@@ -5013,7 +5029,7 @@ export const DeletePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeletePageRuleResponse>;
 
-export type DeletePageRuleError = DefaultErrors;
+export type DeletePageRuleError = DefaultErrors | PageRuleNotFound | Forbidden;
 
 export const deletePageRule: API.OperationMethod<
   DeletePageRuleRequest,
@@ -5023,5 +5039,5 @@ export const deletePageRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePageRuleRequest,
   output: DeletePageRuleResponse,
-  errors: [],
+  errors: [PageRuleNotFound, Forbidden],
 }));

@@ -13,6 +13,45 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class OriginCloudRegionAlreadyExists extends Schema.TaggedErrorClass<OriginCloudRegionAlreadyExists>()(
+  "OriginCloudRegionAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(OriginCloudRegionAlreadyExists, [{ status: 409 }]);
+
+export class OriginCloudRegionNotFound extends Schema.TaggedErrorClass<OriginCloudRegionNotFound>()(
+  "OriginCloudRegionNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(OriginCloudRegionNotFound, [{ status: 404 }]);
+
+export class SettingUnavailableForPlan extends Schema.TaggedErrorClass<SettingUnavailableForPlan>()(
+  "SettingUnavailableForPlan",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SettingUnavailableForPlan, [
+  { status: 403, message: { includes: "not available for your plan" } },
+  { code: 1135, message: { includes: "not available for your plan" } },
+]);
+
+export class VariantsNotConfigured extends Schema.TaggedErrorClass<VariantsNotConfigured>()(
+  "VariantsNotConfigured",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(VariantsNotConfigured, [
+  { status: 404, message: { includes: "zone setting does not exist" } },
+]);
+
+// =============================================================================
 // Cache
 // =============================================================================
 
@@ -131,7 +170,10 @@ export const GetCacheReserveResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetCacheReserveResponse>;
 
-export type GetCacheReserveError = DefaultErrors;
+export type GetCacheReserveError =
+  | DefaultErrors
+  | SettingUnavailableForPlan
+  | Forbidden;
 
 export const getCacheReserve: API.OperationMethod<
   GetCacheReserveRequest,
@@ -141,7 +183,7 @@ export const getCacheReserve: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCacheReserveRequest,
   output: GetCacheReserveResponse,
-  errors: [],
+  errors: [SettingUnavailableForPlan, Forbidden],
 }));
 
 export interface PatchCacheReserveRequest {
@@ -189,7 +231,10 @@ export const PatchCacheReserveResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchCacheReserveResponse>;
 
-export type PatchCacheReserveError = DefaultErrors;
+export type PatchCacheReserveError =
+  | DefaultErrors
+  | SettingUnavailableForPlan
+  | Forbidden;
 
 export const patchCacheReserve: API.OperationMethod<
   PatchCacheReserveRequest,
@@ -199,7 +244,7 @@ export const patchCacheReserve: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCacheReserveRequest,
   output: PatchCacheReserveResponse,
-  errors: [],
+  errors: [SettingUnavailableForPlan, Forbidden],
 }));
 
 export interface StatusCacheReserveRequest {
@@ -405,7 +450,10 @@ export const GetOriginCloudRegionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetOriginCloudRegionResponse>;
 
-export type GetOriginCloudRegionError = DefaultErrors;
+export type GetOriginCloudRegionError =
+  | DefaultErrors
+  | OriginCloudRegionNotFound
+  | Forbidden;
 
 export const getOriginCloudRegion: API.OperationMethod<
   GetOriginCloudRegionRequest,
@@ -415,7 +463,7 @@ export const getOriginCloudRegion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOriginCloudRegionRequest,
   output: GetOriginCloudRegionResponse,
-  errors: [],
+  errors: [OriginCloudRegionNotFound, Forbidden],
 }));
 
 export interface ListOriginCloudRegionsRequest {
@@ -483,7 +531,7 @@ export const ListOriginCloudRegionsResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<ListOriginCloudRegionsResponse>;
 
-export type ListOriginCloudRegionsError = DefaultErrors;
+export type ListOriginCloudRegionsError = DefaultErrors | Forbidden;
 
 export const listOriginCloudRegions: API.OperationMethod<
   ListOriginCloudRegionsRequest,
@@ -493,7 +541,7 @@ export const listOriginCloudRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOriginCloudRegionsRequest,
   output: ListOriginCloudRegionsResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface CreateOriginCloudRegionRequest {
@@ -572,7 +620,10 @@ export const CreateOriginCloudRegionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateOriginCloudRegionResponse>;
 
-export type CreateOriginCloudRegionError = DefaultErrors;
+export type CreateOriginCloudRegionError =
+  | DefaultErrors
+  | OriginCloudRegionAlreadyExists
+  | Forbidden;
 
 export const createOriginCloudRegion: API.OperationMethod<
   CreateOriginCloudRegionRequest,
@@ -582,7 +633,7 @@ export const createOriginCloudRegion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOriginCloudRegionRequest,
   output: CreateOriginCloudRegionResponse,
-  errors: [],
+  errors: [OriginCloudRegionAlreadyExists, Forbidden],
 }));
 
 export interface PatchOriginCloudRegionRequest {
@@ -662,7 +713,10 @@ export const PatchOriginCloudRegionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchOriginCloudRegionResponse>;
 
-export type PatchOriginCloudRegionError = DefaultErrors;
+export type PatchOriginCloudRegionError =
+  | DefaultErrors
+  | OriginCloudRegionNotFound
+  | Forbidden;
 
 export const patchOriginCloudRegion: API.OperationMethod<
   PatchOriginCloudRegionRequest,
@@ -672,7 +726,7 @@ export const patchOriginCloudRegion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOriginCloudRegionRequest,
   output: PatchOriginCloudRegionResponse,
-  errors: [],
+  errors: [OriginCloudRegionNotFound, Forbidden],
 }));
 
 export interface DeleteOriginCloudRegionRequest {
@@ -741,7 +795,10 @@ export const DeleteOriginCloudRegionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteOriginCloudRegionResponse>;
 
-export type DeleteOriginCloudRegionError = DefaultErrors;
+export type DeleteOriginCloudRegionError =
+  | DefaultErrors
+  | OriginCloudRegionNotFound
+  | Forbidden;
 
 export const deleteOriginCloudRegion: API.OperationMethod<
   DeleteOriginCloudRegionRequest,
@@ -751,7 +808,7 @@ export const deleteOriginCloudRegion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOriginCloudRegionRequest,
   output: DeleteOriginCloudRegionResponse,
-  errors: [],
+  errors: [OriginCloudRegionNotFound, Forbidden],
 }));
 
 export interface BulkPatchOriginCloudRegionsRequest {
@@ -1019,7 +1076,10 @@ export const GetRegionalTieredCacheResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetRegionalTieredCacheResponse>;
 
-export type GetRegionalTieredCacheError = DefaultErrors;
+export type GetRegionalTieredCacheError =
+  | DefaultErrors
+  | SettingUnavailableForPlan
+  | Forbidden;
 
 export const getRegionalTieredCache: API.OperationMethod<
   GetRegionalTieredCacheRequest,
@@ -1029,7 +1089,7 @@ export const getRegionalTieredCache: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionalTieredCacheRequest,
   output: GetRegionalTieredCacheResponse,
-  errors: [],
+  errors: [SettingUnavailableForPlan, Forbidden],
 }));
 
 export interface PatchRegionalTieredCacheRequest {
@@ -1080,7 +1140,10 @@ export const PatchRegionalTieredCacheResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchRegionalTieredCacheResponse>;
 
-export type PatchRegionalTieredCacheError = DefaultErrors;
+export type PatchRegionalTieredCacheError =
+  | DefaultErrors
+  | SettingUnavailableForPlan
+  | Forbidden;
 
 export const patchRegionalTieredCache: API.OperationMethod<
   PatchRegionalTieredCacheRequest,
@@ -1090,7 +1153,7 @@ export const patchRegionalTieredCache: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionalTieredCacheRequest,
   output: PatchRegionalTieredCacheResponse,
-  errors: [],
+  errors: [SettingUnavailableForPlan, Forbidden],
 }));
 
 // =============================================================================
@@ -1196,7 +1259,7 @@ export const GetSmartTieredCacheResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSmartTieredCacheResponse>;
 
-export type GetSmartTieredCacheError = DefaultErrors;
+export type GetSmartTieredCacheError = DefaultErrors | Forbidden;
 
 export const getSmartTieredCache: API.OperationMethod<
   GetSmartTieredCacheRequest,
@@ -1206,7 +1269,7 @@ export const getSmartTieredCache: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSmartTieredCacheRequest,
   output: GetSmartTieredCacheResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchSmartTieredCacheRequest {
@@ -1257,7 +1320,7 @@ export const PatchSmartTieredCacheResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSmartTieredCacheResponse>;
 
-export type PatchSmartTieredCacheError = DefaultErrors;
+export type PatchSmartTieredCacheError = DefaultErrors | Forbidden;
 
 export const patchSmartTieredCache: API.OperationMethod<
   PatchSmartTieredCacheRequest,
@@ -1267,7 +1330,7 @@ export const patchSmartTieredCache: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSmartTieredCacheRequest,
   output: PatchSmartTieredCacheResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface DeleteSmartTieredCacheRequest {
@@ -1414,7 +1477,7 @@ export const GetVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetVariantResponse>;
 
-export type GetVariantError = DefaultErrors;
+export type GetVariantError = DefaultErrors | VariantsNotConfigured | Forbidden;
 
 export const getVariant: API.OperationMethod<
   GetVariantRequest,
@@ -1424,7 +1487,7 @@ export const getVariant: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVariantRequest,
   output: GetVariantResponse,
-  errors: [],
+  errors: [VariantsNotConfigured, Forbidden],
 }));
 
 export interface PatchVariantRequest {
@@ -1540,7 +1603,7 @@ export const PatchVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchVariantResponse>;
 
-export type PatchVariantError = DefaultErrors;
+export type PatchVariantError = DefaultErrors | Forbidden;
 
 export const patchVariant: API.OperationMethod<
   PatchVariantRequest,
@@ -1550,7 +1613,7 @@ export const patchVariant: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchVariantRequest,
   output: PatchVariantResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface DeleteVariantRequest {
@@ -1589,7 +1652,10 @@ export const DeleteVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteVariantResponse>;
 
-export type DeleteVariantError = DefaultErrors;
+export type DeleteVariantError =
+  | DefaultErrors
+  | VariantsNotConfigured
+  | Forbidden;
 
 export const deleteVariant: API.OperationMethod<
   DeleteVariantRequest,
@@ -1599,5 +1665,5 @@ export const deleteVariant: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVariantRequest,
   output: DeleteVariantResponse,
-  errors: [],
+  errors: [VariantsNotConfigured, Forbidden],
 }));

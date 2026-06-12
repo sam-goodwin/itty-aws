@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "RouteAlreadyExists": [
+      { "code": 7005, "message": { "includes": "already exists" } }
+    ],
+    "GatewayNotFound": [{ "code": 7002 }]
+  },
+  "response": {
+    "properties": {
+      "elements": { "optional": true },
+      "version.data": { "optional": true, "type": "unknown" }
+    }
+  }
+}

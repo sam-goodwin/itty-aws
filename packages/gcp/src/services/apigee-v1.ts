@@ -9129,11 +9129,7 @@ export const ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ComputeEnvironmentScoresResponse;
 
 export type ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** ComputeEnvironmentScores calculates scores for requested time range for the specified security profile and environment. */
 export const computeEnvironmentScoresOrganizationsSecurityProfilesEnvironments: API.OperationMethod<
@@ -10138,11 +10134,7 @@ export const UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiprod
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Approves or revokes the consumer key for an API product. After a consumer key is approved, the app can use it to access APIs. A consumer key that is revoked or pending cannot be used to access an API. Any access tokens associated with a revoked consumer key will remain active. However, Apigee checks the status of the consumer key and if set to `revoked` will not allow access to the API. */
 export const updateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproducts: API.OperationMethod<
@@ -11465,11 +11457,7 @@ export const GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
 export type GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Manages access to a developer app by enabling you to: * Approve or revoke a developer app * Generate a new consumer key and secret for a developer app To approve or revoke a developer app, set the `action` query parameter to `approve` or `revoke`, respectively, and the `Content-Type` header to `application/octet-stream`. If a developer app is revoked, none of its API keys are valid for API calls even though the keys are still approved. If successful, the API call returns the following HTTP status code: `204 No Content` To generate a new consumer key and secret for a developer app, pass the new key/secret details. Rather than replace an existing key, this API generates a new key. In this case, multiple key pairs may be associated with a single developer app. Each key pair has an independent status (`approve` or `revoke`) and expiration time. Any approved, non-expired key can be used in an API call. For example, if you're using API key rotation, you can generate new keys with expiration times that overlap keys that are going to expire. You might also generate a new consumer key/secret if the security of the original key/secret is compromised. The `keyExpiresIn` property defines the expiration time for the API key in milliseconds. If you don't set this property or set it to `-1`, the API key never expires. **Notes**: * When generating a new key/secret, this API replaces the existing attributes, notes, and callback URLs with those specified in the request. Include or exclude any existing information that you want to retain or delete, respectively. * To migrate existing consumer keys and secrets to hybrid from another system, see the CreateDeveloperAppKey API. */
 export const generateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApps: API.OperationMethod<
@@ -11824,11 +11812,7 @@ export const UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApipr
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Approves or revokes the consumer key for an API product. After a consumer key is approved, the app can use it to access APIs. A consumer key that is revoked or pending cannot be used to access an API. Any access tokens associated with a revoked consumer key will remain active. However, Apigee checks the status of the consumer key and if set to `revoked` will not allow access to the API. */
 export const updateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproducts: API.OperationMethod<
@@ -11866,11 +11850,7 @@ export const UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Updates a developer app attribute. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds. */
 export const updateDeveloperAppAttributeOrganizationsDevelopersAppsAttributes: API.OperationMethod<
@@ -17054,11 +17034,7 @@ export const DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1FlowHook;
 
 export type DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Detaches a shared flow from a flow hook. */
 export const detachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooks: API.OperationMethod<
@@ -17959,9 +17935,7 @@ export const ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
 
 export type ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists all resource files, optionally filtering by type. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files). */
 export const listEnvironmentResourcesOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
@@ -18418,11 +18392,7 @@ export const GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1GenerateDownloadUrlResponse;
 
 export type GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Generates a signed URL for downloading the original zip file used to create an Archive Deployment. The URL is only valid for a limited period and should be used within minutes after generation. Each call returns a new upload URL. */
 export const generateDownloadUrlOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod<
@@ -19074,11 +19044,7 @@ export const GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDep
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeploymentChangeReport;
 
 export type GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Generates a report for a dry run analysis of a DeployApiProxy request without committing the deployment. In addition to the standard validations performed when adding deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being created. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run DeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateDeployChangeReport`, two permissions are required: * `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.deploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` */
 export const generateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeployments: API.OperationMethod<
@@ -19117,11 +19083,7 @@ export const GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsD
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeploymentChangeReport;
 
 export type GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Generates a report for a dry run analysis of an UndeployApiProxy request without committing the undeploy. In addition to the standard validations performed when removing deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being removed. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run UndeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateUndeployChangeReport`, two permissions are required: * `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.undeploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` */
 export const generateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeployments: API.OperationMethod<
@@ -19191,11 +19153,7 @@ export const DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes the data from a debug session. This does not cancel the debug session or prevent further data from being collected if the session is still active in runtime pods. */
 export const deleteDataOrganizationsEnvironmentsApisRevisionsDebugsessions: API.OperationMethod<

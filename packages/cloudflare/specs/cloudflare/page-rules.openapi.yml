@@ -691,6 +691,11 @@ paths:
                   - status
                   - targets
       x-distilled-response-path: result
+      x-distilled-errors:
+        PageRuleNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updatePageRule
       description: "Replaces the configuration of an existing Page Rule. The
@@ -2027,6 +2032,11 @@ paths:
                   - status
                   - targets
       x-distilled-response-path: result
+      x-distilled-errors:
+        PageRuleNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchPageRule
       description: "Updates one or more fields of an existing Page Rule.  @example
@@ -3357,6 +3367,11 @@ paths:
                   - status
                   - targets
       x-distilled-response-path: result
+      x-distilled-errors:
+        PageRuleNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deletePageRule
       description: "Deletes an existing Page Rule.  @example ```ts const pageRule =
@@ -3388,6 +3403,11 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        PageRuleNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/pagerules:
     get:
       operationId: listPageRules
@@ -4113,6 +4133,9 @@ paths:
                     - status
                     - targets
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createPageRule
       description: "Creates a new Page Rule.  @example ```ts const pageRule = await
@@ -5442,3 +5465,6 @@ paths:
                   - status
                   - targets
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

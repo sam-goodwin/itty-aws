@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "IpsecTunnelNotFound": [{ "code": 1032 }],
+    "MagicTransitNotOnboarded": [{ "code": 1012 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

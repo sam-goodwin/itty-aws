@@ -5022,6 +5022,11 @@ paths:
                   - created_at
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        NamespaceAlreadyExists:
+          - code: 7064
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/ai-search/namespaces/{name}:
     put:
       operationId: updateNamespace
@@ -5074,6 +5079,11 @@ paths:
                   - created_at
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        NamespaceNotFound:
+          - code: 7063
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteNamespace
       description: "Delete namespace.  @example ```ts const namespace = await
@@ -5097,6 +5107,11 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        NamespaceNotFound:
+          - code: 7063
+        Forbidden:
+          - status: 403
     get:
       operationId: readNamespace
       description: "Read namespace.  @example ```ts const response = await
@@ -5134,6 +5149,11 @@ paths:
                   - created_at
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        NamespaceNotFound:
+          - code: 7063
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/ai-search/namespaces/{name}/search:
     post:
       operationId: searchNamespace
@@ -10407,6 +10427,8 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
     post:
       operationId: createToken
       description: "Create a new token.  @example ```ts const token = await
@@ -10487,6 +10509,10 @@ paths:
           - code: 7002
         InvalidRoute:
           - code: 7003
+        InvalidTokenCredentials:
+          - code: 7012
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/ai-search/tokens/{id}:
     put:
       operationId: updateToken
@@ -10573,6 +10599,12 @@ paths:
           - code: 7002
         InvalidRoute:
           - code: 7003
+        TokenNotFound:
+          - code: 7075
+        Forbidden:
+          - status: 403
+        InvalidTokenCredentials:
+          - code: 7012
     delete:
       operationId: deleteToken
       description: "Delete token.  @example ```ts const token = await
@@ -10603,6 +10635,10 @@ paths:
           - code: 7002
         InvalidRoute:
           - code: 7003
+        TokenNotFound:
+          - code: 7075
+        Forbidden:
+          - status: 403
     get:
       operationId: readToken
       description: "Read token.  @example ```ts const response = await
@@ -10657,3 +10693,7 @@ paths:
           - code: 7002
         InvalidRoute:
           - code: 7003
+        TokenNotFound:
+          - code: 7075
+        Forbidden:
+          - status: 403

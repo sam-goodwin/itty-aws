@@ -1,0 +1,20 @@
+{
+  "errors": {
+    "DuplicateLockdown": [
+      {
+        "code": 10009,
+        "message": { "includes": "zonelockdown.api.duplicate_of_existing" }
+      }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "description": { "optional": true },
+      "priority": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "number" }
+      }
+    }
+  }
+}

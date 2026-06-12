@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "UserGroupMemberNotFound": [
+      { "code": 404, "message": { "includes": "not found in user group" } }
+    ],
+    "UserGroupNotFound": [
+      { "code": 404, "message": { "includes": "User group" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -113219,6 +113219,11 @@ paths:
                       - tls
                     description: The type of device managed network.
       x-distilled-response-path: result
+      x-distilled-errors:
+        DeviceNetworkNotFound:
+          - code: 2053
+        Forbidden:
+          - status: 403
     put:
       operationId: updateDeviceNetwork
       description: "Updates a configured device managed network.  @example ```ts const
@@ -113307,6 +113312,11 @@ paths:
                       - tls
                     description: The type of device managed network.
       x-distilled-response-path: result
+      x-distilled-errors:
+        DeviceNetworkNotFound:
+          - code: 2053
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDeviceNetwork
       description: "Deletes a device managed network and fetches a list of the
@@ -113363,6 +113373,11 @@ paths:
                       - tls
                     description: The type of device managed network.
       x-distilled-pagination-class: DeviceNetworksSinglePage
+      x-distilled-errors:
+        DeviceNetworkNotFound:
+          - code: 2053
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/networks:
     get:
       operationId: listDeviceNetworks
@@ -113413,6 +113428,9 @@ paths:
                       - tls
                     description: The type of device managed network.
       x-distilled-pagination-class: DeviceNetworksSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createDeviceNetwork
       description: "Creates a new device managed network.  @example ```ts const
@@ -113500,6 +113518,9 @@ paths:
                       - tls
                     description: The type of device managed network.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/registrations/{registrationId}/override_codes:
     get:
       operationId: getDeviceOverrideCode
@@ -113785,6 +113806,11 @@ paths:
                         description: Virtual network access settings for the device.
                 nullable: true
       x-distilled-response-path: result
+      x-distilled-errors:
+        DevicePolicyNotFound:
+          - code: 2052
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchDevicePolicyCustom
       description: "Updates a configured device settings profile.  @example ```ts
@@ -114188,6 +114214,11 @@ paths:
                         description: Virtual network access settings for the device.
                 nullable: true
       x-distilled-response-path: result
+      x-distilled-errors:
+        DevicePolicyNotFound:
+          - code: 2052
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDevicePolicyCustom
       description: "Deletes a device settings profile and fetches a list of the
@@ -114411,6 +114442,11 @@ paths:
                     nullable: true
                     description: Virtual network access settings for the device.
       x-distilled-pagination-class: SettingsPoliciesSinglePage
+      x-distilled-errors:
+        DevicePolicyNotFound:
+          - code: 2052
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/policies:
     get:
       operationId: listDevicePolicyCustoms
@@ -114629,6 +114665,9 @@ paths:
                     nullable: true
                     description: Virtual network access settings for the device.
       x-distilled-pagination-class: SettingsPoliciesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/policy:
     post:
       operationId: createDevicePolicyCustom
@@ -115033,6 +115072,9 @@ paths:
                         description: Virtual network access settings for the device.
                 nullable: true
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     get:
       operationId: getDevicePolicyDefault
       description: "Fetches the default device settings profile for an
@@ -115591,6 +115633,11 @@ paths:
                     required:
                       - host
       x-distilled-pagination-class: SplitTunnelExcludesSinglePage
+      x-distilled-errors:
+        DevicePolicyNotFound:
+          - code: 2052
+        Forbidden:
+          - status: 403
     put:
       operationId: putDevicePolicyCustomExclude
       description: "Sets the list of routes excluded from the WARP client's tunnel for
@@ -115672,6 +115719,11 @@ paths:
                     required:
                       - host
       x-distilled-pagination-class: SplitTunnelExcludesSinglePage
+      x-distilled-errors:
+        DevicePolicyNotFound:
+          - code: 2052
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/policy/{policyId}/fallback_domains:
     get:
       operationId: getDevicePolicyCustomFallbackDomain
@@ -115715,6 +115767,11 @@ paths:
                 required:
                   - suffix
       x-distilled-pagination-class: FallbackDomainsSinglePage
+      x-distilled-errors:
+        DevicePolicyNotFound:
+          - code: 2052
+        Forbidden:
+          - status: 403
     put:
       operationId: putDevicePolicyCustomFallbackDomain
       description: "Sets the list of domains to bypass Gateway DNS resolution. These
@@ -115788,6 +115845,11 @@ paths:
                 required:
                   - suffix
       x-distilled-pagination-class: FallbackDomainsSinglePage
+      x-distilled-errors:
+        DevicePolicyNotFound:
+          - code: 2052
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/policy/{policyId}/include:
     get:
       operationId: getDevicePolicyCustomInclude
@@ -115838,6 +115900,11 @@ paths:
                     required:
                       - host
       x-distilled-pagination-class: SplitTunnelIncludesSinglePage
+      x-distilled-errors:
+        DevicePolicyNotFound:
+          - code: 2052
+        Forbidden:
+          - status: 403
     put:
       operationId: putDevicePolicyCustomInclude
       description: "Sets the list of routes included in the WARP client's tunnel for a
@@ -115919,6 +115986,11 @@ paths:
                     required:
                       - host
       x-distilled-pagination-class: SplitTunnelIncludesSinglePage
+      x-distilled-errors:
+        DevicePolicyNotFound:
+          - code: 2052
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/devices/policy/certificates:
     get:
       operationId: getDevicePolicyDefaultCertificate
@@ -116896,6 +116968,11 @@ paths:
                       - custom_s2s
                     description: The type of device posture rule.
       x-distilled-response-path: result
+      x-distilled-errors:
+        PostureRuleNotFound:
+          - code: 6024
+        Forbidden:
+          - status: 403
     put:
       operationId: updateDevicePosture
       description: "Updates a device posture rule.  @example ```ts const
@@ -118000,6 +118077,11 @@ paths:
                       - custom_s2s
                     description: The type of device posture rule.
       x-distilled-response-path: result
+      x-distilled-errors:
+        PostureRuleNotFound:
+          - code: 6024
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDevicePosture
       description: "Deletes a device posture rule.  @example ```ts const posture =
@@ -118029,6 +118111,11 @@ paths:
                     type: string
                     description: API UUID.
       x-distilled-response-path: result
+      x-distilled-errors:
+        PostureRuleNotFound:
+          - code: 6024
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/posture:
     get:
       operationId: listDevicePostures
@@ -118585,6 +118672,9 @@ paths:
                       - custom_s2s
                     description: The type of device posture rule.
       x-distilled-pagination-class: DevicePostureRulesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createDevicePosture
       description: "Creates a new device posture rule.  @example ```ts const
@@ -119683,6 +119773,9 @@ paths:
                       - custom_s2s
                     description: The type of device posture rule.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/posture/integration/{integrationId}:
     get:
       operationId: getDevicePostureIntegration
@@ -120946,6 +121039,9 @@ paths:
                     type: boolean
                     description: Enable using CGNAT virtual IPv4.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putDeviceSetting
       description: "Updates the current device settings for a Zero Trust
@@ -121052,6 +121148,9 @@ paths:
                     type: boolean
                     description: Enable using CGNAT virtual IPv4.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchDeviceSetting
       description: "Patches the current device settings for a Zero Trust
@@ -121158,6 +121257,9 @@ paths:
                     type: boolean
                     description: Enable using CGNAT virtual IPv4.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDeviceSetting
       description: "Resets the current device settings for a Zero Trust
@@ -121217,6 +121319,9 @@ paths:
                     type: boolean
                     description: Enable using CGNAT virtual IPv4.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/unrevoke:
     post:
       operationId: createDeviceUnrevoke
@@ -140194,6 +140299,11 @@ paths:
                   updated_at:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayListNotFound:
+          - code: 2218
+        Forbidden:
+          - status: 403
     put:
       operationId: updateGatewayList
       description: "Updates a configured Zero Trust list. Skips updating list items if
@@ -140294,6 +140404,9 @@ paths:
                   updated_at:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayListNotFound:
+          - code: 2218
     patch:
       operationId: patchGatewayList
       description: "Appends or removes an item from a configured Zero Trust
@@ -140413,6 +140526,9 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayListNotFound:
+          - code: 2218
   /accounts/{account_id}/gateway/lists:
     get:
       operationId: listGatewayLists
@@ -140636,6 +140752,9 @@ paths:
                       type: string
                       description: Specify the item value.
       x-distilled-pagination-class: ItemListResponsesSinglePage
+      x-distilled-errors:
+        GatewayListNotFound:
+          - code: 2218
   /accounts/{account_id}/gateway/locations/{locationId}:
     get:
       operationId: getGatewayLocation
@@ -140814,6 +140933,11 @@ paths:
                   updated_at:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayLocationNotFound:
+          - code: 1103
+        Forbidden:
+          - status: 403
     put:
       operationId: updateGatewayLocation
       description: "Update a configured Zero Trust Gateway location.  @example ```ts
@@ -141130,6 +141254,11 @@ paths:
                   updated_at:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayLocationNotFound:
+          - code: 1103
+        CannotDemoteDefaultGatewayLocation:
+          - code: 1216
     delete:
       operationId: deleteGatewayLocation
       description: "Delete a configured Zero Trust Gateway location.  @example ```ts
@@ -141154,6 +141283,13 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayLocationNotFound:
+          - code: 1103
+        CannotDeleteDefaultGatewayLocation:
+          - code: 1217
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/gateway/locations:
     get:
       operationId: listGatewayLocations
@@ -142132,6 +142268,11 @@ paths:
                       - kind
                       - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProxyEndpointNotFound:
+          - code: 2002
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchGatewayProxyEndpoint
       description: "Update a configured Zero Trust Gateway proxy endpoint.  @example
@@ -142226,6 +142367,9 @@ paths:
                       - kind
                       - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProxyEndpointNotFound:
+          - code: 2002
     delete:
       operationId: deleteGatewayProxyEndpoint
       description: "Delete a configured Zero Trust Gateway proxy endpoint.  @example
@@ -142251,6 +142395,9 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        ProxyEndpointNotFound:
+          - code: 2002
   /accounts/{account_id}/gateway/proxy_endpoints:
     get:
       operationId: listGatewayProxyEndpoints
@@ -142353,6 +142500,10 @@ paths:
                     - ip
                     - identity
                   description: "Body param: The proxy endpoint kind"
+                ips:
+                  type: array
+                  items:
+                    type: string
               required:
                 - name
       responses:
@@ -142414,6 +142565,11 @@ paths:
                       - kind
                       - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        IpProxyEndpointsRequireEnterprise:
+          - code: 2009
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/gateway/rules/{ruleId}:
     get:
       operationId: getGatewayRule
@@ -148786,6 +148942,11 @@ paths:
                       - name
                       - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessIdentityProviderNotFound:
+          - code: 12135
+        Forbidden:
+          - status: 403
     put:
       operationId: updateIdentityProvider
       description: "Updates a configured identity provider.  @example ```ts const
@@ -151456,6 +151617,9 @@ paths:
                       - name
                       - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessIdentityProviderNotFound:
+          - code: 12135
     delete:
       operationId: deleteIdentityProvider
       parameters:
@@ -151491,6 +151655,9 @@ paths:
                     type: string
                     description: UUID.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessIdentityProviderNotFound:
+          - code: 12135
   /{accountOrZone}/{accountOrZoneId}/access/identity_providers:
     get:
       operationId: listIdentityProviders
@@ -158449,6 +158616,11 @@ paths:
                   - is_default_network
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        VirtualNetworkNotFound:
+          - code: 1046
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchNetworkVirtualNetwork
       description: "Updates an existing virtual network.  @example ```ts const
@@ -158518,6 +158690,9 @@ paths:
                   - is_default_network
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        VirtualNetworkNotFound:
+          - code: 1046
     delete:
       operationId: deleteNetworkVirtualNetwork
       description: "Deletes an existing virtual network.  @example ```ts const
@@ -158570,6 +158745,11 @@ paths:
                   - is_default_network
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        VirtualNetworkNotFound:
+          - code: 1046
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/teamnet/virtual_networks:
     get:
       operationId: listNetworkVirtualNetworks
@@ -158723,6 +158903,9 @@ paths:
                   - is_default_network
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        VirtualNetworkConflict:
+          - code: 1014
   /{accountOrZone}/{accountOrZoneId}/access/organizations:
     get:
       operationId: listOrganizations

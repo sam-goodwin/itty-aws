@@ -13,6 +13,22 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class TagPreconditionFailed extends Schema.TaggedErrorClass<TagPreconditionFailed>()(
+  "TagPreconditionFailed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TagPreconditionFailed, [{ status: 412 }]);
+
+// =============================================================================
 // AccountTag
 // =============================================================================
 
@@ -557,7 +573,7 @@ export const GetAccountTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetAccountTagResponse>;
 
-export type GetAccountTagError = DefaultErrors;
+export type GetAccountTagError = DefaultErrors | Forbidden;
 
 export const getAccountTag: API.OperationMethod<
   GetAccountTagRequest,
@@ -567,7 +583,7 @@ export const getAccountTag: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountTagRequest,
   output: GetAccountTagResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutAccountTagRequest {
@@ -1123,7 +1139,10 @@ export const PutAccountTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PutAccountTagResponse>;
 
-export type PutAccountTagError = DefaultErrors;
+export type PutAccountTagError =
+  | DefaultErrors
+  | Forbidden
+  | TagPreconditionFailed;
 
 export const putAccountTag: API.OperationMethod<
   PutAccountTagRequest,
@@ -1133,7 +1152,7 @@ export const putAccountTag: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccountTagRequest,
   output: PutAccountTagResponse,
-  errors: [],
+  errors: [Forbidden, TagPreconditionFailed],
 }));
 
 export interface DeleteAccountTagRequest {
@@ -1141,13 +1160,24 @@ export interface DeleteAccountTagRequest {
   accountId: string;
   /** Header param: ETag value for optimistic concurrency control. When provided, the server will verify the current resource ETag matches before applying the write. Returns 412 Precondition Failed if the r */
   ifMatch?: string;
+  resourceId: string;
+  resourceType: string;
+  workerId?: string;
 }
 
 export const DeleteAccountTagRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
+    resourceId: Schema.String,
+    resourceType: Schema.String,
+    workerId: Schema.optional(Schema.String),
   }).pipe(
+    Schema.encodeKeys({
+      resourceId: "resource_id",
+      resourceType: "resource_type",
+      workerId: "worker_id",
+    }),
     T.Http({ method: "DELETE", path: "/accounts/{account_id}/tags" }),
   ) as unknown as Schema.Schema<DeleteAccountTagRequest>;
 
@@ -1156,7 +1186,7 @@ export type DeleteAccountTagResponse = unknown;
 export const DeleteAccountTagResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteAccountTagResponse>;
 
-export type DeleteAccountTagError = DefaultErrors;
+export type DeleteAccountTagError = DefaultErrors | Forbidden;
 
 export const deleteAccountTag: API.OperationMethod<
   DeleteAccountTagRequest,
@@ -1166,7 +1196,7 @@ export const deleteAccountTag: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountTagRequest,
   output: DeleteAccountTagResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================
@@ -2496,7 +2526,7 @@ export const GetZoneTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetZoneTagResponse>;
 
-export type GetZoneTagError = DefaultErrors;
+export type GetZoneTagError = DefaultErrors | Forbidden;
 
 export const getZoneTag: API.OperationMethod<
   GetZoneTagRequest,
@@ -2506,7 +2536,7 @@ export const getZoneTag: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZoneTagRequest,
   output: GetZoneTagResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutZoneTagRequest {
@@ -3036,7 +3066,7 @@ export const PutZoneTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PutZoneTagResponse>;
 
-export type PutZoneTagError = DefaultErrors;
+export type PutZoneTagError = DefaultErrors | Forbidden | TagPreconditionFailed;
 
 export const putZoneTag: API.OperationMethod<
   PutZoneTagRequest,
@@ -3046,7 +3076,7 @@ export const putZoneTag: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutZoneTagRequest,
   output: PutZoneTagResponse,
-  errors: [],
+  errors: [Forbidden, TagPreconditionFailed],
 }));
 
 export interface DeleteZoneTagRequest {
@@ -3054,12 +3084,23 @@ export interface DeleteZoneTagRequest {
   zoneId: string;
   /** Header param: ETag value for optimistic concurrency control. When provided, the server will verify the current resource ETag matches before applying the write. Returns 412 Precondition Failed if the r */
   ifMatch?: string;
+  resourceId: string;
+  resourceType: string;
+  accessApplicationId?: string;
 }
 
 export const DeleteZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
+  resourceId: Schema.String,
+  resourceType: Schema.String,
+  accessApplicationId: Schema.optional(Schema.String),
 }).pipe(
+  Schema.encodeKeys({
+    resourceId: "resource_id",
+    resourceType: "resource_type",
+    accessApplicationId: "access_application_id",
+  }),
   T.Http({ method: "DELETE", path: "/zones/{zone_id}/tags" }),
 ) as unknown as Schema.Schema<DeleteZoneTagRequest>;
 
@@ -3068,7 +3109,7 @@ export type DeleteZoneTagResponse = unknown;
 export const DeleteZoneTagResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteZoneTagResponse>;
 
-export type DeleteZoneTagError = DefaultErrors;
+export type DeleteZoneTagError = DefaultErrors | Forbidden;
 
 export const deleteZoneTag: API.OperationMethod<
   DeleteZoneTagRequest,
@@ -3078,5 +3119,5 @@ export const deleteZoneTag: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteZoneTagRequest,
   output: DeleteZoneTagResponse,
-  errors: [],
+  errors: [Forbidden],
 }));

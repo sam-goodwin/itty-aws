@@ -13,6 +13,28 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class SpectrumAppNotFound extends Schema.TaggedErrorClass<SpectrumAppNotFound>()(
+  "SpectrumAppNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SpectrumAppNotFound, [{ code: 10006 }]);
+
+export class SpectrumProtocolNotAvailable extends Schema.TaggedErrorClass<SpectrumProtocolNotAvailable>()(
+  "SpectrumProtocolNotAvailable",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SpectrumProtocolNotAvailable, [{ code: 13002 }]);
+
+// =============================================================================
 // AnalyticAggregateCurrent
 // =============================================================================
 
@@ -714,7 +736,7 @@ export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
 ]).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetAppResponse>;
 
-export type GetAppError = DefaultErrors;
+export type GetAppError = DefaultErrors | SpectrumAppNotFound | Forbidden;
 
 export const getApp: API.OperationMethod<
   GetAppRequest,
@@ -724,7 +746,7 @@ export const getApp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppRequest,
   output: GetAppResponse,
-  errors: [],
+  errors: [SpectrumAppNotFound, Forbidden],
 }));
 
 export interface ListAppsRequest {
@@ -999,7 +1021,7 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListAppsResponse>;
 
-export type ListAppsError = DefaultErrors;
+export type ListAppsError = DefaultErrors | Forbidden;
 
 export const listApps: API.PaginatedOperationMethod<
   ListAppsRequest,
@@ -1009,7 +1031,7 @@ export const listApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -1316,7 +1338,10 @@ export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreateAppResponse>;
 
-export type CreateAppError = DefaultErrors;
+export type CreateAppError =
+  | DefaultErrors
+  | SpectrumProtocolNotAvailable
+  | Forbidden;
 
 export const createApp: API.OperationMethod<
   CreateAppRequest,
@@ -1326,7 +1351,7 @@ export const createApp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppRequest,
   output: CreateAppResponse,
-  errors: [],
+  errors: [SpectrumProtocolNotAvailable, Forbidden],
 }));
 
 export interface UpdateAppRequest {
@@ -1628,7 +1653,11 @@ export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<UpdateAppResponse>;
 
-export type UpdateAppError = DefaultErrors;
+export type UpdateAppError =
+  | DefaultErrors
+  | SpectrumAppNotFound
+  | SpectrumProtocolNotAvailable
+  | Forbidden;
 
 export const updateApp: API.OperationMethod<
   UpdateAppRequest,
@@ -1638,7 +1667,7 @@ export const updateApp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAppRequest,
   output: UpdateAppResponse,
-  errors: [],
+  errors: [SpectrumAppNotFound, SpectrumProtocolNotAvailable, Forbidden],
 }));
 
 export interface DeleteAppRequest {
@@ -1665,7 +1694,7 @@ export const DeleteAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteAppResponse>;
 
-export type DeleteAppError = DefaultErrors;
+export type DeleteAppError = DefaultErrors | SpectrumAppNotFound | Forbidden;
 
 export const deleteApp: API.OperationMethod<
   DeleteAppRequest,
@@ -1675,5 +1704,5 @@ export const deleteApp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppRequest,
   output: DeleteAppResponse,
-  errors: [],
+  errors: [SpectrumAppNotFound, Forbidden],
 }));

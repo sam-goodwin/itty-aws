@@ -440,7 +440,14 @@ paths:
                   snippet:
                     type: string
                     description: Encoded JavaScript snippet.
+                  host:
+                    type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteNotFound:
+          - code: 10015
+        Forbidden:
+          - status: 403
     put:
       operationId: updateSiteInfo
       description: "Updates an existing Web Analytics site.  @example ```ts const site
@@ -547,7 +554,14 @@ paths:
                   snippet:
                     type: string
                     description: Encoded JavaScript snippet.
+                  host:
+                    type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteNotFound:
+          - code: 10015
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSiteInfo
       description: "Deletes an existing Web Analytics site.  @example ```ts const
@@ -578,6 +592,11 @@ paths:
                     type: string
                     description: The Web Analytics site identifier.
       x-distilled-response-path: result
+      x-distilled-errors:
+        SiteNotFound:
+          - code: 10015
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/rum/site_info/list:
     get:
       operationId: listSiteInfos
@@ -676,6 +695,9 @@ paths:
                     type: string
                     description: Encoded JavaScript snippet.
       x-distilled-pagination-class: SitesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/rum/site_info:
     post:
       operationId: createSiteInfo
@@ -770,4 +792,9 @@ paths:
                   snippet:
                     type: string
                     description: Encoded JavaScript snippet.
+                  host:
+                    type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

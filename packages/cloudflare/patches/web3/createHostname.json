@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "Web3HostnameNotEntitled": [
+      { "code": 1010, "message": { "includes": "not entitled" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

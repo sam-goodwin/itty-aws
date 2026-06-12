@@ -13,6 +13,40 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class CatalogSyncNotFound extends Schema.TaggedErrorClass<CatalogSyncNotFound>()(
+  "CatalogSyncNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CatalogSyncNotFound, [{ status: 404 }]);
+
+export class CloudIntegrationNotFound extends Schema.TaggedErrorClass<CloudIntegrationNotFound>()(
+  "CloudIntegrationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CloudIntegrationNotFound, [{ status: 404 }]);
+
+export class FeatureNotEnabled extends Schema.TaggedErrorClass<FeatureNotEnabled>()(
+  "FeatureNotEnabled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(FeatureNotEnabled, [{ code: 1012, status: 403 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class OnRampNotFound extends Schema.TaggedErrorClass<OnRampNotFound>()(
+  "OnRampNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(OnRampNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // AllCloudIntegration
 // =============================================================================
 
@@ -928,7 +962,11 @@ export const GetCatalogSyncResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetCatalogSyncResponse>;
 
-export type GetCatalogSyncError = DefaultErrors;
+export type GetCatalogSyncError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | CatalogSyncNotFound;
 
 export const getCatalogSync: API.OperationMethod<
   GetCatalogSyncRequest,
@@ -938,7 +976,7 @@ export const getCatalogSync: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCatalogSyncRequest,
   output: GetCatalogSyncResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, CatalogSyncNotFound],
 }));
 
 export interface ListCatalogSyncsRequest {
@@ -1024,7 +1062,10 @@ export const ListCatalogSyncsResponse =
     ),
   }) as unknown as Schema.Schema<ListCatalogSyncsResponse>;
 
-export type ListCatalogSyncsError = DefaultErrors;
+export type ListCatalogSyncsError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden;
 
 export const listCatalogSyncs: API.PaginatedOperationMethod<
   ListCatalogSyncsRequest,
@@ -1034,7 +1075,7 @@ export const listCatalogSyncs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCatalogSyncsRequest,
   output: ListCatalogSyncsResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -1151,7 +1192,10 @@ export const CreateCatalogSyncResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateCatalogSyncResponse>;
 
-export type CreateCatalogSyncError = DefaultErrors;
+export type CreateCatalogSyncError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden;
 
 export const createCatalogSync: API.OperationMethod<
   CreateCatalogSyncRequest,
@@ -1161,7 +1205,7 @@ export const createCatalogSync: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCatalogSyncRequest,
   output: CreateCatalogSyncResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden],
 }));
 
 export interface UpdateCatalogSyncRequest {
@@ -1265,7 +1309,11 @@ export const UpdateCatalogSyncResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateCatalogSyncResponse>;
 
-export type UpdateCatalogSyncError = DefaultErrors;
+export type UpdateCatalogSyncError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | CatalogSyncNotFound;
 
 export const updateCatalogSync: API.OperationMethod<
   UpdateCatalogSyncRequest,
@@ -1275,7 +1323,7 @@ export const updateCatalogSync: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCatalogSyncRequest,
   output: UpdateCatalogSyncResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, CatalogSyncNotFound],
 }));
 
 export interface PatchCatalogSyncRequest {
@@ -1379,7 +1427,11 @@ export const PatchCatalogSyncResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchCatalogSyncResponse>;
 
-export type PatchCatalogSyncError = DefaultErrors;
+export type PatchCatalogSyncError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | CatalogSyncNotFound;
 
 export const patchCatalogSync: API.OperationMethod<
   PatchCatalogSyncRequest,
@@ -1389,7 +1441,7 @@ export const patchCatalogSync: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCatalogSyncRequest,
   output: PatchCatalogSyncResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, CatalogSyncNotFound],
 }));
 
 export interface DeleteCatalogSyncRequest {
@@ -1425,7 +1477,11 @@ export const DeleteCatalogSyncResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteCatalogSyncResponse>;
 
-export type DeleteCatalogSyncError = DefaultErrors;
+export type DeleteCatalogSyncError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | CatalogSyncNotFound;
 
 export const deleteCatalogSync: API.OperationMethod<
   DeleteCatalogSyncRequest,
@@ -1435,7 +1491,7 @@ export const deleteCatalogSync: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCatalogSyncRequest,
   output: DeleteCatalogSyncResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, CatalogSyncNotFound],
 }));
 
 export interface RefreshCatalogSyncRequest {
@@ -1461,7 +1517,11 @@ export const RefreshCatalogSyncResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<RefreshCatalogSyncResponse>;
 
-export type RefreshCatalogSyncError = DefaultErrors;
+export type RefreshCatalogSyncError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | CatalogSyncNotFound;
 
 export const refreshCatalogSync: API.OperationMethod<
   RefreshCatalogSyncRequest,
@@ -1471,7 +1531,7 @@ export const refreshCatalogSync: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RefreshCatalogSyncRequest,
   output: RefreshCatalogSyncResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, CatalogSyncNotFound],
 }));
 
 // =============================================================================
@@ -1534,7 +1594,10 @@ export const ListCatalogSyncPrebuiltPoliciesResponse =
     ),
   }) as unknown as Schema.Schema<ListCatalogSyncPrebuiltPoliciesResponse>;
 
-export type ListCatalogSyncPrebuiltPoliciesError = DefaultErrors;
+export type ListCatalogSyncPrebuiltPoliciesError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden;
 
 export const listCatalogSyncPrebuiltPolicies: API.PaginatedOperationMethod<
   ListCatalogSyncPrebuiltPoliciesRequest,
@@ -1544,7 +1607,7 @@ export const listCatalogSyncPrebuiltPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCatalogSyncPrebuiltPoliciesRequest,
   output: ListCatalogSyncPrebuiltPoliciesResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -1806,7 +1869,11 @@ export const GetCloudIntegrationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetCloudIntegrationResponse>;
 
-export type GetCloudIntegrationError = DefaultErrors;
+export type GetCloudIntegrationError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudIntegrationNotFound;
 
 export const getCloudIntegration: API.OperationMethod<
   GetCloudIntegrationRequest,
@@ -1816,7 +1883,7 @@ export const getCloudIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCloudIntegrationRequest,
   output: GetCloudIntegrationResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, CloudIntegrationNotFound],
 }));
 
 export interface ListCloudIntegrationsRequest {
@@ -2085,7 +2152,10 @@ export const ListCloudIntegrationsResponse =
     ),
   }) as unknown as Schema.Schema<ListCloudIntegrationsResponse>;
 
-export type ListCloudIntegrationsError = DefaultErrors;
+export type ListCloudIntegrationsError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden;
 
 export const listCloudIntegrations: API.PaginatedOperationMethod<
   ListCloudIntegrationsRequest,
@@ -2095,7 +2165,7 @@ export const listCloudIntegrations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCloudIntegrationsRequest,
   output: ListCloudIntegrationsResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -2368,7 +2438,10 @@ export const CreateCloudIntegrationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateCloudIntegrationResponse>;
 
-export type CreateCloudIntegrationError = DefaultErrors;
+export type CreateCloudIntegrationError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden;
 
 export const createCloudIntegration: API.OperationMethod<
   CreateCloudIntegrationRequest,
@@ -2378,7 +2451,7 @@ export const createCloudIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCloudIntegrationRequest,
   output: CreateCloudIntegrationResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden],
 }));
 
 export interface UpdateCloudIntegrationRequest {
@@ -2659,7 +2732,11 @@ export const UpdateCloudIntegrationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateCloudIntegrationResponse>;
 
-export type UpdateCloudIntegrationError = DefaultErrors;
+export type UpdateCloudIntegrationError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudIntegrationNotFound;
 
 export const updateCloudIntegration: API.OperationMethod<
   UpdateCloudIntegrationRequest,
@@ -2669,7 +2746,7 @@ export const updateCloudIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCloudIntegrationRequest,
   output: UpdateCloudIntegrationResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, CloudIntegrationNotFound],
 }));
 
 export interface PatchCloudIntegrationRequest {
@@ -2950,7 +3027,11 @@ export const PatchCloudIntegrationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchCloudIntegrationResponse>;
 
-export type PatchCloudIntegrationError = DefaultErrors;
+export type PatchCloudIntegrationError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudIntegrationNotFound;
 
 export const patchCloudIntegration: API.OperationMethod<
   PatchCloudIntegrationRequest,
@@ -2960,7 +3041,7 @@ export const patchCloudIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCloudIntegrationRequest,
   output: PatchCloudIntegrationResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, CloudIntegrationNotFound],
 }));
 
 export interface DeleteCloudIntegrationRequest {
@@ -2990,7 +3071,11 @@ export const DeleteCloudIntegrationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteCloudIntegrationResponse>;
 
-export type DeleteCloudIntegrationError = DefaultErrors;
+export type DeleteCloudIntegrationError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudIntegrationNotFound;
 
 export const deleteCloudIntegration: API.OperationMethod<
   DeleteCloudIntegrationRequest,
@@ -3000,7 +3085,7 @@ export const deleteCloudIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCloudIntegrationRequest,
   output: DeleteCloudIntegrationResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, CloudIntegrationNotFound],
 }));
 
 export interface DiscoverCloudIntegrationRequest {
@@ -3824,7 +3909,10 @@ export const DiscoverCloudIntegrationResponse =
     success: Schema.Boolean,
   }) as unknown as Schema.Schema<DiscoverCloudIntegrationResponse>;
 
-export type DiscoverCloudIntegrationError = DefaultErrors;
+export type DiscoverCloudIntegrationError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden;
 
 export const discoverCloudIntegration: API.OperationMethod<
   DiscoverCloudIntegrationRequest,
@@ -3834,7 +3922,7 @@ export const discoverCloudIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DiscoverCloudIntegrationRequest,
   output: DiscoverCloudIntegrationResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden],
 }));
 
 // =============================================================================
@@ -4330,7 +4418,11 @@ export const GetOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetOnRampResponse>;
 
-export type GetOnRampError = DefaultErrors;
+export type GetOnRampError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | OnRampNotFound;
 
 export const getOnRamp: API.OperationMethod<
   GetOnRampRequest,
@@ -4340,7 +4432,7 @@ export const getOnRamp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOnRampRequest,
   output: GetOnRampResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, OnRampNotFound],
 }));
 
 export interface ListOnRampsRequest {
@@ -4841,7 +4933,7 @@ export const ListOnRampsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListOnRampsResponse>;
 
-export type ListOnRampsError = DefaultErrors;
+export type ListOnRampsError = DefaultErrors | FeatureNotEnabled | Forbidden;
 
 export const listOnRamps: API.PaginatedOperationMethod<
   ListOnRampsRequest,
@@ -4851,7 +4943,7 @@ export const listOnRamps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOnRampsRequest,
   output: ListOnRampsResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -5404,7 +5496,7 @@ export const CreateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateOnRampResponse>;
 
-export type CreateOnRampError = DefaultErrors;
+export type CreateOnRampError = DefaultErrors | FeatureNotEnabled | Forbidden;
 
 export const createOnRamp: API.OperationMethod<
   CreateOnRampRequest,
@@ -5414,7 +5506,7 @@ export const createOnRamp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOnRampRequest,
   output: CreateOnRampResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden],
 }));
 
 export interface UpdateOnRampRequest {
@@ -5928,7 +6020,11 @@ export const UpdateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateOnRampResponse>;
 
-export type UpdateOnRampError = DefaultErrors;
+export type UpdateOnRampError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | OnRampNotFound;
 
 export const updateOnRamp: API.OperationMethod<
   UpdateOnRampRequest,
@@ -5938,7 +6034,7 @@ export const updateOnRamp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOnRampRequest,
   output: UpdateOnRampResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, OnRampNotFound],
 }));
 
 export interface PatchOnRampRequest {
@@ -6452,7 +6548,11 @@ export const PatchOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchOnRampResponse>;
 
-export type PatchOnRampError = DefaultErrors;
+export type PatchOnRampError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | OnRampNotFound;
 
 export const patchOnRamp: API.OperationMethod<
   PatchOnRampRequest,
@@ -6462,7 +6562,7 @@ export const patchOnRamp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOnRampRequest,
   output: PatchOnRampResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, OnRampNotFound],
 }));
 
 export interface DeleteOnRampRequest {
@@ -6497,7 +6597,11 @@ export const DeleteOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteOnRampResponse>;
 
-export type DeleteOnRampError = DefaultErrors;
+export type DeleteOnRampError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | OnRampNotFound;
 
 export const deleteOnRamp: API.OperationMethod<
   DeleteOnRampRequest,
@@ -6507,7 +6611,7 @@ export const deleteOnRamp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOnRampRequest,
   output: DeleteOnRampResponse,
-  errors: [],
+  errors: [FeatureNotEnabled, Forbidden, OnRampNotFound],
 }));
 
 export interface ApplyOnRampRequest {

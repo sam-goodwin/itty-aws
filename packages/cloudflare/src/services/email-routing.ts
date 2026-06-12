@@ -13,6 +13,22 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class DestinationNotVerified extends Schema.TaggedErrorClass<DestinationNotVerified>()(
+  "DestinationNotVerified",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DestinationNotVerified, [{ code: 2054 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // Address
 // =============================================================================
 
@@ -1177,7 +1193,7 @@ export const GetEmailRoutingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetEmailRoutingResponse>;
 
-export type GetEmailRoutingError = DefaultErrors;
+export type GetEmailRoutingError = DefaultErrors | Forbidden;
 
 export const getEmailRouting: API.OperationMethod<
   GetEmailRoutingRequest,
@@ -1187,7 +1203,7 @@ export const getEmailRouting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEmailRoutingRequest,
   output: GetEmailRoutingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface EnableEmailRoutingRequest {
@@ -1274,7 +1290,7 @@ export const EnableEmailRoutingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<EnableEmailRoutingResponse>;
 
-export type EnableEmailRoutingError = DefaultErrors;
+export type EnableEmailRoutingError = DefaultErrors | Forbidden;
 
 export const enableEmailRouting: API.OperationMethod<
   EnableEmailRoutingRequest,
@@ -1284,7 +1300,7 @@ export const enableEmailRouting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableEmailRoutingRequest,
   output: EnableEmailRoutingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface DisableEmailRoutingRequest {
@@ -1371,7 +1387,7 @@ export const DisableEmailRoutingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DisableEmailRoutingResponse>;
 
-export type DisableEmailRoutingError = DefaultErrors;
+export type DisableEmailRoutingError = DefaultErrors | Forbidden;
 
 export const disableEmailRouting: API.OperationMethod<
   DisableEmailRoutingRequest,
@@ -1381,7 +1397,7 @@ export const disableEmailRouting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableEmailRoutingRequest,
   output: DisableEmailRoutingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================
@@ -2077,7 +2093,7 @@ export const GetRuleCatchAllResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetRuleCatchAllResponse>;
 
-export type GetRuleCatchAllError = DefaultErrors;
+export type GetRuleCatchAllError = DefaultErrors | Forbidden;
 
 export const getRuleCatchAll: API.OperationMethod<
   GetRuleCatchAllRequest,
@@ -2087,7 +2103,7 @@ export const getRuleCatchAll: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuleCatchAllRequest,
   output: GetRuleCatchAllResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutRuleCatchAllRequest {
@@ -2191,7 +2207,10 @@ export const PutRuleCatchAllResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutRuleCatchAllResponse>;
 
-export type PutRuleCatchAllError = DefaultErrors;
+export type PutRuleCatchAllError =
+  | DefaultErrors
+  | Forbidden
+  | DestinationNotVerified;
 
 export const putRuleCatchAll: API.OperationMethod<
   PutRuleCatchAllRequest,
@@ -2201,5 +2220,5 @@ export const putRuleCatchAll: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutRuleCatchAllRequest,
   output: PutRuleCatchAllResponse,
-  errors: [],
+  errors: [Forbidden, DestinationNotVerified],
 }));

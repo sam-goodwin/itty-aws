@@ -13,6 +13,34 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class RegistrarDomainNotOwned extends Schema.TaggedErrorClass<RegistrarDomainNotOwned>()(
+  "RegistrarDomainNotOwned",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RegistrarDomainNotOwned, [
+  {
+    code: 10000,
+    status: 403,
+    message: { includes: "Domain doesn't belong to the user" },
+  },
+]);
+
+export class RegistrarUpdateNotAllowed extends Schema.TaggedErrorClass<RegistrarUpdateNotAllowed>()(
+  "RegistrarUpdateNotAllowed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RegistrarUpdateNotAllowed, [{ status: 422 }]);
+
+// =============================================================================
 // Domain
 // =============================================================================
 
@@ -39,7 +67,7 @@ export const GetDomainResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetDomainResponse>;
 
-export type GetDomainError = DefaultErrors;
+export type GetDomainError = DefaultErrors | Forbidden;
 
 export const getDomain: API.OperationMethod<
   GetDomainRequest,
@@ -49,7 +77,7 @@ export const getDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainRequest,
   output: GetDomainResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface ListDomainsRequest {
@@ -120,6 +148,9 @@ export interface ListDomainsResponse {
         | null;
     } | null;
     updatedAt?: string | null;
+    name?: string | null;
+    autoRenew?: boolean | null;
+    privacy?: boolean | null;
   }[];
 }
 
@@ -263,6 +294,9 @@ export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      autoRenew: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      privacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         id: "id",
@@ -277,12 +311,15 @@ export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         supportedTld: "supported_tld",
         transferIn: "transfer_in",
         updatedAt: "updated_at",
+        name: "name",
+        autoRenew: "auto_renew",
+        privacy: "privacy",
       }),
     ),
   ),
 }) as unknown as Schema.Schema<ListDomainsResponse>;
 
-export type ListDomainsError = DefaultErrors;
+export type ListDomainsError = DefaultErrors | Forbidden;
 
 export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
@@ -292,7 +329,7 @@ export const listDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -336,7 +373,11 @@ export const PutDomainResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutDomainResponse>;
 
-export type PutDomainError = DefaultErrors;
+export type PutDomainError =
+  | DefaultErrors
+  | RegistrarDomainNotOwned
+  | RegistrarUpdateNotAllowed
+  | Forbidden;
 
 export const putDomain: API.OperationMethod<
   PutDomainRequest,
@@ -346,7 +387,7 @@ export const putDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutDomainRequest,
   output: PutDomainResponse,
-  errors: [],
+  errors: [RegistrarDomainNotOwned, RegistrarUpdateNotAllowed, Forbidden],
 }));
 
 // =============================================================================

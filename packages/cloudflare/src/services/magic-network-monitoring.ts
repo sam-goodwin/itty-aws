@@ -13,6 +13,57 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class DuplicateMnmRuleName extends Schema.TaggedErrorClass<DuplicateMnmRuleName>()(
+  "DuplicateMnmRuleName",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DuplicateMnmRuleName, [
+  { code: 1008, message: { includes: "rule name must be unique" } },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class MnmConfigAlreadyExists extends Schema.TaggedErrorClass<MnmConfigAlreadyExists>()(
+  "MnmConfigAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MnmConfigAlreadyExists, [
+  { code: 1005, message: { includes: "already exists" } },
+]);
+
+export class MnmConfigMissing extends Schema.TaggedErrorClass<MnmConfigMissing>()(
+  "MnmConfigMissing",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MnmConfigMissing, [
+  {
+    code: 1008,
+    message: { includes: "without initial account configuration" },
+  },
+]);
+
+export class MnmConfigNotFound extends Schema.TaggedErrorClass<MnmConfigNotFound>()(
+  "MnmConfigNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MnmConfigNotFound, [
+  { code: 1004, message: { includes: "not found" } },
+]);
+
+export class MnmRuleNotFound extends Schema.TaggedErrorClass<MnmRuleNotFound>()(
+  "MnmRuleNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MnmRuleNotFound, [{ code: 1009 }]);
+
+// =============================================================================
 // Config
 // =============================================================================
 
@@ -26,42 +77,41 @@ export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/accounts/{account_id}/mnm/config" }),
 ) as unknown as Schema.Schema<GetConfigRequest>;
 
-export interface GetConfigResponse {
-  /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
+export type GetConfigResponse = {
   defaultSampling: number;
-  /** The account name. */
   name: string;
   routerIps: string[];
   warpDevices: { id: string; name: string; routerIp: string }[];
-}
+} | null;
 
-export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  defaultSampling: Schema.Number,
-  name: Schema.String,
-  routerIps: Schema.Array(Schema.String),
-  warpDevices: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      routerIp: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
+export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  Schema.Struct({
+    defaultSampling: Schema.Number,
+    name: Schema.String,
+    routerIps: Schema.Array(Schema.String),
+    warpDevices: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
+        routerIp: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
+      ),
     ),
-  ),
-})
-  .pipe(
+  }).pipe(
     Schema.encodeKeys({
       defaultSampling: "default_sampling",
       name: "name",
       routerIps: "router_ips",
       warpDevices: "warp_devices",
     }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetConfigResponse>;
+  ),
+  Schema.Null,
+]).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetConfigResponse>;
 
-export type GetConfigError = DefaultErrors;
+export type GetConfigError = DefaultErrors | Forbidden;
 
 export const getConfig: API.OperationMethod<
   GetConfigRequest,
@@ -71,7 +121,7 @@ export const getConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface CreateConfigRequest {
@@ -148,7 +198,7 @@ export const CreateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateConfigResponse>;
 
-export type CreateConfigError = DefaultErrors;
+export type CreateConfigError = DefaultErrors | MnmConfigAlreadyExists;
 
 export const createConfig: API.OperationMethod<
   CreateConfigRequest,
@@ -158,7 +208,7 @@ export const createConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConfigRequest,
   output: CreateConfigResponse,
-  errors: [],
+  errors: [MnmConfigAlreadyExists],
 }));
 
 export interface UpdateConfigRequest {
@@ -200,42 +250,41 @@ export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "PUT", path: "/accounts/{account_id}/mnm/config" }),
 ) as unknown as Schema.Schema<UpdateConfigRequest>;
 
-export interface UpdateConfigResponse {
-  /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
+export type UpdateConfigResponse = {
   defaultSampling: number;
-  /** The account name. */
   name: string;
   routerIps: string[];
   warpDevices: { id: string; name: string; routerIp: string }[];
-}
+} | null;
 
-export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  defaultSampling: Schema.Number,
-  name: Schema.String,
-  routerIps: Schema.Array(Schema.String),
-  warpDevices: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      routerIp: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
+export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  Schema.Struct({
+    defaultSampling: Schema.Number,
+    name: Schema.String,
+    routerIps: Schema.Array(Schema.String),
+    warpDevices: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
+        routerIp: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
+      ),
     ),
-  ),
-})
-  .pipe(
+  }).pipe(
     Schema.encodeKeys({
       defaultSampling: "default_sampling",
       name: "name",
       routerIps: "router_ips",
       warpDevices: "warp_devices",
     }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<UpdateConfigResponse>;
+  ),
+  Schema.Null,
+]).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<UpdateConfigResponse>;
 
-export type UpdateConfigError = DefaultErrors;
+export type UpdateConfigError = DefaultErrors | Forbidden;
 
 export const updateConfig: API.OperationMethod<
   UpdateConfigRequest,
@@ -245,7 +294,7 @@ export const updateConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigRequest,
   output: UpdateConfigResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchConfigRequest {
@@ -380,7 +429,7 @@ export const DeleteConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteConfigResponse>;
 
-export type DeleteConfigError = DefaultErrors;
+export type DeleteConfigError = DefaultErrors | MnmConfigNotFound | Forbidden;
 
 export const deleteConfig: API.OperationMethod<
   DeleteConfigRequest,
@@ -390,7 +439,7 @@ export const deleteConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfigRequest,
   output: DeleteConfigResponse,
-  errors: [],
+  errors: [MnmConfigNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -568,7 +617,7 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetRuleResponse>;
 
-export type GetRuleError = DefaultErrors;
+export type GetRuleError = DefaultErrors | MnmRuleNotFound | Forbidden;
 
 export const getRule: API.OperationMethod<
   GetRuleRequest,
@@ -578,7 +627,7 @@ export const getRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
-  errors: [],
+  errors: [MnmRuleNotFound, Forbidden],
 }));
 
 export interface ListRulesRequest {
@@ -592,111 +641,116 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListRulesRequest>;
 
 export interface ListRulesResponse {
-  result: ({
-    id: string;
-    automaticAdvertisement: boolean | null;
-    name: string;
-    prefixes: string[];
-    type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
-    bandwidthThreshold?: number | null;
-    duration?:
-      | "1m"
-      | "5m"
-      | "10m"
-      | "15m"
-      | "20m"
-      | "30m"
-      | "45m"
-      | "60m"
-      | (string & {})
-      | null;
-    packetThreshold?: number | null;
-    prefixMatch?: "exact" | "subnet" | "supernet" | null;
-    zscoreSensitivity?: "low" | "medium" | "high" | null;
-    zscoreTarget?: "bits" | "packets" | null;
-  } | null)[];
+  result:
+    | ({
+        id: string;
+        automaticAdvertisement: boolean | null;
+        name: string;
+        prefixes: string[];
+        type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
+        bandwidthThreshold?: number | null;
+        duration?:
+          | "1m"
+          | "5m"
+          | "10m"
+          | "15m"
+          | "20m"
+          | "30m"
+          | "45m"
+          | "60m"
+          | (string & {})
+          | null;
+        packetThreshold?: number | null;
+        prefixMatch?: "exact" | "subnet" | "supernet" | null;
+        zscoreSensitivity?: "low" | "medium" | "high" | null;
+        zscoreTarget?: "bits" | "packets" | null;
+      } | null)[]
+    | null;
 }
 
 export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.String,
-        automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
-        name: Schema.String,
-        prefixes: Schema.Array(Schema.String),
-        type: Schema.Union([
-          Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
-          Schema.String,
-        ]),
-        bandwidthThreshold: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        duration: Schema.optional(
-          Schema.Union([
+  result: Schema.Union([
+    Schema.Array(
+      Schema.Union([
+        Schema.Struct({
+          id: Schema.String,
+          automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
+          name: Schema.String,
+          prefixes: Schema.Array(Schema.String),
+          type: Schema.Union([
+            Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+            Schema.String,
+          ]),
+          bandwidthThreshold: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          duration: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "1m",
-                "5m",
-                "10m",
-                "15m",
-                "20m",
-                "30m",
-                "45m",
-                "60m",
+              Schema.Union([
+                Schema.Literals([
+                  "1m",
+                  "5m",
+                  "10m",
+                  "15m",
+                  "20m",
+                  "30m",
+                  "45m",
+                  "60m",
+                ]),
+                Schema.String,
               ]),
-              Schema.String,
+              Schema.Null,
             ]),
-            Schema.Null,
-          ]),
+          ),
+          packetThreshold: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          prefixMatch: Schema.optional(
+            Schema.Union([
+              Schema.Literal("exact"),
+              Schema.Literal("subnet"),
+              Schema.Literal("supernet"),
+              Schema.Null,
+            ]),
+          ),
+          zscoreSensitivity: Schema.optional(
+            Schema.Union([
+              Schema.Literal("low"),
+              Schema.Literal("medium"),
+              Schema.Literal("high"),
+              Schema.Null,
+            ]),
+          ),
+          zscoreTarget: Schema.optional(
+            Schema.Union([
+              Schema.Literal("bits"),
+              Schema.Literal("packets"),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            automaticAdvertisement: "automatic_advertisement",
+            name: "name",
+            prefixes: "prefixes",
+            type: "type",
+            bandwidthThreshold: "bandwidth_threshold",
+            duration: "duration",
+            packetThreshold: "packet_threshold",
+            prefixMatch: "prefix_match",
+            zscoreSensitivity: "zscore_sensitivity",
+            zscoreTarget: "zscore_target",
+          }),
         ),
-        packetThreshold: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        prefixMatch: Schema.optional(
-          Schema.Union([
-            Schema.Literal("exact"),
-            Schema.Literal("subnet"),
-            Schema.Literal("supernet"),
-            Schema.Null,
-          ]),
-        ),
-        zscoreSensitivity: Schema.optional(
-          Schema.Union([
-            Schema.Literal("low"),
-            Schema.Literal("medium"),
-            Schema.Literal("high"),
-            Schema.Null,
-          ]),
-        ),
-        zscoreTarget: Schema.optional(
-          Schema.Union([
-            Schema.Literal("bits"),
-            Schema.Literal("packets"),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          automaticAdvertisement: "automatic_advertisement",
-          name: "name",
-          prefixes: "prefixes",
-          type: "type",
-          bandwidthThreshold: "bandwidth_threshold",
-          duration: "duration",
-          packetThreshold: "packet_threshold",
-          prefixMatch: "prefix_match",
-          zscoreSensitivity: "zscore_sensitivity",
-          zscoreTarget: "zscore_target",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+        Schema.Null,
+      ]),
+    ),
+    Schema.Null,
+  ]),
 }) as unknown as Schema.Schema<ListRulesResponse>;
 
-export type ListRulesError = DefaultErrors;
+export type ListRulesError = DefaultErrors | Forbidden;
 
 export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
@@ -706,7 +760,7 @@ export const listRules: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -902,7 +956,11 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateRuleResponse>;
 
-export type CreateRuleError = DefaultErrors;
+export type CreateRuleError =
+  | DefaultErrors
+  | DuplicateMnmRuleName
+  | MnmConfigMissing
+  | Forbidden;
 
 export const createRule: API.OperationMethod<
   CreateRuleRequest,
@@ -912,7 +970,7 @@ export const createRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
-  errors: [],
+  errors: [DuplicateMnmRuleName, MnmConfigMissing, Forbidden],
 }));
 
 export interface UpdateRuleRequest {
@@ -1214,7 +1272,7 @@ export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PatchRuleResponse {
   /** The id of the rule. Must be unique. */
-  id: string;
+  id?: string | null;
   /** Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
   automaticAdvertisement: boolean | null;
   /** The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters. */
@@ -1247,7 +1305,7 @@ export interface PatchRuleResponse {
 }
 
 export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
   name: Schema.String,
   prefixes: Schema.Array(Schema.String),
@@ -1311,7 +1369,7 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchRuleResponse>;
 
-export type PatchRuleError = DefaultErrors;
+export type PatchRuleError = DefaultErrors | MnmRuleNotFound | Forbidden;
 
 export const patchRule: API.OperationMethod<
   PatchRuleRequest,
@@ -1321,7 +1379,7 @@ export const patchRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRuleRequest,
   output: PatchRuleResponse,
-  errors: [],
+  errors: [MnmRuleNotFound, Forbidden],
 }));
 
 export interface DeleteRuleRequest {
@@ -1438,7 +1496,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteRuleResponse>;
 
-export type DeleteRuleError = DefaultErrors;
+export type DeleteRuleError = DefaultErrors | MnmRuleNotFound | Forbidden;
 
 export const deleteRule: API.OperationMethod<
   DeleteRuleRequest,
@@ -1448,7 +1506,7 @@ export const deleteRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
-  errors: [],
+  errors: [MnmRuleNotFound, Forbidden],
 }));
 
 // =============================================================================

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "SiteNotFound": [{ "code": 10015 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

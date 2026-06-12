@@ -18017,11 +18017,7 @@ export const QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Query metrics. */
 export const queryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -18064,11 +18060,7 @@ export const TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedView
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -18198,11 +18190,7 @@ export const SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -18372,9 +18360,7 @@ export const GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -18468,11 +18454,7 @@ export const GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedView
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Natural language based Insights which powers the next generation of dashboards in Insights. Next generation of QueryMetrics. */
 export const generativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -18516,11 +18498,7 @@ export const QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthoriz
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Generates a summary of predefined performance metrics for a set of conversations. Conversations can be specified by specifying a time window and an agent id, for now. The summary includes a comparison of metrics computed for conversations in the previous time period, and also a comparison with peers in the same time period. */
 export const queryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -18555,11 +18533,7 @@ export const CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: API.OperationMethod<
@@ -18608,9 +18582,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: API.PaginatedOperationMethod<
@@ -18649,9 +18621,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: API.OperationMethod<
@@ -18685,9 +18655,7 @@ export const GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedVie
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse;
 
 export type GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the signed URI for the audio for the given conversation. */
 export const generateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
@@ -18725,11 +18693,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a conversation. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
@@ -18767,9 +18731,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Conversation;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets a conversation. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
@@ -18819,9 +18781,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1ListConversationsResponse;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists conversations. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.PaginatedOperationMethod<
@@ -18866,9 +18826,7 @@ export const CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsCon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1CalculateStatsResponse;
 
 export type CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets conversation statistics. */
 export const calculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
@@ -18908,11 +18866,7 @@ export const FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Assessment;
 
 export type FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Finalize an Assessment. */
 export const finalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -18952,11 +18906,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Assessment;
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Create Assessment. */
 export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -18994,11 +18944,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Delete an Assessment. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -19038,11 +18984,7 @@ export const AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Assessment;
 
 export type AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Appeal an Assessment. */
 export const appealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -19082,11 +19024,7 @@ export const PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversati
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Assessment;
 
 export type PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Publish an Assessment. */
 export const publishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -19121,9 +19059,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsA
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Assessment;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Get Assessment. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -19167,9 +19103,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1ListAssessmentsResponse;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** List Assessments. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.PaginatedOperationMethod<
@@ -19213,11 +19147,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Note;
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Create Note. */
 export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.OperationMethod<
@@ -19260,11 +19190,7 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Note;
 
 export type PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Update Note. */
 export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.OperationMethod<
@@ -19299,11 +19225,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a Note. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.OperationMethod<
@@ -19344,9 +19266,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1ListNotesResponse;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** List Notes. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.PaginatedOperationMethod<
@@ -19394,9 +19314,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** List feedback labels. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.PaginatedOperationMethod<
@@ -19435,9 +19353,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsF
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1FeedbackLabel;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Get feedback label. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
@@ -19480,11 +19396,7 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1FeedbackLabel;
 
 export type PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Update feedback label. */
 export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
@@ -19533,11 +19445,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1FeedbackLabel;
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Create feedback label. */
 export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
@@ -19572,11 +19480,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Delete feedback label. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
@@ -22854,11 +22758,7 @@ export const TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Fine tune one or more QaModels. */
 export const tuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisions: API.OperationMethod<

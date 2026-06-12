@@ -8401,11 +8401,7 @@ export const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersResp
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
 export type UpdateContainerThreatDetectionSettingsProjectsLocationsClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Update the ContainerThreatDetectionSettings resource. */
 export const updateContainerThreatDetectionSettingsProjectsLocationsClusters: API.OperationMethod<
@@ -8444,9 +8440,7 @@ export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsR
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
 export type CalculateProjectsLocationsClustersContainerThreatDetectionSettingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateProjectsLocationsClustersContainerThreatDetectionSettings: API.OperationMethod<

@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "VirtualNetworkNotFound": [
+      {
+        "code": 1046
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
+  }
+}

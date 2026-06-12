@@ -134,6 +134,7 @@ export class PrefixNotFound extends Schema.TaggedErrorClass<PrefixNotFound>()(
 T.applyErrorMatchers(PrefixNotFound, [
   { code: 1000 },
   { code: 1000, message: { includes: "not_found" } },
+  { code: 1002, message: { includes: "forbidden" } },
 ]);
 
 export class RegionalHostnameEmpty extends Schema.TaggedErrorClass<RegionalHostnameEmpty>()(
@@ -2818,7 +2819,10 @@ export const ListPrefixBgpPrefixesResponse =
     ),
   }) as unknown as Schema.Schema<ListPrefixBgpPrefixesResponse>;
 
-export type ListPrefixBgpPrefixesError = DefaultErrors;
+export type ListPrefixBgpPrefixesError =
+  | DefaultErrors
+  | PrefixNotFound
+  | InvalidAccountId;
 
 export const listPrefixBgpPrefixes: API.PaginatedOperationMethod<
   ListPrefixBgpPrefixesRequest,
@@ -2828,7 +2832,7 @@ export const listPrefixBgpPrefixes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrefixBgpPrefixesRequest,
   output: ListPrefixBgpPrefixesResponse,
-  errors: [],
+  errors: [PrefixNotFound, InvalidAccountId],
   pagination: {
     mode: "single",
     items: "result",
@@ -3102,6 +3106,7 @@ export const PatchPrefixBgpPrefixResponse =
 export type PatchPrefixBgpPrefixError =
   | DefaultErrors
   | BgpPrefixNotFound
+  | PrefixNotFound
   | InvalidAccountId;
 
 export const patchPrefixBgpPrefix: API.OperationMethod<
@@ -3112,7 +3117,7 @@ export const patchPrefixBgpPrefix: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPrefixBgpPrefixRequest,
   output: PatchPrefixBgpPrefixResponse,
-  errors: [BgpPrefixNotFound, InvalidAccountId],
+  errors: [BgpPrefixNotFound, PrefixNotFound, InvalidAccountId],
 }));
 
 // =============================================================================
@@ -3174,7 +3179,10 @@ export const ListPrefixDelegationsResponse =
     ),
   }) as unknown as Schema.Schema<ListPrefixDelegationsResponse>;
 
-export type ListPrefixDelegationsError = DefaultErrors;
+export type ListPrefixDelegationsError =
+  | DefaultErrors
+  | PrefixNotFound
+  | InvalidAccountId;
 
 export const listPrefixDelegations: API.PaginatedOperationMethod<
   ListPrefixDelegationsRequest,
@@ -3184,7 +3192,7 @@ export const listPrefixDelegations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrefixDelegationsRequest,
   output: ListPrefixDelegationsResponse,
-  errors: [],
+  errors: [PrefixNotFound, InvalidAccountId],
   pagination: {
     mode: "single",
     items: "result",
@@ -3478,7 +3486,10 @@ export const ListPrefixServiceBindingsResponse =
     ),
   }) as unknown as Schema.Schema<ListPrefixServiceBindingsResponse>;
 
-export type ListPrefixServiceBindingsError = DefaultErrors;
+export type ListPrefixServiceBindingsError =
+  | DefaultErrors
+  | PrefixNotFound
+  | InvalidAccountId;
 
 export const listPrefixServiceBindings: API.PaginatedOperationMethod<
   ListPrefixServiceBindingsRequest,
@@ -3488,7 +3499,7 @@ export const listPrefixServiceBindings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrefixServiceBindingsRequest,
   output: ListPrefixServiceBindingsResponse,
-  errors: [],
+  errors: [PrefixNotFound, InvalidAccountId],
   pagination: {
     mode: "single",
     items: "result",

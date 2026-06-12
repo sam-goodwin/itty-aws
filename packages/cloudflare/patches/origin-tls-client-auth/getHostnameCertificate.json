@@ -1,0 +1,10 @@
+{
+  "errors": {
+    "HostnameCertificateNotFound": [
+      { "code": 1552 },
+      { "code": 1551 },
+      { "status": 404 }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

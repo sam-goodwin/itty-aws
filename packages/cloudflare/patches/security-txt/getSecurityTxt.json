@@ -1,0 +1,12 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "$": {
+        "appendUnion": [{ "kind": "primitive", "value": "string" }]
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "errors": {
+    "GatewayListNotFound": [{ "code": 2218 }]
+  }
+}

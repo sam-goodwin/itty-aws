@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare WORKERS API
+  title: Cloudflare Workers API
   version: 0.0.0
 servers:
   - url: https://api.cloudflare.com/client/v4
@@ -35,6 +35,8 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
     put:
       operationId: putAccountSetting
       description: "Creates Worker account settings for an account.  @example ```ts
@@ -76,6 +78,8 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/workers/assets/upload:
     post:
       operationId: createAssetUpload
@@ -5785,6 +5789,9 @@ paths:
                   - scripts
                   - slug
       x-distilled-pagination-class: DestinationListResponsesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createObservabilityDestination
       description: "Create a new Workers Observability Telemetry
@@ -5894,6 +5901,12 @@ paths:
                   - scripts
                   - slug
       x-distilled-response-path: result
+      x-distilled-errors:
+        ObservabilityDestinationCreateFailed:
+          - status: 400
+            message: Bad Request
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/workers/observability/destinations/{slug}:
     patch:
       operationId: patchObservabilityDestination
@@ -5994,6 +6007,14 @@ paths:
                   - scripts
                   - slug
       x-distilled-response-path: result
+      x-distilled-errors:
+        ObservabilityDestinationNotFound:
+          - status: 404
+        ObservabilityDestinationPreflightFailed:
+          - status: 400
+            message: Bad Request
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteObservabilityDestination
       description: "Delete a Workers Observability Telemetry Destination.  @example
@@ -6062,6 +6083,11 @@ paths:
                   - scripts
                   - slug
       x-distilled-response-path: result
+      x-distilled-errors:
+        ObservabilityDestinationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/workers/observability/queries:
     get:
       operationId: listObservabilityQueries
@@ -21537,6 +21563,10 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        SubdomainNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: putSubdomain
       description: "Creates a Workers subdomain for an account.  @example ```ts const
@@ -21579,6 +21609,8 @@ paths:
           - code: 10036
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSubdomain
       description: "Deletes a Workers subdomain for an account.  @example ```ts await
@@ -21597,6 +21629,10 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        SubdomainNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/workers/subdomain/edge-preview:
     get:
       operationId: createSubdomainEdgePreviewSession

@@ -4187,11 +4187,7 @@ export const DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a `ManagementDnsZoneBinding` resource. When a management DNS zone binding is deleted, the corresponding consumer VPC network is no longer bound to the management DNS zone. */
 export const deleteProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
@@ -4264,11 +4260,7 @@ export const RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Retries to create a `ManagementDnsZoneBinding` resource that is in failed state. */
 export const repairProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
@@ -4362,11 +4354,7 @@ export const CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Creates a new `ManagementDnsZoneBinding` resource in a private cloud. This RPC creates the DNS binding and the resource that represents the DNS binding of the consumer VPC network to the management DNS zone. A management DNS zone is the Cloud DNS cross-project binding zone that VMware Engine creates for each private cloud. It contains FQDNs and corresponding IP addresses for the private cloud's ESXi hosts and management VM appliances like vCenter and NSX Manager. */
 export const createProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
@@ -4862,11 +4850,7 @@ export const TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRe
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<

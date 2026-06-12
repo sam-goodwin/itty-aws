@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "LoadBalancerNotFound": [{ "code": 1001 }],
+    "LoadBalancingNotEnabledForZone": [{ "code": 1002, "message": { "includes": "load balancing not enabled" } }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

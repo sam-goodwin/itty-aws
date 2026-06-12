@@ -2496,11 +2496,7 @@ export const CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Creates a producer quota policy. A producer quota policy is applied by the owner or administrator of a service at an org or folder node to set the default quota limit for all consumers under the node where the policy is created. To create multiple policies at once, use ImportProducerQuotaPolicies instead. If a policy with the specified dimensions already exists, this call will fail. To overwrite an existing policy if one is already present ("upsert" semantics), use ImportProducerQuotaPolicies instead. */
 export const createServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.OperationMethod<
@@ -2546,11 +2542,7 @@ export const DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a producer quota policy. */
 export const deleteServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.OperationMethod<

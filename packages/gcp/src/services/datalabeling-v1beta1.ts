@@ -4814,11 +4814,7 @@ export const CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Create a FeedbackMessage object. */
 export const createProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages: API.OperationMethod<
@@ -4853,9 +4849,7 @@ export const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1FeedbackMessage;
 
 export type GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Get a FeedbackMessage object. */
 export const getProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages: API.OperationMethod<
@@ -4896,9 +4890,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessage
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse;
 
 export type ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** List FeedbackMessages with pagination. */
 export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages: API.PaginatedOperationMethod<
@@ -4937,11 +4929,7 @@ export const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Delete a FeedbackMessage. */
 export const deleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages: API.OperationMethod<

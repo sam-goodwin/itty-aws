@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "DuplicateUaRule": [
+      {
+        "code": 10009,
+        "message": { "includes": "firewalluablock.api.duplicate_of_existing" }
+      }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

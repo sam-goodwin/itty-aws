@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "ObservabilityDestinationCreateFailed": [
+      { "status": 400, "message": "Bad Request" }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

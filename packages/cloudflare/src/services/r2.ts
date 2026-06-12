@@ -59,6 +59,12 @@ export class EventNotificationRuleConflict extends Schema.TaggedErrorClass<Event
 ) {}
 T.applyErrorMatchers(EventNotificationRuleConflict, [{ code: 11020 }]);
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class InvalidBucketName extends Schema.TaggedErrorClass<InvalidBucketName>()(
   "InvalidBucketName",
   { code: Schema.Number, message: Schema.String },
@@ -1662,9 +1668,17 @@ export const GetBucketEventNotificationResponse =
         Schema.Null,
       ]),
     ),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetBucketEventNotificationResponse>;
+  })
+    .pipe(
+      Schema.encodeKeys({
+        queueId: "queue",
+        queueName: "queueName",
+        rules: "rules",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetBucketEventNotificationResponse>;
 
 export type GetBucketEventNotificationError =
   | DefaultErrors
@@ -1672,7 +1686,8 @@ export type GetBucketEventNotificationError =
   | NoEventNotificationConfig
   | EventNotificationConfigNotFound
   | QueueNotFound
-  | InvalidRoute;
+  | InvalidRoute
+  | Forbidden;
 
 export const getBucketEventNotification: API.OperationMethod<
   GetBucketEventNotificationRequest,
@@ -1688,6 +1703,7 @@ export const getBucketEventNotification: API.OperationMethod<
     EventNotificationConfigNotFound,
     QueueNotFound,
     InvalidRoute,
+    Forbidden,
   ],
 }));
 

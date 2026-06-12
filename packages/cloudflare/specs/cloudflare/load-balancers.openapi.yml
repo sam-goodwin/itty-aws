@@ -687,6 +687,11 @@ paths:
                   zone_name:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        LoadBalancerNotFound:
+          - code: 1001
+        Forbidden:
+          - status: 403
     put:
       operationId: updateLoadBalancer
       description: "Update a configured load balancer.  @example ```ts const
@@ -2019,6 +2024,15 @@ paths:
                   zone_name:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        LoadBalancerNotFound:
+          - code: 1001
+        LoadBalancingNotEnabledForZone:
+          - code: 1002
+            message:
+              includes: load balancing not enabled
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchLoadBalancer
       description: "Apply changes to an existing load balancer, overwriting the
@@ -3366,6 +3380,11 @@ paths:
                   id:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        LoadBalancerNotFound:
+          - code: 1001
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/load_balancers:
     get:
       operationId: listLoadBalancers
@@ -5365,6 +5384,13 @@ paths:
                   zone_name:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        LoadBalancingNotEnabledForZone:
+          - code: 1002
+            message:
+              includes: load balancing not enabled
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/load_balancers/monitors/{monitorId}:
     get:
       operationId: getMonitor
@@ -5482,6 +5508,11 @@ paths:
                       protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING',
                       'UDP-ICMP', and 'SMTP'.
       x-distilled-response-path: result
+      x-distilled-errors:
+        MonitorNotFound:
+          - code: 1001
+        Forbidden:
+          - status: 403
     put:
       operationId: updateMonitor
       description: "Modify a configured monitor.  @example ```ts const monitor = await
@@ -5692,6 +5723,11 @@ paths:
                       protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING',
                       'UDP-ICMP', and 'SMTP'.
       x-distilled-response-path: result
+      x-distilled-errors:
+        MonitorNotFound:
+          - code: 1001
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchMonitor
       description: "Apply changes to an existing monitor, overwriting the supplied
@@ -5931,6 +5967,15 @@ paths:
                   id:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        MonitorNotFound:
+          - code: 1001
+        MonitorInUse:
+          - code: 1002
+            message:
+              includes: still referenced
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/load_balancers/monitors:
     get:
       operationId: listMonitors
@@ -6247,6 +6292,9 @@ paths:
                       protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING',
                       'UDP-ICMP', and 'SMTP'.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}:
     get:
       operationId: getMonitorGroup
@@ -6324,6 +6372,11 @@ paths:
                   - description
                   - members
       x-distilled-response-path: result
+      x-distilled-errors:
+        MonitorGroupNotFound:
+          - code: 1001
+        Forbidden:
+          - status: 403
     put:
       operationId: updateMonitorGroup
       description: "Modify a configured monitor group.  @example ```ts const
@@ -6441,6 +6494,15 @@ paths:
                   - description
                   - members
       x-distilled-response-path: result
+      x-distilled-errors:
+        MonitorGroupNotFound:
+          - code: 1001
+        MonitorGroupsNotEnabled:
+          - code: 1002
+            message:
+              includes: monitor groups not enabled
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchMonitorGroup
       description: "Apply changes to an existing monitor group, overwriting the
@@ -6635,6 +6697,15 @@ paths:
                   - description
                   - members
       x-distilled-response-path: result
+      x-distilled-errors:
+        MonitorGroupNotFound:
+          - code: 1001
+        MonitorGroupInUse:
+          - code: 1002
+            message:
+              includes: still referenced
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/load_balancers/monitor_groups:
     get:
       operationId: listMonitorGroups
@@ -6818,6 +6889,13 @@ paths:
                   - description
                   - members
       x-distilled-response-path: result
+      x-distilled-errors:
+        MonitorGroupsNotEnabled:
+          - code: 1002
+            message:
+              includes: monitor groups not enabled
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}/references:
     get:
       operationId: getMonitorGroupReference
@@ -7318,6 +7396,11 @@ paths:
                       is balanced across all currently healthy origins, provided
                       the pool itself is healthy.
       x-distilled-response-path: result
+      x-distilled-errors:
+        PoolNotFound:
+          - code: 1001
+        Forbidden:
+          - status: 403
     put:
       operationId: updatePool
       description: "Modify a configured pool.  @example ```ts const pool = await
@@ -7853,6 +7936,15 @@ paths:
                       is balanced across all currently healthy origins, provided
                       the pool itself is healthy.
       x-distilled-response-path: result
+      x-distilled-errors:
+        PoolNotFound:
+          - code: 1001
+        PoolAccessFailed:
+          - code: 1002
+            message:
+              includes: Access Failed
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchPool
       description: "Apply changes to an existing pool, overwriting the supplied
@@ -8413,6 +8505,15 @@ paths:
                   id:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        PoolNotFound:
+          - code: 1001
+        PoolInUse:
+          - code: 1002
+            message:
+              includes: still referenced
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/load_balancers/pools:
     get:
       operationId: listPools
@@ -9209,6 +9310,13 @@ paths:
                       is balanced across all currently healthy origins, provided
                       the pool itself is healthy.
       x-distilled-response-path: result
+      x-distilled-errors:
+        PoolAccessFailed:
+          - code: 1002
+            message:
+              includes: Access Failed
+        Forbidden:
+          - status: 403
     patch:
       operationId: bulkPatchPools
       description: "Apply changes to a number of existing pools, overwriting the

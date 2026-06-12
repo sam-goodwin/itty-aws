@@ -13,6 +13,28 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class AdvancedCertificateManagerRequired extends Schema.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+  "AdvancedCertificateManagerRequired",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AdvancedCertificateManagerRequired, [{ code: 1450 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class HostnameTlsSettingNotFound extends Schema.TaggedErrorClass<HostnameTlsSettingNotFound>()(
+  "HostnameTlsSettingNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(HostnameTlsSettingNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // SettingTl
 // =============================================================================
 
@@ -75,7 +97,10 @@ export const GetSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<GetSettingTlsResponse>;
 
-export type GetSettingTlsError = DefaultErrors;
+export type GetSettingTlsError =
+  | DefaultErrors
+  | AdvancedCertificateManagerRequired
+  | Forbidden;
 
 export const getSettingTls: API.PaginatedOperationMethod<
   GetSettingTlsRequest,
@@ -85,7 +110,7 @@ export const getSettingTls: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetSettingTlsRequest,
   output: GetSettingTlsResponse,
-  errors: [],
+  errors: [AdvancedCertificateManagerRequired, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -167,7 +192,10 @@ export const PutSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutSettingTlsResponse>;
 
-export type PutSettingTlsError = DefaultErrors;
+export type PutSettingTlsError =
+  | DefaultErrors
+  | AdvancedCertificateManagerRequired
+  | Forbidden;
 
 export const putSettingTls: API.OperationMethod<
   PutSettingTlsRequest,
@@ -177,7 +205,7 @@ export const putSettingTls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSettingTlsRequest,
   output: PutSettingTlsResponse,
-  errors: [],
+  errors: [AdvancedCertificateManagerRequired, Forbidden],
 }));
 
 export interface DeleteSettingTlsRequest {
@@ -246,7 +274,11 @@ export const DeleteSettingTlsResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteSettingTlsResponse>;
 
-export type DeleteSettingTlsError = DefaultErrors;
+export type DeleteSettingTlsError =
+  | DefaultErrors
+  | AdvancedCertificateManagerRequired
+  | HostnameTlsSettingNotFound
+  | Forbidden;
 
 export const deleteSettingTls: API.OperationMethod<
   DeleteSettingTlsRequest,
@@ -256,5 +288,9 @@ export const deleteSettingTls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSettingTlsRequest,
   output: DeleteSettingTlsResponse,
-  errors: [],
+  errors: [
+    AdvancedCertificateManagerRequired,
+    HostnameTlsSettingNotFound,
+    Forbidden,
+  ],
 }));

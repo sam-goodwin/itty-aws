@@ -1,5 +1,14 @@
 {
-  "errors": {},
+  "errors": {
+    "UserGroupNotFound": [
+      { "code": 404, "message": { "includes": "User group" } }
+    ]
+  },
+  "request": {
+    "properties": {
+      "policies[].id": { "optional": true }
+    }
+  },
   "response": {
     "properties": {
       "policies[].resource_groups[].scope": { "type": "unknown" }

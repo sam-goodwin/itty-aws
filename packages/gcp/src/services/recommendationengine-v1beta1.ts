@@ -1652,11 +1652,7 @@ export const CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration;
 
 export type CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Register an API key for use with predict method. */
 export const createProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrations: API.OperationMethod<
@@ -1691,11 +1687,7 @@ export const DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Unregister an apiKey from using for predict method. */
 export const deleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrations: API.OperationMethod<
@@ -1739,9 +1731,7 @@ export const ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse;
 
 export type ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** List the registered apiKeys for use with predict method. */
 export const listProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrations: API.PaginatedOperationMethod<

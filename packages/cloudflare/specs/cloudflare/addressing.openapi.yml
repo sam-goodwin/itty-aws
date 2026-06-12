@@ -2236,6 +2236,10 @@ paths:
       x-distilled-errors:
         BgpPrefixNotFound:
           - code: 1002
+        PrefixNotFound:
+          - code: 1000
+            message:
+              includes: not_found
         InvalidAccountId:
           - code: 7003
             message:
@@ -2335,6 +2339,15 @@ paths:
                         description: Whether the advertisement status of the prefix is locked, meaning
                           it cannot be changed.
       x-distilled-pagination-class: BGPPrefixesSinglePage
+      x-distilled-errors:
+        PrefixNotFound:
+          - code: 1000
+            message:
+              includes: not_found
+        InvalidAccountId:
+          - code: 7003
+            message:
+              includes: Could not route
     post:
       operationId: createPrefixBgpPrefix
       description: "Create a BGP prefix, controlling the BGP advertisement status of a
@@ -2496,6 +2509,15 @@ paths:
                     type: string
                     description: Identifier of an IP Prefix.
       x-distilled-pagination-class: DelegationsSinglePage
+      x-distilled-errors:
+        PrefixNotFound:
+          - code: 1000
+            message:
+              includes: not_found
+        InvalidAccountId:
+          - code: 7003
+            message:
+              includes: Could not route
     post:
       operationId: createPrefixDelegation
       description: "Create a new account delegation for a given IP prefix.  @example
@@ -2834,6 +2856,15 @@ paths:
                     type: string
                     description: Name of a service running on the Cloudflare network
       x-distilled-pagination-class: ServiceBindingsSinglePage
+      x-distilled-errors:
+        PrefixNotFound:
+          - code: 1002
+            message:
+              includes: forbidden
+        InvalidAccountId:
+          - code: 7003
+            message:
+              includes: Could not route
     post:
       operationId: createPrefixServiceBinding
       description: "Creates a new Service Binding, routing traffic to IPs within the

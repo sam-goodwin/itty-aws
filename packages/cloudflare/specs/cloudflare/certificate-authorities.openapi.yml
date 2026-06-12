@@ -39,6 +39,9 @@ paths:
                     items:
                       type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putHostnameAssociation
       description: Replace Hostname Associations
@@ -80,3 +83,6 @@ paths:
                     items:
                       type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

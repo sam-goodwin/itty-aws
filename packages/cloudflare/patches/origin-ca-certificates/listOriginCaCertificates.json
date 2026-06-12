@@ -1,0 +1,12 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "result[].csr": { "optional": true },
+      "result[].request_type": { "optional": true },
+      "result[].requested_validity": { "optional": true, "type": "number" }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "ProxyEndpointNotFound": [{ "code": 2002 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

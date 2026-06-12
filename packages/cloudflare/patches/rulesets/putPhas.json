@@ -1,6 +1,10 @@
 {
   "errors": {
-    "RulesetNotFound": [{ "code": 10003 }]
+    "RulesetNotFound": [{ "code": 10003 }],
+    "PhaseNotEntitled": [
+      { "code": 50002 },
+      { "status": 400, "message": { "includes": "not entitled" } }
+    ]
   },
   "response": {
     "properties": {

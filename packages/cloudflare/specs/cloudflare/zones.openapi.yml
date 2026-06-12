@@ -124,10 +124,14 @@ paths:
                       total_pages:
                         type: number
                         description: The number of total pages in the entire result set.
-                required:
-                  - errors
-                  - messages
-                  - success
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
+        Forbidden:
+          - status: 403
     put:
       operationId: putCustomNameserver
       description: Set metadata for account-level custom nameservers on a zone.  If
@@ -168,6 +172,17 @@ paths:
               schema:
                 type: string
       x-distilled-pagination-class: CustomNameserverUpdateResponsesSinglePage
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
+        CustomNameserverSetNotFound:
+          - code: 1001
+            message:
+              includes: Custom Nameserver set doesn't exist
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/environments:
     get:
       operationId: listEnvironments
@@ -710,9 +725,15 @@ paths:
                     type: boolean
                   hold_after:
                     type: string
-                  include_subdomains:
-                    type: string
+                  include_subdomains: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
+        Forbidden:
+          - status: 403
     post:
       operationId: createHold
       description: "Enforce a zone hold on the zone, blocking the creation and
@@ -748,9 +769,19 @@ paths:
                     type: boolean
                   hold_after:
                     type: string
-                  include_subdomains:
-                    type: string
+                  include_subdomains: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        ZoneHoldsRequireEnterprise:
+          - code: 1005
+            message:
+              includes: Zone holds are only available on Enterprise zones
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchHold
       description: "Update the `hold_after` and/or `include_subdomains` values on an
@@ -800,9 +831,23 @@ paths:
                     type: boolean
                   hold_after:
                     type: string
-                  include_subdomains:
-                    type: string
+                  include_subdomains: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        ZoneHoldNotFound:
+          - code: 1003
+            message:
+              includes: No Zone Hold Found
+        ZoneHoldsRequireEnterprise:
+          - code: 1005
+            message:
+              includes: Zone holds are only available on Enterprise zones
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteHold
       description: "Stop enforcement of a zone hold on the zone, permanently or
@@ -838,9 +883,15 @@ paths:
                     type: boolean
                   hold_after:
                     type: string
-                  include_subdomains:
-                    type: string
+                  include_subdomains: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/available_plans/{planIdentifier}:
     get:
       operationId: getPlan

@@ -97,6 +97,14 @@ paths:
                     type: string
                     description: The time when the certificate was updated.
       x-distilled-response-path: result
+      x-distilled-errors:
+        HostnameAssociationNotFound:
+          - code: 1553
+            message:
+              includes: setting for this hostname not found
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/origin_tls_client_auth/hostnames:
     put:
       operationId: putHostname
@@ -221,6 +229,15 @@ paths:
                     type: string
                     description: The hostname certificate's private key.
       x-distilled-pagination-class: HostnameUpdateResponsesSinglePage
+      x-distilled-errors:
+        HostnameCertificateIdRequired:
+          - code: 1404
+            message:
+              includes: Certificate ID required
+        InvalidHostnameConfig:
+          - code: 1415
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificateId}:
     get:
       operationId: getHostnameCertificate
@@ -282,6 +299,13 @@ paths:
                     type: string
                     description: The time when the certificate was uploaded.
       x-distilled-response-path: result
+      x-distilled-errors:
+        HostnameCertificateNotFound:
+          - code: 1552
+          - code: 1551
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteHostnameCertificate
       description: "Removes a client certificate used for authenticated origin pulls
@@ -346,6 +370,29 @@ paths:
                     type: string
                     description: The time when the certificate was uploaded.
       x-distilled-response-path: result
+      x-distilled-errors:
+        HostnameCertificateNotFound:
+          - code: 1552
+          - code: 1551
+          - status: 404
+        HostnameCertificateInUse:
+          - code: 1433
+            message:
+              includes: in use
+        CertificatePendingDeletion:
+          - code: 1414
+            message:
+              includes: pending deletion
+        CertificatePendingDeployment:
+          - code: 1434
+            message:
+              includes: pending deployment
+        InvalidCertificateId:
+          - code: 1415
+            message:
+              includes: Invalid Certificate ID
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates:
     get:
       operationId: listHostnameCertificates
@@ -403,6 +450,9 @@ paths:
                     type: string
                     description: The time when the certificate was uploaded.
       x-distilled-pagination-class: HostnameCertificateListResponsesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createHostnameCertificate
       description: "Upload a certificate to be used for client authentication on a
@@ -519,6 +569,17 @@ paths:
                     type: string
                     description: The time when the certificate was uploaded.
       x-distilled-response-path: result
+      x-distilled-errors:
+        CertificateAlreadyExists:
+          - code: 1406
+            message:
+              includes: already exists
+        InvalidCertificate:
+          - code: 1408
+            message:
+              includes: Unable to parse certificate
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/origin_tls_client_auth/{certificateId}:
     get:
       operationId: getZoneCertificate
@@ -853,6 +914,9 @@ paths:
                     type: boolean
                     description: Indicates whether zone-level authenticated origin pulls is enabled.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putSetting
       description: "Enable or disable zone-level authenticated origin pulls. 'enabled'
@@ -892,3 +956,6 @@ paths:
                     type: boolean
                     description: Indicates whether zone-level authenticated origin pulls is enabled.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

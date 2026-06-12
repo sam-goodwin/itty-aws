@@ -1,0 +1,12 @@
+{
+  "errors": {
+    "UaRuleNotFound": [
+      {
+        "code": 10001,
+        "message": { "includes": "firewalluablock.api.not_found" }
+      },
+      { "status": 404 }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

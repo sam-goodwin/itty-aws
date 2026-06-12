@@ -1818,6 +1818,8 @@ paths:
       x-distilled-errors:
         QueueNotFound:
           - code: 11000
+        QueueInUseByEventNotification:
+          - code: 11017
         InvalidRoute:
           - code: 7003
   /accounts/{account_id}/queues:
@@ -2279,6 +2281,12 @@ paths:
           - code: 0
             message:
               includes: Unrecognized event types
+        SubscriptionNotFound:
+          - status: 404
+            message:
+              includes: No subscription with this ID
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSubscription
       description: "Update an existing event subscription  @example ```ts const
@@ -2456,6 +2464,14 @@ paths:
           - code: 0
             message:
               includes: Unrecognized event types
+        SubscriptionNotFound:
+          - status: 404
+            message:
+              includes: No subscription with this ID
+        QueueNotFound:
+          - status: 404
+            message:
+              includes: Queue does not exist
     delete:
       operationId: deleteSubscription
       description: "Delete an existing event subscription  @example ```ts const
@@ -2600,6 +2616,10 @@ paths:
           - code: 0
             message:
               includes: Unrecognized event types
+        SubscriptionNotFound:
+          - status: 404
+            message:
+              includes: No subscription with this ID
   /accounts/{account_id}/event_subscriptions/subscriptions:
     get:
       operationId: listSubscriptions
@@ -2766,6 +2786,9 @@ paths:
                   - name
                   - source
       x-distilled-pagination-class: SubscriptionListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createSubscription
       description: "Create a new event subscription for a queue  @example ```ts const
@@ -3005,3 +3028,11 @@ paths:
           - code: 0
             message:
               includes: Unrecognized event types
+        SubscriptionAlreadyExists:
+          - status: 405
+            message:
+              includes: do not support multiple subscriptions
+        QueueNotFound:
+          - status: 404
+            message:
+              includes: Queue does not exist

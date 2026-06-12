@@ -287,11 +287,6 @@ paths:
                     description: Certificates' validation records.
                   validity_days:
                     type: number
-                    enum:
-                      - 14
-                      - 30
-                      - 90
-                      - 365
                     description: Validity Days selected for the order.
                 required:
                   - id
@@ -300,6 +295,12 @@ paths:
                   - status
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        CertificatePackNotFound:
+          - code: 1408
+          - status: 404
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchCertificatePack
       description: "For a given zone, restart validation or add cloudflare branding
@@ -551,11 +552,6 @@ paths:
                     description: Certificates' validation records.
                   validity_days:
                     type: number
-                    enum:
-                      - 14
-                      - 30
-                      - 90
-                      - 365
                     description: Validity Days selected for the order.
                 required:
                   - id
@@ -564,6 +560,12 @@ paths:
                   - status
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        CertificatePackNotFound:
+          - code: 1408
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteCertificatePack
       description: "For a given zone, delete an advanced certificate pack.  @example
@@ -594,6 +596,12 @@ paths:
                     type: string
                     description: Identifier.
       x-distilled-response-path: result
+      x-distilled-errors:
+        CertificatePackNotFound:
+          - code: 1408
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/ssl/certificate_packs:
     get:
       operationId: listCertificatePacks
@@ -869,6 +877,9 @@ paths:
                   - status
                   - type
       x-distilled-pagination-class: CertificatePackListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/ssl/certificate_packs/order:
     post:
       operationId: createCertificatePack
@@ -924,11 +935,6 @@ paths:
                   description: "Body param: Validation Method selected for the order."
                 validity_days:
                   type: number
-                  enum:
-                    - 14
-                    - 30
-                    - 90
-                    - 365
                   description: "Body param: Validity Days selected for the order."
                 cloudflare_branding:
                   type: boolean
@@ -1160,11 +1166,6 @@ paths:
                     description: Certificates' validation records.
                   validity_days:
                     type: number
-                    enum:
-                      - 14
-                      - 30
-                      - 90
-                      - 365
                     description: Validity Days selected for the order.
                 required:
                   - id
@@ -1173,6 +1174,11 @@ paths:
                   - status
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        AdvancedCertificateManagerRequired:
+          - code: 1450
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/ssl/certificate_packs/quota:
     get:
       operationId: getCertificatePackQuota
@@ -1293,6 +1299,9 @@ paths:
                       any HTTP redirects exist at your origin, we advise leaving
                       Universal SSL enabled for your domain.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchUniversalSetting
       description: "Patch Universal SSL Settings for a Zone.  @example ```ts const
@@ -1365,6 +1374,9 @@ paths:
                       any HTTP redirects exist at your origin, we advise leaving
                       Universal SSL enabled for your domain.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/ssl/verification:
     get:
       operationId: getVerification

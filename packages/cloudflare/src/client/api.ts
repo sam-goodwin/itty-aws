@@ -260,6 +260,57 @@ function findMatchingError(
 }
 
 /**
+ * Try to match a raw (code, status, message) triple against the
+ * per-operation error schemas and decode the winning TaggedError class.
+ * Returns `undefined` when no matcher fires.
+ */
+const tryMatchOperationError = (
+  errors: readonly ApiErrorClass[] | undefined,
+  errorCode: number | undefined,
+  status: number,
+  errorMessage: string,
+): Effect.Effect<never, unknown> | undefined => {
+  if (!errors || errors.length === 0) return undefined;
+
+  const errorSchemas = new Map<string, Schema.Top>();
+  for (const errorSchema of errors) {
+    const identifier = extractTagFromAst(
+      (errorSchema as unknown as Schema.Top).ast,
+    );
+    if (identifier) {
+      errorSchemas.set(identifier, errorSchema as unknown as Schema.Top);
+    }
+  }
+
+  const matched = findMatchingError(errorSchemas, errorCode, status, errorMessage);
+  if (!matched) return undefined;
+
+  // Decode using the schema - properly instantiates TaggedError classes
+  const errorData = {
+    _tag: matched.tag,
+    code: errorCode ?? 0,
+    message: errorMessage,
+  };
+  return Schema.decodeUnknownEffect(matched.schema)(errorData).pipe(
+    Effect.flatMap((decoded: unknown) => Effect.fail(decoded)),
+    Effect.catchIf(
+      (e: unknown) =>
+        typeof e === "object" &&
+        e !== null &&
+        "_tag" in e &&
+        (e as any)._tag === "SchemaError",
+      () =>
+        Effect.fail(
+          new UnknownCloudflareError({
+            code: errorCode,
+            message: errorMessage,
+          }),
+        ),
+    ),
+  ) as Effect.Effect<never, unknown>;
+};
+
+/**
  * Match a Cloudflare API error response using per-operation error schemas.
  */
 const matchError = (
@@ -279,6 +330,13 @@ const matchError = (
     if (status >= 500) {
       return Effect.fail(httpStatusError(status, message, headers));
     }
+    // Some endpoints answer 4xx with a bare plain-text body and no JSON
+    // envelope (e.g. Images `GET .../variants/{id}` returns
+    // `variant \`x\` not found`). Still give the per-operation matchers a
+    // chance — `{ status, message }` matchers exist precisely for these
+    // envelope-less responses.
+    const matched = tryMatchOperationError(errors, undefined, status, message);
+    if (matched) return matched;
     return Effect.fail(
       new CloudflareHttpError({
         status,
@@ -322,6 +380,11 @@ const matchError = (
     if (status >= 500) {
       return Effect.fail(httpStatusError(status, bodyStr, headers));
     }
+    // Envelope-less JSON/string bodies still get a shot at the
+    // per-operation `{ status, message }` matchers before falling back to
+    // the catch-all HTTP error.
+    const matchedRaw = tryMatchOperationError(errors, undefined, status, bodyStr);
+    if (matchedRaw) return matchedRaw;
     return Effect.fail(
       new CloudflareHttpError({
         status,
@@ -332,51 +395,9 @@ const matchError = (
     );
   }
 
-  // Build error schema map from the per-operation errors
-  if (errors && errors.length > 0) {
-    const errorSchemas = new Map<string, Schema.Top>();
-    for (const errorSchema of errors) {
-      const identifier = extractTagFromAst(
-        (errorSchema as unknown as Schema.Top).ast,
-      );
-      if (identifier) {
-        errorSchemas.set(identifier, errorSchema as unknown as Schema.Top);
-      }
-    }
-
-    const matched = findMatchingError(
-      errorSchemas,
-      errorCode,
-      status,
-      errorMessage,
-    );
-
-    if (matched) {
-      // Decode using the schema - properly instantiates TaggedError classes
-      const errorData = {
-        _tag: matched.tag,
-        code: errorCode ?? 0,
-        message: errorMessage,
-      };
-      return Schema.decodeUnknownEffect(matched.schema)(errorData).pipe(
-        Effect.flatMap((decoded: unknown) => Effect.fail(decoded)),
-        Effect.catchIf(
-          (e: unknown) =>
-            typeof e === "object" &&
-            e !== null &&
-            "_tag" in e &&
-            (e as any)._tag === "SchemaError",
-          () =>
-            Effect.fail(
-              new UnknownCloudflareError({
-                code: errorCode,
-                message: errorMessage,
-              }),
-            ),
-        ),
-      ) as Effect.Effect<never, unknown>;
-    }
-  }
+  // Match against the per-operation error schemas
+  const matched = tryMatchOperationError(errors, errorCode, status, errorMessage);
+  if (matched) return matched;
 
   // Check global error codes before falling through to unknown
   if (errorCode !== undefined && errorCode in GLOBAL_ERROR_CODE_MAP) {

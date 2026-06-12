@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "MonitorNotFound": [{ "code": 1001 }],
+    "MonitorInUse": [{ "code": 1002, "message": { "includes": "still referenced" } }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

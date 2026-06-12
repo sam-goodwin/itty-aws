@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }],
+    "SecurityTxtInvalid": [
+      { "code": 10400, "message": { "includes": "invalid or missing values" } }
+    ]
+  }
+}

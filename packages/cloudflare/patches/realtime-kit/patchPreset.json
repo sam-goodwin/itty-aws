@@ -1,0 +1,16 @@
+{
+  "request": {
+    "properties": {
+      "permissions.plugins.config": { "type": "unknown" }
+    }
+  },
+  "response": {
+    "properties": {
+      "data": { "type": "unknown" }
+    }
+  },
+  "errors": {
+    "RealtimeKitPresetNotFound": [{ "status": 404 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

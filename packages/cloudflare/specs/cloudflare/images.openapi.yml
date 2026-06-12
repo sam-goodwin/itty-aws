@@ -603,6 +603,9 @@ paths:
           - code: 5400
         VariantNotFound:
           - code: 5401
+          - status: 404
+            message:
+              includes: not found
     patch:
       operationId: patchV1Variant
       description: "Updating a variant purges the cache for all images associated with
@@ -948,6 +951,8 @@ paths:
           - code: 5403
         VariantNameNotAllowed:
           - code: 5400
+        VariantAlreadyExists:
+          - code: 5409
   /accounts/{account_id}/images/v2:
     get:
       operationId: listV2s

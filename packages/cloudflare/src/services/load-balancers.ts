@@ -13,6 +13,88 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class LoadBalancerNotFound extends Schema.TaggedErrorClass<LoadBalancerNotFound>()(
+  "LoadBalancerNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(LoadBalancerNotFound, [{ code: 1001 }]);
+
+export class LoadBalancingNotEnabledForZone extends Schema.TaggedErrorClass<LoadBalancingNotEnabledForZone>()(
+  "LoadBalancingNotEnabledForZone",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(LoadBalancingNotEnabledForZone, [
+  { code: 1002, message: { includes: "load balancing not enabled" } },
+]);
+
+export class MonitorGroupInUse extends Schema.TaggedErrorClass<MonitorGroupInUse>()(
+  "MonitorGroupInUse",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MonitorGroupInUse, [
+  { code: 1002, message: { includes: "still referenced" } },
+]);
+
+export class MonitorGroupNotFound extends Schema.TaggedErrorClass<MonitorGroupNotFound>()(
+  "MonitorGroupNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MonitorGroupNotFound, [{ code: 1001 }]);
+
+export class MonitorGroupsNotEnabled extends Schema.TaggedErrorClass<MonitorGroupsNotEnabled>()(
+  "MonitorGroupsNotEnabled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MonitorGroupsNotEnabled, [
+  { code: 1002, message: { includes: "monitor groups not enabled" } },
+]);
+
+export class MonitorInUse extends Schema.TaggedErrorClass<MonitorInUse>()(
+  "MonitorInUse",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MonitorInUse, [
+  { code: 1002, message: { includes: "still referenced" } },
+]);
+
+export class MonitorNotFound extends Schema.TaggedErrorClass<MonitorNotFound>()(
+  "MonitorNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MonitorNotFound, [{ code: 1001 }]);
+
+export class PoolAccessFailed extends Schema.TaggedErrorClass<PoolAccessFailed>()(
+  "PoolAccessFailed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PoolAccessFailed, [
+  { code: 1002, message: { includes: "Access Failed" } },
+]);
+
+export class PoolInUse extends Schema.TaggedErrorClass<PoolInUse>()(
+  "PoolInUse",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PoolInUse, [
+  { code: 1002, message: { includes: "still referenced" } },
+]);
+
+export class PoolNotFound extends Schema.TaggedErrorClass<PoolNotFound>()(
+  "PoolNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PoolNotFound, [{ code: 1001 }]);
+
+// =============================================================================
 // LoadBalancer
 // =============================================================================
 
@@ -659,7 +741,10 @@ export const GetLoadBalancerResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetLoadBalancerResponse>;
 
-export type GetLoadBalancerError = DefaultErrors;
+export type GetLoadBalancerError =
+  | DefaultErrors
+  | LoadBalancerNotFound
+  | Forbidden;
 
 export const getLoadBalancer: API.OperationMethod<
   GetLoadBalancerRequest,
@@ -669,7 +754,7 @@ export const getLoadBalancer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoadBalancerRequest,
   output: GetLoadBalancerResponse,
-  errors: [],
+  errors: [LoadBalancerNotFound, Forbidden],
 }));
 
 export interface ListLoadBalancersRequest {
@@ -2378,7 +2463,10 @@ export const CreateLoadBalancerResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateLoadBalancerResponse>;
 
-export type CreateLoadBalancerError = DefaultErrors;
+export type CreateLoadBalancerError =
+  | DefaultErrors
+  | LoadBalancingNotEnabledForZone
+  | Forbidden;
 
 export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerRequest,
@@ -2388,7 +2476,7 @@ export const createLoadBalancer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerRequest,
   output: CreateLoadBalancerResponse,
-  errors: [],
+  errors: [LoadBalancingNotEnabledForZone, Forbidden],
 }));
 
 export interface UpdateLoadBalancerRequest {
@@ -3436,7 +3524,11 @@ export const UpdateLoadBalancerResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateLoadBalancerResponse>;
 
-export type UpdateLoadBalancerError = DefaultErrors;
+export type UpdateLoadBalancerError =
+  | DefaultErrors
+  | LoadBalancerNotFound
+  | LoadBalancingNotEnabledForZone
+  | Forbidden;
 
 export const updateLoadBalancer: API.OperationMethod<
   UpdateLoadBalancerRequest,
@@ -3446,7 +3538,7 @@ export const updateLoadBalancer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLoadBalancerRequest,
   output: UpdateLoadBalancerResponse,
-  errors: [],
+  errors: [LoadBalancerNotFound, LoadBalancingNotEnabledForZone, Forbidden],
 }));
 
 export interface PatchLoadBalancerRequest {
@@ -4530,7 +4622,10 @@ export const DeleteLoadBalancerResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteLoadBalancerResponse>;
 
-export type DeleteLoadBalancerError = DefaultErrors;
+export type DeleteLoadBalancerError =
+  | DefaultErrors
+  | LoadBalancerNotFound
+  | Forbidden;
 
 export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerRequest,
@@ -4540,7 +4635,7 @@ export const deleteLoadBalancer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerRequest,
   output: DeleteLoadBalancerResponse,
-  errors: [],
+  errors: [LoadBalancerNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -4674,7 +4769,7 @@ export const GetMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetMonitorResponse>;
 
-export type GetMonitorError = DefaultErrors;
+export type GetMonitorError = DefaultErrors | MonitorNotFound | Forbidden;
 
 export const getMonitor: API.OperationMethod<
   GetMonitorRequest,
@@ -4684,7 +4779,7 @@ export const getMonitor: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMonitorRequest,
   output: GetMonitorResponse,
-  errors: [],
+  errors: [MonitorNotFound, Forbidden],
 }));
 
 export interface ListMonitorsRequest {
@@ -5038,7 +5133,7 @@ export const CreateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateMonitorResponse>;
 
-export type CreateMonitorError = DefaultErrors;
+export type CreateMonitorError = DefaultErrors | Forbidden;
 
 export const createMonitor: API.OperationMethod<
   CreateMonitorRequest,
@@ -5048,7 +5143,7 @@ export const createMonitor: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMonitorRequest,
   output: CreateMonitorResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateMonitorRequest {
@@ -5263,7 +5358,7 @@ export const UpdateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateMonitorResponse>;
 
-export type UpdateMonitorError = DefaultErrors;
+export type UpdateMonitorError = DefaultErrors | MonitorNotFound | Forbidden;
 
 export const updateMonitor: API.OperationMethod<
   UpdateMonitorRequest,
@@ -5273,7 +5368,7 @@ export const updateMonitor: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMonitorRequest,
   output: UpdateMonitorResponse,
-  errors: [],
+  errors: [MonitorNotFound, Forbidden],
 }));
 
 export interface PatchMonitorRequest {
@@ -5527,7 +5622,11 @@ export const DeleteMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteMonitorResponse>;
 
-export type DeleteMonitorError = DefaultErrors;
+export type DeleteMonitorError =
+  | DefaultErrors
+  | MonitorNotFound
+  | MonitorInUse
+  | Forbidden;
 
 export const deleteMonitor: API.OperationMethod<
   DeleteMonitorRequest,
@@ -5537,7 +5636,7 @@ export const deleteMonitor: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMonitorRequest,
   output: DeleteMonitorResponse,
-  errors: [],
+  errors: [MonitorNotFound, MonitorInUse, Forbidden],
 }));
 
 // =============================================================================
@@ -5621,7 +5720,10 @@ export const GetMonitorGroupResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetMonitorGroupResponse>;
 
-export type GetMonitorGroupError = DefaultErrors;
+export type GetMonitorGroupError =
+  | DefaultErrors
+  | MonitorGroupNotFound
+  | Forbidden;
 
 export const getMonitorGroup: API.OperationMethod<
   GetMonitorGroupRequest,
@@ -5631,7 +5733,7 @@ export const getMonitorGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMonitorGroupRequest,
   output: GetMonitorGroupResponse,
-  errors: [],
+  errors: [MonitorGroupNotFound, Forbidden],
 }));
 
 export interface ListMonitorGroupsRequest {
@@ -5825,7 +5927,10 @@ export const CreateMonitorGroupResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateMonitorGroupResponse>;
 
-export type CreateMonitorGroupError = DefaultErrors;
+export type CreateMonitorGroupError =
+  | DefaultErrors
+  | MonitorGroupsNotEnabled
+  | Forbidden;
 
 export const createMonitorGroup: API.OperationMethod<
   CreateMonitorGroupRequest,
@@ -5835,7 +5940,7 @@ export const createMonitorGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMonitorGroupRequest,
   output: CreateMonitorGroupResponse,
-  errors: [],
+  errors: [MonitorGroupsNotEnabled, Forbidden],
 }));
 
 export interface UpdateMonitorGroupRequest {
@@ -5939,7 +6044,11 @@ export const UpdateMonitorGroupResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateMonitorGroupResponse>;
 
-export type UpdateMonitorGroupError = DefaultErrors;
+export type UpdateMonitorGroupError =
+  | DefaultErrors
+  | MonitorGroupNotFound
+  | MonitorGroupsNotEnabled
+  | Forbidden;
 
 export const updateMonitorGroup: API.OperationMethod<
   UpdateMonitorGroupRequest,
@@ -5949,7 +6058,7 @@ export const updateMonitorGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMonitorGroupRequest,
   output: UpdateMonitorGroupResponse,
-  errors: [],
+  errors: [MonitorGroupNotFound, MonitorGroupsNotEnabled, Forbidden],
 }));
 
 export interface PatchMonitorGroupRequest {
@@ -6142,7 +6251,11 @@ export const DeleteMonitorGroupResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteMonitorGroupResponse>;
 
-export type DeleteMonitorGroupError = DefaultErrors;
+export type DeleteMonitorGroupError =
+  | DefaultErrors
+  | MonitorGroupNotFound
+  | MonitorGroupInUse
+  | Forbidden;
 
 export const deleteMonitorGroup: API.OperationMethod<
   DeleteMonitorGroupRequest,
@@ -6152,7 +6265,7 @@ export const deleteMonitorGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMonitorGroupRequest,
   output: DeleteMonitorGroupResponse,
-  errors: [],
+  errors: [MonitorGroupNotFound, MonitorGroupInUse, Forbidden],
 }));
 
 // =============================================================================
@@ -6751,7 +6864,7 @@ export const GetPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetPoolResponse>;
 
-export type GetPoolError = DefaultErrors;
+export type GetPoolError = DefaultErrors | PoolNotFound | Forbidden;
 
 export const getPool: API.OperationMethod<
   GetPoolRequest,
@@ -6761,7 +6874,7 @@ export const getPool: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPoolRequest,
   output: GetPoolResponse,
-  errors: [],
+  errors: [PoolNotFound, Forbidden],
 }));
 
 export interface ListPoolsRequest {
@@ -7551,7 +7664,7 @@ export const CreatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreatePoolResponse>;
 
-export type CreatePoolError = DefaultErrors;
+export type CreatePoolError = DefaultErrors | PoolAccessFailed | Forbidden;
 
 export const createPool: API.OperationMethod<
   CreatePoolRequest,
@@ -7561,7 +7674,7 @@ export const createPool: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePoolRequest,
   output: CreatePoolResponse,
-  errors: [],
+  errors: [PoolAccessFailed, Forbidden],
 }));
 
 export interface UpdatePoolRequest {
@@ -8084,7 +8197,11 @@ export const UpdatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdatePoolResponse>;
 
-export type UpdatePoolError = DefaultErrors;
+export type UpdatePoolError =
+  | DefaultErrors
+  | PoolNotFound
+  | PoolAccessFailed
+  | Forbidden;
 
 export const updatePool: API.OperationMethod<
   UpdatePoolRequest,
@@ -8094,7 +8211,7 @@ export const updatePool: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePoolRequest,
   output: UpdatePoolResponse,
-  errors: [],
+  errors: [PoolNotFound, PoolAccessFailed, Forbidden],
 }));
 
 export interface PatchPoolRequest {
@@ -8658,7 +8775,11 @@ export const DeletePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeletePoolResponse>;
 
-export type DeletePoolError = DefaultErrors;
+export type DeletePoolError =
+  | DefaultErrors
+  | PoolNotFound
+  | PoolInUse
+  | Forbidden;
 
 export const deletePool: API.OperationMethod<
   DeletePoolRequest,
@@ -8668,7 +8789,7 @@ export const deletePool: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePoolRequest,
   output: DeletePoolResponse,
-  errors: [],
+  errors: [PoolNotFound, PoolInUse, Forbidden],
 }));
 
 export interface BulkPatchPoolsRequest {

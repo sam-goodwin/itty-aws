@@ -841,6 +841,11 @@ paths:
                       - modified_on
                       - protocol
       x-distilled-response-path: result
+      x-distilled-errors:
+        SpectrumAppNotFound:
+          - code: 10006
+        Forbidden:
+          - status: 403
     put:
       operationId: updateApp
       description: "Updates a previously existing application's configuration that
@@ -1206,6 +1211,13 @@ paths:
                       - modified_on
                       - protocol
       x-distilled-response-path: result
+      x-distilled-errors:
+        SpectrumAppNotFound:
+          - code: 10006
+        SpectrumProtocolNotAvailable:
+          - code: 13002
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteApp
       description: Deletes a previously existing application.
@@ -1235,6 +1247,11 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        SpectrumAppNotFound:
+          - code: 10006
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/spectrum/apps:
     get:
       operationId: listApps
@@ -1482,6 +1499,9 @@ paths:
                       - modified_on
                       - protocol
       x-distilled-pagination-class: AppListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createApp
       description: "Creates a new Spectrum application from a configuration using a
@@ -1842,3 +1862,8 @@ paths:
                       - modified_on
                       - protocol
       x-distilled-response-path: result
+      x-distilled-errors:
+        SpectrumProtocolNotAvailable:
+          - code: 13002
+        Forbidden:
+          - status: 403

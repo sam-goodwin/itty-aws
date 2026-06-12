@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "SiteLanNotFound": [{ "status": 404 }],
+    "MagicWanUnauthorized": [{ "code": 1025 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

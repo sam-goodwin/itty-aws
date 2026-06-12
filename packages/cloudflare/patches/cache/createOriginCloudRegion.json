@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "OriginCloudRegionAlreadyExists": [{ "status": 409 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

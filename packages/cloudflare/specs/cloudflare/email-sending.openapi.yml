@@ -308,6 +308,11 @@ paths:
                   - name
                   - tag
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        SendingSubdomainNotFound:
+          - code: 2033
     delete:
       operationId: deleteSubdomain
       description: "Disables sending on a subdomain and removes its DNS records. If
@@ -383,6 +388,11 @@ paths:
                   - errors
                   - messages
                   - success
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        SendingSubdomainNotFound:
+          - code: 2033
   /zones/{zone_id}/email/sending/subdomains:
     get:
       operationId: listSubdomains
@@ -431,6 +441,9 @@ paths:
                   - name
                   - tag
       x-distilled-pagination-class: SubdomainListResponsesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createSubdomain
       description: "Creates a new sending subdomain or re-enables sending on an
@@ -492,6 +505,11 @@ paths:
                   - name
                   - tag
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        SendingSubdomainAlreadyExists:
+          - code: 2040
   /zones/{zone_id}/email/sending/subdomains/{subdomainId}/dns:
     get:
       operationId: getSubdomainDns

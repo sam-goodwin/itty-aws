@@ -1,0 +1,10 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  },
+  "request": {
+    "properties": {
+      "rules": { "wireKey": "body" }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "WaitingRoomNotFound": [
+      { "code": 1001 }
+    ],
+    "ZoneNotEntitled": [
+      { "code": 1034 }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

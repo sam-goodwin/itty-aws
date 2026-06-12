@@ -360,13 +360,16 @@ const parseArgs = (): { service: string | undefined; debug: boolean } => {
  * - "location" → top-level field
  * - "settings.abuse_contact_email" → nested field inside settings
  * - "buckets[].location" → field inside array elements
+ * - "$" → the root type itself (e.g. union the whole response with another
+ *   shape when the API returns a sentinel like `""` for "not configured")
  *
  * Supported patch operations:
  * - nullable: wrap type in union with null
  * - optional: make field not required
  * - type: replace type entirely
  * - addValues: add literal values to existing enum
- * - appendUnion: append TypeInfo variants to a union
+ * - appendUnion: append TypeInfo variants to a union (via "$" on a non-union
+ *   root, wraps the root in a union with the appended variants)
  */
 function applyResponsePatch(
   typeInfo: TypeInfo,
@@ -376,6 +379,31 @@ function applyResponsePatch(
   const cloned = JSON.parse(JSON.stringify(typeInfo)) as TypeInfo;
 
   for (const [path, propPatch] of Object.entries(patch.properties)) {
+    if (path === "$") {
+      // Root-level patch — target the response/request type itself.
+      if (
+        !propPatch.type &&
+        propPatch.appendUnion &&
+        propPatch.appendUnion.length > 0 &&
+        cloned.kind !== "union"
+      ) {
+        // Wrap the non-union root in a union with the appended variants.
+        const currentCopy = JSON.parse(JSON.stringify(cloned)) as TypeInfo;
+        for (const key of Object.keys(cloned)) {
+          delete (cloned as unknown as Record<string, unknown>)[key];
+        }
+        cloned.kind = "union";
+        cloned.values = [
+          currentCopy,
+          ...(JSON.parse(
+            JSON.stringify(propPatch.appendUnion),
+          ) as TypeInfo[]),
+        ];
+      } else {
+        applyPatchToTypeInfo(cloned, propPatch);
+      }
+      continue;
+    }
     applyPropertyPatch(cloned, path.split("."), propPatch);
   }
 
@@ -792,6 +820,11 @@ function resolveOperationModel(
       resolvedResponseType,
       patch.response,
     );
+    // A root-level patch ("$") can change the response's kind (e.g. wrap an
+    // object in a union) — recompute whether it's emitted as a type alias.
+    isTypeAlias =
+      resolvedResponseType.kind !== "object" ||
+      !resolvedResponseType.properties;
   }
 
   return {
@@ -1664,6 +1697,11 @@ function generateOperationSchemaAst(
       resolvedResponseType,
       patch.response,
     );
+    // A root-level patch ("$") can change the response's kind (e.g. wrap an
+    // object in a union) — recompute whether it's emitted as a type alias.
+    isTypeAlias =
+      resolvedResponseType.kind !== "object" ||
+      !resolvedResponseType.properties;
   }
 
   if (op.responseContentType === "binary") {

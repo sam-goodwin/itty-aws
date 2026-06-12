@@ -14,6 +14,106 @@ import { type DefaultErrors } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class CertificateAlreadyExists extends Schema.TaggedErrorClass<CertificateAlreadyExists>()(
+  "CertificateAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CertificateAlreadyExists, [
+  { code: 1406, message: { includes: "already exists" } },
+]);
+
+export class CertificateNotFound extends Schema.TaggedErrorClass<CertificateNotFound>()(
+  "CertificateNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CertificateNotFound, [
+  { code: 1552, message: { includes: "certificate not found" } },
+  { status: 404 },
+]);
+
+export class CertificatePendingDeletion extends Schema.TaggedErrorClass<CertificatePendingDeletion>()(
+  "CertificatePendingDeletion",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CertificatePendingDeletion, [
+  { code: 1414, message: { includes: "pending deletion" } },
+]);
+
+export class CertificatePendingDeployment extends Schema.TaggedErrorClass<CertificatePendingDeployment>()(
+  "CertificatePendingDeployment",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CertificatePendingDeployment, [
+  { code: 1434, message: { includes: "pending deployment" } },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class HostnameAssociationNotFound extends Schema.TaggedErrorClass<HostnameAssociationNotFound>()(
+  "HostnameAssociationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(HostnameAssociationNotFound, [
+  { code: 1553, message: { includes: "setting for this hostname not found" } },
+  { status: 404 },
+]);
+
+export class HostnameCertificateIdRequired extends Schema.TaggedErrorClass<HostnameCertificateIdRequired>()(
+  "HostnameCertificateIdRequired",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(HostnameCertificateIdRequired, [
+  { code: 1404, message: { includes: "Certificate ID required" } },
+]);
+
+export class HostnameCertificateInUse extends Schema.TaggedErrorClass<HostnameCertificateInUse>()(
+  "HostnameCertificateInUse",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(HostnameCertificateInUse, [
+  { code: 1433, message: { includes: "in use" } },
+]);
+
+export class HostnameCertificateNotFound extends Schema.TaggedErrorClass<HostnameCertificateNotFound>()(
+  "HostnameCertificateNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(HostnameCertificateNotFound, [
+  { code: 1552 },
+  { code: 1551 },
+  { status: 404 },
+]);
+
+export class InvalidCertificate extends Schema.TaggedErrorClass<InvalidCertificate>()(
+  "InvalidCertificate",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidCertificate, [
+  { code: 1408, message: { includes: "Unable to parse certificate" } },
+]);
+
+export class InvalidCertificateId extends Schema.TaggedErrorClass<InvalidCertificateId>()(
+  "InvalidCertificateId",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidCertificateId, [
+  { code: 1415, message: { includes: "Invalid Certificate ID" } },
+]);
+
+export class InvalidHostnameConfig extends Schema.TaggedErrorClass<InvalidHostnameConfig>()(
+  "InvalidHostnameConfig",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidHostnameConfig, [{ code: 1415 }]);
+
+// =============================================================================
 // Hostname
 // =============================================================================
 
@@ -152,7 +252,10 @@ export const GetHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetHostnameResponse>;
 
-export type GetHostnameError = DefaultErrors;
+export type GetHostnameError =
+  | DefaultErrors
+  | HostnameAssociationNotFound
+  | Forbidden;
 
 export const getHostname: API.OperationMethod<
   GetHostnameRequest,
@@ -162,7 +265,7 @@ export const getHostname: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHostnameRequest,
   output: GetHostnameResponse,
-  errors: [],
+  errors: [HostnameAssociationNotFound, Forbidden],
 }));
 
 export interface PutHostnameRequest {
@@ -311,7 +414,11 @@ export const PutHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<PutHostnameResponse>;
 
-export type PutHostnameError = DefaultErrors;
+export type PutHostnameError =
+  | DefaultErrors
+  | HostnameCertificateIdRequired
+  | InvalidHostnameConfig
+  | Forbidden;
 
 export const putHostname: API.PaginatedOperationMethod<
   PutHostnameRequest,
@@ -321,7 +428,7 @@ export const putHostname: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutHostnameRequest,
   output: PutHostnameResponse,
-  errors: [],
+  errors: [HostnameCertificateIdRequired, InvalidHostnameConfig, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -420,7 +527,10 @@ export const GetHostnameCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetHostnameCertificateResponse>;
 
-export type GetHostnameCertificateError = DefaultErrors;
+export type GetHostnameCertificateError =
+  | DefaultErrors
+  | HostnameCertificateNotFound
+  | Forbidden;
 
 export const getHostnameCertificate: API.OperationMethod<
   GetHostnameCertificateRequest,
@@ -430,7 +540,7 @@ export const getHostnameCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHostnameCertificateRequest,
   output: GetHostnameCertificateResponse,
-  errors: [],
+  errors: [HostnameCertificateNotFound, Forbidden],
 }));
 
 export interface ListHostnameCertificatesRequest {
@@ -517,7 +627,7 @@ export const ListHostnameCertificatesResponse =
     ),
   }) as unknown as Schema.Schema<ListHostnameCertificatesResponse>;
 
-export type ListHostnameCertificatesError = DefaultErrors;
+export type ListHostnameCertificatesError = DefaultErrors | Forbidden;
 
 export const listHostnameCertificates: API.PaginatedOperationMethod<
   ListHostnameCertificatesRequest,
@@ -527,7 +637,7 @@ export const listHostnameCertificates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHostnameCertificatesRequest,
   output: ListHostnameCertificatesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -630,7 +740,11 @@ export const CreateHostnameCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateHostnameCertificateResponse>;
 
-export type CreateHostnameCertificateError = DefaultErrors;
+export type CreateHostnameCertificateError =
+  | DefaultErrors
+  | CertificateAlreadyExists
+  | InvalidCertificate
+  | Forbidden;
 
 export const createHostnameCertificate: API.OperationMethod<
   CreateHostnameCertificateRequest,
@@ -640,7 +754,7 @@ export const createHostnameCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateHostnameCertificateRequest,
   output: CreateHostnameCertificateResponse,
-  errors: [],
+  errors: [CertificateAlreadyExists, InvalidCertificate, Forbidden],
 }));
 
 export interface DeleteHostnameCertificateRequest {
@@ -731,7 +845,14 @@ export const DeleteHostnameCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteHostnameCertificateResponse>;
 
-export type DeleteHostnameCertificateError = DefaultErrors;
+export type DeleteHostnameCertificateError =
+  | DefaultErrors
+  | HostnameCertificateNotFound
+  | HostnameCertificateInUse
+  | CertificatePendingDeletion
+  | CertificatePendingDeployment
+  | InvalidCertificateId
+  | Forbidden;
 
 export const deleteHostnameCertificate: API.OperationMethod<
   DeleteHostnameCertificateRequest,
@@ -741,7 +862,14 @@ export const deleteHostnameCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteHostnameCertificateRequest,
   output: DeleteHostnameCertificateResponse,
-  errors: [],
+  errors: [
+    HostnameCertificateNotFound,
+    HostnameCertificateInUse,
+    CertificatePendingDeletion,
+    CertificatePendingDeployment,
+    InvalidCertificateId,
+    Forbidden,
+  ],
 }));
 
 // =============================================================================
@@ -840,7 +968,10 @@ export const GetOriginTlsClientAuthResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetOriginTlsClientAuthResponse>;
 
-export type GetOriginTlsClientAuthError = DefaultErrors;
+export type GetOriginTlsClientAuthError =
+  | DefaultErrors
+  | CertificateNotFound
+  | Forbidden;
 
 export const getOriginTlsClientAuth: API.OperationMethod<
   GetOriginTlsClientAuthRequest,
@@ -850,7 +981,7 @@ export const getOriginTlsClientAuth: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOriginTlsClientAuthRequest,
   output: GetOriginTlsClientAuthResponse,
-  errors: [],
+  errors: [CertificateNotFound, Forbidden],
 }));
 
 export interface ListOriginTlsClientAuthsRequest {
@@ -937,7 +1068,7 @@ export const ListOriginTlsClientAuthsResponse =
     ),
   }) as unknown as Schema.Schema<ListOriginTlsClientAuthsResponse>;
 
-export type ListOriginTlsClientAuthsError = DefaultErrors;
+export type ListOriginTlsClientAuthsError = DefaultErrors | Forbidden;
 
 export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
   ListOriginTlsClientAuthsRequest,
@@ -947,7 +1078,7 @@ export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOriginTlsClientAuthsRequest,
   output: ListOriginTlsClientAuthsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -1051,7 +1182,11 @@ export const CreateOriginTlsClientAuthResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateOriginTlsClientAuthResponse>;
 
-export type CreateOriginTlsClientAuthError = DefaultErrors;
+export type CreateOriginTlsClientAuthError =
+  | DefaultErrors
+  | CertificateAlreadyExists
+  | InvalidCertificate
+  | Forbidden;
 
 export const createOriginTlsClientAuth: API.OperationMethod<
   CreateOriginTlsClientAuthRequest,
@@ -1061,7 +1196,7 @@ export const createOriginTlsClientAuth: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOriginTlsClientAuthRequest,
   output: CreateOriginTlsClientAuthResponse,
-  errors: [],
+  errors: [CertificateAlreadyExists, InvalidCertificate, Forbidden],
 }));
 
 export interface DeleteOriginTlsClientAuthRequest {
@@ -1156,7 +1291,10 @@ export const DeleteOriginTlsClientAuthResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteOriginTlsClientAuthResponse>;
 
-export type DeleteOriginTlsClientAuthError = DefaultErrors;
+export type DeleteOriginTlsClientAuthError =
+  | DefaultErrors
+  | CertificateNotFound
+  | Forbidden;
 
 export const deleteOriginTlsClientAuth: API.OperationMethod<
   DeleteOriginTlsClientAuthRequest,
@@ -1166,7 +1304,7 @@ export const deleteOriginTlsClientAuth: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOriginTlsClientAuthRequest,
   output: DeleteOriginTlsClientAuthResponse,
-  errors: [],
+  errors: [CertificateNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -1198,7 +1336,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetSettingResponse>;
 
-export type GetSettingError = DefaultErrors;
+export type GetSettingError = DefaultErrors | Forbidden;
 
 export const getSetting: API.OperationMethod<
   GetSettingRequest,
@@ -1208,7 +1346,7 @@ export const getSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingRequest,
   output: GetSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutSettingRequest {
@@ -1239,7 +1377,7 @@ export const PutSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PutSettingResponse>;
 
-export type PutSettingError = DefaultErrors;
+export type PutSettingError = DefaultErrors | Forbidden;
 
 export const putSetting: API.OperationMethod<
   PutSettingRequest,
@@ -1249,7 +1387,7 @@ export const putSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSettingRequest,
   output: PutSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================

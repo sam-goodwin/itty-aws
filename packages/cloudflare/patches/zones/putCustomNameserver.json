@@ -1,0 +1,19 @@
+{
+  "errors": {
+    "InvalidZoneIdentifier": [
+      { "code": 9109, "message": { "includes": "Invalid zone identifier" } }
+    ],
+    "CustomNameserverSetNotFound": [
+      {
+        "code": 1001,
+        "message": { "includes": "Custom Nameserver set doesn't exist" }
+      }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "result": { "type": "unknown" }
+    }
+  }
+}

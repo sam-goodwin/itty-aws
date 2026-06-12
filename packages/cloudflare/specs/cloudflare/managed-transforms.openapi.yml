@@ -26,59 +26,66 @@ paths:
                 type: object
                 properties:
                   managed_request_headers:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          description: The human-readable identifier of the Managed Transform.
-                        enabled:
-                          type: boolean
-                          description: Whether the Managed Transform is enabled.
-                        has_conflict:
-                          type: boolean
-                          description: Whether the Managed Transform conflicts with the currently-enabled
-                            Managed Transforms.
-                        conflicts_with:
-                          type: array
-                          items:
-                            type: string
-                          description: The Managed Transforms that this Managed Transform conflicts with.
-                      required:
-                        - id
-                        - enabled
-                        - has_conflict
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: The human-readable identifier of the Managed Transform.
+                            enabled:
+                              type: boolean
+                              description: Whether the Managed Transform is enabled.
+                            has_conflict:
+                              type: boolean
+                              description: Whether the Managed Transform conflicts with the currently-enabled
+                                Managed Transforms.
+                            conflicts_with:
+                              type: array
+                              items:
+                                type: string
+                              description: The Managed Transforms that this Managed Transform conflicts with.
+                          required:
+                            - id
+                            - enabled
+                            - has_conflict
+                    nullable: true
                     description: The list of Managed Request Transforms.
                   managed_response_headers:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          description: The human-readable identifier of the Managed Transform.
-                        enabled:
-                          type: boolean
-                          description: Whether the Managed Transform is enabled.
-                        has_conflict:
-                          type: boolean
-                          description: Whether the Managed Transform conflicts with the currently-enabled
-                            Managed Transforms.
-                        conflicts_with:
-                          type: array
-                          items:
-                            type: string
-                          description: The Managed Transforms that this Managed Transform conflicts with.
-                      required:
-                        - id
-                        - enabled
-                        - has_conflict
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: The human-readable identifier of the Managed Transform.
+                            enabled:
+                              type: boolean
+                              description: Whether the Managed Transform is enabled.
+                            has_conflict:
+                              type: boolean
+                              description: Whether the Managed Transform conflicts with the currently-enabled
+                                Managed Transforms.
+                            conflicts_with:
+                              type: array
+                              items:
+                                type: string
+                              description: The Managed Transforms that this Managed Transform conflicts with.
+                          required:
+                            - id
+                            - enabled
+                            - has_conflict
+                    nullable: true
                     description: The list of Managed Response Transforms.
                 required:
                   - managed_request_headers
                   - managed_response_headers
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchManagedTransform
       description: Updates the status of one or more Managed Transforms.
@@ -138,59 +145,66 @@ paths:
                 type: object
                 properties:
                   managed_request_headers:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          description: The human-readable identifier of the Managed Transform.
-                        enabled:
-                          type: boolean
-                          description: Whether the Managed Transform is enabled.
-                        has_conflict:
-                          type: boolean
-                          description: Whether the Managed Transform conflicts with the currently-enabled
-                            Managed Transforms.
-                        conflicts_with:
-                          type: array
-                          items:
-                            type: string
-                          description: The Managed Transforms that this Managed Transform conflicts with.
-                      required:
-                        - id
-                        - enabled
-                        - has_conflict
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: The human-readable identifier of the Managed Transform.
+                            enabled:
+                              type: boolean
+                              description: Whether the Managed Transform is enabled.
+                            has_conflict:
+                              type: boolean
+                              description: Whether the Managed Transform conflicts with the currently-enabled
+                                Managed Transforms.
+                            conflicts_with:
+                              type: array
+                              items:
+                                type: string
+                              description: The Managed Transforms that this Managed Transform conflicts with.
+                          required:
+                            - id
+                            - enabled
+                            - has_conflict
+                    nullable: true
                     description: The list of Managed Request Transforms.
                   managed_response_headers:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          description: The human-readable identifier of the Managed Transform.
-                        enabled:
-                          type: boolean
-                          description: Whether the Managed Transform is enabled.
-                        has_conflict:
-                          type: boolean
-                          description: Whether the Managed Transform conflicts with the currently-enabled
-                            Managed Transforms.
-                        conflicts_with:
-                          type: array
-                          items:
-                            type: string
-                          description: The Managed Transforms that this Managed Transform conflicts with.
-                      required:
-                        - id
-                        - enabled
-                        - has_conflict
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: The human-readable identifier of the Managed Transform.
+                            enabled:
+                              type: boolean
+                              description: Whether the Managed Transform is enabled.
+                            has_conflict:
+                              type: boolean
+                              description: Whether the Managed Transform conflicts with the currently-enabled
+                                Managed Transforms.
+                            conflicts_with:
+                              type: array
+                              items:
+                                type: string
+                              description: The Managed Transforms that this Managed Transform conflicts with.
+                          required:
+                            - id
+                            - enabled
+                            - has_conflict
+                    nullable: true
                     description: The list of Managed Response Transforms.
                 required:
                   - managed_request_headers
                   - managed_response_headers
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteManagedTransform
       description: Disables all Managed Transforms.
@@ -204,3 +218,6 @@ paths:
       responses:
         "200":
           description: Success
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

@@ -47,6 +47,12 @@ export class KeyNotFound extends Schema.TaggedErrorClass<KeyNotFound>()(
 ) {}
 T.applyErrorMatchers(KeyNotFound, [{ code: 5404 }]);
 
+export class VariantAlreadyExists extends Schema.TaggedErrorClass<VariantAlreadyExists>()(
+  "VariantAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(VariantAlreadyExists, [{ code: 5409 }]);
+
 export class VariantNameNotAllowed extends Schema.TaggedErrorClass<VariantNameNotAllowed>()(
   "VariantNameNotAllowed",
   { code: Schema.Number, message: Schema.String },
@@ -57,7 +63,10 @@ export class VariantNotFound extends Schema.TaggedErrorClass<VariantNotFound>()(
   "VariantNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(VariantNotFound, [{ code: 5401 }]);
+T.applyErrorMatchers(VariantNotFound, [
+  { code: 5401 },
+  { status: 404, message: { includes: "not found" } },
+]);
 
 // =============================================================================
 // V1
@@ -898,7 +907,8 @@ export const CreateV1VariantResponse =
 export type CreateV1VariantError =
   | DefaultErrors
   | ImagesAccessNotEnabled
-  | VariantNameNotAllowed;
+  | VariantNameNotAllowed
+  | VariantAlreadyExists;
 
 export const createV1Variant: API.OperationMethod<
   CreateV1VariantRequest,
@@ -908,7 +918,7 @@ export const createV1Variant: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateV1VariantRequest,
   output: CreateV1VariantResponse,
-  errors: [ImagesAccessNotEnabled, VariantNameNotAllowed],
+  errors: [ImagesAccessNotEnabled, VariantNameNotAllowed, VariantAlreadyExists],
 }));
 
 export interface PatchV1VariantRequest {

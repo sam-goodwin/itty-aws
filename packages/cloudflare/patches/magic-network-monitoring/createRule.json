@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "DuplicateMnmRuleName": [
+      { "code": 1008, "message": { "includes": "rule name must be unique" } }
+    ],
+    "MnmConfigMissing": [
+      {
+        "code": 1008,
+        "message": { "includes": "without initial account configuration" }
+      }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

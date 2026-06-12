@@ -79,6 +79,11 @@ paths:
                   - modified_on
                   - prefix
       x-distilled-pagination-class: AllowlistListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     post:
       operationId: createAdvancedTcpProtectionAllowlist
       description: "Create an allowlist prefix for an account.  @example ```ts const
@@ -148,6 +153,11 @@ paths:
                   - modified_on
                   - prefix
       x-distilled-response-path: result
+      x-distilled-errors:
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     delete:
       operationId: bulkDeleteAdvancedTcpProtectionAllowlists
       description: "Delete all allowlist prefixes for an account.  @example ```ts
@@ -271,6 +281,13 @@ paths:
                   - modified_on
                   - prefix
       x-distilled-response-path: result
+      x-distilled-errors:
+        AllowlistEntryNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchAdvancedTcpProtectionAllowlistItem
       description: "Update an allowlist prefix specified by the given UUID.  @example
@@ -339,6 +356,13 @@ paths:
                   - modified_on
                   - prefix
       x-distilled-response-path: result
+      x-distilled-errors:
+        AllowlistEntryNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteAdvancedTcpProtectionAllowlistItem
       description: "Delete the allowlist prefix for an account given a UUID.  @example
@@ -413,6 +437,13 @@ paths:
                   - errors
                   - messages
                   - success
+      x-distilled-errors:
+        AllowlistEntryNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes:
     get:
       operationId: listAdvancedTcpProtectionPrefixes
@@ -1026,6 +1057,11 @@ paths:
                   - mode
                   - modified_on
       x-distilled-pagination-class: FilterListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     post:
       operationId: createAdvancedTcpProtectionSynProtectionFilter
       description: "Create a SYN Protection filter for an account.  @example ```ts
@@ -1089,6 +1125,11 @@ paths:
                   - mode
                   - modified_on
       x-distilled-response-path: result
+      x-distilled-errors:
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     delete:
       operationId: bulkDeleteAdvancedTcpProtectionSynProtectionFilters
       description: "Delete all SYN Protection filters for an account.  @example ```ts
@@ -1208,6 +1249,13 @@ paths:
                   - mode
                   - modified_on
       x-distilled-response-path: result
+      x-distilled-errors:
+        SynProtectionFilterNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchAdvancedTcpProtectionSynProtectionFilterItem
       description: "Update a SYN Protection filter specified by the given
@@ -1272,6 +1320,13 @@ paths:
                   - mode
                   - modified_on
       x-distilled-response-path: result
+      x-distilled-errors:
+        SynProtectionFilterNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteAdvancedTcpProtectionSynProtectionFilterItem
       description: "Delete a SYN Protection filter specified by the given
@@ -1346,6 +1401,13 @@ paths:
                   - errors
                   - messages
                   - success
+      x-distilled-errors:
+        SynProtectionFilterNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules:
     get:
       operationId: listAdvancedTcpProtectionSynProtectionRules
@@ -1437,6 +1499,11 @@ paths:
                   - rate_sensitivity
                   - scope
       x-distilled-pagination-class: RuleListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     post:
       operationId: createAdvancedTcpProtectionSynProtectionRule
       description: "Create a SYN Protection rule for an account.  @example ```ts const
@@ -1545,6 +1612,11 @@ paths:
                   - rate_sensitivity
                   - scope
       x-distilled-response-path: result
+      x-distilled-errors:
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     delete:
       operationId: bulkDeleteAdvancedTcpProtectionSynProtectionRules
       description: "Delete all SYN Protection rules for an account.  @example ```ts
@@ -1686,6 +1758,13 @@ paths:
                   - rate_sensitivity
                   - scope
       x-distilled-response-path: result
+      x-distilled-errors:
+        SynProtectionRuleNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchAdvancedTcpProtectionSynProtectionRuleItem
       description: "Update a SYN Protection rule specified by the given
@@ -1781,6 +1860,13 @@ paths:
                   - rate_sensitivity
                   - scope
       x-distilled-response-path: result
+      x-distilled-errors:
+        SynProtectionRuleNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteAdvancedTcpProtectionSynProtectionRuleItem
       description: "Delete a SYN Protection rule specified by the given
@@ -1855,6 +1941,13 @@ paths:
                   - errors
                   - messages
                   - success
+      x-distilled-errors:
+        SynProtectionRuleNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters:
     get:
       operationId: listAdvancedTcpProtectionTcpFlowProtectionFilters
@@ -1932,6 +2025,11 @@ paths:
                   - mode
                   - modified_on
       x-distilled-pagination-class: FilterListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     post:
       operationId: createAdvancedTcpProtectionTcpFlowProtectionFilter
       description: "Create a TCP Flow Protection filter for an account.  @example
@@ -1995,6 +2093,11 @@ paths:
                   - mode
                   - modified_on
       x-distilled-response-path: result
+      x-distilled-errors:
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     delete:
       operationId: bulkDeleteAdvancedTcpProtectionTcpFlowProtectionFilters
       description: "Delete all TCP Flow Protection filters for an account.  @example
@@ -2114,6 +2217,13 @@ paths:
                   - mode
                   - modified_on
       x-distilled-response-path: result
+      x-distilled-errors:
+        TcpFlowProtectionFilterNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchAdvancedTcpProtectionTcpFlowProtectionFilterItem
       description: "Update a TCP Flow Protection filter specified by the given
@@ -2178,6 +2288,13 @@ paths:
                   - mode
                   - modified_on
       x-distilled-response-path: result
+      x-distilled-errors:
+        TcpFlowProtectionFilterNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteAdvancedTcpProtectionTcpFlowProtectionFilterItem
       description: "Delete a TCP Flow Protection filter specified by the given
@@ -2252,6 +2369,13 @@ paths:
                   - errors
                   - messages
                   - success
+      x-distilled-errors:
+        TcpFlowProtectionFilterNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules:
     get:
       operationId: listAdvancedTcpProtectionTcpFlowProtectionRules
@@ -2339,6 +2463,11 @@ paths:
                   - rate_sensitivity
                   - scope
       x-distilled-pagination-class: RuleListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     post:
       operationId: createAdvancedTcpProtectionTcpFlowProtectionRule
       description: "Create a TCP Flow Protection rule for an account.  @example ```ts
@@ -2437,6 +2566,11 @@ paths:
                   - rate_sensitivity
                   - scope
       x-distilled-response-path: result
+      x-distilled-errors:
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     delete:
       operationId: bulkDeleteAdvancedTcpProtectionTcpFlowProtectionRules
       description: "Delete all TCP Flow Protection rules for an account.  @example
@@ -2573,6 +2707,13 @@ paths:
                   - rate_sensitivity
                   - scope
       x-distilled-response-path: result
+      x-distilled-errors:
+        TcpFlowProtectionRuleNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchAdvancedTcpProtectionTcpFlowProtectionRuleItem
       description: "Update a TCP Flow Protection rule specified by the given
@@ -2659,6 +2800,13 @@ paths:
                   - rate_sensitivity
                   - scope
       x-distilled-response-path: result
+      x-distilled-errors:
+        TcpFlowProtectionRuleNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteAdvancedTcpProtectionTcpFlowProtectionRuleItem
       description: "Delete a TCP Flow Protection rule specified by the given
@@ -2733,3 +2881,10 @@ paths:
                   - errors
                   - messages
                   - success
+      x-distilled-errors:
+        TcpFlowProtectionRuleNotFound:
+          - status: 404
+        AdvancedTcpProtectionNotEntitled:
+          - code: 8888
+        Forbidden:
+          - status: 403

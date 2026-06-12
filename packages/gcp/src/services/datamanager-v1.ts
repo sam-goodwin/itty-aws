@@ -2640,9 +2640,7 @@ export const ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicense
   /*@__PURE__*/ /*#__PURE__*/ ListUserListGlobalLicenseCustomerInfosResponse;
 
 export type ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists all customer info for a user list global license. This feature is only available to data partners. */
 export const listAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfos: API.PaginatedOperationMethod<

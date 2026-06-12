@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "PlanLevelNotAllowed": [{ "code": 1011 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

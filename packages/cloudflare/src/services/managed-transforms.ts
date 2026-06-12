@@ -13,6 +13,16 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // ManagedTransform
 // =============================================================================
 
@@ -30,57 +40,67 @@ export const ListManagedTransformsRequest =
 
 export interface ListManagedTransformsResponse {
   /** The list of Managed Request Transforms. */
-  managedRequestHeaders: {
-    id: string;
-    enabled: boolean;
-    hasConflict: boolean;
-    conflictsWith?: string[] | null;
-  }[];
+  managedRequestHeaders:
+    | {
+        id: string;
+        enabled: boolean;
+        hasConflict: boolean;
+        conflictsWith?: string[] | null;
+      }[]
+    | null;
   /** The list of Managed Response Transforms. */
-  managedResponseHeaders: {
-    id: string;
-    enabled: boolean;
-    hasConflict: boolean;
-    conflictsWith?: string[] | null;
-  }[];
+  managedResponseHeaders:
+    | {
+        id: string;
+        enabled: boolean;
+        hasConflict: boolean;
+        conflictsWith?: string[] | null;
+      }[]
+    | null;
 }
 
 export const ListManagedTransformsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedRequestHeaders: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        enabled: Schema.Boolean,
-        hasConflict: Schema.Boolean,
-        conflictsWith: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    managedRequestHeaders: Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          enabled: Schema.Boolean,
+          hasConflict: Schema.Boolean,
+          conflictsWith: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            enabled: "enabled",
+            hasConflict: "has_conflict",
+            conflictsWith: "conflicts_with",
+          }),
         ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          hasConflict: "has_conflict",
-          conflictsWith: "conflicts_with",
-        }),
       ),
-    ),
-    managedResponseHeaders: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        enabled: Schema.Boolean,
-        hasConflict: Schema.Boolean,
-        conflictsWith: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      Schema.Null,
+    ]),
+    managedResponseHeaders: Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          enabled: Schema.Boolean,
+          hasConflict: Schema.Boolean,
+          conflictsWith: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            enabled: "enabled",
+            hasConflict: "has_conflict",
+            conflictsWith: "conflicts_with",
+          }),
         ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          hasConflict: "has_conflict",
-          conflictsWith: "conflicts_with",
-        }),
       ),
-    ),
+      Schema.Null,
+    ]),
   })
     .pipe(
       Schema.encodeKeys({
@@ -92,7 +112,7 @@ export const ListManagedTransformsResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<ListManagedTransformsResponse>;
 
-export type ListManagedTransformsError = DefaultErrors;
+export type ListManagedTransformsError = DefaultErrors | Forbidden;
 
 export const listManagedTransforms: API.OperationMethod<
   ListManagedTransformsRequest,
@@ -102,7 +122,7 @@ export const listManagedTransforms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagedTransformsRequest,
   output: ListManagedTransformsResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchManagedTransformRequest {
@@ -139,57 +159,67 @@ export const PatchManagedTransformRequest =
 
 export interface PatchManagedTransformResponse {
   /** The list of Managed Request Transforms. */
-  managedRequestHeaders: {
-    id: string;
-    enabled: boolean;
-    hasConflict: boolean;
-    conflictsWith?: string[] | null;
-  }[];
+  managedRequestHeaders:
+    | {
+        id: string;
+        enabled: boolean;
+        hasConflict: boolean;
+        conflictsWith?: string[] | null;
+      }[]
+    | null;
   /** The list of Managed Response Transforms. */
-  managedResponseHeaders: {
-    id: string;
-    enabled: boolean;
-    hasConflict: boolean;
-    conflictsWith?: string[] | null;
-  }[];
+  managedResponseHeaders:
+    | {
+        id: string;
+        enabled: boolean;
+        hasConflict: boolean;
+        conflictsWith?: string[] | null;
+      }[]
+    | null;
 }
 
 export const PatchManagedTransformResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedRequestHeaders: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        enabled: Schema.Boolean,
-        hasConflict: Schema.Boolean,
-        conflictsWith: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    managedRequestHeaders: Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          enabled: Schema.Boolean,
+          hasConflict: Schema.Boolean,
+          conflictsWith: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            enabled: "enabled",
+            hasConflict: "has_conflict",
+            conflictsWith: "conflicts_with",
+          }),
         ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          hasConflict: "has_conflict",
-          conflictsWith: "conflicts_with",
-        }),
       ),
-    ),
-    managedResponseHeaders: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        enabled: Schema.Boolean,
-        hasConflict: Schema.Boolean,
-        conflictsWith: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      Schema.Null,
+    ]),
+    managedResponseHeaders: Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          enabled: Schema.Boolean,
+          hasConflict: Schema.Boolean,
+          conflictsWith: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            enabled: "enabled",
+            hasConflict: "has_conflict",
+            conflictsWith: "conflicts_with",
+          }),
         ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          hasConflict: "has_conflict",
-          conflictsWith: "conflicts_with",
-        }),
       ),
-    ),
+      Schema.Null,
+    ]),
   })
     .pipe(
       Schema.encodeKeys({
@@ -201,7 +231,7 @@ export const PatchManagedTransformResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchManagedTransformResponse>;
 
-export type PatchManagedTransformError = DefaultErrors;
+export type PatchManagedTransformError = DefaultErrors | Forbidden;
 
 export const patchManagedTransform: API.OperationMethod<
   PatchManagedTransformRequest,
@@ -211,7 +241,7 @@ export const patchManagedTransform: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagedTransformRequest,
   output: PatchManagedTransformResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface DeleteManagedTransformRequest {
@@ -231,7 +261,7 @@ export type DeleteManagedTransformResponse = unknown;
 export const DeleteManagedTransformResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteManagedTransformResponse>;
 
-export type DeleteManagedTransformError = DefaultErrors;
+export type DeleteManagedTransformError = DefaultErrors | Forbidden;
 
 export const deleteManagedTransform: API.OperationMethod<
   DeleteManagedTransformRequest,
@@ -241,5 +271,5 @@ export const deleteManagedTransform: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagedTransformRequest,
   output: DeleteManagedTransformResponse,
-  errors: [],
+  errors: [Forbidden],
 }));

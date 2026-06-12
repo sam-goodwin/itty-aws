@@ -91,6 +91,28 @@ export class InvalidWorkerScript extends Schema.TaggedErrorClass<InvalidWorkerSc
 ) {}
 T.applyErrorMatchers(InvalidWorkerScript, [{ code: 10068 }]);
 
+export class ObservabilityDestinationCreateFailed extends Schema.TaggedErrorClass<ObservabilityDestinationCreateFailed>()(
+  "ObservabilityDestinationCreateFailed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ObservabilityDestinationCreateFailed, [
+  { status: 400, message: "Bad Request" },
+]);
+
+export class ObservabilityDestinationNotFound extends Schema.TaggedErrorClass<ObservabilityDestinationNotFound>()(
+  "ObservabilityDestinationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ObservabilityDestinationNotFound, [{ status: 404 }]);
+
+export class ObservabilityDestinationPreflightFailed extends Schema.TaggedErrorClass<ObservabilityDestinationPreflightFailed>()(
+  "ObservabilityDestinationPreflightFailed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ObservabilityDestinationPreflightFailed, [
+  { status: 400, message: "Bad Request" },
+]);
+
 export class QueueConsumerConflict extends Schema.TaggedErrorClass<QueueConsumerConflict>()(
   "QueueConsumerConflict",
   { code: Schema.Number, message: Schema.String },
@@ -134,6 +156,12 @@ export class SubdomainAlreadyExists extends Schema.TaggedErrorClass<SubdomainAlr
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(SubdomainAlreadyExists, [{ code: 10036 }]);
+
+export class SubdomainNotFound extends Schema.TaggedErrorClass<SubdomainNotFound>()(
+  "SubdomainNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SubdomainNotFound, [{ status: 404 }]);
 
 export class VersionNotFound extends Schema.TaggedErrorClass<VersionNotFound>()(
   "VersionNotFound",
@@ -194,7 +222,7 @@ export const GetAccountSettingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetAccountSettingResponse>;
 
-export type GetAccountSettingError = DefaultErrors | InvalidRoute;
+export type GetAccountSettingError = DefaultErrors | InvalidRoute | Forbidden;
 
 export const getAccountSetting: API.OperationMethod<
   GetAccountSettingRequest,
@@ -204,7 +232,7 @@ export const getAccountSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountSettingRequest,
   output: GetAccountSettingResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, Forbidden],
 }));
 
 export interface PutAccountSettingRequest {
@@ -254,7 +282,7 @@ export const PutAccountSettingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PutAccountSettingResponse>;
 
-export type PutAccountSettingError = DefaultErrors | InvalidRoute;
+export type PutAccountSettingError = DefaultErrors | InvalidRoute | Forbidden;
 
 export const putAccountSetting: API.OperationMethod<
   PutAccountSettingRequest,
@@ -264,7 +292,7 @@ export const putAccountSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccountSettingRequest,
   output: PutAccountSettingResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, Forbidden],
 }));
 
 // =============================================================================
@@ -5434,7 +5462,7 @@ export const ListObservabilityDestinationsResponse =
     ),
   }) as unknown as Schema.Schema<ListObservabilityDestinationsResponse>;
 
-export type ListObservabilityDestinationsError = DefaultErrors;
+export type ListObservabilityDestinationsError = DefaultErrors | Forbidden;
 
 export const listObservabilityDestinations: API.PaginatedOperationMethod<
   ListObservabilityDestinationsRequest,
@@ -5444,7 +5472,7 @@ export const listObservabilityDestinations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObservabilityDestinationsRequest,
   output: ListObservabilityDestinationsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -5549,7 +5577,10 @@ export const CreateObservabilityDestinationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateObservabilityDestinationResponse>;
 
-export type CreateObservabilityDestinationError = DefaultErrors;
+export type CreateObservabilityDestinationError =
+  | DefaultErrors
+  | ObservabilityDestinationCreateFailed
+  | Forbidden;
 
 export const createObservabilityDestination: API.OperationMethod<
   CreateObservabilityDestinationRequest,
@@ -5559,7 +5590,7 @@ export const createObservabilityDestination: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateObservabilityDestinationRequest,
   output: CreateObservabilityDestinationResponse,
-  errors: [],
+  errors: [ObservabilityDestinationCreateFailed, Forbidden],
 }));
 
 export interface PatchObservabilityDestinationRequest {
@@ -5643,7 +5674,11 @@ export const PatchObservabilityDestinationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchObservabilityDestinationResponse>;
 
-export type PatchObservabilityDestinationError = DefaultErrors;
+export type PatchObservabilityDestinationError =
+  | DefaultErrors
+  | ObservabilityDestinationNotFound
+  | ObservabilityDestinationPreflightFailed
+  | Forbidden;
 
 export const patchObservabilityDestination: API.OperationMethod<
   PatchObservabilityDestinationRequest,
@@ -5653,7 +5688,11 @@ export const patchObservabilityDestination: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchObservabilityDestinationRequest,
   output: PatchObservabilityDestinationResponse,
-  errors: [],
+  errors: [
+    ObservabilityDestinationNotFound,
+    ObservabilityDestinationPreflightFailed,
+    Forbidden,
+  ],
 }));
 
 export interface DeleteObservabilityDestinationRequest {
@@ -5723,7 +5762,10 @@ export const DeleteObservabilityDestinationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteObservabilityDestinationResponse>;
 
-export type DeleteObservabilityDestinationError = DefaultErrors;
+export type DeleteObservabilityDestinationError =
+  | DefaultErrors
+  | ObservabilityDestinationNotFound
+  | Forbidden;
 
 export const deleteObservabilityDestination: API.OperationMethod<
   DeleteObservabilityDestinationRequest,
@@ -5733,7 +5775,7 @@ export const deleteObservabilityDestination: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteObservabilityDestinationRequest,
   output: DeleteObservabilityDestinationResponse,
-  errors: [],
+  errors: [ObservabilityDestinationNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -20863,7 +20905,11 @@ export const GetSubdomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetSubdomainResponse>;
 
-export type GetSubdomainError = DefaultErrors | InvalidRoute;
+export type GetSubdomainError =
+  | DefaultErrors
+  | InvalidRoute
+  | SubdomainNotFound
+  | Forbidden;
 
 export const getSubdomain: API.OperationMethod<
   GetSubdomainRequest,
@@ -20873,7 +20919,7 @@ export const getSubdomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubdomainRequest,
   output: GetSubdomainResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, SubdomainNotFound, Forbidden],
 }));
 
 export interface PutSubdomainRequest {
@@ -20903,7 +20949,8 @@ export const PutSubdomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PutSubdomainError =
   | DefaultErrors
   | SubdomainAlreadyExists
-  | InvalidRoute;
+  | InvalidRoute
+  | Forbidden;
 
 export const putSubdomain: API.OperationMethod<
   PutSubdomainRequest,
@@ -20913,7 +20960,7 @@ export const putSubdomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSubdomainRequest,
   output: PutSubdomainResponse,
-  errors: [SubdomainAlreadyExists, InvalidRoute],
+  errors: [SubdomainAlreadyExists, InvalidRoute, Forbidden],
 }));
 
 export interface DeleteSubdomainRequest {
@@ -20937,7 +20984,11 @@ export type DeleteSubdomainResponse = unknown;
 export const DeleteSubdomainResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteSubdomainResponse>;
 
-export type DeleteSubdomainError = DefaultErrors | InvalidRoute;
+export type DeleteSubdomainError =
+  | DefaultErrors
+  | InvalidRoute
+  | SubdomainNotFound
+  | Forbidden;
 
 export const deleteSubdomain: API.OperationMethod<
   DeleteSubdomainRequest,
@@ -20947,7 +20998,7 @@ export const deleteSubdomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubdomainRequest,
   output: DeleteSubdomainResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, SubdomainNotFound, Forbidden],
 }));
 
 // =============================================================================

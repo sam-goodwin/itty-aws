@@ -13,6 +13,16 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // UrlNormalization
 // =============================================================================
 
@@ -49,7 +59,7 @@ export const GetUrlNormalizationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetUrlNormalizationResponse>;
 
-export type GetUrlNormalizationError = DefaultErrors;
+export type GetUrlNormalizationError = DefaultErrors | Forbidden;
 
 export const getUrlNormalization: API.OperationMethod<
   GetUrlNormalizationRequest,
@@ -59,7 +69,7 @@ export const getUrlNormalization: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUrlNormalizationRequest,
   output: GetUrlNormalizationResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutUrlNormalizationRequest {
@@ -107,7 +117,7 @@ export const PutUrlNormalizationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutUrlNormalizationResponse>;
 
-export type PutUrlNormalizationError = DefaultErrors;
+export type PutUrlNormalizationError = DefaultErrors | Forbidden;
 
 export const putUrlNormalization: API.OperationMethod<
   PutUrlNormalizationRequest,
@@ -117,7 +127,7 @@ export const putUrlNormalization: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutUrlNormalizationRequest,
   output: PutUrlNormalizationResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface DeleteUrlNormalizationRequest {
@@ -137,7 +147,7 @@ export type DeleteUrlNormalizationResponse = unknown;
 export const DeleteUrlNormalizationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteUrlNormalizationResponse>;
 
-export type DeleteUrlNormalizationError = DefaultErrors;
+export type DeleteUrlNormalizationError = DefaultErrors | Forbidden;
 
 export const deleteUrlNormalization: API.OperationMethod<
   DeleteUrlNormalizationRequest,
@@ -147,5 +157,5 @@ export const deleteUrlNormalization: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUrlNormalizationRequest,
   output: DeleteUrlNormalizationResponse,
-  errors: [],
+  errors: [Forbidden],
 }));

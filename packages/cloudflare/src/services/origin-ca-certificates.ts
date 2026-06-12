@@ -13,6 +13,34 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class CertificateAlreadyRevoked extends Schema.TaggedErrorClass<CertificateAlreadyRevoked>()(
+  "CertificateAlreadyRevoked",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CertificateAlreadyRevoked, [{ code: 1014 }]);
+
+export class CertificateNotFound extends Schema.TaggedErrorClass<CertificateNotFound>()(
+  "CertificateNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CertificateNotFound, [{ code: 1101 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class HostnameNotAuthorized extends Schema.TaggedErrorClass<HostnameNotAuthorized>()(
+  "HostnameNotAuthorized",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(HostnameNotAuthorized, [{ code: 1010 }]);
+
+// =============================================================================
 // OriginCaCertificate
 // =============================================================================
 
@@ -29,7 +57,7 @@ export const GetOriginCaCertificateRequest =
 
 export interface GetOriginCaCertificateResponse {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
-  csr: string;
+  csr?: string | null;
   /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wil */
   hostnames: string[];
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
@@ -39,38 +67,31 @@ export interface GetOriginCaCertificateResponse {
     | "keyless-certificate"
     | (string & {});
   /** The number of days for which the certificate should be valid. */
-  requestedValidity:
-    | "7"
-    | "30"
-    | "90"
-    | "365"
-    | "730"
-    | "1095"
-    | "5475"
-    | (string & {});
+  requestedValidity?: number | null;
   /** Identifier. */
   id?: string | null;
   /** The Origin CA certificate. Will be newline-encoded. */
   certificate?: string | null;
   /** When the certificate will expire. */
   expiresOn?: string | null;
+  revokedAt?: string | null;
 }
 
 export const GetOriginCaCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    csr: Schema.String,
+    csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     hostnames: Schema.Array(Schema.String),
     requestType: Schema.Union([
       Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
       Schema.String,
     ]),
-    requestedValidity: Schema.Union([
-      Schema.Literals(["7", "30", "90", "365", "730", "1095", "5475"]),
-      Schema.String,
-    ]),
+    requestedValidity: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    revokedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -81,13 +102,17 @@ export const GetOriginCaCertificateResponse =
         id: "id",
         certificate: "certificate",
         expiresOn: "expires_on",
+        revokedAt: "revoked_at",
       }),
     )
     .pipe(
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetOriginCaCertificateResponse>;
 
-export type GetOriginCaCertificateError = DefaultErrors;
+export type GetOriginCaCertificateError =
+  | DefaultErrors
+  | CertificateNotFound
+  | Forbidden;
 
 export const getOriginCaCertificate: API.OperationMethod<
   GetOriginCaCertificateRequest,
@@ -97,7 +122,7 @@ export const getOriginCaCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOriginCaCertificateRequest,
   output: GetOriginCaCertificateResponse,
-  errors: [],
+  errors: [CertificateNotFound, Forbidden],
 }));
 
 export interface ListOriginCaCertificatesRequest {
@@ -124,22 +149,15 @@ export const ListOriginCaCertificatesRequest =
 
 export interface ListOriginCaCertificatesResponse {
   result: {
-    csr: string;
+    csr?: string | null;
     hostnames: string[];
-    requestType:
+    requestType?:
       | "origin-rsa"
       | "origin-ecc"
       | "keyless-certificate"
-      | (string & {});
-    requestedValidity:
-      | "7"
-      | "30"
-      | "90"
-      | "365"
-      | "730"
-      | "1095"
-      | "5475"
-      | (string & {});
+      | (string & {})
+      | null;
+    requestedValidity?: number | null;
     id?: string | null;
     certificate?: string | null;
     expiresOn?: string | null;
@@ -156,16 +174,24 @@ export const ListOriginCaCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
-        csr: Schema.String,
+        csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         hostnames: Schema.Array(Schema.String),
-        requestType: Schema.Union([
-          Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
-          Schema.String,
-        ]),
-        requestedValidity: Schema.Union([
-          Schema.Literals(["7", "30", "90", "365", "730", "1095", "5475"]),
-          Schema.String,
-        ]),
+        requestType: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "origin-rsa",
+                "origin-ecc",
+                "keyless-certificate",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        requestedValidity: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         certificate: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
@@ -207,7 +233,7 @@ export const ListOriginCaCertificatesResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListOriginCaCertificatesResponse>;
 
-export type ListOriginCaCertificatesError = DefaultErrors;
+export type ListOriginCaCertificatesError = DefaultErrors | Forbidden;
 
 export const listOriginCaCertificates: API.PaginatedOperationMethod<
   ListOriginCaCertificatesRequest,
@@ -217,7 +243,7 @@ export const listOriginCaCertificates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOriginCaCertificatesRequest,
   output: ListOriginCaCertificatesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -239,15 +265,7 @@ export interface CreateOriginCaCertificateRequest {
     | "keyless-certificate"
     | (string & {});
   /** The number of days for which the certificate should be valid. */
-  requestedValidity?:
-    | "7"
-    | "30"
-    | "90"
-    | "365"
-    | "730"
-    | "1095"
-    | "5475"
-    | (string & {});
+  requestedValidity?: number;
 }
 
 export const CreateOriginCaCertificateRequest =
@@ -258,12 +276,7 @@ export const CreateOriginCaCertificateRequest =
       Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
       Schema.String,
     ]),
-    requestedValidity: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["7", "30", "90", "365", "730", "1095", "5475"]),
-        Schema.String,
-      ]),
-    ),
+    requestedValidity: Schema.optional(Schema.Number),
   }).pipe(
     Schema.encodeKeys({
       csr: "csr",
@@ -286,15 +299,7 @@ export interface CreateOriginCaCertificateResponse {
     | "keyless-certificate"
     | (string & {});
   /** The number of days for which the certificate should be valid. */
-  requestedValidity:
-    | "7"
-    | "30"
-    | "90"
-    | "365"
-    | "730"
-    | "1095"
-    | "5475"
-    | (string & {});
+  requestedValidity: number;
   /** Identifier. */
   id?: string | null;
   /** The Origin CA certificate. Will be newline-encoded. */
@@ -311,10 +316,7 @@ export const CreateOriginCaCertificateResponse =
       Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
       Schema.String,
     ]),
-    requestedValidity: Schema.Union([
-      Schema.Literals(["7", "30", "90", "365", "730", "1095", "5475"]),
-      Schema.String,
-    ]),
+    requestedValidity: Schema.Number,
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -334,7 +336,10 @@ export const CreateOriginCaCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateOriginCaCertificateResponse>;
 
-export type CreateOriginCaCertificateError = DefaultErrors;
+export type CreateOriginCaCertificateError =
+  | DefaultErrors
+  | HostnameNotAuthorized
+  | Forbidden;
 
 export const createOriginCaCertificate: API.OperationMethod<
   CreateOriginCaCertificateRequest,
@@ -344,7 +349,7 @@ export const createOriginCaCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOriginCaCertificateRequest,
   output: CreateOriginCaCertificateResponse,
-  errors: [],
+  errors: [HostnameNotAuthorized, Forbidden],
 }));
 
 export interface DeleteOriginCaCertificateRequest {
@@ -375,7 +380,11 @@ export const DeleteOriginCaCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteOriginCaCertificateResponse>;
 
-export type DeleteOriginCaCertificateError = DefaultErrors;
+export type DeleteOriginCaCertificateError =
+  | DefaultErrors
+  | CertificateNotFound
+  | CertificateAlreadyRevoked
+  | Forbidden;
 
 export const deleteOriginCaCertificate: API.OperationMethod<
   DeleteOriginCaCertificateRequest,
@@ -385,5 +394,5 @@ export const deleteOriginCaCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOriginCaCertificateRequest,
   output: DeleteOriginCaCertificateResponse,
-  errors: [],
+  errors: [CertificateNotFound, CertificateAlreadyRevoked, Forbidden],
 }));

@@ -13,6 +13,28 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class SendingSubdomainAlreadyExists extends Schema.TaggedErrorClass<SendingSubdomainAlreadyExists>()(
+  "SendingSubdomainAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SendingSubdomainAlreadyExists, [{ code: 2040 }]);
+
+export class SendingSubdomainNotFound extends Schema.TaggedErrorClass<SendingSubdomainNotFound>()(
+  "SendingSubdomainNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SendingSubdomainNotFound, [{ code: 2033 }]);
+
+// =============================================================================
 // EmailSending
 // =============================================================================
 
@@ -303,7 +325,10 @@ export const GetSubdomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetSubdomainResponse>;
 
-export type GetSubdomainError = DefaultErrors;
+export type GetSubdomainError =
+  | DefaultErrors
+  | Forbidden
+  | SendingSubdomainNotFound;
 
 export const getSubdomain: API.OperationMethod<
   GetSubdomainRequest,
@@ -313,7 +338,7 @@ export const getSubdomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubdomainRequest,
   output: GetSubdomainResponse,
-  errors: [],
+  errors: [Forbidden, SendingSubdomainNotFound],
 }));
 
 export interface ListSubdomainsRequest {
@@ -369,7 +394,7 @@ export const ListSubdomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ) as unknown as Schema.Schema<ListSubdomainsResponse>;
 
-export type ListSubdomainsError = DefaultErrors;
+export type ListSubdomainsError = DefaultErrors | Forbidden;
 
 export const listSubdomains: API.PaginatedOperationMethod<
   ListSubdomainsRequest,
@@ -379,7 +404,7 @@ export const listSubdomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubdomainsRequest,
   output: ListSubdomainsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -446,7 +471,10 @@ export const CreateSubdomainResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateSubdomainResponse>;
 
-export type CreateSubdomainError = DefaultErrors;
+export type CreateSubdomainError =
+  | DefaultErrors
+  | Forbidden
+  | SendingSubdomainAlreadyExists;
 
 export const createSubdomain: API.OperationMethod<
   CreateSubdomainRequest,
@@ -456,7 +484,7 @@ export const createSubdomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubdomainRequest,
   output: CreateSubdomainResponse,
-  errors: [],
+  errors: [Forbidden, SendingSubdomainAlreadyExists],
 }));
 
 export interface DeleteSubdomainRequest {
@@ -551,7 +579,10 @@ export const DeleteSubdomainResponse =
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteSubdomainResponse>;
 
-export type DeleteSubdomainError = DefaultErrors;
+export type DeleteSubdomainError =
+  | DefaultErrors
+  | Forbidden
+  | SendingSubdomainNotFound;
 
 export const deleteSubdomain: API.OperationMethod<
   DeleteSubdomainRequest,
@@ -561,7 +592,7 @@ export const deleteSubdomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubdomainRequest,
   output: DeleteSubdomainResponse,
-  errors: [],
+  errors: [Forbidden, SendingSubdomainNotFound],
 }));
 
 // =============================================================================

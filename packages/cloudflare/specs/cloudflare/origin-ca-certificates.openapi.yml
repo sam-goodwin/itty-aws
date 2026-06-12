@@ -56,14 +56,6 @@ paths:
                       Keyless SSL servers).
                   requested_validity:
                     type: number
-                    enum:
-                      - 7
-                      - 30
-                      - 90
-                      - 365
-                      - 730
-                      - 1095
-                      - 5475
                     description: The number of days for which the certificate should be valid.
                   id:
                     type: string
@@ -74,12 +66,17 @@ paths:
                   expires_on:
                     type: string
                     description: When the certificate will expire.
+                  revoked_at:
+                    type: string
                 required:
-                  - csr
                   - hostnames
                   - request_type
-                  - requested_validity
       x-distilled-response-path: result
+      x-distilled-errors:
+        CertificateNotFound:
+          - code: 1101
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteOriginCaCertificate
       description: Revoke an existing Origin CA certificate by its serial number. You
@@ -108,6 +105,13 @@ paths:
                     type: string
                     description: When the certificate was revoked.
       x-distilled-response-path: result
+      x-distilled-errors:
+        CertificateNotFound:
+          - code: 1101
+        CertificateAlreadyRevoked:
+          - code: 1014
+        Forbidden:
+          - status: 403
   /certificates:
     get:
       operationId: listOriginCaCertificates
@@ -206,6 +210,9 @@ paths:
                   - request_type
                   - requested_validity
       x-distilled-pagination-class: OriginCACertificatesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createOriginCaCertificate
       description: "Create an Origin CA certificate. You can use an Origin CA Key as
@@ -264,14 +271,6 @@ paths:
                     SSL servers).
                 requested_validity:
                   type: number
-                  enum:
-                    - 7
-                    - 30
-                    - 90
-                    - 365
-                    - 730
-                    - 1095
-                    - 5475
                   description: The number of days for which the certificate should be valid.
               required:
                 - csr
@@ -313,14 +312,6 @@ paths:
                       Keyless SSL servers).
                   requested_validity:
                     type: number
-                    enum:
-                      - 7
-                      - 30
-                      - 90
-                      - 365
-                      - 730
-                      - 1095
-                      - 5475
                     description: The number of days for which the certificate should be valid.
                   id:
                     type: string
@@ -337,3 +328,8 @@ paths:
                   - request_type
                   - requested_validity
       x-distilled-response-path: result
+      x-distilled-errors:
+        HostnameNotAuthorized:
+          - code: 1010
+        Forbidden:
+          - status: 403

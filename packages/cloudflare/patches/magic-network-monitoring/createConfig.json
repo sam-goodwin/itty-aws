@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "MnmConfigAlreadyExists": [
+      { "code": 1005, "message": { "includes": "already exists" } }
+    ]
+  }
+}

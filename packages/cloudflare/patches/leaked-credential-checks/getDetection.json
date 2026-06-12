@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "DetectionNotFound": [{ "code": 11002 }],
+    "LeakedCredentialChecksDisabled": [{ "code": 11001 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

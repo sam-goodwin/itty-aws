@@ -13,6 +13,22 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class SiteNotFound extends Schema.TaggedErrorClass<SiteNotFound>()(
+  "SiteNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SiteNotFound, [{ code: 10015 }]);
+
+// =============================================================================
 // Rule
 // =============================================================================
 
@@ -532,6 +548,7 @@ export interface GetSiteInfoResponse {
   siteToken?: string | null;
   /** Encoded JavaScript snippet. */
   snippet?: string | null;
+  host?: string | null;
 }
 
 export const GetSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -590,6 +607,7 @@ export const GetSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
   .pipe(
     Schema.encodeKeys({
@@ -600,13 +618,14 @@ export const GetSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       siteTag: "site_tag",
       siteToken: "site_token",
       snippet: "snippet",
+      host: "host",
     }),
   )
   .pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetSiteInfoResponse>;
 
-export type GetSiteInfoError = DefaultErrors;
+export type GetSiteInfoError = DefaultErrors | SiteNotFound | Forbidden;
 
 export const getSiteInfo: API.OperationMethod<
   GetSiteInfoRequest,
@@ -616,7 +635,7 @@ export const getSiteInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSiteInfoRequest,
   output: GetSiteInfoResponse,
-  errors: [],
+  errors: [SiteNotFound, Forbidden],
 }));
 
 export interface ListSiteInfosRequest {
@@ -663,6 +682,7 @@ export interface ListSiteInfosResponse {
     siteTag?: string | null;
     siteToken?: string | null;
     snippet?: string | null;
+    host?: string | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -740,6 +760,7 @@ export const ListSiteInfosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         autoInstall: "auto_install",
@@ -749,6 +770,7 @@ export const ListSiteInfosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         siteTag: "site_tag",
         siteToken: "site_token",
         snippet: "snippet",
+        host: "host",
       }),
     ),
   ),
@@ -774,7 +796,7 @@ export const ListSiteInfosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListSiteInfosResponse>;
 
-export type ListSiteInfosError = DefaultErrors;
+export type ListSiteInfosError = DefaultErrors | Forbidden;
 
 export const listSiteInfos: API.PaginatedOperationMethod<
   ListSiteInfosRequest,
@@ -784,7 +806,7 @@ export const listSiteInfos: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSiteInfosRequest,
   output: ListSiteInfosResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -847,6 +869,7 @@ export interface CreateSiteInfoResponse {
   siteToken?: string | null;
   /** Encoded JavaScript snippet. */
   snippet?: string | null;
+  host?: string | null;
 }
 
 export const CreateSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -910,6 +933,7 @@ export const CreateSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   },
 )
   .pipe(
@@ -921,13 +945,14 @@ export const CreateSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       siteTag: "site_tag",
       siteToken: "site_token",
       snippet: "snippet",
+      host: "host",
     }),
   )
   .pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateSiteInfoResponse>;
 
-export type CreateSiteInfoError = DefaultErrors;
+export type CreateSiteInfoError = DefaultErrors | Forbidden;
 
 export const createSiteInfo: API.OperationMethod<
   CreateSiteInfoRequest,
@@ -937,7 +962,7 @@ export const createSiteInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSiteInfoRequest,
   output: CreateSiteInfoResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateSiteInfoRequest {
@@ -1006,6 +1031,7 @@ export interface UpdateSiteInfoResponse {
   siteToken?: string | null;
   /** Encoded JavaScript snippet. */
   snippet?: string | null;
+  host?: string | null;
 }
 
 export const UpdateSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1069,6 +1095,7 @@ export const UpdateSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   },
 )
   .pipe(
@@ -1080,13 +1107,14 @@ export const UpdateSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       siteTag: "site_tag",
       siteToken: "site_token",
       snippet: "snippet",
+      host: "host",
     }),
   )
   .pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateSiteInfoResponse>;
 
-export type UpdateSiteInfoError = DefaultErrors;
+export type UpdateSiteInfoError = DefaultErrors | SiteNotFound | Forbidden;
 
 export const updateSiteInfo: API.OperationMethod<
   UpdateSiteInfoRequest,
@@ -1096,7 +1124,7 @@ export const updateSiteInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSiteInfoRequest,
   output: UpdateSiteInfoResponse,
-  errors: [],
+  errors: [SiteNotFound, Forbidden],
 }));
 
 export interface DeleteSiteInfoRequest {
@@ -1130,7 +1158,7 @@ export const DeleteSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSiteInfoResponse>;
 
-export type DeleteSiteInfoError = DefaultErrors;
+export type DeleteSiteInfoError = DefaultErrors | SiteNotFound | Forbidden;
 
 export const deleteSiteInfo: API.OperationMethod<
   DeleteSiteInfoRequest,
@@ -1140,5 +1168,5 @@ export const deleteSiteInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSiteInfoRequest,
   output: DeleteSiteInfoResponse,
-  errors: [],
+  errors: [SiteNotFound, Forbidden],
 }));

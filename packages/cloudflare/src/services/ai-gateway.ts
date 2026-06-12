@@ -16,6 +16,12 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
+export class DatasetNotFound extends Schema.TaggedErrorClass<DatasetNotFound>()(
+  "DatasetNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DatasetNotFound, [{ code: 7002 }]);
+
 export class GatewayAlreadyExists extends Schema.TaggedErrorClass<GatewayAlreadyExists>()(
   "GatewayAlreadyExists",
   { code: Schema.Number, message: Schema.String },
@@ -34,6 +40,22 @@ export class NoManualTopup extends Schema.TaggedErrorClass<NoManualTopup>()(
 ) {}
 T.applyErrorMatchers(NoManualTopup, [
   { code: 1000, message: { includes: "NO_MANUAL_TOPUP" } },
+]);
+
+export class RouteAlreadyExists extends Schema.TaggedErrorClass<RouteAlreadyExists>()(
+  "RouteAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RouteAlreadyExists, [
+  { code: 7005, message: { includes: "already exists" } },
+]);
+
+export class RouteNotFound extends Schema.TaggedErrorClass<RouteNotFound>()(
+  "RouteNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RouteNotFound, [
+  { code: 7005, message: { includes: "not found" } },
 ]);
 
 // =============================================================================
@@ -3928,7 +3950,7 @@ export const GetDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetDatasetResponse>;
 
-export type GetDatasetError = DefaultErrors;
+export type GetDatasetError = DefaultErrors | DatasetNotFound;
 
 export const getDataset: API.OperationMethod<
   GetDatasetRequest,
@@ -3938,7 +3960,7 @@ export const getDataset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDatasetRequest,
   output: GetDatasetResponse,
-  errors: [],
+  errors: [DatasetNotFound],
 }));
 
 export interface ListDatasetsRequest {
@@ -4078,7 +4100,7 @@ export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListDatasetsResponse>;
 
-export type ListDatasetsError = DefaultErrors;
+export type ListDatasetsError = DefaultErrors | GatewayNotFound;
 
 export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
@@ -4088,7 +4110,7 @@ export const listDatasets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
-  errors: [],
+  errors: [GatewayNotFound],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -4250,7 +4272,7 @@ export const CreateDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateDatasetResponse>;
 
-export type CreateDatasetError = DefaultErrors;
+export type CreateDatasetError = DefaultErrors | GatewayNotFound;
 
 export const createDataset: API.OperationMethod<
   CreateDatasetRequest,
@@ -4260,7 +4282,7 @@ export const createDataset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
-  errors: [],
+  errors: [GatewayNotFound],
 }));
 
 export interface UpdateDatasetRequest {
@@ -4417,7 +4439,7 @@ export const UpdateDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateDatasetResponse>;
 
-export type UpdateDatasetError = DefaultErrors;
+export type UpdateDatasetError = DefaultErrors | DatasetNotFound;
 
 export const updateDataset: API.OperationMethod<
   UpdateDatasetRequest,
@@ -4427,7 +4449,7 @@ export const updateDataset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDatasetRequest,
   output: UpdateDatasetResponse,
-  errors: [],
+  errors: [DatasetNotFound],
 }));
 
 export interface DeleteDatasetRequest {
@@ -4528,7 +4550,7 @@ export const DeleteDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDatasetResponse>;
 
-export type DeleteDatasetError = DefaultErrors;
+export type DeleteDatasetError = DefaultErrors | DatasetNotFound;
 
 export const deleteDataset: API.OperationMethod<
   DeleteDatasetRequest,
@@ -4538,7 +4560,7 @@ export const deleteDataset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
-  errors: [],
+  errors: [DatasetNotFound],
 }));
 
 // =============================================================================
@@ -4571,45 +4593,54 @@ export const CreateDeploymentDynamicRoutingRequest =
 export interface CreateDeploymentDynamicRoutingResponse {
   id: string;
   createdAt: string;
-  elements: (
-    | { id: string; outputs: { next: { elementId: string } }; type: "start" }
-    | {
-        id: string;
-        outputs: { false: { elementId: string }; true: { elementId: string } };
-        properties: { conditions?: unknown | null };
-        type: "conditional";
-      }
-    | { id: string; outputs: Record<string, unknown>; type: "percentage" }
-    | {
-        id: string;
-        outputs: {
-          fallback: { elementId: string };
-          success: { elementId: string };
-        };
-        properties: {
-          key: string;
-          limit: number;
-          limitType: "count" | "cost" | (string & {});
-          window: number;
-        };
-        type: "rate";
-      }
-    | {
-        id: string;
-        outputs: {
-          fallback: { elementId: string };
-          success: { elementId: string };
-        };
-        properties: {
-          model: string;
-          provider: string;
-          retries: number;
-          timeout: number;
-        };
-        type: "model";
-      }
-    | { id: string; outputs: Record<string, unknown>; type: "end" }
-  )[];
+  elements?:
+    | (
+        | {
+            id: string;
+            outputs: { next: { elementId: string } };
+            type: "start";
+          }
+        | {
+            id: string;
+            outputs: {
+              false: { elementId: string };
+              true: { elementId: string };
+            };
+            properties: { conditions?: unknown | null };
+            type: "conditional";
+          }
+        | { id: string; outputs: Record<string, unknown>; type: "percentage" }
+        | {
+            id: string;
+            outputs: {
+              fallback: { elementId: string };
+              success: { elementId: string };
+            };
+            properties: {
+              key: string;
+              limit: number;
+              limitType: "count" | "cost" | (string & {});
+              window: number;
+            };
+            type: "rate";
+          }
+        | {
+            id: string;
+            outputs: {
+              fallback: { elementId: string };
+              success: { elementId: string };
+            };
+            properties: {
+              model: string;
+              provider: string;
+              retries: number;
+              timeout: number;
+            };
+            type: "model";
+          }
+        | { id: string; outputs: Record<string, unknown>; type: "end" }
+      )[]
+    | null;
   gatewayId: string;
   modifiedAt: string;
   name: string;
@@ -4619,83 +4650,88 @@ export const CreateDeploymentDynamicRoutingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
-    elements: Schema.Array(
+    elements: Schema.optional(
       Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
+        Schema.Array(
+          Schema.Union([
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                false: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                true: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                conditions: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+              }),
+              type: Schema.Literal("conditional"),
             }),
-            true: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                key: Schema.String,
+                limit: Schema.Number,
+                limitType: Schema.Union([
+                  Schema.Literals(["count", "cost"]),
+                  Schema.String,
+                ]),
+                window: Schema.Number,
+              }),
+              type: Schema.Literal("rate"),
             }),
-          }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-          }),
-          type: Schema.Literal("conditional"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                model: Schema.String,
+                provider: Schema.String,
+                retries: Schema.Number,
+                timeout: Schema.Number,
+              }),
+              type: Schema.Literal("model"),
             }),
-            success: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                next: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              type: Schema.Literal("start"),
             }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("percentage"),
             }),
-            success: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("end"),
             }),
-          }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
-          }),
-          type: Schema.Literal("model"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          type: Schema.Literal("start"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
-        }),
+          ]),
+        ),
+        Schema.Null,
       ]),
     ),
     gatewayId: Schema.String,
@@ -4716,7 +4752,7 @@ export const CreateDeploymentDynamicRoutingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateDeploymentDynamicRoutingResponse>;
 
-export type CreateDeploymentDynamicRoutingError = DefaultErrors;
+export type CreateDeploymentDynamicRoutingError = DefaultErrors | RouteNotFound;
 
 export const createDeploymentDynamicRouting: API.OperationMethod<
   CreateDeploymentDynamicRoutingRequest,
@@ -4726,7 +4762,7 @@ export const createDeploymentDynamicRouting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeploymentDynamicRoutingRequest,
   output: CreateDeploymentDynamicRoutingResponse,
-  errors: [],
+  errors: [RouteNotFound],
 }));
 
 // =============================================================================
@@ -4837,238 +4873,8 @@ export interface GetDynamicRoutingResponse {
   id: string;
   createdAt: string;
   deployment: { createdAt: string; deploymentId: string; versionId: string };
-  elements: (
-    | { id: string; outputs: { next: { elementId: string } }; type: "start" }
-    | {
-        id: string;
-        outputs: { false: { elementId: string }; true: { elementId: string } };
-        properties: { conditions?: unknown | null };
-        type: "conditional";
-      }
-    | { id: string; outputs: Record<string, unknown>; type: "percentage" }
-    | {
-        id: string;
-        outputs: {
-          fallback: { elementId: string };
-          success: { elementId: string };
-        };
-        properties: {
-          key: string;
-          limit: number;
-          limitType: "count" | "cost" | (string & {});
-          window: number;
-        };
-        type: "rate";
-      }
-    | {
-        id: string;
-        outputs: {
-          fallback: { elementId: string };
-          success: { elementId: string };
-        };
-        properties: {
-          model: string;
-          provider: string;
-          retries: number;
-          timeout: number;
-        };
-        type: "model";
-      }
-    | { id: string; outputs: Record<string, unknown>; type: "end" }
-  )[];
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-  version: {
-    active: true | false;
-    createdAt: string;
-    data: string;
-    versionId: string;
-    isValid?: boolean | null;
-  };
-}
-
-export const GetDynamicRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    deployment: Schema.Struct({
-      createdAt: Schema.String,
-      deploymentId: Schema.String,
-      versionId: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        createdAt: "created_at",
-        deploymentId: "deployment_id",
-        versionId: "version_id",
-      }),
-    ),
-    elements: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            true: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-          }),
-          type: Schema.Literal("conditional"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
-          }),
-          type: Schema.Literal("model"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          type: Schema.Literal("start"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
-        }),
-      ]),
-    ),
-    gatewayId: Schema.String,
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    version: Schema.Struct({
-      active: Schema.Literals([true, false]),
-      createdAt: Schema.String,
-      data: Schema.String,
-      versionId: Schema.String,
-      isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        active: "active",
-        createdAt: "created_at",
-        data: "data",
-        versionId: "version_id",
-        isValid: "is_valid",
-      }),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        deployment: "deployment",
-        elements: "elements",
-        gatewayId: "gateway_id",
-        modifiedAt: "modified_at",
-        name: "name",
-        version: "version",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetDynamicRoutingResponse>;
-
-export type GetDynamicRoutingError = DefaultErrors;
-
-export const getDynamicRouting: API.OperationMethod<
-  GetDynamicRoutingRequest,
-  GetDynamicRoutingResponse,
-  GetDynamicRoutingError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetDynamicRoutingRequest,
-  output: GetDynamicRoutingResponse,
-  errors: [],
-}));
-
-export interface ListDynamicRoutingsRequest {
-  gatewayId: string;
-  /** Path param */
-  accountId: string;
-  /** Query param: Page number */
-  page?: number;
-  /** Query param: Number of routes per page */
-  perPage?: number;
-}
-
-export const ListDynamicRoutingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes",
-    }),
-  ) as unknown as Schema.Schema<ListDynamicRoutingsRequest>;
-
-export interface ListDynamicRoutingsResponse {
-  data: {
-    orderBy: string;
-    orderByDirection: string;
-    page: number;
-    perPage: number;
-    routes: {
-      id: string;
-      accountTag: string;
-      createdAt: string;
-      deployment: {
-        createdAt: string;
-        deploymentId: string;
-        versionId: string;
-      };
-      elements: (
+  elements?:
+    | (
         | {
             id: string;
             outputs: { next: { elementId: string } };
@@ -5113,14 +4919,267 @@ export interface ListDynamicRoutingsResponse {
             type: "model";
           }
         | { id: string; outputs: Record<string, unknown>; type: "end" }
-      )[];
+      )[]
+    | null;
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+  version: {
+    active: true | false;
+    createdAt: string;
+    data?: unknown | null;
+    versionId: string;
+    isValid?: boolean | null;
+  };
+}
+
+export const GetDynamicRoutingResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    deployment: Schema.Struct({
+      createdAt: Schema.String,
+      deploymentId: Schema.String,
+      versionId: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        deploymentId: "deployment_id",
+        versionId: "version_id",
+      }),
+    ),
+    elements: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                false: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                true: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                conditions: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+              }),
+              type: Schema.Literal("conditional"),
+            }),
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                key: Schema.String,
+                limit: Schema.Number,
+                limitType: Schema.Union([
+                  Schema.Literals(["count", "cost"]),
+                  Schema.String,
+                ]),
+                window: Schema.Number,
+              }),
+              type: Schema.Literal("rate"),
+            }),
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                model: Schema.String,
+                provider: Schema.String,
+                retries: Schema.Number,
+                timeout: Schema.Number,
+              }),
+              type: Schema.Literal("model"),
+            }),
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                next: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              type: Schema.Literal("start"),
+            }),
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("percentage"),
+            }),
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("end"),
+            }),
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    gatewayId: Schema.String,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    version: Schema.Struct({
+      active: Schema.Literals([true, false]),
+      createdAt: Schema.String,
+      data: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+      versionId: Schema.String,
+      isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        active: "active",
+        createdAt: "created_at",
+        data: "data",
+        versionId: "version_id",
+        isValid: "is_valid",
+      }),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        deployment: "deployment",
+        elements: "elements",
+        gatewayId: "gateway_id",
+        modifiedAt: "modified_at",
+        name: "name",
+        version: "version",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetDynamicRoutingResponse>;
+
+export type GetDynamicRoutingError =
+  | DefaultErrors
+  | RouteNotFound
+  | GatewayNotFound;
+
+export const getDynamicRouting: API.OperationMethod<
+  GetDynamicRoutingRequest,
+  GetDynamicRoutingResponse,
+  GetDynamicRoutingError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDynamicRoutingRequest,
+  output: GetDynamicRoutingResponse,
+  errors: [RouteNotFound, GatewayNotFound],
+}));
+
+export interface ListDynamicRoutingsRequest {
+  gatewayId: string;
+  /** Path param */
+  accountId: string;
+  /** Query param: Page number */
+  page?: number;
+  /** Query param: Number of routes per page */
+  perPage?: number;
+}
+
+export const ListDynamicRoutingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes",
+    }),
+  ) as unknown as Schema.Schema<ListDynamicRoutingsRequest>;
+
+export interface ListDynamicRoutingsResponse {
+  data: {
+    orderBy: string;
+    orderByDirection: string;
+    page: number;
+    perPage: number;
+    routes: {
+      id: string;
+      accountTag: string;
+      createdAt: string;
+      deployment: {
+        createdAt: string;
+        deploymentId: string;
+        versionId: string;
+      };
+      elements?:
+        | (
+            | {
+                id: string;
+                outputs: { next: { elementId: string } };
+                type: "start";
+              }
+            | {
+                id: string;
+                outputs: {
+                  false: { elementId: string };
+                  true: { elementId: string };
+                };
+                properties: { conditions?: unknown | null };
+                type: "conditional";
+              }
+            | {
+                id: string;
+                outputs: Record<string, unknown>;
+                type: "percentage";
+              }
+            | {
+                id: string;
+                outputs: {
+                  fallback: { elementId: string };
+                  success: { elementId: string };
+                };
+                properties: {
+                  key: string;
+                  limit: number;
+                  limitType: "count" | "cost" | (string & {});
+                  window: number;
+                };
+                type: "rate";
+              }
+            | {
+                id: string;
+                outputs: {
+                  fallback: { elementId: string };
+                  success: { elementId: string };
+                };
+                properties: {
+                  model: string;
+                  provider: string;
+                  retries: number;
+                  timeout: number;
+                };
+                type: "model";
+              }
+            | { id: string; outputs: Record<string, unknown>; type: "end" }
+          )[]
+        | null;
       gatewayId: string;
       modifiedAt: string;
       name: string;
       version: {
         active: true | false;
         createdAt: string;
-        data: string;
+        data?: unknown | null;
         versionId: string;
         isValid?: boolean | null;
       };
@@ -5152,83 +5211,88 @@ export const ListDynamicRoutingsResponse =
               versionId: "version_id",
             }),
           ),
-          elements: Schema.Array(
+          elements: Schema.optional(
             Schema.Union([
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Struct({
-                  false: Schema.Struct({
-                    elementId: Schema.String,
+              Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    id: Schema.String,
+                    outputs: Schema.Struct({
+                      false: Schema.Struct({
+                        elementId: Schema.String,
+                      }),
+                      true: Schema.Struct({
+                        elementId: Schema.String,
+                      }),
+                    }),
+                    properties: Schema.Struct({
+                      conditions: Schema.optional(
+                        Schema.Union([Schema.Unknown, Schema.Null]),
+                      ),
+                    }),
+                    type: Schema.Literal("conditional"),
                   }),
-                  true: Schema.Struct({
-                    elementId: Schema.String,
+                  Schema.Struct({
+                    id: Schema.String,
+                    outputs: Schema.Struct({
+                      fallback: Schema.Struct({
+                        elementId: Schema.String,
+                      }),
+                      success: Schema.Struct({
+                        elementId: Schema.String,
+                      }),
+                    }),
+                    properties: Schema.Struct({
+                      key: Schema.String,
+                      limit: Schema.Number,
+                      limitType: Schema.Union([
+                        Schema.Literals(["count", "cost"]),
+                        Schema.String,
+                      ]),
+                      window: Schema.Number,
+                    }),
+                    type: Schema.Literal("rate"),
                   }),
-                }),
-                properties: Schema.Struct({
-                  conditions: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                }),
-                type: Schema.Literal("conditional"),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Struct({
-                  fallback: Schema.Struct({
-                    elementId: Schema.String,
+                  Schema.Struct({
+                    id: Schema.String,
+                    outputs: Schema.Struct({
+                      fallback: Schema.Struct({
+                        elementId: Schema.String,
+                      }),
+                      success: Schema.Struct({
+                        elementId: Schema.String,
+                      }),
+                    }),
+                    properties: Schema.Struct({
+                      model: Schema.String,
+                      provider: Schema.String,
+                      retries: Schema.Number,
+                      timeout: Schema.Number,
+                    }),
+                    type: Schema.Literal("model"),
                   }),
-                  success: Schema.Struct({
-                    elementId: Schema.String,
+                  Schema.Struct({
+                    id: Schema.String,
+                    outputs: Schema.Struct({
+                      next: Schema.Struct({
+                        elementId: Schema.String,
+                      }),
+                    }),
+                    type: Schema.Literal("start"),
                   }),
-                }),
-                properties: Schema.Struct({
-                  key: Schema.String,
-                  limit: Schema.Number,
-                  limitType: Schema.Union([
-                    Schema.Literals(["count", "cost"]),
-                    Schema.String,
-                  ]),
-                  window: Schema.Number,
-                }),
-                type: Schema.Literal("rate"),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Struct({
-                  fallback: Schema.Struct({
-                    elementId: Schema.String,
+                  Schema.Struct({
+                    id: Schema.String,
+                    outputs: Schema.Record(Schema.String, Schema.Unknown),
+                    type: Schema.Literal("percentage"),
                   }),
-                  success: Schema.Struct({
-                    elementId: Schema.String,
+                  Schema.Struct({
+                    id: Schema.String,
+                    outputs: Schema.Record(Schema.String, Schema.Unknown),
+                    type: Schema.Literal("end"),
                   }),
-                }),
-                properties: Schema.Struct({
-                  model: Schema.String,
-                  provider: Schema.String,
-                  retries: Schema.Number,
-                  timeout: Schema.Number,
-                }),
-                type: Schema.Literal("model"),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Struct({
-                  next: Schema.Struct({
-                    elementId: Schema.String,
-                  }),
-                }),
-                type: Schema.Literal("start"),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Record(Schema.String, Schema.Unknown),
-                type: Schema.Literal("percentage"),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Record(Schema.String, Schema.Unknown),
-                type: Schema.Literal("end"),
-              }),
+                ]),
+              ),
+              Schema.Null,
             ]),
           ),
           gatewayId: Schema.String,
@@ -5237,7 +5301,7 @@ export const ListDynamicRoutingsResponse =
           version: Schema.Struct({
             active: Schema.Literals([true, false]),
             createdAt: Schema.String,
-            data: Schema.String,
+            data: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
             versionId: Schema.String,
             isValid: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
@@ -5277,7 +5341,7 @@ export const ListDynamicRoutingsResponse =
     success: Schema.Boolean,
   }) as unknown as Schema.Schema<ListDynamicRoutingsResponse>;
 
-export type ListDynamicRoutingsError = DefaultErrors;
+export type ListDynamicRoutingsError = DefaultErrors | GatewayNotFound;
 
 export const listDynamicRoutings: API.OperationMethod<
   ListDynamicRoutingsRequest,
@@ -5287,7 +5351,7 @@ export const listDynamicRoutings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDynamicRoutingsRequest,
   output: ListDynamicRoutingsResponse,
-  errors: [],
+  errors: [GatewayNotFound],
 }));
 
 export interface CreateDynamicRoutingRequest {
@@ -5431,52 +5495,61 @@ export interface CreateDynamicRoutingResponse {
   id: string;
   createdAt: string;
   deployment: { createdAt: string; deploymentId: string; versionId: string };
-  elements: (
-    | { id: string; outputs: { next: { elementId: string } }; type: "start" }
-    | {
-        id: string;
-        outputs: { false: { elementId: string }; true: { elementId: string } };
-        properties: { conditions?: unknown | null };
-        type: "conditional";
-      }
-    | { id: string; outputs: Record<string, unknown>; type: "percentage" }
-    | {
-        id: string;
-        outputs: {
-          fallback: { elementId: string };
-          success: { elementId: string };
-        };
-        properties: {
-          key: string;
-          limit: number;
-          limitType: "count" | "cost" | (string & {});
-          window: number;
-        };
-        type: "rate";
-      }
-    | {
-        id: string;
-        outputs: {
-          fallback: { elementId: string };
-          success: { elementId: string };
-        };
-        properties: {
-          model: string;
-          provider: string;
-          retries: number;
-          timeout: number;
-        };
-        type: "model";
-      }
-    | { id: string; outputs: Record<string, unknown>; type: "end" }
-  )[];
+  elements?:
+    | (
+        | {
+            id: string;
+            outputs: { next: { elementId: string } };
+            type: "start";
+          }
+        | {
+            id: string;
+            outputs: {
+              false: { elementId: string };
+              true: { elementId: string };
+            };
+            properties: { conditions?: unknown | null };
+            type: "conditional";
+          }
+        | { id: string; outputs: Record<string, unknown>; type: "percentage" }
+        | {
+            id: string;
+            outputs: {
+              fallback: { elementId: string };
+              success: { elementId: string };
+            };
+            properties: {
+              key: string;
+              limit: number;
+              limitType: "count" | "cost" | (string & {});
+              window: number;
+            };
+            type: "rate";
+          }
+        | {
+            id: string;
+            outputs: {
+              fallback: { elementId: string };
+              success: { elementId: string };
+            };
+            properties: {
+              model: string;
+              provider: string;
+              retries: number;
+              timeout: number;
+            };
+            type: "model";
+          }
+        | { id: string; outputs: Record<string, unknown>; type: "end" }
+      )[]
+    | null;
   gatewayId: string;
   modifiedAt: string;
   name: string;
   version: {
     active: true | false;
     createdAt: string;
-    data: string;
+    data?: unknown | null;
     versionId: string;
     isValid?: boolean | null;
   };
@@ -5497,83 +5570,88 @@ export const CreateDynamicRoutingResponse =
         versionId: "version_id",
       }),
     ),
-    elements: Schema.Array(
+    elements: Schema.optional(
       Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
+        Schema.Array(
+          Schema.Union([
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                false: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                true: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                conditions: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+              }),
+              type: Schema.Literal("conditional"),
             }),
-            true: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                key: Schema.String,
+                limit: Schema.Number,
+                limitType: Schema.Union([
+                  Schema.Literals(["count", "cost"]),
+                  Schema.String,
+                ]),
+                window: Schema.Number,
+              }),
+              type: Schema.Literal("rate"),
             }),
-          }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-          }),
-          type: Schema.Literal("conditional"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                model: Schema.String,
+                provider: Schema.String,
+                retries: Schema.Number,
+                timeout: Schema.Number,
+              }),
+              type: Schema.Literal("model"),
             }),
-            success: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                next: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              type: Schema.Literal("start"),
             }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("percentage"),
             }),
-            success: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("end"),
             }),
-          }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
-          }),
-          type: Schema.Literal("model"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          type: Schema.Literal("start"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
-        }),
+          ]),
+        ),
+        Schema.Null,
       ]),
     ),
     gatewayId: Schema.String,
@@ -5582,7 +5660,7 @@ export const CreateDynamicRoutingResponse =
     version: Schema.Struct({
       active: Schema.Literals([true, false]),
       createdAt: Schema.String,
-      data: Schema.String,
+      data: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
       versionId: Schema.String,
       isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(
@@ -5611,7 +5689,10 @@ export const CreateDynamicRoutingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateDynamicRoutingResponse>;
 
-export type CreateDynamicRoutingError = DefaultErrors;
+export type CreateDynamicRoutingError =
+  | DefaultErrors
+  | RouteAlreadyExists
+  | GatewayNotFound;
 
 export const createDynamicRouting: API.OperationMethod<
   CreateDynamicRoutingRequest,
@@ -5621,7 +5702,7 @@ export const createDynamicRouting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDynamicRoutingRequest,
   output: CreateDynamicRoutingResponse,
-  errors: [],
+  errors: [RouteAlreadyExists, GatewayNotFound],
 }));
 
 export interface PatchDynamicRoutingRequest {
@@ -5651,56 +5732,66 @@ export interface PatchDynamicRoutingResponse {
     id: string;
     accountTag: string;
     createdAt: string;
-    deployment: { createdAt: string; deploymentId: string; versionId: string };
-    elements: (
-      | { id: string; outputs: { next: { elementId: string } }; type: "start" }
-      | {
-          id: string;
-          outputs: {
-            false: { elementId: string };
-            true: { elementId: string };
-          };
-          properties: { conditions?: unknown | null };
-          type: "conditional";
-        }
-      | { id: string; outputs: Record<string, unknown>; type: "percentage" }
-      | {
-          id: string;
-          outputs: {
-            fallback: { elementId: string };
-            success: { elementId: string };
-          };
-          properties: {
-            key: string;
-            limit: number;
-            limitType: "count" | "cost" | (string & {});
-            window: number;
-          };
-          type: "rate";
-        }
-      | {
-          id: string;
-          outputs: {
-            fallback: { elementId: string };
-            success: { elementId: string };
-          };
-          properties: {
-            model: string;
-            provider: string;
-            retries: number;
-            timeout: number;
-          };
-          type: "model";
-        }
-      | { id: string; outputs: Record<string, unknown>; type: "end" }
-    )[];
+    deployment?: {
+      createdAt: string;
+      deploymentId: string;
+      versionId: string;
+    } | null;
+    elements?:
+      | (
+          | {
+              id: string;
+              outputs: { next: { elementId: string } };
+              type: "start";
+            }
+          | {
+              id: string;
+              outputs: {
+                false: { elementId: string };
+                true: { elementId: string };
+              };
+              properties: { conditions?: unknown | null };
+              type: "conditional";
+            }
+          | { id: string; outputs: Record<string, unknown>; type: "percentage" }
+          | {
+              id: string;
+              outputs: {
+                fallback: { elementId: string };
+                success: { elementId: string };
+              };
+              properties: {
+                key: string;
+                limit: number;
+                limitType: "count" | "cost" | (string & {});
+                window: number;
+              };
+              type: "rate";
+            }
+          | {
+              id: string;
+              outputs: {
+                fallback: { elementId: string };
+                success: { elementId: string };
+              };
+              properties: {
+                model: string;
+                provider: string;
+                retries: number;
+                timeout: number;
+              };
+              type: "model";
+            }
+          | { id: string; outputs: Record<string, unknown>; type: "end" }
+        )[]
+      | null;
     gatewayId: string;
     modifiedAt: string;
     name: string;
     version: {
       active: true | false;
       createdAt: string;
-      data: string;
+      data?: unknown | null;
       versionId: string;
       isValid?: boolean | null;
     };
@@ -5714,94 +5805,104 @@ export const PatchDynamicRoutingResponse =
       id: Schema.String,
       accountTag: Schema.String,
       createdAt: Schema.String,
-      deployment: Schema.Struct({
-        createdAt: Schema.String,
-        deploymentId: Schema.String,
-        versionId: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          createdAt: "created_at",
-          deploymentId: "deployment_id",
-          versionId: "version_id",
-        }),
-      ),
-      elements: Schema.Array(
+      deployment: Schema.optional(
         Schema.Union([
           Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Struct({
-              false: Schema.Struct({
-                elementId: Schema.String,
-              }),
-              true: Schema.Struct({
-                elementId: Schema.String,
-              }),
+            createdAt: Schema.String,
+            deploymentId: Schema.String,
+            versionId: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              createdAt: "created_at",
+              deploymentId: "deployment_id",
+              versionId: "version_id",
             }),
-            properties: Schema.Struct({
-              conditions: Schema.optional(
-                Schema.Union([Schema.Unknown, Schema.Null]),
-              ),
-            }),
-            type: Schema.Literal("conditional"),
-          }),
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Struct({
-              fallback: Schema.Struct({
-                elementId: Schema.String,
+          ),
+          Schema.Null,
+        ]),
+      ),
+      elements: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                id: Schema.String,
+                outputs: Schema.Struct({
+                  false: Schema.Struct({
+                    elementId: Schema.String,
+                  }),
+                  true: Schema.Struct({
+                    elementId: Schema.String,
+                  }),
+                }),
+                properties: Schema.Struct({
+                  conditions: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }),
+                type: Schema.Literal("conditional"),
               }),
-              success: Schema.Struct({
-                elementId: Schema.String,
+              Schema.Struct({
+                id: Schema.String,
+                outputs: Schema.Struct({
+                  fallback: Schema.Struct({
+                    elementId: Schema.String,
+                  }),
+                  success: Schema.Struct({
+                    elementId: Schema.String,
+                  }),
+                }),
+                properties: Schema.Struct({
+                  key: Schema.String,
+                  limit: Schema.Number,
+                  limitType: Schema.Union([
+                    Schema.Literals(["count", "cost"]),
+                    Schema.String,
+                  ]),
+                  window: Schema.Number,
+                }),
+                type: Schema.Literal("rate"),
               }),
-            }),
-            properties: Schema.Struct({
-              key: Schema.String,
-              limit: Schema.Number,
-              limitType: Schema.Union([
-                Schema.Literals(["count", "cost"]),
-                Schema.String,
-              ]),
-              window: Schema.Number,
-            }),
-            type: Schema.Literal("rate"),
-          }),
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Struct({
-              fallback: Schema.Struct({
-                elementId: Schema.String,
+              Schema.Struct({
+                id: Schema.String,
+                outputs: Schema.Struct({
+                  fallback: Schema.Struct({
+                    elementId: Schema.String,
+                  }),
+                  success: Schema.Struct({
+                    elementId: Schema.String,
+                  }),
+                }),
+                properties: Schema.Struct({
+                  model: Schema.String,
+                  provider: Schema.String,
+                  retries: Schema.Number,
+                  timeout: Schema.Number,
+                }),
+                type: Schema.Literal("model"),
               }),
-              success: Schema.Struct({
-                elementId: Schema.String,
+              Schema.Struct({
+                id: Schema.String,
+                outputs: Schema.Struct({
+                  next: Schema.Struct({
+                    elementId: Schema.String,
+                  }),
+                }),
+                type: Schema.Literal("start"),
               }),
-            }),
-            properties: Schema.Struct({
-              model: Schema.String,
-              provider: Schema.String,
-              retries: Schema.Number,
-              timeout: Schema.Number,
-            }),
-            type: Schema.Literal("model"),
-          }),
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Struct({
-              next: Schema.Struct({
-                elementId: Schema.String,
+              Schema.Struct({
+                id: Schema.String,
+                outputs: Schema.Record(Schema.String, Schema.Unknown),
+                type: Schema.Literal("percentage"),
               }),
-            }),
-            type: Schema.Literal("start"),
-          }),
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Record(Schema.String, Schema.Unknown),
-            type: Schema.Literal("percentage"),
-          }),
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Record(Schema.String, Schema.Unknown),
-            type: Schema.Literal("end"),
-          }),
+              Schema.Struct({
+                id: Schema.String,
+                outputs: Schema.Record(Schema.String, Schema.Unknown),
+                type: Schema.Literal("end"),
+              }),
+            ]),
+          ),
+          Schema.Null,
         ]),
       ),
       gatewayId: Schema.String,
@@ -5810,7 +5911,7 @@ export const PatchDynamicRoutingResponse =
       version: Schema.Struct({
         active: Schema.Literals([true, false]),
         createdAt: Schema.String,
-        data: Schema.String,
+        data: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
         versionId: Schema.String,
         isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       }).pipe(
@@ -5838,7 +5939,10 @@ export const PatchDynamicRoutingResponse =
     success: Schema.Boolean,
   }) as unknown as Schema.Schema<PatchDynamicRoutingResponse>;
 
-export type PatchDynamicRoutingError = DefaultErrors;
+export type PatchDynamicRoutingError =
+  | DefaultErrors
+  | RouteNotFound
+  | RouteAlreadyExists;
 
 export const patchDynamicRouting: API.OperationMethod<
   PatchDynamicRoutingRequest,
@@ -5848,7 +5952,7 @@ export const patchDynamicRouting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDynamicRoutingRequest,
   output: PatchDynamicRoutingResponse,
-  errors: [],
+  errors: [RouteNotFound, RouteAlreadyExists],
 }));
 
 export interface DeleteDynamicRoutingRequest {
@@ -5872,45 +5976,54 @@ export const DeleteDynamicRoutingRequest =
 export interface DeleteDynamicRoutingResponse {
   id: string;
   createdAt: string;
-  elements: (
-    | { id: string; outputs: { next: { elementId: string } }; type: "start" }
-    | {
-        id: string;
-        outputs: { false: { elementId: string }; true: { elementId: string } };
-        properties: { conditions?: unknown | null };
-        type: "conditional";
-      }
-    | { id: string; outputs: Record<string, unknown>; type: "percentage" }
-    | {
-        id: string;
-        outputs: {
-          fallback: { elementId: string };
-          success: { elementId: string };
-        };
-        properties: {
-          key: string;
-          limit: number;
-          limitType: "count" | "cost" | (string & {});
-          window: number;
-        };
-        type: "rate";
-      }
-    | {
-        id: string;
-        outputs: {
-          fallback: { elementId: string };
-          success: { elementId: string };
-        };
-        properties: {
-          model: string;
-          provider: string;
-          retries: number;
-          timeout: number;
-        };
-        type: "model";
-      }
-    | { id: string; outputs: Record<string, unknown>; type: "end" }
-  )[];
+  elements?:
+    | (
+        | {
+            id: string;
+            outputs: { next: { elementId: string } };
+            type: "start";
+          }
+        | {
+            id: string;
+            outputs: {
+              false: { elementId: string };
+              true: { elementId: string };
+            };
+            properties: { conditions?: unknown | null };
+            type: "conditional";
+          }
+        | { id: string; outputs: Record<string, unknown>; type: "percentage" }
+        | {
+            id: string;
+            outputs: {
+              fallback: { elementId: string };
+              success: { elementId: string };
+            };
+            properties: {
+              key: string;
+              limit: number;
+              limitType: "count" | "cost" | (string & {});
+              window: number;
+            };
+            type: "rate";
+          }
+        | {
+            id: string;
+            outputs: {
+              fallback: { elementId: string };
+              success: { elementId: string };
+            };
+            properties: {
+              model: string;
+              provider: string;
+              retries: number;
+              timeout: number;
+            };
+            type: "model";
+          }
+        | { id: string; outputs: Record<string, unknown>; type: "end" }
+      )[]
+    | null;
   gatewayId: string;
   modifiedAt: string;
   name: string;
@@ -5920,83 +6033,88 @@ export const DeleteDynamicRoutingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
-    elements: Schema.Array(
+    elements: Schema.optional(
       Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
+        Schema.Array(
+          Schema.Union([
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                false: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                true: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                conditions: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+              }),
+              type: Schema.Literal("conditional"),
             }),
-            true: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                key: Schema.String,
+                limit: Schema.Number,
+                limitType: Schema.Union([
+                  Schema.Literals(["count", "cost"]),
+                  Schema.String,
+                ]),
+                window: Schema.Number,
+              }),
+              type: Schema.Literal("rate"),
             }),
-          }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-          }),
-          type: Schema.Literal("conditional"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                model: Schema.String,
+                provider: Schema.String,
+                retries: Schema.Number,
+                timeout: Schema.Number,
+              }),
+              type: Schema.Literal("model"),
             }),
-            success: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                next: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              type: Schema.Literal("start"),
             }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("percentage"),
             }),
-            success: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("end"),
             }),
-          }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
-          }),
-          type: Schema.Literal("model"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          type: Schema.Literal("start"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
-        }),
+          ]),
+        ),
+        Schema.Null,
       ]),
     ),
     gatewayId: Schema.String,
@@ -6017,7 +6135,10 @@ export const DeleteDynamicRoutingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteDynamicRoutingResponse>;
 
-export type DeleteDynamicRoutingError = DefaultErrors;
+export type DeleteDynamicRoutingError =
+  | DefaultErrors
+  | RouteNotFound
+  | GatewayNotFound;
 
 export const deleteDynamicRouting: API.OperationMethod<
   DeleteDynamicRoutingRequest,
@@ -6027,7 +6148,7 @@ export const deleteDynamicRouting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDynamicRoutingRequest,
   output: DeleteDynamicRoutingResponse,
-  errors: [],
+  errors: [RouteNotFound, GatewayNotFound],
 }));
 
 // =============================================================================
@@ -8637,136 +8758,152 @@ export const CreateVersionDynamicRoutingRequest =
 export interface CreateVersionDynamicRoutingResponse {
   id: string;
   createdAt: string;
-  elements: (
-    | { id: string; outputs: { next: { elementId: string } }; type: "start" }
-    | {
-        id: string;
-        outputs: { false: { elementId: string }; true: { elementId: string } };
-        properties: { conditions?: unknown | null };
-        type: "conditional";
-      }
-    | { id: string; outputs: Record<string, unknown>; type: "percentage" }
-    | {
-        id: string;
-        outputs: {
-          fallback: { elementId: string };
-          success: { elementId: string };
-        };
-        properties: {
-          key: string;
-          limit: number;
-          limitType: "count" | "cost" | (string & {});
-          window: number;
-        };
-        type: "rate";
-      }
-    | {
-        id: string;
-        outputs: {
-          fallback: { elementId: string };
-          success: { elementId: string };
-        };
-        properties: {
-          model: string;
-          provider: string;
-          retries: number;
-          timeout: number;
-        };
-        type: "model";
-      }
-    | { id: string; outputs: Record<string, unknown>; type: "end" }
-  )[];
+  elements?:
+    | (
+        | {
+            id: string;
+            outputs: { next: { elementId: string } };
+            type: "start";
+          }
+        | {
+            id: string;
+            outputs: {
+              false: { elementId: string };
+              true: { elementId: string };
+            };
+            properties: { conditions?: unknown | null };
+            type: "conditional";
+          }
+        | { id: string; outputs: Record<string, unknown>; type: "percentage" }
+        | {
+            id: string;
+            outputs: {
+              fallback: { elementId: string };
+              success: { elementId: string };
+            };
+            properties: {
+              key: string;
+              limit: number;
+              limitType: "count" | "cost" | (string & {});
+              window: number;
+            };
+            type: "rate";
+          }
+        | {
+            id: string;
+            outputs: {
+              fallback: { elementId: string };
+              success: { elementId: string };
+            };
+            properties: {
+              model: string;
+              provider: string;
+              retries: number;
+              timeout: number;
+            };
+            type: "model";
+          }
+        | { id: string; outputs: Record<string, unknown>; type: "end" }
+      )[]
+    | null;
   gatewayId: string;
   modifiedAt: string;
   name: string;
+  versionId: string;
 }
 
 export const CreateVersionDynamicRoutingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
-    elements: Schema.Array(
+    elements: Schema.optional(
       Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
+        Schema.Array(
+          Schema.Union([
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                false: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                true: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                conditions: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+              }),
+              type: Schema.Literal("conditional"),
             }),
-            true: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                key: Schema.String,
+                limit: Schema.Number,
+                limitType: Schema.Union([
+                  Schema.Literals(["count", "cost"]),
+                  Schema.String,
+                ]),
+                window: Schema.Number,
+              }),
+              type: Schema.Literal("rate"),
             }),
-          }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-          }),
-          type: Schema.Literal("conditional"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                model: Schema.String,
+                provider: Schema.String,
+                retries: Schema.Number,
+                timeout: Schema.Number,
+              }),
+              type: Schema.Literal("model"),
             }),
-            success: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                next: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              type: Schema.Literal("start"),
             }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("percentage"),
             }),
-            success: Schema.Struct({
-              elementId: Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("end"),
             }),
-          }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
-          }),
-          type: Schema.Literal("model"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          type: Schema.Literal("start"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
-        }),
+          ]),
+        ),
+        Schema.Null,
       ]),
     ),
     gatewayId: Schema.String,
     modifiedAt: Schema.String,
     name: Schema.String,
+    versionId: Schema.String,
   })
     .pipe(
       Schema.encodeKeys({
@@ -8776,13 +8913,14 @@ export const CreateVersionDynamicRoutingResponse =
         gatewayId: "gateway_id",
         modifiedAt: "modified_at",
         name: "name",
+        versionId: "version_id",
       }),
     )
     .pipe(
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateVersionDynamicRoutingResponse>;
 
-export type CreateVersionDynamicRoutingError = DefaultErrors;
+export type CreateVersionDynamicRoutingError = DefaultErrors | RouteNotFound;
 
 export const createVersionDynamicRouting: API.OperationMethod<
   CreateVersionDynamicRoutingRequest,
@@ -8792,7 +8930,7 @@ export const createVersionDynamicRouting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVersionDynamicRoutingRequest,
   output: CreateVersionDynamicRoutingResponse,
-  errors: [],
+  errors: [RouteNotFound],
 }));
 
 // =============================================================================

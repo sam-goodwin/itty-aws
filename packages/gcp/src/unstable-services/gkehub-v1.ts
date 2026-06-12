@@ -5595,11 +5595,7 @@ export const GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRb
   /*@__PURE__*/ /*#__PURE__*/ GenerateMembershipRBACRoleBindingYAMLResponse;
 
 export type GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Generates a YAML of the RBAC policies for the specified RoleBinding and its associated impersonation resources. */
 export const generateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindings: API.OperationMethod<

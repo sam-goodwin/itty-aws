@@ -13,6 +13,38 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class CustomNameserverAlreadyExists extends Schema.TaggedErrorClass<CustomNameserverAlreadyExists>()(
+  "CustomNameserverAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CustomNameserverAlreadyExists, [
+  { message: { includes: "already exist" } },
+]);
+
+export class CustomNameserverNotFound extends Schema.TaggedErrorClass<CustomNameserverNotFound>()(
+  "CustomNameserverNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CustomNameserverNotFound, [{ status: 404 }]);
+
+export class CustomNameserversNotEnabled extends Schema.TaggedErrorClass<CustomNameserversNotEnabled>()(
+  "CustomNameserversNotEnabled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CustomNameserversNotEnabled, [
+  { code: 1002, message: { includes: "not enabled" } },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // CustomNameserver
 // =============================================================================
 
@@ -75,7 +107,10 @@ export const GetCustomNameserverResponse =
     ),
   }) as unknown as Schema.Schema<GetCustomNameserverResponse>;
 
-export type GetCustomNameserverError = DefaultErrors;
+export type GetCustomNameserverError =
+  | DefaultErrors
+  | CustomNameserversNotEnabled
+  | Forbidden;
 
 export const getCustomNameserver: API.PaginatedOperationMethod<
   GetCustomNameserverRequest,
@@ -85,7 +120,7 @@ export const getCustomNameserver: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetCustomNameserverRequest,
   output: GetCustomNameserverResponse,
-  errors: [],
+  errors: [CustomNameserversNotEnabled, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -161,7 +196,11 @@ export const CreateCustomNameserverResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateCustomNameserverResponse>;
 
-export type CreateCustomNameserverError = DefaultErrors;
+export type CreateCustomNameserverError =
+  | DefaultErrors
+  | CustomNameserversNotEnabled
+  | CustomNameserverAlreadyExists
+  | Forbidden;
 
 export const createCustomNameserver: API.OperationMethod<
   CreateCustomNameserverRequest,
@@ -171,7 +210,11 @@ export const createCustomNameserver: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomNameserverRequest,
   output: CreateCustomNameserverResponse,
-  errors: [],
+  errors: [
+    CustomNameserversNotEnabled,
+    CustomNameserverAlreadyExists,
+    Forbidden,
+  ],
 }));
 
 export interface DeleteCustomNameserverRequest {
@@ -200,7 +243,11 @@ export const DeleteCustomNameserverResponse =
     result: Schema.Array(Schema.String),
   }) as unknown as Schema.Schema<DeleteCustomNameserverResponse>;
 
-export type DeleteCustomNameserverError = DefaultErrors;
+export type DeleteCustomNameserverError =
+  | DefaultErrors
+  | CustomNameserversNotEnabled
+  | CustomNameserverNotFound
+  | Forbidden;
 
 export const deleteCustomNameserver: API.PaginatedOperationMethod<
   DeleteCustomNameserverRequest,
@@ -210,7 +257,7 @@ export const deleteCustomNameserver: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DeleteCustomNameserverRequest,
   output: DeleteCustomNameserverResponse,
-  errors: [],
+  errors: [CustomNameserversNotEnabled, CustomNameserverNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",

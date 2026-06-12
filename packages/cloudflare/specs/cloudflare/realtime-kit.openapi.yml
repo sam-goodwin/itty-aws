@@ -626,6 +626,9 @@ paths:
                           type: string
                   success:
                     type: boolean
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: postApp
       description: "Create new app for your account  @example ```ts const response =
@@ -672,6 +675,9 @@ paths:
                             type: string
                   success:
                     type: boolean
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/realtime/kit/{appId}/analytics/livestreams/overall:
     get:
       operationId: getLivestreamAnalyticsCompleteLivestream
@@ -4921,6 +4927,9 @@ paths:
                   - data
                   - paging
                   - success
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createPreset
       description: "Creates a preset belonging to the current App  @example ```ts
@@ -5271,21 +5280,7 @@ paths:
                         can_start:
                           type: boolean
                           description: Can start plugins
-                        config:
-                          oneOf:
-                            - type: string
-                            - type: object
-                              properties:
-                                access_control:
-                                  type: string
-                                  enum:
-                                    - FULL_ACCESS
-                                    - VIEW_ONLY
-                                handles_view_only:
-                                  type: boolean
-                              required:
-                                - access_control
-                                - handles_view_only
+                        config: {}
                       required:
                         - can_close
                         - can_edit_config
@@ -5689,21 +5684,7 @@ paths:
                               can_start:
                                 type: boolean
                                 description: Can start plugins
-                              config:
-                                oneOf:
-                                  - type: string
-                                  - type: object
-                                    properties:
-                                      access_control:
-                                        type: string
-                                        enum:
-                                          - FULL_ACCESS
-                                          - VIEW_ONLY
-                                      handles_view_only:
-                                        type: boolean
-                                    required:
-                                      - access_control
-                                      - handles_view_only
+                              config: {}
                             required:
                               - can_close
                               - can_edit_config
@@ -5779,6 +5760,9 @@ paths:
                 required:
                   - data
                   - success
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/realtime/kit/{appId}/presets/{presetId}:
     patch:
       operationId: patchPreset
@@ -5986,18 +5970,7 @@ paths:
                         can_start:
                           type: boolean
                           description: Can start plugins
-                        config:
-                          oneOf:
-                            - type: string
-                            - type: object
-                              properties:
-                                access_control:
-                                  type: string
-                                  enum:
-                                    - FULL_ACCESS
-                                    - VIEW_ONLY
-                                handles_view_only:
-                                  type: boolean
+                        config: {}
                       description: Plugin permissions
                     polls:
                       type: object
@@ -6103,415 +6076,6 @@ paths:
                 type: object
                 properties:
                   data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        description: ID of the preset
-                      config:
-                        type: object
-                        properties:
-                          max_screenshare_count:
-                            type: number
-                            description: Maximum number of screen shares that can be active at a given time
-                          max_video_streams:
-                            type: object
-                            properties:
-                              desktop:
-                                type: number
-                                description: Maximum number of video streams visible on desktop devices
-                              mobile:
-                                type: number
-                                description: Maximum number of streams visible on mobile devices
-                            required:
-                              - desktop
-                              - mobile
-                            description: Maximum number of streams that are visible on a device
-                          media:
-                            type: object
-                            properties:
-                              screenshare:
-                                type: object
-                                properties:
-                                  frame_rate:
-                                    type: number
-                                    description: Frame rate of screen share
-                                  quality:
-                                    type: string
-                                    enum:
-                                      - hd
-                                      - vga
-                                      - qvga
-                                    description: Quality of screen share
-                                required:
-                                  - frame_rate
-                                  - quality
-                                description: Configuration options for participant screen shares
-                              video:
-                                type: object
-                                properties:
-                                  frame_rate:
-                                    type: number
-                                    description: Frame rate of participants' video
-                                  quality:
-                                    type: string
-                                    enum:
-                                      - hd
-                                      - vga
-                                      - qvga
-                                    description: Video quality of participants
-                                required:
-                                  - frame_rate
-                                  - quality
-                                description: Configuration options for participant videos
-                              audio:
-                                type: object
-                                properties:
-                                  enable_high_bitrate:
-                                    type: boolean
-                                    description: Enable High Quality Audio for your meetings
-                                  enable_stereo:
-                                    type: boolean
-                                    description: Enable Stereo for your meetings
-                                description: Control options for Audio quality.
-                            required:
-                              - screenshare
-                              - video
-                            description: "Media configuration options. eg: Video quality"
-                          view_type:
-                            type: string
-                            enum:
-                              - GROUP_CALL
-                              - WEBINAR
-                              - AUDIO_ROOM
-                            description: Type of the meeting
-                        required:
-                          - max_screenshare_count
-                          - max_video_streams
-                          - media
-                          - view_type
-                      name:
-                        type: string
-                        description: Name of the preset
-                      ui:
-                        type: object
-                        properties:
-                          design_tokens:
-                            type: object
-                            properties:
-                              border_radius:
-                                type: string
-                                enum:
-                                  - rounded
-                              border_width:
-                                type: string
-                                enum:
-                                  - thin
-                              colors:
-                                type: object
-                                properties:
-                                  background:
-                                    type: object
-                                    properties:
-                                      "600":
-                                        type: string
-                                      "700":
-                                        type: string
-                                      "800":
-                                        type: string
-                                      "900":
-                                        type: string
-                                      "1000":
-                                        type: string
-                                    required:
-                                      - "1000"
-                                      - "600"
-                                      - "700"
-                                      - "800"
-                                      - "900"
-                                  brand:
-                                    type: object
-                                    properties:
-                                      "300":
-                                        type: string
-                                      "400":
-                                        type: string
-                                      "500":
-                                        type: string
-                                      "600":
-                                        type: string
-                                      "700":
-                                        type: string
-                                    required:
-                                      - "300"
-                                      - "400"
-                                      - "500"
-                                      - "600"
-                                      - "700"
-                                  danger:
-                                    type: string
-                                  success:
-                                    type: string
-                                  text:
-                                    type: string
-                                  text_on_brand:
-                                    type: string
-                                  video_bg:
-                                    type: string
-                                  warning:
-                                    type: string
-                                required:
-                                  - background
-                                  - brand
-                                  - danger
-                                  - success
-                                  - text
-                                  - text_on_brand
-                                  - video_bg
-                                  - warning
-                              logo:
-                                type: string
-                              spacing_base:
-                                type: number
-                              theme:
-                                type: string
-                                enum:
-                                  - dark
-                            required:
-                              - border_radius
-                              - border_width
-                              - colors
-                              - logo
-                              - spacing_base
-                              - theme
-                          config_diff: {}
-                        required:
-                          - design_tokens
-                      permissions:
-                        type: object
-                        properties:
-                          accept_waiting_requests:
-                            type: boolean
-                            description: Whether this participant can accept waiting requests
-                          can_accept_production_requests:
-                            type: boolean
-                          can_change_participant_permissions:
-                            type: boolean
-                          can_edit_display_name:
-                            type: boolean
-                          can_livestream:
-                            type: boolean
-                          can_record:
-                            type: boolean
-                          can_spotlight:
-                            type: boolean
-                          chat:
-                            type: object
-                            properties:
-                              private:
-                                type: object
-                                properties:
-                                  can_receive:
-                                    type: boolean
-                                  can_send:
-                                    type: boolean
-                                  files:
-                                    type: boolean
-                                  text:
-                                    type: boolean
-                                required:
-                                  - can_receive
-                                  - can_send
-                                  - files
-                                  - text
-                              public:
-                                type: object
-                                properties:
-                                  can_send:
-                                    type: boolean
-                                    description: Can send messages in general
-                                  files:
-                                    type: boolean
-                                    description: Can send file messages
-                                  text:
-                                    type: boolean
-                                    description: Can send text messages
-                                required:
-                                  - can_send
-                                  - files
-                                  - text
-                            required:
-                              - private
-                              - public
-                            description: Chat permissions
-                          connected_meetings:
-                            type: object
-                            properties:
-                              can_alter_connected_meetings:
-                                type: boolean
-                              can_switch_connected_meetings:
-                                type: boolean
-                              can_switch_to_parent_meeting:
-                                type: boolean
-                            required:
-                              - can_alter_connected_meetings
-                              - can_switch_connected_meetings
-                              - can_switch_to_parent_meeting
-                          disable_participant_audio:
-                            type: boolean
-                          disable_participant_screensharing:
-                            type: boolean
-                          disable_participant_video:
-                            type: boolean
-                          hidden_participant:
-                            type: boolean
-                            description: Whether this participant is visible to others or not
-                          kick_participant:
-                            type: boolean
-                          media:
-                            type: object
-                            properties:
-                              audio:
-                                type: object
-                                properties:
-                                  can_produce:
-                                    type: string
-                                    enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce audio
-                                required:
-                                  - can_produce
-                                description: Audio permissions
-                              screenshare:
-                                type: object
-                                properties:
-                                  can_produce:
-                                    type: string
-                                    enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce screen share video
-                                required:
-                                  - can_produce
-                                description: Screenshare permissions
-                              video:
-                                type: object
-                                properties:
-                                  can_produce:
-                                    type: string
-                                    enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce video
-                                required:
-                                  - can_produce
-                                description: Video permissions
-                            required:
-                              - audio
-                              - screenshare
-                              - video
-                            description: Media permissions
-                          pin_participant:
-                            type: boolean
-                          plugins:
-                            type: object
-                            properties:
-                              can_close:
-                                type: boolean
-                                description: Can close plugins that are already open
-                              can_edit_config:
-                                type: boolean
-                                description: Can edit plugin config
-                              can_start:
-                                type: boolean
-                                description: Can start plugins
-                              config:
-                                oneOf:
-                                  - type: string
-                                  - type: object
-                                    properties:
-                                      access_control:
-                                        type: string
-                                        enum:
-                                          - FULL_ACCESS
-                                          - VIEW_ONLY
-                                      handles_view_only:
-                                        type: boolean
-                                    required:
-                                      - access_control
-                                      - handles_view_only
-                            required:
-                              - can_close
-                              - can_edit_config
-                              - can_start
-                              - config
-                            description: Plugin permissions
-                          polls:
-                            type: object
-                            properties:
-                              can_create:
-                                type: boolean
-                                description: Can create polls
-                              can_view:
-                                type: boolean
-                                description: Can view polls
-                              can_vote:
-                                type: boolean
-                                description: Can vote on polls
-                            required:
-                              - can_create
-                              - can_view
-                              - can_vote
-                            description: Poll permissions
-                          recorder_type:
-                            type: string
-                            enum:
-                              - RECORDER
-                              - LIVESTREAMER
-                              - NONE
-                            description: Type of the recording peer
-                          show_participant_list:
-                            type: boolean
-                          waiting_room_type:
-                            type: string
-                            enum:
-                              - SKIP
-                              - ON_PRIVILEGED_USER_ENTRY
-                              - SKIP_ON_ACCEPT
-                            description: Waiting room type
-                          is_recorder:
-                            type: boolean
-                        required:
-                          - accept_waiting_requests
-                          - can_accept_production_requests
-                          - can_change_participant_permissions
-                          - can_edit_display_name
-                          - can_livestream
-                          - can_record
-                          - can_spotlight
-                          - chat
-                          - connected_meetings
-                          - disable_participant_audio
-                          - disable_participant_screensharing
-                          - disable_participant_video
-                          - hidden_participant
-                          - kick_participant
-                          - media
-                          - pin_participant
-                          - plugins
-                          - polls
-                          - recorder_type
-                          - show_participant_list
-                          - waiting_room_type
-                    required:
-                      - id
-                      - config
-                      - name
-                      - ui
                     description: Data returned by the operation
                   success:
                     type: boolean
@@ -6519,6 +6083,11 @@ paths:
                 required:
                   - data
                   - success
+      x-distilled-errors:
+        RealtimeKitPresetNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deletePreset
       description: "Deletes a preset using the provided preset ID  @example ```ts
@@ -6550,415 +6119,6 @@ paths:
                 type: object
                 properties:
                   data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        description: ID of the preset
-                      config:
-                        type: object
-                        properties:
-                          max_screenshare_count:
-                            type: number
-                            description: Maximum number of screen shares that can be active at a given time
-                          max_video_streams:
-                            type: object
-                            properties:
-                              desktop:
-                                type: number
-                                description: Maximum number of video streams visible on desktop devices
-                              mobile:
-                                type: number
-                                description: Maximum number of streams visible on mobile devices
-                            required:
-                              - desktop
-                              - mobile
-                            description: Maximum number of streams that are visible on a device
-                          media:
-                            type: object
-                            properties:
-                              screenshare:
-                                type: object
-                                properties:
-                                  frame_rate:
-                                    type: number
-                                    description: Frame rate of screen share
-                                  quality:
-                                    type: string
-                                    enum:
-                                      - hd
-                                      - vga
-                                      - qvga
-                                    description: Quality of screen share
-                                required:
-                                  - frame_rate
-                                  - quality
-                                description: Configuration options for participant screen shares
-                              video:
-                                type: object
-                                properties:
-                                  frame_rate:
-                                    type: number
-                                    description: Frame rate of participants' video
-                                  quality:
-                                    type: string
-                                    enum:
-                                      - hd
-                                      - vga
-                                      - qvga
-                                    description: Video quality of participants
-                                required:
-                                  - frame_rate
-                                  - quality
-                                description: Configuration options for participant videos
-                              audio:
-                                type: object
-                                properties:
-                                  enable_high_bitrate:
-                                    type: boolean
-                                    description: Enable High Quality Audio for your meetings
-                                  enable_stereo:
-                                    type: boolean
-                                    description: Enable Stereo for your meetings
-                                description: Control options for Audio quality.
-                            required:
-                              - screenshare
-                              - video
-                            description: "Media configuration options. eg: Video quality"
-                          view_type:
-                            type: string
-                            enum:
-                              - GROUP_CALL
-                              - WEBINAR
-                              - AUDIO_ROOM
-                            description: Type of the meeting
-                        required:
-                          - max_screenshare_count
-                          - max_video_streams
-                          - media
-                          - view_type
-                      name:
-                        type: string
-                        description: Name of the preset
-                      ui:
-                        type: object
-                        properties:
-                          design_tokens:
-                            type: object
-                            properties:
-                              border_radius:
-                                type: string
-                                enum:
-                                  - rounded
-                              border_width:
-                                type: string
-                                enum:
-                                  - thin
-                              colors:
-                                type: object
-                                properties:
-                                  background:
-                                    type: object
-                                    properties:
-                                      "600":
-                                        type: string
-                                      "700":
-                                        type: string
-                                      "800":
-                                        type: string
-                                      "900":
-                                        type: string
-                                      "1000":
-                                        type: string
-                                    required:
-                                      - "1000"
-                                      - "600"
-                                      - "700"
-                                      - "800"
-                                      - "900"
-                                  brand:
-                                    type: object
-                                    properties:
-                                      "300":
-                                        type: string
-                                      "400":
-                                        type: string
-                                      "500":
-                                        type: string
-                                      "600":
-                                        type: string
-                                      "700":
-                                        type: string
-                                    required:
-                                      - "300"
-                                      - "400"
-                                      - "500"
-                                      - "600"
-                                      - "700"
-                                  danger:
-                                    type: string
-                                  success:
-                                    type: string
-                                  text:
-                                    type: string
-                                  text_on_brand:
-                                    type: string
-                                  video_bg:
-                                    type: string
-                                  warning:
-                                    type: string
-                                required:
-                                  - background
-                                  - brand
-                                  - danger
-                                  - success
-                                  - text
-                                  - text_on_brand
-                                  - video_bg
-                                  - warning
-                              logo:
-                                type: string
-                              spacing_base:
-                                type: number
-                              theme:
-                                type: string
-                                enum:
-                                  - dark
-                            required:
-                              - border_radius
-                              - border_width
-                              - colors
-                              - logo
-                              - spacing_base
-                              - theme
-                          config_diff: {}
-                        required:
-                          - design_tokens
-                      permissions:
-                        type: object
-                        properties:
-                          accept_waiting_requests:
-                            type: boolean
-                            description: Whether this participant can accept waiting requests
-                          can_accept_production_requests:
-                            type: boolean
-                          can_change_participant_permissions:
-                            type: boolean
-                          can_edit_display_name:
-                            type: boolean
-                          can_livestream:
-                            type: boolean
-                          can_record:
-                            type: boolean
-                          can_spotlight:
-                            type: boolean
-                          chat:
-                            type: object
-                            properties:
-                              private:
-                                type: object
-                                properties:
-                                  can_receive:
-                                    type: boolean
-                                  can_send:
-                                    type: boolean
-                                  files:
-                                    type: boolean
-                                  text:
-                                    type: boolean
-                                required:
-                                  - can_receive
-                                  - can_send
-                                  - files
-                                  - text
-                              public:
-                                type: object
-                                properties:
-                                  can_send:
-                                    type: boolean
-                                    description: Can send messages in general
-                                  files:
-                                    type: boolean
-                                    description: Can send file messages
-                                  text:
-                                    type: boolean
-                                    description: Can send text messages
-                                required:
-                                  - can_send
-                                  - files
-                                  - text
-                            required:
-                              - private
-                              - public
-                            description: Chat permissions
-                          connected_meetings:
-                            type: object
-                            properties:
-                              can_alter_connected_meetings:
-                                type: boolean
-                              can_switch_connected_meetings:
-                                type: boolean
-                              can_switch_to_parent_meeting:
-                                type: boolean
-                            required:
-                              - can_alter_connected_meetings
-                              - can_switch_connected_meetings
-                              - can_switch_to_parent_meeting
-                          disable_participant_audio:
-                            type: boolean
-                          disable_participant_screensharing:
-                            type: boolean
-                          disable_participant_video:
-                            type: boolean
-                          hidden_participant:
-                            type: boolean
-                            description: Whether this participant is visible to others or not
-                          kick_participant:
-                            type: boolean
-                          media:
-                            type: object
-                            properties:
-                              audio:
-                                type: object
-                                properties:
-                                  can_produce:
-                                    type: string
-                                    enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce audio
-                                required:
-                                  - can_produce
-                                description: Audio permissions
-                              screenshare:
-                                type: object
-                                properties:
-                                  can_produce:
-                                    type: string
-                                    enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce screen share video
-                                required:
-                                  - can_produce
-                                description: Screenshare permissions
-                              video:
-                                type: object
-                                properties:
-                                  can_produce:
-                                    type: string
-                                    enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce video
-                                required:
-                                  - can_produce
-                                description: Video permissions
-                            required:
-                              - audio
-                              - screenshare
-                              - video
-                            description: Media permissions
-                          pin_participant:
-                            type: boolean
-                          plugins:
-                            type: object
-                            properties:
-                              can_close:
-                                type: boolean
-                                description: Can close plugins that are already open
-                              can_edit_config:
-                                type: boolean
-                                description: Can edit plugin config
-                              can_start:
-                                type: boolean
-                                description: Can start plugins
-                              config:
-                                oneOf:
-                                  - type: string
-                                  - type: object
-                                    properties:
-                                      access_control:
-                                        type: string
-                                        enum:
-                                          - FULL_ACCESS
-                                          - VIEW_ONLY
-                                      handles_view_only:
-                                        type: boolean
-                                    required:
-                                      - access_control
-                                      - handles_view_only
-                            required:
-                              - can_close
-                              - can_edit_config
-                              - can_start
-                              - config
-                            description: Plugin permissions
-                          polls:
-                            type: object
-                            properties:
-                              can_create:
-                                type: boolean
-                                description: Can create polls
-                              can_view:
-                                type: boolean
-                                description: Can view polls
-                              can_vote:
-                                type: boolean
-                                description: Can vote on polls
-                            required:
-                              - can_create
-                              - can_view
-                              - can_vote
-                            description: Poll permissions
-                          recorder_type:
-                            type: string
-                            enum:
-                              - RECORDER
-                              - LIVESTREAMER
-                              - NONE
-                            description: Type of the recording peer
-                          show_participant_list:
-                            type: boolean
-                          waiting_room_type:
-                            type: string
-                            enum:
-                              - SKIP
-                              - ON_PRIVILEGED_USER_ENTRY
-                              - SKIP_ON_ACCEPT
-                            description: Waiting room type
-                          is_recorder:
-                            type: boolean
-                        required:
-                          - accept_waiting_requests
-                          - can_accept_production_requests
-                          - can_change_participant_permissions
-                          - can_edit_display_name
-                          - can_livestream
-                          - can_record
-                          - can_spotlight
-                          - chat
-                          - connected_meetings
-                          - disable_participant_audio
-                          - disable_participant_screensharing
-                          - disable_participant_video
-                          - hidden_participant
-                          - kick_participant
-                          - media
-                          - pin_participant
-                          - plugins
-                          - polls
-                          - recorder_type
-                          - show_participant_list
-                          - waiting_room_type
-                    required:
-                      - id
-                      - config
-                      - name
-                      - ui
                     description: Data returned by the operation
                   success:
                     type: boolean
@@ -6966,6 +6126,11 @@ paths:
                 required:
                   - data
                   - success
+      x-distilled-errors:
+        RealtimeKitPresetNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     get:
       operationId: getPresetByIdPreset
       description: "Fetches details of a preset using the provided preset ID  @example
@@ -7324,21 +6489,7 @@ paths:
                               can_start:
                                 type: boolean
                                 description: Can start plugins
-                              config:
-                                oneOf:
-                                  - type: string
-                                  - type: object
-                                    properties:
-                                      access_control:
-                                        type: string
-                                        enum:
-                                          - FULL_ACCESS
-                                          - VIEW_ONLY
-                                      handles_view_only:
-                                        type: boolean
-                                    required:
-                                      - access_control
-                                      - handles_view_only
+                              config: {}
                             required:
                               - can_close
                               - can_edit_config
@@ -7414,6 +6565,11 @@ paths:
                 required:
                   - data
                   - success
+      x-distilled-errors:
+        RealtimeKitPresetNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/realtime/kit/{appId}/recordings:
     get:
       operationId: getRecordingsRecording
@@ -9094,6 +8250,11 @@ paths:
                 required:
                   - data
                   - success
+      x-distilled-errors:
+        RealtimeKitWebhookNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteWebhookWebhook
       description: "Removes a webhook for the given webhook ID.  @example ```ts const
@@ -9125,55 +8286,17 @@ paths:
               schema:
                 type: object
                 properties:
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        description: ID of the webhook
-                      created_at:
-                        type: string
-                        description: Timestamp when this webhook was created
-                      enabled:
-                        type: boolean
-                        description: Set to true if the webhook is active
-                      events:
-                        type: array
-                        items:
-                          type: string
-                          enum:
-                            - meeting.started
-                            - meeting.ended
-                            - meeting.participantJoined
-                            - meeting.participantLeft
-                            - meeting.chatSynced
-                            - recording.statusUpdate
-                            - livestreaming.statusUpdate
-                            - meeting.transcript
-                            - meeting.summary
-                        description: Events this webhook will send updates for
-                      name:
-                        type: string
-                        description: Name of the webhook
-                      updated_at:
-                        type: string
-                        description: Timestamp when this webhook was updated
-                      url:
-                        type: string
-                        description: URL the webhook will send events to
-                    required:
-                      - id
-                      - created_at
-                      - enabled
-                      - events
-                      - name
-                      - updated_at
-                      - url
+                  data: {}
                   success:
                     type: boolean
                 required:
                   - data
                   - success
+      x-distilled-errors:
+        RealtimeKitWebhookNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     patch:
       operationId: editWebhookWebhook
       description: "Edits the webhook details for the given webhook ID.  @example
@@ -9357,55 +8480,17 @@ paths:
               schema:
                 type: object
                 properties:
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        description: ID of the webhook
-                      created_at:
-                        type: string
-                        description: Timestamp when this webhook was created
-                      enabled:
-                        type: boolean
-                        description: Set to true if the webhook is active
-                      events:
-                        type: array
-                        items:
-                          type: string
-                          enum:
-                            - meeting.started
-                            - meeting.ended
-                            - meeting.participantJoined
-                            - meeting.participantLeft
-                            - meeting.chatSynced
-                            - recording.statusUpdate
-                            - livestreaming.statusUpdate
-                            - meeting.transcript
-                            - meeting.summary
-                        description: Events this webhook will send updates for
-                      name:
-                        type: string
-                        description: Name of the webhook
-                      updated_at:
-                        type: string
-                        description: Timestamp when this webhook was updated
-                      url:
-                        type: string
-                        description: URL the webhook will send events to
-                    required:
-                      - id
-                      - created_at
-                      - enabled
-                      - events
-                      - name
-                      - updated_at
-                      - url
+                  data: {}
                   success:
                     type: boolean
                 required:
                   - data
                   - success
+      x-distilled-errors:
+        RealtimeKitWebhookNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/realtime/kit/{appId}/webhooks:
     get:
       operationId: getWebhooksWebhook
@@ -9483,6 +8568,11 @@ paths:
                 required:
                   - data
                   - success
+      x-distilled-errors:
+        RealtimeKitWebhookNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     post:
       operationId: createWebhookWebhook
       description: "Adds a new webhook to an App.  @example ```ts const response =
@@ -9598,3 +8688,6 @@ paths:
                 required:
                   - data
                   - success
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

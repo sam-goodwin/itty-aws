@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "FeatureNotEnabled": [{ "code": 1012, "status": 403 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

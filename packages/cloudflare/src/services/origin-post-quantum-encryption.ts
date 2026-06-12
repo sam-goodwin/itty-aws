@@ -13,6 +13,30 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class InvalidSettingValue extends Schema.TaggedErrorClass<InvalidSettingValue>()(
+  "InvalidSettingValue",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidSettingValue, [
+  { code: 1146, message: { includes: "origin_post_quantum_encryption" } },
+]);
+
+export class InvalidZoneIdentifier extends Schema.TaggedErrorClass<InvalidZoneIdentifier>()(
+  "InvalidZoneIdentifier",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidZoneIdentifier, [{ code: 7003 }]);
+
+// =============================================================================
 // OriginPostQuantumEncryption
 // =============================================================================
 
@@ -64,7 +88,10 @@ export const GetOriginPostQuantumEncryptionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetOriginPostQuantumEncryptionResponse>;
 
-export type GetOriginPostQuantumEncryptionError = DefaultErrors;
+export type GetOriginPostQuantumEncryptionError =
+  | DefaultErrors
+  | InvalidZoneIdentifier
+  | Forbidden;
 
 export const getOriginPostQuantumEncryption: API.OperationMethod<
   GetOriginPostQuantumEncryptionRequest,
@@ -74,7 +101,7 @@ export const getOriginPostQuantumEncryption: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOriginPostQuantumEncryptionRequest,
   output: GetOriginPostQuantumEncryptionResponse,
-  errors: [],
+  errors: [InvalidZoneIdentifier, Forbidden],
 }));
 
 export interface PutOriginPostQuantumEncryptionRequest {
@@ -131,7 +158,11 @@ export const PutOriginPostQuantumEncryptionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PutOriginPostQuantumEncryptionResponse>;
 
-export type PutOriginPostQuantumEncryptionError = DefaultErrors;
+export type PutOriginPostQuantumEncryptionError =
+  | DefaultErrors
+  | InvalidZoneIdentifier
+  | InvalidSettingValue
+  | Forbidden;
 
 export const putOriginPostQuantumEncryption: API.OperationMethod<
   PutOriginPostQuantumEncryptionRequest,
@@ -141,5 +172,5 @@ export const putOriginPostQuantumEncryption: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutOriginPostQuantumEncryptionRequest,
   output: PutOriginPostQuantumEncryptionResponse,
-  errors: [],
+  errors: [InvalidZoneIdentifier, InvalidSettingValue, Forbidden],
 }));

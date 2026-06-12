@@ -181,6 +181,13 @@ paths:
                   - id
                   - zone_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        CustomCertificateNotFound:
+          - status: 404
+        PlanLevelNotAllowed:
+          - code: 1011
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchCustomCertificate
       description: "Upload a new private key and/or PEM/CRT for the SSL certificate.
@@ -426,6 +433,13 @@ paths:
                   - id
                   - zone_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        CustomCertificateNotFound:
+          - status: 404
+        PlanLevelNotAllowed:
+          - code: 1011
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteCustomCertificate
       description: "Remove a SSL certificate from a zone.  @example ```ts const
@@ -456,6 +470,16 @@ paths:
                     type: string
                     description: Identifier.
       x-distilled-response-path: result
+      x-distilled-errors:
+        CustomCertificateNotFound:
+          - status: 404
+          - code: 1002
+            message:
+              includes: Invalid certificate
+        PlanLevelNotAllowed:
+          - code: 1011
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/custom_certificates:
     get:
       operationId: listCustomCertificates
@@ -659,6 +683,11 @@ paths:
                   - id
                   - zone_id
       x-distilled-pagination-class: CustomCertificatesV4PagePaginationArray
+      x-distilled-errors:
+        PlanLevelNotAllowed:
+          - code: 1011
+        Forbidden:
+          - status: 403
     post:
       operationId: createCustomCertificate
       description: "Upload a new SSL certificate for a zone.  @example ```ts const
@@ -925,6 +954,11 @@ paths:
                   - id
                   - zone_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        PlanLevelNotAllowed:
+          - code: 1011
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/custom_certificates/prioritize:
     put:
       operationId: putPrioritize
@@ -1121,3 +1155,8 @@ paths:
                   - id
                   - zone_id
       x-distilled-pagination-class: CustomCertificatesSinglePage
+      x-distilled-errors:
+        PlanLevelNotAllowed:
+          - code: 1011
+        Forbidden:
+          - status: 403

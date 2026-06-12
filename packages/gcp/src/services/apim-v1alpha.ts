@@ -1180,9 +1180,7 @@ export const GetProjectsLocationsObservationJobsApiObservationsApiOperationsResp
   /*@__PURE__*/ /*#__PURE__*/ ApiOperation;
 
 export type GetProjectsLocationsObservationJobsApiObservationsApiOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** GetApiOperation retrieves a single ApiOperation by name. */
 export const getProjectsLocationsObservationJobsApiObservationsApiOperations: API.OperationMethod<
@@ -1222,9 +1220,7 @@ export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsRes
   /*@__PURE__*/ /*#__PURE__*/ ListApiOperationsResponse;
 
 export type ListProjectsLocationsObservationJobsApiObservationsApiOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** ListApiOperations gets all ApiOperations for a given project and location and ObservationJob and ApiObservation. */
 export const listProjectsLocationsObservationJobsApiObservationsApiOperations: API.PaginatedOperationMethod<

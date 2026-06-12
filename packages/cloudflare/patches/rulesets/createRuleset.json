@@ -1,0 +1,13 @@
+{
+  "errors": {
+    "PhaseNotEntitled": [
+      { "code": 50002 },
+      { "status": 400, "message": { "includes": "not entitled" } }
+    ]
+  },
+  "response": {
+    "properties": {
+      "rules": { "optional": true }
+    }
+  }
+}

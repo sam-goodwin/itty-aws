@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "MagicWanUnauthorized": [{ "code": 1025 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

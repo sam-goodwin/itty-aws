@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "ClientCertificateNotFound": [
+      { "code": 1415, "message": { "includes": "Invalid Certificate ID" } },
+      { "status": 404 }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

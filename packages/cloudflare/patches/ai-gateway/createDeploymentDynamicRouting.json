@@ -1,0 +1,12 @@
+{
+  "errors": {
+    "RouteNotFound": [
+      { "code": 7005, "message": { "includes": "not found" } }
+    ]
+  },
+  "response": {
+    "properties": {
+      "elements": { "optional": true }
+    }
+  }
+}

@@ -4680,11 +4680,7 @@ export const ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRespon
   /*@__PURE__*/ /*#__PURE__*/ ArchiveUserDataMappingResponse;
 
 export type ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Archives the specified User data mapping. */
 export const archiveProjectsLocationsDatasetsConsentStoresUserDataMappings: API.OperationMethod<
@@ -4723,11 +4719,7 @@ export const PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResp
   /*@__PURE__*/ /*#__PURE__*/ AttributeDefinition;
 
 export type PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Updates the specified Attribute definition. */
 export const patchProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -4773,11 +4765,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRes
   /*@__PURE__*/ /*#__PURE__*/ AttributeDefinition;
 
 export type CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Creates a new Attribute definition in the parent consent store. */
 export const createProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -4812,11 +4800,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRes
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes the specified Attribute definition. Fails if the Attribute definition is referenced by any User data mapping, or the latest revision of any Consent. */
 export const deleteProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -4860,9 +4844,7 @@ export const ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRespo
   /*@__PURE__*/ /*#__PURE__*/ ListAttributeDefinitionsResponse;
 
 export type ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists the Attribute definitions in the specified consent store. */
 export const listProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.PaginatedOperationMethod<
@@ -4900,9 +4882,7 @@ export const GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRespon
   /*@__PURE__*/ /*#__PURE__*/ AttributeDefinition;
 
 export type GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified Attribute definition. */
 export const getProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -5667,9 +5647,7 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRespon
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** SearchForInstances returns a list of matching instances. See [Search Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6). For details on the implementation of SearchForInstances, see [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call SearchForInstances, see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom). */
 export const searchForInstancesProjectsLocationsDatasetsDicomStoresStudies: API.OperationMethod<
@@ -5867,9 +5845,7 @@ export const RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesResp
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** RetrieveSeries returns all instances within the given study and series. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveSeries, see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveSeries, see [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom). */
 export const retrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeries: API.OperationMethod<
@@ -5946,9 +5922,7 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRe
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** RetrieveSeriesMetadata returns instance associated with the given study and series, presented as metadata. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveSeriesMetadata, see [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveSeriesMetadata, see [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata). */
 export const retrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeries: API.OperationMethod<
@@ -5986,9 +5960,7 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeries
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** SearchForInstances returns a list of matching instances. See [Search Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6). For details on the implementation of SearchForInstances, see [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call SearchForInstances, see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom). */
 export const searchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeries: API.OperationMethod<
@@ -6026,9 +5998,7 @@ export const RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** RetrieveInstance returns instance associated with the given study, series, and SOP Instance UID. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveInstance, see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances) and [DICOM instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveInstance, see [Retrieve an instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-instance). */
 export const retrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -6069,9 +6039,7 @@ export const RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** RetrieveRenderedInstance returns instance associated with the given study, series, and SOP Instance UID in an acceptable Rendered Media Type. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveRenderedInstance, see [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveRenderedInstance, see [Retrieve consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer). */
 export const retrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -6109,9 +6077,7 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** RetrieveInstanceMetadata returns instance associated with the given study, series, and SOP Instance UID presented as metadata. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveInstanceMetadata, see [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveInstanceMetadata, see [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata). */
 export const retrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -6149,11 +6115,7 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRes
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** DeleteInstance deletes an instance associated with the given study, series, and SOP Instance UID. Delete requests are equivalent to the GET requests specified in the Retrieve transaction. Study and series search results can take a few seconds to be updated after an instance is deleted using DeleteInstance. For samples that show how to call DeleteInstance, see [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom). */
 export const deleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -6194,9 +6156,7 @@ export const RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** RetrieveRenderedFrames returns instances associated with the given study, series, SOP Instance UID and frame numbers in an acceptable Rendered Media Type. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveRenderedFrames, see [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveRenderedFrames, see [Retrieve consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer). */
 export const retrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFrames: API.OperationMethod<
@@ -6234,9 +6194,7 @@ export const RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInst
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** RetrieveFrames returns instances associated with the given study, series, SOP Instance UID and frame numbers. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}. For details on the implementation of RetrieveFrames, see [DICOM frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveFrames, see [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom). */
 export const retrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFrames: API.OperationMethod<
@@ -6274,9 +6232,7 @@ export const RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns uncompressed, unencoded bytes representing the referenced bulkdata tag from an instance. See [Retrieve Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveBulkdata, see [Bulkdata resources](https://cloud.google.com/healthcare/docs/dicom#bulkdata-resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveBulkdata, see [Retrieve bulkdata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-bulkdata). */
 export const retrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdata: API.OperationMethod<
@@ -6318,11 +6274,7 @@ export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebS
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** SetBlobStorageSettings sets the blob storage settings of the specified resources. */
 export const setBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudies: API.OperationMethod<
@@ -6357,9 +6309,7 @@ export const GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesR
   /*@__PURE__*/ /*#__PURE__*/ StudyMetrics;
 
 export type GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** GetStudyMetrics returns metrics for a study. */
 export const getStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies: API.OperationMethod<
@@ -6394,9 +6344,7 @@ export const GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies
   /*@__PURE__*/ /*#__PURE__*/ SeriesMetrics;
 
 export type GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** GetSeriesMetrics returns metrics for a series. */
 export const getSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeries: API.OperationMethod<
@@ -6431,9 +6379,7 @@ export const GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSe
   /*@__PURE__*/ /*#__PURE__*/ StorageInfo;
 
 export type GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** GetStorageInfo returns the storage info of the specified resource. */
 export const getStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstances: API.OperationMethod<
@@ -6559,11 +6505,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesResp
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsDatasetsDataMapperWorkspaces: API.OperationMethod<
@@ -7334,9 +7276,7 @@ export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRe
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns the consent enforcement status of a single consent resource. On success, the response body contains a JSON-encoded representation of a `Parameters` (http://hl7.org/fhir/parameters.html) FHIR resource, containing the current enforcement status. Does not support DSTU2. */
 export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8086,9 +8026,7 @@ export const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStor
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns the consent enforcement status of all consent resources for a patient. On success, the response body contains a JSON-encoded representation of a bundle of `Parameters` (http://hl7.org/fhir/parameters.html) FHIR resources, containing the current enforcement status for each consent resource of the patient. Does not support DSTU2. */
 export const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8330,9 +8268,7 @@ export const Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperati
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the status of operations as defined in the FHIR specification. Implements the FHIR implementation guide [bulk data status request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-status-request). Operations can have one of these states: * in-progress: response status code is `202` and `X-Progress` header is set to `in progress`. * complete: response status code is `200` and the body is a JSON-encoded operation response as defined by the spec. For a bulk export, this response is defined in https://build.fhir.org/ig/HL7/bulk-data/export.html#response---complete-status. * error: response status code is `5XX`, and the body is a JSON-encoded `OperationOutcome` resource describing the reason for the error. */
 export const get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperations: API.OperationMethod<
@@ -8367,11 +8303,7 @@ export const Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsR
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes operations as defined in the FHIR specification. Implements the FHIR implementation guide [bulk data delete request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-delete-request). Returns success if the operation was successfully cancelled. If the operation is complete, or has already been cancelled, returns an error response. */
 export const delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperations: API.OperationMethod<

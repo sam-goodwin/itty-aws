@@ -919,6 +919,10 @@ paths:
           - code: 10006
         InvalidRoute:
           - code: 7003
+        WarehouseNotFound:
+          - code: 40401
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/r2-catalog:
     get:
       operationId: listR2DataCatalogs
@@ -1077,6 +1081,7 @@ paths:
       x-distilled-errors:
         NoSuchBucket:
           - code: 10006
+          - code: 40406
         InvalidRoute:
           - code: 7003
   /accounts/{account_id}/r2-catalog/{bucketName}/disable:
@@ -1107,3 +1112,7 @@ paths:
           - code: 10006
         InvalidRoute:
           - code: 7003
+        WarehouseNotFound:
+          - code: 40401
+        Forbidden:
+          - status: 403

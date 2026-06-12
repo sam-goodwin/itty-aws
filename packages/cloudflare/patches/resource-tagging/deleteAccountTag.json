@@ -1,0 +1,22 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  },
+  "request": {
+    "properties": {
+      "resourceId": {
+        "definition": { "kind": "primitive", "value": "string" },
+        "wireKey": "resource_id"
+      },
+      "resourceType": {
+        "definition": { "kind": "primitive", "value": "string" },
+        "wireKey": "resource_type"
+      },
+      "workerId": {
+        "definition": { "kind": "primitive", "value": "string" },
+        "optional": true,
+        "wireKey": "worker_id"
+      }
+    }
+  }
+}

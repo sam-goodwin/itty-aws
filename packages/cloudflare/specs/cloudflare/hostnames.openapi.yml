@@ -75,6 +75,11 @@ paths:
                       (e.g., `"1.2"`) - `http2`: a string indicating whether
                       HTTP/2 is enabled — `"on"` or `"off"` (e.g., `"on"`)'
       x-distilled-pagination-class: TLSGetResponsesSinglePage
+      x-distilled-errors:
+        AdvancedCertificateManagerRequired:
+          - code: 1450
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/hostnames/settings/{settingId}/{hostname}:
     put:
       operationId: putSettingTls
@@ -190,6 +195,11 @@ paths:
                       (e.g., `"1.2"`) - `http2`: a string indicating whether
                       HTTP/2 is enabled — `"on"` or `"off"` (e.g., `"on"`)'
       x-distilled-response-path: result
+      x-distilled-errors:
+        AdvancedCertificateManagerRequired:
+          - code: 1450
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSettingTls
       description: Delete the tls setting value for the hostname.
@@ -263,3 +273,10 @@ paths:
                       (e.g., `"1.2"`) - `http2`: a string indicating whether
                       HTTP/2 is enabled — `"on"` or `"off"` (e.g., `"on"`)'
       x-distilled-response-path: result
+      x-distilled-errors:
+        AdvancedCertificateManagerRequired:
+          - code: 1450
+        HostnameTlsSettingNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403

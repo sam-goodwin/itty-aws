@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "CertificateAlreadyExists": [
+      { "code": 1406, "message": { "includes": "already exists" } }
+    ],
+    "InvalidCertificate": [
+      { "code": 1408, "message": { "includes": "Unable to parse certificate" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

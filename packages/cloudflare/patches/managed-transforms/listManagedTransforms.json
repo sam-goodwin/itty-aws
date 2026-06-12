@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "managed_request_headers": { "nullable": true },
+      "managed_response_headers": { "nullable": true }
+    }
+  }
+}

@@ -25,46 +25,51 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  default_sampling:
-                    type: number
-                    description: Fallback sampling rate of flow messages being sent in packets per
-                      second. This should match the packet sampling rate
-                      configured on the router.
-                  name:
-                    type: string
-                    description: The account name.
-                  router_ips:
-                    type: array
-                    items:
-                      type: string
-                  warp_devices:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
+                oneOf:
+                  - type: object
+                    properties:
+                      default_sampling:
+                        type: number
+                        description: Fallback sampling rate of flow messages being sent in packets per
+                          second. This should match the packet sampling rate
+                          configured on the router.
+                      name:
+                        type: string
+                        description: The account name.
+                      router_ips:
+                        type: array
+                        items:
                           type: string
-                          description: Unique identifier for the warp device.
-                        name:
-                          type: string
-                          description: Name of the warp device.
-                        router_ip:
-                          type: string
-                          description: IPv4 CIDR of the router sourcing flow data associated with this
-                            warp device. Only /32 addresses are currently
-                            supported.
-                      required:
-                        - id
-                        - name
-                        - router_ip
-                required:
-                  - default_sampling
-                  - name
-                  - router_ips
-                  - warp_devices
+                      warp_devices:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Unique identifier for the warp device.
+                            name:
+                              type: string
+                              description: Name of the warp device.
+                            router_ip:
+                              type: string
+                              description: IPv4 CIDR of the router sourcing flow data associated with this
+                                warp device. Only /32 addresses are currently
+                                supported.
+                          required:
+                            - id
+                            - name
+                            - router_ip
+                    required:
+                      - default_sampling
+                      - name
+                      - router_ips
+                      - warp_devices
+                nullable: true
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createConfig
       description: "Create a new network monitoring configuration.  @example ```ts
@@ -169,6 +174,11 @@ paths:
                   - router_ips
                   - warp_devices
       x-distilled-response-path: result
+      x-distilled-errors:
+        MnmConfigAlreadyExists:
+          - code: 1005
+            message:
+              includes: already exists
     put:
       operationId: updateConfig
       description: "Update an existing network monitoring configuration, requires the
@@ -233,46 +243,51 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  default_sampling:
-                    type: number
-                    description: Fallback sampling rate of flow messages being sent in packets per
-                      second. This should match the packet sampling rate
-                      configured on the router.
-                  name:
-                    type: string
-                    description: The account name.
-                  router_ips:
-                    type: array
-                    items:
-                      type: string
-                  warp_devices:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
+                oneOf:
+                  - type: object
+                    properties:
+                      default_sampling:
+                        type: number
+                        description: Fallback sampling rate of flow messages being sent in packets per
+                          second. This should match the packet sampling rate
+                          configured on the router.
+                      name:
+                        type: string
+                        description: The account name.
+                      router_ips:
+                        type: array
+                        items:
                           type: string
-                          description: Unique identifier for the warp device.
-                        name:
-                          type: string
-                          description: Name of the warp device.
-                        router_ip:
-                          type: string
-                          description: IPv4 CIDR of the router sourcing flow data associated with this
-                            warp device. Only /32 addresses are currently
-                            supported.
-                      required:
-                        - id
-                        - name
-                        - router_ip
-                required:
-                  - default_sampling
-                  - name
-                  - router_ips
-                  - warp_devices
+                      warp_devices:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Unique identifier for the warp device.
+                            name:
+                              type: string
+                              description: Name of the warp device.
+                            router_ip:
+                              type: string
+                              description: IPv4 CIDR of the router sourcing flow data associated with this
+                                warp device. Only /32 addresses are currently
+                                supported.
+                          required:
+                            - id
+                            - name
+                            - router_ip
+                    required:
+                      - default_sampling
+                      - name
+                      - router_ips
+                      - warp_devices
+                nullable: true
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchConfig
       description: "Update fields in an existing network monitoring
@@ -431,6 +446,13 @@ paths:
                   - router_ips
                   - warp_devices
       x-distilled-response-path: result
+      x-distilled-errors:
+        MnmConfigNotFound:
+          - code: 1004
+            message:
+              includes: not found
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/mnm/config/full:
     get:
       operationId: getConfigFull
@@ -601,6 +623,11 @@ paths:
                   - prefixes
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        MnmRuleNotFound:
+          - code: 1009
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchRule
       description: "Update a network monitoring rule for account.  @example ```ts
@@ -794,12 +821,16 @@ paths:
                     nullable: true
                     description: Target of the zscore rule analysis.
                 required:
-                  - id
                   - automatic_advertisement
                   - name
                   - prefixes
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        MnmRuleNotFound:
+          - code: 1009
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteRule
       description: "Delete a network monitoring rule for account.  @example ```ts
@@ -910,6 +941,11 @@ paths:
                   - prefixes
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        MnmRuleNotFound:
+          - code: 1009
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/mnm/rules:
     get:
       operationId: listRules
@@ -1017,6 +1053,9 @@ paths:
                       - type
                 nullable: true
       x-distilled-pagination-class: MagicNetworkMonitoringRulesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createRule
       description: "Create network monitoring rules for account. Currently only
@@ -1211,6 +1250,17 @@ paths:
                   - prefixes
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        DuplicateMnmRuleName:
+          - code: 1008
+            message:
+              includes: rule name must be unique
+        MnmConfigMissing:
+          - code: 1008
+            message:
+              includes: without initial account configuration
+        Forbidden:
+          - status: 403
     put:
       operationId: updateRule
       description: "Update network monitoring rules for account.  @example ```ts const

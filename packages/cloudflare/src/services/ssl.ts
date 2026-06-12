@@ -13,6 +13,31 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class AdvancedCertificateManagerRequired extends Schema.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+  "AdvancedCertificateManagerRequired",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AdvancedCertificateManagerRequired, [{ code: 1450 }]);
+
+export class CertificatePackNotFound extends Schema.TaggedErrorClass<CertificatePackNotFound>()(
+  "CertificatePackNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CertificatePackNotFound, [
+  { code: 1408 },
+  { status: 404 },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // Analyze
 // =============================================================================
 
@@ -182,7 +207,7 @@ export interface GetCertificatePackResponse {
       }[]
     | null;
   /** Validity Days selected for the order. */
-  validityDays?: "14" | "30" | "90" | "365" | (string & {}) | null;
+  validityDays?: number | null;
 }
 
 export const GetCertificatePackResponse =
@@ -392,15 +417,7 @@ export const GetCertificatePackResponse =
         Schema.Null,
       ]),
     ),
-    validityDays: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["14", "30", "90", "365"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
+    validityDays: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -423,7 +440,10 @@ export const GetCertificatePackResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetCertificatePackResponse>;
 
-export type GetCertificatePackError = DefaultErrors;
+export type GetCertificatePackError =
+  | DefaultErrors
+  | CertificatePackNotFound
+  | Forbidden;
 
 export const getCertificatePack: API.OperationMethod<
   GetCertificatePackRequest,
@@ -433,7 +453,7 @@ export const getCertificatePack: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCertificatePackRequest,
   output: GetCertificatePackResponse,
-  errors: [],
+  errors: [CertificatePackNotFound, Forbidden],
 }));
 
 export interface ListCertificatePacksRequest {
@@ -547,7 +567,7 @@ export interface ListCertificatePacksResponse {
           txtValue?: string | null;
         }[]
       | null;
-    validityDays?: "14" | "30" | "90" | "365" | (string & {}) | null;
+    validityDays?: number | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -785,13 +805,7 @@ export const ListCertificatePacksResponse =
           ]),
         ),
         validityDays: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals(["14", "30", "90", "365"]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
+          Schema.Union([Schema.Number, Schema.Null]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -835,7 +849,7 @@ export const ListCertificatePacksResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListCertificatePacksResponse>;
 
-export type ListCertificatePacksError = DefaultErrors;
+export type ListCertificatePacksError = DefaultErrors | Forbidden;
 
 export const listCertificatePacks: API.PaginatedOperationMethod<
   ListCertificatePacksRequest,
@@ -845,7 +859,7 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCertificatePacksRequest,
   output: ListCertificatePacksResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -867,7 +881,7 @@ export interface CreateCertificatePackRequest {
   /** Body param: Validation Method selected for the order. */
   validationMethod: "txt" | "http" | "email" | (string & {});
   /** Body param: Validity Days selected for the order. */
-  validityDays: "14" | "30" | "90" | "365" | (string & {});
+  validityDays: number;
   /** Body param: Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
   cloudflareBranding?: boolean;
 }
@@ -885,10 +899,7 @@ export const CreateCertificatePackRequest =
       Schema.Literals(["txt", "http", "email"]),
       Schema.String,
     ]),
-    validityDays: Schema.Union([
-      Schema.Literals(["14", "30", "90", "365"]),
-      Schema.String,
-    ]),
+    validityDays: Schema.Number,
     cloudflareBranding: Schema.optional(Schema.Boolean),
   }).pipe(
     Schema.encodeKeys({
@@ -1004,7 +1015,7 @@ export interface CreateCertificatePackResponse {
       }[]
     | null;
   /** Validity Days selected for the order. */
-  validityDays?: "14" | "30" | "90" | "365" | (string & {}) | null;
+  validityDays?: number | null;
 }
 
 export const CreateCertificatePackResponse =
@@ -1214,15 +1225,7 @@ export const CreateCertificatePackResponse =
         Schema.Null,
       ]),
     ),
-    validityDays: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["14", "30", "90", "365"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
+    validityDays: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -1245,7 +1248,10 @@ export const CreateCertificatePackResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateCertificatePackResponse>;
 
-export type CreateCertificatePackError = DefaultErrors;
+export type CreateCertificatePackError =
+  | DefaultErrors
+  | AdvancedCertificateManagerRequired
+  | Forbidden;
 
 export const createCertificatePack: API.OperationMethod<
   CreateCertificatePackRequest,
@@ -1255,7 +1261,7 @@ export const createCertificatePack: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCertificatePackRequest,
   output: CreateCertificatePackResponse,
-  errors: [],
+  errors: [AdvancedCertificateManagerRequired, Forbidden],
 }));
 
 export interface PatchCertificatePackRequest {
@@ -1378,7 +1384,7 @@ export interface PatchCertificatePackResponse {
       }[]
     | null;
   /** Validity Days selected for the order. */
-  validityDays?: "14" | "30" | "90" | "365" | (string & {}) | null;
+  validityDays?: number | null;
 }
 
 export const PatchCertificatePackResponse =
@@ -1588,15 +1594,7 @@ export const PatchCertificatePackResponse =
         Schema.Null,
       ]),
     ),
-    validityDays: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["14", "30", "90", "365"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
+    validityDays: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -1619,7 +1617,10 @@ export const PatchCertificatePackResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchCertificatePackResponse>;
 
-export type PatchCertificatePackError = DefaultErrors;
+export type PatchCertificatePackError =
+  | DefaultErrors
+  | CertificatePackNotFound
+  | Forbidden;
 
 export const patchCertificatePack: API.OperationMethod<
   PatchCertificatePackRequest,
@@ -1629,7 +1630,7 @@ export const patchCertificatePack: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCertificatePackRequest,
   output: PatchCertificatePackResponse,
-  errors: [],
+  errors: [CertificatePackNotFound, Forbidden],
 }));
 
 export interface DeleteCertificatePackRequest {
@@ -1661,7 +1662,10 @@ export const DeleteCertificatePackResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteCertificatePackResponse>;
 
-export type DeleteCertificatePackError = DefaultErrors;
+export type DeleteCertificatePackError =
+  | DefaultErrors
+  | CertificatePackNotFound
+  | Forbidden;
 
 export const deleteCertificatePack: API.OperationMethod<
   DeleteCertificatePackRequest,
@@ -1671,7 +1675,7 @@ export const deleteCertificatePack: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCertificatePackRequest,
   output: DeleteCertificatePackResponse,
-  errors: [],
+  errors: [CertificatePackNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -1818,7 +1822,7 @@ export const GetUniversalSettingResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetUniversalSettingResponse>;
 
-export type GetUniversalSettingError = DefaultErrors;
+export type GetUniversalSettingError = DefaultErrors | Forbidden;
 
 export const getUniversalSetting: API.OperationMethod<
   GetUniversalSettingRequest,
@@ -1828,7 +1832,7 @@ export const getUniversalSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUniversalSettingRequest,
   output: GetUniversalSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchUniversalSettingRequest {
@@ -1861,7 +1865,7 @@ export const PatchUniversalSettingResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchUniversalSettingResponse>;
 
-export type PatchUniversalSettingError = DefaultErrors;
+export type PatchUniversalSettingError = DefaultErrors | Forbidden;
 
 export const patchUniversalSetting: API.OperationMethod<
   PatchUniversalSettingRequest,
@@ -1871,7 +1875,7 @@ export const patchUniversalSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUniversalSettingRequest,
   output: PatchUniversalSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================

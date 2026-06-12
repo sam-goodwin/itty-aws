@@ -37,6 +37,24 @@ export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
 ) {}
 T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
 
+export class InvalidTokenCredentials extends Schema.TaggedErrorClass<InvalidTokenCredentials>()(
+  "InvalidTokenCredentials",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidTokenCredentials, [{ code: 7012 }]);
+
+export class NamespaceAlreadyExists extends Schema.TaggedErrorClass<NamespaceAlreadyExists>()(
+  "NamespaceAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(NamespaceAlreadyExists, [{ code: 7064 }]);
+
+export class NamespaceNotFound extends Schema.TaggedErrorClass<NamespaceNotFound>()(
+  "NamespaceNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(NamespaceNotFound, [{ code: 7063 }]);
+
 export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
   code: Schema.Number,
   message: Schema.String,
@@ -48,6 +66,12 @@ export class SyncInCooldown extends Schema.TaggedErrorClass<SyncInCooldown>()(
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(SyncInCooldown, [{ code: 7020 }]);
+
+export class TokenNotFound extends Schema.TaggedErrorClass<TokenNotFound>()(
+  "TokenNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TokenNotFound, [{ code: 7075 }]);
 
 export class UnableToConnect extends Schema.TaggedErrorClass<UnableToConnect>()(
   "UnableToConnect",
@@ -7471,7 +7495,10 @@ export const CreateNamespaceResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateNamespaceResponse>;
 
-export type CreateNamespaceError = DefaultErrors;
+export type CreateNamespaceError =
+  | DefaultErrors
+  | NamespaceAlreadyExists
+  | Forbidden;
 
 export const createNamespace: API.OperationMethod<
   CreateNamespaceRequest,
@@ -7481,7 +7508,7 @@ export const createNamespace: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNamespaceRequest,
   output: CreateNamespaceResponse,
-  errors: [],
+  errors: [NamespaceAlreadyExists, Forbidden],
 }));
 
 export interface UpdateNamespaceRequest {
@@ -7529,7 +7556,10 @@ export const UpdateNamespaceResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateNamespaceResponse>;
 
-export type UpdateNamespaceError = DefaultErrors;
+export type UpdateNamespaceError =
+  | DefaultErrors
+  | NamespaceNotFound
+  | Forbidden;
 
 export const updateNamespace: API.OperationMethod<
   UpdateNamespaceRequest,
@@ -7539,7 +7569,7 @@ export const updateNamespace: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateNamespaceRequest,
   output: UpdateNamespaceResponse,
-  errors: [],
+  errors: [NamespaceNotFound, Forbidden],
 }));
 
 export interface DeleteNamespaceRequest {
@@ -7566,7 +7596,10 @@ export const DeleteNamespaceResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteNamespaceResponse>;
 
-export type DeleteNamespaceError = DefaultErrors;
+export type DeleteNamespaceError =
+  | DefaultErrors
+  | NamespaceNotFound
+  | Forbidden;
 
 export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceRequest,
@@ -7576,7 +7609,7 @@ export const deleteNamespace: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
-  errors: [],
+  errors: [NamespaceNotFound, Forbidden],
 }));
 
 export interface ReadNamespaceRequest {
@@ -7617,7 +7650,7 @@ export const ReadNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ReadNamespaceResponse>;
 
-export type ReadNamespaceError = DefaultErrors;
+export type ReadNamespaceError = DefaultErrors | NamespaceNotFound | Forbidden;
 
 export const readNamespace: API.OperationMethod<
   ReadNamespaceRequest,
@@ -7627,7 +7660,7 @@ export const readNamespace: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReadNamespaceRequest,
   output: ReadNamespaceResponse,
-  errors: [],
+  errors: [NamespaceNotFound, Forbidden],
 }));
 
 export interface SearchNamespaceRequest {
@@ -15319,7 +15352,7 @@ export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListTokensResponse>;
 
-export type ListTokensError = DefaultErrors | InvalidRoute;
+export type ListTokensError = DefaultErrors | InvalidRoute | Forbidden;
 
 export const listTokens: API.PaginatedOperationMethod<
   ListTokensRequest,
@@ -15329,7 +15362,7 @@ export const listTokens: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTokensRequest,
   output: ListTokensResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -15412,7 +15445,9 @@ export type CreateTokenError =
   | DefaultErrors
   | ValidationError
   | NotFound
-  | InvalidRoute;
+  | InvalidRoute
+  | InvalidTokenCredentials
+  | Forbidden;
 
 export const createToken: API.OperationMethod<
   CreateTokenRequest,
@@ -15422,7 +15457,13 @@ export const createToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTokenRequest,
   output: CreateTokenResponse,
-  errors: [ValidationError, NotFound, InvalidRoute],
+  errors: [
+    ValidationError,
+    NotFound,
+    InvalidRoute,
+    InvalidTokenCredentials,
+    Forbidden,
+  ],
 }));
 
 export interface UpdateTokenRequest {
@@ -15503,7 +15544,10 @@ export type UpdateTokenError =
   | DefaultErrors
   | ValidationError
   | NotFound
-  | InvalidRoute;
+  | InvalidRoute
+  | TokenNotFound
+  | Forbidden
+  | InvalidTokenCredentials;
 
 export const updateToken: API.OperationMethod<
   UpdateTokenRequest,
@@ -15513,7 +15557,14 @@ export const updateToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTokenRequest,
   output: UpdateTokenResponse,
-  errors: [ValidationError, NotFound, InvalidRoute],
+  errors: [
+    ValidationError,
+    NotFound,
+    InvalidRoute,
+    TokenNotFound,
+    Forbidden,
+    InvalidTokenCredentials,
+  ],
 }));
 
 export interface DeleteTokenRequest {
@@ -15542,7 +15593,9 @@ export type DeleteTokenError =
   | DefaultErrors
   | ValidationError
   | NotFound
-  | InvalidRoute;
+  | InvalidRoute
+  | TokenNotFound
+  | Forbidden;
 
 export const deleteToken: API.OperationMethod<
   DeleteTokenRequest,
@@ -15552,7 +15605,7 @@ export const deleteToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTokenRequest,
   output: DeleteTokenResponse,
-  errors: [ValidationError, NotFound, InvalidRoute],
+  errors: [ValidationError, NotFound, InvalidRoute, TokenNotFound, Forbidden],
 }));
 
 export interface ReadTokenRequest {
@@ -15614,7 +15667,9 @@ export type ReadTokenError =
   | DefaultErrors
   | ValidationError
   | NotFound
-  | InvalidRoute;
+  | InvalidRoute
+  | TokenNotFound
+  | Forbidden;
 
 export const readToken: API.OperationMethod<
   ReadTokenRequest,
@@ -15624,5 +15679,5 @@ export const readToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReadTokenRequest,
   output: ReadTokenResponse,
-  errors: [ValidationError, NotFound, InvalidRoute],
+  errors: [ValidationError, NotFound, InvalidRoute, TokenNotFound, Forbidden],
 }));

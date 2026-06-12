@@ -689,6 +689,9 @@ paths:
                   - name
                   - source
       x-distilled-pagination-class: LabelListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/api_gateway/labels/managed/{name}:
     get:
       operationId: getLabelManaged
@@ -893,6 +896,11 @@ paths:
                   - name
                   - source
       x-distilled-response-path: result
+      x-distilled-errors:
+        LabelNotFound:
+          - code: 70014
+        Forbidden:
+          - status: 403
     put:
       operationId: putLabelUser
       description: "Update all fields on a label  @example ```ts const user = await
@@ -957,6 +965,9 @@ paths:
                   - name
                   - source
       x-distilled-response-path: result
+      x-distilled-errors:
+        LabelNotFound:
+          - code: 70014
     patch:
       operationId: patchLabelUser
       description: "Update certain fields on a label  @example ```ts const response =
@@ -1021,6 +1032,9 @@ paths:
                   - name
                   - source
       x-distilled-response-path: result
+      x-distilled-errors:
+        LabelNotFound:
+          - code: 70014
     delete:
       operationId: deleteLabelUser
       description: "Delete user label  @example ```ts const user = await
@@ -1073,6 +1087,11 @@ paths:
                   - name
                   - source
       x-distilled-response-path: result
+      x-distilled-errors:
+        LabelNotFound:
+          - code: 70014
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/api_gateway/labels/user:
     post:
       operationId: bulkCreateLabelUsers
@@ -1142,6 +1161,11 @@ paths:
                   - name
                   - source
       x-distilled-pagination-class: UserBulkCreateResponsesSinglePage
+      x-distilled-errors:
+        LabelAlreadyExists:
+          - code: 70009
+        Forbidden:
+          - status: 403
     delete:
       operationId: bulkDeleteLabelUsers
       description: "Delete user labels  @example ```ts // Automatically fetches more
@@ -1557,6 +1581,8 @@ paths:
           - code: 7003
         OperationNotFound:
           - code: 10404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteOperation
       description: "Removes a single API operation from API Shield endpoint
@@ -1637,6 +1663,8 @@ paths:
           - code: 7003
         OperationNotFound:
           - code: 10404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/api_gateway/operations:
     get:
       operationId: listOperations
@@ -1912,6 +1940,9 @@ paths:
                   - method
                   - operation_id
       x-distilled-pagination-class: OperationListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: bulkCreateOperations
       description: "Add one or more operations to a zone. Endpoints can contain path
@@ -2521,6 +2552,8 @@ paths:
       x-distilled-errors:
         InvalidObjectIdentifier:
           - code: 7003
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/api_gateway/operations/{operationId}/labels:
     post:
       operationId: createOperationLabel

@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "AiSecurityNotEntitled": [
+      { "code": 13101, "message": { "includes": "not entitled" } }
+    ],
+    "ZoneNotAuthorized": [
+      { "code": 10000, "message": { "includes": "Authentication error" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

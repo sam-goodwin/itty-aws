@@ -77,6 +77,15 @@ paths:
                   - updated_at
                   - uploaded_on
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        AdvancedCertificateManagerRequired:
+          - code: 1450
+        CustomTrustStoreNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteCustomTrustStore
       description: "Removes a root CA certificate from the custom origin trust store.
@@ -108,6 +117,15 @@ paths:
                     type: string
                     description: Identifier.
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        AdvancedCertificateManagerRequired:
+          - code: 1450
+        CustomTrustStoreNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/acm/custom_trust_store:
     get:
       operationId: listCustomTrustStores
@@ -195,6 +213,11 @@ paths:
                   - updated_at
                   - uploaded_on
       x-distilled-pagination-class: CustomTrustStoresV4PagePaginationArray
+      x-distilled-errors:
+        AdvancedCertificateManagerRequired:
+          - code: 1450
+        Forbidden:
+          - status: 403
     post:
       operationId: createCustomTrustStore
       description: "Upload a root CA certificate to the Custom Origin Trust Store for
@@ -275,6 +298,13 @@ paths:
                   - updated_at
                   - uploaded_on
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        AdvancedCertificateManagerRequired:
+          - code: 1450
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/acm/total_tls:
     get:
       operationId: getTotalTl
@@ -319,6 +349,8 @@ paths:
           - code: 7003
         AdvancedCertificateManagerRequired:
           - code: 1450
+        Forbidden:
+          - status: 403
     post:
       operationId: editTotalTl
       description: "Set Total TLS Settings or disable the feature for a

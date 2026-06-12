@@ -56,6 +56,11 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 7003
+        Forbidden:
+          - status: 403
     put:
       operationId: putOriginPostQuantumEncryption
       description: Instructs Cloudflare to use Post-Quantum (PQ) key agreement
@@ -121,3 +126,12 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 7003
+        InvalidSettingValue:
+          - code: 1146
+            message:
+              includes: origin_post_quantum_encryption
+        Forbidden:
+          - status: 403

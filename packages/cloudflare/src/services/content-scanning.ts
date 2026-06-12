@@ -13,6 +13,32 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class ContentScanningNotEnabled extends Schema.TaggedErrorClass<ContentScanningNotEnabled>()(
+  "ContentScanningNotEnabled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ContentScanningNotEnabled, [
+  { status: 400, message: { includes: "File Upload Scan not enabled" } },
+]);
+
+export class ContentScanningNotEntitled extends Schema.TaggedErrorClass<ContentScanningNotEntitled>()(
+  "ContentScanningNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ContentScanningNotEntitled, [
+  { status: 400, message: { includes: "not entitled" } },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // ContentScanning
 // =============================================================================
 
@@ -46,7 +72,7 @@ export const GetContentScanningResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetContentScanningResponse>;
 
-export type GetContentScanningError = DefaultErrors;
+export type GetContentScanningError = DefaultErrors | Forbidden;
 
 export const getContentScanning: API.OperationMethod<
   GetContentScanningRequest,
@@ -56,7 +82,7 @@ export const getContentScanning: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContentScanningRequest,
   output: GetContentScanningResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface CreateContentScanningRequest {
@@ -95,7 +121,10 @@ export const CreateContentScanningResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateContentScanningResponse>;
 
-export type CreateContentScanningError = DefaultErrors;
+export type CreateContentScanningError =
+  | DefaultErrors
+  | ContentScanningNotEntitled
+  | Forbidden;
 
 export const createContentScanning: API.OperationMethod<
   CreateContentScanningRequest,
@@ -105,7 +134,7 @@ export const createContentScanning: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContentScanningRequest,
   output: CreateContentScanningResponse,
-  errors: [],
+  errors: [ContentScanningNotEntitled, Forbidden],
 }));
 
 export interface PutContentScanningRequest {
@@ -144,7 +173,10 @@ export const PutContentScanningResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutContentScanningResponse>;
 
-export type PutContentScanningError = DefaultErrors;
+export type PutContentScanningError =
+  | DefaultErrors
+  | ContentScanningNotEntitled
+  | Forbidden;
 
 export const putContentScanning: API.OperationMethod<
   PutContentScanningRequest,
@@ -154,7 +186,7 @@ export const putContentScanning: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutContentScanningRequest,
   output: PutContentScanningResponse,
-  errors: [],
+  errors: [ContentScanningNotEntitled, Forbidden],
 }));
 
 export interface EnableContentScanningRequest {
@@ -258,7 +290,10 @@ export const ListPayloadsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListPayloadsResponse>;
 
-export type ListPayloadsError = DefaultErrors;
+export type ListPayloadsError =
+  | DefaultErrors
+  | ContentScanningNotEnabled
+  | Forbidden;
 
 export const listPayloads: API.PaginatedOperationMethod<
   ListPayloadsRequest,
@@ -268,7 +303,7 @@ export const listPayloads: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPayloadsRequest,
   output: ListPayloadsResponse,
-  errors: [],
+  errors: [ContentScanningNotEnabled, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -309,7 +344,11 @@ export const CreatePayloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<CreatePayloadResponse>;
 
-export type CreatePayloadError = DefaultErrors;
+export type CreatePayloadError =
+  | DefaultErrors
+  | ContentScanningNotEnabled
+  | ContentScanningNotEntitled
+  | Forbidden;
 
 export const createPayload: API.PaginatedOperationMethod<
   CreatePayloadRequest,
@@ -319,7 +358,7 @@ export const createPayload: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreatePayloadRequest,
   output: CreatePayloadResponse,
-  errors: [],
+  errors: [ContentScanningNotEnabled, ContentScanningNotEntitled, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -355,7 +394,10 @@ export const DeletePayloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<DeletePayloadResponse>;
 
-export type DeletePayloadError = DefaultErrors;
+export type DeletePayloadError =
+  | DefaultErrors
+  | ContentScanningNotEnabled
+  | Forbidden;
 
 export const deletePayload: API.PaginatedOperationMethod<
   DeletePayloadRequest,
@@ -365,7 +407,7 @@ export const deletePayload: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DeletePayloadRequest,
   output: DeletePayloadResponse,
-  errors: [],
+  errors: [ContentScanningNotEnabled, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -404,7 +446,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetSettingResponse>;
 
-export type GetSettingError = DefaultErrors;
+export type GetSettingError = DefaultErrors | Forbidden;
 
 export const getSetting: API.OperationMethod<
   GetSettingRequest,
@@ -414,5 +456,5 @@ export const getSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingRequest,
   output: GetSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));

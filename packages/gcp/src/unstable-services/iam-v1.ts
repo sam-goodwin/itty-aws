@@ -4758,9 +4758,7 @@ export const GetProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsWorkloadIdentityPoolsNamespacesOperations: API.OperationMethod<
@@ -4793,9 +4791,7 @@ export const GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
   /*@__PURE__*/ /*#__PURE__*/ WorkloadIdentityPoolManagedIdentity;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets an individual WorkloadIdentityPoolManagedIdentity. */
 export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -4839,9 +4835,7 @@ export const ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespace
   /*@__PURE__*/ /*#__PURE__*/ ListAttestationRulesResponse;
 
 export type ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** List all AttestationRule on a WorkloadIdentityPoolManagedIdentity. */
 export const listAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.PaginatedOperationMethod<
@@ -4887,11 +4881,7 @@ export const AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesM
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Add an AttestationRule on a WorkloadIdentityPoolManagedIdentity. The total attestation rules after addition must not exceed 50. */
 export const addAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -4926,11 +4916,7 @@ export const DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdenti
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a WorkloadIdentityPoolManagedIdentity. You can undelete a managed identity for 30 days. After 30 days, deletion is permanent. */
 export const deleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -4970,11 +4956,7 @@ export const UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIden
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Undeletes a WorkloadIdentityPoolManagedIdentity, as long as it was deleted fewer than 30 days ago. */
 export const undeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -5017,11 +4999,7 @@ export const PatchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentit
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Updates an existing WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace. */
 export const patchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -5063,11 +5041,7 @@ export const RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespac
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Remove an AttestationRule on a WorkloadIdentityPoolManagedIdentity. */
 export const removeAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -5116,11 +5090,7 @@ export const CreateProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdenti
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Creates a new WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace. */
 export const createProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -5166,9 +5136,7 @@ export const ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentiti
   /*@__PURE__*/ /*#__PURE__*/ ListWorkloadIdentityPoolManagedIdentitiesResponse;
 
 export type ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists all non-deleted WorkloadIdentityPoolManagedIdentitys in a namespace. If `show_deleted` is set to `true`, then deleted managed identities are also listed. */
 export const listProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.PaginatedOperationMethod<
@@ -5214,11 +5182,7 @@ export const SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespaces
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Set all AttestationRule on a WorkloadIdentityPoolManagedIdentity. A maximum of 50 AttestationRules can be set. */
 export const setAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -5253,9 +5217,7 @@ export const GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperations: API.OperationMethod<
@@ -5290,9 +5252,7 @@ export const GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperations: API.OperationMethod<
@@ -5823,9 +5783,7 @@ export const GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsRes
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperations: API.OperationMethod<

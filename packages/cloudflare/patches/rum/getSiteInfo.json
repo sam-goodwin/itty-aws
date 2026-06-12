@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "SiteNotFound": [{ "code": 10015 }],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "host": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "string" }
+      }
+    }
+  }
+}

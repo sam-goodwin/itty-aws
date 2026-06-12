@@ -1,0 +1,13 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "host": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "string" }
+      }
+    }
+  }
+}

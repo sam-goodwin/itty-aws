@@ -1,0 +1,13 @@
+{
+  "errors": {
+    "RegistrarDomainNotOwned": [
+      {
+        "code": 10000,
+        "status": 403,
+        "message": { "includes": "Domain doesn't belong to the user" }
+      }
+    ],
+    "RegistrarUpdateNotAllowed": [{ "status": 422 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

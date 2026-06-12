@@ -14,6 +14,34 @@ import { type DefaultErrors } from "../errors.ts";
 import { UploadableSchema } from "../schemas.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class DispatchNamespaceAlreadyExists extends Schema.TaggedErrorClass<DispatchNamespaceAlreadyExists>()(
+  "DispatchNamespaceAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DispatchNamespaceAlreadyExists, [{ code: 100120 }]);
+
+export class DispatchNamespaceNotFound extends Schema.TaggedErrorClass<DispatchNamespaceNotFound>()(
+  "DispatchNamespaceNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DispatchNamespaceNotFound, [{ code: 100119 }]);
+
+export class DispatchNamespaceScriptNotFound extends Schema.TaggedErrorClass<DispatchNamespaceScriptNotFound>()(
+  "DispatchNamespaceScriptNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DispatchNamespaceScriptNotFound, [{ code: 10007 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // DispatchNamespace
 // =============================================================================
 
@@ -82,7 +110,10 @@ export const GetDispatchNamespaceResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetDispatchNamespaceResponse>;
 
-export type GetDispatchNamespaceError = DefaultErrors;
+export type GetDispatchNamespaceError =
+  | DefaultErrors
+  | DispatchNamespaceNotFound
+  | Forbidden;
 
 export const getDispatchNamespace: API.OperationMethod<
   GetDispatchNamespaceRequest,
@@ -92,7 +123,7 @@ export const getDispatchNamespace: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDispatchNamespaceRequest,
   output: GetDispatchNamespaceResponse,
-  errors: [],
+  errors: [DispatchNamespaceNotFound, Forbidden],
 }));
 
 export interface ListDispatchNamespacesRequest {
@@ -241,7 +272,10 @@ export const CreateDispatchNamespaceResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateDispatchNamespaceResponse>;
 
-export type CreateDispatchNamespaceError = DefaultErrors;
+export type CreateDispatchNamespaceError =
+  | DefaultErrors
+  | DispatchNamespaceAlreadyExists
+  | Forbidden;
 
 export const createDispatchNamespace: API.OperationMethod<
   CreateDispatchNamespaceRequest,
@@ -251,7 +285,7 @@ export const createDispatchNamespace: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDispatchNamespaceRequest,
   output: CreateDispatchNamespaceResponse,
-  errors: [],
+  errors: [DispatchNamespaceAlreadyExists, Forbidden],
 }));
 
 export interface DeleteDispatchNamespaceRequest {
@@ -278,7 +312,10 @@ export const DeleteDispatchNamespaceResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDispatchNamespaceResponse>;
 
-export type DeleteDispatchNamespaceError = DefaultErrors;
+export type DeleteDispatchNamespaceError =
+  | DefaultErrors
+  | DispatchNamespaceNotFound
+  | Forbidden;
 
 export const deleteDispatchNamespace: API.OperationMethod<
   DeleteDispatchNamespaceRequest,
@@ -288,7 +325,7 @@ export const deleteDispatchNamespace: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDispatchNamespaceRequest,
   output: DeleteDispatchNamespaceResponse,
-  errors: [],
+  errors: [DispatchNamespaceNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -925,7 +962,11 @@ export const GetDispatchNamespaceScriptResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetDispatchNamespaceScriptResponse>;
 
-export type GetDispatchNamespaceScriptError = DefaultErrors;
+export type GetDispatchNamespaceScriptError =
+  | DefaultErrors
+  | DispatchNamespaceNotFound
+  | DispatchNamespaceScriptNotFound
+  | Forbidden;
 
 export const getDispatchNamespaceScript: API.OperationMethod<
   GetDispatchNamespaceScriptRequest,
@@ -935,7 +976,11 @@ export const getDispatchNamespaceScript: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDispatchNamespaceScriptRequest,
   output: GetDispatchNamespaceScriptResponse,
-  errors: [],
+  errors: [
+    DispatchNamespaceNotFound,
+    DispatchNamespaceScriptNotFound,
+    Forbidden,
+  ],
 }));
 
 export interface PutDispatchNamespaceScriptRequest {
@@ -2449,7 +2494,10 @@ export const PutDispatchNamespaceScriptResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PutDispatchNamespaceScriptResponse>;
 
-export type PutDispatchNamespaceScriptError = DefaultErrors;
+export type PutDispatchNamespaceScriptError =
+  | DefaultErrors
+  | DispatchNamespaceNotFound
+  | Forbidden;
 
 export const putDispatchNamespaceScript: API.OperationMethod<
   PutDispatchNamespaceScriptRequest,
@@ -2459,7 +2507,7 @@ export const putDispatchNamespaceScript: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutDispatchNamespaceScriptRequest,
   output: PutDispatchNamespaceScriptResponse,
-  errors: [],
+  errors: [DispatchNamespaceNotFound, Forbidden],
 }));
 
 export interface DeleteDispatchNamespaceScriptRequest {
@@ -2491,7 +2539,11 @@ export const DeleteDispatchNamespaceScriptResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDispatchNamespaceScriptResponse>;
 
-export type DeleteDispatchNamespaceScriptError = DefaultErrors;
+export type DeleteDispatchNamespaceScriptError =
+  | DefaultErrors
+  | DispatchNamespaceScriptNotFound
+  | DispatchNamespaceNotFound
+  | Forbidden;
 
 export const deleteDispatchNamespaceScript: API.OperationMethod<
   DeleteDispatchNamespaceScriptRequest,
@@ -2501,7 +2553,11 @@ export const deleteDispatchNamespaceScript: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDispatchNamespaceScriptRequest,
   output: DeleteDispatchNamespaceScriptResponse,
-  errors: [],
+  errors: [
+    DispatchNamespaceScriptNotFound,
+    DispatchNamespaceNotFound,
+    Forbidden,
+  ],
 }));
 
 // =============================================================================

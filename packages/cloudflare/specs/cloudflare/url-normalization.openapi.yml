@@ -44,6 +44,9 @@ paths:
                   - scope
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putUrlNormalization
       description: "Updates the URL Normalization settings.  @example ```ts const
@@ -106,6 +109,9 @@ paths:
                   - scope
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteUrlNormalization
       description: "Deletes the URL Normalization settings.  @example ```ts await
@@ -121,3 +127,6 @@ paths:
       responses:
         "200":
           description: Success
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

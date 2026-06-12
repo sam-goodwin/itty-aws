@@ -1,0 +1,28 @@
+{
+  "errors": {
+    "AdvancedCertificateManagerRequired": [
+      {
+        "code": 1450
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
+  },
+  "request": {
+    "properties": {
+      "validityDays": {
+        "type": "number"
+      }
+    }
+  },
+  "response": {
+    "properties": {
+      "validity_days": {
+        "type": "number"
+      }
+    }
+  }
+}

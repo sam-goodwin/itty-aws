@@ -36,6 +36,14 @@ export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
 ) {}
 T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
 
+export class InvalidSilence extends Schema.TaggedErrorClass<InvalidSilence>()(
+  "InvalidSilence",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidSilence, [
+  { code: 0, message: { includes: "invalid silence" } },
+]);
+
 export class InvalidWebhookId extends Schema.TaggedErrorClass<InvalidWebhookId>()(
   "InvalidWebhookId",
   { code: Schema.Number, message: Schema.String },
@@ -56,6 +64,20 @@ export class PolicyNotFound extends Schema.TaggedErrorClass<PolicyNotFound>()(
 ) {}
 T.applyErrorMatchers(PolicyNotFound, [
   { code: 0, message: { includes: "Policy not found" } },
+]);
+
+export class SilenceAlreadyExists extends Schema.TaggedErrorClass<SilenceAlreadyExists>()(
+  "SilenceAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SilenceAlreadyExists, [{ code: 15000 }]);
+
+export class SilenceNotFound extends Schema.TaggedErrorClass<SilenceNotFound>()(
+  "SilenceNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SilenceNotFound, [
+  { code: 0, message: { includes: "silence not found" } },
 ]);
 
 export class WebhookNotFound extends Schema.TaggedErrorClass<WebhookNotFound>()(
@@ -2828,7 +2850,8 @@ export const GetSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSilenceError =
   | DefaultErrors
   | InvalidRoute
-  | InternalServerError;
+  | InternalServerError
+  | SilenceNotFound;
 
 export const getSilence: API.OperationMethod<
   GetSilenceRequest,
@@ -2838,7 +2861,7 @@ export const getSilence: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSilenceRequest,
   output: GetSilenceResponse,
-  errors: [InvalidRoute, InternalServerError],
+  errors: [InvalidRoute, InternalServerError, SilenceNotFound],
 }));
 
 export interface ListSilencesRequest {
@@ -2957,7 +2980,11 @@ export const CreateSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.Literal(true),
 }) as unknown as Schema.Schema<CreateSilenceResponse>;
 
-export type CreateSilenceError = DefaultErrors | InvalidRoute;
+export type CreateSilenceError =
+  | DefaultErrors
+  | InvalidRoute
+  | InvalidSilence
+  | SilenceAlreadyExists;
 
 export const createSilence: API.OperationMethod<
   CreateSilenceRequest,
@@ -2967,7 +2994,7 @@ export const createSilence: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSilenceRequest,
   output: CreateSilenceResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, InvalidSilence, SilenceAlreadyExists],
 }));
 
 export interface UpdateSilenceRequest {
@@ -3000,39 +3027,47 @@ export const UpdateSilenceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<UpdateSilenceRequest>;
 
 export interface UpdateSilenceResponse {
-  result: {
-    id?: string | null;
-    createdAt?: string | null;
-    endTime?: string | null;
-    policyId?: string | null;
-    startTime?: string | null;
-    updatedAt?: string | null;
-  }[];
+  result:
+    | {
+        id?: string | null;
+        createdAt?: string | null;
+        endTime?: string | null;
+        policyId?: string | null;
+        startTime?: string | null;
+        updatedAt?: string | null;
+      }[]
+    | null;
 }
 
 export const UpdateSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      endTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      startTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        endTime: "end_time",
-        policyId: "policy_id",
-        startTime: "start_time",
-        updatedAt: "updated_at",
-      }),
+  result: Schema.Union([
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        endTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        startTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdAt: "created_at",
+          endTime: "end_time",
+          policyId: "policy_id",
+          startTime: "start_time",
+          updatedAt: "updated_at",
+        }),
+      ),
     ),
-  ),
+    Schema.Null,
+  ]),
 }) as unknown as Schema.Schema<UpdateSilenceResponse>;
 
-export type UpdateSilenceError = DefaultErrors;
+export type UpdateSilenceError =
+  | DefaultErrors
+  | SilenceNotFound
+  | InvalidSilence;
 
 export const updateSilence: API.PaginatedOperationMethod<
   UpdateSilenceRequest,
@@ -3042,7 +3077,7 @@ export const updateSilence: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: UpdateSilenceRequest,
   output: UpdateSilenceResponse,
-  errors: [],
+  errors: [SilenceNotFound, InvalidSilence],
   pagination: {
     mode: "single",
     items: "result",
@@ -3088,7 +3123,7 @@ export const DeleteSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.Literal(true),
 }) as unknown as Schema.Schema<DeleteSilenceResponse>;
 
-export type DeleteSilenceError = DefaultErrors | InvalidRoute;
+export type DeleteSilenceError = DefaultErrors | InvalidRoute | SilenceNotFound;
 
 export const deleteSilence: API.OperationMethod<
   DeleteSilenceRequest,
@@ -3098,5 +3133,5 @@ export const deleteSilence: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSilenceRequest,
   output: DeleteSilenceResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, SilenceNotFound],
 }));

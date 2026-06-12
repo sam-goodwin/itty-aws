@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "CertificateNotFound": [
+      { "code": 1552, "message": { "includes": "certificate not found" } },
+      { "status": 404 }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

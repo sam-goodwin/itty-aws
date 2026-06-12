@@ -1,6 +1,7 @@
 {
   "errors": {
     "QueueNotFound": [{ "code": 11000 }],
+    "QueueInUseByEventNotification": [{ "code": 11017 }],
     "InvalidRoute": [{ "code": 7003 }]
   }
 }

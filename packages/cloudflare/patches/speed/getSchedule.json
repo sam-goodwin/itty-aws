@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "TestScheduleNotFound": [
+      { "code": 404, "message": { "includes": "schedule_not_found" } },
+      { "status": 404 }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

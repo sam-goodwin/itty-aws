@@ -8896,9 +8896,7 @@ export const GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesRespon
   /*@__PURE__*/ /*#__PURE__*/ EffectiveEventThreatDetectionCustomModule;
 
 export type GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets an effective Event Threat Detection custom module at the given level. */
 export const getProjectsEventThreatDetectionSettingsEffectiveCustomModules: API.OperationMethod<
@@ -8937,9 +8935,7 @@ export const ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesRespo
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveEventThreatDetectionCustomModulesResponse;
 
 export type ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists all effective Event Threat Detection custom modules for the given parent. This includes resident modules defined at the scope of the parent along with modules inherited from its ancestors. */
 export const listProjectsEventThreatDetectionSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -9190,9 +9186,7 @@ export const ListDescendantProjectsEventThreatDetectionSettingsCustomModulesResp
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantEventThreatDetectionCustomModulesResponse;
 
 export type ListDescendantProjectsEventThreatDetectionSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists all resident Event Threat Detection custom modules under the given Resource Manager parent and its descendants. */
 export const listDescendantProjectsEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
@@ -10302,9 +10296,7 @@ export const GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule;
 
 export type GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an EffectiveSecurityHealthAnalyticsCustomModule. */
 export const getProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.OperationMethod<
@@ -10345,9 +10337,7 @@ export const ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRe
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This includes resident modules defined at the scope of the parent, and inherited modules, inherited from CRM ancestors. */
 export const listProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -10603,9 +10593,7 @@ export const ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesR
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and all of the parent’s CRM descendants. */
 export const listDescendantProjectsSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
@@ -10948,9 +10936,7 @@ export const ListDescendantFoldersEventThreatDetectionSettingsCustomModulesRespo
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantEventThreatDetectionCustomModulesResponse;
 
 export type ListDescendantFoldersEventThreatDetectionSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists all resident Event Threat Detection custom modules under the given Resource Manager parent and its descendants. */
 export const listDescendantFoldersEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
@@ -11233,9 +11219,7 @@ export const ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesRespon
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveEventThreatDetectionCustomModulesResponse;
 
 export type ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists all effective Event Threat Detection custom modules for the given parent. This includes resident modules defined at the scope of the parent along with modules inherited from its ancestors. */
 export const listFoldersEventThreatDetectionSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -12607,9 +12591,7 @@ export const ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesRe
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and all of the parent’s CRM descendants. */
 export const listDescendantFoldersSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
@@ -12648,9 +12630,7 @@ export const GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule;
 
 export type GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an EffectiveSecurityHealthAnalyticsCustomModule. */
 export const getFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.OperationMethod<
@@ -12690,9 +12670,7 @@ export const ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRes
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This includes resident modules defined at the scope of the parent, and inherited modules, inherited from CRM ancestors. */
 export const listFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -13362,9 +13340,7 @@ export const ListOrganizationsSimulationsAttackExposureResultsValuedResourcesRes
   /*@__PURE__*/ /*#__PURE__*/ ListValuedResourcesResponse;
 
 export type ListOrganizationsSimulationsAttackExposureResultsValuedResourcesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists the valued resources for a set of simulation results and filter. */
 export const listOrganizationsSimulationsAttackExposureResultsValuedResources: API.PaginatedOperationMethod<
@@ -13641,11 +13617,7 @@ export const ValidateCustomModuleOrganizationsEventThreatDetectionSettingsRespon
   /*@__PURE__*/ /*#__PURE__*/ ValidateEventThreatDetectionCustomModuleResponse;
 
 export type ValidateCustomModuleOrganizationsEventThreatDetectionSettingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Validates the given Event Threat Detection custom module. */
 export const validateCustomModuleOrganizationsEventThreatDetectionSettings: API.OperationMethod<
@@ -13722,9 +13694,7 @@ export const ListDescendantOrganizationsEventThreatDetectionSettingsCustomModule
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantEventThreatDetectionCustomModulesResponse;
 
 export type ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists all resident Event Threat Detection custom modules under the given Resource Manager parent and its descendants. */
 export const listDescendantOrganizationsEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
@@ -13938,9 +13908,7 @@ export const ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModules
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveEventThreatDetectionCustomModulesResponse;
 
 export type ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists all effective Event Threat Detection custom modules for the given parent. This includes resident modules defined at the scope of the parent along with modules inherited from its ancestors. */
 export const listOrganizationsEventThreatDetectionSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -13979,9 +13947,7 @@ export const GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesR
   /*@__PURE__*/ /*#__PURE__*/ EffectiveEventThreatDetectionCustomModule;
 
 export type GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets an effective Event Threat Detection custom module at the given level. */
 export const getOrganizationsEventThreatDetectionSettingsEffectiveCustomModules: API.OperationMethod<
@@ -15584,9 +15550,7 @@ export const GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModul
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule;
 
 export type GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an EffectiveSecurityHealthAnalyticsCustomModule. */
 export const getOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.OperationMethod<
@@ -15627,9 +15591,7 @@ export const ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModu
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This includes resident modules defined at the scope of the parent, and inherited modules, inherited from CRM ancestors. */
 export const listOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -15668,11 +15630,7 @@ export const DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResp
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes the specified SecurityHealthAnalyticsCustomModule and all of its descendants in the CRM hierarchy. This method is only supported for resident custom modules. */
 export const deleteOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -15712,9 +15670,7 @@ export const ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRespon
   /*@__PURE__*/ /*#__PURE__*/ ListSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all SecurityHealthAnalyticsCustomModules for the given parent. This includes resident modules defined at the scope of the parent, and inherited modules, inherited from CRM ancestors. */
 export const listOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
@@ -15759,11 +15715,7 @@ export const PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Updates the SecurityHealthAnalyticsCustomModule under the given name based on the given update mask. Updating the enablement state is supported on both resident and inherited modules (though resident modules cannot have an enablement state of "inherited"). Updating the display name and custom config of a module is supported on resident modules only. */
 export const patchOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -15806,11 +15758,7 @@ export const CreateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type CreateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given parent. These modules are enabled by default. */
 export const createOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -15853,9 +15801,7 @@ export const ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomMod
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and all of the parent’s CRM descendants. */
 export const listDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
@@ -15938,11 +15884,7 @@ export const SimulateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRe
   /*@__PURE__*/ /*#__PURE__*/ SimulateSecurityHealthAnalyticsCustomModuleResponse;
 
 export type SimulateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Simulates a given SecurityHealthAnalyticsCustomModule and Resource. */
 export const simulateOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<

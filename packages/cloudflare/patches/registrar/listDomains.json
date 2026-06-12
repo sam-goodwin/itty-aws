@@ -1,0 +1,21 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "result[].name": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "string" }
+      },
+      "result[].auto_renew": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "boolean" }
+      },
+      "result[].privacy": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "boolean" }
+      }
+    }
+  }
+}

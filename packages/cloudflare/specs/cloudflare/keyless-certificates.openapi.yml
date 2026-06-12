@@ -91,6 +91,13 @@ paths:
                   - port
                   - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        KeylessCertificateNotFound:
+          - code: 1005
+            message:
+              includes: Invalid or missing Keyless SSL
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchKeylessCertificate
       description: "This will update attributes of a Keyless SSL. Consists of one or
@@ -211,6 +218,13 @@ paths:
                   - port
                   - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        KeylessCertificateNotFound:
+          - code: 1005
+            message:
+              includes: Invalid or missing Keyless SSL
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteKeylessCertificate
       description: "Removes a Keyless SSL configuration. SSL connections will no
@@ -242,6 +256,13 @@ paths:
                     type: string
                     description: Identifier.
       x-distilled-response-path: result
+      x-distilled-errors:
+        KeylessCertificateNotFound:
+          - code: 1005
+            message:
+              includes: Invalid or missing Keyless SSL
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/keyless_certificates:
     get:
       operationId: listKeylessCertificates
@@ -322,6 +343,9 @@ paths:
                   - port
                   - status
       x-distilled-pagination-class: KeylessCertificatesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createKeylessCertificate
       description: "Creates a Keyless SSL configuration that allows SSL/TLS
@@ -473,3 +497,10 @@ paths:
                   - port
                   - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        KeylessSslNotAvailable:
+          - code: 1067
+            message:
+              includes: Keyless SSL is not available
+        Forbidden:
+          - status: 403

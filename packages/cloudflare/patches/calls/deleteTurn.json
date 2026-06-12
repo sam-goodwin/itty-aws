@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "TurnKeyNotFound": [{ "code": 20008 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }],
+    "SendingSubdomainNotFound": [{ "code": 2033 }]
+  }
+}

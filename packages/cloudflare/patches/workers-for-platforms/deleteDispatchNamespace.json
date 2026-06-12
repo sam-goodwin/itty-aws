@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "DispatchNamespaceNotFound": [{ "code": 100119 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

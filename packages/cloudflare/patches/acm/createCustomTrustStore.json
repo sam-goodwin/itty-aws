@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "InvalidObjectIdentifier": [{ "code": 7003 }],
+    "AdvancedCertificateManagerRequired": [{ "code": 1450 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

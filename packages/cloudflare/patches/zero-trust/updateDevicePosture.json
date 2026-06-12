@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "PostureRuleNotFound": [{ "code": 6024 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

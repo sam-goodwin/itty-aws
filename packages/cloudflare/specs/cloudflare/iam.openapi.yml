@@ -164,6 +164,13 @@ paths:
                   - id
                   - scope
       x-distilled-response-path: result
+      x-distilled-errors:
+        ResourceGroupNotFound:
+          - code: 404
+            message:
+              includes: Resource group
+        Forbidden:
+          - status: 403
     put:
       operationId: updateResourceGroup
       description: "Modify an existing resource group.  @example ```ts const
@@ -245,6 +252,11 @@ paths:
                   - id
                   - scope
       x-distilled-response-path: result
+      x-distilled-errors:
+        ResourceGroupNotFound:
+          - code: 404
+            message:
+              includes: Resource group
     delete:
       operationId: deleteResourceGroup
       description: "Remove a resource group from an account.  @example ```ts const
@@ -277,6 +289,11 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        ResourceGroupNotFound:
+          - code: 404
+            message:
+              includes: Resource group
   /accounts/{account_id}/iam/resource_groups:
     get:
       operationId: listResourceGroups
@@ -833,6 +850,13 @@ paths:
                   - modified_on
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        UserGroupNotFound:
+          - code: 404
+            message:
+              includes: User group
+        Forbidden:
+          - status: 403
     put:
       operationId: updateUserGroup
       description: "Modify an existing user group.  @example ```ts const userGroup =
@@ -897,7 +921,6 @@ paths:
                             - id
                         description: A set of resource groups that are specified to the policy.
                     required:
-                      - id
                       - access
                       - permission_groups
                       - resource_groups
@@ -990,6 +1013,11 @@ paths:
                   - modified_on
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        UserGroupNotFound:
+          - code: 404
+            message:
+              includes: User group
     delete:
       operationId: deleteUserGroup
       description: "Remove a user group from an account.  @example ```ts const
@@ -1022,6 +1050,11 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        UserGroupNotFound:
+          - code: 404
+            message:
+              includes: User group
   /accounts/{account_id}/iam/user_groups:
     get:
       operationId: listUserGroups
@@ -1402,6 +1435,17 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        UserGroupMemberNotFound:
+          - code: 404
+            message:
+              includes: not found in user group
+        UserGroupNotFound:
+          - code: 404
+            message:
+              includes: User group
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteUserGroupMember
       description: "Remove a member from User Group  @example ```ts const member =
@@ -1451,6 +1495,14 @@ paths:
       x-distilled-errors:
         InvalidMember:
           - code: 400
+        UserGroupMemberNotFound:
+          - code: 404
+            message:
+              includes: not found in user group
+        UserGroupNotFound:
+          - code: 404
+            message:
+              includes: User group
   /accounts/{account_id}/iam/user_groups/{userGroupId}/members:
     get:
       operationId: listUserGroupMembers
@@ -1521,6 +1573,11 @@ paths:
                 required:
                   - id
       x-distilled-pagination-class: MemberListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        UserGroupNotFound:
+          - code: 404
+            message:
+              includes: User group
     post:
       operationId: createUserGroupMember
       description: "Add members to a User Group.  @example ```ts // Automatically
@@ -1587,6 +1644,10 @@ paths:
       x-distilled-errors:
         InvalidMember:
           - code: 400
+        UserGroupNotFound:
+          - code: 404
+            message:
+              includes: User group
     put:
       operationId: updateUserGroupMember
       description: "Replace the set of members attached to a User Group.  @example

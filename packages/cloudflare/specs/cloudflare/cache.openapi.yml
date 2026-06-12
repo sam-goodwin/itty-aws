@@ -168,6 +168,13 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        SettingUnavailableForPlan:
+          - status: 403
+            message:
+              includes: not available for your plan
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchCacheReserve
       description: "Increase cache lifetimes by automatically storing all cacheable
@@ -233,6 +240,13 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        SettingUnavailableForPlan:
+          - status: 403
+            message:
+              includes: not available for your plan
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/cache/cache_reserve_clear:
     get:
       operationId: statusCacheReserve
@@ -410,6 +424,11 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        OriginCloudRegionNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteOriginCloudRegion
       description: "Removes the cloud region mapping for a single origin IP address.
@@ -479,6 +498,11 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        OriginCloudRegionNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/cache/origin_cloud_regions:
     get:
       operationId: listOriginCloudRegions
@@ -548,6 +572,9 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createOriginCloudRegion
       description: "Adds a single IP-to-cloud-region mapping for the zone. The IP must
@@ -644,6 +671,11 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        OriginCloudRegionAlreadyExists:
+          - status: 409
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchOriginCloudRegion
       description: "Adds or updates a single IP-to-cloud-region mapping for the zone.
@@ -742,6 +774,11 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        OriginCloudRegionNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/cache/origin_cloud_regions/batch:
     patch:
       operationId: bulkPatchOriginCloudRegions
@@ -1011,6 +1048,13 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        SettingUnavailableForPlan:
+          - code: 1135
+            message:
+              includes: not available for your plan
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchRegionalTieredCache
       description: "Instructs Cloudflare to check a regional hub data center on the
@@ -1072,6 +1116,13 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        SettingUnavailableForPlan:
+          - code: 1135
+            message:
+              includes: not available for your plan
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/cache/origin_cloud_regions/supported_regions:
     get:
       operationId: supportedRegionsOriginCloudRegion
@@ -1162,6 +1213,9 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSmartTieredCache
       description: "Smart Tiered Cache dynamically selects the single closest upper
@@ -1227,6 +1281,9 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSmartTieredCache
       description: "Smart Tiered Cache dynamically selects the single closest upper
@@ -1384,6 +1441,13 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        VariantsNotConfigured:
+          - status: 404
+            message:
+              includes: zone setting does not exist
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchVariant
       description: "Variant support enables caching variants of images with certain
@@ -1576,6 +1640,9 @@ paths:
                   - editable
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteVariant
       description: "Variant support enables caching variants of images with certain
@@ -1618,3 +1685,10 @@ paths:
                   - id
                   - editable
       x-distilled-response-path: result
+      x-distilled-errors:
+        VariantsNotConfigured:
+          - status: 404
+            message:
+              includes: zone setting does not exist
+        Forbidden:
+          - status: 403

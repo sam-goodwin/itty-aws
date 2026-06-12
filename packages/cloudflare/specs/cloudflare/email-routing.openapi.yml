@@ -806,6 +806,9 @@ paths:
                   - enabled
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/email/routing/enable:
     post:
       operationId: enableEmailRouting
@@ -874,6 +877,9 @@ paths:
                   - enabled
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/email/routing/disable:
     post:
       operationId: disableEmailRouting
@@ -942,6 +948,9 @@ paths:
                   - enabled
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/email/routing/rules/{ruleIdentifier}:
     get:
       operationId: getRule
@@ -1590,6 +1599,9 @@ paths:
                     description: "@deprecated Routing rule tag. (Deprecated, replaced by routing
                       rule identifier)"
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putRuleCatchAll
       description: "Enable or disable catch-all routing rule, or change action to
@@ -1713,3 +1725,8 @@ paths:
                     description: "@deprecated Routing rule tag. (Deprecated, replaced by routing
                       rule identifier)"
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        DestinationNotVerified:
+          - code: 2054

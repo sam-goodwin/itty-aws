@@ -13,6 +13,32 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class AiSecurityNotEntitled extends Schema.TaggedErrorClass<AiSecurityNotEntitled>()(
+  "AiSecurityNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AiSecurityNotEntitled, [
+  { code: 13101, message: { includes: "not entitled" } },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class ZoneNotAuthorized extends Schema.TaggedErrorClass<ZoneNotAuthorized>()(
+  "ZoneNotAuthorized",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ZoneNotAuthorized, [
+  { code: 10000, message: { includes: "Authentication error" } },
+]);
+
+// =============================================================================
 // AiSecurity
 // =============================================================================
 
@@ -38,7 +64,11 @@ export const GetAiSecurityResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetAiSecurityResponse>;
 
-export type GetAiSecurityError = DefaultErrors;
+export type GetAiSecurityError =
+  | DefaultErrors
+  | AiSecurityNotEntitled
+  | ZoneNotAuthorized
+  | Forbidden;
 
 export const getAiSecurity: API.OperationMethod<
   GetAiSecurityRequest,
@@ -48,7 +78,7 @@ export const getAiSecurity: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAiSecurityRequest,
   output: GetAiSecurityResponse,
-  errors: [],
+  errors: [AiSecurityNotEntitled, ZoneNotAuthorized, Forbidden],
 }));
 
 export interface PutAiSecurityRequest {
@@ -76,7 +106,11 @@ export const PutAiSecurityResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PutAiSecurityResponse>;
 
-export type PutAiSecurityError = DefaultErrors;
+export type PutAiSecurityError =
+  | DefaultErrors
+  | AiSecurityNotEntitled
+  | ZoneNotAuthorized
+  | Forbidden;
 
 export const putAiSecurity: API.OperationMethod<
   PutAiSecurityRequest,
@@ -86,7 +120,7 @@ export const putAiSecurity: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAiSecurityRequest,
   output: PutAiSecurityResponse,
-  errors: [],
+  errors: [AiSecurityNotEntitled, ZoneNotAuthorized, Forbidden],
 }));
 
 // =============================================================================
@@ -127,7 +161,11 @@ export const GetCustomTopicResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetCustomTopicResponse>;
 
-export type GetCustomTopicError = DefaultErrors;
+export type GetCustomTopicError =
+  | DefaultErrors
+  | AiSecurityNotEntitled
+  | ZoneNotAuthorized
+  | Forbidden;
 
 export const getCustomTopic: API.OperationMethod<
   GetCustomTopicRequest,
@@ -137,7 +175,7 @@ export const getCustomTopic: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomTopicRequest,
   output: GetCustomTopicResponse,
-  errors: [],
+  errors: [AiSecurityNotEntitled, ZoneNotAuthorized, Forbidden],
 }));
 
 export interface PutCustomTopicRequest {
@@ -184,7 +222,11 @@ export const PutCustomTopicResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PutCustomTopicResponse>;
 
-export type PutCustomTopicError = DefaultErrors;
+export type PutCustomTopicError =
+  | DefaultErrors
+  | AiSecurityNotEntitled
+  | ZoneNotAuthorized
+  | Forbidden;
 
 export const putCustomTopic: API.OperationMethod<
   PutCustomTopicRequest,
@@ -194,5 +236,5 @@ export const putCustomTopic: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutCustomTopicRequest,
   output: PutCustomTopicResponse,
-  errors: [],
+  errors: [AiSecurityNotEntitled, ZoneNotAuthorized, Forbidden],
 }));

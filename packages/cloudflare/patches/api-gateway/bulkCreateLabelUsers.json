@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "LabelAlreadyExists": [{ "code": 70009 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

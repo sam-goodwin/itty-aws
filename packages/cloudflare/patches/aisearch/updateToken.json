@@ -1,7 +1,34 @@
 {
   "errors": {
-    "ValidationError": [{ "code": 7001 }],
-    "NotFound": [{ "code": 7002 }],
-    "InvalidRoute": [{ "code": 7003 }]
+    "ValidationError": [
+      {
+        "code": 7001
+      }
+    ],
+    "NotFound": [
+      {
+        "code": 7002
+      }
+    ],
+    "InvalidRoute": [
+      {
+        "code": 7003
+      }
+    ],
+    "TokenNotFound": [
+      {
+        "code": 7075
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ],
+    "InvalidTokenCredentials": [
+      {
+        "code": 7012
+      }
+    ]
   }
 }

@@ -23,17 +23,71 @@ export class AccessGroupNotFound extends Schema.TaggedErrorClass<AccessGroupNotF
 ) {}
 T.applyErrorMatchers(AccessGroupNotFound, [{ code: 12152 }]);
 
+export class AccessIdentityProviderNotFound extends Schema.TaggedErrorClass<AccessIdentityProviderNotFound>()(
+  "AccessIdentityProviderNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AccessIdentityProviderNotFound, [{ code: 12135 }]);
+
 export class AccessServiceTokenNotFound extends Schema.TaggedErrorClass<AccessServiceTokenNotFound>()(
   "AccessServiceTokenNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(AccessServiceTokenNotFound, [{ code: 12135 }]);
 
+export class CannotDeleteDefaultGatewayLocation extends Schema.TaggedErrorClass<CannotDeleteDefaultGatewayLocation>()(
+  "CannotDeleteDefaultGatewayLocation",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CannotDeleteDefaultGatewayLocation, [{ code: 1217 }]);
+
+export class CannotDemoteDefaultGatewayLocation extends Schema.TaggedErrorClass<CannotDemoteDefaultGatewayLocation>()(
+  "CannotDemoteDefaultGatewayLocation",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CannotDemoteDefaultGatewayLocation, [{ code: 1216 }]);
+
+export class DeviceNetworkNotFound extends Schema.TaggedErrorClass<DeviceNetworkNotFound>()(
+  "DeviceNetworkNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DeviceNetworkNotFound, [{ code: 2053 }]);
+
+export class DevicePolicyNotFound extends Schema.TaggedErrorClass<DevicePolicyNotFound>()(
+  "DevicePolicyNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DevicePolicyNotFound, [{ code: 2052 }]);
+
 export class DuplicateTunnelName extends Schema.TaggedErrorClass<DuplicateTunnelName>()(
   "DuplicateTunnelName",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(DuplicateTunnelName, [{ code: 1013 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class GatewayListNotFound extends Schema.TaggedErrorClass<GatewayListNotFound>()(
+  "GatewayListNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(GatewayListNotFound, [{ code: 2218 }]);
+
+export class GatewayLocationNotFound extends Schema.TaggedErrorClass<GatewayLocationNotFound>()(
+  "GatewayLocationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(GatewayLocationNotFound, [{ code: 1103 }]);
+
+export class IpProxyEndpointsRequireEnterprise extends Schema.TaggedErrorClass<IpProxyEndpointsRequireEnterprise>()(
+  "IpProxyEndpointsRequireEnterprise",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(IpProxyEndpointsRequireEnterprise, [{ code: 2009 }]);
 
 export class OrganizationAlreadyExists extends Schema.TaggedErrorClass<OrganizationAlreadyExists>()(
   "OrganizationAlreadyExists",
@@ -46,6 +100,18 @@ export class OrganizationNotFound extends Schema.TaggedErrorClass<OrganizationNo
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(OrganizationNotFound, [{ status: 404 }]);
+
+export class PostureRuleNotFound extends Schema.TaggedErrorClass<PostureRuleNotFound>()(
+  "PostureRuleNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PostureRuleNotFound, [{ code: 6024 }]);
+
+export class ProxyEndpointNotFound extends Schema.TaggedErrorClass<ProxyEndpointNotFound>()(
+  "ProxyEndpointNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ProxyEndpointNotFound, [{ code: 2002 }]);
 
 export class TunnelConfigurationNotFound extends Schema.TaggedErrorClass<TunnelConfigurationNotFound>()(
   "TunnelConfigurationNotFound",
@@ -64,6 +130,18 @@ export class TunnelTokenNotFound extends Schema.TaggedErrorClass<TunnelTokenNotF
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(TunnelTokenNotFound, [{ code: 1054 }]);
+
+export class VirtualNetworkConflict extends Schema.TaggedErrorClass<VirtualNetworkConflict>()(
+  "VirtualNetworkConflict",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(VirtualNetworkConflict, [{ code: 1014 }]);
+
+export class VirtualNetworkNotFound extends Schema.TaggedErrorClass<VirtualNetworkNotFound>()(
+  "VirtualNetworkNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(VirtualNetworkNotFound, [{ code: 1046 }]);
 
 // =============================================================================
 // AccessAiControlMcpPortal
@@ -88444,7 +88522,10 @@ export const GetDeviceNetworkResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetDeviceNetworkResponse>;
 
-export type GetDeviceNetworkError = DefaultErrors;
+export type GetDeviceNetworkError =
+  | DefaultErrors
+  | DeviceNetworkNotFound
+  | Forbidden;
 
 export const getDeviceNetwork: API.OperationMethod<
   GetDeviceNetworkRequest,
@@ -88454,7 +88535,7 @@ export const getDeviceNetwork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeviceNetworkRequest,
   output: GetDeviceNetworkResponse,
-  errors: [],
+  errors: [DeviceNetworkNotFound, Forbidden],
 }));
 
 export interface ListDeviceNetworksRequest {
@@ -88513,7 +88594,7 @@ export const ListDeviceNetworksResponse =
     ),
   }) as unknown as Schema.Schema<ListDeviceNetworksResponse>;
 
-export type ListDeviceNetworksError = DefaultErrors;
+export type ListDeviceNetworksError = DefaultErrors | Forbidden;
 
 export const listDeviceNetworks: API.PaginatedOperationMethod<
   ListDeviceNetworksRequest,
@@ -88523,7 +88604,7 @@ export const listDeviceNetworks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceNetworksRequest,
   output: ListDeviceNetworksResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -88596,7 +88677,7 @@ export const CreateDeviceNetworkResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateDeviceNetworkResponse>;
 
-export type CreateDeviceNetworkError = DefaultErrors;
+export type CreateDeviceNetworkError = DefaultErrors | Forbidden;
 
 export const createDeviceNetwork: API.OperationMethod<
   CreateDeviceNetworkRequest,
@@ -88606,7 +88687,7 @@ export const createDeviceNetwork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeviceNetworkRequest,
   output: CreateDeviceNetworkResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateDeviceNetworkRequest {
@@ -88682,7 +88763,10 @@ export const UpdateDeviceNetworkResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateDeviceNetworkResponse>;
 
-export type UpdateDeviceNetworkError = DefaultErrors;
+export type UpdateDeviceNetworkError =
+  | DefaultErrors
+  | DeviceNetworkNotFound
+  | Forbidden;
 
 export const updateDeviceNetwork: API.OperationMethod<
   UpdateDeviceNetworkRequest,
@@ -88692,7 +88776,7 @@ export const updateDeviceNetwork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDeviceNetworkRequest,
   output: UpdateDeviceNetworkResponse,
-  errors: [],
+  errors: [DeviceNetworkNotFound, Forbidden],
 }));
 
 export interface DeleteDeviceNetworkRequest {
@@ -88756,7 +88840,10 @@ export const DeleteDeviceNetworkResponse =
     ),
   }) as unknown as Schema.Schema<DeleteDeviceNetworkResponse>;
 
-export type DeleteDeviceNetworkError = DefaultErrors;
+export type DeleteDeviceNetworkError =
+  | DefaultErrors
+  | DeviceNetworkNotFound
+  | Forbidden;
 
 export const deleteDeviceNetwork: API.PaginatedOperationMethod<
   DeleteDeviceNetworkRequest,
@@ -88766,7 +88853,7 @@ export const deleteDeviceNetwork: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DeleteDeviceNetworkRequest,
   output: DeleteDeviceNetworkResponse,
-  errors: [],
+  errors: [DeviceNetworkNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -89111,7 +89198,10 @@ export const GetDevicePolicyCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetDevicePolicyCustomResponse>;
 
-export type GetDevicePolicyCustomError = DefaultErrors;
+export type GetDevicePolicyCustomError =
+  | DefaultErrors
+  | DevicePolicyNotFound
+  | Forbidden;
 
 export const getDevicePolicyCustom: API.OperationMethod<
   GetDevicePolicyCustomRequest,
@@ -89121,7 +89211,7 @@ export const getDevicePolicyCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDevicePolicyCustomRequest,
   output: GetDevicePolicyCustomResponse,
-  errors: [],
+  errors: [DevicePolicyNotFound, Forbidden],
 }));
 
 export interface ListDevicePolicyCustomsRequest {
@@ -89370,7 +89460,7 @@ export const ListDevicePolicyCustomsResponse =
     ),
   }) as unknown as Schema.Schema<ListDevicePolicyCustomsResponse>;
 
-export type ListDevicePolicyCustomsError = DefaultErrors;
+export type ListDevicePolicyCustomsError = DefaultErrors | Forbidden;
 
 export const listDevicePolicyCustoms: API.PaginatedOperationMethod<
   ListDevicePolicyCustomsRequest,
@@ -89380,7 +89470,7 @@ export const listDevicePolicyCustoms: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePolicyCustomsRequest,
   output: ListDevicePolicyCustomsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -89766,7 +89856,7 @@ export const CreateDevicePolicyCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateDevicePolicyCustomResponse>;
 
-export type CreateDevicePolicyCustomError = DefaultErrors;
+export type CreateDevicePolicyCustomError = DefaultErrors | Forbidden;
 
 export const createDevicePolicyCustom: API.OperationMethod<
   CreateDevicePolicyCustomRequest,
@@ -89776,7 +89866,7 @@ export const createDevicePolicyCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDevicePolicyCustomRequest,
   output: CreateDevicePolicyCustomResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchDevicePolicyCustomRequest {
@@ -90163,7 +90253,10 @@ export const PatchDevicePolicyCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchDevicePolicyCustomResponse>;
 
-export type PatchDevicePolicyCustomError = DefaultErrors;
+export type PatchDevicePolicyCustomError =
+  | DefaultErrors
+  | DevicePolicyNotFound
+  | Forbidden;
 
 export const patchDevicePolicyCustom: API.OperationMethod<
   PatchDevicePolicyCustomRequest,
@@ -90173,7 +90266,7 @@ export const patchDevicePolicyCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDevicePolicyCustomRequest,
   output: PatchDevicePolicyCustomResponse,
-  errors: [],
+  errors: [DevicePolicyNotFound, Forbidden],
 }));
 
 export interface DeleteDevicePolicyCustomRequest {
@@ -90427,7 +90520,10 @@ export const DeleteDevicePolicyCustomResponse =
     ),
   }) as unknown as Schema.Schema<DeleteDevicePolicyCustomResponse>;
 
-export type DeleteDevicePolicyCustomError = DefaultErrors;
+export type DeleteDevicePolicyCustomError =
+  | DefaultErrors
+  | DevicePolicyNotFound
+  | Forbidden;
 
 export const deleteDevicePolicyCustom: API.PaginatedOperationMethod<
   DeleteDevicePolicyCustomRequest,
@@ -90437,7 +90533,7 @@ export const deleteDevicePolicyCustom: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DeleteDevicePolicyCustomRequest,
   output: DeleteDevicePolicyCustomResponse,
-  errors: [],
+  errors: [DevicePolicyNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -90491,7 +90587,10 @@ export const GetDevicePolicyCustomExcludeResponse =
     ),
   }) as unknown as Schema.Schema<GetDevicePolicyCustomExcludeResponse>;
 
-export type GetDevicePolicyCustomExcludeError = DefaultErrors;
+export type GetDevicePolicyCustomExcludeError =
+  | DefaultErrors
+  | DevicePolicyNotFound
+  | Forbidden;
 
 export const getDevicePolicyCustomExclude: API.PaginatedOperationMethod<
   GetDevicePolicyCustomExcludeRequest,
@@ -90501,7 +90600,7 @@ export const getDevicePolicyCustomExclude: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePolicyCustomExcludeRequest,
   output: GetDevicePolicyCustomExcludeResponse,
-  errors: [],
+  errors: [DevicePolicyNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -90569,7 +90668,10 @@ export const PutDevicePolicyCustomExcludeResponse =
     ),
   }) as unknown as Schema.Schema<PutDevicePolicyCustomExcludeResponse>;
 
-export type PutDevicePolicyCustomExcludeError = DefaultErrors;
+export type PutDevicePolicyCustomExcludeError =
+  | DefaultErrors
+  | DevicePolicyNotFound
+  | Forbidden;
 
 export const putDevicePolicyCustomExclude: API.PaginatedOperationMethod<
   PutDevicePolicyCustomExcludeRequest,
@@ -90579,7 +90681,7 @@ export const putDevicePolicyCustomExclude: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutDevicePolicyCustomExcludeRequest,
   output: PutDevicePolicyCustomExcludeResponse,
-  errors: [],
+  errors: [DevicePolicyNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -90635,7 +90737,10 @@ export const GetDevicePolicyCustomFallbackDomainResponse =
     ),
   }) as unknown as Schema.Schema<GetDevicePolicyCustomFallbackDomainResponse>;
 
-export type GetDevicePolicyCustomFallbackDomainError = DefaultErrors;
+export type GetDevicePolicyCustomFallbackDomainError =
+  | DefaultErrors
+  | DevicePolicyNotFound
+  | Forbidden;
 
 export const getDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
   GetDevicePolicyCustomFallbackDomainRequest,
@@ -90645,7 +90750,7 @@ export const getDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePolicyCustomFallbackDomainRequest,
   output: GetDevicePolicyCustomFallbackDomainResponse,
-  errors: [],
+  errors: [DevicePolicyNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -90713,7 +90818,10 @@ export const PutDevicePolicyCustomFallbackDomainResponse =
     ),
   }) as unknown as Schema.Schema<PutDevicePolicyCustomFallbackDomainResponse>;
 
-export type PutDevicePolicyCustomFallbackDomainError = DefaultErrors;
+export type PutDevicePolicyCustomFallbackDomainError =
+  | DefaultErrors
+  | DevicePolicyNotFound
+  | Forbidden;
 
 export const putDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
   PutDevicePolicyCustomFallbackDomainRequest,
@@ -90723,7 +90831,7 @@ export const putDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutDevicePolicyCustomFallbackDomainRequest,
   output: PutDevicePolicyCustomFallbackDomainResponse,
-  errors: [],
+  errors: [DevicePolicyNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -90777,7 +90885,10 @@ export const GetDevicePolicyCustomIncludeResponse =
     ),
   }) as unknown as Schema.Schema<GetDevicePolicyCustomIncludeResponse>;
 
-export type GetDevicePolicyCustomIncludeError = DefaultErrors;
+export type GetDevicePolicyCustomIncludeError =
+  | DefaultErrors
+  | DevicePolicyNotFound
+  | Forbidden;
 
 export const getDevicePolicyCustomInclude: API.PaginatedOperationMethod<
   GetDevicePolicyCustomIncludeRequest,
@@ -90787,7 +90898,7 @@ export const getDevicePolicyCustomInclude: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePolicyCustomIncludeRequest,
   output: GetDevicePolicyCustomIncludeResponse,
-  errors: [],
+  errors: [DevicePolicyNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -90855,7 +90966,10 @@ export const PutDevicePolicyCustomIncludeResponse =
     ),
   }) as unknown as Schema.Schema<PutDevicePolicyCustomIncludeResponse>;
 
-export type PutDevicePolicyCustomIncludeError = DefaultErrors;
+export type PutDevicePolicyCustomIncludeError =
+  | DefaultErrors
+  | DevicePolicyNotFound
+  | Forbidden;
 
 export const putDevicePolicyCustomInclude: API.PaginatedOperationMethod<
   PutDevicePolicyCustomIncludeRequest,
@@ -90865,7 +90979,7 @@ export const putDevicePolicyCustomInclude: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutDevicePolicyCustomIncludeRequest,
   output: PutDevicePolicyCustomIncludeResponse,
-  errors: [],
+  errors: [DevicePolicyNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -92658,7 +92772,10 @@ export const GetDevicePostureResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetDevicePostureResponse>;
 
-export type GetDevicePostureError = DefaultErrors;
+export type GetDevicePostureError =
+  | DefaultErrors
+  | PostureRuleNotFound
+  | Forbidden;
 
 export const getDevicePosture: API.OperationMethod<
   GetDevicePostureRequest,
@@ -92668,7 +92785,7 @@ export const getDevicePosture: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDevicePostureRequest,
   output: GetDevicePostureResponse,
-  errors: [],
+  errors: [PostureRuleNotFound, Forbidden],
 }));
 
 export interface ListDevicePosturesRequest {
@@ -93385,7 +93502,7 @@ export const ListDevicePosturesResponse =
     ),
   }) as unknown as Schema.Schema<ListDevicePosturesResponse>;
 
-export type ListDevicePosturesError = DefaultErrors;
+export type ListDevicePosturesError = DefaultErrors | Forbidden;
 
 export const listDevicePostures: API.PaginatedOperationMethod<
   ListDevicePosturesRequest,
@@ -93395,7 +93512,7 @@ export const listDevicePostures: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePosturesRequest,
   output: ListDevicePosturesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -94655,7 +94772,7 @@ export const CreateDevicePostureResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateDevicePostureResponse>;
 
-export type CreateDevicePostureError = DefaultErrors;
+export type CreateDevicePostureError = DefaultErrors | Forbidden;
 
 export const createDevicePosture: API.OperationMethod<
   CreateDevicePostureRequest,
@@ -94665,7 +94782,7 @@ export const createDevicePosture: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDevicePostureRequest,
   output: CreateDevicePostureResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateDevicePostureRequest {
@@ -95926,7 +96043,10 @@ export const UpdateDevicePostureResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateDevicePostureResponse>;
 
-export type UpdateDevicePostureError = DefaultErrors;
+export type UpdateDevicePostureError =
+  | DefaultErrors
+  | PostureRuleNotFound
+  | Forbidden;
 
 export const updateDevicePosture: API.OperationMethod<
   UpdateDevicePostureRequest,
@@ -95936,7 +96056,7 @@ export const updateDevicePosture: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDevicePostureRequest,
   output: UpdateDevicePostureResponse,
-  errors: [],
+  errors: [PostureRuleNotFound, Forbidden],
 }));
 
 export interface DeleteDevicePostureRequest {
@@ -95967,7 +96087,10 @@ export const DeleteDevicePostureResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDevicePostureResponse>;
 
-export type DeleteDevicePostureError = DefaultErrors;
+export type DeleteDevicePostureError =
+  | DefaultErrors
+  | PostureRuleNotFound
+  | Forbidden;
 
 export const deleteDevicePosture: API.OperationMethod<
   DeleteDevicePostureRequest,
@@ -95977,7 +96100,7 @@ export const deleteDevicePosture: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDevicePostureRequest,
   output: DeleteDevicePostureResponse,
-  errors: [],
+  errors: [PostureRuleNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -97453,7 +97576,7 @@ export const GetDeviceSettingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetDeviceSettingResponse>;
 
-export type GetDeviceSettingError = DefaultErrors;
+export type GetDeviceSettingError = DefaultErrors | Forbidden;
 
 export const getDeviceSetting: API.OperationMethod<
   GetDeviceSettingRequest,
@@ -97463,7 +97586,7 @@ export const getDeviceSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeviceSettingRequest,
   output: GetDeviceSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutDeviceSettingRequest {
@@ -97586,7 +97709,7 @@ export const PutDeviceSettingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PutDeviceSettingResponse>;
 
-export type PutDeviceSettingError = DefaultErrors;
+export type PutDeviceSettingError = DefaultErrors | Forbidden;
 
 export const putDeviceSetting: API.OperationMethod<
   PutDeviceSettingRequest,
@@ -97596,7 +97719,7 @@ export const putDeviceSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutDeviceSettingRequest,
   output: PutDeviceSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchDeviceSettingRequest {
@@ -97722,7 +97845,7 @@ export const PatchDeviceSettingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchDeviceSettingResponse>;
 
-export type PatchDeviceSettingError = DefaultErrors;
+export type PatchDeviceSettingError = DefaultErrors | Forbidden;
 
 export const patchDeviceSetting: API.OperationMethod<
   PatchDeviceSettingRequest,
@@ -97732,7 +97855,7 @@ export const patchDeviceSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDeviceSettingRequest,
   output: PatchDeviceSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface DeleteDeviceSettingRequest {
@@ -97817,7 +97940,7 @@ export const DeleteDeviceSettingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteDeviceSettingResponse>;
 
-export type DeleteDeviceSettingError = DefaultErrors;
+export type DeleteDeviceSettingError = DefaultErrors | Forbidden;
 
 export const deleteDeviceSetting: API.OperationMethod<
   DeleteDeviceSettingRequest,
@@ -97827,7 +97950,7 @@ export const deleteDeviceSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDeviceSettingRequest,
   output: DeleteDeviceSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================
@@ -122310,7 +122433,10 @@ export const GetGatewayListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetGatewayListResponse>;
 
-export type GetGatewayListError = DefaultErrors;
+export type GetGatewayListError =
+  | DefaultErrors
+  | GatewayListNotFound
+  | Forbidden;
 
 export const getGatewayList: API.OperationMethod<
   GetGatewayListRequest,
@@ -122320,7 +122446,7 @@ export const getGatewayList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGatewayListRequest,
   output: GetGatewayListResponse,
-  errors: [],
+  errors: [GatewayListNotFound, Forbidden],
 }));
 
 export interface ListGatewayListsRequest {
@@ -122364,103 +122490,112 @@ export const ListGatewayListsRequest =
   ) as unknown as Schema.Schema<ListGatewayListsRequest>;
 
 export interface ListGatewayListsResponse {
-  result: {
-    id?: string | null;
-    count?: number | null;
-    createdAt?: string | null;
-    description?: string | null;
-    items?:
-      | {
-          createdAt?: string | null;
-          description?: string | null;
-          value?: string | null;
-        }[]
-      | null;
-    name?: string | null;
-    type?:
-      | "SERIAL"
-      | "URL"
-      | "DOMAIN"
-      | "EMAIL"
-      | "IP"
-      | "CATEGORY"
-      | "LOCATION"
-      | "DEVICE"
-      | "AAGUID"
-      | (string & {})
-      | null;
-    updatedAt?: string | null;
-  }[];
+  result:
+    | {
+        id?: string | null;
+        count?: number | null;
+        createdAt?: string | null;
+        description?: string | null;
+        items?:
+          | {
+              createdAt?: string | null;
+              description?: string | null;
+              value?: string | null;
+            }[]
+          | null;
+        name?: string | null;
+        type?:
+          | "SERIAL"
+          | "URL"
+          | "DOMAIN"
+          | "EMAIL"
+          | "IP"
+          | "CATEGORY"
+          | "LOCATION"
+          | "DEVICE"
+          | "AAGUID"
+          | (string & {})
+          | null;
+        updatedAt?: string | null;
+      }[]
+    | null;
 }
 
 export const ListGatewayListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        items: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                createdAt: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                description: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                value: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  description: "description",
-                  value: "value",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        type: Schema.optional(
-          Schema.Union([
+    result: Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          createdAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          items: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "SERIAL",
-                "URL",
-                "DOMAIN",
-                "EMAIL",
-                "IP",
-                "CATEGORY",
-                "LOCATION",
-                "DEVICE",
-                "AAGUID",
-              ]),
-              Schema.String,
+              Schema.Array(
+                Schema.Struct({
+                  createdAt: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  description: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  value: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    description: "description",
+                    value: "value",
+                  }),
+                ),
+              ),
+              Schema.Null,
             ]),
-            Schema.Null,
-          ]),
+          ),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals([
+                  "SERIAL",
+                  "URL",
+                  "DOMAIN",
+                  "EMAIL",
+                  "IP",
+                  "CATEGORY",
+                  "LOCATION",
+                  "DEVICE",
+                  "AAGUID",
+                ]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+          updatedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            count: "count",
+            createdAt: "created_at",
+            description: "description",
+            items: "items",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+          }),
         ),
-        updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          count: "count",
-          createdAt: "created_at",
-          description: "description",
-          items: "items",
-          name: "name",
-          type: "type",
-          updatedAt: "updated_at",
-        }),
       ),
-    ),
+      Schema.Null,
+    ]),
   }) as unknown as Schema.Schema<ListGatewayListsResponse>;
 
 export type ListGatewayListsError = DefaultErrors;
@@ -122776,7 +122911,7 @@ export const UpdateGatewayListResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateGatewayListResponse>;
 
-export type UpdateGatewayListError = DefaultErrors;
+export type UpdateGatewayListError = DefaultErrors | GatewayListNotFound;
 
 export const updateGatewayList: API.OperationMethod<
   UpdateGatewayListRequest,
@@ -122786,7 +122921,7 @@ export const updateGatewayList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGatewayListRequest,
   output: UpdateGatewayListResponse,
-  errors: [],
+  errors: [GatewayListNotFound],
 }));
 
 export interface PatchGatewayListRequest {
@@ -122955,7 +123090,7 @@ export const DeleteGatewayListResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteGatewayListResponse>;
 
-export type DeleteGatewayListError = DefaultErrors;
+export type DeleteGatewayListError = DefaultErrors | GatewayListNotFound;
 
 export const deleteGatewayList: API.OperationMethod<
   DeleteGatewayListRequest,
@@ -122965,7 +123100,7 @@ export const deleteGatewayList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGatewayListRequest,
   output: DeleteGatewayListResponse,
-  errors: [],
+  errors: [GatewayListNotFound],
 }));
 
 // =============================================================================
@@ -123019,7 +123154,7 @@ export const ListGatewayListItemsResponse =
     ),
   }) as unknown as Schema.Schema<ListGatewayListItemsResponse>;
 
-export type ListGatewayListItemsError = DefaultErrors;
+export type ListGatewayListItemsError = DefaultErrors | GatewayListNotFound;
 
 export const listGatewayListItems: API.PaginatedOperationMethod<
   ListGatewayListItemsRequest,
@@ -123029,7 +123164,7 @@ export const listGatewayListItems: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayListItemsRequest,
   output: ListGatewayListItemsResponse,
-  errors: [],
+  errors: [GatewayListNotFound],
   pagination: {
     mode: "single",
     items: "result",
@@ -123214,7 +123349,10 @@ export const GetGatewayLocationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetGatewayLocationResponse>;
 
-export type GetGatewayLocationError = DefaultErrors;
+export type GetGatewayLocationError =
+  | DefaultErrors
+  | GatewayLocationNotFound
+  | Forbidden;
 
 export const getGatewayLocation: API.OperationMethod<
   GetGatewayLocationRequest,
@@ -123224,7 +123362,7 @@ export const getGatewayLocation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGatewayLocationRequest,
   output: GetGatewayLocationResponse,
-  errors: [],
+  errors: [GatewayLocationNotFound, Forbidden],
 }));
 
 export interface ListGatewayLocationsRequest {
@@ -123239,164 +123377,173 @@ export const ListGatewayLocationsRequest =
   ) as unknown as Schema.Schema<ListGatewayLocationsRequest>;
 
 export interface ListGatewayLocationsResponse {
-  result: {
-    id?: string | null;
-    clientDefault?: boolean | null;
-    createdAt?: string | null;
-    dnsDestinationIpsId?: string | null;
-    dnsDestinationIpv6BlockId?: string | null;
-    dohSubdomain?: string | null;
-    ecsSupport?: boolean | null;
-    endpoints?: {
-      doh: {
-        enabled?: boolean | null;
+  result:
+    | {
+        id?: string | null;
+        clientDefault?: boolean | null;
+        createdAt?: string | null;
+        dnsDestinationIpsId?: string | null;
+        dnsDestinationIpv6BlockId?: string | null;
+        dohSubdomain?: string | null;
+        ecsSupport?: boolean | null;
+        endpoints?: {
+          doh: {
+            enabled?: boolean | null;
+            networks?: { network: string }[] | null;
+            requireToken?: boolean | null;
+          };
+          dot: {
+            enabled?: boolean | null;
+            networks?: { network: string }[] | null;
+          };
+          ipv4: { enabled?: boolean | null };
+          ipv6: {
+            enabled?: boolean | null;
+            networks?: { network: string }[] | null;
+          };
+        } | null;
+        ip?: string | null;
+        ipv4Destination?: string | null;
+        ipv4DestinationBackup?: string | null;
+        name?: string | null;
         networks?: { network: string }[] | null;
-        requireToken?: boolean | null;
-      };
-      dot: {
-        enabled?: boolean | null;
-        networks?: { network: string }[] | null;
-      };
-      ipv4: { enabled?: boolean | null };
-      ipv6: {
-        enabled?: boolean | null;
-        networks?: { network: string }[] | null;
-      };
-    } | null;
-    ip?: string | null;
-    ipv4Destination?: string | null;
-    ipv4DestinationBackup?: string | null;
-    name?: string | null;
-    networks?: { network: string }[] | null;
-    updatedAt?: string | null;
-  }[];
+        updatedAt?: string | null;
+      }[]
+    | null;
 }
 
 export const ListGatewayLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        clientDefault: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        dnsDestinationIpsId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        dnsDestinationIpv6BlockId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        dohSubdomain: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        ecsSupport: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        endpoints: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              doh: Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
+    result: Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          clientDefault: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          createdAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          dnsDestinationIpsId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          dnsDestinationIpv6BlockId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          dohSubdomain: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          ecsSupport: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          endpoints: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                doh: Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  networks: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Struct({
+                          network: Schema.String,
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  requireToken: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    networks: "networks",
+                    requireToken: "require_token",
+                  }),
                 ),
-                networks: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(
-                      Schema.Struct({
-                        network: Schema.String,
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                requireToken: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  networks: "networks",
-                  requireToken: "require_token",
+                dot: Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  networks: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Struct({
+                          network: Schema.String,
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+                ipv4: Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                ipv6: Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  networks: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Struct({
+                          network: Schema.String,
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          ipv4Destination: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          ipv4DestinationBackup: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          networks: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  network: Schema.String,
                 }),
               ),
-              dot: Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                networks: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(
-                      Schema.Struct({
-                        network: Schema.String,
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }),
-              ipv4: Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              ipv6: Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                networks: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(
-                      Schema.Struct({
-                        network: Schema.String,
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }),
-            }),
-            Schema.Null,
-          ]),
+              Schema.Null,
+            ]),
+          ),
+          updatedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            clientDefault: "client_default",
+            createdAt: "created_at",
+            dnsDestinationIpsId: "dns_destination_ips_id",
+            dnsDestinationIpv6BlockId: "dns_destination_ipv6_block_id",
+            dohSubdomain: "doh_subdomain",
+            ecsSupport: "ecs_support",
+            endpoints: "endpoints",
+            ip: "ip",
+            ipv4Destination: "ipv4_destination",
+            ipv4DestinationBackup: "ipv4_destination_backup",
+            name: "name",
+            networks: "networks",
+            updatedAt: "updated_at",
+          }),
         ),
-        ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        ipv4Destination: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        ipv4DestinationBackup: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        networks: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                network: Schema.String,
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          clientDefault: "client_default",
-          createdAt: "created_at",
-          dnsDestinationIpsId: "dns_destination_ips_id",
-          dnsDestinationIpv6BlockId: "dns_destination_ipv6_block_id",
-          dohSubdomain: "doh_subdomain",
-          ecsSupport: "ecs_support",
-          endpoints: "endpoints",
-          ip: "ip",
-          ipv4Destination: "ipv4_destination",
-          ipv4DestinationBackup: "ipv4_destination_backup",
-          name: "name",
-          networks: "networks",
-          updatedAt: "updated_at",
-        }),
       ),
-    ),
+      Schema.Null,
+    ]),
   }) as unknown as Schema.Schema<ListGatewayLocationsResponse>;
 
 export type ListGatewayLocationsError = DefaultErrors;
@@ -123975,7 +124122,10 @@ export const UpdateGatewayLocationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateGatewayLocationResponse>;
 
-export type UpdateGatewayLocationError = DefaultErrors;
+export type UpdateGatewayLocationError =
+  | DefaultErrors
+  | GatewayLocationNotFound
+  | CannotDemoteDefaultGatewayLocation;
 
 export const updateGatewayLocation: API.OperationMethod<
   UpdateGatewayLocationRequest,
@@ -123985,7 +124135,7 @@ export const updateGatewayLocation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGatewayLocationRequest,
   output: UpdateGatewayLocationResponse,
-  errors: [],
+  errors: [GatewayLocationNotFound, CannotDemoteDefaultGatewayLocation],
 }));
 
 export interface DeleteGatewayLocationRequest {
@@ -124011,7 +124161,11 @@ export const DeleteGatewayLocationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteGatewayLocationResponse>;
 
-export type DeleteGatewayLocationError = DefaultErrors;
+export type DeleteGatewayLocationError =
+  | DefaultErrors
+  | GatewayLocationNotFound
+  | CannotDeleteDefaultGatewayLocation
+  | Forbidden;
 
 export const deleteGatewayLocation: API.OperationMethod<
   DeleteGatewayLocationRequest,
@@ -124021,7 +124175,11 @@ export const deleteGatewayLocation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGatewayLocationRequest,
   output: DeleteGatewayLocationResponse,
-  errors: [],
+  errors: [
+    GatewayLocationNotFound,
+    CannotDeleteDefaultGatewayLocation,
+    Forbidden,
+  ],
 }));
 
 // =============================================================================
@@ -124712,7 +124870,10 @@ export const GetGatewayProxyEndpointResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetGatewayProxyEndpointResponse>;
 
-export type GetGatewayProxyEndpointError = DefaultErrors;
+export type GetGatewayProxyEndpointError =
+  | DefaultErrors
+  | ProxyEndpointNotFound
+  | Forbidden;
 
 export const getGatewayProxyEndpoint: API.OperationMethod<
   GetGatewayProxyEndpointRequest,
@@ -124722,7 +124883,7 @@ export const getGatewayProxyEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGatewayProxyEndpointRequest,
   output: GetGatewayProxyEndpointResponse,
-  errors: [],
+  errors: [ProxyEndpointNotFound, Forbidden],
 }));
 
 export interface ListGatewayProxyEndpointsRequest {
@@ -124740,83 +124901,88 @@ export const ListGatewayProxyEndpointsRequest =
   ) as unknown as Schema.Schema<ListGatewayProxyEndpointsRequest>;
 
 export interface ListGatewayProxyEndpointsResponse {
-  result: (
-    | {
-        ips: string[];
-        name: string;
-        id?: string | null;
-        createdAt?: string | null;
-        kind?: "ip" | null;
-        subdomain?: string | null;
-        updatedAt?: string | null;
-      }
-    | {
-        kind: "identity";
-        name: string;
-        id?: string | null;
-        createdAt?: string | null;
-        subdomain?: string | null;
-        updatedAt?: string | null;
-      }
-  )[];
+  result:
+    | (
+        | {
+            ips: string[];
+            name: string;
+            id?: string | null;
+            createdAt?: string | null;
+            kind?: "ip" | null;
+            subdomain?: string | null;
+            updatedAt?: string | null;
+          }
+        | {
+            kind: "identity";
+            name: string;
+            id?: string | null;
+            createdAt?: string | null;
+            subdomain?: string | null;
+            updatedAt?: string | null;
+          }
+      )[]
+    | null;
 }
 
 export const ListGatewayProxyEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          ips: Schema.Array(Schema.String),
-          name: Schema.String,
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          createdAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
+    result: Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            ips: Schema.Array(Schema.String),
+            name: Schema.String,
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            createdAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            kind: Schema.optional(
+              Schema.Union([Schema.Literal("ip"), Schema.Null]),
+            ),
+            subdomain: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            updatedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              ips: "ips",
+              name: "name",
+              id: "id",
+              createdAt: "created_at",
+              kind: "kind",
+              subdomain: "subdomain",
+              updatedAt: "updated_at",
+            }),
           ),
-          kind: Schema.optional(
-            Schema.Union([Schema.Literal("ip"), Schema.Null]),
+          Schema.Struct({
+            kind: Schema.Literal("identity"),
+            name: Schema.String,
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            createdAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            subdomain: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            updatedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              kind: "kind",
+              name: "name",
+              id: "id",
+              createdAt: "created_at",
+              subdomain: "subdomain",
+              updatedAt: "updated_at",
+            }),
           ),
-          subdomain: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          updatedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            ips: "ips",
-            name: "name",
-            id: "id",
-            createdAt: "created_at",
-            kind: "kind",
-            subdomain: "subdomain",
-            updatedAt: "updated_at",
-          }),
-        ),
-        Schema.Struct({
-          kind: Schema.Literal("identity"),
-          name: Schema.String,
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          createdAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          subdomain: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          updatedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            kind: "kind",
-            name: "name",
-            id: "id",
-            createdAt: "created_at",
-            subdomain: "subdomain",
-            updatedAt: "updated_at",
-          }),
-        ),
-      ]),
-    ),
+        ]),
+      ),
+      Schema.Null,
+    ]),
   }) as unknown as Schema.Schema<ListGatewayProxyEndpointsResponse>;
 
 export type ListGatewayProxyEndpointsError = DefaultErrors;
@@ -124843,6 +125009,7 @@ export interface CreateGatewayProxyEndpointRequest {
   name: string;
   /** Body param: The proxy endpoint kind */
   kind?: "ip" | "identity" | (string & {});
+  ips?: string[];
 }
 
 export const CreateGatewayProxyEndpointRequest =
@@ -124852,6 +125019,7 @@ export const CreateGatewayProxyEndpointRequest =
     kind: Schema.optional(
       Schema.Union([Schema.Literals(["ip", "identity"]), Schema.String]),
     ),
+    ips: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -124920,7 +125088,10 @@ export const CreateGatewayProxyEndpointResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateGatewayProxyEndpointResponse>;
 
-export type CreateGatewayProxyEndpointError = DefaultErrors;
+export type CreateGatewayProxyEndpointError =
+  | DefaultErrors
+  | IpProxyEndpointsRequireEnterprise
+  | Forbidden;
 
 export const createGatewayProxyEndpoint: API.OperationMethod<
   CreateGatewayProxyEndpointRequest,
@@ -124930,7 +125101,7 @@ export const createGatewayProxyEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGatewayProxyEndpointRequest,
   output: CreateGatewayProxyEndpointResponse,
-  errors: [],
+  errors: [IpProxyEndpointsRequireEnterprise, Forbidden],
 }));
 
 export interface PatchGatewayProxyEndpointRequest {
@@ -125017,7 +125188,9 @@ export const PatchGatewayProxyEndpointResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchGatewayProxyEndpointResponse>;
 
-export type PatchGatewayProxyEndpointError = DefaultErrors;
+export type PatchGatewayProxyEndpointError =
+  | DefaultErrors
+  | ProxyEndpointNotFound;
 
 export const patchGatewayProxyEndpoint: API.OperationMethod<
   PatchGatewayProxyEndpointRequest,
@@ -125027,7 +125200,7 @@ export const patchGatewayProxyEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGatewayProxyEndpointRequest,
   output: PatchGatewayProxyEndpointResponse,
-  errors: [],
+  errors: [ProxyEndpointNotFound],
 }));
 
 export interface DeleteGatewayProxyEndpointRequest {
@@ -125053,7 +125226,9 @@ export const DeleteGatewayProxyEndpointResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteGatewayProxyEndpointResponse>;
 
-export type DeleteGatewayProxyEndpointError = DefaultErrors;
+export type DeleteGatewayProxyEndpointError =
+  | DefaultErrors
+  | ProxyEndpointNotFound;
 
 export const deleteGatewayProxyEndpoint: API.OperationMethod<
   DeleteGatewayProxyEndpointRequest,
@@ -125063,7 +125238,7 @@ export const deleteGatewayProxyEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGatewayProxyEndpointRequest,
   output: DeleteGatewayProxyEndpointResponse,
-  errors: [],
+  errors: [ProxyEndpointNotFound],
 }));
 
 // =============================================================================
@@ -131716,7 +131891,10 @@ export const GetIdentityProviderResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetIdentityProviderResponse>;
 
-export type GetIdentityProviderError = DefaultErrors;
+export type GetIdentityProviderError =
+  | DefaultErrors
+  | AccessIdentityProviderNotFound
+  | Forbidden;
 
 export const getIdentityProviderForAccount: API.OperationMethod<
   GetIdentityProviderForAccountRequest,
@@ -131726,7 +131904,7 @@ export const getIdentityProviderForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdentityProviderForAccountRequest,
   output: GetIdentityProviderResponse,
-  errors: [],
+  errors: [AccessIdentityProviderNotFound, Forbidden],
 }));
 
 export const getIdentityProviderForZone: API.OperationMethod<
@@ -131737,7 +131915,7 @@ export const getIdentityProviderForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdentityProviderForZoneRequest,
   output: GetIdentityProviderResponse,
-  errors: [],
+  errors: [AccessIdentityProviderNotFound, Forbidden],
 }));
 
 const ListIdentityProvidersBaseFields = {
@@ -131786,654 +131964,664 @@ export const ListIdentityProvidersForZoneRequest =
   ) as unknown as Schema.Schema<ListIdentityProvidersForZoneRequest>;
 
 export interface ListIdentityProvidersResponse {
-  result: (
-    | {
-        config: {
-          claims?: string[] | null;
-          clientId?: string | null;
-          clientSecret?: string | null;
-          conditionalAccessEnabled?: boolean | null;
-          directoryId?: string | null;
-          emailClaimName?: string | null;
-          prompt?: "login" | "select_account" | "none" | (string & {}) | null;
-          supportGroups?: boolean | null;
-        };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: {
-          centrifyAccount?: string | null;
-          centrifyAppId?: string | null;
-          claims?: string[] | null;
-          clientId?: string | null;
-          clientSecret?: string | null;
-          emailClaimName?: string | null;
-        };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: { clientId?: string | null; clientSecret?: string | null };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: {
-          claims?: string[] | null;
-          clientId?: string | null;
-          clientSecret?: string | null;
-          emailClaimName?: string | null;
-        };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: {
-          appsDomain?: string | null;
-          claims?: string[] | null;
-          clientId?: string | null;
-          clientSecret?: string | null;
-          emailClaimName?: string | null;
-        };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: {
-          authUrl?: string | null;
-          certsUrl?: string | null;
-          claims?: string[] | null;
-          clientId?: string | null;
-          clientSecret?: string | null;
-          emailClaimName?: string | null;
-          pkceEnabled?: boolean | null;
-          scopes?: string[] | null;
-          tokenUrl?: string | null;
-        };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: {
-          authorizationServerId?: string | null;
-          claims?: string[] | null;
-          clientId?: string | null;
-          clientSecret?: string | null;
-          emailClaimName?: string | null;
-          oktaAccount?: string | null;
-        };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: {
-          claims?: string[] | null;
-          clientId?: string | null;
-          clientSecret?: string | null;
-          emailClaimName?: string | null;
-          oneloginAccount?: string | null;
-        };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: {
-          claims?: string[] | null;
-          clientId?: string | null;
-          clientSecret?: string | null;
-          emailClaimName?: string | null;
-          pingEnvId?: string | null;
-        };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: {
-          attributes?: string[] | null;
-          emailAttributeName?: string | null;
-          enableEncryption?: boolean | null;
-          headerAttributes?:
-            | { attributeName?: string | null; headerName?: string | null }[]
-            | null;
-          idpPublicCerts?: string[] | null;
-          issuerUrl?: string | null;
-          signRequest?: boolean | null;
-          ssoTargetUrl?: string | null;
-        };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: { redirectUrl?: string | null };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-    | {
-        config: {
-          redirectUrl?: string | null;
-          restrictToAccountMembers?: boolean | null;
-        };
-        name: string;
-        type:
-          | "onetimepin"
-          | "azureAD"
-          | "saml"
-          | "centrify"
-          | "facebook"
-          | "github"
-          | "google-apps"
-          | "google"
-          | "linkedin"
-          | "oidc"
-          | "okta"
-          | "onelogin"
-          | "pingone"
-          | "yandex"
-          | "cloudflare"
-          | (string & {});
-        id?: string | null;
-        samlCertificateSet?: {
-          createdAt: string;
-          uid: string;
-          updatedAt: string;
-          currentCertificate?: {
-            isCurrent: boolean;
-            notAfter: string;
-            publicCertificate: string;
-            uid: string;
-          } | null;
-          previousCertificate?: unknown | null;
-        } | null;
-        samlCertificateSetId?: string | null;
-        scimConfig?: {
-          enabled?: boolean | null;
-          identityUpdateBehavior?:
-            | "automatic"
-            | "reauth"
-            | "no_action"
-            | (string & {})
-            | null;
-          scimBaseUrl?: string | null;
-          seatDeprovision?: boolean | null;
-          secret?: string | null;
-          userDeprovision?: boolean | null;
-        } | null;
-      }
-  )[];
+  result:
+    | (
+        | {
+            config: {
+              claims?: string[] | null;
+              clientId?: string | null;
+              clientSecret?: string | null;
+              conditionalAccessEnabled?: boolean | null;
+              directoryId?: string | null;
+              emailClaimName?: string | null;
+              prompt?:
+                | "login"
+                | "select_account"
+                | "none"
+                | (string & {})
+                | null;
+              supportGroups?: boolean | null;
+            };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: {
+              centrifyAccount?: string | null;
+              centrifyAppId?: string | null;
+              claims?: string[] | null;
+              clientId?: string | null;
+              clientSecret?: string | null;
+              emailClaimName?: string | null;
+            };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: { clientId?: string | null; clientSecret?: string | null };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: {
+              claims?: string[] | null;
+              clientId?: string | null;
+              clientSecret?: string | null;
+              emailClaimName?: string | null;
+            };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: {
+              appsDomain?: string | null;
+              claims?: string[] | null;
+              clientId?: string | null;
+              clientSecret?: string | null;
+              emailClaimName?: string | null;
+            };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: {
+              authUrl?: string | null;
+              certsUrl?: string | null;
+              claims?: string[] | null;
+              clientId?: string | null;
+              clientSecret?: string | null;
+              emailClaimName?: string | null;
+              pkceEnabled?: boolean | null;
+              scopes?: string[] | null;
+              tokenUrl?: string | null;
+            };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: {
+              authorizationServerId?: string | null;
+              claims?: string[] | null;
+              clientId?: string | null;
+              clientSecret?: string | null;
+              emailClaimName?: string | null;
+              oktaAccount?: string | null;
+            };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: {
+              claims?: string[] | null;
+              clientId?: string | null;
+              clientSecret?: string | null;
+              emailClaimName?: string | null;
+              oneloginAccount?: string | null;
+            };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: {
+              claims?: string[] | null;
+              clientId?: string | null;
+              clientSecret?: string | null;
+              emailClaimName?: string | null;
+              pingEnvId?: string | null;
+            };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: {
+              attributes?: string[] | null;
+              emailAttributeName?: string | null;
+              enableEncryption?: boolean | null;
+              headerAttributes?:
+                | {
+                    attributeName?: string | null;
+                    headerName?: string | null;
+                  }[]
+                | null;
+              idpPublicCerts?: string[] | null;
+              issuerUrl?: string | null;
+              signRequest?: boolean | null;
+              ssoTargetUrl?: string | null;
+            };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: { redirectUrl?: string | null };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+        | {
+            config: {
+              redirectUrl?: string | null;
+              restrictToAccountMembers?: boolean | null;
+            };
+            name: string;
+            type:
+              | "onetimepin"
+              | "azureAD"
+              | "saml"
+              | "centrify"
+              | "facebook"
+              | "github"
+              | "google-apps"
+              | "google"
+              | "linkedin"
+              | "oidc"
+              | "okta"
+              | "onelogin"
+              | "pingone"
+              | "yandex"
+              | "cloudflare"
+              | (string & {});
+            id?: string | null;
+            samlCertificateSet?: {
+              createdAt: string;
+              uid: string;
+              updatedAt: string;
+              currentCertificate?: {
+                isCurrent: boolean;
+                notAfter: string;
+                publicCertificate: string;
+                uid: string;
+              } | null;
+              previousCertificate?: unknown | null;
+            } | null;
+            samlCertificateSetId?: string | null;
+            scimConfig?: {
+              enabled?: boolean | null;
+              identityUpdateBehavior?:
+                | "automatic"
+                | "reauth"
+                | "no_action"
+                | (string & {})
+                | null;
+              scimBaseUrl?: string | null;
+              seatDeprovision?: boolean | null;
+              secret?: string | null;
+              userDeprovision?: boolean | null;
+            } | null;
+          }
+      )[]
+    | null;
   resultInfo?: {
     count?: number | null;
     page?: number | null;
@@ -132444,1725 +132632,1728 @@ export interface ListIdentityProvidersResponse {
 
 export const ListIdentityProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          config: Schema.Struct({
-            claims: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            clientId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            clientSecret: Schema.optional(
-              Schema.Union([SensitiveString, Schema.Null]),
-            ),
-            conditionalAccessEnabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            directoryId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            emailClaimName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            prompt: Schema.optional(
-              Schema.Union([
+    result: Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            config: Schema.Struct({
+              claims: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              conditionalAccessEnabled: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              directoryId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              emailClaimName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              prompt: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["login", "select_account", "none"]),
-                  Schema.String,
+                  Schema.Union([
+                    Schema.Literals(["login", "select_account", "none"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
                 ]),
-                Schema.Null,
+              ),
+              supportGroups: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                claims: "claims",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                conditionalAccessEnabled: "conditional_access_enabled",
+                directoryId: "directory_id",
+                emailClaimName: "email_claim_name",
+                prompt: "prompt",
+                supportGroups: "support_groups",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
               ]),
-            ),
-            supportGroups: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              claims: "claims",
-              clientId: "client_id",
-              clientSecret: "client_secret",
-              conditionalAccessEnabled: "conditional_access_enabled",
-              directoryId: "directory_id",
-              emailClaimName: "email_claim_name",
-              prompt: "prompt",
-              supportGroups: "support_groups",
-            }),
-          ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
+              Schema.String,
             ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            centrifyAccount: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            centrifyAppId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            claims: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            clientId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            clientSecret: Schema.optional(
-              Schema.Union([SensitiveString, Schema.Null]),
-            ),
-            emailClaimName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              centrifyAccount: "centrify_account",
-              centrifyAppId: "centrify_app_id",
-              claims: "claims",
-              clientId: "client_id",
-              clientSecret: "client_secret",
-              emailClaimName: "email_claim_name",
-            }),
-          ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
-            ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            clientId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            clientSecret: Schema.optional(
-              Schema.Union([SensitiveString, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              clientId: "client_id",
-              clientSecret: "client_secret",
-            }),
-          ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
-            ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            claims: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            clientId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            clientSecret: Schema.optional(
-              Schema.Union([SensitiveString, Schema.Null]),
-            ),
-            emailClaimName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              claims: "claims",
-              clientId: "client_id",
-              clientSecret: "client_secret",
-              emailClaimName: "email_claim_name",
-            }),
-          ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
-            ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            appsDomain: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            claims: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            clientId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            clientSecret: Schema.optional(
-              Schema.Union([SensitiveString, Schema.Null]),
-            ),
-            emailClaimName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              appsDomain: "apps_domain",
-              claims: "claims",
-              clientId: "client_id",
-              clientSecret: "client_secret",
-              emailClaimName: "email_claim_name",
-            }),
-          ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
-            ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            authUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            certsUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            claims: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            clientId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            clientSecret: Schema.optional(
-              Schema.Union([SensitiveString, Schema.Null]),
-            ),
-            emailClaimName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            pkceEnabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            scopes: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            tokenUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              authUrl: "auth_url",
-              certsUrl: "certs_url",
-              claims: "claims",
-              clientId: "client_id",
-              clientSecret: "client_secret",
-              emailClaimName: "email_claim_name",
-              pkceEnabled: "pkce_enabled",
-              scopes: "scopes",
-              tokenUrl: "token_url",
-            }),
-          ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
-            ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            authorizationServerId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            claims: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            clientId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            clientSecret: Schema.optional(
-              Schema.Union([SensitiveString, Schema.Null]),
-            ),
-            emailClaimName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            oktaAccount: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              authorizationServerId: "authorization_server_id",
-              claims: "claims",
-              clientId: "client_id",
-              clientSecret: "client_secret",
-              emailClaimName: "email_claim_name",
-              oktaAccount: "okta_account",
-            }),
-          ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
-            ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            claims: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            clientId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            clientSecret: Schema.optional(
-              Schema.Union([SensitiveString, Schema.Null]),
-            ),
-            emailClaimName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            oneloginAccount: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              claims: "claims",
-              clientId: "client_id",
-              clientSecret: "client_secret",
-              emailClaimName: "email_claim_name",
-              oneloginAccount: "onelogin_account",
-            }),
-          ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
-            ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            claims: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            clientId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            clientSecret: Schema.optional(
-              Schema.Union([SensitiveString, Schema.Null]),
-            ),
-            emailClaimName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            pingEnvId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              claims: "claims",
-              clientId: "client_id",
-              clientSecret: "client_secret",
-              emailClaimName: "email_claim_name",
-              pingEnvId: "ping_env_id",
-            }),
-          ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
-            ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            attributes: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            emailAttributeName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            enableEncryption: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            headerAttributes: Schema.optional(
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
               Schema.Union([
-                Schema.Array(
-                  Schema.Struct({
-                    attributeName: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    headerName: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      attributeName: "attribute_name",
-                      headerName: "header_name",
-                    }),
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
                   ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
                 ),
                 Schema.Null,
               ]),
             ),
-            idpPublicCerts: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            issuerUrl: Schema.optional(
+            samlCertificateSetId: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            signRequest: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            ssoTargetUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
+                ),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
-              attributes: "attributes",
-              emailAttributeName: "email_attribute_name",
-              enableEncryption: "enable_encryption",
-              headerAttributes: "header_attributes",
-              idpPublicCerts: "idp_public_certs",
-              issuerUrl: "issuer_url",
-              signRequest: "sign_request",
-              ssoTargetUrl: "sso_target_url",
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
             }),
           ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
-            ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
+          Schema.Struct({
+            config: Schema.Struct({
+              centrifyAccount: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
               ),
-              Schema.Null,
+              centrifyAppId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              claims: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              emailClaimName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                centrifyAccount: "centrify_account",
+                centrifyAppId: "centrify_app_id",
+                claims: "claims",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                emailClaimName: "email_claim_name",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
             ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
                     ]),
-                    Schema.Null,
-                  ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
                 ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            redirectUrl: Schema.optional(
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-          }).pipe(Schema.encodeKeys({ redirectUrl: "redirect_url" })),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
-            ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
                     ]),
-                    Schema.Null,
-                  ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
                 ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-        Schema.Struct({
-          config: Schema.Struct({
-            redirectUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            restrictToAccountMembers: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
-              redirectUrl: "redirect_url",
-              restrictToAccountMembers: "restrict_to_account_members",
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
             }),
           ),
-          name: Schema.String,
-          type: Schema.Union([
-            Schema.Literals([
-              "onetimepin",
-              "azureAD",
-              "saml",
-              "centrify",
-              "facebook",
-              "github",
-              "google-apps",
-              "google",
-              "linkedin",
-              "oidc",
-              "okta",
-              "onelogin",
-              "pingone",
-              "yandex",
-              "cloudflare",
+          Schema.Struct({
+            config: Schema.Struct({
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                clientId: "client_id",
+                clientSecret: "client_secret",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
             ]),
-            Schema.String,
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          samlCertificateSet: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                createdAt: Schema.String,
-                uid: Schema.String,
-                updatedAt: Schema.String,
-                currentCertificate: Schema.optional(
-                  Schema.Union([
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
+            }),
+          ),
+          Schema.Struct({
+            config: Schema.Struct({
+              claims: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              emailClaimName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                claims: "claims",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                emailClaimName: "email_claim_name",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
+            ]),
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
+            }),
+          ),
+          Schema.Struct({
+            config: Schema.Struct({
+              appsDomain: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              claims: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              emailClaimName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                appsDomain: "apps_domain",
+                claims: "claims",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                emailClaimName: "email_claim_name",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
+            ]),
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
+            }),
+          ),
+          Schema.Struct({
+            config: Schema.Struct({
+              authUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              certsUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              claims: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              emailClaimName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              pkceEnabled: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scopes: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              tokenUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                authUrl: "auth_url",
+                certsUrl: "certs_url",
+                claims: "claims",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                emailClaimName: "email_claim_name",
+                pkceEnabled: "pkce_enabled",
+                scopes: "scopes",
+                tokenUrl: "token_url",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
+            ]),
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
+            }),
+          ),
+          Schema.Struct({
+            config: Schema.Struct({
+              authorizationServerId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              claims: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              emailClaimName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              oktaAccount: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                authorizationServerId: "authorization_server_id",
+                claims: "claims",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                emailClaimName: "email_claim_name",
+                oktaAccount: "okta_account",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
+            ]),
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
+            }),
+          ),
+          Schema.Struct({
+            config: Schema.Struct({
+              claims: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              emailClaimName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              oneloginAccount: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                claims: "claims",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                emailClaimName: "email_claim_name",
+                oneloginAccount: "onelogin_account",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
+            ]),
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
+            }),
+          ),
+          Schema.Struct({
+            config: Schema.Struct({
+              claims: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              emailClaimName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              pingEnvId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                claims: "claims",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                emailClaimName: "email_claim_name",
+                pingEnvId: "ping_env_id",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
+            ]),
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
+            }),
+          ),
+          Schema.Struct({
+            config: Schema.Struct({
+              attributes: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              emailAttributeName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              enableEncryption: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              headerAttributes: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
                     Schema.Struct({
-                      isCurrent: Schema.Boolean,
-                      notAfter: Schema.String,
-                      publicCertificate: Schema.String,
-                      uid: Schema.String,
+                      attributeName: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      headerName: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
                     }).pipe(
                       Schema.encodeKeys({
-                        isCurrent: "is_current",
-                        notAfter: "not_after",
-                        publicCertificate: "public_certificate",
-                        uid: "uid",
+                        attributeName: "attribute_name",
+                        headerName: "header_name",
                       }),
                     ),
-                    Schema.Null,
-                  ]),
-                ),
-                previousCertificate: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  createdAt: "created_at",
-                  uid: "uid",
-                  updatedAt: "updated_at",
-                  currentCertificate: "current_certificate",
-                  previousCertificate: "previous_certificate",
-                }),
+                  ),
+                  Schema.Null,
+                ]),
               ),
-              Schema.Null,
+              idpPublicCerts: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              issuerUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              signRequest: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              ssoTargetUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                attributes: "attributes",
+                emailAttributeName: "email_attribute_name",
+                enableEncryption: "enable_encryption",
+                headerAttributes: "header_attributes",
+                idpPublicCerts: "idp_public_certs",
+                issuerUrl: "issuer_url",
+                signRequest: "sign_request",
+                ssoTargetUrl: "sso_target_url",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
             ]),
-          ),
-          samlCertificateSetId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scimConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                identityUpdateBehavior: Schema.optional(
-                  Schema.Union([
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["automatic", "reauth", "no_action"]),
-                      Schema.String,
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
                     ]),
-                    Schema.Null,
-                  ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
                 ),
-                scimBaseUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
                 ),
-                seatDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                secret: Schema.optional(
-                  Schema.Union([SensitiveString, Schema.Null]),
-                ),
-                userDeprovision: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  identityUpdateBehavior: "identity_update_behavior",
-                  scimBaseUrl: "scim_base_url",
-                  seatDeprovision: "seat_deprovision",
-                  secret: "secret",
-                  userDeprovision: "user_deprovision",
-                }),
-              ),
-              Schema.Null,
-            ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
+            }),
           ),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            name: "name",
-            type: "type",
-            id: "id",
-            samlCertificateSet: "saml_certificate_set",
-            samlCertificateSetId: "saml_certificate_set_id",
-            scimConfig: "scim_config",
-          }),
-        ),
-      ]),
-    ),
+          Schema.Struct({
+            config: Schema.Struct({
+              redirectUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(Schema.encodeKeys({ redirectUrl: "redirect_url" })),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
+            ]),
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
+            }),
+          ),
+          Schema.Struct({
+            config: Schema.Struct({
+              redirectUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              restrictToAccountMembers: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                redirectUrl: "redirect_url",
+                restrictToAccountMembers: "restrict_to_account_members",
+              }),
+            ),
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals([
+                "onetimepin",
+                "azureAD",
+                "saml",
+                "centrify",
+                "facebook",
+                "github",
+                "google-apps",
+                "google",
+                "linkedin",
+                "oidc",
+                "okta",
+                "onelogin",
+                "pingone",
+                "yandex",
+                "cloudflare",
+              ]),
+              Schema.String,
+            ]),
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            samlCertificateSet: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  createdAt: Schema.String,
+                  uid: Schema.String,
+                  updatedAt: Schema.String,
+                  currentCertificate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        isCurrent: Schema.Boolean,
+                        notAfter: Schema.String,
+                        publicCertificate: Schema.String,
+                        uid: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          isCurrent: "is_current",
+                          notAfter: "not_after",
+                          publicCertificate: "public_certificate",
+                          uid: "uid",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  previousCertificate: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    createdAt: "created_at",
+                    uid: "uid",
+                    updatedAt: "updated_at",
+                    currentCertificate: "current_certificate",
+                    previousCertificate: "previous_certificate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            samlCertificateSetId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scimConfig: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  identityUpdateBehavior: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["automatic", "reauth", "no_action"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scimBaseUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  seatDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  userDeprovision: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    enabled: "enabled",
+                    identityUpdateBehavior: "identity_update_behavior",
+                    scimBaseUrl: "scim_base_url",
+                    seatDeprovision: "seat_deprovision",
+                    secret: "secret",
+                    userDeprovision: "user_deprovision",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              config: "config",
+              name: "name",
+              type: "type",
+              id: "id",
+              samlCertificateSet: "saml_certificate_set",
+              samlCertificateSetId: "saml_certificate_set_id",
+              scimConfig: "scim_config",
+            }),
+          ),
+        ]),
+      ),
+      Schema.Null,
+    ]),
     resultInfo: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -139407,7 +139598,9 @@ export const UpdateIdentityProviderResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateIdentityProviderResponse>;
 
-export type UpdateIdentityProviderError = DefaultErrors;
+export type UpdateIdentityProviderError =
+  | DefaultErrors
+  | AccessIdentityProviderNotFound;
 
 export const updateIdentityProviderForAccount: API.OperationMethod<
   UpdateIdentityProviderForAccountRequest,
@@ -139417,7 +139610,7 @@ export const updateIdentityProviderForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIdentityProviderForAccountRequest,
   output: UpdateIdentityProviderResponse,
-  errors: [],
+  errors: [AccessIdentityProviderNotFound],
 }));
 
 export const updateIdentityProviderForZone: API.OperationMethod<
@@ -139428,7 +139621,7 @@ export const updateIdentityProviderForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIdentityProviderForZoneRequest,
   output: UpdateIdentityProviderResponse,
-  errors: [],
+  errors: [AccessIdentityProviderNotFound],
 }));
 
 const DeleteIdentityProviderBaseFields = {
@@ -139483,7 +139676,9 @@ export const DeleteIdentityProviderResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteIdentityProviderResponse>;
 
-export type DeleteIdentityProviderError = DefaultErrors;
+export type DeleteIdentityProviderError =
+  | DefaultErrors
+  | AccessIdentityProviderNotFound;
 
 export const deleteIdentityProviderForAccount: API.OperationMethod<
   DeleteIdentityProviderForAccountRequest,
@@ -139493,7 +139688,7 @@ export const deleteIdentityProviderForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIdentityProviderForAccountRequest,
   output: DeleteIdentityProviderResponse,
-  errors: [],
+  errors: [AccessIdentityProviderNotFound],
 }));
 
 export const deleteIdentityProviderForZone: API.OperationMethod<
@@ -139504,7 +139699,7 @@ export const deleteIdentityProviderForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIdentityProviderForZoneRequest,
   output: DeleteIdentityProviderResponse,
-  errors: [],
+  errors: [AccessIdentityProviderNotFound],
 }));
 
 // =============================================================================
@@ -141945,7 +142140,10 @@ export const GetNetworkVirtualNetworkResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetNetworkVirtualNetworkResponse>;
 
-export type GetNetworkVirtualNetworkError = DefaultErrors;
+export type GetNetworkVirtualNetworkError =
+  | DefaultErrors
+  | VirtualNetworkNotFound
+  | Forbidden;
 
 export const getNetworkVirtualNetwork: API.OperationMethod<
   GetNetworkVirtualNetworkRequest,
@@ -141955,7 +142153,7 @@ export const getNetworkVirtualNetwork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNetworkVirtualNetworkRequest,
   output: GetNetworkVirtualNetworkResponse,
-  errors: [],
+  errors: [VirtualNetworkNotFound, Forbidden],
 }));
 
 export interface ListNetworkVirtualNetworksRequest {
@@ -141991,37 +142189,44 @@ export const ListNetworkVirtualNetworksRequest =
   ) as unknown as Schema.Schema<ListNetworkVirtualNetworksRequest>;
 
 export interface ListNetworkVirtualNetworksResponse {
-  result: {
-    id: string;
-    comment: string;
-    createdAt: string;
-    isDefaultNetwork: boolean;
-    name: string;
-    deletedAt?: string | null;
-  }[];
+  result:
+    | {
+        id: string;
+        comment: string;
+        createdAt: string;
+        isDefaultNetwork: boolean;
+        name: string;
+        deletedAt?: string | null;
+      }[]
+    | null;
 }
 
 export const ListNetworkVirtualNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        comment: Schema.String,
-        createdAt: Schema.String,
-        isDefaultNetwork: Schema.Boolean,
-        name: Schema.String,
-        deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          comment: "comment",
-          createdAt: "created_at",
-          isDefaultNetwork: "is_default_network",
-          name: "name",
-          deletedAt: "deleted_at",
-        }),
+    result: Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          comment: Schema.String,
+          createdAt: Schema.String,
+          isDefaultNetwork: Schema.Boolean,
+          name: Schema.String,
+          deletedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            comment: "comment",
+            createdAt: "created_at",
+            isDefaultNetwork: "is_default_network",
+            name: "name",
+            deletedAt: "deleted_at",
+          }),
+        ),
       ),
-    ),
+      Schema.Null,
+    ]),
   }) as unknown as Schema.Schema<ListNetworkVirtualNetworksResponse>;
 
 export type ListNetworkVirtualNetworksError = DefaultErrors;
@@ -142112,7 +142317,9 @@ export const CreateNetworkVirtualNetworkResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateNetworkVirtualNetworkResponse>;
 
-export type CreateNetworkVirtualNetworkError = DefaultErrors;
+export type CreateNetworkVirtualNetworkError =
+  | DefaultErrors
+  | VirtualNetworkConflict;
 
 export const createNetworkVirtualNetwork: API.OperationMethod<
   CreateNetworkVirtualNetworkRequest,
@@ -142122,7 +142329,7 @@ export const createNetworkVirtualNetwork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNetworkVirtualNetworkRequest,
   output: CreateNetworkVirtualNetworkResponse,
-  errors: [],
+  errors: [VirtualNetworkConflict],
 }));
 
 export interface PatchNetworkVirtualNetworkRequest {
@@ -142194,7 +142401,9 @@ export const PatchNetworkVirtualNetworkResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchNetworkVirtualNetworkResponse>;
 
-export type PatchNetworkVirtualNetworkError = DefaultErrors;
+export type PatchNetworkVirtualNetworkError =
+  | DefaultErrors
+  | VirtualNetworkNotFound;
 
 export const patchNetworkVirtualNetwork: API.OperationMethod<
   PatchNetworkVirtualNetworkRequest,
@@ -142204,7 +142413,7 @@ export const patchNetworkVirtualNetwork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchNetworkVirtualNetworkRequest,
   output: PatchNetworkVirtualNetworkResponse,
-  errors: [],
+  errors: [VirtualNetworkNotFound],
 }));
 
 export interface DeleteNetworkVirtualNetworkRequest {
@@ -142262,7 +142471,10 @@ export const DeleteNetworkVirtualNetworkResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteNetworkVirtualNetworkResponse>;
 
-export type DeleteNetworkVirtualNetworkError = DefaultErrors;
+export type DeleteNetworkVirtualNetworkError =
+  | DefaultErrors
+  | VirtualNetworkNotFound
+  | Forbidden;
 
 export const deleteNetworkVirtualNetwork: API.OperationMethod<
   DeleteNetworkVirtualNetworkRequest,
@@ -142272,7 +142484,7 @@ export const deleteNetworkVirtualNetwork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNetworkVirtualNetworkRequest,
   output: DeleteNetworkVirtualNetworkResponse,
-  errors: [],
+  errors: [VirtualNetworkNotFound, Forbidden],
 }));
 
 // =============================================================================

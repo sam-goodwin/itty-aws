@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "GatewayLocationNotFound": [{ "code": 1103 }],
+    "CannotDemoteDefaultGatewayLocation": [{ "code": 1216 }]
+  }
+}

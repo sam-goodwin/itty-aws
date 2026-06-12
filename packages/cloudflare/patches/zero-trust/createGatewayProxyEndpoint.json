@@ -1,0 +1,28 @@
+{
+  "errors": {
+    "IpProxyEndpointsRequireEnterprise": [
+      {
+        "code": 2009
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
+  },
+  "request": {
+    "properties": {
+      "ips": {
+        "optional": true,
+        "definition": {
+          "kind": "array",
+          "elementType": {
+            "kind": "primitive",
+            "value": "string"
+          }
+        }
+      }
+    }
+  }
+}

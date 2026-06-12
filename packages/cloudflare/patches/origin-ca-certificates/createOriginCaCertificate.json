@@ -1,0 +1,16 @@
+{
+  "errors": {
+    "HostnameNotAuthorized": [{ "code": 1010 }],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "request": {
+    "properties": {
+      "requestedValidity": { "type": "number" }
+    }
+  },
+  "response": {
+    "properties": {
+      "requested_validity": { "type": "number" }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "errors": {
+    "ZoneHoldsRequireEnterprise": [
+      {
+        "code": 1005,
+        "message": {
+          "includes": "Zone holds are only available on Enterprise zones"
+        }
+      }
+    ],
+    "InvalidZoneIdentifier": [
+      {
+        "code": 9109,
+        "message": {
+          "includes": "Invalid zone identifier"
+        }
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
+  },
+  "response": {
+    "properties": {
+      "include_subdomains": {
+        "type": "unknown"
+      }
+    }
+  }
+}

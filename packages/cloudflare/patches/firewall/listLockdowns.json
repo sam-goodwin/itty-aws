@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "result[].description": { "optional": true },
+      "result[].priority": {
+        "optional": true,
+        "definition": { "kind": "primitive", "value": "number" }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "CallsAppNotFound": [{ "code": 20007 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

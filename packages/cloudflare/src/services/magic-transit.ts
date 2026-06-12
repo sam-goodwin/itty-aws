@@ -13,6 +13,76 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class AppNotFound extends Schema.TaggedErrorClass<AppNotFound>()(
+  "AppNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AppNotFound, [{ status: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class GreTunnelNotFound extends Schema.TaggedErrorClass<GreTunnelNotFound>()(
+  "GreTunnelNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(GreTunnelNotFound, [{ code: 1029 }]);
+
+export class IpsecTunnelNotFound extends Schema.TaggedErrorClass<IpsecTunnelNotFound>()(
+  "IpsecTunnelNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(IpsecTunnelNotFound, [{ code: 1032 }]);
+
+export class MagicTransitNotOnboarded extends Schema.TaggedErrorClass<MagicTransitNotOnboarded>()(
+  "MagicTransitNotOnboarded",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MagicTransitNotOnboarded, [{ code: 1012 }]);
+
+export class MagicWanUnauthorized extends Schema.TaggedErrorClass<MagicWanUnauthorized>()(
+  "MagicWanUnauthorized",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MagicWanUnauthorized, [{ code: 1025 }]);
+
+export class RouteNotFound extends Schema.TaggedErrorClass<RouteNotFound>()(
+  "RouteNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RouteNotFound, [{ code: 1020 }]);
+
+export class SiteAclNotFound extends Schema.TaggedErrorClass<SiteAclNotFound>()(
+  "SiteAclNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SiteAclNotFound, [{ status: 404 }]);
+
+export class SiteLanNotFound extends Schema.TaggedErrorClass<SiteLanNotFound>()(
+  "SiteLanNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SiteLanNotFound, [{ status: 404 }]);
+
+export class SiteNotFound extends Schema.TaggedErrorClass<SiteNotFound>()(
+  "SiteNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SiteNotFound, [{ status: 404 }]);
+
+export class SiteWanNotFound extends Schema.TaggedErrorClass<SiteWanNotFound>()(
+  "SiteWanNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SiteWanNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // App
 // =============================================================================
 
@@ -101,7 +171,7 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListAppsResponse>;
 
-export type ListAppsError = DefaultErrors;
+export type ListAppsError = DefaultErrors | MagicWanUnauthorized | Forbidden;
 
 export const listApps: API.PaginatedOperationMethod<
   ListAppsRequest,
@@ -111,7 +181,7 @@ export const listApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
-  errors: [],
+  errors: [MagicWanUnauthorized, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -194,7 +264,7 @@ export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateAppResponse>;
 
-export type CreateAppError = DefaultErrors;
+export type CreateAppError = DefaultErrors | MagicWanUnauthorized | Forbidden;
 
 export const createApp: API.OperationMethod<
   CreateAppRequest,
@@ -204,7 +274,7 @@ export const createApp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppRequest,
   output: CreateAppResponse,
-  errors: [],
+  errors: [MagicWanUnauthorized, Forbidden],
 }));
 
 export interface UpdateAppRequest {
@@ -288,7 +358,11 @@ export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateAppResponse>;
 
-export type UpdateAppError = DefaultErrors;
+export type UpdateAppError =
+  | DefaultErrors
+  | AppNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const updateApp: API.OperationMethod<
   UpdateAppRequest,
@@ -298,7 +372,7 @@ export const updateApp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAppRequest,
   output: UpdateAppResponse,
-  errors: [],
+  errors: [AppNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface PatchAppRequest {
@@ -380,7 +454,11 @@ export const PatchAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<PatchAppResponse>;
 
-export type PatchAppError = DefaultErrors;
+export type PatchAppError =
+  | DefaultErrors
+  | AppNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const patchApp: API.OperationMethod<
   PatchAppRequest,
@@ -390,7 +468,7 @@ export const patchApp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAppRequest,
   output: PatchAppResponse,
-  errors: [],
+  errors: [AppNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface DeleteAppRequest {
@@ -452,7 +530,11 @@ export const DeleteAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteAppResponse>;
 
-export type DeleteAppError = DefaultErrors;
+export type DeleteAppError =
+  | DefaultErrors
+  | AppNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const deleteApp: API.OperationMethod<
   DeleteAppRequest,
@@ -462,7 +544,7 @@ export const deleteApp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppRequest,
   output: DeleteAppResponse,
-  errors: [],
+  errors: [AppNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 // =============================================================================
@@ -5355,7 +5437,11 @@ export const GetGreTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetGreTunnelResponse>;
 
-export type GetGreTunnelError = DefaultErrors;
+export type GetGreTunnelError =
+  | DefaultErrors
+  | GreTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const getGreTunnel: API.OperationMethod<
   GetGreTunnelRequest,
@@ -5365,7 +5451,7 @@ export const getGreTunnel: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGreTunnelRequest,
   output: GetGreTunnelResponse,
-  errors: [],
+  errors: [GreTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface ListGreTunnelsRequest {
@@ -5598,7 +5684,10 @@ export const ListGreTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ListGreTunnelsResponse>;
 
-export type ListGreTunnelsError = DefaultErrors;
+export type ListGreTunnelsError =
+  | DefaultErrors
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const listGreTunnels: API.OperationMethod<
   ListGreTunnelsRequest,
@@ -5608,7 +5697,7 @@ export const listGreTunnels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGreTunnelsRequest,
   output: ListGreTunnelsResponse,
-  errors: [],
+  errors: [MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface CreateGreTunnelRequest {
@@ -5920,7 +6009,10 @@ export const CreateGreTunnelResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateGreTunnelResponse>;
 
-export type CreateGreTunnelError = DefaultErrors;
+export type CreateGreTunnelError =
+  | DefaultErrors
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const createGreTunnel: API.OperationMethod<
   CreateGreTunnelRequest,
@@ -5930,7 +6022,7 @@ export const createGreTunnel: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGreTunnelRequest,
   output: CreateGreTunnelResponse,
-  errors: [],
+  errors: [MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface UpdateGreTunnelRequest {
@@ -6247,7 +6339,11 @@ export const UpdateGreTunnelResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateGreTunnelResponse>;
 
-export type UpdateGreTunnelError = DefaultErrors;
+export type UpdateGreTunnelError =
+  | DefaultErrors
+  | GreTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const updateGreTunnel: API.OperationMethod<
   UpdateGreTunnelRequest,
@@ -6257,7 +6353,7 @@ export const updateGreTunnel: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGreTunnelRequest,
   output: UpdateGreTunnelResponse,
-  errors: [],
+  errors: [GreTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface DeleteGreTunnelRequest {
@@ -6499,7 +6595,11 @@ export const DeleteGreTunnelResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteGreTunnelResponse>;
 
-export type DeleteGreTunnelError = DefaultErrors;
+export type DeleteGreTunnelError =
+  | DefaultErrors
+  | GreTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const deleteGreTunnel: API.OperationMethod<
   DeleteGreTunnelRequest,
@@ -6509,7 +6609,7 @@ export const deleteGreTunnel: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGreTunnelRequest,
   output: DeleteGreTunnelResponse,
-  errors: [],
+  errors: [GreTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
 }));
 
 // =============================================================================
@@ -6779,7 +6879,11 @@ export const GetIpsecTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetIpsecTunnelResponse>;
 
-export type GetIpsecTunnelError = DefaultErrors;
+export type GetIpsecTunnelError =
+  | DefaultErrors
+  | IpsecTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const getIpsecTunnel: API.OperationMethod<
   GetIpsecTunnelRequest,
@@ -6789,7 +6893,7 @@ export const getIpsecTunnel: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIpsecTunnelRequest,
   output: GetIpsecTunnelResponse,
-  errors: [],
+  errors: [IpsecTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface ListIpsecTunnelsRequest {
@@ -7057,7 +7161,10 @@ export const ListIpsecTunnelsResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<ListIpsecTunnelsResponse>;
 
-export type ListIpsecTunnelsError = DefaultErrors;
+export type ListIpsecTunnelsError =
+  | DefaultErrors
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const listIpsecTunnels: API.OperationMethod<
   ListIpsecTunnelsRequest,
@@ -7067,7 +7174,7 @@ export const listIpsecTunnels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListIpsecTunnelsRequest,
   output: ListIpsecTunnelsResponse,
-  errors: [],
+  errors: [MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface CreateIpsecTunnelRequest {
@@ -7418,7 +7525,10 @@ export const CreateIpsecTunnelResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateIpsecTunnelResponse>;
 
-export type CreateIpsecTunnelError = DefaultErrors;
+export type CreateIpsecTunnelError =
+  | DefaultErrors
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const createIpsecTunnel: API.OperationMethod<
   CreateIpsecTunnelRequest,
@@ -7428,7 +7538,7 @@ export const createIpsecTunnel: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIpsecTunnelRequest,
   output: CreateIpsecTunnelResponse,
-  errors: [],
+  errors: [MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface UpdateIpsecTunnelRequest {
@@ -7800,7 +7910,11 @@ export const UpdateIpsecTunnelResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateIpsecTunnelResponse>;
 
-export type UpdateIpsecTunnelError = DefaultErrors;
+export type UpdateIpsecTunnelError =
+  | DefaultErrors
+  | IpsecTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const updateIpsecTunnel: API.OperationMethod<
   UpdateIpsecTunnelRequest,
@@ -7810,7 +7924,7 @@ export const updateIpsecTunnel: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIpsecTunnelRequest,
   output: UpdateIpsecTunnelResponse,
-  errors: [],
+  errors: [IpsecTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface DeleteIpsecTunnelRequest {
@@ -8083,7 +8197,11 @@ export const DeleteIpsecTunnelResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteIpsecTunnelResponse>;
 
-export type DeleteIpsecTunnelError = DefaultErrors;
+export type DeleteIpsecTunnelError =
+  | DefaultErrors
+  | IpsecTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const deleteIpsecTunnel: API.OperationMethod<
   DeleteIpsecTunnelRequest,
@@ -8093,7 +8211,7 @@ export const deleteIpsecTunnel: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIpsecTunnelRequest,
   output: DeleteIpsecTunnelResponse,
-  errors: [],
+  errors: [IpsecTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
 }));
 
 // =============================================================================
@@ -10214,7 +10332,11 @@ export const GetRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetRouteResponse>;
 
-export type GetRouteError = DefaultErrors;
+export type GetRouteError =
+  | DefaultErrors
+  | RouteNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const getRoute: API.OperationMethod<
   GetRouteRequest,
@@ -10224,7 +10346,7 @@ export const getRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRouteRequest,
   output: GetRouteResponse,
-  errors: [],
+  errors: [RouteNotFound, MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface ListRoutesRequest {
@@ -10315,7 +10437,10 @@ export const ListRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<ListRoutesResponse>;
 
-export type ListRoutesError = DefaultErrors;
+export type ListRoutesError =
+  | DefaultErrors
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const listRoutes: API.OperationMethod<
   ListRoutesRequest,
@@ -10325,7 +10450,7 @@ export const listRoutes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRoutesRequest,
   output: ListRoutesResponse,
-  errors: [],
+  errors: [MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface CreateRouteRequest {
@@ -10433,7 +10558,10 @@ export const CreateRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateRouteResponse>;
 
-export type CreateRouteError = DefaultErrors;
+export type CreateRouteError =
+  | DefaultErrors
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const createRoute: API.OperationMethod<
   CreateRouteRequest,
@@ -10443,7 +10571,7 @@ export const createRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRouteRequest,
   output: CreateRouteResponse,
-  errors: [],
+  errors: [MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface UpdateRouteRequest {
@@ -10568,7 +10696,11 @@ export const UpdateRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateRouteResponse>;
 
-export type UpdateRouteError = DefaultErrors;
+export type UpdateRouteError =
+  | DefaultErrors
+  | RouteNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const updateRoute: API.OperationMethod<
   UpdateRouteRequest,
@@ -10578,7 +10710,7 @@ export const updateRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRouteRequest,
   output: UpdateRouteResponse,
-  errors: [],
+  errors: [RouteNotFound, MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface DeleteRouteRequest {
@@ -10672,7 +10804,11 @@ export const DeleteRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteRouteResponse>;
 
-export type DeleteRouteError = DefaultErrors;
+export type DeleteRouteError =
+  | DefaultErrors
+  | RouteNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden;
 
 export const deleteRoute: API.OperationMethod<
   DeleteRouteRequest,
@@ -10682,7 +10818,7 @@ export const deleteRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRouteRequest,
   output: DeleteRouteResponse,
-  errors: [],
+  errors: [RouteNotFound, MagicTransitNotOnboarded, Forbidden],
 }));
 
 export interface EmptyRouteRequest {
@@ -10865,7 +11001,11 @@ export const GetSiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetSiteResponse>;
 
-export type GetSiteError = DefaultErrors;
+export type GetSiteError =
+  | DefaultErrors
+  | SiteNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const getSite: API.OperationMethod<
   GetSiteRequest,
@@ -10875,7 +11015,7 @@ export const getSite: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSiteRequest,
   output: GetSiteResponse,
-  errors: [],
+  errors: [SiteNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface ListSitesRequest {
@@ -10938,7 +11078,7 @@ export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListSitesResponse>;
 
-export type ListSitesError = DefaultErrors;
+export type ListSitesError = DefaultErrors | MagicWanUnauthorized | Forbidden;
 
 export const listSites: API.PaginatedOperationMethod<
   ListSitesRequest,
@@ -10948,7 +11088,7 @@ export const listSites: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSitesRequest,
   output: ListSitesResponse,
-  errors: [],
+  errors: [MagicWanUnauthorized, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -11047,7 +11187,7 @@ export const CreateSiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateSiteResponse>;
 
-export type CreateSiteError = DefaultErrors;
+export type CreateSiteError = DefaultErrors | MagicWanUnauthorized | Forbidden;
 
 export const createSite: API.OperationMethod<
   CreateSiteRequest,
@@ -11057,7 +11197,7 @@ export const createSite: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSiteRequest,
   output: CreateSiteResponse,
-  errors: [],
+  errors: [MagicWanUnauthorized, Forbidden],
 }));
 
 export interface UpdateSiteRequest {
@@ -11153,7 +11293,11 @@ export const UpdateSiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateSiteResponse>;
 
-export type UpdateSiteError = DefaultErrors;
+export type UpdateSiteError =
+  | DefaultErrors
+  | SiteNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const updateSite: API.OperationMethod<
   UpdateSiteRequest,
@@ -11163,7 +11307,7 @@ export const updateSite: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSiteRequest,
   output: UpdateSiteResponse,
-  errors: [],
+  errors: [SiteNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface PatchSiteRequest {
@@ -11259,7 +11403,11 @@ export const PatchSiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchSiteResponse>;
 
-export type PatchSiteError = DefaultErrors;
+export type PatchSiteError =
+  | DefaultErrors
+  | SiteNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const patchSite: API.OperationMethod<
   PatchSiteRequest,
@@ -11269,7 +11417,7 @@ export const patchSite: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSiteRequest,
   output: PatchSiteResponse,
-  errors: [],
+  errors: [SiteNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface DeleteSiteRequest {
@@ -11338,7 +11486,11 @@ export const DeleteSiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSiteResponse>;
 
-export type DeleteSiteError = DefaultErrors;
+export type DeleteSiteError =
+  | DefaultErrors
+  | SiteNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const deleteSite: API.OperationMethod<
   DeleteSiteRequest,
@@ -11348,7 +11500,7 @@ export const deleteSite: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSiteRequest,
   output: DeleteSiteResponse,
-  errors: [],
+  errors: [SiteNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 // =============================================================================
@@ -11484,7 +11636,11 @@ export const GetSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetSiteAclResponse>;
 
-export type GetSiteAclError = DefaultErrors;
+export type GetSiteAclError =
+  | DefaultErrors
+  | SiteAclNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const getSiteAcl: API.OperationMethod<
   GetSiteAclRequest,
@@ -11494,7 +11650,7 @@ export const getSiteAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSiteAclRequest,
   output: GetSiteAclResponse,
-  errors: [],
+  errors: [SiteAclNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface ListSiteAclsRequest {
@@ -11632,7 +11788,10 @@ export const ListSiteAclsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListSiteAclsResponse>;
 
-export type ListSiteAclsError = DefaultErrors;
+export type ListSiteAclsError =
+  | DefaultErrors
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const listSiteAcls: API.PaginatedOperationMethod<
   ListSiteAclsRequest,
@@ -11642,7 +11801,7 @@ export const listSiteAcls: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSiteAclsRequest,
   output: ListSiteAclsResponse,
-  errors: [],
+  errors: [MagicWanUnauthorized, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -11850,7 +12009,10 @@ export const CreateSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateSiteAclResponse>;
 
-export type CreateSiteAclError = DefaultErrors;
+export type CreateSiteAclError =
+  | DefaultErrors
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const createSiteAcl: API.OperationMethod<
   CreateSiteAclRequest,
@@ -11860,7 +12022,7 @@ export const createSiteAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSiteAclRequest,
   output: CreateSiteAclResponse,
-  errors: [],
+  errors: [MagicWanUnauthorized, Forbidden],
 }));
 
 export interface UpdateSiteAclRequest {
@@ -12070,7 +12232,11 @@ export const UpdateSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateSiteAclResponse>;
 
-export type UpdateSiteAclError = DefaultErrors;
+export type UpdateSiteAclError =
+  | DefaultErrors
+  | SiteAclNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const updateSiteAcl: API.OperationMethod<
   UpdateSiteAclRequest,
@@ -12080,7 +12246,7 @@ export const updateSiteAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSiteAclRequest,
   output: UpdateSiteAclResponse,
-  errors: [],
+  errors: [SiteAclNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface PatchSiteAclRequest {
@@ -12290,7 +12456,11 @@ export const PatchSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchSiteAclResponse>;
 
-export type PatchSiteAclError = DefaultErrors;
+export type PatchSiteAclError =
+  | DefaultErrors
+  | SiteAclNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const patchSiteAcl: API.OperationMethod<
   PatchSiteAclRequest,
@@ -12300,7 +12470,7 @@ export const patchSiteAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSiteAclRequest,
   output: PatchSiteAclResponse,
-  errors: [],
+  errors: [SiteAclNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface DeleteSiteAclRequest {
@@ -12432,7 +12602,11 @@ export const DeleteSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSiteAclResponse>;
 
-export type DeleteSiteAclError = DefaultErrors;
+export type DeleteSiteAclError =
+  | DefaultErrors
+  | SiteAclNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const deleteSiteAcl: API.OperationMethod<
   DeleteSiteAclRequest,
@@ -12442,7 +12616,7 @@ export const deleteSiteAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSiteAclRequest,
   output: DeleteSiteAclResponse,
-  errors: [],
+  errors: [SiteAclNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 // =============================================================================
@@ -12677,7 +12851,11 @@ export const GetSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetSiteLanResponse>;
 
-export type GetSiteLanError = DefaultErrors;
+export type GetSiteLanError =
+  | DefaultErrors
+  | SiteLanNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const getSiteLan: API.OperationMethod<
   GetSiteLanRequest,
@@ -12687,7 +12865,7 @@ export const getSiteLan: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSiteLanRequest,
   output: GetSiteLanResponse,
-  errors: [],
+  errors: [SiteLanNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface ListSiteLansRequest {
@@ -12915,7 +13093,10 @@ export const ListSiteLansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListSiteLansResponse>;
 
-export type ListSiteLansError = DefaultErrors;
+export type ListSiteLansError =
+  | DefaultErrors
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const listSiteLans: API.PaginatedOperationMethod<
   ListSiteLansRequest,
@@ -12925,7 +13106,7 @@ export const listSiteLans: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSiteLansRequest,
   output: ListSiteLansResponse,
-  errors: [],
+  errors: [MagicWanUnauthorized, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -13307,7 +13488,10 @@ export const CreateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<CreateSiteLanResponse>;
 
-export type CreateSiteLanError = DefaultErrors;
+export type CreateSiteLanError =
+  | DefaultErrors
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const createSiteLan: API.PaginatedOperationMethod<
   CreateSiteLanRequest,
@@ -13317,7 +13501,7 @@ export const createSiteLan: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateSiteLanRequest,
   output: CreateSiteLanResponse,
-  errors: [],
+  errors: [MagicWanUnauthorized, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -13698,7 +13882,11 @@ export const UpdateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateSiteLanResponse>;
 
-export type UpdateSiteLanError = DefaultErrors;
+export type UpdateSiteLanError =
+  | DefaultErrors
+  | SiteLanNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const updateSiteLan: API.OperationMethod<
   UpdateSiteLanRequest,
@@ -13708,7 +13896,7 @@ export const updateSiteLan: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSiteLanRequest,
   output: UpdateSiteLanResponse,
-  errors: [],
+  errors: [SiteLanNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface PatchSiteLanRequest {
@@ -14085,7 +14273,11 @@ export const PatchSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchSiteLanResponse>;
 
-export type PatchSiteLanError = DefaultErrors;
+export type PatchSiteLanError =
+  | DefaultErrors
+  | SiteLanNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const patchSiteLan: API.OperationMethod<
   PatchSiteLanRequest,
@@ -14095,7 +14287,7 @@ export const patchSiteLan: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSiteLanRequest,
   output: PatchSiteLanResponse,
-  errors: [],
+  errors: [SiteLanNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface DeleteSiteLanRequest {
@@ -14326,7 +14518,11 @@ export const DeleteSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSiteLanResponse>;
 
-export type DeleteSiteLanError = DefaultErrors;
+export type DeleteSiteLanError =
+  | DefaultErrors
+  | SiteLanNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const deleteSiteLan: API.OperationMethod<
   DeleteSiteLanRequest,
@@ -14336,7 +14532,7 @@ export const deleteSiteLan: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSiteLanRequest,
   output: DeleteSiteLanResponse,
-  errors: [],
+  errors: [SiteLanNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 // =============================================================================
@@ -14430,7 +14626,11 @@ export const GetSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetSiteWanResponse>;
 
-export type GetSiteWanError = DefaultErrors;
+export type GetSiteWanError =
+  | DefaultErrors
+  | SiteWanNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const getSiteWan: API.OperationMethod<
   GetSiteWanRequest,
@@ -14440,7 +14640,7 @@ export const getSiteWan: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSiteWanRequest,
   output: GetSiteWanResponse,
-  errors: [],
+  errors: [SiteWanNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface ListSiteWansRequest {
@@ -14527,7 +14727,10 @@ export const ListSiteWansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListSiteWansResponse>;
 
-export type ListSiteWansError = DefaultErrors;
+export type ListSiteWansError =
+  | DefaultErrors
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const listSiteWans: API.PaginatedOperationMethod<
   ListSiteWansRequest,
@@ -14537,7 +14740,7 @@ export const listSiteWans: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSiteWansRequest,
   output: ListSiteWansResponse,
-  errors: [],
+  errors: [MagicWanUnauthorized, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -14666,7 +14869,10 @@ export const CreateSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<CreateSiteWanResponse>;
 
-export type CreateSiteWanError = DefaultErrors;
+export type CreateSiteWanError =
+  | DefaultErrors
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const createSiteWan: API.PaginatedOperationMethod<
   CreateSiteWanRequest,
@@ -14676,7 +14882,7 @@ export const createSiteWan: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateSiteWanRequest,
   output: CreateSiteWanResponse,
-  errors: [],
+  errors: [MagicWanUnauthorized, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -14808,7 +15014,11 @@ export const UpdateSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateSiteWanResponse>;
 
-export type UpdateSiteWanError = DefaultErrors;
+export type UpdateSiteWanError =
+  | DefaultErrors
+  | SiteWanNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const updateSiteWan: API.OperationMethod<
   UpdateSiteWanRequest,
@@ -14818,7 +15028,7 @@ export const updateSiteWan: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSiteWanRequest,
   output: UpdateSiteWanResponse,
-  errors: [],
+  errors: [SiteWanNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface PatchSiteWanRequest {
@@ -14946,7 +15156,11 @@ export const PatchSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchSiteWanResponse>;
 
-export type PatchSiteWanError = DefaultErrors;
+export type PatchSiteWanError =
+  | DefaultErrors
+  | SiteWanNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const patchSiteWan: API.OperationMethod<
   PatchSiteWanRequest,
@@ -14956,7 +15170,7 @@ export const patchSiteWan: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSiteWanRequest,
   output: PatchSiteWanResponse,
-  errors: [],
+  errors: [SiteWanNotFound, MagicWanUnauthorized, Forbidden],
 }));
 
 export interface DeleteSiteWanRequest {
@@ -15046,7 +15260,11 @@ export const DeleteSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSiteWanResponse>;
 
-export type DeleteSiteWanError = DefaultErrors;
+export type DeleteSiteWanError =
+  | DefaultErrors
+  | SiteWanNotFound
+  | MagicWanUnauthorized
+  | Forbidden;
 
 export const deleteSiteWan: API.OperationMethod<
   DeleteSiteWanRequest,
@@ -15056,5 +15274,5 @@ export const deleteSiteWan: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSiteWanRequest,
   output: DeleteSiteWanResponse,
-  errors: [],
+  errors: [SiteWanNotFound, MagicWanUnauthorized, Forbidden],
 }));

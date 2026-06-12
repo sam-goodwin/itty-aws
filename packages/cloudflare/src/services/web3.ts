@@ -13,6 +13,36 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class InvalidWeb3HostnameTarget extends Schema.TaggedErrorClass<InvalidWeb3HostnameTarget>()(
+  "InvalidWeb3HostnameTarget",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidWeb3HostnameTarget, [{ code: 1006 }]);
+
+export class Web3HostnameNotEntitled extends Schema.TaggedErrorClass<Web3HostnameNotEntitled>()(
+  "Web3HostnameNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Web3HostnameNotEntitled, [
+  { code: 1010, message: { includes: "not entitled" } },
+]);
+
+export class Web3HostnameNotFound extends Schema.TaggedErrorClass<Web3HostnameNotFound>()(
+  "Web3HostnameNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Web3HostnameNotFound, [{ code: 1002 }]);
+
+// =============================================================================
 // Hostname
 // =============================================================================
 
@@ -91,7 +121,7 @@ export const GetHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetHostnameResponse>;
 
-export type GetHostnameError = DefaultErrors;
+export type GetHostnameError = DefaultErrors | Web3HostnameNotFound | Forbidden;
 
 export const getHostname: API.OperationMethod<
   GetHostnameRequest,
@@ -101,7 +131,7 @@ export const getHostname: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHostnameRequest,
   output: GetHostnameResponse,
-  errors: [],
+  errors: [Web3HostnameNotFound, Forbidden],
 }));
 
 export interface ListHostnamesRequest {
@@ -170,7 +200,7 @@ export const ListHostnamesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListHostnamesResponse>;
 
-export type ListHostnamesError = DefaultErrors;
+export type ListHostnamesError = DefaultErrors | Forbidden;
 
 export const listHostnames: API.PaginatedOperationMethod<
   ListHostnamesRequest,
@@ -180,7 +210,7 @@ export const listHostnames: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHostnamesRequest,
   output: ListHostnamesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -274,7 +304,10 @@ export const CreateHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateHostnameResponse>;
 
-export type CreateHostnameError = DefaultErrors;
+export type CreateHostnameError =
+  | DefaultErrors
+  | Web3HostnameNotEntitled
+  | Forbidden;
 
 export const createHostname: API.OperationMethod<
   CreateHostnameRequest,
@@ -284,7 +317,7 @@ export const createHostname: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateHostnameRequest,
   output: CreateHostnameResponse,
-  errors: [],
+  errors: [Web3HostnameNotEntitled, Forbidden],
 }));
 
 export interface PatchHostnameRequest {
@@ -368,7 +401,10 @@ export const PatchHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchHostnameResponse>;
 
-export type PatchHostnameError = DefaultErrors;
+export type PatchHostnameError =
+  | DefaultErrors
+  | Web3HostnameNotFound
+  | Forbidden;
 
 export const patchHostname: API.OperationMethod<
   PatchHostnameRequest,
@@ -378,7 +414,7 @@ export const patchHostname: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchHostnameRequest,
   output: PatchHostnameResponse,
-  errors: [],
+  errors: [Web3HostnameNotFound, Forbidden],
 }));
 
 export interface DeleteHostnameRequest {
@@ -410,7 +446,10 @@ export const DeleteHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteHostnameResponse>;
 
-export type DeleteHostnameError = DefaultErrors;
+export type DeleteHostnameError =
+  | DefaultErrors
+  | Web3HostnameNotFound
+  | Forbidden;
 
 export const deleteHostname: API.OperationMethod<
   DeleteHostnameRequest,
@@ -420,7 +459,7 @@ export const deleteHostname: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteHostnameRequest,
   output: DeleteHostnameResponse,
-  errors: [],
+  errors: [Web3HostnameNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -458,7 +497,11 @@ export const GetHostnameIpfsUniversalPathContentListResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetHostnameIpfsUniversalPathContentListResponse>;
 
-export type GetHostnameIpfsUniversalPathContentListError = DefaultErrors;
+export type GetHostnameIpfsUniversalPathContentListError =
+  | DefaultErrors
+  | Web3HostnameNotFound
+  | InvalidWeb3HostnameTarget
+  | Forbidden;
 
 export const getHostnameIpfsUniversalPathContentList: API.OperationMethod<
   GetHostnameIpfsUniversalPathContentListRequest,
@@ -468,7 +511,7 @@ export const getHostnameIpfsUniversalPathContentList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHostnameIpfsUniversalPathContentListRequest,
   output: GetHostnameIpfsUniversalPathContentListResponse,
-  errors: [],
+  errors: [Web3HostnameNotFound, InvalidWeb3HostnameTarget, Forbidden],
 }));
 
 export interface PutHostnameIpfsUniversalPathContentListRequest {
@@ -523,7 +566,11 @@ export const PutHostnameIpfsUniversalPathContentListResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutHostnameIpfsUniversalPathContentListResponse>;
 
-export type PutHostnameIpfsUniversalPathContentListError = DefaultErrors;
+export type PutHostnameIpfsUniversalPathContentListError =
+  | DefaultErrors
+  | Web3HostnameNotFound
+  | InvalidWeb3HostnameTarget
+  | Forbidden;
 
 export const putHostnameIpfsUniversalPathContentList: API.OperationMethod<
   PutHostnameIpfsUniversalPathContentListRequest,
@@ -533,7 +580,7 @@ export const putHostnameIpfsUniversalPathContentList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutHostnameIpfsUniversalPathContentListRequest,
   output: PutHostnameIpfsUniversalPathContentListResponse,
-  errors: [],
+  errors: [Web3HostnameNotFound, InvalidWeb3HostnameTarget, Forbidden],
 }));
 
 // =============================================================================
@@ -693,7 +740,10 @@ export const ListHostnameIpfsUniversalPathContentListEntriesResponse =
   ) as unknown as Schema.Schema<ListHostnameIpfsUniversalPathContentListEntriesResponse>;
 
 export type ListHostnameIpfsUniversalPathContentListEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | Web3HostnameNotFound
+  | InvalidWeb3HostnameTarget
+  | Forbidden;
 
 export const listHostnameIpfsUniversalPathContentListEntries: API.OperationMethod<
   ListHostnameIpfsUniversalPathContentListEntriesRequest,
@@ -703,7 +753,7 @@ export const listHostnameIpfsUniversalPathContentListEntries: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListHostnameIpfsUniversalPathContentListEntriesRequest,
   output: ListHostnameIpfsUniversalPathContentListEntriesResponse,
-  errors: [],
+  errors: [Web3HostnameNotFound, InvalidWeb3HostnameTarget, Forbidden],
 }));
 
 export interface CreateHostnameIpfsUniversalPathContentListEntryRequest {
