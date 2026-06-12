@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "UnentitledMitigationAction": [{ "code": 11400 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

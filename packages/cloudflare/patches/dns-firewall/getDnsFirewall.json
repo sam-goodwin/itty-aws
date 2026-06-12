@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "DnsFirewallNotFound": [{ "code": 11001 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

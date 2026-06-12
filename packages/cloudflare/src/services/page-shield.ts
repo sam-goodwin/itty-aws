@@ -13,6 +13,46 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class NotEntitled extends Schema.TaggedErrorClass<NotEntitled>()(
+  "NotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(NotEntitled, [
+  { status: 403, message: { includes: "not entitled" } },
+]);
+
+export class PolicyNotFound extends Schema.TaggedErrorClass<PolicyNotFound>()(
+  "PolicyNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PolicyNotFound, [
+  { status: 404, message: { includes: "Could not find Policy" } },
+]);
+
+export class PolicyQuotaExceeded extends Schema.TaggedErrorClass<PolicyQuotaExceeded>()(
+  "PolicyQuotaExceeded",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PolicyQuotaExceeded, [
+  {
+    status: 400,
+    message: {
+      includes:
+        "exceeded the maximum number of rules in the phase http_response_page_shield",
+    },
+  },
+]);
+
+// =============================================================================
 // Connection
 // =============================================================================
 
@@ -560,7 +600,7 @@ export const GetPageShieldResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetPageShieldResponse>;
 
-export type GetPageShieldError = DefaultErrors;
+export type GetPageShieldError = DefaultErrors | Forbidden;
 
 export const getPageShield: API.OperationMethod<
   GetPageShieldRequest,
@@ -570,7 +610,7 @@ export const getPageShield: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPageShieldRequest,
   output: GetPageShieldResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutPageShieldRequest {
@@ -627,7 +667,7 @@ export const PutPageShieldResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutPageShieldResponse>;
 
-export type PutPageShieldError = DefaultErrors;
+export type PutPageShieldError = DefaultErrors | NotEntitled | Forbidden;
 
 export const putPageShield: API.OperationMethod<
   PutPageShieldRequest,
@@ -637,7 +677,7 @@ export const putPageShield: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPageShieldRequest,
   output: PutPageShieldResponse,
-  errors: [],
+  errors: [NotEntitled, Forbidden],
 }));
 
 // =============================================================================
@@ -689,7 +729,7 @@ export const GetPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetPolicyResponse>;
 
-export type GetPolicyError = DefaultErrors;
+export type GetPolicyError = DefaultErrors | PolicyNotFound | Forbidden;
 
 export const getPolicy: API.OperationMethod<
   GetPolicyRequest,
@@ -699,7 +739,7 @@ export const getPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
-  errors: [],
+  errors: [PolicyNotFound, Forbidden],
 }));
 
 export interface ListPoliciesRequest {
@@ -740,7 +780,7 @@ export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListPoliciesResponse>;
 
-export type ListPoliciesError = DefaultErrors;
+export type ListPoliciesError = DefaultErrors | Forbidden;
 
 export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
@@ -750,7 +790,7 @@ export const listPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -815,7 +855,7 @@ export const CreatePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreatePolicyResponse>;
 
-export type CreatePolicyError = DefaultErrors;
+export type CreatePolicyError = DefaultErrors | PolicyQuotaExceeded | Forbidden;
 
 export const createPolicy: API.OperationMethod<
   CreatePolicyRequest,
@@ -825,7 +865,7 @@ export const createPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePolicyRequest,
   output: CreatePolicyResponse,
-  errors: [],
+  errors: [PolicyQuotaExceeded, Forbidden],
 }));
 
 export interface UpdatePolicyRequest {
@@ -893,7 +933,7 @@ export const UpdatePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<UpdatePolicyResponse>;
 
-export type UpdatePolicyError = DefaultErrors;
+export type UpdatePolicyError = DefaultErrors | PolicyNotFound | Forbidden;
 
 export const updatePolicy: API.OperationMethod<
   UpdatePolicyRequest,
@@ -903,7 +943,7 @@ export const updatePolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePolicyRequest,
   output: UpdatePolicyResponse,
-  errors: [],
+  errors: [PolicyNotFound, Forbidden],
 }));
 
 export interface DeletePolicyRequest {
@@ -927,7 +967,7 @@ export type DeletePolicyResponse = unknown;
 export const DeletePolicyResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeletePolicyResponse>;
 
-export type DeletePolicyError = DefaultErrors;
+export type DeletePolicyError = DefaultErrors | PolicyNotFound | Forbidden;
 
 export const deletePolicy: API.OperationMethod<
   DeletePolicyRequest,
@@ -937,7 +977,7 @@ export const deletePolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
-  errors: [],
+  errors: [PolicyNotFound, Forbidden],
 }));
 
 // =============================================================================

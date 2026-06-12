@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "TunnelNotFound": [{ "code": 1002 }, { "status": 404 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

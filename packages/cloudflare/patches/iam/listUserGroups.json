@@ -2,6 +2,7 @@
   "errors": {},
   "response": {
     "properties": {
+      "result": { "nullable": true },
       "result_info": { "optional": true },
       "result[].policies[].resource_groups[].scope": { "type": "unknown" }
     }

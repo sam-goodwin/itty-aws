@@ -1881,6 +1881,15 @@ paths:
                   - created_at
                   - last_modified
       x-distilled-response-path: result
+      x-distilled-errors:
+        AllowPolicyNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSettingAllowPolicy
       description: "Updates an existing allow policy. Only provided fields will be
@@ -2029,6 +2038,15 @@ paths:
                   - created_at
                   - last_modified
       x-distilled-response-path: result
+      x-distilled-errors:
+        AllowPolicyNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSettingAllowPolicy
       description: "Removes an allow policy. After deletion, emails matching this
@@ -2063,6 +2081,15 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        AllowPolicyNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/email-security/settings/allow_policies:
     get:
       operationId: listSettingAllowPolicies
@@ -2234,6 +2261,13 @@ paths:
                   - created_at
                   - last_modified
       x-distilled-pagination-class: AllowPolicyListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     post:
       operationId: createSettingAllowPolicy
       description: "Creates a new allow policy that exempts matching emails from
@@ -2388,6 +2422,13 @@ paths:
                   - created_at
                   - last_modified
       x-distilled-response-path: result
+      x-distilled-errors:
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/email-security/settings/block_senders/{patternId}:
     get:
       operationId: getSettingBlockSender
@@ -2446,6 +2487,15 @@ paths:
                       be used when creating or updating policies, but may be
                       returned for existing entries."
       x-distilled-response-path: result
+      x-distilled-errors:
+        BlockSenderNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSettingBlockSender
       description: "Updates an existing blocked sender pattern. Only provided fields
@@ -2532,6 +2582,15 @@ paths:
                       be used when creating or updating policies, but may be
                       returned for existing entries."
       x-distilled-response-path: result
+      x-distilled-errors:
+        BlockSenderNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSettingBlockSender
       description: "Removes a blocked sender pattern. After deletion, emails from this
@@ -2566,6 +2625,15 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        BlockSenderNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/email-security/settings/block_senders:
     get:
       operationId: listSettingBlockSenders
@@ -2673,6 +2741,13 @@ paths:
                       be used when creating or updating policies, but may be
                       returned for existing entries."
       x-distilled-pagination-class: BlockSenderListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     post:
       operationId: createSettingBlockSender
       description: "Creates a new blocked sender pattern. Emails matching this pattern
@@ -2758,6 +2833,13 @@ paths:
                       be used when creating or updating policies, but may be
                       returned for existing entries."
       x-distilled-response-path: result
+      x-distilled-errors:
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/email-security/settings/domains/{domainId}:
     get:
       operationId: getSettingDomain
@@ -2919,6 +3001,15 @@ paths:
                   transport:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        EmailSecurityDomainNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSettingDomain
       description: "Updates configuration for a protected email domain. Only provided
@@ -3155,6 +3246,15 @@ paths:
                   transport:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        EmailSecurityDomainNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSettingDomain
       description: "Removes email security protection from a domain. After deletion,
@@ -3189,6 +3289,15 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        EmailSecurityDomainNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/email-security/settings/domains:
     get:
       operationId: listSettingDomains
@@ -3430,6 +3539,13 @@ paths:
                   transport:
                     type: string
       x-distilled-pagination-class: DomainListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonationRegistryId}:
     get:
       operationId: getSettingImpersonationRegistry
@@ -3501,6 +3617,15 @@ paths:
                       - SNOOPY-OFFICE_365
                       - SNOOPY-GOOGLE_DIRECTORY
       x-distilled-response-path: result
+      x-distilled-errors:
+        ImpersonationRegistryEntryNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSettingImpersonationRegistry
       description: "Updates an existing impersonation registry entry. Only provided
@@ -3615,6 +3740,15 @@ paths:
                       - SNOOPY-OFFICE_365
                       - SNOOPY-GOOGLE_DIRECTORY
       x-distilled-response-path: result
+      x-distilled-errors:
+        ImpersonationRegistryEntryNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSettingImpersonationRegistry
       description: "Removes an entry from the impersonation registry. After deletion,
@@ -3649,6 +3783,15 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        ImpersonationRegistryEntryNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/email-security/settings/impersonation_registry:
     get:
       operationId: listSettingImpersonationRegistries
@@ -3764,6 +3907,13 @@ paths:
                       - SNOOPY-OFFICE_365
                       - SNOOPY-GOOGLE_DIRECTORY
       x-distilled-pagination-class: ImpersonationRegistryListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     post:
       operationId: createSettingImpersonationRegistry
       description: "Creates a new entry in the impersonation registry to protect
@@ -3879,6 +4029,13 @@ paths:
                       - SNOOPY-OFFICE_365
                       - SNOOPY-GOOGLE_DIRECTORY
       x-distilled-response-path: result
+      x-distilled-errors:
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/email-security/settings/trusted_domains/{trustedDomainId}:
     get:
       operationId: getSettingTrustedDomain
@@ -3937,6 +4094,15 @@ paths:
                   pattern:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        TrustedDomainNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSettingTrustedDomain
       description: "Updates an existing trusted domain pattern. Only provided fields
@@ -4021,6 +4187,15 @@ paths:
                   pattern:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        TrustedDomainNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteSettingTrustedDomain
       description: "Removes a trusted domain pattern. After deletion, emails from this
@@ -4055,6 +4230,15 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        TrustedDomainNotFound:
+          - status: 404
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/email-security/settings/trusted_domains:
     get:
       operationId: listSettingTrustedDomains
@@ -4166,6 +4350,13 @@ paths:
                   pattern:
                     type: string
       x-distilled-pagination-class: TrustedDomainListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
     post:
       operationId: createSettingTrustedDomain
       description: "Creates a new trusted domain pattern. Use for partner domains or
@@ -4251,6 +4442,13 @@ paths:
                   pattern:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        EmailSecurityNotEntitled:
+          - status: 403
+            message:
+              includes: not available in the current subscription
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/email-security/submissions:
     get:
       operationId: listSubmissions

@@ -1,0 +1,9 @@
+{
+  "response": {
+    "properties": {
+      "result[].datasets[].enable": { "type": "unknown" },
+      "result[].datasets[].account_id": { "optional": true },
+      "result[].datasets[].account_tag": { "optional": true }
+    }
+  }
+}

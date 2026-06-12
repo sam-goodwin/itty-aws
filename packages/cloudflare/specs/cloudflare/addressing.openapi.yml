@@ -112,6 +112,8 @@ paths:
           - code: 7003
             message:
               includes: Could not route
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchAddressMap
       description: "Modify properties of an address map owned by the
@@ -537,6 +539,8 @@ paths:
           - code: 7003
             message:
               includes: Could not route
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/addressing/address_maps/{addressMapId}/accounts/{account_id}:
     put:
       operationId: putAddressMapAccount

@@ -2,6 +2,8 @@
   "errors": {
     "MnmConfigAlreadyExists": [
       { "code": 1005, "message": { "includes": "already exists" } }
-    ]
+    ],
+    "InvalidMnmConfig": [{ "code": 1003 }],
+    "Forbidden": [{ "status": 403 }]
   }
 }

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "ShareResourceNotFound": [{ "code": 1004 }, { "status": 404 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

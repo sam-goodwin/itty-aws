@@ -3,5 +3,10 @@
     "DeploymentNotFound": [{ "code": 8000009 }],
     "ProjectNotFound": [{ "code": 8000007 }],
     "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "source": { "optional": true }
+    }
   }
 }

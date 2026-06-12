@@ -75,6 +75,11 @@ paths:
                         type: string
                         description: The zone identifier.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        RulesetNotFound:
+          - status: 404
     post:
       operationId: bulkCreateRules
       description: "Modifies one or more rules in a Web Analytics ruleset with a
@@ -245,6 +250,15 @@ paths:
                   priority:
                     type: number
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        RulesetNotFound:
+          - status: 404
+        MaxRulesExceeded:
+          - status: 409
+            message:
+              includes: maxRulesError
   /accounts/{account_id}/rum/v2/{rulesetId}/rule/{ruleId}:
     put:
       operationId: updateRule
@@ -322,6 +336,11 @@ paths:
                   priority:
                     type: number
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        RulesetNotFound:
+          - status: 404
     delete:
       operationId: deleteRule
       description: "Deletes an existing rule from a Web Analytics ruleset.  @example
@@ -358,6 +377,13 @@ paths:
                     type: string
                     description: The Web Analytics rule identifier.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        RulesetNotFound:
+          - status: 404
+        RuleNotFound:
+          - code: 10003
   /accounts/{account_id}/rum/site_info/{siteId}:
     get:
       operationId: getSiteInfo

@@ -84,6 +84,8 @@ paths:
           - code: 7003
         NotEntitled:
           - code: 10403
+        Forbidden:
+          - status: 403
     put:
       operationId: putConfiguration
       description: "Updates API Shield configuration settings for a zone. Can modify
@@ -214,6 +216,8 @@ paths:
           - code: 7003
         NotEntitled:
           - code: 10403
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/api_gateway/discovery:
     get:
       operationId: getDiscovery
@@ -3726,6 +3730,8 @@ paths:
           - code: 7003
         SchemaNotFound:
           - code: 19400
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchUserSchema
       description: Activates schema validation for an uploaded OpenAPI schema.
@@ -3795,6 +3801,8 @@ paths:
           - code: 7003
         SchemaNotFound:
           - code: 19400
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteUserSchema
       description: Permanently removes an uploaded OpenAPI schema from API Shield
@@ -3874,6 +3882,8 @@ paths:
           - code: 7003
         SchemaNotFound:
           - code: 19400
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/api_gateway/user_schemas:
     get:
       operationId: listUserSchemas
@@ -3945,6 +3955,9 @@ paths:
                   - name
                   - schema_id
       x-distilled-pagination-class: OldPublicSchemasV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createUserSchema
       description: Upload a schema to a zone  @deprecated Use [Schema Validation
@@ -4053,6 +4066,8 @@ paths:
       x-distilled-errors:
         InvalidObjectIdentifier:
           - code: 7003
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/api_gateway/user_schemas/hosts:
     get:
       operationId: listUserSchemaHosts

@@ -3032,7 +3032,11 @@ export const GetBucketSippyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetBucketSippyResponse>;
 
-export type GetBucketSippyError = DefaultErrors | NoSuchBucket | InvalidRoute;
+export type GetBucketSippyError =
+  | DefaultErrors
+  | NoSuchBucket
+  | InvalidRoute
+  | Forbidden;
 
 export const getBucketSippy: API.OperationMethod<
   GetBucketSippyRequest,
@@ -3042,7 +3046,7 @@ export const getBucketSippy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketSippyRequest,
   output: GetBucketSippyResponse,
-  errors: [NoSuchBucket, InvalidRoute],
+  errors: [NoSuchBucket, InvalidRoute, Forbidden],
 }));
 
 export interface PutBucketSippyRequest {

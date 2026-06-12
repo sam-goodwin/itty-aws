@@ -13,6 +13,28 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class EndpointHealthcheckNotFound extends Schema.TaggedErrorClass<EndpointHealthcheckNotFound>()(
+  "EndpointHealthcheckNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(EndpointHealthcheckNotFound, [{ code: 1022 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class InvalidHealthcheckEndpoint extends Schema.TaggedErrorClass<InvalidHealthcheckEndpoint>()(
+  "InvalidHealthcheckEndpoint",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidHealthcheckEndpoint, [{ code: 1002 }]);
+
+// =============================================================================
 // EndpointHealthcheck
 // =============================================================================
 
@@ -63,7 +85,10 @@ export const GetEndpointHealthcheckResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetEndpointHealthcheckResponse>;
 
-export type GetEndpointHealthcheckError = DefaultErrors;
+export type GetEndpointHealthcheckError =
+  | DefaultErrors
+  | EndpointHealthcheckNotFound
+  | Forbidden;
 
 export const getEndpointHealthcheck: API.OperationMethod<
   GetEndpointHealthcheckRequest,
@@ -73,7 +98,7 @@ export const getEndpointHealthcheck: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEndpointHealthcheckRequest,
   output: GetEndpointHealthcheckResponse,
-  errors: [],
+  errors: [EndpointHealthcheckNotFound, Forbidden],
 }));
 
 export interface ListEndpointHealthchecksRequest {
@@ -91,37 +116,33 @@ export const ListEndpointHealthchecksRequest =
     }),
   ) as unknown as Schema.Schema<ListEndpointHealthchecksRequest>;
 
-export interface ListEndpointHealthchecksResponse {
-  /** type of check to perform */
+export type ListEndpointHealthchecksResponse = {
   checkType: "icmp";
-  /** the IP address of the host to perform checks against */
   endpoint: string;
-  /** UUID. */
   id?: string | null;
-  /** Optional name associated with this check */
   name?: string | null;
-}
+}[];
 
 export const ListEndpointHealthchecksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    checkType: Schema.Literal("icmp"),
-    endpoint: Schema.String,
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.Struct({
+      checkType: Schema.Literal("icmp"),
+      endpoint: Schema.String,
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
       Schema.encodeKeys({
         checkType: "check_type",
         endpoint: "endpoint",
         id: "id",
         name: "name",
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<ListEndpointHealthchecksResponse>;
+    ),
+  ).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<ListEndpointHealthchecksResponse>;
 
-export type ListEndpointHealthchecksError = DefaultErrors;
+export type ListEndpointHealthchecksError = DefaultErrors | Forbidden;
 
 export const listEndpointHealthchecks: API.OperationMethod<
   ListEndpointHealthchecksRequest,
@@ -131,7 +152,7 @@ export const listEndpointHealthchecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEndpointHealthchecksRequest,
   output: ListEndpointHealthchecksResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface CreateEndpointHealthcheckRequest {
@@ -193,7 +214,10 @@ export const CreateEndpointHealthcheckResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateEndpointHealthcheckResponse>;
 
-export type CreateEndpointHealthcheckError = DefaultErrors;
+export type CreateEndpointHealthcheckError =
+  | DefaultErrors
+  | InvalidHealthcheckEndpoint
+  | Forbidden;
 
 export const createEndpointHealthcheck: API.OperationMethod<
   CreateEndpointHealthcheckRequest,
@@ -203,7 +227,7 @@ export const createEndpointHealthcheck: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEndpointHealthcheckRequest,
   output: CreateEndpointHealthcheckResponse,
-  errors: [],
+  errors: [InvalidHealthcheckEndpoint, Forbidden],
 }));
 
 export interface UpdateEndpointHealthcheckRequest {
@@ -267,7 +291,11 @@ export const UpdateEndpointHealthcheckResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateEndpointHealthcheckResponse>;
 
-export type UpdateEndpointHealthcheckError = DefaultErrors;
+export type UpdateEndpointHealthcheckError =
+  | DefaultErrors
+  | EndpointHealthcheckNotFound
+  | InvalidHealthcheckEndpoint
+  | Forbidden;
 
 export const updateEndpointHealthcheck: API.OperationMethod<
   UpdateEndpointHealthcheckRequest,
@@ -277,7 +305,7 @@ export const updateEndpointHealthcheck: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEndpointHealthcheckRequest,
   output: UpdateEndpointHealthcheckResponse,
-  errors: [],
+  errors: [EndpointHealthcheckNotFound, InvalidHealthcheckEndpoint, Forbidden],
 }));
 
 export interface DeleteEndpointHealthcheckRequest {
@@ -371,7 +399,10 @@ export const DeleteEndpointHealthcheckResponse =
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteEndpointHealthcheckResponse>;
 
-export type DeleteEndpointHealthcheckError = DefaultErrors;
+export type DeleteEndpointHealthcheckError =
+  | DefaultErrors
+  | EndpointHealthcheckNotFound
+  | Forbidden;
 
 export const deleteEndpointHealthcheck: API.OperationMethod<
   DeleteEndpointHealthcheckRequest,
@@ -381,7 +412,7 @@ export const deleteEndpointHealthcheck: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEndpointHealthcheckRequest,
   output: DeleteEndpointHealthcheckResponse,
-  errors: [],
+  errors: [EndpointHealthcheckNotFound, Forbidden],
 }));
 
 // =============================================================================

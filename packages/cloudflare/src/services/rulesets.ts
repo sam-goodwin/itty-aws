@@ -17,6 +17,12 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class PhaseNotEntitled extends Schema.TaggedErrorClass<PhaseNotEntitled>()(
   "PhaseNotEntitled",
   { code: Schema.Number, message: Schema.String },
@@ -4423,7 +4429,7 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetPhasResponse>;
 
-export type GetPhasError = DefaultErrors | RulesetNotFound;
+export type GetPhasError = DefaultErrors | RulesetNotFound | Forbidden;
 
 export const getPhasForAccount: API.OperationMethod<
   GetPhasForAccountRequest,
@@ -4433,7 +4439,7 @@ export const getPhasForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPhasForAccountRequest,
   output: GetPhasResponse,
-  errors: [RulesetNotFound],
+  errors: [RulesetNotFound, Forbidden],
 }));
 
 export const getPhasForZone: API.OperationMethod<
@@ -4444,7 +4450,7 @@ export const getPhasForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPhasForZoneRequest,
   output: GetPhasResponse,
-  errors: [RulesetNotFound],
+  errors: [RulesetNotFound, Forbidden],
 }));
 
 const PutPhasBaseFields = {
@@ -11726,7 +11732,11 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<PutPhasResponse>;
 
-export type PutPhasError = DefaultErrors | RulesetNotFound | PhaseNotEntitled;
+export type PutPhasError =
+  | DefaultErrors
+  | RulesetNotFound
+  | PhaseNotEntitled
+  | Forbidden;
 
 export const putPhasForAccount: API.OperationMethod<
   PutPhasForAccountRequest,
@@ -11736,7 +11746,7 @@ export const putPhasForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPhasForAccountRequest,
   output: PutPhasResponse,
-  errors: [RulesetNotFound, PhaseNotEntitled],
+  errors: [RulesetNotFound, PhaseNotEntitled, Forbidden],
 }));
 
 export const putPhasForZone: API.OperationMethod<
@@ -11747,7 +11757,7 @@ export const putPhasForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPhasForZoneRequest,
   output: PutPhasResponse,
-  errors: [RulesetNotFound, PhaseNotEntitled],
+  errors: [RulesetNotFound, PhaseNotEntitled, Forbidden],
 }));
 
 // =============================================================================
@@ -36029,7 +36039,7 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetRulesetResponse>;
 
-export type GetRulesetError = DefaultErrors | RulesetNotFound;
+export type GetRulesetError = DefaultErrors | RulesetNotFound | Forbidden;
 
 export const getRulesetForAccount: API.OperationMethod<
   GetRulesetForAccountRequest,
@@ -36039,7 +36049,7 @@ export const getRulesetForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRulesetForAccountRequest,
   output: GetRulesetResponse,
-  errors: [RulesetNotFound],
+  errors: [RulesetNotFound, Forbidden],
 }));
 
 export const getRulesetForZone: API.OperationMethod<
@@ -36050,7 +36060,7 @@ export const getRulesetForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRulesetForZoneRequest,
   output: GetRulesetResponse,
-  errors: [RulesetNotFound],
+  errors: [RulesetNotFound, Forbidden],
 }));
 
 const ListRulesetsBaseFields = {
@@ -43578,7 +43588,7 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateRulesetResponse>;
 
-export type CreateRulesetError = DefaultErrors | PhaseNotEntitled;
+export type CreateRulesetError = DefaultErrors | PhaseNotEntitled | Forbidden;
 
 export const createRulesetForAccount: API.OperationMethod<
   CreateRulesetForAccountRequest,
@@ -43588,7 +43598,7 @@ export const createRulesetForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRulesetForAccountRequest,
   output: CreateRulesetResponse,
-  errors: [PhaseNotEntitled],
+  errors: [PhaseNotEntitled, Forbidden],
 }));
 
 export const createRulesetForZone: API.OperationMethod<
@@ -43599,7 +43609,7 @@ export const createRulesetForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRulesetForZoneRequest,
   output: CreateRulesetResponse,
-  errors: [PhaseNotEntitled],
+  errors: [PhaseNotEntitled, Forbidden],
 }));
 
 const UpdateRulesetBaseFields = {
@@ -50947,7 +50957,7 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateRulesetResponse>;
 
-export type UpdateRulesetError = DefaultErrors | RulesetNotFound;
+export type UpdateRulesetError = DefaultErrors | RulesetNotFound | Forbidden;
 
 export const updateRulesetForAccount: API.OperationMethod<
   UpdateRulesetForAccountRequest,
@@ -50957,7 +50967,7 @@ export const updateRulesetForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRulesetForAccountRequest,
   output: UpdateRulesetResponse,
-  errors: [RulesetNotFound],
+  errors: [RulesetNotFound, Forbidden],
 }));
 
 export const updateRulesetForZone: API.OperationMethod<
@@ -50968,7 +50978,7 @@ export const updateRulesetForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRulesetForZoneRequest,
   output: UpdateRulesetResponse,
-  errors: [RulesetNotFound],
+  errors: [RulesetNotFound, Forbidden],
 }));
 
 const DeleteRulesetBaseFields = {
@@ -51013,7 +51023,7 @@ export type DeleteRulesetResponse = unknown;
 export const DeleteRulesetResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteRulesetResponse>;
 
-export type DeleteRulesetError = DefaultErrors | RulesetNotFound;
+export type DeleteRulesetError = DefaultErrors | RulesetNotFound | Forbidden;
 
 export const deleteRulesetForAccount: API.OperationMethod<
   DeleteRulesetForAccountRequest,
@@ -51023,7 +51033,7 @@ export const deleteRulesetForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRulesetForAccountRequest,
   output: DeleteRulesetResponse,
-  errors: [RulesetNotFound],
+  errors: [RulesetNotFound, Forbidden],
 }));
 
 export const deleteRulesetForZone: API.OperationMethod<
@@ -51034,7 +51044,7 @@ export const deleteRulesetForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRulesetForZoneRequest,
   output: DeleteRulesetResponse,
-  errors: [RulesetNotFound],
+  errors: [RulesetNotFound, Forbidden],
 }));
 
 // =============================================================================

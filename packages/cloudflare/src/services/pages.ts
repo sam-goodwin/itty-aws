@@ -5159,7 +5159,7 @@ export interface GetProjectDeploymentResponse {
   /** Short Id (8 character) of the deployment. */
   shortId: string;
   /** Configs for the project source control. */
-  source: {
+  source?: {
     config: {
       deploymentsEnabled: boolean;
       owner: string;
@@ -5176,7 +5176,7 @@ export interface GetProjectDeploymentResponse {
       repoName: string;
     };
     type: "github" | "gitlab" | (string & {});
-  };
+  } | null;
   /** List of past stages. */
   stages: {
     endedOn: string | null;
@@ -5285,46 +5285,51 @@ export const GetProjectDeploymentResponse =
     projectId: Schema.String,
     projectName: Schema.String,
     shortId: Schema.String,
-    source: Schema.Struct({
-      config: Schema.Struct({
-        deploymentsEnabled: Schema.Boolean,
-        owner: Schema.String,
-        ownerId: Schema.String,
-        pathExcludes: Schema.Array(Schema.String),
-        pathIncludes: Schema.Array(Schema.String),
-        prCommentsEnabled: Schema.Boolean,
-        previewBranchExcludes: Schema.Array(Schema.String),
-        previewBranchIncludes: Schema.Array(Schema.String),
-        previewDeploymentSetting: Schema.Union([
-          Schema.Literals(["all", "none", "custom"]),
-          Schema.String,
-        ]),
-        productionBranch: Schema.String,
-        productionDeploymentsEnabled: Schema.Boolean,
-        repoId: Schema.String,
-        repoName: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          deploymentsEnabled: "deployments_enabled",
-          owner: "owner",
-          ownerId: "owner_id",
-          pathExcludes: "path_excludes",
-          pathIncludes: "path_includes",
-          prCommentsEnabled: "pr_comments_enabled",
-          previewBranchExcludes: "preview_branch_excludes",
-          previewBranchIncludes: "preview_branch_includes",
-          previewDeploymentSetting: "preview_deployment_setting",
-          productionBranch: "production_branch",
-          productionDeploymentsEnabled: "production_deployments_enabled",
-          repoId: "repo_id",
-          repoName: "repo_name",
+    source: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          config: Schema.Struct({
+            deploymentsEnabled: Schema.Boolean,
+            owner: Schema.String,
+            ownerId: Schema.String,
+            pathExcludes: Schema.Array(Schema.String),
+            pathIncludes: Schema.Array(Schema.String),
+            prCommentsEnabled: Schema.Boolean,
+            previewBranchExcludes: Schema.Array(Schema.String),
+            previewBranchIncludes: Schema.Array(Schema.String),
+            previewDeploymentSetting: Schema.Union([
+              Schema.Literals(["all", "none", "custom"]),
+              Schema.String,
+            ]),
+            productionBranch: Schema.String,
+            productionDeploymentsEnabled: Schema.Boolean,
+            repoId: Schema.String,
+            repoName: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              deploymentsEnabled: "deployments_enabled",
+              owner: "owner",
+              ownerId: "owner_id",
+              pathExcludes: "path_excludes",
+              pathIncludes: "path_includes",
+              prCommentsEnabled: "pr_comments_enabled",
+              previewBranchExcludes: "preview_branch_excludes",
+              previewBranchIncludes: "preview_branch_includes",
+              previewDeploymentSetting: "preview_deployment_setting",
+              productionBranch: "production_branch",
+              productionDeploymentsEnabled: "production_deployments_enabled",
+              repoId: "repo_id",
+              repoName: "repo_name",
+            }),
+          ),
+          type: Schema.Union([
+            Schema.Literals(["github", "gitlab"]),
+            Schema.String,
+          ]),
         }),
-      ),
-      type: Schema.Union([
-        Schema.Literals(["github", "gitlab"]),
-        Schema.String,
+        Schema.Null,
       ]),
-    }),
+    ),
     stages: Schema.Array(
       Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
@@ -5888,7 +5893,7 @@ export interface CreateProjectDeploymentResponse {
   /** Short Id (8 character) of the deployment. */
   shortId: string;
   /** Configs for the project source control. */
-  source: {
+  source?: {
     config: {
       deploymentsEnabled: boolean;
       owner: string;
@@ -5905,7 +5910,7 @@ export interface CreateProjectDeploymentResponse {
       repoName: string;
     };
     type: "github" | "gitlab" | (string & {});
-  };
+  } | null;
   /** List of past stages. */
   stages: {
     endedOn: string | null;
@@ -6014,46 +6019,51 @@ export const CreateProjectDeploymentResponse =
     projectId: Schema.String,
     projectName: Schema.String,
     shortId: Schema.String,
-    source: Schema.Struct({
-      config: Schema.Struct({
-        deploymentsEnabled: Schema.Boolean,
-        owner: Schema.String,
-        ownerId: Schema.String,
-        pathExcludes: Schema.Array(Schema.String),
-        pathIncludes: Schema.Array(Schema.String),
-        prCommentsEnabled: Schema.Boolean,
-        previewBranchExcludes: Schema.Array(Schema.String),
-        previewBranchIncludes: Schema.Array(Schema.String),
-        previewDeploymentSetting: Schema.Union([
-          Schema.Literals(["all", "none", "custom"]),
-          Schema.String,
-        ]),
-        productionBranch: Schema.String,
-        productionDeploymentsEnabled: Schema.Boolean,
-        repoId: Schema.String,
-        repoName: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          deploymentsEnabled: "deployments_enabled",
-          owner: "owner",
-          ownerId: "owner_id",
-          pathExcludes: "path_excludes",
-          pathIncludes: "path_includes",
-          prCommentsEnabled: "pr_comments_enabled",
-          previewBranchExcludes: "preview_branch_excludes",
-          previewBranchIncludes: "preview_branch_includes",
-          previewDeploymentSetting: "preview_deployment_setting",
-          productionBranch: "production_branch",
-          productionDeploymentsEnabled: "production_deployments_enabled",
-          repoId: "repo_id",
-          repoName: "repo_name",
+    source: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          config: Schema.Struct({
+            deploymentsEnabled: Schema.Boolean,
+            owner: Schema.String,
+            ownerId: Schema.String,
+            pathExcludes: Schema.Array(Schema.String),
+            pathIncludes: Schema.Array(Schema.String),
+            prCommentsEnabled: Schema.Boolean,
+            previewBranchExcludes: Schema.Array(Schema.String),
+            previewBranchIncludes: Schema.Array(Schema.String),
+            previewDeploymentSetting: Schema.Union([
+              Schema.Literals(["all", "none", "custom"]),
+              Schema.String,
+            ]),
+            productionBranch: Schema.String,
+            productionDeploymentsEnabled: Schema.Boolean,
+            repoId: Schema.String,
+            repoName: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              deploymentsEnabled: "deployments_enabled",
+              owner: "owner",
+              ownerId: "owner_id",
+              pathExcludes: "path_excludes",
+              pathIncludes: "path_includes",
+              prCommentsEnabled: "pr_comments_enabled",
+              previewBranchExcludes: "preview_branch_excludes",
+              previewBranchIncludes: "preview_branch_includes",
+              previewDeploymentSetting: "preview_deployment_setting",
+              productionBranch: "production_branch",
+              productionDeploymentsEnabled: "production_deployments_enabled",
+              repoId: "repo_id",
+              repoName: "repo_name",
+            }),
+          ),
+          type: Schema.Union([
+            Schema.Literals(["github", "gitlab"]),
+            Schema.String,
+          ]),
         }),
-      ),
-      type: Schema.Union([
-        Schema.Literals(["github", "gitlab"]),
-        Schema.String,
+        Schema.Null,
       ]),
-    }),
+    ),
     stages: Schema.Array(
       Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),

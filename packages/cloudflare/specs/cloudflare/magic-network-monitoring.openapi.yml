@@ -60,11 +60,6 @@ paths:
                             - id
                             - name
                             - router_ip
-                    required:
-                      - default_sampling
-                      - name
-                      - router_ips
-                      - warp_devices
                 nullable: true
       x-distilled-response-path: result
       x-distilled-errors:
@@ -179,6 +174,10 @@ paths:
           - code: 1005
             message:
               includes: already exists
+        InvalidMnmConfig:
+          - code: 1003
+        Forbidden:
+          - status: 403
     put:
       operationId: updateConfig
       description: "Update an existing network monitoring configuration, requires the
@@ -278,16 +277,13 @@ paths:
                             - id
                             - name
                             - router_ip
-                    required:
-                      - default_sampling
-                      - name
-                      - router_ips
-                      - warp_devices
                 nullable: true
       x-distilled-response-path: result
       x-distilled-errors:
         Forbidden:
           - status: 403
+        InvalidMnmConfig:
+          - code: 1003
     patch:
       operationId: patchConfig
       description: "Update fields in an existing network monitoring

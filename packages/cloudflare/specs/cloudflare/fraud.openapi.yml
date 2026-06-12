@@ -97,6 +97,9 @@ paths:
                       will result in a 10400 Bad Request with details in the
                       `messages` array.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putFraud
       description: "Update Fraud Detection settings for a zone.  Notes on
@@ -266,3 +269,8 @@ paths:
                       will result in a 10400 Bad Request with details in the
                       `messages` array.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
+        FraudDetectionNotEntitled:
+          - code: 10400

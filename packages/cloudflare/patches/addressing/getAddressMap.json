@@ -1,8 +1,22 @@
 {
   "errors": {
-    "AddressMapNotFound": [{ "code": 1000 }],
+    "AddressMapNotFound": [
+      {
+        "code": 1000
+      }
+    ],
     "InvalidAccountId": [
-      { "code": 7003, "message": { "includes": "Could not route" } }
+      {
+        "code": 7003,
+        "message": {
+          "includes": "Could not route"
+        }
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
     ]
   }
 }

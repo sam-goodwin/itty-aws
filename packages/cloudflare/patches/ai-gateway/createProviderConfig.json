@@ -1,0 +1,22 @@
+{
+  "errors": {
+    "ProviderConfigSecretNotFound": [
+      { "code": 7001, "message": { "includes": "was not found" } }
+    ],
+    "ProviderConfigAlreadyExists": [
+      { "code": 7001, "message": { "includes": "already exists" } }
+    ],
+    "GatewayNotFound": [{ "code": 7002 }]
+  },
+  "request": {
+    "properties": {
+      "secret": { "optional": true },
+      "secretId": { "optional": true }
+    }
+  },
+  "response": {
+    "properties": {
+      "default_config": { "type": "unknown" }
+    }
+  }
+}

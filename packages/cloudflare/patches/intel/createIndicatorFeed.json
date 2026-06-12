@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "IndicatorFeedsNotEntitled": [
+      {
+        "status": 403,
+        "message": { "includes": "does not have permission to create a feed" }
+      }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

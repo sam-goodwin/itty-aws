@@ -16,6 +16,12 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class VpcServiceNameAlreadyExists extends Schema.TaggedErrorClass<VpcServiceNameAlreadyExists>()(
   "VpcServiceNameAlreadyExists",
   { code: Schema.Number, message: Schema.String },
@@ -79,6 +85,8 @@ export type GetDirectoryServiceResponse =
       serviceId?: string | null;
       tlsSettings?: { certVerificationMode: string } | null;
       updatedAt?: string | null;
+      tcpPort?: number | null;
+      appProtocol?: "postgresql" | "mysql" | null;
     }
   | {
       host:
@@ -100,6 +108,8 @@ export type GetDirectoryServiceResponse =
       tcpPort?: number | null;
       tlsSettings?: { certVerificationMode: string } | null;
       updatedAt?: string | null;
+      httpPort?: number | null;
+      httpsPort?: number | null;
     };
 
 export const GetDirectoryServiceResponse =
@@ -164,6 +174,14 @@ export const GetDirectoryServiceResponse =
         ]),
       ),
       updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      tcpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      appProtocol: Schema.optional(
+        Schema.Union([
+          Schema.Literal("postgresql"),
+          Schema.Literal("mysql"),
+          Schema.Null,
+        ]),
+      ),
     }).pipe(
       Schema.encodeKeys({
         host: "host",
@@ -175,6 +193,8 @@ export const GetDirectoryServiceResponse =
         serviceId: "service_id",
         tlsSettings: "tls_settings",
         updatedAt: "updated_at",
+        tcpPort: "tcp_port",
+        appProtocol: "app_protocol",
       }),
     ),
     Schema.Struct({
@@ -243,6 +263,8 @@ export const GetDirectoryServiceResponse =
         ]),
       ),
       updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      httpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      httpsPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         host: "host",
@@ -254,13 +276,18 @@ export const GetDirectoryServiceResponse =
         tcpPort: "tcp_port",
         tlsSettings: "tls_settings",
         updatedAt: "updated_at",
+        httpPort: "http_port",
+        httpsPort: "https_port",
       }),
     ),
   ]).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetDirectoryServiceResponse>;
 
-export type GetDirectoryServiceError = DefaultErrors | VpcServiceNotFound;
+export type GetDirectoryServiceError =
+  | DefaultErrors
+  | VpcServiceNotFound
+  | Forbidden;
 
 export const getDirectoryService: API.OperationMethod<
   GetDirectoryServiceRequest,
@@ -270,7 +297,7 @@ export const getDirectoryService: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDirectoryServiceRequest,
   output: GetDirectoryServiceResponse,
-  errors: [VpcServiceNotFound],
+  errors: [VpcServiceNotFound, Forbidden],
 }));
 
 export interface ListDirectoryServicesRequest {
@@ -323,6 +350,8 @@ export interface ListDirectoryServicesResponse {
         serviceId?: string | null;
         tlsSettings?: { certVerificationMode: string } | null;
         updatedAt?: string | null;
+        tcpPort?: number | null;
+        appProtocol?: "postgresql" | "mysql" | null;
       }
     | {
         host:
@@ -344,6 +373,8 @@ export interface ListDirectoryServicesResponse {
         tcpPort?: number | null;
         tlsSettings?: { certVerificationMode: string } | null;
         updatedAt?: string | null;
+        httpPort?: number | null;
+        httpsPort?: number | null;
       }
   )[];
   resultInfo?: {
@@ -426,6 +457,14 @@ export const ListDirectoryServicesResponse =
           updatedAt: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
+          tcpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          appProtocol: Schema.optional(
+            Schema.Union([
+              Schema.Literal("postgresql"),
+              Schema.Literal("mysql"),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             host: "host",
@@ -437,6 +476,8 @@ export const ListDirectoryServicesResponse =
             serviceId: "service_id",
             tlsSettings: "tls_settings",
             updatedAt: "updated_at",
+            tcpPort: "tcp_port",
+            appProtocol: "app_protocol",
           }),
         ),
         Schema.Struct({
@@ -511,6 +552,10 @@ export const ListDirectoryServicesResponse =
           updatedAt: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
+          httpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          httpsPort: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             host: "host",
@@ -522,6 +567,8 @@ export const ListDirectoryServicesResponse =
             tcpPort: "tcp_port",
             tlsSettings: "tls_settings",
             updatedAt: "updated_at",
+            httpPort: "http_port",
+            httpsPort: "https_port",
           }),
         ),
       ]),
@@ -550,7 +597,7 @@ export const ListDirectoryServicesResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListDirectoryServicesResponse>;
 
-export type ListDirectoryServicesError = DefaultErrors;
+export type ListDirectoryServicesError = DefaultErrors | Forbidden;
 
 export const listDirectoryServices: API.PaginatedOperationMethod<
   ListDirectoryServicesRequest,
@@ -560,7 +607,7 @@ export const listDirectoryServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryServicesRequest,
   output: ListDirectoryServicesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -691,6 +738,8 @@ export type CreateDirectoryServiceResponse =
       serviceId?: string | null;
       tlsSettings?: { certVerificationMode: string } | null;
       updatedAt?: string | null;
+      tcpPort?: number | null;
+      appProtocol?: "postgresql" | "mysql" | null;
     }
   | {
       host:
@@ -712,6 +761,8 @@ export type CreateDirectoryServiceResponse =
       tcpPort?: number | null;
       tlsSettings?: { certVerificationMode: string } | null;
       updatedAt?: string | null;
+      httpPort?: number | null;
+      httpsPort?: number | null;
     };
 
 export const CreateDirectoryServiceResponse =
@@ -776,6 +827,14 @@ export const CreateDirectoryServiceResponse =
         ]),
       ),
       updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      tcpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      appProtocol: Schema.optional(
+        Schema.Union([
+          Schema.Literal("postgresql"),
+          Schema.Literal("mysql"),
+          Schema.Null,
+        ]),
+      ),
     }).pipe(
       Schema.encodeKeys({
         host: "host",
@@ -787,6 +846,8 @@ export const CreateDirectoryServiceResponse =
         serviceId: "service_id",
         tlsSettings: "tls_settings",
         updatedAt: "updated_at",
+        tcpPort: "tcp_port",
+        appProtocol: "app_protocol",
       }),
     ),
     Schema.Struct({
@@ -855,6 +916,8 @@ export const CreateDirectoryServiceResponse =
         ]),
       ),
       updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      httpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      httpsPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         host: "host",
@@ -866,6 +929,8 @@ export const CreateDirectoryServiceResponse =
         tcpPort: "tcp_port",
         tlsSettings: "tls_settings",
         updatedAt: "updated_at",
+        httpPort: "http_port",
+        httpsPort: "https_port",
       }),
     ),
   ]).pipe(
@@ -875,7 +940,8 @@ export const CreateDirectoryServiceResponse =
 export type CreateDirectoryServiceError =
   | DefaultErrors
   | VpcServiceNameAlreadyExists
-  | VpcTunnelNotFound;
+  | VpcTunnelNotFound
+  | Forbidden;
 
 export const createDirectoryService: API.OperationMethod<
   CreateDirectoryServiceRequest,
@@ -885,7 +951,7 @@ export const createDirectoryService: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDirectoryServiceRequest,
   output: CreateDirectoryServiceResponse,
-  errors: [VpcServiceNameAlreadyExists, VpcTunnelNotFound],
+  errors: [VpcServiceNameAlreadyExists, VpcTunnelNotFound, Forbidden],
 }));
 
 export interface UpdateDirectoryServiceRequest {
@@ -1011,6 +1077,8 @@ export type UpdateDirectoryServiceResponse =
       serviceId?: string | null;
       tlsSettings?: { certVerificationMode: string } | null;
       updatedAt?: string | null;
+      tcpPort?: number | null;
+      appProtocol?: "postgresql" | "mysql" | null;
     }
   | {
       host:
@@ -1032,6 +1100,8 @@ export type UpdateDirectoryServiceResponse =
       tcpPort?: number | null;
       tlsSettings?: { certVerificationMode: string } | null;
       updatedAt?: string | null;
+      httpPort?: number | null;
+      httpsPort?: number | null;
     };
 
 export const UpdateDirectoryServiceResponse =
@@ -1096,6 +1166,14 @@ export const UpdateDirectoryServiceResponse =
         ]),
       ),
       updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      tcpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      appProtocol: Schema.optional(
+        Schema.Union([
+          Schema.Literal("postgresql"),
+          Schema.Literal("mysql"),
+          Schema.Null,
+        ]),
+      ),
     }).pipe(
       Schema.encodeKeys({
         host: "host",
@@ -1107,6 +1185,8 @@ export const UpdateDirectoryServiceResponse =
         serviceId: "service_id",
         tlsSettings: "tls_settings",
         updatedAt: "updated_at",
+        tcpPort: "tcp_port",
+        appProtocol: "app_protocol",
       }),
     ),
     Schema.Struct({
@@ -1175,6 +1255,8 @@ export const UpdateDirectoryServiceResponse =
         ]),
       ),
       updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      httpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      httpsPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         host: "host",
@@ -1186,6 +1268,8 @@ export const UpdateDirectoryServiceResponse =
         tcpPort: "tcp_port",
         tlsSettings: "tls_settings",
         updatedAt: "updated_at",
+        httpPort: "http_port",
+        httpsPort: "https_port",
       }),
     ),
   ]).pipe(
@@ -1196,7 +1280,8 @@ export type UpdateDirectoryServiceError =
   | DefaultErrors
   | VpcServiceNotFound
   | VpcServiceNameAlreadyExists
-  | VpcTunnelNotFound;
+  | VpcTunnelNotFound
+  | Forbidden;
 
 export const updateDirectoryService: API.OperationMethod<
   UpdateDirectoryServiceRequest,
@@ -1206,7 +1291,12 @@ export const updateDirectoryService: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDirectoryServiceRequest,
   output: UpdateDirectoryServiceResponse,
-  errors: [VpcServiceNotFound, VpcServiceNameAlreadyExists, VpcTunnelNotFound],
+  errors: [
+    VpcServiceNotFound,
+    VpcServiceNameAlreadyExists,
+    VpcTunnelNotFound,
+    Forbidden,
+  ],
 }));
 
 export interface DeleteDirectoryServiceRequest {
@@ -1230,7 +1320,10 @@ export type DeleteDirectoryServiceResponse = unknown;
 export const DeleteDirectoryServiceResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteDirectoryServiceResponse>;
 
-export type DeleteDirectoryServiceError = DefaultErrors | VpcServiceNotFound;
+export type DeleteDirectoryServiceError =
+  | DefaultErrors
+  | VpcServiceNotFound
+  | Forbidden;
 
 export const deleteDirectoryService: API.OperationMethod<
   DeleteDirectoryServiceRequest,
@@ -1240,5 +1333,5 @@ export const deleteDirectoryService: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDirectoryServiceRequest,
   output: DeleteDirectoryServiceResponse,
-  errors: [VpcServiceNotFound],
+  errors: [VpcServiceNotFound, Forbidden],
 }));

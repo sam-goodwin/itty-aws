@@ -282,7 +282,12 @@ const tryMatchOperationError = (
     }
   }
 
-  const matched = findMatchingError(errorSchemas, errorCode, status, errorMessage);
+  const matched = findMatchingError(
+    errorSchemas,
+    errorCode,
+    status,
+    errorMessage,
+  );
   if (!matched) return undefined;
 
   // Decode using the schema - properly instantiates TaggedError classes
@@ -383,7 +388,12 @@ const matchError = (
     // Envelope-less JSON/string bodies still get a shot at the
     // per-operation `{ status, message }` matchers before falling back to
     // the catch-all HTTP error.
-    const matchedRaw = tryMatchOperationError(errors, undefined, status, bodyStr);
+    const matchedRaw = tryMatchOperationError(
+      errors,
+      undefined,
+      status,
+      bodyStr,
+    );
     if (matchedRaw) return matchedRaw;
     return Effect.fail(
       new CloudflareHttpError({
@@ -396,7 +406,12 @@ const matchError = (
   }
 
   // Match against the per-operation error schemas
-  const matched = tryMatchOperationError(errors, errorCode, status, errorMessage);
+  const matched = tryMatchOperationError(
+    errors,
+    errorCode,
+    status,
+    errorMessage,
+  );
   if (matched) return matched;
 
   // Check global error codes before falling through to unknown

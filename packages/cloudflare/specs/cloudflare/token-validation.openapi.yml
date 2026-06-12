@@ -169,6 +169,13 @@ paths:
                   - token_sources
                   - token_type
       x-distilled-response-path: result
+      x-distilled-errors:
+        TokenConfigurationNotFound:
+          - status: 404
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchConfiguration
       description: "Edit fields of an existing Token Configuration  @example ```ts
@@ -225,6 +232,13 @@ paths:
                     items:
                       type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        TokenConfigurationNotFound:
+          - status: 404
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteConfiguration
       description: "Delete Token Configuration  @example ```ts const configuration =
@@ -255,6 +269,13 @@ paths:
                     type: string
                     description: UUID.
       x-distilled-response-path: result
+      x-distilled-errors:
+        TokenConfigurationNotFound:
+          - status: 404
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/token_validation/config:
     get:
       operationId: listConfigurations
@@ -423,6 +444,11 @@ paths:
                   - token_sources
                   - token_type
       x-distilled-pagination-class: TokenConfigsV4PagePaginationArray
+      x-distilled-errors:
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
     post:
       operationId: createConfiguration
       description: "Create a new Token Validation configuration  @example ```ts const
@@ -724,6 +750,11 @@ paths:
                   - token_sources
                   - token_type
       x-distilled-response-path: result
+      x-distilled-errors:
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/token_validation/config/{configId}/credentials:
     put:
       operationId: putConfigurationCredential
@@ -1017,6 +1048,13 @@ paths:
                   - keys
                   - messages
                   - success
+      x-distilled-errors:
+        TokenConfigurationNotFound:
+          - status: 404
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/token_validation/rules/{ruleId}:
     get:
       operationId: getRule
@@ -1113,6 +1151,13 @@ paths:
                   - selector
                   - title
       x-distilled-response-path: result
+      x-distilled-errors:
+        TokenValidationRuleNotFound:
+          - status: 404
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchRule
       description: "Edit a zone token validation rule.  @example ```ts const
@@ -1292,6 +1337,13 @@ paths:
                   - selector
                   - title
       x-distilled-response-path: result
+      x-distilled-errors:
+        TokenValidationRuleNotFound:
+          - status: 404
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteRule
       description: "Delete a zone token validation rule.  @example ```ts const rule =
@@ -1317,6 +1369,13 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        TokenValidationRuleNotFound:
+          - status: 404
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/token_validation/rules:
     get:
       operationId: listRules
@@ -1466,6 +1525,11 @@ paths:
                   - selector
                   - title
       x-distilled-pagination-class: TokenValidationRulesV4PagePaginationArray
+      x-distilled-errors:
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
     post:
       operationId: createRule
       description: "Create a token validation rule.  @example ```ts const
@@ -1630,6 +1694,11 @@ paths:
                   - selector
                   - title
       x-distilled-response-path: result
+      x-distilled-errors:
+        TokenValidationNotEntitled:
+          - code: 10403
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/token_validation/rules/bulk:
     post:
       operationId: bulkCreateRules

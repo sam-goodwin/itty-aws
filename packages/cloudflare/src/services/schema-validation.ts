@@ -13,6 +13,40 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class InvalidSchema extends Schema.TaggedErrorClass<InvalidSchema>()(
+  "InvalidSchema",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidSchema, [{ code: 50010 }]);
+
+export class OperationNotFound extends Schema.TaggedErrorClass<OperationNotFound>()(
+  "OperationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(OperationNotFound, [{ code: 10404 }]);
+
+export class SchemaNotFound extends Schema.TaggedErrorClass<SchemaNotFound>()(
+  "SchemaNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SchemaNotFound, [{ code: 19400 }]);
+
+export class UnentitledMitigationAction extends Schema.TaggedErrorClass<UnentitledMitigationAction>()(
+  "UnentitledMitigationAction",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(UnentitledMitigationAction, [{ code: 11400 }]);
+
+// =============================================================================
 // Schema
 // =============================================================================
 
@@ -73,7 +107,7 @@ export const GetSchemaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetSchemaResponse>;
 
-export type GetSchemaError = DefaultErrors;
+export type GetSchemaError = DefaultErrors | SchemaNotFound | Forbidden;
 
 export const getSchema: API.OperationMethod<
   GetSchemaRequest,
@@ -83,7 +117,7 @@ export const getSchema: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSchemaRequest,
   output: GetSchemaResponse,
-  errors: [],
+  errors: [SchemaNotFound, Forbidden],
 }));
 
 export interface ListSchemasRequest {
@@ -260,7 +294,7 @@ export const CreateSchemaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateSchemaResponse>;
 
-export type CreateSchemaError = DefaultErrors;
+export type CreateSchemaError = DefaultErrors | InvalidSchema | Forbidden;
 
 export const createSchema: API.OperationMethod<
   CreateSchemaRequest,
@@ -270,7 +304,7 @@ export const createSchema: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSchemaRequest,
   output: CreateSchemaResponse,
-  errors: [],
+  errors: [InvalidSchema, Forbidden],
 }));
 
 export interface PatchSchemaRequest {
@@ -331,7 +365,7 @@ export const PatchSchemaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchSchemaResponse>;
 
-export type PatchSchemaError = DefaultErrors;
+export type PatchSchemaError = DefaultErrors | SchemaNotFound;
 
 export const patchSchema: API.OperationMethod<
   PatchSchemaRequest,
@@ -341,7 +375,7 @@ export const patchSchema: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSchemaRequest,
   output: PatchSchemaResponse,
-  errors: [],
+  errors: [SchemaNotFound],
 }));
 
 export interface DeleteSchemaRequest {
@@ -362,16 +396,16 @@ export const DeleteSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteSchemaResponse {
   /** The ID of the schema that was just deleted */
-  id: string;
+  id?: string | null;
 }
 
 export const DeleteSchemaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteSchemaResponse>;
 
-export type DeleteSchemaError = DefaultErrors;
+export type DeleteSchemaError = DefaultErrors | SchemaNotFound;
 
 export const deleteSchema: API.OperationMethod<
   DeleteSchemaRequest,
@@ -381,7 +415,7 @@ export const deleteSchema: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSchemaRequest,
   output: DeleteSchemaResponse,
-  errors: [],
+  errors: [SchemaNotFound],
 }));
 
 // =============================================================================
@@ -429,7 +463,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetSettingResponse>;
 
-export type GetSettingError = DefaultErrors;
+export type GetSettingError = DefaultErrors | Forbidden;
 
 export const getSetting: API.OperationMethod<
   GetSettingRequest,
@@ -439,7 +473,7 @@ export const getSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingRequest,
   output: GetSettingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutSettingRequest {
@@ -498,7 +532,10 @@ export const PutSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutSettingResponse>;
 
-export type PutSettingError = DefaultErrors;
+export type PutSettingError =
+  | DefaultErrors
+  | UnentitledMitigationAction
+  | Forbidden;
 
 export const putSetting: API.OperationMethod<
   PutSettingRequest,
@@ -508,7 +545,7 @@ export const putSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSettingRequest,
   output: PutSettingResponse,
-  errors: [],
+  errors: [UnentitledMitigationAction, Forbidden],
 }));
 
 export interface PatchSettingRequest {
@@ -602,17 +639,22 @@ export const GetSettingOperationRequest =
 
 export interface GetSettingOperationResponse {
   /** When set, this applies a mitigation action to this operation which supersedes a global schema validation setting just for this operation  - `"log"` - log request when request does not conform to schem */
-  mitigationAction: "log" | "block" | "none" | (string & {});
+  mitigationAction?: "log" | "block" | "none" | (string & {}) | null;
   /** UUID. */
   operationId: string;
 }
 
 export const GetSettingOperationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    mitigationAction: Schema.Union([
-      Schema.Literals(["log", "block", "none"]),
-      Schema.String,
-    ]),
+    mitigationAction: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["log", "block", "none"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
     operationId: Schema.String,
   })
     .pipe(
@@ -625,7 +667,10 @@ export const GetSettingOperationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSettingOperationResponse>;
 
-export type GetSettingOperationError = DefaultErrors;
+export type GetSettingOperationError =
+  | DefaultErrors
+  | OperationNotFound
+  | Forbidden;
 
 export const getSettingOperation: API.OperationMethod<
   GetSettingOperationRequest,
@@ -635,7 +680,7 @@ export const getSettingOperation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingOperationRequest,
   output: GetSettingOperationResponse,
-  errors: [],
+  errors: [OperationNotFound, Forbidden],
 }));
 
 export interface ListSettingOperationsRequest {
@@ -781,7 +826,10 @@ export const PutSettingOperationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PutSettingOperationResponse>;
 
-export type PutSettingOperationError = DefaultErrors;
+export type PutSettingOperationError =
+  | DefaultErrors
+  | OperationNotFound
+  | UnentitledMitigationAction;
 
 export const putSettingOperation: API.OperationMethod<
   PutSettingOperationRequest,
@@ -791,7 +839,7 @@ export const putSettingOperation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSettingOperationRequest,
   output: PutSettingOperationResponse,
-  errors: [],
+  errors: [OperationNotFound, UnentitledMitigationAction],
 }));
 
 export interface DeleteSettingOperationRequest {
@@ -825,7 +873,7 @@ export const DeleteSettingOperationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteSettingOperationResponse>;
 
-export type DeleteSettingOperationError = DefaultErrors;
+export type DeleteSettingOperationError = DefaultErrors | OperationNotFound;
 
 export const deleteSettingOperation: API.OperationMethod<
   DeleteSettingOperationRequest,
@@ -835,7 +883,7 @@ export const deleteSettingOperation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSettingOperationRequest,
   output: DeleteSettingOperationResponse,
-  errors: [],
+  errors: [OperationNotFound],
 }));
 
 export interface BulkPatchSettingOperationsRequest {

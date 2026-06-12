@@ -13,6 +13,28 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class DnsFirewallNotEntitled extends Schema.TaggedErrorClass<DnsFirewallNotEntitled>()(
+  "DnsFirewallNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DnsFirewallNotEntitled, [{ code: 10101 }]);
+
+export class DnsFirewallNotFound extends Schema.TaggedErrorClass<DnsFirewallNotFound>()(
+  "DnsFirewallNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DnsFirewallNotFound, [{ code: 11001 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // AnalyticReport
 // =============================================================================
 
@@ -425,7 +447,10 @@ export const GetDnsFirewallResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetDnsFirewallResponse>;
 
-export type GetDnsFirewallError = DefaultErrors;
+export type GetDnsFirewallError =
+  | DefaultErrors
+  | DnsFirewallNotFound
+  | Forbidden;
 
 export const getDnsFirewall: API.OperationMethod<
   GetDnsFirewallRequest,
@@ -435,7 +460,7 @@ export const getDnsFirewall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDnsFirewallRequest,
   output: GetDnsFirewallResponse,
-  errors: [],
+  errors: [DnsFirewallNotFound, Forbidden],
 }));
 
 export interface ListDnsFirewallsRequest {
@@ -557,7 +582,7 @@ export const ListDnsFirewallsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListDnsFirewallsResponse>;
 
-export type ListDnsFirewallsError = DefaultErrors;
+export type ListDnsFirewallsError = DefaultErrors | Forbidden;
 
 export const listDnsFirewalls: API.PaginatedOperationMethod<
   ListDnsFirewallsRequest,
@@ -567,7 +592,7 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDnsFirewallsRequest,
   output: ListDnsFirewallsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -731,7 +756,10 @@ export const CreateDnsFirewallResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateDnsFirewallResponse>;
 
-export type CreateDnsFirewallError = DefaultErrors;
+export type CreateDnsFirewallError =
+  | DefaultErrors
+  | DnsFirewallNotEntitled
+  | Forbidden;
 
 export const createDnsFirewall: API.OperationMethod<
   CreateDnsFirewallRequest,
@@ -741,7 +769,7 @@ export const createDnsFirewall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDnsFirewallRequest,
   output: CreateDnsFirewallResponse,
-  errors: [],
+  errors: [DnsFirewallNotEntitled, Forbidden],
 }));
 
 export interface PatchDnsFirewallRequest {
@@ -903,7 +931,10 @@ export const PatchDnsFirewallResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchDnsFirewallResponse>;
 
-export type PatchDnsFirewallError = DefaultErrors;
+export type PatchDnsFirewallError =
+  | DefaultErrors
+  | DnsFirewallNotFound
+  | Forbidden;
 
 export const patchDnsFirewall: API.OperationMethod<
   PatchDnsFirewallRequest,
@@ -913,7 +944,7 @@ export const patchDnsFirewall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDnsFirewallRequest,
   output: PatchDnsFirewallResponse,
-  errors: [],
+  errors: [DnsFirewallNotFound, Forbidden],
 }));
 
 export interface DeleteDnsFirewallRequest {
@@ -945,7 +976,10 @@ export const DeleteDnsFirewallResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDnsFirewallResponse>;
 
-export type DeleteDnsFirewallError = DefaultErrors;
+export type DeleteDnsFirewallError =
+  | DefaultErrors
+  | DnsFirewallNotFound
+  | Forbidden;
 
 export const deleteDnsFirewall: API.OperationMethod<
   DeleteDnsFirewallRequest,
@@ -955,7 +989,7 @@ export const deleteDnsFirewall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDnsFirewallRequest,
   output: DeleteDnsFirewallResponse,
-  errors: [],
+  errors: [DnsFirewallNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -989,7 +1023,7 @@ export const GetReverseDnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetReverseDnResponse>;
 
-export type GetReverseDnError = DefaultErrors;
+export type GetReverseDnError = DefaultErrors | DnsFirewallNotFound | Forbidden;
 
 export const getReverseDn: API.OperationMethod<
   GetReverseDnRequest,
@@ -999,7 +1033,7 @@ export const getReverseDn: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReverseDnRequest,
   output: GetReverseDnResponse,
-  errors: [],
+  errors: [DnsFirewallNotFound, Forbidden],
 }));
 
 export interface PatchReverseDnRequest {
@@ -1034,7 +1068,10 @@ export const PatchReverseDnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PatchReverseDnResponse>;
 
-export type PatchReverseDnError = DefaultErrors;
+export type PatchReverseDnError =
+  | DefaultErrors
+  | DnsFirewallNotFound
+  | Forbidden;
 
 export const patchReverseDn: API.OperationMethod<
   PatchReverseDnRequest,
@@ -1044,5 +1081,5 @@ export const patchReverseDn: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchReverseDnRequest,
   output: PatchReverseDnResponse,
-  errors: [],
+  errors: [DnsFirewallNotFound, Forbidden],
 }));

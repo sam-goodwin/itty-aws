@@ -138,6 +138,16 @@ paths:
                           mode (`verify_full`) is used.
                       updated_at:
                         type: string
+                      tcp_port:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      app_protocol:
+                        type: string
+                        enum:
+                          - postgresql
+                          - mysql
+                        nullable: true
                     required:
                       - host
                       - name
@@ -251,6 +261,14 @@ paths:
                           mode (`verify_full`) is used.
                       updated_at:
                         type: string
+                      http_port:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      https_port:
+                        oneOf:
+                          - type: number
+                        nullable: true
                     required:
                       - host
                       - name
@@ -259,6 +277,8 @@ paths:
       x-distilled-errors:
         VpcServiceNotFound:
           - code: 5104
+        Forbidden:
+          - status: 403
     put:
       operationId: updateDirectoryService
       description: "Update Workers VPC connectivity service  @example ```ts const
@@ -482,6 +502,16 @@ paths:
                           mode (`verify_full`) is used.
                       updated_at:
                         type: string
+                      tcp_port:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      app_protocol:
+                        type: string
+                        enum:
+                          - postgresql
+                          - mysql
+                        nullable: true
                     required:
                       - host
                       - name
@@ -595,6 +625,14 @@ paths:
                           mode (`verify_full`) is used.
                       updated_at:
                         type: string
+                      http_port:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      https_port:
+                        oneOf:
+                          - type: number
+                        nullable: true
                     required:
                       - host
                       - name
@@ -611,6 +649,8 @@ paths:
           - code: 5101
             message:
               includes: Tunnel ID Not Found
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDirectoryService
       description: "Delete Workers VPC connectivity service  @example ```ts await
@@ -634,6 +674,8 @@ paths:
       x-distilled-errors:
         VpcServiceNotFound:
           - code: 5104
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/connectivity/directory/services:
     get:
       operationId: listDirectoryServices
@@ -900,6 +942,9 @@ paths:
                       - name
                       - type
       x-distilled-pagination-class: ServiceListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createDirectoryService
       description: "Create Workers VPC connectivity service  @example ```ts const
@@ -1118,6 +1163,16 @@ paths:
                           mode (`verify_full`) is used.
                       updated_at:
                         type: string
+                      tcp_port:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      app_protocol:
+                        type: string
+                        enum:
+                          - postgresql
+                          - mysql
+                        nullable: true
                     required:
                       - host
                       - name
@@ -1231,6 +1286,14 @@ paths:
                           mode (`verify_full`) is used.
                       updated_at:
                         type: string
+                      http_port:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      https_port:
+                        oneOf:
+                          - type: number
+                        nullable: true
                     required:
                       - host
                       - name
@@ -1245,3 +1308,5 @@ paths:
           - code: 5101
             message:
               includes: Tunnel ID Not Found
+        Forbidden:
+          - status: 403

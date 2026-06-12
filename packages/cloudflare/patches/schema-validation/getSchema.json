@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "SchemaNotFound": [{ "code": 19400 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

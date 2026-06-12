@@ -1,5 +1,14 @@
 {
   "errors": {
-    "InvalidObjectIdentifier": [{ "code": 7003 }]
+    "InvalidObjectIdentifier": [
+      {
+        "code": 7003
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
   }
 }

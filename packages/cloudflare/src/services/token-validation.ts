@@ -13,6 +13,34 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class TokenConfigurationNotFound extends Schema.TaggedErrorClass<TokenConfigurationNotFound>()(
+  "TokenConfigurationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TokenConfigurationNotFound, [{ status: 404 }]);
+
+export class TokenValidationNotEntitled extends Schema.TaggedErrorClass<TokenValidationNotEntitled>()(
+  "TokenValidationNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TokenValidationNotEntitled, [{ code: 10403 }]);
+
+export class TokenValidationRuleNotFound extends Schema.TaggedErrorClass<TokenValidationRuleNotFound>()(
+  "TokenValidationRuleNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TokenValidationRuleNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // Configuration
 // =============================================================================
 
@@ -143,7 +171,11 @@ export const GetConfigurationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetConfigurationResponse>;
 
-export type GetConfigurationError = DefaultErrors;
+export type GetConfigurationError =
+  | DefaultErrors
+  | TokenConfigurationNotFound
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const getConfiguration: API.OperationMethod<
   GetConfigurationRequest,
@@ -153,7 +185,7 @@ export const getConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigurationRequest,
   output: GetConfigurationResponse,
-  errors: [],
+  errors: [TokenConfigurationNotFound, TokenValidationNotEntitled, Forbidden],
 }));
 
 export interface ListConfigurationsRequest {
@@ -311,7 +343,10 @@ export const ListConfigurationsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListConfigurationsResponse>;
 
-export type ListConfigurationsError = DefaultErrors;
+export type ListConfigurationsError =
+  | DefaultErrors
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsRequest,
@@ -321,7 +356,7 @@ export const listConfigurations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsRequest,
   output: ListConfigurationsResponse,
-  errors: [],
+  errors: [TokenValidationNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -549,7 +584,10 @@ export const CreateConfigurationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateConfigurationResponse>;
 
-export type CreateConfigurationError = DefaultErrors;
+export type CreateConfigurationError =
+  | DefaultErrors
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const createConfiguration: API.OperationMethod<
   CreateConfigurationRequest,
@@ -559,7 +597,7 @@ export const createConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConfigurationRequest,
   output: CreateConfigurationResponse,
-  errors: [],
+  errors: [TokenValidationNotEntitled, Forbidden],
 }));
 
 export interface PatchConfigurationRequest {
@@ -622,7 +660,11 @@ export const PatchConfigurationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchConfigurationResponse>;
 
-export type PatchConfigurationError = DefaultErrors;
+export type PatchConfigurationError =
+  | DefaultErrors
+  | TokenConfigurationNotFound
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const patchConfiguration: API.OperationMethod<
   PatchConfigurationRequest,
@@ -632,7 +674,7 @@ export const patchConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchConfigurationRequest,
   output: PatchConfigurationResponse,
-  errors: [],
+  errors: [TokenConfigurationNotFound, TokenValidationNotEntitled, Forbidden],
 }));
 
 export interface DeleteConfigurationRequest {
@@ -664,7 +706,11 @@ export const DeleteConfigurationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteConfigurationResponse>;
 
-export type DeleteConfigurationError = DefaultErrors;
+export type DeleteConfigurationError =
+  | DefaultErrors
+  | TokenConfigurationNotFound
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationRequest,
@@ -674,7 +720,7 @@ export const deleteConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConfigurationRequest,
   output: DeleteConfigurationResponse,
-  errors: [],
+  errors: [TokenConfigurationNotFound, TokenValidationNotEntitled, Forbidden],
 }));
 
 // =============================================================================
@@ -911,7 +957,11 @@ export const PutConfigurationCredentialResponse =
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<PutConfigurationCredentialResponse>;
 
-export type PutConfigurationCredentialError = DefaultErrors;
+export type PutConfigurationCredentialError =
+  | DefaultErrors
+  | TokenConfigurationNotFound
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const putConfigurationCredential: API.OperationMethod<
   PutConfigurationCredentialRequest,
@@ -921,7 +971,7 @@ export const putConfigurationCredential: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutConfigurationCredentialRequest,
   output: PutConfigurationCredentialResponse,
-  errors: [],
+  errors: [TokenConfigurationNotFound, TokenValidationNotEntitled, Forbidden],
 }));
 
 // =============================================================================
@@ -1017,7 +1067,11 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetRuleResponse>;
 
-export type GetRuleError = DefaultErrors;
+export type GetRuleError =
+  | DefaultErrors
+  | TokenValidationRuleNotFound
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const getRule: API.OperationMethod<
   GetRuleRequest,
@@ -1027,7 +1081,7 @@ export const getRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
-  errors: [],
+  errors: [TokenValidationRuleNotFound, TokenValidationNotEntitled, Forbidden],
 }));
 
 export interface ListRulesRequest {
@@ -1166,7 +1220,10 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListRulesResponse>;
 
-export type ListRulesError = DefaultErrors;
+export type ListRulesError =
+  | DefaultErrors
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
@@ -1176,7 +1233,7 @@ export const listRules: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
-  errors: [],
+  errors: [TokenValidationNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -1314,7 +1371,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateRuleResponse>;
 
-export type CreateRuleError = DefaultErrors;
+export type CreateRuleError =
+  | DefaultErrors
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const createRule: API.OperationMethod<
   CreateRuleRequest,
@@ -1324,7 +1384,7 @@ export const createRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
-  errors: [],
+  errors: [TokenValidationNotEntitled, Forbidden],
 }));
 
 export interface PatchRuleRequest {
@@ -1479,7 +1539,11 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchRuleResponse>;
 
-export type PatchRuleError = DefaultErrors;
+export type PatchRuleError =
+  | DefaultErrors
+  | TokenValidationRuleNotFound
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const patchRule: API.OperationMethod<
   PatchRuleRequest,
@@ -1489,7 +1553,7 @@ export const patchRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRuleRequest,
   output: PatchRuleResponse,
-  errors: [],
+  errors: [TokenValidationRuleNotFound, TokenValidationNotEntitled, Forbidden],
 }));
 
 export interface DeleteRuleRequest {
@@ -1515,7 +1579,11 @@ export const DeleteRuleResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteRuleResponse>;
 
-export type DeleteRuleError = DefaultErrors;
+export type DeleteRuleError =
+  | DefaultErrors
+  | TokenValidationRuleNotFound
+  | TokenValidationNotEntitled
+  | Forbidden;
 
 export const deleteRule: API.OperationMethod<
   DeleteRuleRequest,
@@ -1525,7 +1593,7 @@ export const deleteRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
-  errors: [],
+  errors: [TokenValidationRuleNotFound, TokenValidationNotEntitled, Forbidden],
 }));
 
 export interface BulkCreateRulesRequest {

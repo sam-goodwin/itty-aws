@@ -1,5 +1,14 @@
 {
   "errors": {
-    "VpcServiceNotFound": [{ "code": 5104 }]
+    "VpcServiceNotFound": [
+      {
+        "code": 5104
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
   }
 }

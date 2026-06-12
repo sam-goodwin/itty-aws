@@ -1,0 +1,5 @@
+{
+  "errors": {
+    "SchemaNotFound": [{ "code": 19400 }]
+  }
+}

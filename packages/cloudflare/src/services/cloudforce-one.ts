@@ -14,6 +14,16 @@ import { type DefaultErrors } from "../errors.ts";
 import { UploadableSchema } from "../schemas.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class ScanConfigNotFound extends Schema.TaggedErrorClass<ScanConfigNotFound>()(
+  "ScanConfigNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ScanConfigNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // BinaryStorage
 // =============================================================================
 
@@ -2344,7 +2354,7 @@ export const PatchScanConfigResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchScanConfigResponse>;
 
-export type PatchScanConfigError = DefaultErrors;
+export type PatchScanConfigError = DefaultErrors | ScanConfigNotFound;
 
 export const patchScanConfig: API.OperationMethod<
   PatchScanConfigRequest,
@@ -2354,7 +2364,7 @@ export const patchScanConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchScanConfigRequest,
   output: PatchScanConfigResponse,
-  errors: [],
+  errors: [ScanConfigNotFound],
 }));
 
 export interface DeleteScanConfigRequest {
@@ -2381,7 +2391,7 @@ export const DeleteScanConfigResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteScanConfigResponse>;
 
-export type DeleteScanConfigError = DefaultErrors;
+export type DeleteScanConfigError = DefaultErrors | ScanConfigNotFound;
 
 export const deleteScanConfig: API.OperationMethod<
   DeleteScanConfigRequest,
@@ -2391,7 +2401,7 @@ export const deleteScanConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteScanConfigRequest,
   output: DeleteScanConfigResponse,
-  errors: [],
+  errors: [ScanConfigNotFound],
 }));
 
 // =============================================================================

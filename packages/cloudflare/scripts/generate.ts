@@ -395,9 +395,7 @@ function applyResponsePatch(
         cloned.kind = "union";
         cloned.values = [
           currentCopy,
-          ...(JSON.parse(
-            JSON.stringify(propPatch.appendUnion),
-          ) as TypeInfo[]),
+          ...(JSON.parse(JSON.stringify(propPatch.appendUnion)) as TypeInfo[]),
         ];
       } else {
         applyPatchToTypeInfo(cloned, propPatch);
@@ -504,6 +502,21 @@ function applyPropertyPatch(
         variant.properties?.some((p) => p.name === current)
       ) {
         applyPropertyPatch(variant, pathSegments, patch);
+      }
+    }
+    // Adding a property (via `definition`): also add it to every object
+    // variant that lacks it. This fixes ambiguous unions whose variants all
+    // match the same payload — decoding picks the first variant and would
+    // otherwise silently drop fields it doesn't declare.
+    if (pathSegments.length === 1 && patch.definition) {
+      for (const variant of typeInfo.values) {
+        if (
+          variant.kind === "object" &&
+          variant.properties &&
+          !variant.properties.some((p) => p.name === current)
+        ) {
+          applyPropertyPatch(variant, pathSegments, patch);
+        }
       }
     }
     return;
@@ -1320,9 +1333,7 @@ function typeInfoToTsType(
         values.length > 0 &&
         values.every(
           (v) =>
-            v.kind === "literal" &&
-            v.value !== "true" &&
-            v.value !== "false",
+            v.kind === "literal" && v.value !== "true" && v.value !== "false",
         );
       if (allStringLiterals) {
         uniqueTsTypes.push("(string & {})");

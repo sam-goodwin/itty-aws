@@ -13,6 +13,30 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class CmbConfigNotFound extends Schema.TaggedErrorClass<CmbConfigNotFound>()(
+  "CmbConfigNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(CmbConfigNotFound, [{ status: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class LogsControlNotAuthorized extends Schema.TaggedErrorClass<LogsControlNotAuthorized>()(
+  "LogsControlNotAuthorized",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(LogsControlNotAuthorized, [
+  { code: 10000, message: { includes: "Unauthorized" } },
+]);
+
+// =============================================================================
 // ControlCmbConfig
 // =============================================================================
 
@@ -55,7 +79,11 @@ export const GetControlCmbConfigResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetControlCmbConfigResponse>;
 
-export type GetControlCmbConfigError = DefaultErrors;
+export type GetControlCmbConfigError =
+  | DefaultErrors
+  | LogsControlNotAuthorized
+  | CmbConfigNotFound
+  | Forbidden;
 
 export const getControlCmbConfig: API.OperationMethod<
   GetControlCmbConfigRequest,
@@ -65,7 +93,7 @@ export const getControlCmbConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetControlCmbConfigRequest,
   output: GetControlCmbConfigResponse,
-  errors: [],
+  errors: [LogsControlNotAuthorized, CmbConfigNotFound, Forbidden],
 }));
 
 export interface CreateControlCmbConfigRequest {
@@ -117,7 +145,10 @@ export const CreateControlCmbConfigResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateControlCmbConfigResponse>;
 
-export type CreateControlCmbConfigError = DefaultErrors;
+export type CreateControlCmbConfigError =
+  | DefaultErrors
+  | LogsControlNotAuthorized
+  | Forbidden;
 
 export const createControlCmbConfig: API.OperationMethod<
   CreateControlCmbConfigRequest,
@@ -127,7 +158,7 @@ export const createControlCmbConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateControlCmbConfigRequest,
   output: CreateControlCmbConfigResponse,
-  errors: [],
+  errors: [LogsControlNotAuthorized, Forbidden],
 }));
 
 export interface DeleteControlCmbConfigRequest {
@@ -152,7 +183,11 @@ export const DeleteControlCmbConfigResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteControlCmbConfigResponse>;
 
-export type DeleteControlCmbConfigError = DefaultErrors;
+export type DeleteControlCmbConfigError =
+  | DefaultErrors
+  | LogsControlNotAuthorized
+  | CmbConfigNotFound
+  | Forbidden;
 
 export const deleteControlCmbConfig: API.OperationMethod<
   DeleteControlCmbConfigRequest,
@@ -162,7 +197,7 @@ export const deleteControlCmbConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteControlCmbConfigRequest,
   output: DeleteControlCmbConfigResponse,
-  errors: [],
+  errors: [LogsControlNotAuthorized, CmbConfigNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -196,7 +231,10 @@ export const GetControlRetentionResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetControlRetentionResponse>;
 
-export type GetControlRetentionError = DefaultErrors;
+export type GetControlRetentionError =
+  | DefaultErrors
+  | LogsControlNotAuthorized
+  | Forbidden;
 
 export const getControlRetention: API.OperationMethod<
   GetControlRetentionRequest,
@@ -206,7 +244,7 @@ export const getControlRetention: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetControlRetentionRequest,
   output: GetControlRetentionResponse,
-  errors: [],
+  errors: [LogsControlNotAuthorized, Forbidden],
 }));
 
 export interface CreateControlRetentionRequest {
@@ -239,7 +277,10 @@ export const CreateControlRetentionResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateControlRetentionResponse>;
 
-export type CreateControlRetentionError = DefaultErrors;
+export type CreateControlRetentionError =
+  | DefaultErrors
+  | LogsControlNotAuthorized
+  | Forbidden;
 
 export const createControlRetention: API.OperationMethod<
   CreateControlRetentionRequest,
@@ -249,7 +290,7 @@ export const createControlRetention: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateControlRetentionRequest,
   output: CreateControlRetentionResponse,
-  errors: [],
+  errors: [LogsControlNotAuthorized, Forbidden],
 }));
 
 // =============================================================================

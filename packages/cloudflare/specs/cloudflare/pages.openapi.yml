@@ -5327,7 +5327,6 @@ paths:
                   - project_id
                   - project_name
                   - short_id
-                  - source
                   - stages
                   - url
       x-distilled-response-path: result
@@ -6129,7 +6128,6 @@ paths:
                   - project_id
                   - project_name
                   - short_id
-                  - source
                   - stages
                   - url
       x-distilled-response-path: result

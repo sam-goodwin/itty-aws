@@ -30,6 +30,12 @@ export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
 ) {}
 T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
+export class InvalidMnmConfig extends Schema.TaggedErrorClass<InvalidMnmConfig>()(
+  "InvalidMnmConfig",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidMnmConfig, [{ code: 1003 }]);
+
 export class MnmConfigAlreadyExists extends Schema.TaggedErrorClass<MnmConfigAlreadyExists>()(
   "MnmConfigAlreadyExists",
   { code: Schema.Number, message: Schema.String },
@@ -78,25 +84,38 @@ export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetConfigRequest>;
 
 export type GetConfigResponse = {
-  defaultSampling: number;
-  name: string;
-  routerIps: string[];
-  warpDevices: { id: string; name: string; routerIp: string }[];
+  defaultSampling?: number | null;
+  name?: string | null;
+  routerIps?: string[] | null;
+  warpDevices?: { id: string; name: string; routerIp: string }[] | null;
 } | null;
 
 export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
-    defaultSampling: Schema.Number,
-    name: Schema.String,
-    routerIps: Schema.Array(Schema.String),
-    warpDevices: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        routerIp: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-      ),
+    defaultSampling: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    routerIps: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    warpDevices: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+            routerIp: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              name: "name",
+              routerIp: "router_ip",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -198,7 +217,11 @@ export const CreateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateConfigResponse>;
 
-export type CreateConfigError = DefaultErrors | MnmConfigAlreadyExists;
+export type CreateConfigError =
+  | DefaultErrors
+  | MnmConfigAlreadyExists
+  | InvalidMnmConfig
+  | Forbidden;
 
 export const createConfig: API.OperationMethod<
   CreateConfigRequest,
@@ -208,7 +231,7 @@ export const createConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConfigRequest,
   output: CreateConfigResponse,
-  errors: [MnmConfigAlreadyExists],
+  errors: [MnmConfigAlreadyExists, InvalidMnmConfig, Forbidden],
 }));
 
 export interface UpdateConfigRequest {
@@ -251,25 +274,38 @@ export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<UpdateConfigRequest>;
 
 export type UpdateConfigResponse = {
-  defaultSampling: number;
-  name: string;
-  routerIps: string[];
-  warpDevices: { id: string; name: string; routerIp: string }[];
+  defaultSampling?: number | null;
+  name?: string | null;
+  routerIps?: string[] | null;
+  warpDevices?: { id: string; name: string; routerIp: string }[] | null;
 } | null;
 
 export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
-    defaultSampling: Schema.Number,
-    name: Schema.String,
-    routerIps: Schema.Array(Schema.String),
-    warpDevices: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        routerIp: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-      ),
+    defaultSampling: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    routerIps: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    warpDevices: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+            routerIp: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              name: "name",
+              routerIp: "router_ip",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -284,7 +320,7 @@ export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<UpdateConfigResponse>;
 
-export type UpdateConfigError = DefaultErrors | Forbidden;
+export type UpdateConfigError = DefaultErrors | Forbidden | InvalidMnmConfig;
 
 export const updateConfig: API.OperationMethod<
   UpdateConfigRequest,
@@ -294,7 +330,7 @@ export const updateConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigRequest,
   output: UpdateConfigResponse,
-  errors: [Forbidden],
+  errors: [Forbidden, InvalidMnmConfig],
 }));
 
 export interface PatchConfigRequest {

@@ -1,8 +1,19 @@
 {
-  "errors": {},
+  "errors": {
+    "UserGroupNameInUse": [
+      {
+        "code": 400,
+        "message": {
+          "includes": "already in use"
+        }
+      }
+    ]
+  },
   "response": {
     "properties": {
-      "policies[].resource_groups[].scope": { "type": "unknown" }
+      "policies[].resource_groups[].scope": {
+        "type": "unknown"
+      }
     }
   }
 }

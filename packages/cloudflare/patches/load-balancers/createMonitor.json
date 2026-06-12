@@ -1,5 +1,8 @@
 {
   "errors": {
+    "MonitorIntervalOutOfRange": [
+      { "code": 1002, "message": { "includes": "interval is not in range" } }
+    ],
     "Forbidden": [{ "status": 403 }]
   }
 }

@@ -1298,6 +1298,13 @@ paths:
                     type: string
                     description: The provider of the indicator feed
       x-distilled-response-path: result
+      x-distilled-errors:
+        IndicatorFeedNotFound:
+          - status: 403
+            message:
+              includes: does not exist
+        Forbidden:
+          - status: 403
     put:
       operationId: updateIndicatorFeed
       description: "Revises details for a specific custom threat indicator
@@ -1371,6 +1378,13 @@ paths:
                     type: string
                     description: The name of the indicator feed
       x-distilled-response-path: result
+      x-distilled-errors:
+        IndicatorFeedNotFound:
+          - status: 403
+            message:
+              includes: does not exist
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/intel/indicator-feeds:
     get:
       operationId: listIndicatorFeeds
@@ -1419,6 +1433,9 @@ paths:
                     type: string
                     description: The name of the indicator feed
       x-distilled-pagination-class: IndicatorFeedListResponsesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createIndicatorFeed
       description: "Creates a new custom threat indicator feed for sharing threat
@@ -1478,6 +1495,13 @@ paths:
                     type: string
                     description: The name of the indicator feed
       x-distilled-response-path: result
+      x-distilled-errors:
+        IndicatorFeedsNotEntitled:
+          - status: 403
+            message:
+              includes: does not have permission to create a feed
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/intel/indicator-feeds/{feedId}/data:
     get:
       operationId: dataIndicatorFeed
@@ -1547,6 +1571,9 @@ paths:
                       type: string
                       description: The name of the indicator feed
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/intel/indicator-feeds/permissions/add:
     put:
       operationId: createIndicatorFeedPermission
@@ -1587,6 +1614,13 @@ paths:
                     type: boolean
                     description: Whether the update succeeded or not
       x-distilled-response-path: result
+      x-distilled-errors:
+        IndicatorFeedNotFound:
+          - status: 403
+            message:
+              includes: does not exist
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/intel/indicator-feeds/permissions/remove:
     put:
       operationId: deleteIndicatorFeedPermission
@@ -1627,6 +1661,13 @@ paths:
                     type: boolean
                     description: Whether the update succeeded or not
       x-distilled-response-path: result
+      x-distilled-errors:
+        IndicatorFeedNotFound:
+          - status: 403
+            message:
+              includes: does not exist
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/intel/indicator-feeds/{feedId}/snapshot:
     put:
       operationId: putIndicatorFeedSnapshot
@@ -1674,6 +1715,13 @@ paths:
                     type: string
                     description: Current status of upload, should be unified
       x-distilled-response-path: result
+      x-distilled-errors:
+        IndicatorFeedNotFound:
+          - status: 403
+            message:
+              includes: does not exist
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/intel/ip:
     get:
       operationId: getIp

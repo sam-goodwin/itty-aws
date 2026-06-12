@@ -13,6 +13,57 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class AllowPolicyNotFound extends Schema.TaggedErrorClass<AllowPolicyNotFound>()(
+  "AllowPolicyNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AllowPolicyNotFound, [{ status: 404 }]);
+
+export class BlockSenderNotFound extends Schema.TaggedErrorClass<BlockSenderNotFound>()(
+  "BlockSenderNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(BlockSenderNotFound, [{ status: 404 }]);
+
+export class EmailSecurityDomainNotFound extends Schema.TaggedErrorClass<EmailSecurityDomainNotFound>()(
+  "EmailSecurityDomainNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(EmailSecurityDomainNotFound, [{ status: 404 }]);
+
+export class EmailSecurityNotEntitled extends Schema.TaggedErrorClass<EmailSecurityNotEntitled>()(
+  "EmailSecurityNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(EmailSecurityNotEntitled, [
+  {
+    status: 403,
+    message: { includes: "not available in the current subscription" },
+  },
+]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class ImpersonationRegistryEntryNotFound extends Schema.TaggedErrorClass<ImpersonationRegistryEntryNotFound>()(
+  "ImpersonationRegistryEntryNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ImpersonationRegistryEntryNotFound, [{ status: 404 }]);
+
+export class TrustedDomainNotFound extends Schema.TaggedErrorClass<TrustedDomainNotFound>()(
+  "TrustedDomainNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TrustedDomainNotFound, [{ status: 404 }]);
+
+// =============================================================================
 // Investigate
 // =============================================================================
 
@@ -2449,7 +2500,11 @@ export const GetSettingAllowPolicyResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSettingAllowPolicyResponse>;
 
-export type GetSettingAllowPolicyError = DefaultErrors;
+export type GetSettingAllowPolicyError =
+  | DefaultErrors
+  | AllowPolicyNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const getSettingAllowPolicy: API.OperationMethod<
   GetSettingAllowPolicyRequest,
@@ -2459,7 +2514,7 @@ export const getSettingAllowPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingAllowPolicyRequest,
   output: GetSettingAllowPolicyResponse,
-  errors: [],
+  errors: [AllowPolicyNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface ListSettingAllowPoliciesRequest {
@@ -2632,7 +2687,10 @@ export const ListSettingAllowPoliciesResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListSettingAllowPoliciesResponse>;
 
-export type ListSettingAllowPoliciesError = DefaultErrors;
+export type ListSettingAllowPoliciesError =
+  | DefaultErrors
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const listSettingAllowPolicies: API.PaginatedOperationMethod<
   ListSettingAllowPoliciesRequest,
@@ -2642,7 +2700,7 @@ export const listSettingAllowPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingAllowPoliciesRequest,
   output: ListSettingAllowPoliciesResponse,
-  errors: [],
+  errors: [EmailSecurityNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -2799,7 +2857,10 @@ export const CreateSettingAllowPolicyResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateSettingAllowPolicyResponse>;
 
-export type CreateSettingAllowPolicyError = DefaultErrors;
+export type CreateSettingAllowPolicyError =
+  | DefaultErrors
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const createSettingAllowPolicy: API.OperationMethod<
   CreateSettingAllowPolicyRequest,
@@ -2809,7 +2870,7 @@ export const createSettingAllowPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSettingAllowPolicyRequest,
   output: CreateSettingAllowPolicyResponse,
-  errors: [],
+  errors: [EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface PatchSettingAllowPolicyRequest {
@@ -2963,7 +3024,11 @@ export const PatchSettingAllowPolicyResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSettingAllowPolicyResponse>;
 
-export type PatchSettingAllowPolicyError = DefaultErrors;
+export type PatchSettingAllowPolicyError =
+  | DefaultErrors
+  | AllowPolicyNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const patchSettingAllowPolicy: API.OperationMethod<
   PatchSettingAllowPolicyRequest,
@@ -2973,7 +3038,7 @@ export const patchSettingAllowPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSettingAllowPolicyRequest,
   output: PatchSettingAllowPolicyResponse,
-  errors: [],
+  errors: [AllowPolicyNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface DeleteSettingAllowPolicyRequest {
@@ -3005,7 +3070,11 @@ export const DeleteSettingAllowPolicyResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSettingAllowPolicyResponse>;
 
-export type DeleteSettingAllowPolicyError = DefaultErrors;
+export type DeleteSettingAllowPolicyError =
+  | DefaultErrors
+  | AllowPolicyNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const deleteSettingAllowPolicy: API.OperationMethod<
   DeleteSettingAllowPolicyRequest,
@@ -3015,7 +3084,7 @@ export const deleteSettingAllowPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSettingAllowPolicyRequest,
   output: DeleteSettingAllowPolicyResponse,
-  errors: [],
+  errors: [AllowPolicyNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 // =============================================================================
@@ -3088,7 +3157,11 @@ export const GetSettingBlockSenderResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSettingBlockSenderResponse>;
 
-export type GetSettingBlockSenderError = DefaultErrors;
+export type GetSettingBlockSenderError =
+  | DefaultErrors
+  | BlockSenderNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const getSettingBlockSender: API.OperationMethod<
   GetSettingBlockSenderRequest,
@@ -3098,7 +3171,7 @@ export const getSettingBlockSender: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingBlockSenderRequest,
   output: GetSettingBlockSenderResponse,
-  errors: [],
+  errors: [BlockSenderNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface ListSettingBlockSendersRequest {
@@ -3222,7 +3295,10 @@ export const ListSettingBlockSendersResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListSettingBlockSendersResponse>;
 
-export type ListSettingBlockSendersError = DefaultErrors;
+export type ListSettingBlockSendersError =
+  | DefaultErrors
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const listSettingBlockSenders: API.PaginatedOperationMethod<
   ListSettingBlockSendersRequest,
@@ -3232,7 +3308,7 @@ export const listSettingBlockSenders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingBlockSendersRequest,
   output: ListSettingBlockSendersResponse,
-  errors: [],
+  errors: [EmailSecurityNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -3327,7 +3403,10 @@ export const CreateSettingBlockSenderResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateSettingBlockSenderResponse>;
 
-export type CreateSettingBlockSenderError = DefaultErrors;
+export type CreateSettingBlockSenderError =
+  | DefaultErrors
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const createSettingBlockSender: API.OperationMethod<
   CreateSettingBlockSenderRequest,
@@ -3337,7 +3416,7 @@ export const createSettingBlockSender: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSettingBlockSenderRequest,
   output: CreateSettingBlockSenderResponse,
-  errors: [],
+  errors: [EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface PatchSettingBlockSenderRequest {
@@ -3429,7 +3508,11 @@ export const PatchSettingBlockSenderResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSettingBlockSenderResponse>;
 
-export type PatchSettingBlockSenderError = DefaultErrors;
+export type PatchSettingBlockSenderError =
+  | DefaultErrors
+  | BlockSenderNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const patchSettingBlockSender: API.OperationMethod<
   PatchSettingBlockSenderRequest,
@@ -3439,7 +3522,7 @@ export const patchSettingBlockSender: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSettingBlockSenderRequest,
   output: PatchSettingBlockSenderResponse,
-  errors: [],
+  errors: [BlockSenderNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface DeleteSettingBlockSenderRequest {
@@ -3471,7 +3554,11 @@ export const DeleteSettingBlockSenderResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSettingBlockSenderResponse>;
 
-export type DeleteSettingBlockSenderError = DefaultErrors;
+export type DeleteSettingBlockSenderError =
+  | DefaultErrors
+  | BlockSenderNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const deleteSettingBlockSender: API.OperationMethod<
   DeleteSettingBlockSenderRequest,
@@ -3481,7 +3568,7 @@ export const deleteSettingBlockSender: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSettingBlockSenderRequest,
   output: DeleteSettingBlockSenderResponse,
-  errors: [],
+  errors: [BlockSenderNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 // =============================================================================
@@ -3732,7 +3819,11 @@ export const GetSettingDomainResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSettingDomainResponse>;
 
-export type GetSettingDomainError = DefaultErrors;
+export type GetSettingDomainError =
+  | DefaultErrors
+  | EmailSecurityDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const getSettingDomain: API.OperationMethod<
   GetSettingDomainRequest,
@@ -3742,7 +3833,7 @@ export const getSettingDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingDomainRequest,
   output: GetSettingDomainResponse,
-  errors: [],
+  errors: [EmailSecurityDomainNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface ListSettingDomainsRequest {
@@ -4095,7 +4186,10 @@ export const ListSettingDomainsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListSettingDomainsResponse>;
 
-export type ListSettingDomainsError = DefaultErrors;
+export type ListSettingDomainsError =
+  | DefaultErrors
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const listSettingDomains: API.PaginatedOperationMethod<
   ListSettingDomainsRequest,
@@ -4105,7 +4199,7 @@ export const listSettingDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingDomainsRequest,
   output: ListSettingDomainsResponse,
-  errors: [],
+  errors: [EmailSecurityNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -4458,7 +4552,11 @@ export const PatchSettingDomainResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSettingDomainResponse>;
 
-export type PatchSettingDomainError = DefaultErrors;
+export type PatchSettingDomainError =
+  | DefaultErrors
+  | EmailSecurityDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const patchSettingDomain: API.OperationMethod<
   PatchSettingDomainRequest,
@@ -4468,7 +4566,7 @@ export const patchSettingDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSettingDomainRequest,
   output: PatchSettingDomainResponse,
-  errors: [],
+  errors: [EmailSecurityDomainNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface DeleteSettingDomainRequest {
@@ -4500,7 +4598,11 @@ export const DeleteSettingDomainResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSettingDomainResponse>;
 
-export type DeleteSettingDomainError = DefaultErrors;
+export type DeleteSettingDomainError =
+  | DefaultErrors
+  | EmailSecurityDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const deleteSettingDomain: API.OperationMethod<
   DeleteSettingDomainRequest,
@@ -4510,7 +4612,7 @@ export const deleteSettingDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSettingDomainRequest,
   output: DeleteSettingDomainResponse,
-  errors: [],
+  errors: [EmailSecurityDomainNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 // =============================================================================
@@ -4612,7 +4714,11 @@ export const GetSettingImpersonationRegistryResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSettingImpersonationRegistryResponse>;
 
-export type GetSettingImpersonationRegistryError = DefaultErrors;
+export type GetSettingImpersonationRegistryError =
+  | DefaultErrors
+  | ImpersonationRegistryEntryNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const getSettingImpersonationRegistry: API.OperationMethod<
   GetSettingImpersonationRegistryRequest,
@@ -4622,7 +4728,11 @@ export const getSettingImpersonationRegistry: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingImpersonationRegistryRequest,
   output: GetSettingImpersonationRegistryResponse,
-  errors: [],
+  errors: [
+    ImpersonationRegistryEntryNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+  ],
 }));
 
 export interface ListSettingImpersonationRegistriesRequest {
@@ -4787,7 +4897,10 @@ export const ListSettingImpersonationRegistriesResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListSettingImpersonationRegistriesResponse>;
 
-export type ListSettingImpersonationRegistriesError = DefaultErrors;
+export type ListSettingImpersonationRegistriesError =
+  | DefaultErrors
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const listSettingImpersonationRegistries: API.PaginatedOperationMethod<
   ListSettingImpersonationRegistriesRequest,
@@ -4797,7 +4910,7 @@ export const listSettingImpersonationRegistries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingImpersonationRegistriesRequest,
   output: ListSettingImpersonationRegistriesResponse,
-  errors: [],
+  errors: [EmailSecurityNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -4951,7 +5064,10 @@ export const CreateSettingImpersonationRegistryResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateSettingImpersonationRegistryResponse>;
 
-export type CreateSettingImpersonationRegistryError = DefaultErrors;
+export type CreateSettingImpersonationRegistryError =
+  | DefaultErrors
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const createSettingImpersonationRegistry: API.OperationMethod<
   CreateSettingImpersonationRegistryRequest,
@@ -4961,7 +5077,7 @@ export const createSettingImpersonationRegistry: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSettingImpersonationRegistryRequest,
   output: CreateSettingImpersonationRegistryResponse,
-  errors: [],
+  errors: [EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface PatchSettingImpersonationRegistryRequest {
@@ -5112,7 +5228,11 @@ export const PatchSettingImpersonationRegistryResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSettingImpersonationRegistryResponse>;
 
-export type PatchSettingImpersonationRegistryError = DefaultErrors;
+export type PatchSettingImpersonationRegistryError =
+  | DefaultErrors
+  | ImpersonationRegistryEntryNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const patchSettingImpersonationRegistry: API.OperationMethod<
   PatchSettingImpersonationRegistryRequest,
@@ -5122,7 +5242,11 @@ export const patchSettingImpersonationRegistry: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSettingImpersonationRegistryRequest,
   output: PatchSettingImpersonationRegistryResponse,
-  errors: [],
+  errors: [
+    ImpersonationRegistryEntryNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+  ],
 }));
 
 export interface DeleteSettingImpersonationRegistryRequest {
@@ -5156,7 +5280,11 @@ export const DeleteSettingImpersonationRegistryResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSettingImpersonationRegistryResponse>;
 
-export type DeleteSettingImpersonationRegistryError = DefaultErrors;
+export type DeleteSettingImpersonationRegistryError =
+  | DefaultErrors
+  | ImpersonationRegistryEntryNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const deleteSettingImpersonationRegistry: API.OperationMethod<
   DeleteSettingImpersonationRegistryRequest,
@@ -5166,7 +5294,11 @@ export const deleteSettingImpersonationRegistry: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSettingImpersonationRegistryRequest,
   output: DeleteSettingImpersonationRegistryResponse,
-  errors: [],
+  errors: [
+    ImpersonationRegistryEntryNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+  ],
 }));
 
 // =============================================================================
@@ -5235,7 +5367,11 @@ export const GetSettingTrustedDomainResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSettingTrustedDomainResponse>;
 
-export type GetSettingTrustedDomainError = DefaultErrors;
+export type GetSettingTrustedDomainError =
+  | DefaultErrors
+  | TrustedDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const getSettingTrustedDomain: API.OperationMethod<
   GetSettingTrustedDomainRequest,
@@ -5245,7 +5381,7 @@ export const getSettingTrustedDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingTrustedDomainRequest,
   output: GetSettingTrustedDomainResponse,
-  errors: [],
+  errors: [TrustedDomainNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface ListSettingTrustedDomainsRequest {
@@ -5366,7 +5502,10 @@ export const ListSettingTrustedDomainsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListSettingTrustedDomainsResponse>;
 
-export type ListSettingTrustedDomainsError = DefaultErrors;
+export type ListSettingTrustedDomainsError =
+  | DefaultErrors
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const listSettingTrustedDomains: API.PaginatedOperationMethod<
   ListSettingTrustedDomainsRequest,
@@ -5376,7 +5515,7 @@ export const listSettingTrustedDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingTrustedDomainsRequest,
   output: ListSettingTrustedDomainsResponse,
-  errors: [],
+  errors: [EmailSecurityNotEntitled, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -5468,7 +5607,10 @@ export const CreateSettingTrustedDomainResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateSettingTrustedDomainResponse>;
 
-export type CreateSettingTrustedDomainError = DefaultErrors;
+export type CreateSettingTrustedDomainError =
+  | DefaultErrors
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const createSettingTrustedDomain: API.OperationMethod<
   CreateSettingTrustedDomainRequest,
@@ -5478,7 +5620,7 @@ export const createSettingTrustedDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSettingTrustedDomainRequest,
   output: CreateSettingTrustedDomainResponse,
-  errors: [],
+  errors: [EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface PatchSettingTrustedDomainRequest {
@@ -5565,7 +5707,11 @@ export const PatchSettingTrustedDomainResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSettingTrustedDomainResponse>;
 
-export type PatchSettingTrustedDomainError = DefaultErrors;
+export type PatchSettingTrustedDomainError =
+  | DefaultErrors
+  | TrustedDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const patchSettingTrustedDomain: API.OperationMethod<
   PatchSettingTrustedDomainRequest,
@@ -5575,7 +5721,7 @@ export const patchSettingTrustedDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSettingTrustedDomainRequest,
   output: PatchSettingTrustedDomainResponse,
-  errors: [],
+  errors: [TrustedDomainNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 export interface DeleteSettingTrustedDomainRequest {
@@ -5607,7 +5753,11 @@ export const DeleteSettingTrustedDomainResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSettingTrustedDomainResponse>;
 
-export type DeleteSettingTrustedDomainError = DefaultErrors;
+export type DeleteSettingTrustedDomainError =
+  | DefaultErrors
+  | TrustedDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden;
 
 export const deleteSettingTrustedDomain: API.OperationMethod<
   DeleteSettingTrustedDomainRequest,
@@ -5617,7 +5767,7 @@ export const deleteSettingTrustedDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSettingTrustedDomainRequest,
   output: DeleteSettingTrustedDomainResponse,
-  errors: [],
+  errors: [TrustedDomainNotFound, EmailSecurityNotEntitled, Forbidden],
 }));
 
 // =============================================================================

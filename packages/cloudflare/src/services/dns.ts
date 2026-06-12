@@ -17,11 +17,65 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
+export class AclNotFound extends Schema.TaggedErrorClass<AclNotFound>()(
+  "AclNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AclNotFound, [{ status: 404 }]);
+
+export class DnsSettingNotAvailable extends Schema.TaggedErrorClass<DnsSettingNotAvailable>()(
+  "DnsSettingNotAvailable",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DnsSettingNotAvailable, [{ code: 1003 }]);
+
 export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
   "Forbidden",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class IncomingZoneTransferNotFound extends Schema.TaggedErrorClass<IncomingZoneTransferNotFound>()(
+  "IncomingZoneTransferNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(IncomingZoneTransferNotFound, [{ status: 404 }]);
+
+export class InternalDnsNotAvailable extends Schema.TaggedErrorClass<InternalDnsNotAvailable>()(
+  "InternalDnsNotAvailable",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InternalDnsNotAvailable, [{ code: 1029 }]);
+
+export class OutgoingZoneTransferNotFound extends Schema.TaggedErrorClass<OutgoingZoneTransferNotFound>()(
+  "OutgoingZoneTransferNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(OutgoingZoneTransferNotFound, [{ status: 404 }]);
+
+export class OutgoingZoneTransfersNotAllowed extends Schema.TaggedErrorClass<OutgoingZoneTransfersNotAllowed>()(
+  "OutgoingZoneTransfersNotAllowed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(OutgoingZoneTransfersNotAllowed, [{ status: 401 }]);
+
+export class PeerNotFound extends Schema.TaggedErrorClass<PeerNotFound>()(
+  "PeerNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PeerNotFound, [{ status: 404 }]);
+
+export class TsigNotFound extends Schema.TaggedErrorClass<TsigNotFound>()(
+  "TsigNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TsigNotFound, [{ status: 404 }]);
+
+export class ViewNotFound extends Schema.TaggedErrorClass<ViewNotFound>()(
+  "ViewNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ViewNotFound, [{ code: 1015 }, { status: 404 }]);
 
 // =============================================================================
 // AnalyticReport
@@ -28583,7 +28637,7 @@ export const PatchSettingAccountResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSettingAccountResponse>;
 
-export type PatchSettingAccountError = DefaultErrors;
+export type PatchSettingAccountError = DefaultErrors | DnsSettingNotAvailable;
 
 export const patchSettingAccount: API.OperationMethod<
   PatchSettingAccountRequest,
@@ -28593,7 +28647,7 @@ export const patchSettingAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSettingAccountRequest,
   output: PatchSettingAccountResponse,
-  errors: [],
+  errors: [DnsSettingNotAvailable],
 }));
 
 // =============================================================================
@@ -28651,7 +28705,7 @@ export const GetSettingAccountViewResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSettingAccountViewResponse>;
 
-export type GetSettingAccountViewError = DefaultErrors;
+export type GetSettingAccountViewError = DefaultErrors | ViewNotFound;
 
 export const getSettingAccountView: API.OperationMethod<
   GetSettingAccountViewRequest,
@@ -28661,7 +28715,7 @@ export const getSettingAccountView: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingAccountViewRequest,
   output: GetSettingAccountViewResponse,
-  errors: [],
+  errors: [ViewNotFound],
 }));
 
 export interface ListSettingAccountViewsRequest {
@@ -28856,7 +28910,9 @@ export const CreateSettingAccountViewResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateSettingAccountViewResponse>;
 
-export type CreateSettingAccountViewError = DefaultErrors;
+export type CreateSettingAccountViewError =
+  | DefaultErrors
+  | InternalDnsNotAvailable;
 
 export const createSettingAccountView: API.OperationMethod<
   CreateSettingAccountViewRequest,
@@ -28866,7 +28922,7 @@ export const createSettingAccountView: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSettingAccountViewRequest,
   output: CreateSettingAccountViewResponse,
-  errors: [],
+  errors: [InternalDnsNotAvailable],
 }));
 
 export interface PatchSettingAccountViewRequest {
@@ -28926,7 +28982,7 @@ export const PatchSettingAccountViewResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSettingAccountViewResponse>;
 
-export type PatchSettingAccountViewError = DefaultErrors;
+export type PatchSettingAccountViewError = DefaultErrors | ViewNotFound;
 
 export const patchSettingAccountView: API.OperationMethod<
   PatchSettingAccountViewRequest,
@@ -28936,7 +28992,7 @@ export const patchSettingAccountView: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSettingAccountViewRequest,
   output: PatchSettingAccountViewResponse,
-  errors: [],
+  errors: [ViewNotFound],
 }));
 
 export interface DeleteSettingAccountViewRequest {
@@ -28968,7 +29024,7 @@ export const DeleteSettingAccountViewResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteSettingAccountViewResponse>;
 
-export type DeleteSettingAccountViewError = DefaultErrors;
+export type DeleteSettingAccountViewError = DefaultErrors | ViewNotFound;
 
 export const deleteSettingAccountView: API.OperationMethod<
   DeleteSettingAccountViewRequest,
@@ -28978,7 +29034,7 @@ export const deleteSettingAccountView: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSettingAccountViewRequest,
   output: DeleteSettingAccountViewResponse,
-  errors: [],
+  errors: [ViewNotFound],
 }));
 
 // =============================================================================
@@ -29482,7 +29538,7 @@ export const GetZoneTransferAclResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetZoneTransferAclResponse>;
 
-export type GetZoneTransferAclError = DefaultErrors;
+export type GetZoneTransferAclError = DefaultErrors | AclNotFound;
 
 export const getZoneTransferAcl: API.OperationMethod<
   GetZoneTransferAclRequest,
@@ -29492,7 +29548,7 @@ export const getZoneTransferAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZoneTransferAclRequest,
   output: GetZoneTransferAclResponse,
-  errors: [],
+  errors: [AclNotFound],
 }));
 
 export interface ListZoneTransferAclsRequest {
@@ -29640,7 +29696,7 @@ export const UpdateZoneTransferAclResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateZoneTransferAclResponse>;
 
-export type UpdateZoneTransferAclError = DefaultErrors;
+export type UpdateZoneTransferAclError = DefaultErrors | AclNotFound;
 
 export const updateZoneTransferAcl: API.OperationMethod<
   UpdateZoneTransferAclRequest,
@@ -29650,7 +29706,7 @@ export const updateZoneTransferAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateZoneTransferAclRequest,
   output: UpdateZoneTransferAclResponse,
-  errors: [],
+  errors: [AclNotFound],
 }));
 
 export interface DeleteZoneTransferAclRequest {
@@ -29680,7 +29736,7 @@ export const DeleteZoneTransferAclResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteZoneTransferAclResponse>;
 
-export type DeleteZoneTransferAclError = DefaultErrors;
+export type DeleteZoneTransferAclError = DefaultErrors | AclNotFound;
 
 export const deleteZoneTransferAcl: API.OperationMethod<
   DeleteZoneTransferAclRequest,
@@ -29690,7 +29746,7 @@ export const deleteZoneTransferAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteZoneTransferAclRequest,
   output: DeleteZoneTransferAclResponse,
-  errors: [],
+  errors: [AclNotFound],
 }));
 
 // =============================================================================
@@ -29799,7 +29855,9 @@ export const GetZoneTransferIncomingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetZoneTransferIncomingResponse>;
 
-export type GetZoneTransferIncomingError = DefaultErrors;
+export type GetZoneTransferIncomingError =
+  | DefaultErrors
+  | IncomingZoneTransferNotFound;
 
 export const getZoneTransferIncoming: API.OperationMethod<
   GetZoneTransferIncomingRequest,
@@ -29809,7 +29867,7 @@ export const getZoneTransferIncoming: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZoneTransferIncomingRequest,
   output: GetZoneTransferIncomingResponse,
-  errors: [],
+  errors: [IncomingZoneTransferNotFound],
 }));
 
 export interface CreateZoneTransferIncomingRequest {
@@ -29975,7 +30033,9 @@ export const UpdateZoneTransferIncomingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateZoneTransferIncomingResponse>;
 
-export type UpdateZoneTransferIncomingError = DefaultErrors;
+export type UpdateZoneTransferIncomingError =
+  | DefaultErrors
+  | IncomingZoneTransferNotFound;
 
 export const updateZoneTransferIncoming: API.OperationMethod<
   UpdateZoneTransferIncomingRequest,
@@ -29985,7 +30045,7 @@ export const updateZoneTransferIncoming: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateZoneTransferIncomingRequest,
   output: UpdateZoneTransferIncomingResponse,
-  errors: [],
+  errors: [IncomingZoneTransferNotFound],
 }));
 
 export interface DeleteZoneTransferIncomingRequest {
@@ -30013,7 +30073,9 @@ export const DeleteZoneTransferIncomingResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteZoneTransferIncomingResponse>;
 
-export type DeleteZoneTransferIncomingError = DefaultErrors;
+export type DeleteZoneTransferIncomingError =
+  | DefaultErrors
+  | IncomingZoneTransferNotFound;
 
 export const deleteZoneTransferIncoming: API.OperationMethod<
   DeleteZoneTransferIncomingRequest,
@@ -30023,7 +30085,7 @@ export const deleteZoneTransferIncoming: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteZoneTransferIncomingRequest,
   output: DeleteZoneTransferIncomingResponse,
-  errors: [],
+  errors: [IncomingZoneTransferNotFound],
 }));
 
 // =============================================================================
@@ -30086,7 +30148,10 @@ export const GetZoneTransferOutgoingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetZoneTransferOutgoingResponse>;
 
-export type GetZoneTransferOutgoingError = DefaultErrors;
+export type GetZoneTransferOutgoingError =
+  | DefaultErrors
+  | OutgoingZoneTransferNotFound
+  | OutgoingZoneTransfersNotAllowed;
 
 export const getZoneTransferOutgoing: API.OperationMethod<
   GetZoneTransferOutgoingRequest,
@@ -30096,7 +30161,7 @@ export const getZoneTransferOutgoing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZoneTransferOutgoingRequest,
   output: GetZoneTransferOutgoingResponse,
-  errors: [],
+  errors: [OutgoingZoneTransferNotFound, OutgoingZoneTransfersNotAllowed],
 }));
 
 export interface CreateZoneTransferOutgoingRequest {
@@ -30162,7 +30227,9 @@ export const CreateZoneTransferOutgoingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateZoneTransferOutgoingResponse>;
 
-export type CreateZoneTransferOutgoingError = DefaultErrors;
+export type CreateZoneTransferOutgoingError =
+  | DefaultErrors
+  | OutgoingZoneTransfersNotAllowed;
 
 export const createZoneTransferOutgoing: API.OperationMethod<
   CreateZoneTransferOutgoingRequest,
@@ -30172,7 +30239,7 @@ export const createZoneTransferOutgoing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateZoneTransferOutgoingRequest,
   output: CreateZoneTransferOutgoingResponse,
-  errors: [],
+  errors: [OutgoingZoneTransfersNotAllowed],
 }));
 
 export interface UpdateZoneTransferOutgoingRequest {
@@ -30238,7 +30305,10 @@ export const UpdateZoneTransferOutgoingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateZoneTransferOutgoingResponse>;
 
-export type UpdateZoneTransferOutgoingError = DefaultErrors;
+export type UpdateZoneTransferOutgoingError =
+  | DefaultErrors
+  | OutgoingZoneTransferNotFound
+  | OutgoingZoneTransfersNotAllowed;
 
 export const updateZoneTransferOutgoing: API.OperationMethod<
   UpdateZoneTransferOutgoingRequest,
@@ -30248,7 +30318,7 @@ export const updateZoneTransferOutgoing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateZoneTransferOutgoingRequest,
   output: UpdateZoneTransferOutgoingResponse,
-  errors: [],
+  errors: [OutgoingZoneTransferNotFound, OutgoingZoneTransfersNotAllowed],
 }));
 
 export interface DeleteZoneTransferOutgoingRequest {
@@ -30276,7 +30346,10 @@ export const DeleteZoneTransferOutgoingResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteZoneTransferOutgoingResponse>;
 
-export type DeleteZoneTransferOutgoingError = DefaultErrors;
+export type DeleteZoneTransferOutgoingError =
+  | DefaultErrors
+  | OutgoingZoneTransferNotFound
+  | OutgoingZoneTransfersNotAllowed;
 
 export const deleteZoneTransferOutgoing: API.OperationMethod<
   DeleteZoneTransferOutgoingRequest,
@@ -30286,7 +30359,7 @@ export const deleteZoneTransferOutgoing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteZoneTransferOutgoingRequest,
   output: DeleteZoneTransferOutgoingResponse,
-  errors: [],
+  errors: [OutgoingZoneTransferNotFound, OutgoingZoneTransfersNotAllowed],
 }));
 
 export interface EnableZoneTransferOutgoingRequest {
@@ -30314,7 +30387,9 @@ export const EnableZoneTransferOutgoingResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<EnableZoneTransferOutgoingResponse>;
 
-export type EnableZoneTransferOutgoingError = DefaultErrors;
+export type EnableZoneTransferOutgoingError =
+  | DefaultErrors
+  | OutgoingZoneTransfersNotAllowed;
 
 export const enableZoneTransferOutgoing: API.OperationMethod<
   EnableZoneTransferOutgoingRequest,
@@ -30324,7 +30399,7 @@ export const enableZoneTransferOutgoing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableZoneTransferOutgoingRequest,
   output: EnableZoneTransferOutgoingResponse,
-  errors: [],
+  errors: [OutgoingZoneTransfersNotAllowed],
 }));
 
 export interface DisableZoneTransferOutgoingRequest {
@@ -30352,7 +30427,9 @@ export const DisableZoneTransferOutgoingResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DisableZoneTransferOutgoingResponse>;
 
-export type DisableZoneTransferOutgoingError = DefaultErrors;
+export type DisableZoneTransferOutgoingError =
+  | DefaultErrors
+  | OutgoingZoneTransfersNotAllowed;
 
 export const disableZoneTransferOutgoing: API.OperationMethod<
   DisableZoneTransferOutgoingRequest,
@@ -30362,7 +30439,7 @@ export const disableZoneTransferOutgoing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableZoneTransferOutgoingRequest,
   output: DisableZoneTransferOutgoingResponse,
-  errors: [],
+  errors: [OutgoingZoneTransfersNotAllowed],
 }));
 
 // =============================================================================
@@ -30460,7 +30537,7 @@ export const GetZoneTransferPeerResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetZoneTransferPeerResponse>;
 
-export type GetZoneTransferPeerError = DefaultErrors;
+export type GetZoneTransferPeerError = DefaultErrors | PeerNotFound;
 
 export const getZoneTransferPeer: API.OperationMethod<
   GetZoneTransferPeerRequest,
@@ -30470,7 +30547,7 @@ export const getZoneTransferPeer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZoneTransferPeerRequest,
   output: GetZoneTransferPeerResponse,
-  errors: [],
+  errors: [PeerNotFound],
 }));
 
 export interface ListZoneTransferPeersRequest {
@@ -30684,7 +30761,7 @@ export const UpdateZoneTransferPeerResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateZoneTransferPeerResponse>;
 
-export type UpdateZoneTransferPeerError = DefaultErrors;
+export type UpdateZoneTransferPeerError = DefaultErrors | PeerNotFound;
 
 export const updateZoneTransferPeer: API.OperationMethod<
   UpdateZoneTransferPeerRequest,
@@ -30694,7 +30771,7 @@ export const updateZoneTransferPeer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateZoneTransferPeerRequest,
   output: UpdateZoneTransferPeerResponse,
-  errors: [],
+  errors: [PeerNotFound],
 }));
 
 export interface DeleteZoneTransferPeerRequest {
@@ -30724,7 +30801,7 @@ export const DeleteZoneTransferPeerResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteZoneTransferPeerResponse>;
 
-export type DeleteZoneTransferPeerError = DefaultErrors;
+export type DeleteZoneTransferPeerError = DefaultErrors | PeerNotFound;
 
 export const deleteZoneTransferPeer: API.OperationMethod<
   DeleteZoneTransferPeerRequest,
@@ -30734,7 +30811,7 @@ export const deleteZoneTransferPeer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteZoneTransferPeerRequest,
   output: DeleteZoneTransferPeerResponse,
-  errors: [],
+  errors: [PeerNotFound],
 }));
 
 // =============================================================================
@@ -30777,7 +30854,7 @@ export const GetZoneTransferTsigResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetZoneTransferTsigResponse>;
 
-export type GetZoneTransferTsigError = DefaultErrors;
+export type GetZoneTransferTsigError = DefaultErrors | TsigNotFound;
 
 export const getZoneTransferTsig: API.OperationMethod<
   GetZoneTransferTsigRequest,
@@ -30787,7 +30864,7 @@ export const getZoneTransferTsig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZoneTransferTsigRequest,
   output: GetZoneTransferTsigResponse,
-  errors: [],
+  errors: [TsigNotFound],
 }));
 
 export interface ListZoneTransferTsigsRequest {
@@ -30940,7 +31017,7 @@ export const UpdateZoneTransferTsigResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateZoneTransferTsigResponse>;
 
-export type UpdateZoneTransferTsigError = DefaultErrors;
+export type UpdateZoneTransferTsigError = DefaultErrors | TsigNotFound;
 
 export const updateZoneTransferTsig: API.OperationMethod<
   UpdateZoneTransferTsigRequest,
@@ -30950,7 +31027,7 @@ export const updateZoneTransferTsig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateZoneTransferTsigRequest,
   output: UpdateZoneTransferTsigResponse,
-  errors: [],
+  errors: [TsigNotFound],
 }));
 
 export interface DeleteZoneTransferTsigRequest {
@@ -30980,7 +31057,7 @@ export const DeleteZoneTransferTsigResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteZoneTransferTsigResponse>;
 
-export type DeleteZoneTransferTsigError = DefaultErrors;
+export type DeleteZoneTransferTsigError = DefaultErrors | TsigNotFound;
 
 export const deleteZoneTransferTsig: API.OperationMethod<
   DeleteZoneTransferTsigRequest,
@@ -30990,5 +31067,5 @@ export const deleteZoneTransferTsig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteZoneTransferTsigRequest,
   output: DeleteZoneTransferTsigResponse,
-  errors: [],
+  errors: [TsigNotFound],
 }));

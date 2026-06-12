@@ -5726,6 +5726,10 @@ paths:
       x-distilled-errors:
         MonitorNotFound:
           - code: 1001
+        MonitorIntervalOutOfRange:
+          - code: 1002
+            message:
+              includes: interval is not in range
         Forbidden:
           - status: 403
     patch:
@@ -6293,6 +6297,10 @@ paths:
                       'UDP-ICMP', and 'SMTP'.
       x-distilled-response-path: result
       x-distilled-errors:
+        MonitorIntervalOutOfRange:
+          - code: 1002
+            message:
+              includes: interval is not in range
         Forbidden:
           - status: 403
   /accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}:

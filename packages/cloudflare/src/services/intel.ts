@@ -13,6 +13,35 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class IndicatorFeedNotFound extends Schema.TaggedErrorClass<IndicatorFeedNotFound>()(
+  "IndicatorFeedNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(IndicatorFeedNotFound, [
+  { status: 403, message: { includes: "does not exist" } },
+]);
+
+export class IndicatorFeedsNotEntitled extends Schema.TaggedErrorClass<IndicatorFeedsNotEntitled>()(
+  "IndicatorFeedsNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(IndicatorFeedsNotEntitled, [
+  {
+    status: 403,
+    message: { includes: "does not have permission to create a feed" },
+  },
+]);
+
+// =============================================================================
 // Asn
 // =============================================================================
 
@@ -1924,7 +1953,10 @@ export const GetIndicatorFeedResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetIndicatorFeedResponse>;
 
-export type GetIndicatorFeedError = DefaultErrors;
+export type GetIndicatorFeedError =
+  | DefaultErrors
+  | IndicatorFeedNotFound
+  | Forbidden;
 
 export const getIndicatorFeed: API.OperationMethod<
   GetIndicatorFeedRequest,
@@ -1934,7 +1966,7 @@ export const getIndicatorFeed: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIndicatorFeedRequest,
   output: GetIndicatorFeedResponse,
-  errors: [],
+  errors: [IndicatorFeedNotFound, Forbidden],
 }));
 
 export interface ListIndicatorFeedsRequest {
@@ -1998,7 +2030,7 @@ export const ListIndicatorFeedsResponse =
     ),
   }) as unknown as Schema.Schema<ListIndicatorFeedsResponse>;
 
-export type ListIndicatorFeedsError = DefaultErrors;
+export type ListIndicatorFeedsError = DefaultErrors | Forbidden;
 
 export const listIndicatorFeeds: API.PaginatedOperationMethod<
   ListIndicatorFeedsRequest,
@@ -2008,7 +2040,7 @@ export const listIndicatorFeeds: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIndicatorFeedsRequest,
   output: ListIndicatorFeedsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -2086,7 +2118,10 @@ export const CreateIndicatorFeedResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateIndicatorFeedResponse>;
 
-export type CreateIndicatorFeedError = DefaultErrors;
+export type CreateIndicatorFeedError =
+  | DefaultErrors
+  | IndicatorFeedsNotEntitled
+  | Forbidden;
 
 export const createIndicatorFeed: API.OperationMethod<
   CreateIndicatorFeedRequest,
@@ -2096,7 +2131,7 @@ export const createIndicatorFeed: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIndicatorFeedRequest,
   output: CreateIndicatorFeedResponse,
-  errors: [],
+  errors: [IndicatorFeedsNotEntitled, Forbidden],
 }));
 
 export interface UpdateIndicatorFeedRequest {
@@ -2188,7 +2223,10 @@ export const UpdateIndicatorFeedResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateIndicatorFeedResponse>;
 
-export type UpdateIndicatorFeedError = DefaultErrors;
+export type UpdateIndicatorFeedError =
+  | DefaultErrors
+  | IndicatorFeedNotFound
+  | Forbidden;
 
 export const updateIndicatorFeed: API.OperationMethod<
   UpdateIndicatorFeedRequest,
@@ -2198,7 +2236,7 @@ export const updateIndicatorFeed: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIndicatorFeedRequest,
   output: UpdateIndicatorFeedResponse,
-  errors: [],
+  errors: [IndicatorFeedNotFound, Forbidden],
 }));
 
 export interface DataIndicatorFeedRequest {
@@ -2291,7 +2329,7 @@ export const ListIndicatorFeedPermissionsResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ListIndicatorFeedPermissionsResponse>;
 
-export type ListIndicatorFeedPermissionsError = DefaultErrors;
+export type ListIndicatorFeedPermissionsError = DefaultErrors | Forbidden;
 
 export const listIndicatorFeedPermissions: API.OperationMethod<
   ListIndicatorFeedPermissionsRequest,
@@ -2301,7 +2339,7 @@ export const listIndicatorFeedPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListIndicatorFeedPermissionsRequest,
   output: ListIndicatorFeedPermissionsResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface CreateIndicatorFeedPermissionRequest {
@@ -2338,7 +2376,10 @@ export const CreateIndicatorFeedPermissionResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateIndicatorFeedPermissionResponse>;
 
-export type CreateIndicatorFeedPermissionError = DefaultErrors;
+export type CreateIndicatorFeedPermissionError =
+  | DefaultErrors
+  | IndicatorFeedNotFound
+  | Forbidden;
 
 export const createIndicatorFeedPermission: API.OperationMethod<
   CreateIndicatorFeedPermissionRequest,
@@ -2348,7 +2389,7 @@ export const createIndicatorFeedPermission: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIndicatorFeedPermissionRequest,
   output: CreateIndicatorFeedPermissionResponse,
-  errors: [],
+  errors: [IndicatorFeedNotFound, Forbidden],
 }));
 
 export interface DeleteIndicatorFeedPermissionRequest {
@@ -2385,7 +2426,10 @@ export const DeleteIndicatorFeedPermissionResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteIndicatorFeedPermissionResponse>;
 
-export type DeleteIndicatorFeedPermissionError = DefaultErrors;
+export type DeleteIndicatorFeedPermissionError =
+  | DefaultErrors
+  | IndicatorFeedNotFound
+  | Forbidden;
 
 export const deleteIndicatorFeedPermission: API.OperationMethod<
   DeleteIndicatorFeedPermissionRequest,
@@ -2395,7 +2439,7 @@ export const deleteIndicatorFeedPermission: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIndicatorFeedPermissionRequest,
   output: DeleteIndicatorFeedPermissionResponse,
-  errors: [],
+  errors: [IndicatorFeedNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -2449,7 +2493,10 @@ export const PutIndicatorFeedSnapshotResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PutIndicatorFeedSnapshotResponse>;
 
-export type PutIndicatorFeedSnapshotError = DefaultErrors;
+export type PutIndicatorFeedSnapshotError =
+  | DefaultErrors
+  | IndicatorFeedNotFound
+  | Forbidden;
 
 export const putIndicatorFeedSnapshot: API.OperationMethod<
   PutIndicatorFeedSnapshotRequest,
@@ -2459,7 +2506,7 @@ export const putIndicatorFeedSnapshot: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutIndicatorFeedSnapshotRequest,
   output: PutIndicatorFeedSnapshotResponse,
-  errors: [],
+  errors: [IndicatorFeedNotFound, Forbidden],
 }));
 
 // =============================================================================

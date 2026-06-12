@@ -1,0 +1,1 @@
+{ "errors": { "OutgoingZoneTransferNotFound": [{ "status": 404 }], "OutgoingZoneTransfersNotAllowed": [{ "status": 401 }] } }

@@ -1845,6 +1845,9 @@ paths:
                   - ips
                   - ports
       x-distilled-response-path: result
+      x-distilled-errors:
+        ScanConfigNotFound:
+          - status: 404
     delete:
       operationId: deleteScanConfig
       description: "Delete a Scan Config  @example ```ts const config = await
@@ -1869,6 +1872,9 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        ScanConfigNotFound:
+          - status: 404
   /accounts/{account_id}/cloudforce-one/scans/results/{configId}:
     get:
       operationId: getScanResult

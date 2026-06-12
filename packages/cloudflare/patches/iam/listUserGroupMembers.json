@@ -6,6 +6,7 @@
   },
   "response": {
     "properties": {
+      "result": { "nullable": true },
       "result_info": { "optional": true }
     }
   }

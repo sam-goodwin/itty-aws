@@ -3471,6 +3471,8 @@ paths:
       x-distilled-errors:
         RulesetNotFound:
           - code: 10003
+        Forbidden:
+          - status: 403
     put:
       operationId: putPhas
       description: "Updates an account or zone entry point ruleset, creating a new
@@ -10038,6 +10040,8 @@ paths:
           - status: 400
             message:
               includes: not entitled
+        Forbidden:
+          - status: 403
   /{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint/versions/{rulesetVersion}:
     get:
       operationId: getPhasVersion
@@ -30340,6 +30344,8 @@ paths:
       x-distilled-errors:
         RulesetNotFound:
           - code: 10001
+        Forbidden:
+          - status: 403
     put:
       operationId: updateRuleset
       description: "Updates an account or zone ruleset, creating a new
@@ -36938,6 +36944,8 @@ paths:
       x-distilled-errors:
         RulesetNotFound:
           - code: 10001
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteRuleset
       parameters:
@@ -36967,6 +36975,8 @@ paths:
       x-distilled-errors:
         RulesetNotFound:
           - code: 10001
+        Forbidden:
+          - status: 403
   /{accountOrZone}/{accountOrZoneId}/rulesets:
     get:
       operationId: listRulesets
@@ -43661,6 +43671,8 @@ paths:
           - status: 400
             message:
               includes: not entitled
+        Forbidden:
+          - status: 403
   /{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/versions/{rulesetVersion}:
     get:
       operationId: getVersion

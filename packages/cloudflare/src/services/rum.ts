@@ -22,6 +22,26 @@ export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
 ) {}
 T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
+export class MaxRulesExceeded extends Schema.TaggedErrorClass<MaxRulesExceeded>()(
+  "MaxRulesExceeded",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MaxRulesExceeded, [
+  { status: 409, message: { includes: "maxRulesError" } },
+]);
+
+export class RuleNotFound extends Schema.TaggedErrorClass<RuleNotFound>()(
+  "RuleNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RuleNotFound, [{ code: 10003 }]);
+
+export class RulesetNotFound extends Schema.TaggedErrorClass<RulesetNotFound>()(
+  "RulesetNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RulesetNotFound, [{ status: 404 }]);
+
 export class SiteNotFound extends Schema.TaggedErrorClass<SiteNotFound>()(
   "SiteNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -124,7 +144,7 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<ListRulesResponse>;
 
-export type ListRulesError = DefaultErrors;
+export type ListRulesError = DefaultErrors | Forbidden | RulesetNotFound;
 
 export const listRules: API.OperationMethod<
   ListRulesRequest,
@@ -134,7 +154,7 @@ export const listRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
-  errors: [],
+  errors: [Forbidden, RulesetNotFound],
 }));
 
 export interface CreateRuleRequest {
@@ -212,7 +232,11 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateRuleResponse>;
 
-export type CreateRuleError = DefaultErrors;
+export type CreateRuleError =
+  | DefaultErrors
+  | Forbidden
+  | RulesetNotFound
+  | MaxRulesExceeded;
 
 export const createRule: API.OperationMethod<
   CreateRuleRequest,
@@ -222,7 +246,7 @@ export const createRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
-  errors: [],
+  errors: [Forbidden, RulesetNotFound, MaxRulesExceeded],
 }));
 
 export interface UpdateRuleRequest {
@@ -302,7 +326,7 @@ export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateRuleResponse>;
 
-export type UpdateRuleError = DefaultErrors;
+export type UpdateRuleError = DefaultErrors | Forbidden | RulesetNotFound;
 
 export const updateRule: API.OperationMethod<
   UpdateRuleRequest,
@@ -312,7 +336,7 @@ export const updateRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRuleRequest,
   output: UpdateRuleResponse,
-  errors: [],
+  errors: [Forbidden, RulesetNotFound],
 }));
 
 export interface DeleteRuleRequest {
@@ -344,7 +368,11 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteRuleResponse>;
 
-export type DeleteRuleError = DefaultErrors;
+export type DeleteRuleError =
+  | DefaultErrors
+  | Forbidden
+  | RulesetNotFound
+  | RuleNotFound;
 
 export const deleteRule: API.OperationMethod<
   DeleteRuleRequest,
@@ -354,7 +382,7 @@ export const deleteRule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
-  errors: [],
+  errors: [Forbidden, RulesetNotFound, RuleNotFound],
 }));
 
 export interface BulkCreateRulesRequest {

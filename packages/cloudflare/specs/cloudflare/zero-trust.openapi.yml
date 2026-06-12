@@ -92657,6 +92657,11 @@ paths:
                     type: string
                     description: The name of the Bookmark application.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessBookmarkNotFound:
+          - code: 12045
+          - code: 12135
+          - code: 11021
     post:
       operationId: createAccessBookmark
       description: Create a new Bookmark application.  @deprecated
@@ -92701,6 +92706,11 @@ paths:
                     type: string
                     description: The name of the Bookmark application.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessBookmarkNotFound:
+          - code: 12045
+          - code: 12135
+          - code: 11021
     put:
       operationId: updateAccessBookmark
       description: Updates a configured Bookmark application.  @deprecated
@@ -92745,6 +92755,11 @@ paths:
                     type: string
                     description: The name of the Bookmark application.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessBookmarkNotFound:
+          - code: 12045
+          - code: 12135
+          - code: 11021
     delete:
       operationId: deleteAccessBookmark
       description: Deletes a Bookmark application.  @deprecated
@@ -92771,6 +92786,11 @@ paths:
                     type: string
                     description: UUID.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessBookmarkNotFound:
+          - code: 12045
+          - code: 12135
+          - code: 11021
   /accounts/{account_id}/access/bookmarks:
     get:
       operationId: listAccessBookmarks
@@ -92854,6 +92874,9 @@ paths:
                     type: string
                     description: The name of the certificate.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessCertificateNotFound:
+          - code: 12135
     put:
       operationId: updateAccessCertificate
       description: "Updates a configured mTLS certificate.  @example ```ts const
@@ -92923,6 +92946,9 @@ paths:
                     type: string
                     description: The name of the certificate.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessCertificateNotFound:
+          - code: 12135
     delete:
       operationId: deleteAccessCertificate
       parameters:
@@ -92958,6 +92984,9 @@ paths:
                     type: string
                     description: UUID.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessCertificateNotFound:
+          - code: 12135
   /{accountOrZone}/{accountOrZoneId}/access/certificates:
     get:
       operationId: listAccessCertificates
@@ -93081,6 +93110,11 @@ paths:
                     type: string
                     description: The name of the certificate.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessCertificateQuotaExceeded:
+          - code: 12130
+            message:
+              includes: maximum number of certificates
   /{accountOrZone}/{accountOrZoneId}/access/certificates/settings:
     get:
       operationId: getAccessCertificateSetting
@@ -93254,6 +93288,9 @@ paths:
                   - name
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessCustomPageNotFound:
+          - code: 12135
     put:
       operationId: updateAccessCustomPage
       description: "Update a custom page  @example ```ts const customPageWithoutHTML =
@@ -93321,6 +93358,9 @@ paths:
                   - name
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessCustomPageNotFound:
+          - code: 12135
     delete:
       operationId: deleteAccessCustomPage
       description: "Delete a custom page  @example ```ts const customPage = await
@@ -93351,6 +93391,9 @@ paths:
                     type: string
                     description: UUID.
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessCustomPageNotFound:
+          - code: 12135
   /accounts/{account_id}/access/custom_pages:
     get:
       operationId: listAccessCustomPages
@@ -93460,6 +93503,11 @@ paths:
                   - name
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessCustomPagesNotEntitled:
+          - code: 12133
+            message:
+              includes: does not have permission for custom pages
   /accounts/{account_id}/access/gateway_ca:
     get:
       operationId: listAccessGatewayCas
@@ -100716,6 +100764,11 @@ paths:
                   - ip
                   - modified_at
       x-distilled-response-path: result
+      x-distilled-errors:
+        TargetNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateAccessInfrastructureTarget
       description: "Update target  @example ```ts const target = await
@@ -100836,6 +100889,11 @@ paths:
                   - ip
                   - modified_at
       x-distilled-response-path: result
+      x-distilled-errors:
+        TargetNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteAccessInfrastructureTarget
       description: "Delete target  @example ```ts await
@@ -100857,6 +100915,11 @@ paths:
       responses:
         "200":
           description: Success
+      x-distilled-errors:
+        TargetNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/infrastructure/targets:
     get:
       operationId: listAccessInfrastructureTargets
@@ -101096,6 +101159,9 @@ paths:
                   - ip
                   - modified_at
       x-distilled-pagination-class: TargetListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createAccessInfrastructureTarget
       description: "Create new target  @example ```ts const target = await
@@ -101210,6 +101276,9 @@ paths:
                   - ip
                   - modified_at
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/infrastructure/targets/batch:
     delete:
       operationId: bulkDeleteAccessInfrastructureTargets
@@ -101371,6 +101440,9 @@ paths:
                     type: string
                     description: The timestamp of the previous key rotation.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putAccessKey
       description: "Updates the Access key rotation settings for an account.  @example
@@ -101414,6 +101486,9 @@ paths:
                     type: string
                     description: The timestamp of the previous key rotation.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/access/keys/rotate:
     post:
       operationId: rotateAccessKey
@@ -109866,6 +109941,9 @@ paths:
                 required:
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessTagNotFound:
+          - code: 12135
     put:
       operationId: updateAccessTag
       description: "Update a tag  @example ```ts const tag = await
@@ -109909,6 +109987,9 @@ paths:
                 required:
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessTagNotFound:
+          - code: 12135
     delete:
       operationId: deleteAccessTag
       description: "Delete a tag  @example ```ts const tag = await
@@ -109938,6 +110019,9 @@ paths:
                     type: string
                     description: The name of the tag
       x-distilled-response-path: result
+      x-distilled-errors:
+        AccessTagNotFound:
+          - code: 12135
   /accounts/{account_id}/access/tags:
     get:
       operationId: listAccessTags
@@ -111819,6 +111903,11 @@ paths:
                   - interval
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        DexTestNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateDeviceDexTest
       description: "Update a DEX test.  @example ```ts const dexTest = await
@@ -111975,6 +112064,11 @@ paths:
                   - interval
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        DexTestNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDeviceDexTest
       description: "Delete a Device DEX test. Returns the remaining device dex tests
@@ -112068,6 +112162,11 @@ paths:
                         - interval
                         - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        DexTestNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/dex/devices/dex_tests:
     get:
       operationId: listDeviceDexTests
@@ -112177,6 +112276,9 @@ paths:
                   - interval
                   - name
       x-distilled-pagination-class: DEXTestListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createDeviceDexTest
       description: "Create a DEX test.  @example ```ts const dexTest = await
@@ -112327,6 +112429,9 @@ paths:
                   - interval
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/dex/devices/{deviceId}/fleet-status/live:
     get:
       operationId: getDeviceFleetStatus
@@ -138261,6 +138366,11 @@ paths:
                   uploaded_on:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayCertificateNotFound:
+          - code: 2027
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteGatewayCertificate
       description: "Delete a gateway-managed Zero Trust certificate. You must
@@ -138336,6 +138446,11 @@ paths:
                   uploaded_on:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayCertificateNotFound:
+          - code: 2027
+        GatewayCertificateInUse:
+          - code: 2118
   /accounts/{account_id}/gateway/certificates:
     get:
       operationId: listGatewayCertificates
@@ -138568,6 +138683,9 @@ paths:
                   uploaded_on:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayCertificateNotFound:
+          - code: 2027
   /accounts/{account_id}/gateway/certificates/{certificateId}/deactivate:
     post:
       operationId: deactivateGatewayCertificate
@@ -138649,6 +138767,11 @@ paths:
                   uploaded_on:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayCertificateNotFound:
+          - code: 2027
+        GatewayCertificateInUse:
+          - code: 2118
   /accounts/{account_id}/gateway/configuration:
     get:
       operationId: getGatewayConfiguration
@@ -138977,6 +139100,9 @@ paths:
                   updated_at:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putGatewayConfiguration
       description: "Update the current Zero Trust account configuration.  @example
@@ -140192,6 +140318,9 @@ paths:
                   updated_at:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/gateway/configuration/custom_certificate:
     get:
       operationId: getGatewayConfigurationCustomCertificate
@@ -141834,6 +141963,9 @@ paths:
                         description: Configure logging settings for Network firewall.
                     description: Configure logging settings for each rule type.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putGatewayLogging
       description: "Update logging settings for the current Zero Trust
@@ -157136,6 +157268,11 @@ paths:
                     type: string
                     description: A user-friendly name for a tunnel.
       x-distilled-response-path: result
+      x-distilled-errors:
+        HostnameRouteNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchNetworkHostnameRoute
       description: "Updates a hostname route.  @example ```ts const hostnameRoute =
@@ -157201,6 +157338,11 @@ paths:
                     type: string
                     description: A user-friendly name for a tunnel.
       x-distilled-response-path: result
+      x-distilled-errors:
+        HostnameRouteNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteNetworkHostnameRoute
       description: "Delete a hostname route.  @example ```ts const hostnameRoute =
@@ -157250,6 +157392,11 @@ paths:
                     type: string
                     description: A user-friendly name for a tunnel.
       x-distilled-response-path: result
+      x-distilled-errors:
+        HostnameRouteNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/zerotrust/routes/hostname:
     get:
       operationId: listNetworkHostnameRoutes
@@ -157346,6 +157493,9 @@ paths:
                     type: string
                     description: A user-friendly name for a tunnel.
       x-distilled-pagination-class: HostnameRoutesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createNetworkHostnameRoute
       description: "Create a hostname route.  @example ```ts const hostnameRoute =
@@ -157405,6 +157555,9 @@ paths:
                     type: string
                     description: A user-friendly name for a tunnel.
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/teamnet/routes/{routeId}:
     get:
       operationId: getNetworkRoute
@@ -164260,6 +164413,12 @@ paths:
                       - cni
                     description: The type of tunnel.
       x-distilled-response-path: result
+      x-distilled-errors:
+        TunnelNotFound:
+          - code: 1002
+          - status: 404
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchTunnelWarpConnector
       description: "Updates an existing Warp Connector Tunnel.  @example ```ts const
@@ -164391,6 +164550,14 @@ paths:
                       - cni
                     description: The type of tunnel.
       x-distilled-response-path: result
+      x-distilled-errors:
+        TunnelNotFound:
+          - code: 1002
+          - status: 404
+        DuplicateTunnelName:
+          - code: 1013
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteTunnelWarpConnector
       description: "Deletes a Warp Connector Tunnel from an account.  @example ```ts
@@ -164508,6 +164675,12 @@ paths:
                       - cni
                     description: The type of tunnel.
       x-distilled-response-path: result
+      x-distilled-errors:
+        TunnelNotFound:
+          - code: 1002
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/warp_connector:
     get:
       operationId: listTunnelWarpConnectors
@@ -164696,6 +164869,9 @@ paths:
                       - cni
                     description: The type of tunnel.
       x-distilled-pagination-class: WARPConnectorListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createTunnelWarpConnector
       description: "Creates a new Warp Connector Tunnel in an account.  @example ```ts
@@ -164823,6 +164999,11 @@ paths:
                       - cni
                     description: The type of tunnel.
       x-distilled-response-path: result
+      x-distilled-errors:
+        DuplicateTunnelName:
+          - code: 1013
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/warp_connector/{tunnelId}/connections:
     get:
       operationId: getTunnelWarpConnectorConnection
@@ -165056,6 +165237,12 @@ paths:
               schema:
                 type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        TunnelNotFound:
+          - code: 1002
+          - status: 404
+        Forbidden:
+          - status: 403
   /{accountOrZone}/{accountOrZoneId}/access/organizations/revoke_user:
     post:
       operationId: revokeUsersOrganization

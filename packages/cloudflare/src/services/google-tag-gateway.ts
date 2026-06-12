@@ -13,6 +13,16 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+// =============================================================================
 // Config
 // =============================================================================
 
@@ -30,30 +40,28 @@ export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<GetConfigRequest>;
 
-export interface GetConfigResponse {
-  /** Enables or disables Google Tag Gateway for this zone. */
+export type GetConfigResponse = {
   enabled: boolean;
-  /** Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics). */
   endpoint: string;
-  /** Hides the original client IP address from Google when enabled. */
   hideOriginalIp: boolean;
-  /** Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX). */
   measurementId: string;
-  /** Set up the associated Google Tag on the zone automatically when enabled. */
   setUpTag?: boolean | null;
-}
+} | null;
 
-export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  enabled: Schema.Boolean,
-  endpoint: Schema.String,
-  hideOriginalIp: Schema.Boolean,
-  measurementId: Schema.String,
-  setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-}).pipe(
+export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  Schema.Struct({
+    enabled: Schema.Boolean,
+    endpoint: Schema.String,
+    hideOriginalIp: Schema.Boolean,
+    measurementId: Schema.String,
+    setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }),
+  Schema.Null,
+]).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetConfigResponse>;
 
-export type GetConfigError = DefaultErrors;
+export type GetConfigError = DefaultErrors | Forbidden;
 
 export const getConfig: API.OperationMethod<
   GetConfigRequest,
@@ -63,7 +71,7 @@ export const getConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutConfigRequest {
@@ -118,7 +126,7 @@ export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PutConfigResponse>;
 
-export type PutConfigError = DefaultErrors;
+export type PutConfigError = DefaultErrors | Forbidden;
 
 export const putConfig: API.OperationMethod<
   PutConfigRequest,
@@ -128,5 +136,5 @@ export const putConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutConfigRequest,
   output: PutConfigResponse,
-  errors: [],
+  errors: [Forbidden],
 }));

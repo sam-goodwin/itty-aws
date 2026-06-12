@@ -1,0 +1,5 @@
+{
+  "errors": {
+    "OperationNotFound": [{ "code": 10404 }]
+  }
+}

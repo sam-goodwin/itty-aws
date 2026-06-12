@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "LogsControlNotAuthorized": [
+      { "code": 10000, "message": { "includes": "Unauthorized" } }
+    ],
+    "CmbConfigNotFound": [{ "status": 404 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

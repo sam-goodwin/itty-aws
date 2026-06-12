@@ -17,6 +17,47 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
+export class AccessBookmarkNotFound extends Schema.TaggedErrorClass<AccessBookmarkNotFound>()(
+  "AccessBookmarkNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AccessBookmarkNotFound, [
+  { code: 12045 },
+  { code: 12135 },
+  { code: 11021 },
+]);
+
+export class AccessCertificateNotFound extends Schema.TaggedErrorClass<AccessCertificateNotFound>()(
+  "AccessCertificateNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AccessCertificateNotFound, [{ code: 12135 }]);
+
+export class AccessCertificateQuotaExceeded extends Schema.TaggedErrorClass<AccessCertificateQuotaExceeded>()(
+  "AccessCertificateQuotaExceeded",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AccessCertificateQuotaExceeded, [
+  { code: 12130, message: { includes: "maximum number of certificates" } },
+]);
+
+export class AccessCustomPageNotFound extends Schema.TaggedErrorClass<AccessCustomPageNotFound>()(
+  "AccessCustomPageNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AccessCustomPageNotFound, [{ code: 12135 }]);
+
+export class AccessCustomPagesNotEntitled extends Schema.TaggedErrorClass<AccessCustomPagesNotEntitled>()(
+  "AccessCustomPagesNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AccessCustomPagesNotEntitled, [
+  {
+    code: 12133,
+    message: { includes: "does not have permission for custom pages" },
+  },
+]);
+
 export class AccessGroupNotFound extends Schema.TaggedErrorClass<AccessGroupNotFound>()(
   "AccessGroupNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -34,6 +75,12 @@ export class AccessServiceTokenNotFound extends Schema.TaggedErrorClass<AccessSe
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(AccessServiceTokenNotFound, [{ code: 12135 }]);
+
+export class AccessTagNotFound extends Schema.TaggedErrorClass<AccessTagNotFound>()(
+  "AccessTagNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(AccessTagNotFound, [{ code: 12135 }]);
 
 export class CannotDeleteDefaultGatewayLocation extends Schema.TaggedErrorClass<CannotDeleteDefaultGatewayLocation>()(
   "CannotDeleteDefaultGatewayLocation",
@@ -59,6 +106,12 @@ export class DevicePolicyNotFound extends Schema.TaggedErrorClass<DevicePolicyNo
 ) {}
 T.applyErrorMatchers(DevicePolicyNotFound, [{ code: 2052 }]);
 
+export class DexTestNotFound extends Schema.TaggedErrorClass<DexTestNotFound>()(
+  "DexTestNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DexTestNotFound, [{ status: 404 }]);
+
 export class DuplicateTunnelName extends Schema.TaggedErrorClass<DuplicateTunnelName>()(
   "DuplicateTunnelName",
   { code: Schema.Number, message: Schema.String },
@@ -71,6 +124,18 @@ export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
 ) {}
 T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
+export class GatewayCertificateInUse extends Schema.TaggedErrorClass<GatewayCertificateInUse>()(
+  "GatewayCertificateInUse",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(GatewayCertificateInUse, [{ code: 2118 }]);
+
+export class GatewayCertificateNotFound extends Schema.TaggedErrorClass<GatewayCertificateNotFound>()(
+  "GatewayCertificateNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(GatewayCertificateNotFound, [{ code: 2027 }]);
+
 export class GatewayListNotFound extends Schema.TaggedErrorClass<GatewayListNotFound>()(
   "GatewayListNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -82,6 +147,12 @@ export class GatewayLocationNotFound extends Schema.TaggedErrorClass<GatewayLoca
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(GatewayLocationNotFound, [{ code: 1103 }]);
+
+export class HostnameRouteNotFound extends Schema.TaggedErrorClass<HostnameRouteNotFound>()(
+  "HostnameRouteNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(HostnameRouteNotFound, [{ status: 404 }]);
 
 export class IpProxyEndpointsRequireEnterprise extends Schema.TaggedErrorClass<IpProxyEndpointsRequireEnterprise>()(
   "IpProxyEndpointsRequireEnterprise",
@@ -113,6 +184,12 @@ export class ProxyEndpointNotFound extends Schema.TaggedErrorClass<ProxyEndpoint
 ) {}
 T.applyErrorMatchers(ProxyEndpointNotFound, [{ code: 2002 }]);
 
+export class TargetNotFound extends Schema.TaggedErrorClass<TargetNotFound>()(
+  "TargetNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TargetNotFound, [{ status: 404 }]);
+
 export class TunnelConfigurationNotFound extends Schema.TaggedErrorClass<TunnelConfigurationNotFound>()(
   "TunnelConfigurationNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -123,7 +200,7 @@ export class TunnelNotFound extends Schema.TaggedErrorClass<TunnelNotFound>()(
   "TunnelNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(TunnelNotFound, [{ code: 1002 }]);
+T.applyErrorMatchers(TunnelNotFound, [{ code: 1002 }, { status: 404 }]);
 
 export class TunnelTokenNotFound extends Schema.TaggedErrorClass<TunnelTokenNotFound>()(
   "TunnelTokenNotFound",
@@ -69200,7 +69277,7 @@ export const GetAccessBookmarkResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetAccessBookmarkResponse>;
 
-export type GetAccessBookmarkError = DefaultErrors;
+export type GetAccessBookmarkError = DefaultErrors | AccessBookmarkNotFound;
 
 export const getAccessBookmark: API.OperationMethod<
   GetAccessBookmarkRequest,
@@ -69210,7 +69287,7 @@ export const getAccessBookmark: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessBookmarkRequest,
   output: GetAccessBookmarkResponse,
-  errors: [],
+  errors: [AccessBookmarkNotFound],
 }));
 
 export interface ListAccessBookmarksRequest {
@@ -69330,7 +69407,7 @@ export const CreateAccessBookmarkResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateAccessBookmarkResponse>;
 
-export type CreateAccessBookmarkError = DefaultErrors;
+export type CreateAccessBookmarkError = DefaultErrors | AccessBookmarkNotFound;
 
 export const createAccessBookmark: API.OperationMethod<
   CreateAccessBookmarkRequest,
@@ -69340,7 +69417,7 @@ export const createAccessBookmark: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessBookmarkRequest,
   output: CreateAccessBookmarkResponse,
-  errors: [],
+  errors: [AccessBookmarkNotFound],
 }));
 
 export interface UpdateAccessBookmarkRequest {
@@ -69399,7 +69476,7 @@ export const UpdateAccessBookmarkResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateAccessBookmarkResponse>;
 
-export type UpdateAccessBookmarkError = DefaultErrors;
+export type UpdateAccessBookmarkError = DefaultErrors | AccessBookmarkNotFound;
 
 export const updateAccessBookmark: API.OperationMethod<
   UpdateAccessBookmarkRequest,
@@ -69409,7 +69486,7 @@ export const updateAccessBookmark: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessBookmarkRequest,
   output: UpdateAccessBookmarkResponse,
-  errors: [],
+  errors: [AccessBookmarkNotFound],
 }));
 
 export interface DeleteAccessBookmarkRequest {
@@ -69440,7 +69517,7 @@ export const DeleteAccessBookmarkResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteAccessBookmarkResponse>;
 
-export type DeleteAccessBookmarkError = DefaultErrors;
+export type DeleteAccessBookmarkError = DefaultErrors | AccessBookmarkNotFound;
 
 export const deleteAccessBookmark: API.OperationMethod<
   DeleteAccessBookmarkRequest,
@@ -69450,7 +69527,7 @@ export const deleteAccessBookmark: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessBookmarkRequest,
   output: DeleteAccessBookmarkResponse,
-  errors: [],
+  errors: [AccessBookmarkNotFound],
 }));
 
 // =============================================================================
@@ -69532,7 +69609,9 @@ export const GetAccessCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetAccessCertificateResponse>;
 
-export type GetAccessCertificateError = DefaultErrors;
+export type GetAccessCertificateError =
+  | DefaultErrors
+  | AccessCertificateNotFound;
 
 export const getAccessCertificateForAccount: API.OperationMethod<
   GetAccessCertificateForAccountRequest,
@@ -69542,7 +69621,7 @@ export const getAccessCertificateForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessCertificateForAccountRequest,
   output: GetAccessCertificateResponse,
-  errors: [],
+  errors: [AccessCertificateNotFound],
 }));
 
 export const getAccessCertificateForZone: API.OperationMethod<
@@ -69553,7 +69632,7 @@ export const getAccessCertificateForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessCertificateForZoneRequest,
   output: GetAccessCertificateResponse,
-  errors: [],
+  errors: [AccessCertificateNotFound],
 }));
 
 const ListAccessCertificatesBaseFields = {
@@ -69785,7 +69864,9 @@ export const CreateAccessCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateAccessCertificateResponse>;
 
-export type CreateAccessCertificateError = DefaultErrors;
+export type CreateAccessCertificateError =
+  | DefaultErrors
+  | AccessCertificateQuotaExceeded;
 
 export const createAccessCertificateForAccount: API.OperationMethod<
   CreateAccessCertificateForAccountRequest,
@@ -69795,7 +69876,7 @@ export const createAccessCertificateForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessCertificateForAccountRequest,
   output: CreateAccessCertificateResponse,
-  errors: [],
+  errors: [AccessCertificateQuotaExceeded],
 }));
 
 export const createAccessCertificateForZone: API.OperationMethod<
@@ -69806,7 +69887,7 @@ export const createAccessCertificateForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessCertificateForZoneRequest,
   output: CreateAccessCertificateResponse,
-  errors: [],
+  errors: [AccessCertificateQuotaExceeded],
 }));
 
 const UpdateAccessCertificateBaseFields = {
@@ -69898,7 +69979,9 @@ export const UpdateAccessCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateAccessCertificateResponse>;
 
-export type UpdateAccessCertificateError = DefaultErrors;
+export type UpdateAccessCertificateError =
+  | DefaultErrors
+  | AccessCertificateNotFound;
 
 export const updateAccessCertificateForAccount: API.OperationMethod<
   UpdateAccessCertificateForAccountRequest,
@@ -69908,7 +69991,7 @@ export const updateAccessCertificateForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessCertificateForAccountRequest,
   output: UpdateAccessCertificateResponse,
-  errors: [],
+  errors: [AccessCertificateNotFound],
 }));
 
 export const updateAccessCertificateForZone: API.OperationMethod<
@@ -69919,7 +70002,7 @@ export const updateAccessCertificateForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessCertificateForZoneRequest,
   output: UpdateAccessCertificateResponse,
-  errors: [],
+  errors: [AccessCertificateNotFound],
 }));
 
 const DeleteAccessCertificateBaseFields = {
@@ -69974,7 +70057,9 @@ export const DeleteAccessCertificateResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteAccessCertificateResponse>;
 
-export type DeleteAccessCertificateError = DefaultErrors;
+export type DeleteAccessCertificateError =
+  | DefaultErrors
+  | AccessCertificateNotFound;
 
 export const deleteAccessCertificateForAccount: API.OperationMethod<
   DeleteAccessCertificateForAccountRequest,
@@ -69984,7 +70069,7 @@ export const deleteAccessCertificateForAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessCertificateForAccountRequest,
   output: DeleteAccessCertificateResponse,
-  errors: [],
+  errors: [AccessCertificateNotFound],
 }));
 
 export const deleteAccessCertificateForZone: API.OperationMethod<
@@ -69995,7 +70080,7 @@ export const deleteAccessCertificateForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessCertificateForZoneRequest,
   output: DeleteAccessCertificateResponse,
-  errors: [],
+  errors: [AccessCertificateNotFound],
 }));
 
 // =============================================================================
@@ -70263,7 +70348,7 @@ export const GetAccessCustomPageResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetAccessCustomPageResponse>;
 
-export type GetAccessCustomPageError = DefaultErrors;
+export type GetAccessCustomPageError = DefaultErrors | AccessCustomPageNotFound;
 
 export const getAccessCustomPage: API.OperationMethod<
   GetAccessCustomPageRequest,
@@ -70273,7 +70358,7 @@ export const getAccessCustomPage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessCustomPageRequest,
   output: GetAccessCustomPageResponse,
-  errors: [],
+  errors: [AccessCustomPageNotFound],
 }));
 
 export interface ListAccessCustomPagesRequest {
@@ -70418,7 +70503,9 @@ export const CreateAccessCustomPageResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateAccessCustomPageResponse>;
 
-export type CreateAccessCustomPageError = DefaultErrors;
+export type CreateAccessCustomPageError =
+  | DefaultErrors
+  | AccessCustomPagesNotEntitled;
 
 export const createAccessCustomPage: API.OperationMethod<
   CreateAccessCustomPageRequest,
@@ -70428,7 +70515,7 @@ export const createAccessCustomPage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessCustomPageRequest,
   output: CreateAccessCustomPageResponse,
-  errors: [],
+  errors: [AccessCustomPagesNotEntitled],
 }));
 
 export interface UpdateAccessCustomPageRequest {
@@ -70486,7 +70573,9 @@ export const UpdateAccessCustomPageResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateAccessCustomPageResponse>;
 
-export type UpdateAccessCustomPageError = DefaultErrors;
+export type UpdateAccessCustomPageError =
+  | DefaultErrors
+  | AccessCustomPageNotFound;
 
 export const updateAccessCustomPage: API.OperationMethod<
   UpdateAccessCustomPageRequest,
@@ -70496,7 +70585,7 @@ export const updateAccessCustomPage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessCustomPageRequest,
   output: UpdateAccessCustomPageResponse,
-  errors: [],
+  errors: [AccessCustomPageNotFound],
 }));
 
 export interface DeleteAccessCustomPageRequest {
@@ -70528,7 +70617,9 @@ export const DeleteAccessCustomPageResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteAccessCustomPageResponse>;
 
-export type DeleteAccessCustomPageError = DefaultErrors;
+export type DeleteAccessCustomPageError =
+  | DefaultErrors
+  | AccessCustomPageNotFound;
 
 export const deleteAccessCustomPage: API.OperationMethod<
   DeleteAccessCustomPageRequest,
@@ -70538,7 +70629,7 @@ export const deleteAccessCustomPage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessCustomPageRequest,
   output: DeleteAccessCustomPageResponse,
-  errors: [],
+  errors: [AccessCustomPageNotFound],
 }));
 
 // =============================================================================
@@ -76165,7 +76256,10 @@ export const GetAccessInfrastructureTargetResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetAccessInfrastructureTargetResponse>;
 
-export type GetAccessInfrastructureTargetError = DefaultErrors;
+export type GetAccessInfrastructureTargetError =
+  | DefaultErrors
+  | TargetNotFound
+  | Forbidden;
 
 export const getAccessInfrastructureTarget: API.OperationMethod<
   GetAccessInfrastructureTargetRequest,
@@ -76175,7 +76269,7 @@ export const getAccessInfrastructureTarget: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessInfrastructureTargetRequest,
   output: GetAccessInfrastructureTargetResponse,
-  errors: [],
+  errors: [TargetNotFound, Forbidden],
 }));
 
 export interface ListAccessInfrastructureTargetsRequest {
@@ -76393,7 +76487,7 @@ export const ListAccessInfrastructureTargetsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListAccessInfrastructureTargetsResponse>;
 
-export type ListAccessInfrastructureTargetsError = DefaultErrors;
+export type ListAccessInfrastructureTargetsError = DefaultErrors | Forbidden;
 
 export const listAccessInfrastructureTargets: API.PaginatedOperationMethod<
   ListAccessInfrastructureTargetsRequest,
@@ -76403,7 +76497,7 @@ export const listAccessInfrastructureTargets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessInfrastructureTargetsRequest,
   output: ListAccessInfrastructureTargetsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -76530,7 +76624,7 @@ export const CreateAccessInfrastructureTargetResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateAccessInfrastructureTargetResponse>;
 
-export type CreateAccessInfrastructureTargetError = DefaultErrors;
+export type CreateAccessInfrastructureTargetError = DefaultErrors | Forbidden;
 
 export const createAccessInfrastructureTarget: API.OperationMethod<
   CreateAccessInfrastructureTargetRequest,
@@ -76540,7 +76634,7 @@ export const createAccessInfrastructureTarget: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessInfrastructureTargetRequest,
   output: CreateAccessInfrastructureTargetResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateAccessInfrastructureTargetRequest {
@@ -76662,7 +76756,10 @@ export const UpdateAccessInfrastructureTargetResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateAccessInfrastructureTargetResponse>;
 
-export type UpdateAccessInfrastructureTargetError = DefaultErrors;
+export type UpdateAccessInfrastructureTargetError =
+  | DefaultErrors
+  | TargetNotFound
+  | Forbidden;
 
 export const updateAccessInfrastructureTarget: API.OperationMethod<
   UpdateAccessInfrastructureTargetRequest,
@@ -76672,7 +76769,7 @@ export const updateAccessInfrastructureTarget: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessInfrastructureTargetRequest,
   output: UpdateAccessInfrastructureTargetResponse,
-  errors: [],
+  errors: [TargetNotFound, Forbidden],
 }));
 
 export interface DeleteAccessInfrastructureTargetRequest {
@@ -76697,7 +76794,10 @@ export type DeleteAccessInfrastructureTargetResponse = unknown;
 export const DeleteAccessInfrastructureTargetResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteAccessInfrastructureTargetResponse>;
 
-export type DeleteAccessInfrastructureTargetError = DefaultErrors;
+export type DeleteAccessInfrastructureTargetError =
+  | DefaultErrors
+  | TargetNotFound
+  | Forbidden;
 
 export const deleteAccessInfrastructureTarget: API.OperationMethod<
   DeleteAccessInfrastructureTargetRequest,
@@ -76707,7 +76807,7 @@ export const deleteAccessInfrastructureTarget: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessInfrastructureTargetRequest,
   output: DeleteAccessInfrastructureTargetResponse,
-  errors: [],
+  errors: [TargetNotFound, Forbidden],
 }));
 
 export interface BulkDeleteAccessInfrastructureTargetsRequest {
@@ -76789,7 +76889,7 @@ export const GetAccessKeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetAccessKeyResponse>;
 
-export type GetAccessKeyError = DefaultErrors;
+export type GetAccessKeyError = DefaultErrors | Forbidden;
 
 export const getAccessKey: API.OperationMethod<
   GetAccessKeyRequest,
@@ -76799,7 +76899,7 @@ export const getAccessKey: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessKeyRequest,
   output: GetAccessKeyResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutAccessKeyRequest {
@@ -76848,7 +76948,7 @@ export const PutAccessKeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutAccessKeyResponse>;
 
-export type PutAccessKeyError = DefaultErrors;
+export type PutAccessKeyError = DefaultErrors | Forbidden;
 
 export const putAccessKey: API.OperationMethod<
   PutAccessKeyRequest,
@@ -76858,7 +76958,7 @@ export const putAccessKey: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccessKeyRequest,
   output: PutAccessKeyResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface RotateAccessKeyRequest {
@@ -84428,7 +84528,7 @@ export const GetAccessTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetAccessTagResponse>;
 
-export type GetAccessTagError = DefaultErrors;
+export type GetAccessTagError = DefaultErrors | AccessTagNotFound;
 
 export const getAccessTag: API.OperationMethod<
   GetAccessTagRequest,
@@ -84438,7 +84538,7 @@ export const getAccessTag: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessTagRequest,
   output: GetAccessTagResponse,
-  errors: [],
+  errors: [AccessTagNotFound],
 }));
 
 export interface ListAccessTagsRequest {
@@ -84592,7 +84692,7 @@ export const UpdateAccessTagResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateAccessTagResponse>;
 
-export type UpdateAccessTagError = DefaultErrors;
+export type UpdateAccessTagError = DefaultErrors | AccessTagNotFound;
 
 export const updateAccessTag: API.OperationMethod<
   UpdateAccessTagRequest,
@@ -84602,7 +84702,7 @@ export const updateAccessTag: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessTagRequest,
   output: UpdateAccessTagResponse,
-  errors: [],
+  errors: [AccessTagNotFound],
 }));
 
 export interface DeleteAccessTagRequest {
@@ -84635,7 +84735,7 @@ export const DeleteAccessTagResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteAccessTagResponse>;
 
-export type DeleteAccessTagError = DefaultErrors;
+export type DeleteAccessTagError = DefaultErrors | AccessTagNotFound;
 
 export const deleteAccessTag: API.OperationMethod<
   DeleteAccessTagRequest,
@@ -84645,7 +84745,7 @@ export const deleteAccessTag: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessTagRequest,
   output: DeleteAccessTagResponse,
-  errors: [],
+  errors: [AccessTagNotFound],
 }));
 
 // =============================================================================
@@ -86995,7 +87095,7 @@ export const GetDeviceDexTestResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetDeviceDexTestResponse>;
 
-export type GetDeviceDexTestError = DefaultErrors;
+export type GetDeviceDexTestError = DefaultErrors | DexTestNotFound | Forbidden;
 
 export const getDeviceDexTest: API.OperationMethod<
   GetDeviceDexTestRequest,
@@ -87005,7 +87105,7 @@ export const getDeviceDexTest: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeviceDexTestRequest,
   output: GetDeviceDexTestResponse,
-  errors: [],
+  errors: [DexTestNotFound, Forbidden],
 }));
 
 export interface ListDeviceDexTestsRequest {
@@ -87135,7 +87235,7 @@ export const ListDeviceDexTestsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListDeviceDexTestsResponse>;
 
-export type ListDeviceDexTestsError = DefaultErrors;
+export type ListDeviceDexTestsError = DefaultErrors | Forbidden;
 
 export const listDeviceDexTests: API.PaginatedOperationMethod<
   ListDeviceDexTestsRequest,
@@ -87145,7 +87245,7 @@ export const listDeviceDexTests: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceDexTestsRequest,
   output: ListDeviceDexTestsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -87292,7 +87392,7 @@ export const CreateDeviceDexTestResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateDeviceDexTestResponse>;
 
-export type CreateDeviceDexTestError = DefaultErrors;
+export type CreateDeviceDexTestError = DefaultErrors | Forbidden;
 
 export const createDeviceDexTest: API.OperationMethod<
   CreateDeviceDexTestRequest,
@@ -87302,7 +87402,7 @@ export const createDeviceDexTest: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDeviceDexTestRequest,
   output: CreateDeviceDexTestResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateDeviceDexTestRequest {
@@ -87444,7 +87544,10 @@ export const UpdateDeviceDexTestResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateDeviceDexTestResponse>;
 
-export type UpdateDeviceDexTestError = DefaultErrors;
+export type UpdateDeviceDexTestError =
+  | DefaultErrors
+  | DexTestNotFound
+  | Forbidden;
 
 export const updateDeviceDexTest: API.OperationMethod<
   UpdateDeviceDexTestRequest,
@@ -87454,7 +87557,7 @@ export const updateDeviceDexTest: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDeviceDexTestRequest,
   output: UpdateDeviceDexTestResponse,
-  errors: [],
+  errors: [DexTestNotFound, Forbidden],
 }));
 
 export interface DeleteDeviceDexTestRequest {
@@ -87558,7 +87661,10 @@ export const DeleteDeviceDexTestResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteDeviceDexTestResponse>;
 
-export type DeleteDeviceDexTestError = DefaultErrors;
+export type DeleteDeviceDexTestError =
+  | DefaultErrors
+  | DexTestNotFound
+  | Forbidden;
 
 export const deleteDeviceDexTest: API.OperationMethod<
   DeleteDeviceDexTestRequest,
@@ -87568,7 +87674,7 @@ export const deleteDeviceDexTest: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDeviceDexTestRequest,
   output: DeleteDeviceDexTestResponse,
-  errors: [],
+  errors: [DexTestNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -90286,238 +90392,253 @@ export const DeleteDevicePolicyCustomRequest =
   ) as unknown as Schema.Schema<DeleteDevicePolicyCustomRequest>;
 
 export interface DeleteDevicePolicyCustomResponse {
-  result: {
-    allowModeSwitch?: boolean | null;
-    allowUpdates?: boolean | null;
-    allowedToLeave?: boolean | null;
-    autoConnect?: number | null;
-    captivePortal?: number | null;
-    default?: boolean | null;
-    description?: string | null;
-    disableAutoFallback?: boolean | null;
-    enabled?: boolean | null;
-    exclude?:
-      | (
-          | { address: string; description?: string | null }
-          | { host: string; description?: string | null }
-        )[]
-      | null;
-    excludeOfficeIps?: boolean | null;
-    fallbackDomains?:
-      | {
-          suffix: string;
-          description?: string | null;
-          dnsServer?: string[] | null;
-        }[]
-      | null;
-    gatewayUniqueId?: string | null;
-    include?:
-      | (
-          | { address: string; description?: string | null }
-          | { host: string; description?: string | null }
-        )[]
-      | null;
-    lanAllowMinutes?: number | null;
-    lanAllowSubnetSize?: number | null;
-    match?: string | null;
-    name?: string | null;
-    policyId?: string | null;
-    precedence?: number | null;
-    registerInterfaceIpWithDns?: boolean | null;
-    sccmVpnBoundarySupport?: boolean | null;
-    serviceModeV2?: { mode?: string | null; port?: number | null } | null;
-    supportUrl?: string | null;
-    switchLocked?: boolean | null;
-    targetTests?: { id?: string | null; name?: string | null }[] | null;
-    tunnelProtocol?: string | null;
-    virtualNetworks?: { allowed: string[]; default: string } | null;
-  }[];
+  result:
+    | {
+        allowModeSwitch?: boolean | null;
+        allowUpdates?: boolean | null;
+        allowedToLeave?: boolean | null;
+        autoConnect?: number | null;
+        captivePortal?: number | null;
+        default?: boolean | null;
+        description?: string | null;
+        disableAutoFallback?: boolean | null;
+        enabled?: boolean | null;
+        exclude?:
+          | (
+              | { address: string; description?: string | null }
+              | { host: string; description?: string | null }
+            )[]
+          | null;
+        excludeOfficeIps?: boolean | null;
+        fallbackDomains?:
+          | {
+              suffix: string;
+              description?: string | null;
+              dnsServer?: string[] | null;
+            }[]
+          | null;
+        gatewayUniqueId?: string | null;
+        include?:
+          | (
+              | { address: string; description?: string | null }
+              | { host: string; description?: string | null }
+            )[]
+          | null;
+        lanAllowMinutes?: number | null;
+        lanAllowSubnetSize?: number | null;
+        match?: string | null;
+        name?: string | null;
+        policyId?: string | null;
+        precedence?: number | null;
+        registerInterfaceIpWithDns?: boolean | null;
+        sccmVpnBoundarySupport?: boolean | null;
+        serviceModeV2?: { mode?: string | null; port?: number | null } | null;
+        supportUrl?: string | null;
+        switchLocked?: boolean | null;
+        targetTests?: { id?: string | null; name?: string | null }[] | null;
+        tunnelProtocol?: string | null;
+        virtualNetworks?: { allowed: string[]; default: string } | null;
+      }[]
+    | null;
 }
 
 export const DeleteDevicePolicyCustomResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        allowModeSwitch: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        allowUpdates: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        allowedToLeave: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        autoConnect: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        captivePortal: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        default: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        disableAutoFallback: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        exclude: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  address: Schema.String,
-                  description: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                Schema.Struct({
-                  host: Schema.String,
-                  description: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              ]),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        excludeOfficeIps: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        fallbackDomains: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                suffix: Schema.String,
-                description: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                dnsServer: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  suffix: "suffix",
-                  description: "description",
-                  dnsServer: "dns_server",
-                }),
+    result: Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          allowModeSwitch: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          allowUpdates: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          allowedToLeave: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          autoConnect: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          captivePortal: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          default: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          disableAutoFallback: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          exclude: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    address: Schema.String,
+                    description: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Struct({
+                    host: Schema.String,
+                    description: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                ]),
               ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        gatewayUniqueId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        include: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Union([
+              Schema.Null,
+            ]),
+          ),
+          excludeOfficeIps: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          fallbackDomains: Schema.optional(
+            Schema.Union([
+              Schema.Array(
                 Schema.Struct({
-                  address: Schema.String,
+                  suffix: Schema.String,
                   description: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
-                }),
-                Schema.Struct({
-                  host: Schema.String,
-                  description: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
+                  dnsServer: Schema.optional(
+                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
                   ),
-                }),
-              ]),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        lanAllowMinutes: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        lanAllowSubnetSize: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        match: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        precedence: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        registerInterfaceIpWithDns: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        sccmVpnBoundarySupport: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        serviceModeV2: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              mode: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        supportUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        switchLocked: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        targetTests: Schema.optional(
-          Schema.Union([
-            Schema.Array(
+                }).pipe(
+                  Schema.encodeKeys({
+                    suffix: "suffix",
+                    description: "description",
+                    dnsServer: "dns_server",
+                  }),
+                ),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          gatewayUniqueId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          include: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    address: Schema.String,
+                    description: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Struct({
+                    host: Schema.String,
+                    description: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                ]),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          lanAllowMinutes: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          lanAllowSubnetSize: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          match: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          precedence: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          registerInterfaceIpWithDns: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          sccmVpnBoundarySupport: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          serviceModeV2: Schema.optional(
+            Schema.Union([
               Schema.Struct({
-                id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-                name: Schema.optional(
+                mode: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
+                ),
+                port: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
                 ),
               }),
-            ),
-            Schema.Null,
-          ]),
+              Schema.Null,
+            ]),
+          ),
+          supportUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          switchLocked: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          targetTests: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  name: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          tunnelProtocol: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          virtualNetworks: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                allowed: Schema.Array(Schema.String),
+                default: Schema.String,
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            allowModeSwitch: "allow_mode_switch",
+            allowUpdates: "allow_updates",
+            allowedToLeave: "allowed_to_leave",
+            autoConnect: "auto_connect",
+            captivePortal: "captive_portal",
+            default: "default",
+            description: "description",
+            disableAutoFallback: "disable_auto_fallback",
+            enabled: "enabled",
+            exclude: "exclude",
+            excludeOfficeIps: "exclude_office_ips",
+            fallbackDomains: "fallback_domains",
+            gatewayUniqueId: "gateway_unique_id",
+            include: "include",
+            lanAllowMinutes: "lan_allow_minutes",
+            lanAllowSubnetSize: "lan_allow_subnet_size",
+            match: "match",
+            name: "name",
+            policyId: "policy_id",
+            precedence: "precedence",
+            registerInterfaceIpWithDns: "register_interface_ip_with_dns",
+            sccmVpnBoundarySupport: "sccm_vpn_boundary_support",
+            serviceModeV2: "service_mode_v2",
+            supportUrl: "support_url",
+            switchLocked: "switch_locked",
+            targetTests: "target_tests",
+            tunnelProtocol: "tunnel_protocol",
+            virtualNetworks: "virtual_networks",
+          }),
         ),
-        tunnelProtocol: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        virtualNetworks: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              allowed: Schema.Array(Schema.String),
-              default: Schema.String,
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          allowModeSwitch: "allow_mode_switch",
-          allowUpdates: "allow_updates",
-          allowedToLeave: "allowed_to_leave",
-          autoConnect: "auto_connect",
-          captivePortal: "captive_portal",
-          default: "default",
-          description: "description",
-          disableAutoFallback: "disable_auto_fallback",
-          enabled: "enabled",
-          exclude: "exclude",
-          excludeOfficeIps: "exclude_office_ips",
-          fallbackDomains: "fallback_domains",
-          gatewayUniqueId: "gateway_unique_id",
-          include: "include",
-          lanAllowMinutes: "lan_allow_minutes",
-          lanAllowSubnetSize: "lan_allow_subnet_size",
-          match: "match",
-          name: "name",
-          policyId: "policy_id",
-          precedence: "precedence",
-          registerInterfaceIpWithDns: "register_interface_ip_with_dns",
-          sccmVpnBoundarySupport: "sccm_vpn_boundary_support",
-          serviceModeV2: "service_mode_v2",
-          supportUrl: "support_url",
-          switchLocked: "switch_locked",
-          targetTests: "target_tests",
-          tunnelProtocol: "tunnel_protocol",
-          virtualNetworks: "virtual_networks",
-        }),
       ),
-    ),
+      Schema.Null,
+    ]),
   }) as unknown as Schema.Schema<DeleteDevicePolicyCustomResponse>;
 
 export type DeleteDevicePolicyCustomError =
@@ -90561,30 +90682,35 @@ export const GetDevicePolicyCustomExcludeRequest =
   ) as unknown as Schema.Schema<GetDevicePolicyCustomExcludeRequest>;
 
 export interface GetDevicePolicyCustomExcludeResponse {
-  result: (
-    | { address: string; description?: string | null }
-    | { host: string; description?: string | null }
-  )[];
+  result:
+    | (
+        | { address: string; description?: string | null }
+        | { host: string; description?: string | null }
+      )[]
+    | null;
 }
 
 export const GetDevicePolicyCustomExcludeResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          address: Schema.String,
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          host: Schema.String,
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }),
-      ]),
-    ),
+    result: Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            address: Schema.String,
+            description: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            host: Schema.String,
+            description: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+        ]),
+      ),
+      Schema.Null,
+    ]),
   }) as unknown as Schema.Schema<GetDevicePolicyCustomExcludeResponse>;
 
 export type GetDevicePolicyCustomExcludeError =
@@ -90709,32 +90835,37 @@ export const GetDevicePolicyCustomFallbackDomainRequest =
   ) as unknown as Schema.Schema<GetDevicePolicyCustomFallbackDomainRequest>;
 
 export interface GetDevicePolicyCustomFallbackDomainResponse {
-  result: {
-    suffix: string;
-    description?: string | null;
-    dnsServer?: string[] | null;
-  }[];
+  result:
+    | {
+        suffix: string;
+        description?: string | null;
+        dnsServer?: string[] | null;
+      }[]
+    | null;
 }
 
 export const GetDevicePolicyCustomFallbackDomainResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        suffix: Schema.String,
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+    result: Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          suffix: Schema.String,
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          dnsServer: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            suffix: "suffix",
+            description: "description",
+            dnsServer: "dns_server",
+          }),
         ),
-        dnsServer: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          suffix: "suffix",
-          description: "description",
-          dnsServer: "dns_server",
-        }),
       ),
-    ),
+      Schema.Null,
+    ]),
   }) as unknown as Schema.Schema<GetDevicePolicyCustomFallbackDomainResponse>;
 
 export type GetDevicePolicyCustomFallbackDomainError =
@@ -90859,30 +90990,35 @@ export const GetDevicePolicyCustomIncludeRequest =
   ) as unknown as Schema.Schema<GetDevicePolicyCustomIncludeRequest>;
 
 export interface GetDevicePolicyCustomIncludeResponse {
-  result: (
-    | { address: string; description?: string | null }
-    | { host: string; description?: string | null }
-  )[];
+  result:
+    | (
+        | { address: string; description?: string | null }
+        | { host: string; description?: string | null }
+      )[]
+    | null;
 }
 
 export const GetDevicePolicyCustomIncludeResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          address: Schema.String,
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          host: Schema.String,
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }),
-      ]),
-    ),
+    result: Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            address: Schema.String,
+            description: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            host: Schema.String,
+            description: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+        ]),
+      ),
+      Schema.Null,
+    ]),
   }) as unknown as Schema.Schema<GetDevicePolicyCustomIncludeResponse>;
 
 export type GetDevicePolicyCustomIncludeError =
@@ -119736,7 +119872,10 @@ export const GetGatewayCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetGatewayCertificateResponse>;
 
-export type GetGatewayCertificateError = DefaultErrors;
+export type GetGatewayCertificateError =
+  | DefaultErrors
+  | GatewayCertificateNotFound
+  | Forbidden;
 
 export const getGatewayCertificate: API.OperationMethod<
   GetGatewayCertificateRequest,
@@ -119746,7 +119885,7 @@ export const getGatewayCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGatewayCertificateRequest,
   output: GetGatewayCertificateResponse,
-  errors: [],
+  errors: [GatewayCertificateNotFound, Forbidden],
 }));
 
 export interface ListGatewayCertificatesRequest {
@@ -120081,7 +120220,10 @@ export const DeleteGatewayCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteGatewayCertificateResponse>;
 
-export type DeleteGatewayCertificateError = DefaultErrors;
+export type DeleteGatewayCertificateError =
+  | DefaultErrors
+  | GatewayCertificateNotFound
+  | GatewayCertificateInUse;
 
 export const deleteGatewayCertificate: API.OperationMethod<
   DeleteGatewayCertificateRequest,
@@ -120091,7 +120233,7 @@ export const deleteGatewayCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGatewayCertificateRequest,
   output: DeleteGatewayCertificateResponse,
-  errors: [],
+  errors: [GatewayCertificateNotFound, GatewayCertificateInUse],
 }));
 
 export interface ActivateGatewayCertificateRequest {
@@ -120199,7 +120341,9 @@ export const ActivateGatewayCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<ActivateGatewayCertificateResponse>;
 
-export type ActivateGatewayCertificateError = DefaultErrors;
+export type ActivateGatewayCertificateError =
+  | DefaultErrors
+  | GatewayCertificateNotFound;
 
 export const activateGatewayCertificate: API.OperationMethod<
   ActivateGatewayCertificateRequest,
@@ -120209,7 +120353,7 @@ export const activateGatewayCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateGatewayCertificateRequest,
   output: ActivateGatewayCertificateResponse,
-  errors: [],
+  errors: [GatewayCertificateNotFound],
 }));
 
 export interface DeactivateGatewayCertificateRequest {
@@ -120317,7 +120461,10 @@ export const DeactivateGatewayCertificateResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeactivateGatewayCertificateResponse>;
 
-export type DeactivateGatewayCertificateError = DefaultErrors;
+export type DeactivateGatewayCertificateError =
+  | DefaultErrors
+  | GatewayCertificateNotFound
+  | GatewayCertificateInUse;
 
 export const deactivateGatewayCertificate: API.OperationMethod<
   DeactivateGatewayCertificateRequest,
@@ -120327,7 +120474,7 @@ export const deactivateGatewayCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateGatewayCertificateRequest,
   output: DeactivateGatewayCertificateResponse,
-  errors: [],
+  errors: [GatewayCertificateNotFound, GatewayCertificateInUse],
 }));
 
 // =============================================================================
@@ -120768,7 +120915,7 @@ export const GetGatewayConfigurationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetGatewayConfigurationResponse>;
 
-export type GetGatewayConfigurationError = DefaultErrors;
+export type GetGatewayConfigurationError = DefaultErrors | Forbidden;
 
 export const getGatewayConfiguration: API.OperationMethod<
   GetGatewayConfigurationRequest,
@@ -120778,7 +120925,7 @@ export const getGatewayConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGatewayConfigurationRequest,
   output: GetGatewayConfigurationResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutGatewayConfigurationRequest {
@@ -122242,7 +122389,7 @@ export const PatchGatewayConfigurationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchGatewayConfigurationResponse>;
 
-export type PatchGatewayConfigurationError = DefaultErrors;
+export type PatchGatewayConfigurationError = DefaultErrors | Forbidden;
 
 export const patchGatewayConfiguration: API.OperationMethod<
   PatchGatewayConfigurationRequest,
@@ -122252,7 +122399,7 @@ export const patchGatewayConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGatewayConfigurationRequest,
   output: PatchGatewayConfigurationResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 // =============================================================================
@@ -124283,7 +124430,7 @@ export const GetGatewayLoggingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetGatewayLoggingResponse>;
 
-export type GetGatewayLoggingError = DefaultErrors;
+export type GetGatewayLoggingError = DefaultErrors | Forbidden;
 
 export const getGatewayLogging: API.OperationMethod<
   GetGatewayLoggingRequest,
@@ -124293,7 +124440,7 @@ export const getGatewayLogging: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGatewayLoggingRequest,
   output: GetGatewayLoggingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutGatewayLoggingRequest {
@@ -140140,7 +140287,10 @@ export const GetNetworkHostnameRouteResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetNetworkHostnameRouteResponse>;
 
-export type GetNetworkHostnameRouteError = DefaultErrors;
+export type GetNetworkHostnameRouteError =
+  | DefaultErrors
+  | HostnameRouteNotFound
+  | Forbidden;
 
 export const getNetworkHostnameRoute: API.OperationMethod<
   GetNetworkHostnameRouteRequest,
@@ -140150,7 +140300,7 @@ export const getNetworkHostnameRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNetworkHostnameRouteRequest,
   output: GetNetworkHostnameRouteResponse,
-  errors: [],
+  errors: [HostnameRouteNotFound, Forbidden],
 }));
 
 export interface ListNetworkHostnameRoutesRequest {
@@ -140255,7 +140405,7 @@ export const ListNetworkHostnameRoutesResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListNetworkHostnameRoutesResponse>;
 
-export type ListNetworkHostnameRoutesError = DefaultErrors;
+export type ListNetworkHostnameRoutesError = DefaultErrors | Forbidden;
 
 export const listNetworkHostnameRoutes: API.PaginatedOperationMethod<
   ListNetworkHostnameRoutesRequest,
@@ -140265,7 +140415,7 @@ export const listNetworkHostnameRoutes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkHostnameRoutesRequest,
   output: ListNetworkHostnameRoutesResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -140346,7 +140496,7 @@ export const CreateNetworkHostnameRouteResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateNetworkHostnameRouteResponse>;
 
-export type CreateNetworkHostnameRouteError = DefaultErrors;
+export type CreateNetworkHostnameRouteError = DefaultErrors | Forbidden;
 
 export const createNetworkHostnameRoute: API.OperationMethod<
   CreateNetworkHostnameRouteRequest,
@@ -140356,7 +140506,7 @@ export const createNetworkHostnameRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNetworkHostnameRouteRequest,
   output: CreateNetworkHostnameRouteResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PatchNetworkHostnameRouteRequest {
@@ -140432,7 +140582,10 @@ export const PatchNetworkHostnameRouteResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchNetworkHostnameRouteResponse>;
 
-export type PatchNetworkHostnameRouteError = DefaultErrors;
+export type PatchNetworkHostnameRouteError =
+  | DefaultErrors
+  | HostnameRouteNotFound
+  | Forbidden;
 
 export const patchNetworkHostnameRoute: API.OperationMethod<
   PatchNetworkHostnameRouteRequest,
@@ -140442,7 +140595,7 @@ export const patchNetworkHostnameRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchNetworkHostnameRouteRequest,
   output: PatchNetworkHostnameRouteResponse,
-  errors: [],
+  errors: [HostnameRouteNotFound, Forbidden],
 }));
 
 export interface DeleteNetworkHostnameRouteRequest {
@@ -140504,7 +140657,10 @@ export const DeleteNetworkHostnameRouteResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteNetworkHostnameRouteResponse>;
 
-export type DeleteNetworkHostnameRouteError = DefaultErrors;
+export type DeleteNetworkHostnameRouteError =
+  | DefaultErrors
+  | HostnameRouteNotFound
+  | Forbidden;
 
 export const deleteNetworkHostnameRoute: API.OperationMethod<
   DeleteNetworkHostnameRouteRequest,
@@ -140514,7 +140670,7 @@ export const deleteNetworkHostnameRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNetworkHostnameRouteRequest,
   output: DeleteNetworkHostnameRouteResponse,
-  errors: [],
+  errors: [HostnameRouteNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -149229,7 +149385,10 @@ export const GetTunnelWarpConnectorResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetTunnelWarpConnectorResponse>;
 
-export type GetTunnelWarpConnectorError = DefaultErrors;
+export type GetTunnelWarpConnectorError =
+  | DefaultErrors
+  | TunnelNotFound
+  | Forbidden;
 
 export const getTunnelWarpConnector: API.OperationMethod<
   GetTunnelWarpConnectorRequest,
@@ -149239,7 +149398,7 @@ export const getTunnelWarpConnector: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTunnelWarpConnectorRequest,
   output: GetTunnelWarpConnectorResponse,
-  errors: [],
+  errors: [TunnelNotFound, Forbidden],
 }));
 
 export interface ListTunnelWarpConnectorsRequest {
@@ -149470,7 +149629,7 @@ export const ListTunnelWarpConnectorsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListTunnelWarpConnectorsResponse>;
 
-export type ListTunnelWarpConnectorsError = DefaultErrors;
+export type ListTunnelWarpConnectorsError = DefaultErrors | Forbidden;
 
 export const listTunnelWarpConnectors: API.PaginatedOperationMethod<
   ListTunnelWarpConnectorsRequest,
@@ -149480,7 +149639,7 @@ export const listTunnelWarpConnectors: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTunnelWarpConnectorsRequest,
   output: ListTunnelWarpConnectorsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -149651,7 +149810,10 @@ export const CreateTunnelWarpConnectorResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateTunnelWarpConnectorResponse>;
 
-export type CreateTunnelWarpConnectorError = DefaultErrors;
+export type CreateTunnelWarpConnectorError =
+  | DefaultErrors
+  | DuplicateTunnelName
+  | Forbidden;
 
 export const createTunnelWarpConnector: API.OperationMethod<
   CreateTunnelWarpConnectorRequest,
@@ -149661,7 +149823,7 @@ export const createTunnelWarpConnector: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTunnelWarpConnectorRequest,
   output: CreateTunnelWarpConnectorResponse,
-  errors: [],
+  errors: [DuplicateTunnelName, Forbidden],
 }));
 
 export interface PatchTunnelWarpConnectorRequest {
@@ -149831,7 +149993,11 @@ export const PatchTunnelWarpConnectorResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchTunnelWarpConnectorResponse>;
 
-export type PatchTunnelWarpConnectorError = DefaultErrors;
+export type PatchTunnelWarpConnectorError =
+  | DefaultErrors
+  | TunnelNotFound
+  | DuplicateTunnelName
+  | Forbidden;
 
 export const patchTunnelWarpConnector: API.OperationMethod<
   PatchTunnelWarpConnectorRequest,
@@ -149841,7 +150007,7 @@ export const patchTunnelWarpConnector: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTunnelWarpConnectorRequest,
   output: PatchTunnelWarpConnectorResponse,
-  errors: [],
+  errors: [TunnelNotFound, DuplicateTunnelName, Forbidden],
 }));
 
 export interface DeleteTunnelWarpConnectorRequest {
@@ -150004,7 +150170,10 @@ export const DeleteTunnelWarpConnectorResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteTunnelWarpConnectorResponse>;
 
-export type DeleteTunnelWarpConnectorError = DefaultErrors;
+export type DeleteTunnelWarpConnectorError =
+  | DefaultErrors
+  | TunnelNotFound
+  | Forbidden;
 
 export const deleteTunnelWarpConnector: API.OperationMethod<
   DeleteTunnelWarpConnectorRequest,
@@ -150014,7 +150183,7 @@ export const deleteTunnelWarpConnector: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTunnelWarpConnectorRequest,
   output: DeleteTunnelWarpConnectorResponse,
-  errors: [],
+  errors: [TunnelNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -150347,7 +150516,10 @@ export const GetTunnelWarpConnectorTokenResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetTunnelWarpConnectorTokenResponse>;
 
-export type GetTunnelWarpConnectorTokenError = DefaultErrors;
+export type GetTunnelWarpConnectorTokenError =
+  | DefaultErrors
+  | TunnelNotFound
+  | Forbidden;
 
 export const getTunnelWarpConnectorToken: API.OperationMethod<
   GetTunnelWarpConnectorTokenRequest,
@@ -150357,7 +150529,7 @@ export const getTunnelWarpConnectorToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTunnelWarpConnectorTokenRequest,
   output: GetTunnelWarpConnectorTokenResponse,
-  errors: [],
+  errors: [TunnelNotFound, Forbidden],
 }));
 
 // =============================================================================

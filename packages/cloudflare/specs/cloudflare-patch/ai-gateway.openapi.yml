@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare AI Gateway API (patch additions)
+  version: 0.0.0
+  description: |
+    Operations missing from the upstream OpenAPI spec / TypeScript SDK.
+    Currently:
+      - deleteProviderConfig: the dashboard deletes BYOK provider configs via
+        DELETE .../provider_configs/{id}; verified live (returns the deleted
+        config object; a second delete returns code 7002 Not Found), but the
+        upstream spec only documents list + create.
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: ai-gateway
+paths:
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/provider_configs/{id}:
+    delete:
+      operationId: deleteProviderConfig
+      summary: Delete a BYOK provider config from an AI Gateway
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ProviderConfigNotFound:
+          - code: 7002
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - $ref: "#/components/parameters/GatewayId"
+        - $ref: "#/components/parameters/ProviderConfigId"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                properties:
+                  id:
+                    type: string
+                    description: Provider config identifier
+                  alias:
+                    type: string
+                    description: Alias of the deleted provider config
+                  provider_slug:
+                    type: string
+                    description: Provider slug (e.g. openai)
+                  gateway_id:
+                    type: string
+                    description: The gateway the config belonged to
+                  secret_id:
+                    type: string
+                    description: Secrets Store secret id the config referenced
+                  modified_at:
+                    type: string
+                    description: When the config was last modified
+
+components:
+  parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      description: Account identifier
+      schema:
+        type: string
+    GatewayId:
+      name: gatewayId
+      in: path
+      required: true
+      description: Gateway identifier
+      schema:
+        type: string
+    ProviderConfigId:
+      name: id
+      in: path
+      required: true
+      description: Provider config identifier
+      schema:
+        type: string

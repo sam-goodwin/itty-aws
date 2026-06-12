@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "OperationNotFound": [{ "code": 10404 }],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "mitigation_action": { "optional": true }
+    }
+  }
+}

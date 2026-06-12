@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "TokenConfigurationNotFound": [{ "status": 404 }],
+    "TokenValidationNotEntitled": [{ "code": 10403 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

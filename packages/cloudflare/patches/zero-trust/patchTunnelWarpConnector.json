@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "TunnelNotFound": [{ "code": 1002 }, { "status": 404 }],
+    "DuplicateTunnelName": [{ "code": 1013 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "InvalidSchema": [{ "code": 50010 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

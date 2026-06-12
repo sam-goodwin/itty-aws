@@ -84,7 +84,8 @@ export const GetSmartRoutingResponse =
 export type GetSmartRoutingError =
   | DefaultErrors
   | InvalidObjectIdentifier
-  | NotAuthorized;
+  | NotAuthorized
+  | Forbidden;
 
 export const getSmartRouting: API.OperationMethod<
   GetSmartRoutingRequest,
@@ -94,7 +95,7 @@ export const getSmartRouting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSmartRoutingRequest,
   output: GetSmartRoutingResponse,
-  errors: [InvalidObjectIdentifier, NotAuthorized],
+  errors: [InvalidObjectIdentifier, NotAuthorized, Forbidden],
 }));
 
 export interface PatchSmartRoutingRequest {
@@ -145,7 +146,8 @@ export const PatchSmartRoutingResponse =
 export type PatchSmartRoutingError =
   | DefaultErrors
   | InvalidObjectIdentifier
-  | NotAuthorized;
+  | NotAuthorized
+  | Forbidden;
 
 export const patchSmartRouting: API.OperationMethod<
   PatchSmartRoutingRequest,
@@ -155,7 +157,7 @@ export const patchSmartRouting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSmartRoutingRequest,
   output: PatchSmartRoutingResponse,
-  errors: [InvalidObjectIdentifier, NotAuthorized],
+  errors: [InvalidObjectIdentifier, NotAuthorized, Forbidden],
 }));
 
 // =============================================================================

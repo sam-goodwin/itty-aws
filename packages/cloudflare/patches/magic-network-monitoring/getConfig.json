@@ -4,7 +4,11 @@
   },
   "response": {
     "properties": {
-      "$": { "nullable": true }
+      "$": { "nullable": true },
+      "name": { "optional": true },
+      "default_sampling": { "optional": true },
+      "router_ips": { "optional": true },
+      "warp_devices": { "optional": true }
     }
   }
 }

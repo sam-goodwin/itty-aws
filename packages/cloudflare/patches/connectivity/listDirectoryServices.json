@@ -1,7 +1,80 @@
 {
   "response": {
     "properties": {
-      "result_info": { "optional": true }
+      "result_info": {
+        "optional": true
+      },
+      "result[].tcp_port": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "primitive",
+              "value": "number"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      },
+      "result[].app_protocol": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "literal",
+              "value": "postgresql"
+            },
+            {
+              "kind": "literal",
+              "value": "mysql"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      },
+      "result[].http_port": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "primitive",
+              "value": "number"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      },
+      "result[].https_port": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "primitive",
+              "value": "number"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      }
     }
+  },
+  "errors": {
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
   }
 }

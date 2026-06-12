@@ -58,6 +58,14 @@ T.applyErrorMatchers(MonitorGroupsNotEnabled, [
   { code: 1002, message: { includes: "monitor groups not enabled" } },
 ]);
 
+export class MonitorIntervalOutOfRange extends Schema.TaggedErrorClass<MonitorIntervalOutOfRange>()(
+  "MonitorIntervalOutOfRange",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MonitorIntervalOutOfRange, [
+  { code: 1002, message: { includes: "interval is not in range" } },
+]);
+
 export class MonitorInUse extends Schema.TaggedErrorClass<MonitorInUse>()(
   "MonitorInUse",
   { code: Schema.Number, message: Schema.String },
@@ -5133,7 +5141,10 @@ export const CreateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateMonitorResponse>;
 
-export type CreateMonitorError = DefaultErrors | Forbidden;
+export type CreateMonitorError =
+  | DefaultErrors
+  | MonitorIntervalOutOfRange
+  | Forbidden;
 
 export const createMonitor: API.OperationMethod<
   CreateMonitorRequest,
@@ -5143,7 +5154,7 @@ export const createMonitor: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMonitorRequest,
   output: CreateMonitorResponse,
-  errors: [Forbidden],
+  errors: [MonitorIntervalOutOfRange, Forbidden],
 }));
 
 export interface UpdateMonitorRequest {
@@ -5358,7 +5369,11 @@ export const UpdateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateMonitorResponse>;
 
-export type UpdateMonitorError = DefaultErrors | MonitorNotFound | Forbidden;
+export type UpdateMonitorError =
+  | DefaultErrors
+  | MonitorNotFound
+  | MonitorIntervalOutOfRange
+  | Forbidden;
 
 export const updateMonitor: API.OperationMethod<
   UpdateMonitorRequest,
@@ -5368,7 +5383,7 @@ export const updateMonitor: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMonitorRequest,
   output: UpdateMonitorResponse,
-  errors: [MonitorNotFound, Forbidden],
+  errors: [MonitorNotFound, MonitorIntervalOutOfRange, Forbidden],
 }));
 
 export interface PatchMonitorRequest {

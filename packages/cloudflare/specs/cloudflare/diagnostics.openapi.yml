@@ -51,6 +51,11 @@ paths:
                   - check_type
                   - endpoint
       x-distilled-response-path: result
+      x-distilled-errors:
+        EndpointHealthcheckNotFound:
+          - code: 1022
+        Forbidden:
+          - status: 403
     put:
       operationId: updateEndpointHealthcheck
       description: "Update a Endpoint Health Check.  @example ```ts const
@@ -118,6 +123,13 @@ paths:
                   - check_type
                   - endpoint
       x-distilled-response-path: result
+      x-distilled-errors:
+        EndpointHealthcheckNotFound:
+          - code: 1022
+        InvalidHealthcheckEndpoint:
+          - code: 1002
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteEndpointHealthcheck
       description: "Delete Endpoint Health Check.  @example ```ts const
@@ -192,6 +204,11 @@ paths:
                   - errors
                   - messages
                   - success
+      x-distilled-errors:
+        EndpointHealthcheckNotFound:
+          - code: 1022
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/diagnostics/endpoint-healthchecks:
     get:
       operationId: listEndpointHealthchecks
@@ -212,26 +229,31 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  check_type:
-                    type: string
-                    enum:
-                      - icmp
-                    description: type of check to perform
-                  endpoint:
-                    type: string
-                    description: the IP address of the host to perform checks against
-                  id:
-                    type: string
-                    description: UUID.
-                  name:
-                    type: string
-                    description: Optional name associated with this check
-                required:
-                  - check_type
-                  - endpoint
+                type: array
+                items:
+                  type: object
+                  properties:
+                    check_type:
+                      type: string
+                      enum:
+                        - icmp
+                      description: type of check to perform
+                    endpoint:
+                      type: string
+                      description: the IP address of the host to perform checks against
+                    id:
+                      type: string
+                      description: UUID.
+                    name:
+                      type: string
+                      description: Optional name associated with this check
+                  required:
+                    - check_type
+                    - endpoint
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createEndpointHealthcheck
       description: "Create Endpoint Health Check.  @example ```ts const
@@ -293,6 +315,11 @@ paths:
                   - check_type
                   - endpoint
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidHealthcheckEndpoint:
+          - code: 1002
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/diagnostics/traceroute:
     post:
       operationId: createTraceroute

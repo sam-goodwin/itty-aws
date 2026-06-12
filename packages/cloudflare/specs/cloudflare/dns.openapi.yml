@@ -31972,6 +31972,9 @@ paths:
                 required:
                   - zone_defaults
       x-distilled-response-path: result
+      x-distilled-errors:
+        DnsSettingNotAvailable:
+          - code: 1003
   /accounts/{account_id}/dns_settings/views/{viewId}:
     get:
       operationId: getSettingAccountView
@@ -32023,6 +32026,10 @@ paths:
                   - name
                   - zones
       x-distilled-response-path: result
+      x-distilled-errors:
+        ViewNotFound:
+          - code: 1015
+          - status: 404
     patch:
       operationId: patchSettingAccountView
       description: "Update an existing Internal DNS View  @example ```ts const
@@ -32088,6 +32095,10 @@ paths:
                   - name
                   - zones
       x-distilled-response-path: result
+      x-distilled-errors:
+        ViewNotFound:
+          - code: 1015
+          - status: 404
     delete:
       operationId: deleteSettingAccountView
       description: "Delete an existing Internal DNS View  @example ```ts const view =
@@ -32118,6 +32129,10 @@ paths:
                     type: string
                     description: Identifier.
       x-distilled-response-path: result
+      x-distilled-errors:
+        ViewNotFound:
+          - code: 1015
+          - status: 404
   /accounts/{account_id}/dns_settings/views:
     get:
       operationId: listSettingAccountViews
@@ -32299,6 +32314,9 @@ paths:
                   - name
                   - zones
       x-distilled-response-path: result
+      x-distilled-errors:
+        InternalDnsNotAvailable:
+          - code: 1029
   /zones/{zone_id}/dns_settings:
     get:
       operationId: getSettingZone
@@ -32752,6 +32770,9 @@ paths:
                   - ip_range
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        AclNotFound:
+          - status: 404
     put:
       operationId: updateZoneTransferAcl
       description: "Modify ACL.  @example ```ts const acl = await
@@ -32818,6 +32839,9 @@ paths:
                   - ip_range
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        AclNotFound:
+          - status: 404
     delete:
       operationId: deleteZoneTransferAcl
       description: "Delete ACL.  @example ```ts const acl = await
@@ -32846,6 +32870,9 @@ paths:
                   id:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        AclNotFound:
+          - status: 404
   /accounts/{account_id}/secondary_dns/acls:
     get:
       operationId: listZoneTransferAcls
@@ -33019,6 +33046,9 @@ paths:
                     type: number
                     description: The serial number of the SOA for the given zone.
       x-distilled-response-path: result
+      x-distilled-errors:
+        IncomingZoneTransferNotFound:
+          - status: 404
     post:
       operationId: createZoneTransferIncoming
       description: "Create secondary zone configuration for incoming zone
@@ -33165,6 +33195,9 @@ paths:
                     type: number
                     description: The serial number of the SOA for the given zone.
       x-distilled-response-path: result
+      x-distilled-errors:
+        IncomingZoneTransferNotFound:
+          - status: 404
     delete:
       operationId: deleteZoneTransferIncoming
       description: "Delete secondary zone configuration for incoming zone
@@ -33188,6 +33221,9 @@ paths:
                   id:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        IncomingZoneTransferNotFound:
+          - status: 404
   /zones/{zone_id}/secondary_dns/outgoing:
     get:
       operationId: getZoneTransferOutgoing
@@ -33232,6 +33268,11 @@ paths:
                     type: number
                     description: The serial number of the SOA for the given zone.
       x-distilled-response-path: result
+      x-distilled-errors:
+        OutgoingZoneTransferNotFound:
+          - status: 404
+        OutgoingZoneTransfersNotAllowed:
+          - status: 401
     post:
       operationId: createZoneTransferOutgoing
       description: "Create primary zone configuration for outgoing zone
@@ -33296,6 +33337,9 @@ paths:
                     type: number
                     description: The serial number of the SOA for the given zone.
       x-distilled-response-path: result
+      x-distilled-errors:
+        OutgoingZoneTransfersNotAllowed:
+          - status: 401
     put:
       operationId: updateZoneTransferOutgoing
       description: "Update primary zone configuration for outgoing zone
@@ -33360,6 +33404,11 @@ paths:
                     type: number
                     description: The serial number of the SOA for the given zone.
       x-distilled-response-path: result
+      x-distilled-errors:
+        OutgoingZoneTransferNotFound:
+          - status: 404
+        OutgoingZoneTransfersNotAllowed:
+          - status: 401
     delete:
       operationId: deleteZoneTransferOutgoing
       description: "Delete primary zone configuration for outgoing zone
@@ -33383,6 +33432,11 @@ paths:
                   id:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        OutgoingZoneTransferNotFound:
+          - status: 404
+        OutgoingZoneTransfersNotAllowed:
+          - status: 401
   /zones/{zone_id}/secondary_dns/outgoing/enable:
     post:
       operationId: enableZoneTransferOutgoing
@@ -33409,6 +33463,9 @@ paths:
               schema:
                 type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        OutgoingZoneTransfersNotAllowed:
+          - status: 401
   /zones/{zone_id}/secondary_dns/outgoing/disable:
     post:
       operationId: disableZoneTransferOutgoing
@@ -33436,6 +33493,9 @@ paths:
               schema:
                 type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        OutgoingZoneTransfersNotAllowed:
+          - status: 401
   /zones/{zone_id}/secondary_dns/outgoing/status:
     get:
       operationId: getZoneTransferOutgoingStatus
@@ -33509,6 +33569,9 @@ paths:
                   - id
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        PeerNotFound:
+          - status: 404
     put:
       operationId: updateZoneTransferPeer
       description: "Modify Peer.  @example ```ts const peer = await
@@ -33595,6 +33658,9 @@ paths:
                   - id
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        PeerNotFound:
+          - status: 404
     delete:
       operationId: deleteZoneTransferPeer
       description: "Delete Peer.  @example ```ts const peer = await
@@ -33623,6 +33689,9 @@ paths:
                   id:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        PeerNotFound:
+          - status: 404
   /accounts/{account_id}/secondary_dns/peers:
     get:
       operationId: listZoneTransferPeers
@@ -33773,6 +33842,9 @@ paths:
                   - name
                   - secret
       x-distilled-response-path: result
+      x-distilled-errors:
+        TsigNotFound:
+          - status: 404
     put:
       operationId: updateZoneTransferTsig
       description: "Modify TSIG.  @example ```ts const tsig = await
@@ -33839,6 +33911,9 @@ paths:
                   - name
                   - secret
       x-distilled-response-path: result
+      x-distilled-errors:
+        TsigNotFound:
+          - status: 404
     delete:
       operationId: deleteZoneTransferTsig
       description: "Delete TSIG.  @example ```ts const tsig = await
@@ -33867,6 +33942,9 @@ paths:
                   id:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        TsigNotFound:
+          - status: 404
   /accounts/{account_id}/secondary_dns/tsigs:
     get:
       operationId: listZoneTransferTsigs

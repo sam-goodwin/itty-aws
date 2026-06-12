@@ -1,14 +1,32 @@
 {
   "errors": {
-    "RulesetNotFound": [{ "code": 10003 }],
+    "RulesetNotFound": [
+      {
+        "code": 10003
+      }
+    ],
     "PhaseNotEntitled": [
-      { "code": 50002 },
-      { "status": 400, "message": { "includes": "not entitled" } }
+      {
+        "code": 50002
+      },
+      {
+        "status": 400,
+        "message": {
+          "includes": "not entitled"
+        }
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
     ]
   },
   "response": {
     "properties": {
-      "rules": { "optional": true }
+      "rules": {
+        "optional": true
+      }
     }
   }
 }

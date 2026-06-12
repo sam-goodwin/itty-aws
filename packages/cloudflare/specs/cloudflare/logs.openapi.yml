@@ -34,6 +34,15 @@ paths:
                     type: string
                     description: Name of the region.
       x-distilled-response-path: result
+      x-distilled-errors:
+        LogsControlNotAuthorized:
+          - code: 10000
+            message:
+              includes: Unauthorized
+        CmbConfigNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     post:
       operationId: createControlCmbConfig
       description: "Updates CMB config.  @example ```ts const cmbConfig = await
@@ -74,6 +83,13 @@ paths:
                     type: string
                     description: Name of the region.
       x-distilled-response-path: result
+      x-distilled-errors:
+        LogsControlNotAuthorized:
+          - code: 10000
+            message:
+              includes: Unauthorized
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteControlCmbConfig
       description: "Deletes CMB config.  @example ```ts const config = await
@@ -93,6 +109,15 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        LogsControlNotAuthorized:
+          - code: 10000
+            message:
+              includes: Unauthorized
+        CmbConfigNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/logs/control/retention/flag:
     get:
       operationId: getControlRetention
@@ -118,6 +143,13 @@ paths:
                     type: boolean
                     description: The log retention flag for Logpull API.
       x-distilled-response-path: result
+      x-distilled-errors:
+        LogsControlNotAuthorized:
+          - code: 10000
+            message:
+              includes: Unauthorized
+        Forbidden:
+          - status: 403
     post:
       operationId: createControlRetention
       description: "Updates log retention flag for Logpull API.  @example ```ts const
@@ -152,6 +184,13 @@ paths:
                     type: boolean
                     description: The log retention flag for Logpull API.
       x-distilled-response-path: result
+      x-distilled-errors:
+        LogsControlNotAuthorized:
+          - code: 10000
+            message:
+              includes: Unauthorized
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/logs/rayids/{RayID}:
     get:
       operationId: getRayid

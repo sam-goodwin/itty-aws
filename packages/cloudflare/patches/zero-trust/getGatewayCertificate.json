@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "GatewayCertificateNotFound": [{ "code": 2027 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

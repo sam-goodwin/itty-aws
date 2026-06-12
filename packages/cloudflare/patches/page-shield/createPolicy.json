@@ -1,0 +1,13 @@
+{
+  "errors": {
+    "PolicyQuotaExceeded": [
+      {
+        "status": 400,
+        "message": {
+          "includes": "exceeded the maximum number of rules in the phase http_response_page_shield"
+        }
+      }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

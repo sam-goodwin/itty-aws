@@ -67,6 +67,11 @@ paths:
                   - schema_id
                   - source
       x-distilled-response-path: result
+      x-distilled-errors:
+        SchemaNotFound:
+          - code: 19400
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSchema
       description: "Modifies an existing OpenAPI schema in API Shield, updating the
@@ -130,6 +135,9 @@ paths:
                   - schema_id
                   - source
       x-distilled-response-path: result
+      x-distilled-errors:
+        SchemaNotFound:
+          - code: 19400
     delete:
       operationId: deleteSchema
       description: "Permanently removes an uploaded OpenAPI schema from API Shield.
@@ -160,9 +168,10 @@ paths:
                   id:
                     type: string
                     description: The ID of the schema that was just deleted
-                required:
-                  - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        SchemaNotFound:
+          - code: 19400
   /zones/{zone_id}/schema_validation/schemas:
     get:
       operationId: listSchemas
@@ -311,6 +320,11 @@ paths:
                   - schema_id
                   - source
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidSchema:
+          - code: 50010
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/schema_validation/settings:
     get:
       operationId: getSetting
@@ -356,6 +370,9 @@ paths:
                 required:
                   - validation_default_mitigation_action
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putSetting
       description: "Fully updates global schema validation settings for a zone,
@@ -430,6 +447,11 @@ paths:
                 required:
                   - validation_default_mitigation_action
       x-distilled-response-path: result
+      x-distilled-errors:
+        UnentitledMitigationAction:
+          - code: 11400
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSetting
       description: "Partially updates global schema validation settings for a zone
@@ -546,9 +568,13 @@ paths:
                     type: string
                     description: UUID.
                 required:
-                  - mitigation_action
                   - operation_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        OperationNotFound:
+          - code: 10404
+        Forbidden:
+          - status: 403
     put:
       operationId: putSettingOperation
       description: "Fully updates schema validation settings for a specific API
@@ -619,6 +645,11 @@ paths:
                   - mitigation_action
                   - operation_id
       x-distilled-response-path: result
+      x-distilled-errors:
+        OperationNotFound:
+          - code: 10404
+        UnentitledMitigationAction:
+          - code: 11400
     delete:
       operationId: deleteSettingOperation
       description: "Removes custom schema validation settings for a specific API
@@ -650,6 +681,9 @@ paths:
                     type: string
                     description: UUID.
       x-distilled-response-path: result
+      x-distilled-errors:
+        OperationNotFound:
+          - code: 10404
   /zones/{zone_id}/schema_validation/settings/operations:
     get:
       operationId: listSettingOperations

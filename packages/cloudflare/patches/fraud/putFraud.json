@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }],
+    "FraudDetectionNotEntitled": [{ "code": 10400 }]
+  }
+}

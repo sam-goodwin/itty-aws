@@ -51,6 +51,12 @@ T.applyErrorMatchers(FeatureNotEnabled, [
   { code: 1002, message: { includes: "address_maps_not_enabled" } },
 ]);
 
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
 export class InvalidAccountId extends Schema.TaggedErrorClass<InvalidAccountId>()(
   "InvalidAccountId",
   { code: Schema.Number, message: Schema.String },
@@ -285,7 +291,8 @@ export const GetAddressMapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAddressMapError =
   | DefaultErrors
   | AddressMapNotFound
-  | InvalidAccountId;
+  | InvalidAccountId
+  | Forbidden;
 
 export const getAddressMap: API.OperationMethod<
   GetAddressMapRequest,
@@ -295,7 +302,7 @@ export const getAddressMap: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAddressMapRequest,
   output: GetAddressMapResponse,
-  errors: [AddressMapNotFound, InvalidAccountId],
+  errors: [AddressMapNotFound, InvalidAccountId, Forbidden],
 }));
 
 export interface ListAddressMapsRequest {
@@ -521,7 +528,8 @@ export const CreateAddressMapResponse =
 export type CreateAddressMapError =
   | DefaultErrors
   | FeatureNotEnabled
-  | InvalidAccountId;
+  | InvalidAccountId
+  | Forbidden;
 
 export const createAddressMap: API.OperationMethod<
   CreateAddressMapRequest,
@@ -531,7 +539,7 @@ export const createAddressMap: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAddressMapRequest,
   output: CreateAddressMapResponse,
-  errors: [FeatureNotEnabled, InvalidAccountId],
+  errors: [FeatureNotEnabled, InvalidAccountId, Forbidden],
 }));
 
 export interface PatchAddressMapRequest {

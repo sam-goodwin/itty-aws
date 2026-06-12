@@ -540,6 +540,9 @@ paths:
                   - use_cloudflare_reporting_endpoint
                   - use_connection_url_path
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     put:
       operationId: putPageShield
       description: "Updates Page Shield settings.  @example ```ts const pageShield =
@@ -599,6 +602,13 @@ paths:
                   - use_cloudflare_reporting_endpoint
                   - use_connection_url_path
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotEntitled:
+          - status: 403
+            message:
+              includes: not entitled
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/page_shield/policies/{policyId}:
     get:
       operationId: getPolicy
@@ -657,6 +667,13 @@ paths:
                   - expression
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        PolicyNotFound:
+          - status: 404
+            message:
+              includes: Could not find Policy
+        Forbidden:
+          - status: 403
     put:
       operationId: updatePolicy
       description: "Update a Page Shield policy by ID.  @example ```ts const policy =
@@ -742,6 +759,13 @@ paths:
                   - expression
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        PolicyNotFound:
+          - status: 404
+            message:
+              includes: Could not find Policy
+        Forbidden:
+          - status: 403
     delete:
       operationId: deletePolicy
       description: "Delete a Page Shield policy by ID.  @example ```ts await
@@ -762,6 +786,13 @@ paths:
       responses:
         "200":
           description: Success
+      x-distilled-errors:
+        PolicyNotFound:
+          - status: 404
+            message:
+              includes: Could not find Policy
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/page_shield/policies:
     get:
       operationId: listPolicies
@@ -815,6 +846,9 @@ paths:
                   - expression
                   - value
       x-distilled-pagination-class: PolicyListResponsesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createPolicy
       description: "Create a Page Shield policy.  @example ```ts const policy = await
@@ -903,6 +937,14 @@ paths:
                   - expression
                   - value
       x-distilled-response-path: result
+      x-distilled-errors:
+        PolicyQuotaExceeded:
+          - status: 400
+            message:
+              includes: exceeded the maximum number of rules in the phase
+                http_response_page_shield
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/page_shield/scripts/{scriptId}:
     get:
       operationId: getScript

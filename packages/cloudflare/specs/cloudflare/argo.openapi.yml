@@ -53,6 +53,8 @@ paths:
           - code: 7003
         NotAuthorized:
           - code: 1015
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchSmartRouting
       description: "Configures the value of the Argo Smart Routing enablement
@@ -114,6 +116,8 @@ paths:
           - code: 7003
         NotAuthorized:
           - code: 1015
+        Forbidden:
+          - status: 403
   /zones/{zone_id}/argo/tiered_caching:
     get:
       operationId: getTieredCaching

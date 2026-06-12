@@ -1,0 +1,7 @@
+{
+  "response": {
+    "properties": {
+      "result[].default_config": { "type": "unknown" }
+    }
+  }
+}

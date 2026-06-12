@@ -1,0 +1,12 @@
+{
+  "errors": {
+    "GatewayNotFound": [{ "code": 7002 }]
+  },
+  "response": {
+    "properties": {
+      "datasets[].enable": { "type": "unknown" },
+      "datasets[].account_id": { "optional": true },
+      "datasets[].account_tag": { "optional": true }
+    }
+  }
+}

@@ -13,6 +13,22 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class FraudDetectionNotEntitled extends Schema.TaggedErrorClass<FraudDetectionNotEntitled>()(
+  "FraudDetectionNotEntitled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(FraudDetectionNotEntitled, [{ code: 10400 }]);
+
+// =============================================================================
 // Fraud
 // =============================================================================
 
@@ -103,7 +119,7 @@ export const GetFraudResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetFraudResponse>;
 
-export type GetFraudError = DefaultErrors;
+export type GetFraudError = DefaultErrors | Forbidden;
 
 export const getFraud: API.OperationMethod<
   GetFraudRequest,
@@ -113,7 +129,7 @@ export const getFraud: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFraudRequest,
   output: GetFraudResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface PutFraudRequest {
@@ -246,7 +262,10 @@ export const PutFraudResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<PutFraudResponse>;
 
-export type PutFraudError = DefaultErrors;
+export type PutFraudError =
+  | DefaultErrors
+  | Forbidden
+  | FraudDetectionNotEntitled;
 
 export const putFraud: API.OperationMethod<
   PutFraudRequest,
@@ -256,5 +275,5 @@ export const putFraud: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutFraudRequest,
   output: PutFraudResponse,
-  errors: [],
+  errors: [Forbidden, FraudDetectionNotEntitled],
 }));

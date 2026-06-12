@@ -2,5 +2,10 @@
   "errors": {
     "DevicePolicyNotFound": [{ "code": 2052 }],
     "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "result": { "nullable": true }
+    }
   }
 }

@@ -1,10 +1,21 @@
 {
   "errors": {
-    "RulesetNotFound": [{ "code": 10001 }]
+    "RulesetNotFound": [
+      {
+        "code": 10001
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
   },
   "response": {
     "properties": {
-      "rules": { "optional": true }
+      "rules": {
+        "optional": true
+      }
     }
   }
 }

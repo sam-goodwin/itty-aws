@@ -1,5 +1,82 @@
 {
   "errors": {
-    "VpcServiceNotFound": [{ "code": 5104 }]
+    "VpcServiceNotFound": [
+      {
+        "code": 5104
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
+  },
+  "response": {
+    "properties": {
+      "tcp_port": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "primitive",
+              "value": "number"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      },
+      "app_protocol": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "literal",
+              "value": "postgresql"
+            },
+            {
+              "kind": "literal",
+              "value": "mysql"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      },
+      "http_port": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "primitive",
+              "value": "number"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      },
+      "https_port": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "primitive",
+              "value": "number"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      }
+    }
   }
 }

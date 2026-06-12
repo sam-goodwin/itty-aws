@@ -2779,6 +2779,8 @@ paths:
           - code: 10006
         InvalidRoute:
           - code: 7003
+        Forbidden:
+          - status: 403
     put:
       operationId: putBucketSippy
       description: "Sets configuration for Sippy for an existing R2 bucket.  @example

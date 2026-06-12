@@ -13,6 +13,34 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
+
+export class ShareNotFound extends Schema.TaggedErrorClass<ShareNotFound>()(
+  "ShareNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ShareNotFound, [{ code: 1004 }, { status: 404 }]);
+
+export class ShareRecipientNotFound extends Schema.TaggedErrorClass<ShareRecipientNotFound>()(
+  "ShareRecipientNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ShareRecipientNotFound, [{ code: 1004 }, { status: 404 }]);
+
+export class ShareResourceNotFound extends Schema.TaggedErrorClass<ShareResourceNotFound>()(
+  "ShareResourceNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ShareResourceNotFound, [{ code: 1004 }, { status: 404 }]);
+
+// =============================================================================
 // Recipient
 // =============================================================================
 
@@ -114,7 +142,10 @@ export const GetRecipientResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetRecipientResponse>;
 
-export type GetRecipientError = DefaultErrors;
+export type GetRecipientError =
+  | DefaultErrors
+  | ShareRecipientNotFound
+  | Forbidden;
 
 export const getRecipient: API.OperationMethod<
   GetRecipientRequest,
@@ -124,7 +155,7 @@ export const getRecipient: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecipientRequest,
   output: GetRecipientResponse,
-  errors: [],
+  errors: [ShareRecipientNotFound, Forbidden],
 }));
 
 export interface ListRecipientsRequest {
@@ -254,7 +285,7 @@ export const ListRecipientsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListRecipientsResponse>;
 
-export type ListRecipientsError = DefaultErrors;
+export type ListRecipientsError = DefaultErrors | ShareNotFound | Forbidden;
 
 export const listRecipients: API.PaginatedOperationMethod<
   ListRecipientsRequest,
@@ -264,7 +295,7 @@ export const listRecipients: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecipientsRequest,
   output: ListRecipientsResponse,
-  errors: [],
+  errors: [ShareNotFound, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -378,7 +409,7 @@ export const CreateRecipientResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateRecipientResponse>;
 
-export type CreateRecipientError = DefaultErrors;
+export type CreateRecipientError = DefaultErrors | ShareNotFound | Forbidden;
 
 export const createRecipient: API.OperationMethod<
   CreateRecipientRequest,
@@ -388,7 +419,7 @@ export const createRecipient: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRecipientRequest,
   output: CreateRecipientResponse,
-  errors: [],
+  errors: [ShareNotFound, Forbidden],
 }));
 
 export interface DeleteRecipientRequest {
@@ -487,7 +518,10 @@ export const DeleteRecipientResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteRecipientResponse>;
 
-export type DeleteRecipientError = DefaultErrors;
+export type DeleteRecipientError =
+  | DefaultErrors
+  | ShareRecipientNotFound
+  | Forbidden;
 
 export const deleteRecipient: API.OperationMethod<
   DeleteRecipientRequest,
@@ -497,7 +531,7 @@ export const deleteRecipient: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRecipientRequest,
   output: DeleteRecipientResponse,
-  errors: [],
+  errors: [ShareRecipientNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -591,7 +625,10 @@ export const GetResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetResourceResponse>;
 
-export type GetResourceError = DefaultErrors;
+export type GetResourceError =
+  | DefaultErrors
+  | ShareResourceNotFound
+  | Forbidden;
 
 export const getResource: API.OperationMethod<
   GetResourceRequest,
@@ -601,7 +638,7 @@ export const getResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceRequest,
   output: GetResourceResponse,
-  errors: [],
+  errors: [ShareResourceNotFound, Forbidden],
 }));
 
 export interface ListResourcesRequest {
@@ -742,7 +779,7 @@ export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListResourcesResponse>;
 
-export type ListResourcesError = DefaultErrors;
+export type ListResourcesError = DefaultErrors | ShareNotFound | Forbidden;
 
 export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
@@ -752,7 +789,7 @@ export const listResources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ListResourcesResponse,
-  errors: [],
+  errors: [ShareNotFound, Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -884,7 +921,7 @@ export const CreateResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateResourceResponse>;
 
-export type CreateResourceError = DefaultErrors;
+export type CreateResourceError = DefaultErrors | ShareNotFound | Forbidden;
 
 export const createResource: API.OperationMethod<
   CreateResourceRequest,
@@ -894,7 +931,7 @@ export const createResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResourceRequest,
   output: CreateResourceResponse,
-  errors: [],
+  errors: [ShareNotFound, Forbidden],
 }));
 
 export interface UpdateResourceRequest {
@@ -989,7 +1026,10 @@ export const UpdateResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateResourceResponse>;
 
-export type UpdateResourceError = DefaultErrors;
+export type UpdateResourceError =
+  | DefaultErrors
+  | ShareResourceNotFound
+  | Forbidden;
 
 export const updateResource: API.OperationMethod<
   UpdateResourceRequest,
@@ -999,7 +1039,7 @@ export const updateResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourceRequest,
   output: UpdateResourceResponse,
-  errors: [],
+  errors: [ShareResourceNotFound, Forbidden],
 }));
 
 export interface DeleteResourceRequest {
@@ -1091,7 +1131,10 @@ export const DeleteResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteResourceResponse>;
 
-export type DeleteResourceError = DefaultErrors;
+export type DeleteResourceError =
+  | DefaultErrors
+  | ShareResourceNotFound
+  | Forbidden;
 
 export const deleteResource: API.OperationMethod<
   DeleteResourceRequest,
@@ -1101,7 +1144,7 @@ export const deleteResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceRequest,
   output: DeleteResourceResponse,
-  errors: [],
+  errors: [ShareResourceNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -1283,7 +1326,7 @@ export const GetResourceSharingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetResourceSharingResponse>;
 
-export type GetResourceSharingError = DefaultErrors;
+export type GetResourceSharingError = DefaultErrors | ShareNotFound | Forbidden;
 
 export const getResourceSharing: API.OperationMethod<
   GetResourceSharingRequest,
@@ -1293,7 +1336,7 @@ export const getResourceSharing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceSharingRequest,
   output: GetResourceSharingResponse,
-  errors: [],
+  errors: [ShareNotFound, Forbidden],
 }));
 
 export interface ListResourceSharingsRequest {
@@ -1553,7 +1596,7 @@ export const ListResourceSharingsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListResourceSharingsResponse>;
 
-export type ListResourceSharingsError = DefaultErrors;
+export type ListResourceSharingsError = DefaultErrors | Forbidden;
 
 export const listResourceSharings: API.PaginatedOperationMethod<
   ListResourceSharingsRequest,
@@ -1563,7 +1606,7 @@ export const listResourceSharings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSharingsRequest,
   output: ListResourceSharingsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -1791,7 +1834,7 @@ export const CreateResourceSharingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateResourceSharingResponse>;
 
-export type CreateResourceSharingError = DefaultErrors;
+export type CreateResourceSharingError = DefaultErrors | Forbidden;
 
 export const createResourceSharing: API.OperationMethod<
   CreateResourceSharingRequest,
@@ -1801,7 +1844,7 @@ export const createResourceSharing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResourceSharingRequest,
   output: CreateResourceSharingResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateResourceSharingRequest {
@@ -1972,7 +2015,10 @@ export const UpdateResourceSharingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateResourceSharingResponse>;
 
-export type UpdateResourceSharingError = DefaultErrors;
+export type UpdateResourceSharingError =
+  | DefaultErrors
+  | ShareNotFound
+  | Forbidden;
 
 export const updateResourceSharing: API.OperationMethod<
   UpdateResourceSharingRequest,
@@ -1982,7 +2028,7 @@ export const updateResourceSharing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourceSharingRequest,
   output: UpdateResourceSharingResponse,
-  errors: [],
+  errors: [ShareNotFound, Forbidden],
 }));
 
 export interface DeleteResourceSharingRequest {
@@ -2153,7 +2199,10 @@ export const DeleteResourceSharingResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteResourceSharingResponse>;
 
-export type DeleteResourceSharingError = DefaultErrors;
+export type DeleteResourceSharingError =
+  | DefaultErrors
+  | ShareNotFound
+  | Forbidden;
 
 export const deleteResourceSharing: API.OperationMethod<
   DeleteResourceSharingRequest,
@@ -2163,5 +2212,5 @@ export const deleteResourceSharing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceSharingRequest,
   output: DeleteResourceSharingResponse,
-  errors: [],
+  errors: [ShareNotFound, Forbidden],
 }));

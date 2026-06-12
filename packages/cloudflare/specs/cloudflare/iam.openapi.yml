@@ -1018,6 +1018,10 @@ paths:
           - code: 404
             message:
               includes: User group
+        UserGroupNameInUse:
+          - code: 400
+            message:
+              includes: already in use
     delete:
       operationId: deleteUserGroup
       description: "Remove a user group from an account.  @example ```ts const
@@ -1369,6 +1373,11 @@ paths:
                   - modified_on
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        UserGroupNameInUse:
+          - code: 400
+            message:
+              includes: already in use
   /accounts/{account_id}/iam/user_groups/{userGroupId}/members/{memberId}:
     get:
       operationId: getUserGroupMember
@@ -1603,21 +1612,15 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                members:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        description: The identifier of an existing account Member.
-                    required:
-                      - id
-                  description: Body param
-              required:
-                - members
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The identifier of an existing account Member.
+                required:
+                  - id
       responses:
         "200":
           description: Success
@@ -1673,21 +1676,15 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                members:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        description: The identifier of an existing account Member.
-                    required:
-                      - id
-                  description: "Body param: Set/Replace members to a user group."
-              required:
-                - members
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The identifier of an existing account Member.
+                required:
+                  - id
       responses:
         "200":
           description: Success
@@ -1711,6 +1708,13 @@ paths:
                 required:
                   - id
       x-distilled-pagination-class: MemberUpdateResponsesSinglePage
+      x-distilled-errors:
+        InvalidMember:
+          - code: 400
+        UserGroupNotFound:
+          - code: 404
+            message:
+              includes: User group
   /accounts/{account_id}/sso_connectors/{ssoConnectorId}/begin_verification:
     post:
       operationId: beginVerificationSso

@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "LogsControlNotAuthorized": [
+      { "code": 10000, "message": { "includes": "Unauthorized" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

@@ -93,6 +93,12 @@ paths:
                   - created
                   - modified
       x-distilled-response-path: result
+      x-distilled-errors:
+        ShareRecipientNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteRecipient
       description: "Deletion is not immediate, an updated share recipient object with
@@ -174,6 +180,12 @@ paths:
                   - created
                   - modified
       x-distilled-response-path: result
+      x-distilled-errors:
+        ShareRecipientNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/shares/{shareId}/recipients:
     get:
       operationId: listRecipients
@@ -267,6 +279,12 @@ paths:
                   - created
                   - modified
       x-distilled-pagination-class: RecipientListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        ShareNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{path_account_id}/shares/{shareId}/recipients:
     post:
       operationId: createRecipient
@@ -357,6 +375,12 @@ paths:
                   - created
                   - modified
       x-distilled-response-path: result
+      x-distilled-errors:
+        ShareNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/shares/{shareId}/resources/{resourceId}:
     get:
       operationId: getResource
@@ -437,6 +461,12 @@ paths:
                   - resource_version
                   - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        ShareResourceNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateResource
       description: "Update is not immediate, an updated share resource object with a
@@ -528,6 +558,12 @@ paths:
                   - resource_version
                   - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        ShareResourceNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteResource
       description: "Deletion is not immediate, an updated share resource object with a
@@ -608,6 +644,12 @@ paths:
                   - resource_version
                   - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        ShareResourceNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/shares/{shareId}/resources:
     get:
       operationId: listResources
@@ -717,6 +759,12 @@ paths:
                   - resource_version
                   - status
       x-distilled-pagination-class: ResourceListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        ShareNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
     post:
       operationId: createResource
       description: "Adds a resource to an existing share, making it available to share
@@ -825,6 +873,12 @@ paths:
                   - resource_version
                   - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        ShareNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/shares/{shareId}:
     get:
       operationId: getResourceSharing
@@ -986,6 +1040,12 @@ paths:
                   - status
                   - target_type
       x-distilled-response-path: result
+      x-distilled-errors:
+        ShareNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateResourceSharing
       description: "Updating is not immediate, an updated share object with a new
@@ -1148,6 +1208,12 @@ paths:
                   - status
                   - target_type
       x-distilled-response-path: result
+      x-distilled-errors:
+        ShareNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteResourceSharing
       description: "Deletion is not immediate, an updated share object with a new
@@ -1297,6 +1363,12 @@ paths:
                   - status
                   - target_type
       x-distilled-response-path: result
+      x-distilled-errors:
+        ShareNotFound:
+          - code: 1004
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/shares:
     get:
       operationId: listResourceSharings
@@ -1537,6 +1609,9 @@ paths:
                   - status
                   - target_type
       x-distilled-pagination-class: ResourceSharingListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createResourceSharing
       description: "Creates a new resource share for sharing Cloudflare resources with
@@ -1740,3 +1815,6 @@ paths:
                   - status
                   - target_type
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403

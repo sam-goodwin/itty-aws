@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "EndpointHealthcheckNotFound": [{ "code": 1022 }],
+    "InvalidHealthcheckEndpoint": [{ "code": 1002 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

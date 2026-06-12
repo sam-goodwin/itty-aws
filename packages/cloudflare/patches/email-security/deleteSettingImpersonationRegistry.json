@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "ImpersonationRegistryEntryNotFound": [{ "status": 404 }],
+    "EmailSecurityNotEntitled": [{ "status": 403, "message": { "includes": "not available in the current subscription" } }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

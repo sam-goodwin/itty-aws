@@ -1,6 +1,19 @@
 {
   "errors": {
-    "InvalidObjectIdentifier": [{ "code": 7003 }],
-    "SchemaNotFound": [{ "code": 19400 }]
+    "InvalidObjectIdentifier": [
+      {
+        "code": 7003
+      }
+    ],
+    "SchemaNotFound": [
+      {
+        "code": 19400
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
   }
 }

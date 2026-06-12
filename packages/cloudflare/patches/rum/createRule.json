@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "Forbidden": [{ "status": 403 }],
+    "RulesetNotFound": [{ "status": 404 }],
+    "MaxRulesExceeded": [
+      { "status": 409, "message": { "includes": "maxRulesError" } }
+    ]
+  }
+}

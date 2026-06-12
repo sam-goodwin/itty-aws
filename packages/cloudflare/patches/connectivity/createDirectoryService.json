@@ -1,10 +1,93 @@
 {
   "errors": {
     "VpcServiceNameAlreadyExists": [
-      { "code": 5101, "message": { "includes": "already exists" } }
+      {
+        "code": 5101,
+        "message": {
+          "includes": "already exists"
+        }
+      }
     ],
     "VpcTunnelNotFound": [
-      { "code": 5101, "message": { "includes": "Tunnel ID Not Found" } }
+      {
+        "code": 5101,
+        "message": {
+          "includes": "Tunnel ID Not Found"
+        }
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
     ]
+  },
+  "response": {
+    "properties": {
+      "tcp_port": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "primitive",
+              "value": "number"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      },
+      "app_protocol": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "literal",
+              "value": "postgresql"
+            },
+            {
+              "kind": "literal",
+              "value": "mysql"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      },
+      "http_port": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "primitive",
+              "value": "number"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      },
+      "https_port": {
+        "optional": true,
+        "definition": {
+          "kind": "union",
+          "values": [
+            {
+              "kind": "primitive",
+              "value": "number"
+            },
+            {
+              "kind": "null"
+            }
+          ]
+        }
+      }
+    }
   }
 }

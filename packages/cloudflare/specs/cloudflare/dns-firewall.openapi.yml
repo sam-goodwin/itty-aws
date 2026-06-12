@@ -497,6 +497,11 @@ paths:
                   - retries
                   - upstream_ips
       x-distilled-response-path: result
+      x-distilled-errors:
+        DnsFirewallNotFound:
+          - code: 11001
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchDnsFirewall
       description: "Modify the configuration of a DNS Firewall cluster  @example ```ts
@@ -700,6 +705,11 @@ paths:
                   - retries
                   - upstream_ips
       x-distilled-response-path: result
+      x-distilled-errors:
+        DnsFirewallNotFound:
+          - code: 11001
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDnsFirewall
       description: "Delete a DNS Firewall cluster  @example ```ts const dnsFirewall =
@@ -729,6 +739,11 @@ paths:
                     type: string
                     description: Identifier.
       x-distilled-response-path: result
+      x-distilled-errors:
+        DnsFirewallNotFound:
+          - code: 11001
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/dns_firewall:
     get:
       operationId: listDnsFirewalls
@@ -857,6 +872,9 @@ paths:
                   - retries
                   - upstream_ips
       x-distilled-pagination-class: DNSFirewallListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createDnsFirewall
       description: "Create a DNS Firewall cluster  @example ```ts const dnsFirewall =
@@ -1059,6 +1077,11 @@ paths:
                   - retries
                   - upstream_ips
       x-distilled-response-path: result
+      x-distilled-errors:
+        DnsFirewallNotEntitled:
+          - code: 10101
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/dns_firewall/{dnsFirewallId}/reverse_dns:
     get:
       operationId: getReverseDn
@@ -1093,6 +1116,11 @@ paths:
                 required:
                   - ptr
       x-distilled-response-path: result
+      x-distilled-errors:
+        DnsFirewallNotFound:
+          - code: 11001
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchReverseDn
       description: "Update reverse DNS configuration (PTR records) for a DNS Firewall
@@ -1137,3 +1165,8 @@ paths:
                 required:
                   - ptr
       x-distilled-response-path: result
+      x-distilled-errors:
+        DnsFirewallNotFound:
+          - code: 11001
+        Forbidden:
+          - status: 403

@@ -1,6 +1,19 @@
 {
   "errors": {
-    "InvalidObjectIdentifier": [{ "code": 7003 }],
-    "NotEntitled": [{ "code": 10403 }]
+    "InvalidObjectIdentifier": [
+      {
+        "code": 7003
+      }
+    ],
+    "NotEntitled": [
+      {
+        "code": 10403
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ]
   }
 }
