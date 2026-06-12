@@ -120,9 +120,27 @@ export const paginatePageNumber = <
         | null
         | undefined;
 
+      // Some APIs report the CURRENT page at `outputToken` rather than
+      // the next one (e.g. Cloudflare's `result_info.page`). Taking that
+      // value as the next page re-requests the same page forever. Only
+      // accept an *advancing* page number; otherwise advance by one and
+      // terminate when a page comes back with no items (or the token is
+      // absent).
+      const items = pagination.items
+        ? (getPath(response, pagination.items) as
+            | readonly unknown[]
+            | undefined)
+        : undefined;
+
       const nextState: State = {
-        page: nextPage ?? state.page + 1,
-        done: nextPage === null || nextPage === undefined,
+        page:
+          typeof nextPage === "number" && nextPage > state.page
+            ? nextPage
+            : state.page + 1,
+        done:
+          nextPage === null ||
+          nextPage === undefined ||
+          (items !== undefined && items.length === 0),
       };
 
       return [response, nextState] as const;
