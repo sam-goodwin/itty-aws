@@ -510,6 +510,24 @@ const paginatePageByItems: PaginationStrategy = (
               | undefined)
           : undefined;
 
+      // Guard against request schemas that don't carry the page param
+      // (schema encoding silently drops it, so every request returns
+      // page 1 and the empty-page terminator never fires). If the
+      // server reports a page other than the one we asked for, the
+      // param didn't take effect — stop without re-emitting the
+      // duplicate page.
+      const reportedPage = getPath(response, "resultInfo.page") as
+        | number
+        | null
+        | undefined;
+      if (
+        state.page !== startPage &&
+        typeof reportedPage === "number" &&
+        reportedPage !== state.page
+      ) {
+        return undefined;
+      }
+
       return [
         response,
         {
