@@ -248,6 +248,7 @@ export const DomainServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
       apiVersion: "2022-12-01",
+      longRunning: {},
     }),
   );
 export type DomainServicesCreateOrUpdateInput =
@@ -298,6 +299,7 @@ export const DomainServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
       apiVersion: "2022-12-01",
+      longRunning: {},
     }),
   );
 export type DomainServicesDeleteInput = typeof DomainServicesDeleteInput.Type;
@@ -691,6 +693,7 @@ export const DomainServicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
       apiVersion: "2022-12-01",
+      longRunning: {},
     }),
   );
 export type DomainServicesUpdateInput = typeof DomainServicesUpdateInput.Type;
@@ -745,6 +748,7 @@ export const OuContainerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
     apiVersion: "2022-12-01",
+    longRunning: {},
   }),
 );
 export type OuContainerCreateInput = typeof OuContainerCreateInput.Type;
@@ -793,6 +797,7 @@ export const OuContainerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
     apiVersion: "2022-12-01",
+    longRunning: {},
   }),
 );
 export type OuContainerDeleteInput = typeof OuContainerDeleteInput.Type;
@@ -980,6 +985,7 @@ export const OuContainerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
     apiVersion: "2022-12-01",
+    longRunning: {},
   }),
 );
 export type OuContainerUpdateInput = typeof OuContainerUpdateInput.Type;

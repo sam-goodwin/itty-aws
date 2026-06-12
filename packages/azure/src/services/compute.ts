@@ -57,6 +57,7 @@ export const AvailabilitySetsConvertToVirtualMachineScaleSetInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/convertToVirtualMachineScaleSet",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AvailabilitySetsConvertToVirtualMachineScaleSetInput =
@@ -1293,6 +1294,7 @@ export const CapacityReservationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CapacityReservationsCreateOrUpdateInput =
@@ -1349,6 +1351,7 @@ export const CapacityReservationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CapacityReservationsDeleteInput =
@@ -1582,6 +1585,7 @@ export const CapacityReservationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CapacityReservationsUpdateInput =
@@ -1754,6 +1758,7 @@ export const ContainerServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
       apiVersion: "2017-01-31",
+      longRunning: {},
     }),
   );
 export type ContainerServicesCreateOrUpdateInput =
@@ -1795,6 +1800,7 @@ export const ContainerServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
       apiVersion: "2017-01-31",
+      longRunning: {},
     }),
   );
 export type ContainerServicesDeleteInput =
@@ -2472,6 +2478,7 @@ export const DedicatedHostsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DedicatedHostsCreateOrUpdateInput =
@@ -2528,6 +2535,7 @@ export const DedicatedHostsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DedicatedHostsDeleteInput = typeof DedicatedHostsDeleteInput.Type;
@@ -2733,6 +2741,7 @@ export const DedicatedHostsRedeployInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/redeploy",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DedicatedHostsRedeployInput =
@@ -2772,6 +2781,7 @@ export const DedicatedHostsRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/restart",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DedicatedHostsRestartInput = typeof DedicatedHostsRestartInput.Type;
@@ -2872,6 +2882,7 @@ export const DedicatedHostsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DedicatedHostsUpdateInput = typeof DedicatedHostsUpdateInput.Type;
@@ -3022,6 +3033,7 @@ export const ImagesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
@@ -3074,6 +3086,7 @@ export const ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
     apiVersion: "2025-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ImagesDeleteInput = typeof ImagesDeleteInput.Type;
@@ -3363,6 +3376,7 @@ export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
     apiVersion: "2025-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ImagesUpdateInput = typeof ImagesUpdateInput.Type;
@@ -3426,6 +3440,7 @@ export const LogAnalyticsExportRequestRateByIntervalInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LogAnalyticsExportRequestRateByIntervalInput =
@@ -3474,6 +3489,7 @@ export const LogAnalyticsExportThrottledRequestsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getThrottledRequests",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LogAnalyticsExportThrottledRequestsInput =
@@ -4046,6 +4062,7 @@ export const RestorePointCollectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RestorePointCollectionsDeleteInput =
@@ -4930,6 +4947,7 @@ export const RestorePointsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RestorePointsCreateInput = typeof RestorePointsCreateInput.Type;
@@ -4983,6 +5001,7 @@ export const RestorePointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RestorePointsDeleteInput = typeof RestorePointsDeleteInput.Type;
@@ -5835,6 +5854,7 @@ export const VirtualMachineExtensionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineExtensionsCreateOrUpdateInput =
@@ -5891,6 +5911,7 @@ export const VirtualMachineExtensionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineExtensionsDeleteInput =
@@ -6082,6 +6103,7 @@ export const VirtualMachineExtensionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineExtensionsUpdateInput =
@@ -6714,6 +6736,7 @@ export const VirtualMachineRunCommandsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineRunCommandsCreateOrUpdateInput =
@@ -6770,6 +6793,7 @@ export const VirtualMachineRunCommandsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineRunCommandsDeleteInput =
@@ -7116,6 +7140,7 @@ export const VirtualMachineRunCommandsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineRunCommandsUpdateInput =
@@ -7171,6 +7196,7 @@ export const VirtualMachinesAssessPatchesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/assessPatches",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesAssessPatchesInput =
@@ -7295,6 +7321,7 @@ export const VirtualMachinesAttachDetachDataDisksInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/attachDetachDataDisks",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesAttachDetachDataDisksInput =
@@ -7474,6 +7501,7 @@ export const VirtualMachineScaleSetExtensionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetExtensionsCreateOrUpdateInput =
@@ -7514,6 +7542,7 @@ export const VirtualMachineScaleSetExtensionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetExtensionsDeleteInput =
@@ -7663,6 +7692,7 @@ export const VirtualMachineScaleSetExtensionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetExtensionsUpdateInput =
@@ -7702,6 +7732,7 @@ export const VirtualMachineScaleSetRollingUpgradesCancelInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetRollingUpgradesCancelInput =
@@ -7792,6 +7823,7 @@ export const VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeInput =
@@ -7830,6 +7862,7 @@ export const VirtualMachineScaleSetRollingUpgradesStartOSUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetRollingUpgradesStartOSUpgradeInput =
@@ -7867,6 +7900,7 @@ export const VirtualMachineScaleSetsApproveRollingUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/approveRollingUpgrade",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsApproveRollingUpgradeInput =
@@ -8829,6 +8863,7 @@ export const VirtualMachineScaleSetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsCreateOrUpdateInput =
@@ -8887,6 +8922,7 @@ export const VirtualMachineScaleSetsDeallocateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/deallocate",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsDeallocateInput =
@@ -8925,6 +8961,7 @@ export const VirtualMachineScaleSetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsDeleteInput =
@@ -8964,6 +9001,7 @@ export const VirtualMachineScaleSetsDeleteInstancesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/delete",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsDeleteInstancesInput =
@@ -9585,6 +9623,7 @@ export const VirtualMachineScaleSetsPerformMaintenanceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/performMaintenance",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsPerformMaintenanceInput =
@@ -9623,6 +9662,7 @@ export const VirtualMachineScaleSetsPowerOffInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsPowerOffInput =
@@ -9660,6 +9700,7 @@ export const VirtualMachineScaleSetsReapplyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reapply",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsReapplyInput =
@@ -9697,6 +9738,7 @@ export const VirtualMachineScaleSetsRedeployInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/redeploy",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsRedeployInput =
@@ -9735,6 +9777,7 @@ export const VirtualMachineScaleSetsReimageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsReimageInput =
@@ -9772,6 +9815,7 @@ export const VirtualMachineScaleSetsReimageAllInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimageall",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsReimageAllInput =
@@ -9809,6 +9853,7 @@ export const VirtualMachineScaleSetsRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/restart",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsRestartInput =
@@ -9851,6 +9896,7 @@ export const VirtualMachineScaleSetsScaleOutInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/scaleOut",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsScaleOutInput =
@@ -9892,6 +9938,7 @@ export const VirtualMachineScaleSetsSetOrchestrationServiceStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsSetOrchestrationServiceStateInput =
@@ -9929,6 +9976,7 @@ export const VirtualMachineScaleSetsStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/start",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsStartInput =
@@ -10710,6 +10758,7 @@ export const VirtualMachineScaleSetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsUpdateInput =
@@ -10767,6 +10816,7 @@ export const VirtualMachineScaleSetsUpdateInstancesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/manualupgrade",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetsUpdateInstancesInput =
@@ -10865,6 +10915,7 @@ export const VirtualMachineScaleSetVMExtensionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMExtensionsCreateOrUpdateInput =
@@ -10907,6 +10958,7 @@ export const VirtualMachineScaleSetVMExtensionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMExtensionsDeleteInput =
@@ -11063,6 +11115,7 @@ export const VirtualMachineScaleSetVMExtensionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMExtensionsUpdateInput =
@@ -11198,6 +11251,7 @@ export const VirtualMachineScaleSetVMRunCommandsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMRunCommandsCreateOrUpdateInput =
@@ -11256,6 +11310,7 @@ export const VirtualMachineScaleSetVMRunCommandsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMRunCommandsDeleteInput =
@@ -11521,6 +11576,7 @@ export const VirtualMachineScaleSetVMRunCommandsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMRunCommandsUpdateInput =
@@ -11578,6 +11634,7 @@ export const VirtualMachineScaleSetVMsApproveRollingUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/approveRollingUpgrade",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsApproveRollingUpgradeInput =
@@ -11642,6 +11699,7 @@ export const VirtualMachineScaleSetVMsAttachDetachDataDisksInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/attachDetachDataDisks",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsAttachDetachDataDisksInput =
@@ -11796,6 +11854,7 @@ export const VirtualMachineScaleSetVMsDeallocateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/deallocate",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsDeallocateInput =
@@ -11835,6 +11894,7 @@ export const VirtualMachineScaleSetVMsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsDeleteInput =
@@ -12233,6 +12293,7 @@ export const VirtualMachineScaleSetVMsPerformMaintenanceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/performMaintenance",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsPerformMaintenanceInput =
@@ -12272,6 +12333,7 @@ export const VirtualMachineScaleSetVMsPowerOffInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/powerOff",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsPowerOffInput =
@@ -12311,6 +12373,7 @@ export const VirtualMachineScaleSetVMsRedeployInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/redeploy",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsRedeployInput =
@@ -12358,6 +12421,7 @@ export const VirtualMachineScaleSetVMsReimageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimage",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsReimageInput =
@@ -12396,6 +12460,7 @@ export const VirtualMachineScaleSetVMsReimageAllInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimageall",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsReimageAllInput =
@@ -12434,6 +12499,7 @@ export const VirtualMachineScaleSetVMsRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/restart",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsRestartInput =
@@ -12525,6 +12591,7 @@ export const VirtualMachineScaleSetVMsRunCommandInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommand",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsRunCommandInput =
@@ -12613,6 +12680,7 @@ export const VirtualMachineScaleSetVMsStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/start",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsStartInput =
@@ -13781,6 +13849,7 @@ export const VirtualMachineScaleSetVMsUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineScaleSetVMsUpdateInput =
@@ -13841,6 +13910,7 @@ export const VirtualMachinesCaptureInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/capture",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesCaptureInput =
@@ -13880,6 +13950,7 @@ export const VirtualMachinesConvertToManagedDisksInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/convertToManagedDisks",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesConvertToManagedDisksInput =
@@ -15093,6 +15164,7 @@ export const VirtualMachinesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesCreateOrUpdateInput =
@@ -15150,6 +15222,7 @@ export const VirtualMachinesDeallocateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesDeallocateInput =
@@ -15189,6 +15262,7 @@ export const VirtualMachinesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
@@ -15354,6 +15428,7 @@ export const VirtualMachinesInstallPatchesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/installPatches",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesInstallPatchesInput =
@@ -16095,6 +16170,7 @@ export const VirtualMachinesMigrateToVMScaleSetInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/migrateToVirtualMachineScaleSet",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesMigrateToVMScaleSetInput =
@@ -16131,6 +16207,7 @@ export const VirtualMachinesPerformMaintenanceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/performMaintenance",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesPerformMaintenanceInput =
@@ -16168,6 +16245,7 @@ export const VirtualMachinesPowerOffInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesPowerOffInput =
@@ -16206,6 +16284,7 @@ export const VirtualMachinesReapplyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reapply",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesReapplyInput =
@@ -16243,6 +16322,7 @@ export const VirtualMachinesRedeployInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesRedeployInput =
@@ -16288,6 +16368,7 @@ export const VirtualMachinesReimageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reimage",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesReimageInput =
@@ -16325,6 +16406,7 @@ export const VirtualMachinesRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesRestartInput =
@@ -16413,6 +16495,7 @@ export const VirtualMachinesRunCommandInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesRunCommandInput =
@@ -16498,6 +16581,7 @@ export const VirtualMachinesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -17661,6 +17745,7 @@ export const VirtualMachinesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;

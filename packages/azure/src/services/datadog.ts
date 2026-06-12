@@ -416,6 +416,7 @@ export const MonitoredSubscriptionsCreateorUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       apiVersion: "2025-06-11",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MonitoredSubscriptionsCreateorUpdateInput =
@@ -472,6 +473,7 @@ export const MonitoredSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       apiVersion: "2025-06-11",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MonitoredSubscriptionsDeleteInput =
@@ -729,6 +731,7 @@ export const MonitoredSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       apiVersion: "2025-06-11",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MonitoredSubscriptionsUpdateInput =
@@ -852,6 +855,7 @@ export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}",
     apiVersion: "2025-06-11",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
@@ -901,6 +905,7 @@ export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}",
     apiVersion: "2025-06-11",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type MonitorsDeleteInput = typeof MonitorsDeleteInput.Type;
@@ -1428,6 +1433,7 @@ export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}",
     apiVersion: "2025-06-11",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type MonitorsUpdateInput = typeof MonitorsUpdateInput.Type;
@@ -1527,6 +1533,7 @@ export const OrganizationsResubscribeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/resubscribe",
       apiVersion: "2025-06-11",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OrganizationsResubscribeInput =
@@ -1605,6 +1612,7 @@ export const SingleSignOnConfigurationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}",
       apiVersion: "2025-06-11",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SingleSignOnConfigurationsCreateOrUpdateInput =

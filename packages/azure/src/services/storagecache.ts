@@ -244,6 +244,7 @@ export const AmlFilesystemsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AmlFilesystemsCreateOrUpdateInput =
@@ -298,6 +299,7 @@ export const AmlFilesystemsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AmlFilesystemsDeleteInput = typeof AmlFilesystemsDeleteInput.Type;
@@ -560,6 +562,7 @@ export const AmlFilesystemsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AmlFilesystemsUpdateInput = typeof AmlFilesystemsUpdateInput.Type;
@@ -757,6 +760,7 @@ export const AutoExportJobsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AutoExportJobsCreateOrUpdateInput =
@@ -813,6 +817,7 @@ export const AutoExportJobsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AutoExportJobsDeleteInput = typeof AutoExportJobsDeleteInput.Type;
@@ -981,6 +986,7 @@ export const AutoExportJobsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AutoExportJobsUpdateInput = typeof AutoExportJobsUpdateInput.Type;
@@ -1111,6 +1117,7 @@ export const AutoImportJobsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AutoImportJobsCreateOrUpdateInput =
@@ -1167,6 +1174,7 @@ export const AutoImportJobsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AutoImportJobsDeleteInput = typeof AutoImportJobsDeleteInput.Type;
@@ -1335,6 +1343,7 @@ export const AutoImportJobsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AutoImportJobsUpdateInput = typeof AutoImportJobsUpdateInput.Type;
@@ -1615,6 +1624,7 @@ export const CachesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CachesCreateOrUpdateInput = typeof CachesCreateOrUpdateInput.Type;
@@ -1667,6 +1677,7 @@ export const CachesDebugInfoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/debugInfo",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CachesDebugInfoInput = typeof CachesDebugInfoInput.Type;
@@ -1698,6 +1709,7 @@ export const CachesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type CachesDeleteInput = typeof CachesDeleteInput.Type;
@@ -1729,6 +1741,7 @@ export const CachesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/flush",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CachesFlushInput = typeof CachesFlushInput.Type;
@@ -1943,6 +1956,7 @@ export const CachesPausePrimingJobInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/pausePrimingJob",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CachesPausePrimingJobInput = typeof CachesPausePrimingJobInput.Type;
@@ -1980,6 +1994,7 @@ export const CachesResumePrimingJobInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/resumePrimingJob",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CachesResumePrimingJobInput =
@@ -2017,6 +2032,7 @@ export const CachesSpaceAllocationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CachesSpaceAllocationInput = typeof CachesSpaceAllocationInput.Type;
@@ -2052,6 +2068,7 @@ export const CachesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/start",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CachesStartInput = typeof CachesStartInput.Type;
@@ -2093,6 +2110,7 @@ export const CachesStartPrimingJobInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/startPrimingJob",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CachesStartPrimingJobInput = typeof CachesStartPrimingJobInput.Type;
@@ -2128,6 +2146,7 @@ export const CachesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stop",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CachesStopInput = typeof CachesStopInput.Type;
@@ -2161,6 +2180,7 @@ export const CachesStopPrimingJobInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stopPrimingJob",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CachesStopPrimingJobInput = typeof CachesStopPrimingJobInput.Type;
@@ -2421,6 +2441,7 @@ export const CachesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CachesUpdateInput = typeof CachesUpdateInput.Type;
@@ -2471,6 +2492,7 @@ export const CachesUpgradeFirmwareInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CachesUpgradeFirmwareInput = typeof CachesUpgradeFirmwareInput.Type;
@@ -2580,6 +2602,7 @@ export const ExpansionJobsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpansionJobsCreateOrUpdateInput =
@@ -2637,6 +2660,7 @@ export const ExpansionJobsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpansionJobsDeleteInput = typeof ExpansionJobsDeleteInput.Type;
@@ -2797,6 +2821,7 @@ export const ExpansionJobsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpansionJobsUpdateInput = typeof ExpansionJobsUpdateInput.Type;
@@ -2947,6 +2972,7 @@ export const ImportJobsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ImportJobsCreateOrUpdateInput =
@@ -3003,6 +3029,7 @@ export const ImportJobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ImportJobsDeleteInput = typeof ImportJobsDeleteInput.Type;
@@ -3164,6 +3191,7 @@ export const ImportJobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ImportJobsUpdateInput = typeof ImportJobsUpdateInput.Type;
@@ -3381,6 +3409,7 @@ export const StorageTargetFlushInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/flush",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTargetFlushInput = typeof StorageTargetFlushInput.Type;
@@ -3415,6 +3444,7 @@ export const StorageTargetInvalidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/invalidate",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTargetInvalidateInput =
@@ -3454,6 +3484,7 @@ export const StorageTargetResumeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/resume",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTargetResumeInput = typeof StorageTargetResumeInput.Type;
@@ -3547,6 +3578,7 @@ export const StorageTargetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageTargetsCreateOrUpdateInput =
@@ -3604,6 +3636,7 @@ export const StorageTargetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageTargetsDeleteInput = typeof StorageTargetsDeleteInput.Type;
@@ -3642,6 +3675,7 @@ export const StorageTargetsDnsRefreshInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/dnsRefresh",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTargetsDnsRefreshInput =
@@ -3807,6 +3841,7 @@ export const StorageTargetsRestoreDefaultsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/restoreDefaults",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageTargetsRestoreDefaultsInput =
@@ -3845,6 +3880,7 @@ export const StorageTargetSuspendInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/suspend",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTargetSuspendInput = typeof StorageTargetSuspendInput.Type;

@@ -760,6 +760,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections/{privateEndpointName}",
       apiVersion: "2020-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1064,6 +1065,7 @@ export const PrivateLinkServiceResourceOperationResultsGetInput =
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/operationResults/{operationId}",
       apiVersion: "2020-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateLinkServiceResourceOperationResultsGetInput =

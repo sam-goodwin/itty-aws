@@ -115,6 +115,7 @@ export const DiagnosticsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/{scope}/providers/Microsoft.Help/diagnostics/{diagnosticsResourceName}",
     apiVersion: "2023-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DiagnosticsCreateInput = typeof DiagnosticsCreateInput.Type;

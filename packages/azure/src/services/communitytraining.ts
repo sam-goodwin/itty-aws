@@ -65,6 +65,7 @@ export const CommunityTrainingsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
       apiVersion: "2023-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CommunityTrainingsCreateInput =
@@ -120,6 +121,7 @@ export const CommunityTrainingsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
       apiVersion: "2023-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CommunityTrainingsDeleteInput =
@@ -372,6 +374,7 @@ export const CommunityTrainingsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
       apiVersion: "2023-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CommunityTrainingsUpdateInput =

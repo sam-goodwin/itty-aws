@@ -43,6 +43,7 @@ export const AgentsConnectorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AgentsConnectorsCreateOrUpdateInput =
@@ -99,6 +100,7 @@ export const AgentsConnectorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AgentsConnectorsDeleteInput =
@@ -474,6 +476,7 @@ export const AgentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AgentsCreateOrUpdateInput = typeof AgentsCreateOrUpdateInput.Type;
@@ -526,6 +529,7 @@ export const AgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AgentsDeleteInput = typeof AgentsDeleteInput.Type;
@@ -763,6 +767,7 @@ export const AgentSpacesConnectorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}/connectors/{connectorName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AgentSpacesConnectorsCreateOrUpdateInput =
@@ -819,6 +824,7 @@ export const AgentSpacesConnectorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}/connectors/{connectorName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AgentSpacesConnectorsDeleteInput =
@@ -1192,6 +1198,7 @@ export const AgentSpacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AgentSpacesCreateOrUpdateInput =
@@ -1248,6 +1255,7 @@ export const AgentSpacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AgentSpacesDeleteInput = typeof AgentSpacesDeleteInput.Type;
@@ -1523,6 +1531,7 @@ export const AgentSpacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AgentSpacesUpdateInput = typeof AgentSpacesUpdateInput.Type;
@@ -1573,6 +1582,7 @@ export const AgentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/start",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AgentsStartInput = typeof AgentsStartInput.Type;
@@ -1622,6 +1632,7 @@ export const AgentsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/stop",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AgentsStopInput = typeof AgentsStopInput.Type;
@@ -1744,6 +1755,7 @@ export const AgentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AgentsUpdateInput = typeof AgentsUpdateInput.Type;
@@ -2261,6 +2273,7 @@ export const ConnectedEnvironmentsCertificatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectedEnvironmentsCertificatesCreateOrUpdateInput =
@@ -2318,6 +2331,7 @@ export const ConnectedEnvironmentsCertificatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectedEnvironmentsCertificatesDeleteInput =
@@ -2482,6 +2496,7 @@ export const ConnectedEnvironmentsCertificatesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectedEnvironmentsCertificatesUpdateInput =
@@ -2631,6 +2646,7 @@ export const ConnectedEnvironmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectedEnvironmentsCreateOrUpdateInput =
@@ -2725,6 +2741,7 @@ export const ConnectedEnvironmentsDaprComponentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectedEnvironmentsDaprComponentsCreateOrUpdateInput =
@@ -2784,6 +2801,7 @@ export const ConnectedEnvironmentsDaprComponentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectedEnvironmentsDaprComponentsDeleteInput =
@@ -2993,6 +3011,7 @@ export const ConnectedEnvironmentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectedEnvironmentsDeleteInput =
@@ -3252,6 +3271,7 @@ export const ConnectedEnvironmentsStoragesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectedEnvironmentsStoragesCreateOrUpdateInput =
@@ -3308,6 +3328,7 @@ export const ConnectedEnvironmentsStoragesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectedEnvironmentsStoragesDeleteInput =
@@ -4449,6 +4470,7 @@ export const ContainerAppsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ContainerAppsCreateOrUpdateInput =
@@ -4504,6 +4526,7 @@ export const ContainerAppsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainerAppsDeleteInput = typeof ContainerAppsDeleteInput.Type;
@@ -5694,6 +5717,7 @@ export const ContainerAppsSessionPoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools/{sessionPoolName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ContainerAppsSessionPoolsCreateOrUpdateInput =
@@ -5748,6 +5772,7 @@ export const ContainerAppsSessionPoolsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools/{sessionPoolName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainerAppsSessionPoolsDeleteInput =
@@ -6072,6 +6097,7 @@ export const ContainerAppsSessionPoolsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools/{sessionPoolName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ContainerAppsSessionPoolsUpdateInput =
@@ -6164,6 +6190,7 @@ export const ContainerAppsSourceControlsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols/{sourceControlName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type ContainerAppsSourceControlsCreateOrUpdateInput =
@@ -6220,6 +6247,7 @@ export const ContainerAppsSourceControlsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols/{sourceControlName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type ContainerAppsSourceControlsDeleteInput =
@@ -6382,6 +6410,7 @@ export const ContainerAppsStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/start",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainerAppsStartInput = typeof ContainerAppsStartInput.Type;
@@ -6434,6 +6463,7 @@ export const ContainerAppsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/stop",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ContainerAppsStopInput = typeof ContainerAppsStopInput.Type;
@@ -6898,6 +6928,7 @@ export const ContainerAppsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type ContainerAppsUpdateInput = typeof ContainerAppsUpdateInput.Type;
@@ -7410,6 +7441,7 @@ export const HttpRouteConfigDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/httpRouteConfigs/{httpRouteName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type HttpRouteConfigDeleteInput = typeof HttpRouteConfigDeleteInput.Type;
@@ -7732,6 +7764,7 @@ export const JavaComponentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/javaComponents/{name}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type JavaComponentsCreateOrUpdateInput =
@@ -7790,6 +7823,7 @@ export const JavaComponentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/javaComponents/{name}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type JavaComponentsDeleteInput = typeof JavaComponentsDeleteInput.Type;
@@ -7989,6 +8023,7 @@ export const JavaComponentsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/javaComponents/{name}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type JavaComponentsUpdateInput = typeof JavaComponentsUpdateInput.Type;
@@ -8374,6 +8409,7 @@ export const JobsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type JobsCreateOrUpdateInput = typeof JobsCreateOrUpdateInput.Type;
@@ -8422,6 +8458,7 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type JobsDeleteInput = typeof JobsDeleteInput.Type;
@@ -9010,6 +9047,7 @@ export const JobsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/start",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type JobsStartInput = typeof JobsStartInput.Type;
@@ -9044,6 +9082,7 @@ export const JobsStopExecutionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/executions/{jobExecutionName}/stop",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type JobsStopExecutionInput = typeof JobsStopExecutionInput.Type;
@@ -9074,6 +9113,7 @@ export const JobsStopMultipleExecutionsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/stop",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type JobsStopMultipleExecutionsInput =
@@ -9401,6 +9441,7 @@ export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}",
     apiVersion: "2026-01-01",
+    longRunning: {},
   }),
 );
 export type JobsUpdateInput = typeof JobsUpdateInput.Type;
@@ -10017,6 +10058,7 @@ export const ManagedCertificatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagedCertificatesCreateOrUpdateInput =
@@ -10480,6 +10522,7 @@ export const ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateInput =
@@ -10539,6 +10582,7 @@ export const ManagedEnvironmentPrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type ManagedEnvironmentPrivateEndpointConnectionsDeleteInput =
@@ -10945,6 +10989,7 @@ export const ManagedEnvironmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type ManagedEnvironmentsCreateOrUpdateInput =
@@ -11001,6 +11046,7 @@ export const ManagedEnvironmentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type ManagedEnvironmentsDeleteInput =
@@ -11834,6 +11880,7 @@ export const ManagedEnvironmentsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type ManagedEnvironmentsUpdateInput =

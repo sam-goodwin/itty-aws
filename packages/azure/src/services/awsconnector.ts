@@ -82,6 +82,7 @@ export const AccessAnalyzerAnalyzersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/accessAnalyzerAnalyzers/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AccessAnalyzerAnalyzersCreateOrReplaceInput =
@@ -136,6 +137,7 @@ export const AccessAnalyzerAnalyzersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/accessAnalyzerAnalyzers/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessAnalyzerAnalyzersDeleteInput =
@@ -360,6 +362,7 @@ export const AccessAnalyzerAnalyzersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/accessAnalyzerAnalyzers/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessAnalyzerAnalyzersUpdateInput =
@@ -537,6 +540,7 @@ export const AcmCertificateSummariesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/acmCertificateSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AcmCertificateSummariesCreateOrReplaceInput =
@@ -591,6 +595,7 @@ export const AcmCertificateSummariesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/acmCertificateSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AcmCertificateSummariesDeleteInput =
@@ -815,6 +820,7 @@ export const AcmCertificateSummariesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/acmCertificateSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AcmCertificateSummariesUpdateInput =
@@ -935,6 +941,7 @@ export const ApiGatewayRestApisCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayRestApis/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApiGatewayRestApisCreateOrReplaceInput =
@@ -989,6 +996,7 @@ export const ApiGatewayRestApisDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayRestApis/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiGatewayRestApisDeleteInput =
@@ -1213,6 +1221,7 @@ export const ApiGatewayRestApisUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayRestApis/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiGatewayRestApisUpdateInput =
@@ -1348,6 +1357,7 @@ export const ApiGatewayStagesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayStages/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApiGatewayStagesCreateOrReplaceInput =
@@ -1402,6 +1412,7 @@ export const ApiGatewayStagesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayStages/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiGatewayStagesDeleteInput =
@@ -1623,6 +1634,7 @@ export const ApiGatewayStagesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayStages/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiGatewayStagesUpdateInput =
@@ -1865,6 +1877,7 @@ export const AppSyncGraphqlApisCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/appSyncGraphqlApis/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AppSyncGraphqlApisCreateOrReplaceInput =
@@ -1919,6 +1932,7 @@ export const AppSyncGraphqlApisDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/appSyncGraphqlApis/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppSyncGraphqlApisDeleteInput =
@@ -2143,6 +2157,7 @@ export const AppSyncGraphqlApisUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/appSyncGraphqlApis/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppSyncGraphqlApisUpdateInput =
@@ -2447,6 +2462,7 @@ export const AutoScalingAutoScalingGroupsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/autoScalingAutoScalingGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AutoScalingAutoScalingGroupsCreateOrReplaceInput =
@@ -2501,6 +2517,7 @@ export const AutoScalingAutoScalingGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/autoScalingAutoScalingGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AutoScalingAutoScalingGroupsDeleteInput =
@@ -2724,6 +2741,7 @@ export const AutoScalingAutoScalingGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/autoScalingAutoScalingGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AutoScalingAutoScalingGroupsUpdateInput =
@@ -2881,6 +2899,7 @@ export const CloudFormationStacksCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStacks/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudFormationStacksCreateOrReplaceInput =
@@ -2935,6 +2954,7 @@ export const CloudFormationStacksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStacks/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudFormationStacksDeleteInput =
@@ -3085,6 +3105,7 @@ export const CloudFormationStackSetsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStackSets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudFormationStackSetsCreateOrReplaceInput =
@@ -3139,6 +3160,7 @@ export const CloudFormationStackSetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStackSets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudFormationStackSetsDeleteInput =
@@ -3363,6 +3385,7 @@ export const CloudFormationStackSetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStackSets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudFormationStackSetsUpdateInput =
@@ -3605,6 +3628,7 @@ export const CloudFormationStacksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStacks/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudFormationStacksUpdateInput =
@@ -3974,6 +3998,7 @@ export const CloudFrontDistributionsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFrontDistributions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudFrontDistributionsCreateOrReplaceInput =
@@ -4028,6 +4053,7 @@ export const CloudFrontDistributionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFrontDistributions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudFrontDistributionsDeleteInput =
@@ -4252,6 +4278,7 @@ export const CloudFrontDistributionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFrontDistributions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudFrontDistributionsUpdateInput =
@@ -4410,6 +4437,7 @@ export const CloudTrailTrailsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudTrailTrails/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudTrailTrailsCreateOrReplaceInput =
@@ -4464,6 +4492,7 @@ export const CloudTrailTrailsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudTrailTrails/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudTrailTrailsDeleteInput =
@@ -4685,6 +4714,7 @@ export const CloudTrailTrailsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudTrailTrails/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudTrailTrailsUpdateInput =
@@ -4839,6 +4869,7 @@ export const CloudWatchAlarmsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudWatchAlarms/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudWatchAlarmsCreateOrReplaceInput =
@@ -4893,6 +4924,7 @@ export const CloudWatchAlarmsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudWatchAlarms/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudWatchAlarmsDeleteInput =
@@ -5114,6 +5146,7 @@ export const CloudWatchAlarmsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudWatchAlarms/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudWatchAlarmsUpdateInput =
@@ -5650,6 +5683,7 @@ export const CodeBuildProjectsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildProjects/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CodeBuildProjectsCreateOrReplaceInput =
@@ -5704,6 +5738,7 @@ export const CodeBuildProjectsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildProjects/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CodeBuildProjectsDeleteInput =
@@ -5927,6 +5962,7 @@ export const CodeBuildProjectsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildProjects/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CodeBuildProjectsUpdateInput =
@@ -6037,6 +6073,7 @@ export const CodeBuildSourceCredentialsInfosCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildSourceCredentialsInfos/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CodeBuildSourceCredentialsInfosCreateOrReplaceInput =
@@ -6091,6 +6128,7 @@ export const CodeBuildSourceCredentialsInfosDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildSourceCredentialsInfos/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CodeBuildSourceCredentialsInfosDeleteInput =
@@ -6314,6 +6352,7 @@ export const CodeBuildSourceCredentialsInfosUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildSourceCredentialsInfos/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CodeBuildSourceCredentialsInfosUpdateInput =
@@ -7687,6 +7726,7 @@ export const ConfigServiceConfigurationRecordersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorders/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigServiceConfigurationRecordersCreateOrReplaceInput =
@@ -7741,6 +7781,7 @@ export const ConfigServiceConfigurationRecordersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorders/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigServiceConfigurationRecordersDeleteInput =
@@ -8005,6 +8046,7 @@ export const ConfigServiceConfigurationRecorderStatusesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorderStatuses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigServiceConfigurationRecorderStatusesCreateOrReplaceInput =
@@ -8060,6 +8102,7 @@ export const ConfigServiceConfigurationRecorderStatusesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorderStatuses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigServiceConfigurationRecorderStatusesDeleteInput =
@@ -8287,6 +8330,7 @@ export const ConfigServiceConfigurationRecorderStatusesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorderStatuses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigServiceConfigurationRecorderStatusesUpdateInput =
@@ -8342,6 +8386,7 @@ export const ConfigServiceConfigurationRecordersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorders/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigServiceConfigurationRecordersUpdateInput =
@@ -8446,6 +8491,7 @@ export const ConfigServiceDeliveryChannelsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceDeliveryChannels/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigServiceDeliveryChannelsCreateOrReplaceInput =
@@ -8500,6 +8546,7 @@ export const ConfigServiceDeliveryChannelsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceDeliveryChannels/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigServiceDeliveryChannelsDeleteInput =
@@ -8723,6 +8770,7 @@ export const ConfigServiceDeliveryChannelsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceDeliveryChannels/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigServiceDeliveryChannelsUpdateInput =
@@ -8878,6 +8926,7 @@ export const DatabaseMigrationServiceReplicationInstancesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/databaseMigrationServiceReplicationInstances/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DatabaseMigrationServiceReplicationInstancesCreateOrReplaceInput =
@@ -8934,6 +8983,7 @@ export const DatabaseMigrationServiceReplicationInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/databaseMigrationServiceReplicationInstances/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabaseMigrationServiceReplicationInstancesDeleteInput =
@@ -9161,6 +9211,7 @@ export const DatabaseMigrationServiceReplicationInstancesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/databaseMigrationServiceReplicationInstances/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabaseMigrationServiceReplicationInstancesUpdateInput =
@@ -9321,6 +9372,7 @@ export const DaxClustersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/daxClusters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DaxClustersCreateOrReplaceInput =
@@ -9377,6 +9429,7 @@ export const DaxClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/daxClusters/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DaxClustersDeleteInput = typeof DaxClustersDeleteInput.Type;
@@ -9592,6 +9645,7 @@ export const DaxClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/daxClusters/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DaxClustersUpdateInput = typeof DaxClustersUpdateInput.Type;
@@ -9691,6 +9745,7 @@ export const DynamoDbContinuousBackupsDescriptionsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBContinuousBackupsDescriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DynamoDbContinuousBackupsDescriptionsCreateOrReplaceInput =
@@ -9745,6 +9800,7 @@ export const DynamoDbContinuousBackupsDescriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBContinuousBackupsDescriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DynamoDbContinuousBackupsDescriptionsDeleteInput =
@@ -9969,6 +10025,7 @@ export const DynamoDbContinuousBackupsDescriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBContinuousBackupsDescriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DynamoDbContinuousBackupsDescriptionsUpdateInput =
@@ -10215,6 +10272,7 @@ export const DynamoDbTablesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBTables/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DynamoDbTablesCreateOrReplaceInput =
@@ -10269,6 +10327,7 @@ export const DynamoDbTablesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBTables/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DynamoDbTablesDeleteInput = typeof DynamoDbTablesDeleteInput.Type;
@@ -10489,6 +10548,7 @@ export const DynamoDbTablesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBTables/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DynamoDbTablesUpdateInput = typeof DynamoDbTablesUpdateInput.Type;
@@ -10578,6 +10638,7 @@ export const Ec2AccountAttributesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2AccountAttributes/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2AccountAttributesCreateOrReplaceInput =
@@ -10632,6 +10693,7 @@ export const Ec2AccountAttributesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2AccountAttributes/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2AccountAttributesDeleteInput =
@@ -10857,6 +10919,7 @@ export const Ec2AccountAttributesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2AccountAttributes/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2AccountAttributesUpdateInput =
@@ -10965,6 +11028,7 @@ export const Ec2AddressesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Addresses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2AddressesCreateOrReplaceInput =
@@ -11020,6 +11084,7 @@ export const Ec2AddressesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Addresses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2AddressesDeleteInput = typeof Ec2AddressesDeleteInput.Type;
@@ -11234,6 +11299,7 @@ export const Ec2AddressesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Addresses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2AddressesUpdateInput = typeof Ec2AddressesUpdateInput.Type;
@@ -11357,6 +11423,7 @@ export const Ec2FlowLogsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2FlowLogs/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2FlowLogsCreateOrReplaceInput =
@@ -11413,6 +11480,7 @@ export const Ec2FlowLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2FlowLogs/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2FlowLogsDeleteInput = typeof Ec2FlowLogsDeleteInput.Type;
@@ -11628,6 +11696,7 @@ export const Ec2FlowLogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2FlowLogs/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2FlowLogsUpdateInput = typeof Ec2FlowLogsUpdateInput.Type;
@@ -11865,6 +11934,7 @@ export const Ec2ImagesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Images/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2ImagesCreateOrReplaceInput =
@@ -11919,6 +11989,7 @@ export const Ec2ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Images/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2ImagesDeleteInput = typeof Ec2ImagesDeleteInput.Type;
@@ -12133,6 +12204,7 @@ export const Ec2ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Images/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2ImagesUpdateInput = typeof Ec2ImagesUpdateInput.Type;
@@ -13483,6 +13555,7 @@ export const Ec2InstancesCreateOrReplaceInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2InstancesCreateOrReplaceInput =
@@ -13531,6 +13604,7 @@ export const Ec2InstancesDeleteInput =
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2InstancesDeleteInput = typeof Ec2InstancesDeleteInput.Type;
@@ -13662,6 +13736,7 @@ export const Ec2InstancesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default/start",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2InstancesStartInput = typeof Ec2InstancesStartInput.Type;
@@ -13726,6 +13801,7 @@ export const Ec2InstancesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default/stop",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2InstancesStopInput = typeof Ec2InstancesStopInput.Type;
@@ -13953,6 +14029,7 @@ export const Ec2InstanceStatusesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2InstanceStatuses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2InstanceStatusesCreateOrReplaceInput =
@@ -14007,6 +14084,7 @@ export const Ec2InstanceStatusesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2InstanceStatuses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2InstanceStatusesDeleteInput =
@@ -14232,6 +14310,7 @@ export const Ec2InstanceStatusesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2InstanceStatuses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2InstanceStatusesUpdateInput =
@@ -14369,6 +14448,7 @@ export const Ec2IpamsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Ipams/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2IpamsCreateOrReplaceInput =
@@ -14423,6 +14503,7 @@ export const Ec2IpamsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Ipams/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2IpamsDeleteInput = typeof Ec2IpamsDeleteInput.Type;
@@ -14638,6 +14719,7 @@ export const Ec2IpamsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Ipams/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2IpamsUpdateInput = typeof Ec2IpamsUpdateInput.Type;
@@ -14730,6 +14812,7 @@ export const Ec2KeyPairsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2KeyPairs/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2KeyPairsCreateOrReplaceInput =
@@ -14786,6 +14869,7 @@ export const Ec2KeyPairsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2KeyPairs/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2KeyPairsDeleteInput = typeof Ec2KeyPairsDeleteInput.Type;
@@ -15001,6 +15085,7 @@ export const Ec2KeyPairsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2KeyPairs/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2KeyPairsUpdateInput = typeof Ec2KeyPairsUpdateInput.Type;
@@ -15090,6 +15175,7 @@ export const Ec2NetworkAclsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkAcls/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2NetworkAclsCreateOrReplaceInput =
@@ -15144,6 +15230,7 @@ export const Ec2NetworkAclsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkAcls/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2NetworkAclsDeleteInput = typeof Ec2NetworkAclsDeleteInput.Type;
@@ -15364,6 +15451,7 @@ export const Ec2NetworkAclsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkAcls/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2NetworkAclsUpdateInput = typeof Ec2NetworkAclsUpdateInput.Type;
@@ -15507,6 +15595,7 @@ export const Ec2NetworkInterfacesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkInterfaces/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2NetworkInterfacesCreateOrReplaceInput =
@@ -15561,6 +15650,7 @@ export const Ec2NetworkInterfacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkInterfaces/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2NetworkInterfacesDeleteInput =
@@ -15786,6 +15876,7 @@ export const Ec2NetworkInterfacesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkInterfaces/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2NetworkInterfacesUpdateInput =
@@ -15879,6 +15970,7 @@ export const Ec2RouteTablesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2RouteTables/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2RouteTablesCreateOrReplaceInput =
@@ -15933,6 +16025,7 @@ export const Ec2RouteTablesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2RouteTables/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2RouteTablesDeleteInput = typeof Ec2RouteTablesDeleteInput.Type;
@@ -16153,6 +16246,7 @@ export const Ec2RouteTablesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2RouteTables/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2RouteTablesUpdateInput = typeof Ec2RouteTablesUpdateInput.Type;
@@ -16339,6 +16433,7 @@ export const Ec2SecurityGroupsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2SecurityGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2SecurityGroupsCreateOrReplaceInput =
@@ -16393,6 +16488,7 @@ export const Ec2SecurityGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2SecurityGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2SecurityGroupsDeleteInput =
@@ -16616,6 +16712,7 @@ export const Ec2SecurityGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2SecurityGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2SecurityGroupsUpdateInput =
@@ -16748,6 +16845,7 @@ export const Ec2SnapshotsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Snapshots/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2SnapshotsCreateOrReplaceInput =
@@ -16803,6 +16901,7 @@ export const Ec2SnapshotsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Snapshots/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2SnapshotsDeleteInput = typeof Ec2SnapshotsDeleteInput.Type;
@@ -17017,6 +17116,7 @@ export const Ec2SnapshotsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Snapshots/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2SnapshotsUpdateInput = typeof Ec2SnapshotsUpdateInput.Type;
@@ -17131,6 +17231,7 @@ export const Ec2SubnetsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Subnets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2SubnetsCreateOrReplaceInput =
@@ -17185,6 +17286,7 @@ export const Ec2SubnetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Subnets/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2SubnetsDeleteInput = typeof Ec2SubnetsDeleteInput.Type;
@@ -17398,6 +17500,7 @@ export const Ec2SubnetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Subnets/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2SubnetsUpdateInput = typeof Ec2SubnetsUpdateInput.Type;
@@ -17498,6 +17601,7 @@ export const Ec2VolumesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Volumes/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2VolumesCreateOrReplaceInput =
@@ -17552,6 +17656,7 @@ export const Ec2VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Volumes/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2VolumesDeleteInput = typeof Ec2VolumesDeleteInput.Type;
@@ -17765,6 +17870,7 @@ export const Ec2VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Volumes/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2VolumesUpdateInput = typeof Ec2VolumesUpdateInput.Type;
@@ -17861,6 +17967,7 @@ export const Ec2VpcEndpointsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCEndpoints/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2VpcEndpointsCreateOrReplaceInput =
@@ -17915,6 +18022,7 @@ export const Ec2VpcEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCEndpoints/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2VpcEndpointsDeleteInput = typeof Ec2VpcEndpointsDeleteInput.Type;
@@ -18135,6 +18243,7 @@ export const Ec2VpcEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCEndpoints/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2VpcEndpointsUpdateInput = typeof Ec2VpcEndpointsUpdateInput.Type;
@@ -18231,6 +18340,7 @@ export const Ec2VpcPeeringConnectionsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCPeeringConnections/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2VpcPeeringConnectionsCreateOrReplaceInput =
@@ -18285,6 +18395,7 @@ export const Ec2VpcPeeringConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCPeeringConnections/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2VpcPeeringConnectionsDeleteInput =
@@ -18509,6 +18620,7 @@ export const Ec2VpcPeeringConnectionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCPeeringConnections/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Ec2VpcPeeringConnectionsUpdateInput =
@@ -18610,6 +18722,7 @@ export const Ec2VpcsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Vpcs/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Ec2VpcsCreateOrReplaceInput =
@@ -18664,6 +18777,7 @@ export const Ec2VpcsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Vpcs/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2VpcsDeleteInput = typeof Ec2VpcsDeleteInput.Type;
@@ -18879,6 +18993,7 @@ export const Ec2VpcsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Vpcs/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type Ec2VpcsUpdateInput = typeof Ec2VpcsUpdateInput.Type;
@@ -18996,6 +19111,7 @@ export const EcrImageDetailsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrImageDetails/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EcrImageDetailsCreateOrReplaceInput =
@@ -19050,6 +19166,7 @@ export const EcrImageDetailsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrImageDetails/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EcrImageDetailsDeleteInput = typeof EcrImageDetailsDeleteInput.Type;
@@ -19270,6 +19387,7 @@ export const EcrImageDetailsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrImageDetails/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EcrImageDetailsUpdateInput = typeof EcrImageDetailsUpdateInput.Type;
@@ -19389,6 +19507,7 @@ export const EcrRepositoriesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrRepositories/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EcrRepositoriesCreateOrReplaceInput =
@@ -19443,6 +19562,7 @@ export const EcrRepositoriesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrRepositories/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EcrRepositoriesDeleteInput = typeof EcrRepositoriesDeleteInput.Type;
@@ -19663,6 +19783,7 @@ export const EcrRepositoriesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrRepositories/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EcrRepositoriesUpdateInput = typeof EcrRepositoriesUpdateInput.Type;
@@ -19799,6 +19920,7 @@ export const EcsClustersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsClusters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EcsClustersCreateOrReplaceInput =
@@ -19855,6 +19977,7 @@ export const EcsClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsClusters/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EcsClustersDeleteInput = typeof EcsClustersDeleteInput.Type;
@@ -20070,6 +20193,7 @@ export const EcsClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsClusters/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EcsClustersUpdateInput = typeof EcsClustersUpdateInput.Type;
@@ -20363,6 +20487,7 @@ export const EcsServicesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsServices/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EcsServicesCreateOrReplaceInput =
@@ -20419,6 +20544,7 @@ export const EcsServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsServices/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EcsServicesDeleteInput = typeof EcsServicesDeleteInput.Type;
@@ -20634,6 +20760,7 @@ export const EcsServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsServices/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EcsServicesUpdateInput = typeof EcsServicesUpdateInput.Type;
@@ -21026,6 +21153,7 @@ export const EcsTaskDefinitionsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsTaskDefinitions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EcsTaskDefinitionsCreateOrReplaceInput =
@@ -21080,6 +21208,7 @@ export const EcsTaskDefinitionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsTaskDefinitions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EcsTaskDefinitionsDeleteInput =
@@ -21304,6 +21433,7 @@ export const EcsTaskDefinitionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsTaskDefinitions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EcsTaskDefinitionsUpdateInput =
@@ -21444,6 +21574,7 @@ export const EfsFileSystemsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsFileSystems/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EfsFileSystemsCreateOrReplaceInput =
@@ -21498,6 +21629,7 @@ export const EfsFileSystemsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsFileSystems/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EfsFileSystemsDeleteInput = typeof EfsFileSystemsDeleteInput.Type;
@@ -21718,6 +21850,7 @@ export const EfsFileSystemsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsFileSystems/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EfsFileSystemsUpdateInput = typeof EfsFileSystemsUpdateInput.Type;
@@ -21804,6 +21937,7 @@ export const EfsMountTargetsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsMountTargets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EfsMountTargetsCreateOrReplaceInput =
@@ -21858,6 +21992,7 @@ export const EfsMountTargetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsMountTargets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EfsMountTargetsDeleteInput = typeof EfsMountTargetsDeleteInput.Type;
@@ -22078,6 +22213,7 @@ export const EfsMountTargetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsMountTargets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EfsMountTargetsUpdateInput = typeof EfsMountTargetsUpdateInput.Type;
@@ -22326,6 +22462,7 @@ export const EksClustersCreateOrReplaceInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AwsConnector/eksClusters/default",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EksClustersCreateOrReplaceInput =
@@ -22375,6 +22512,7 @@ export const EksClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/eksClusters/default",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EksClustersDeleteInput = typeof EksClustersDeleteInput.Type;
@@ -22579,6 +22717,7 @@ export const EksNodegroupsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/eksNodegroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EksNodegroupsCreateOrReplaceInput =
@@ -22633,6 +22772,7 @@ export const EksNodegroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/eksNodegroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EksNodegroupsDeleteInput = typeof EksNodegroupsDeleteInput.Type;
@@ -22850,6 +22990,7 @@ export const EksNodegroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/eksNodegroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EksNodegroupsUpdateInput = typeof EksNodegroupsUpdateInput.Type;
@@ -22954,6 +23095,7 @@ export const ElasticBeanstalkApplicationsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkApplications/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ElasticBeanstalkApplicationsCreateOrReplaceInput =
@@ -23008,6 +23150,7 @@ export const ElasticBeanstalkApplicationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkApplications/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticBeanstalkApplicationsDeleteInput =
@@ -23231,6 +23374,7 @@ export const ElasticBeanstalkApplicationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkApplications/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticBeanstalkApplicationsUpdateInput =
@@ -23335,6 +23479,7 @@ export const ElasticBeanstalkConfigurationTemplatesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkConfigurationTemplates/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ElasticBeanstalkConfigurationTemplatesCreateOrReplaceInput =
@@ -23389,6 +23534,7 @@ export const ElasticBeanstalkConfigurationTemplatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkConfigurationTemplates/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticBeanstalkConfigurationTemplatesDeleteInput =
@@ -23614,6 +23760,7 @@ export const ElasticBeanstalkConfigurationTemplatesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkConfigurationTemplates/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticBeanstalkConfigurationTemplatesUpdateInput =
@@ -23731,6 +23878,7 @@ export const ElasticBeanstalkEnvironmentsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkEnvironments/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ElasticBeanstalkEnvironmentsCreateOrReplaceInput =
@@ -23785,6 +23933,7 @@ export const ElasticBeanstalkEnvironmentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkEnvironments/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticBeanstalkEnvironmentsDeleteInput =
@@ -24008,6 +24157,7 @@ export const ElasticBeanstalkEnvironmentsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkEnvironments/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticBeanstalkEnvironmentsUpdateInput =
@@ -24186,6 +24336,7 @@ export const ElasticLoadBalancingV2ListenersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2Listeners/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ElasticLoadBalancingV2ListenersCreateOrReplaceInput =
@@ -24240,6 +24391,7 @@ export const ElasticLoadBalancingV2ListenersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2Listeners/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticLoadBalancingV2ListenersDeleteInput =
@@ -24463,6 +24615,7 @@ export const ElasticLoadBalancingV2ListenersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2Listeners/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticLoadBalancingV2ListenersUpdateInput =
@@ -24584,6 +24737,7 @@ export const ElasticLoadBalancingV2LoadBalancersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2LoadBalancers/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ElasticLoadBalancingV2LoadBalancersCreateOrReplaceInput =
@@ -24638,6 +24792,7 @@ export const ElasticLoadBalancingV2LoadBalancersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2LoadBalancers/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticLoadBalancingV2LoadBalancersDeleteInput =
@@ -24861,6 +25016,7 @@ export const ElasticLoadBalancingV2LoadBalancersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2LoadBalancers/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticLoadBalancingV2LoadBalancersUpdateInput =
@@ -24993,6 +25149,7 @@ export const ElasticLoadBalancingV2TargetGroupsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ElasticLoadBalancingV2TargetGroupsCreateOrReplaceInput =
@@ -25047,6 +25204,7 @@ export const ElasticLoadBalancingV2TargetGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticLoadBalancingV2TargetGroupsDeleteInput =
@@ -25270,6 +25428,7 @@ export const ElasticLoadBalancingV2TargetGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticLoadBalancingV2TargetGroupsUpdateInput =
@@ -25416,6 +25575,7 @@ export const ElasticLoadBalancingv2TargetHealthDescriptionsCreateOrReplaceInput 
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetHealthDescriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ElasticLoadBalancingv2TargetHealthDescriptionsCreateOrReplaceInput =
@@ -25472,6 +25632,7 @@ export const ElasticLoadBalancingv2TargetHealthDescriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetHealthDescriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticLoadBalancingv2TargetHealthDescriptionsDeleteInput =
@@ -25699,6 +25860,7 @@ export const ElasticLoadBalancingv2TargetHealthDescriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetHealthDescriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticLoadBalancingv2TargetHealthDescriptionsUpdateInput =
@@ -25972,6 +26134,7 @@ export const EmrClustersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/emrClusters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EmrClustersCreateOrReplaceInput =
@@ -26028,6 +26191,7 @@ export const EmrClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/emrClusters/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EmrClustersDeleteInput = typeof EmrClustersDeleteInput.Type;
@@ -26243,6 +26407,7 @@ export const EmrClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/emrClusters/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EmrClustersUpdateInput = typeof EmrClustersUpdateInput.Type;
@@ -26378,6 +26543,7 @@ export const GuardDutyDetectorsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/guardDutyDetectors/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type GuardDutyDetectorsCreateOrReplaceInput =
@@ -26432,6 +26598,7 @@ export const GuardDutyDetectorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/guardDutyDetectors/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GuardDutyDetectorsDeleteInput =
@@ -26656,6 +26823,7 @@ export const GuardDutyDetectorsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/guardDutyDetectors/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GuardDutyDetectorsUpdateInput =
@@ -26742,6 +26910,7 @@ export const IamAccessKeyLastUsedsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyLastUseds/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IamAccessKeyLastUsedsCreateOrReplaceInput =
@@ -26796,6 +26965,7 @@ export const IamAccessKeyLastUsedsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyLastUseds/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamAccessKeyLastUsedsDeleteInput =
@@ -27021,6 +27191,7 @@ export const IamAccessKeyLastUsedsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyLastUseds/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamAccessKeyLastUsedsUpdateInput =
@@ -27112,6 +27283,7 @@ export const IamAccessKeyMetadataInfoCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyMetadata/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IamAccessKeyMetadataInfoCreateOrReplaceInput =
@@ -27166,6 +27338,7 @@ export const IamAccessKeyMetadataInfoDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyMetadata/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamAccessKeyMetadataInfoDeleteInput =
@@ -27390,6 +27563,7 @@ export const IamAccessKeyMetadataInfoUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyMetadata/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamAccessKeyMetadataInfoUpdateInput =
@@ -27486,6 +27660,7 @@ export const IamGroupsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IamGroupsCreateOrReplaceInput =
@@ -27540,6 +27715,7 @@ export const IamGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamGroups/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type IamGroupsDeleteInput = typeof IamGroupsDeleteInput.Type;
@@ -27754,6 +27930,7 @@ export const IamGroupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamGroups/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type IamGroupsUpdateInput = typeof IamGroupsUpdateInput.Type;
@@ -27836,6 +28013,7 @@ export const IamInstanceProfilesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamInstanceProfiles/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IamInstanceProfilesCreateOrUpdateInput =
@@ -27890,6 +28068,7 @@ export const IamInstanceProfilesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamInstanceProfiles/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamInstanceProfilesDeleteInput =
@@ -28115,6 +28294,7 @@ export const IamInstanceProfilesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamInstanceProfiles/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamInstanceProfilesUpdateInput =
@@ -28201,6 +28381,7 @@ export const IamMfaDevicesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamMFADevices/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IamMfaDevicesCreateOrReplaceInput =
@@ -28255,6 +28436,7 @@ export const IamMfaDevicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamMFADevices/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamMfaDevicesDeleteInput = typeof IamMfaDevicesDeleteInput.Type;
@@ -28472,6 +28654,7 @@ export const IamMfaDevicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamMFADevices/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamMfaDevicesUpdateInput = typeof IamMfaDevicesUpdateInput.Type;
@@ -28561,6 +28744,7 @@ export const IamPasswordPoliciesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPasswordPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IamPasswordPoliciesCreateOrReplaceInput =
@@ -28615,6 +28799,7 @@ export const IamPasswordPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPasswordPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamPasswordPoliciesDeleteInput =
@@ -28840,6 +29025,7 @@ export const IamPasswordPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPasswordPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamPasswordPoliciesUpdateInput =
@@ -28927,6 +29113,7 @@ export const IamPolicyVersionsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPolicyVersions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IamPolicyVersionsCreateOrReplaceInput =
@@ -28981,6 +29168,7 @@ export const IamPolicyVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPolicyVersions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamPolicyVersionsDeleteInput =
@@ -29204,6 +29392,7 @@ export const IamPolicyVersionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPolicyVersions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamPolicyVersionsUpdateInput =
@@ -29316,6 +29505,7 @@ export const IamRolesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamRoles/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IamRolesCreateOrReplaceInput =
@@ -29370,6 +29560,7 @@ export const IamRolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamRoles/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type IamRolesDeleteInput = typeof IamRolesDeleteInput.Type;
@@ -29585,6 +29776,7 @@ export const IamRolesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamRoles/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type IamRolesUpdateInput = typeof IamRolesUpdateInput.Type;
@@ -29677,6 +29869,7 @@ export const IamServerCertificatesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamServerCertificates/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IamServerCertificatesCreateOrReplaceInput =
@@ -29731,6 +29924,7 @@ export const IamServerCertificatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamServerCertificates/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamServerCertificatesDeleteInput =
@@ -29956,6 +30150,7 @@ export const IamServerCertificatesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamServerCertificates/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamServerCertificatesUpdateInput =
@@ -30051,6 +30246,7 @@ export const IamVirtualMfaDevicesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamVirtualMFADevices/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IamVirtualMfaDevicesCreateOrReplaceInput =
@@ -30105,6 +30301,7 @@ export const IamVirtualMfaDevicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamVirtualMFADevices/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamVirtualMfaDevicesDeleteInput =
@@ -30330,6 +30527,7 @@ export const IamVirtualMfaDevicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamVirtualMFADevices/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IamVirtualMfaDevicesUpdateInput =
@@ -30415,6 +30613,7 @@ export const KmsAliasesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsAliases/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type KmsAliasesCreateOrReplaceInput =
@@ -30469,6 +30668,7 @@ export const KmsAliasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsAliases/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type KmsAliasesDeleteInput = typeof KmsAliasesDeleteInput.Type;
@@ -30682,6 +30882,7 @@ export const KmsAliasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsAliases/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type KmsAliasesUpdateInput = typeof KmsAliasesUpdateInput.Type;
@@ -30807,6 +31008,7 @@ export const KmsKeysCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsKeys/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type KmsKeysCreateOrReplaceInput =
@@ -30861,6 +31063,7 @@ export const KmsKeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsKeys/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type KmsKeysDeleteInput = typeof KmsKeysDeleteInput.Type;
@@ -31076,6 +31279,7 @@ export const KmsKeysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsKeys/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type KmsKeysUpdateInput = typeof KmsKeysUpdateInput.Type;
@@ -31158,6 +31362,7 @@ export const LambdaFunctionCodeLocationsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctionCodeLocations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LambdaFunctionCodeLocationsCreateOrReplaceInput =
@@ -31212,6 +31417,7 @@ export const LambdaFunctionCodeLocationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctionCodeLocations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LambdaFunctionCodeLocationsDeleteInput =
@@ -31435,6 +31641,7 @@ export const LambdaFunctionCodeLocationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctionCodeLocations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LambdaFunctionCodeLocationsUpdateInput =
@@ -31640,6 +31847,7 @@ export const LambdaFunctionsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LambdaFunctionsCreateOrReplaceInput =
@@ -31694,6 +31902,7 @@ export const LambdaFunctionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LambdaFunctionsDeleteInput = typeof LambdaFunctionsDeleteInput.Type;
@@ -31914,6 +32123,7 @@ export const LambdaFunctionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LambdaFunctionsUpdateInput = typeof LambdaFunctionsUpdateInput.Type;
@@ -32022,6 +32232,7 @@ export const LightsailBucketsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailBuckets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LightsailBucketsCreateOrReplaceInput =
@@ -32076,6 +32287,7 @@ export const LightsailBucketsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailBuckets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LightsailBucketsDeleteInput =
@@ -32297,6 +32509,7 @@ export const LightsailBucketsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailBuckets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LightsailBucketsUpdateInput =
@@ -32483,6 +32696,7 @@ export const LightsailInstancesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailInstances/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LightsailInstancesCreateOrReplaceInput =
@@ -32537,6 +32751,7 @@ export const LightsailInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailInstances/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LightsailInstancesDeleteInput =
@@ -32761,6 +32976,7 @@ export const LightsailInstancesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailInstances/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LightsailInstancesUpdateInput =
@@ -32860,6 +33076,7 @@ export const LogsLogGroupsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LogsLogGroupsCreateOrReplaceInput =
@@ -32914,6 +33131,7 @@ export const LogsLogGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LogsLogGroupsDeleteInput = typeof LogsLogGroupsDeleteInput.Type;
@@ -33131,6 +33349,7 @@ export const LogsLogGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LogsLogGroupsUpdateInput = typeof LogsLogGroupsUpdateInput.Type;
@@ -33212,6 +33431,7 @@ export const LogsLogStreamsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogStreams/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LogsLogStreamsCreateOrReplaceInput =
@@ -33266,6 +33486,7 @@ export const LogsLogStreamsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogStreams/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LogsLogStreamsDeleteInput = typeof LogsLogStreamsDeleteInput.Type;
@@ -33486,6 +33707,7 @@ export const LogsLogStreamsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogStreams/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LogsLogStreamsUpdateInput = typeof LogsLogStreamsUpdateInput.Type;
@@ -33619,6 +33841,7 @@ export const LogsMetricFiltersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsMetricFilters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LogsMetricFiltersCreateOrReplaceInput =
@@ -33673,6 +33896,7 @@ export const LogsMetricFiltersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsMetricFilters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LogsMetricFiltersDeleteInput =
@@ -33896,6 +34120,7 @@ export const LogsMetricFiltersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsMetricFilters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LogsMetricFiltersUpdateInput =
@@ -33987,6 +34212,7 @@ export const LogsSubscriptionFiltersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsSubscriptionFilters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LogsSubscriptionFiltersCreateOrReplaceInput =
@@ -34041,6 +34267,7 @@ export const LogsSubscriptionFiltersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsSubscriptionFilters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LogsSubscriptionFiltersDeleteInput =
@@ -34265,6 +34492,7 @@ export const LogsSubscriptionFiltersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsSubscriptionFilters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LogsSubscriptionFiltersUpdateInput =
@@ -34547,6 +34775,7 @@ export const Macie2JobSummariesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macie2JobSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Macie2JobSummariesCreateOrReplaceInput =
@@ -34601,6 +34830,7 @@ export const Macie2JobSummariesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macie2JobSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Macie2JobSummariesDeleteInput =
@@ -34825,6 +35055,7 @@ export const Macie2JobSummariesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macie2JobSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Macie2JobSummariesUpdateInput =
@@ -34943,6 +35174,7 @@ export const MacieAllowListsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macieAllowLists/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MacieAllowListsCreateOrReplaceInput =
@@ -34997,6 +35229,7 @@ export const MacieAllowListsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macieAllowLists/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MacieAllowListsDeleteInput = typeof MacieAllowListsDeleteInput.Type;
@@ -35217,6 +35450,7 @@ export const MacieAllowListsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macieAllowLists/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MacieAllowListsUpdateInput = typeof MacieAllowListsUpdateInput.Type;
@@ -35394,6 +35628,7 @@ export const NetworkFirewallFirewallPoliciesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewallPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkFirewallFirewallPoliciesCreateOrReplaceInput =
@@ -35448,6 +35683,7 @@ export const NetworkFirewallFirewallPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewallPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFirewallFirewallPoliciesDeleteInput =
@@ -35671,6 +35907,7 @@ export const NetworkFirewallFirewallPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewallPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFirewallFirewallPoliciesUpdateInput =
@@ -35779,6 +36016,7 @@ export const NetworkFirewallFirewallsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewalls/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkFirewallFirewallsCreateOrReplaceInput =
@@ -35833,6 +36071,7 @@ export const NetworkFirewallFirewallsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewalls/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFirewallFirewallsDeleteInput =
@@ -36057,6 +36296,7 @@ export const NetworkFirewallFirewallsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewalls/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFirewallFirewallsUpdateInput =
@@ -36377,6 +36617,7 @@ export const NetworkFirewallRuleGroupsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallRuleGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkFirewallRuleGroupsCreateOrReplaceInput =
@@ -36431,6 +36672,7 @@ export const NetworkFirewallRuleGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallRuleGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFirewallRuleGroupsDeleteInput =
@@ -36654,6 +36896,7 @@ export const NetworkFirewallRuleGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallRuleGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFirewallRuleGroupsUpdateInput =
@@ -37238,6 +37481,7 @@ export const OpenSearchDomainStatusesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/openSearchDomainStatuses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type OpenSearchDomainStatusesCreateOrReplaceInput =
@@ -37292,6 +37536,7 @@ export const OpenSearchDomainStatusesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/openSearchDomainStatuses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OpenSearchDomainStatusesDeleteInput =
@@ -37516,6 +37761,7 @@ export const OpenSearchDomainStatusesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/openSearchDomainStatuses/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OpenSearchDomainStatusesUpdateInput =
@@ -37667,6 +37913,7 @@ export const OrganizationsAccountsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsAccounts/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type OrganizationsAccountsCreateOrReplaceInput =
@@ -37721,6 +37968,7 @@ export const OrganizationsAccountsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsAccounts/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OrganizationsAccountsDeleteInput =
@@ -37946,6 +38194,7 @@ export const OrganizationsAccountsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsAccounts/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OrganizationsAccountsUpdateInput =
@@ -38038,6 +38287,7 @@ export const OrganizationsOrganizationsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsOrganizations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type OrganizationsOrganizationsCreateOrReplaceInput =
@@ -38092,6 +38342,7 @@ export const OrganizationsOrganizationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsOrganizations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OrganizationsOrganizationsDeleteInput =
@@ -38315,6 +38566,7 @@ export const OrganizationsOrganizationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsOrganizations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OrganizationsOrganizationsUpdateInput =
@@ -38500,6 +38752,7 @@ export const RdsDbClustersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBClusters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RdsDbClustersCreateOrReplaceInput =
@@ -38554,6 +38807,7 @@ export const RdsDbClustersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBClusters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsDbClustersDeleteInput = typeof RdsDbClustersDeleteInput.Type;
@@ -38771,6 +39025,7 @@ export const RdsDbClustersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBClusters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsDbClustersUpdateInput = typeof RdsDbClustersUpdateInput.Type;
@@ -38971,6 +39226,7 @@ export const RdsDbInstancesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBInstances/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RdsDbInstancesCreateOrReplaceInput =
@@ -39025,6 +39281,7 @@ export const RdsDbInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBInstances/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsDbInstancesDeleteInput = typeof RdsDbInstancesDeleteInput.Type;
@@ -39245,6 +39502,7 @@ export const RdsDbInstancesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBInstances/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsDbInstancesUpdateInput = typeof RdsDbInstancesUpdateInput.Type;
@@ -39335,6 +39593,7 @@ export const RdsDbSnapshotAttributesResultsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshotAttributesResults/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RdsDbSnapshotAttributesResultsCreateOrReplaceInput =
@@ -39389,6 +39648,7 @@ export const RdsDbSnapshotAttributesResultsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshotAttributesResults/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsDbSnapshotAttributesResultsDeleteInput =
@@ -39612,6 +39872,7 @@ export const RdsDbSnapshotAttributesResultsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshotAttributesResults/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsDbSnapshotAttributesResultsUpdateInput =
@@ -39744,6 +40005,7 @@ export const RdsDbSnapshotsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshots/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RdsDbSnapshotsCreateOrReplaceInput =
@@ -39798,6 +40060,7 @@ export const RdsDbSnapshotsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshots/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsDbSnapshotsDeleteInput = typeof RdsDbSnapshotsDeleteInput.Type;
@@ -40018,6 +40281,7 @@ export const RdsDbSnapshotsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshots/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsDbSnapshotsUpdateInput = typeof RdsDbSnapshotsUpdateInput.Type;
@@ -40113,6 +40377,7 @@ export const RdsEventSubscriptionsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsEventSubscriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RdsEventSubscriptionsCreateOrReplaceInput =
@@ -40167,6 +40432,7 @@ export const RdsEventSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsEventSubscriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsEventSubscriptionsDeleteInput =
@@ -40392,6 +40658,7 @@ export const RdsEventSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsEventSubscriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsEventSubscriptionsUpdateInput =
@@ -40497,6 +40764,7 @@ export const RdsExportTasksCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsExportTasks/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RdsExportTasksCreateOrReplaceInput =
@@ -40551,6 +40819,7 @@ export const RdsExportTasksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsExportTasks/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsExportTasksDeleteInput = typeof RdsExportTasksDeleteInput.Type;
@@ -40771,6 +41040,7 @@ export const RdsExportTasksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsExportTasks/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RdsExportTasksUpdateInput = typeof RdsExportTasksUpdateInput.Type;
@@ -40871,6 +41141,7 @@ export const RedshiftClusterParameterGroupsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusterParameterGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RedshiftClusterParameterGroupsCreateOrReplaceInput =
@@ -40925,6 +41196,7 @@ export const RedshiftClusterParameterGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusterParameterGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RedshiftClusterParameterGroupsDeleteInput =
@@ -41148,6 +41420,7 @@ export const RedshiftClusterParameterGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusterParameterGroups/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RedshiftClusterParameterGroupsUpdateInput =
@@ -41302,6 +41575,7 @@ export const RedshiftClustersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RedshiftClustersCreateOrReplaceInput =
@@ -41356,6 +41630,7 @@ export const RedshiftClustersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RedshiftClustersDeleteInput =
@@ -41577,6 +41852,7 @@ export const RedshiftClustersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RedshiftClustersUpdateInput =
@@ -41664,6 +41940,7 @@ export const Route53DomainsDomainSummariesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53DomainsDomainSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Route53DomainsDomainSummariesCreateOrReplaceInput =
@@ -41718,6 +41995,7 @@ export const Route53DomainsDomainSummariesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53DomainsDomainSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Route53DomainsDomainSummariesDeleteInput =
@@ -41941,6 +42219,7 @@ export const Route53DomainsDomainSummariesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53DomainsDomainSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Route53DomainsDomainSummariesUpdateInput =
@@ -42052,6 +42331,7 @@ export const Route53HostedZonesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53HostedZones/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Route53HostedZonesCreateOrReplaceInput =
@@ -42106,6 +42386,7 @@ export const Route53HostedZonesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53HostedZones/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Route53HostedZonesDeleteInput =
@@ -42330,6 +42611,7 @@ export const Route53HostedZonesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53HostedZones/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Route53HostedZonesUpdateInput =
@@ -42527,6 +42809,7 @@ export const Route53ResourceRecordSetsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53ResourceRecordSets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Route53ResourceRecordSetsCreateOrReplaceInput =
@@ -42581,6 +42864,7 @@ export const Route53ResourceRecordSetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53ResourceRecordSets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Route53ResourceRecordSetsDeleteInput =
@@ -42804,6 +43088,7 @@ export const Route53ResourceRecordSetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53ResourceRecordSets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Route53ResourceRecordSetsUpdateInput =
@@ -42930,6 +43215,7 @@ export const S3AccessControlPoliciesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessControlPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type S3AccessControlPoliciesCreateOrReplaceInput =
@@ -42984,6 +43270,7 @@ export const S3AccessControlPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessControlPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type S3AccessControlPoliciesDeleteInput =
@@ -43208,6 +43495,7 @@ export const S3AccessControlPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessControlPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type S3AccessControlPoliciesUpdateInput =
@@ -43312,6 +43600,7 @@ export const S3AccessPointsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessPoints/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type S3AccessPointsCreateOrReplaceInput =
@@ -43366,6 +43655,7 @@ export const S3AccessPointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessPoints/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type S3AccessPointsDeleteInput = typeof S3AccessPointsDeleteInput.Type;
@@ -43586,6 +43876,7 @@ export const S3AccessPointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessPoints/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type S3AccessPointsUpdateInput = typeof S3AccessPointsUpdateInput.Type;
@@ -43668,6 +43959,7 @@ export const S3BucketPoliciesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3BucketPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type S3BucketPoliciesCreateOrReplaceInput =
@@ -43722,6 +44014,7 @@ export const S3BucketPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3BucketPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type S3BucketPoliciesDeleteInput =
@@ -43943,6 +44236,7 @@ export const S3BucketPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3BucketPolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type S3BucketPoliciesUpdateInput =
@@ -44669,6 +44963,7 @@ export const S3BucketsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3Buckets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type S3BucketsCreateOrReplaceInput =
@@ -44723,6 +45018,7 @@ export const S3BucketsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3Buckets/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type S3BucketsDeleteInput = typeof S3BucketsDeleteInput.Type;
@@ -44937,6 +45233,7 @@ export const S3BucketsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3Buckets/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type S3BucketsUpdateInput = typeof S3BucketsUpdateInput.Type;
@@ -45025,6 +45322,7 @@ export const S3ControlMultiRegionAccessPointPolicyDocumentsCreateOrReplaceInput 
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3ControlMultiRegionAccessPointPolicyDocuments/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type S3ControlMultiRegionAccessPointPolicyDocumentsCreateOrReplaceInput =
@@ -45081,6 +45379,7 @@ export const S3ControlMultiRegionAccessPointPolicyDocumentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3ControlMultiRegionAccessPointPolicyDocuments/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type S3ControlMultiRegionAccessPointPolicyDocumentsDeleteInput =
@@ -45308,6 +45607,7 @@ export const S3ControlMultiRegionAccessPointPolicyDocumentsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3ControlMultiRegionAccessPointPolicyDocuments/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type S3ControlMultiRegionAccessPointPolicyDocumentsUpdateInput =
@@ -45484,6 +45784,7 @@ export const SageMakerAppsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerApps/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SageMakerAppsCreateOrReplaceInput =
@@ -45538,6 +45839,7 @@ export const SageMakerAppsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerApps/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SageMakerAppsDeleteInput = typeof SageMakerAppsDeleteInput.Type;
@@ -45755,6 +46057,7 @@ export const SageMakerAppsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerApps/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SageMakerAppsUpdateInput = typeof SageMakerAppsUpdateInput.Type;
@@ -46024,6 +46327,7 @@ export const SageMakerNotebookInstanceSummariesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerNotebookInstanceSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SageMakerNotebookInstanceSummariesCreateOrReplaceInput =
@@ -46078,6 +46382,7 @@ export const SageMakerNotebookInstanceSummariesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerNotebookInstanceSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SageMakerNotebookInstanceSummariesDeleteInput =
@@ -46301,6 +46606,7 @@ export const SageMakerNotebookInstanceSummariesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerNotebookInstanceSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SageMakerNotebookInstanceSummariesUpdateInput =
@@ -46387,6 +46693,7 @@ export const SecretsManagerResourcePoliciesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerResourcePolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SecretsManagerResourcePoliciesCreateOrReplaceInput =
@@ -46441,6 +46748,7 @@ export const SecretsManagerResourcePoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerResourcePolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecretsManagerResourcePoliciesDeleteInput =
@@ -46664,6 +46972,7 @@ export const SecretsManagerResourcePoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerResourcePolicies/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecretsManagerResourcePoliciesUpdateInput =
@@ -46781,6 +47090,7 @@ export const SecretsManagerSecretsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerSecrets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SecretsManagerSecretsCreateOrReplaceInput =
@@ -46835,6 +47145,7 @@ export const SecretsManagerSecretsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerSecrets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecretsManagerSecretsDeleteInput =
@@ -47060,6 +47371,7 @@ export const SecretsManagerSecretsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerSecrets/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecretsManagerSecretsUpdateInput =
@@ -47148,6 +47460,7 @@ export const SnsSubscriptionsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsSubscriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SnsSubscriptionsCreateOrReplaceInput =
@@ -47202,6 +47515,7 @@ export const SnsSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsSubscriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SnsSubscriptionsDeleteInput =
@@ -47423,6 +47737,7 @@ export const SnsSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsSubscriptions/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SnsSubscriptionsUpdateInput =
@@ -47550,6 +47865,7 @@ export const SnsTopicsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsTopics/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SnsTopicsCreateOrReplaceInput =
@@ -47604,6 +47920,7 @@ export const SnsTopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsTopics/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SnsTopicsDeleteInput = typeof SnsTopicsDeleteInput.Type;
@@ -47818,6 +48135,7 @@ export const SnsTopicsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsTopics/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SnsTopicsUpdateInput = typeof SnsTopicsUpdateInput.Type;
@@ -47925,6 +48243,7 @@ export const SqsQueuesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sqsQueues/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqsQueuesCreateOrReplaceInput =
@@ -47979,6 +48298,7 @@ export const SqsQueuesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sqsQueues/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SqsQueuesDeleteInput = typeof SqsQueuesDeleteInput.Type;
@@ -48193,6 +48513,7 @@ export const SqsQueuesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sqsQueues/{name}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SqsQueuesUpdateInput = typeof SqsQueuesUpdateInput.Type;
@@ -48329,6 +48650,7 @@ export const SsmInstanceInformationsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmInstanceInformations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SsmInstanceInformationsCreateOrReplaceInput =
@@ -48383,6 +48705,7 @@ export const SsmInstanceInformationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmInstanceInformations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SsmInstanceInformationsDeleteInput =
@@ -48607,6 +48930,7 @@ export const SsmInstanceInformationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmInstanceInformations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SsmInstanceInformationsUpdateInput =
@@ -48702,6 +49026,7 @@ export const SsmParametersCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmParameters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SsmParametersCreateOrReplaceInput =
@@ -48756,6 +49081,7 @@ export const SsmParametersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmParameters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SsmParametersDeleteInput = typeof SsmParametersDeleteInput.Type;
@@ -48973,6 +49299,7 @@ export const SsmParametersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmParameters/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SsmParametersUpdateInput = typeof SsmParametersUpdateInput.Type;
@@ -49113,6 +49440,7 @@ export const SsmResourceComplianceSummaryItemsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmResourceComplianceSummaryItems/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SsmResourceComplianceSummaryItemsCreateOrReplaceInput =
@@ -49167,6 +49495,7 @@ export const SsmResourceComplianceSummaryItemsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmResourceComplianceSummaryItems/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SsmResourceComplianceSummaryItemsDeleteInput =
@@ -49390,6 +49719,7 @@ export const SsmResourceComplianceSummaryItemsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmResourceComplianceSummaryItems/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SsmResourceComplianceSummaryItemsUpdateInput =
@@ -49533,6 +49863,7 @@ export const Wafv2LoggingConfigurationsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafv2LoggingConfigurations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type Wafv2LoggingConfigurationsCreateOrReplaceInput =
@@ -49587,6 +49918,7 @@ export const Wafv2LoggingConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafv2LoggingConfigurations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Wafv2LoggingConfigurationsDeleteInput =
@@ -49810,6 +50142,7 @@ export const Wafv2LoggingConfigurationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafv2LoggingConfigurations/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type Wafv2LoggingConfigurationsUpdateInput =
@@ -49894,6 +50227,7 @@ export const WafWebAclSummariesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafWebACLSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WafWebAclSummariesCreateOrReplaceInput =
@@ -49948,6 +50282,7 @@ export const WafWebAclSummariesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafWebACLSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WafWebAclSummariesDeleteInput =
@@ -50172,6 +50507,7 @@ export const WafWebAclSummariesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafWebACLSummaries/{name}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WafWebAclSummariesUpdateInput =

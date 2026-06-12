@@ -104,6 +104,7 @@ export const AccountsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
       apiVersion: "2022-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AccountsCreateOrUpdateInput =
@@ -142,6 +143,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
     apiVersion: "2022-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -371,6 +373,7 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
     apiVersion: "2022-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -436,6 +439,7 @@ export const ModelingCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
       apiVersion: "2022-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ModelingCreateOrUpdateInput =
@@ -474,6 +478,7 @@ export const ModelingDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
     apiVersion: "2022-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ModelingDeleteInput = typeof ModelingDeleteInput.Type;
@@ -591,6 +596,7 @@ export const ModelingUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
     apiVersion: "2022-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ModelingUpdateInput = typeof ModelingUpdateInput.Type;
@@ -784,6 +790,7 @@ export const ServiceEndpointsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
       apiVersion: "2022-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServiceEndpointsCreateOrUpdateInput =
@@ -822,6 +829,7 @@ export const ServiceEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
       apiVersion: "2022-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServiceEndpointsDeleteInput =
@@ -938,6 +946,7 @@ export const ServiceEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
       apiVersion: "2022-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServiceEndpointsUpdateInput =

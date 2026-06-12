@@ -36,6 +36,7 @@ export const AccessPolicyAssignmentCreateUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type AccessPolicyAssignmentCreateUpdateInput =
@@ -74,6 +75,7 @@ export const AccessPolicyAssignmentDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AccessPolicyAssignmentDeleteInput =
@@ -289,6 +291,7 @@ export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "original-uri" },
   }),
 );
 export type DatabasesCreateInput = typeof DatabasesCreateInput.Type;
@@ -322,6 +325,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
@@ -352,6 +356,7 @@ export const DatabasesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/export",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DatabasesExportInput = typeof DatabasesExportInput.Type;
@@ -382,6 +387,7 @@ export const DatabasesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/flush",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesFlushInput = typeof DatabasesFlushInput.Type;
@@ -431,6 +437,7 @@ export const DatabasesForceLinkToReplicationGroupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/forceLinkToReplicationGroup",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DatabasesForceLinkToReplicationGroupInput =
@@ -466,6 +473,7 @@ export const DatabasesForceUnlinkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/forceUnlink",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DatabasesForceUnlinkInput = typeof DatabasesForceUnlinkInput.Type;
@@ -532,6 +540,7 @@ export const DatabasesImportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/import",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DatabasesImportInput = typeof DatabasesImportInput.Type;
@@ -644,6 +653,7 @@ export const DatabasesRegenerateKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/regenerateKey",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DatabasesRegenerateKeyInput =
@@ -778,6 +788,7 @@ export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DatabasesUpdateInput = typeof DatabasesUpdateInput.Type;
@@ -812,6 +823,7 @@ export const DatabasesUpgradeDBRedisVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/upgradeDBRedisVersion",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabasesUpgradeDBRedisVersionInput =
@@ -954,6 +966,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1096,6 +1109,7 @@ export const PrivateEndpointConnectionsPutInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-07-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsPutInput =
@@ -1338,6 +1352,7 @@ export const RedisEnterpriseCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RedisEnterpriseCreateInput = typeof RedisEnterpriseCreateInput.Type;
@@ -1376,6 +1391,7 @@ export const RedisEnterpriseDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RedisEnterpriseDeleteInput = typeof RedisEnterpriseDeleteInput.Type;
@@ -1730,6 +1746,7 @@ export const RedisEnterpriseUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RedisEnterpriseUpdateInput = typeof RedisEnterpriseUpdateInput.Type;

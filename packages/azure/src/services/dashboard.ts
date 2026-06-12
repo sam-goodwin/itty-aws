@@ -415,6 +415,7 @@ export const GrafanaCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type GrafanaCreateInput = typeof GrafanaCreateInput.Type;
@@ -464,6 +465,7 @@ export const GrafanaDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type GrafanaDeleteInput = typeof GrafanaDeleteInput.Type;
@@ -826,6 +828,7 @@ export const GrafanaUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type GrafanaUpdateInput = typeof GrafanaUpdateInput.Type;
@@ -899,6 +902,7 @@ export const IntegrationFabricsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IntegrationFabricsCreateInput =
@@ -956,6 +960,7 @@ export const IntegrationFabricsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IntegrationFabricsDeleteInput =
@@ -1127,6 +1132,7 @@ export const IntegrationFabricsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IntegrationFabricsUpdateInput =
@@ -1202,6 +1208,7 @@ export const ManagedDashboardsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagedDashboardsCreateInput =
@@ -1389,6 +1396,7 @@ export const ManagedPrivateEndpointsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type ManagedPrivateEndpointsCreateInput =
@@ -1445,6 +1453,7 @@ export const ManagedPrivateEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagedPrivateEndpointsDeleteInput =
@@ -1609,6 +1618,7 @@ export const ManagedPrivateEndpointsRefreshInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/refreshManagedPrivateEndpoints",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagedPrivateEndpointsRefreshInput =
@@ -1647,6 +1657,7 @@ export const ManagedPrivateEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagedPrivateEndpointsUpdateInput =
@@ -1771,6 +1782,7 @@ export const PrivateEndpointConnectionsApproveInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsApproveInput =
@@ -1827,6 +1839,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =

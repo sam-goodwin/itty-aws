@@ -864,6 +864,7 @@ export const CustomImagesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CustomImagesCreateOrUpdateInput =
@@ -921,6 +922,7 @@ export const CustomImagesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CustomImagesDeleteInput = typeof CustomImagesDeleteInput.Type;
@@ -1137,6 +1139,7 @@ export const DisksAttachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/attach",
     apiVersion: "2018-09-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DisksAttachInput = typeof DisksAttachInput.Type;
@@ -1190,6 +1193,7 @@ export const DisksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DisksCreateOrUpdateInput = typeof DisksCreateOrUpdateInput.Type;
@@ -1244,6 +1248,7 @@ export const DisksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}",
     apiVersion: "2018-09-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DisksDeleteInput = typeof DisksDeleteInput.Type;
@@ -1280,6 +1285,7 @@ export const DisksDetachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/detach",
     apiVersion: "2018-09-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DisksDetachInput = typeof DisksDetachInput.Type;
@@ -1511,6 +1517,7 @@ export const EnvironmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EnvironmentsCreateOrUpdateInput =
@@ -1570,6 +1577,7 @@ export const EnvironmentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EnvironmentsDeleteInput = typeof EnvironmentsDeleteInput.Type;
@@ -1970,6 +1978,7 @@ export const FormulasCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FormulasCreateOrUpdateInput =
@@ -2427,6 +2436,7 @@ export const GlobalSchedulesExecuteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}/execute",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GlobalSchedulesExecuteInput =
@@ -2667,6 +2677,7 @@ export const GlobalSchedulesRetargetInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}/retarget",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GlobalSchedulesRetargetInput =
@@ -2758,6 +2769,7 @@ export const LabsClaimAnyVmInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/claimAnyVm",
     apiVersion: "2018-09-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LabsClaimAnyVmInput = typeof LabsClaimAnyVmInput.Type;
@@ -2942,6 +2954,7 @@ export const LabsCreateEnvironmentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/createEnvironment",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LabsCreateEnvironmentInput = typeof LabsCreateEnvironmentInput.Type;
@@ -3029,6 +3042,7 @@ export const LabsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LabsCreateOrUpdateInput = typeof LabsCreateOrUpdateInput.Type;
@@ -3079,6 +3093,7 @@ export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}",
     apiVersion: "2018-09-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LabsDeleteInput = typeof LabsDeleteInput.Type;
@@ -3113,6 +3128,7 @@ export const LabsExportResourceUsageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/exportResourceUsage",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LabsExportResourceUsageInput =
@@ -3242,6 +3258,7 @@ export const LabsImportVirtualMachineInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/importVirtualMachine",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LabsImportVirtualMachineInput =
@@ -4496,6 +4513,7 @@ export const SchedulesExecuteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}/execute",
     apiVersion: "2018-09-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SchedulesExecuteInput = typeof SchedulesExecuteInput.Type;
@@ -4777,6 +4795,7 @@ export const SecretsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecretsCreateOrUpdateInput = typeof SecretsCreateOrUpdateInput.Type;
@@ -5182,6 +5201,7 @@ export const ServiceFabricSchedulesExecuteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}/execute",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServiceFabricSchedulesExecuteInput =
@@ -5468,6 +5488,7 @@ export const ServiceFabricsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServiceFabricsCreateOrUpdateInput =
@@ -5526,6 +5547,7 @@ export const ServiceFabricsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServiceFabricsDeleteInput = typeof ServiceFabricsDeleteInput.Type;
@@ -5757,6 +5779,7 @@ export const ServiceFabricsStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/start",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServiceFabricsStartInput = typeof ServiceFabricsStartInput.Type;
@@ -5794,6 +5817,7 @@ export const ServiceFabricsStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/stop",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServiceFabricsStopInput = typeof ServiceFabricsStopInput.Type;
@@ -6073,6 +6097,7 @@ export const UsersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
@@ -6125,6 +6150,7 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}",
     apiVersion: "2018-09-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
@@ -6339,6 +6365,7 @@ export const VirtualMachinesAddDataDiskInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/addDataDisk",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesAddDataDiskInput =
@@ -6398,6 +6425,7 @@ export const VirtualMachinesApplyArtifactsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/applyArtifacts",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesApplyArtifactsInput =
@@ -6571,6 +6599,7 @@ export const VirtualMachineSchedulesExecuteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}/execute",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineSchedulesExecuteInput =
@@ -6810,6 +6839,7 @@ export const VirtualMachinesClaimInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/claim",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesClaimInput = typeof VirtualMachinesClaimInput.Type;
@@ -7071,6 +7101,7 @@ export const VirtualMachinesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesCreateOrUpdateInput =
@@ -7127,6 +7158,7 @@ export const VirtualMachinesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
@@ -7166,6 +7198,7 @@ export const VirtualMachinesDetachDataDiskInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/detachDataDisk",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesDetachDataDiskInput =
@@ -7429,6 +7462,7 @@ export const VirtualMachinesRedeployInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/redeploy",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesRedeployInput =
@@ -7469,6 +7503,7 @@ export const VirtualMachinesResizeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/resize",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesResizeInput = typeof VirtualMachinesResizeInput.Type;
@@ -7507,6 +7542,7 @@ export const VirtualMachinesRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/restart",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesRestartInput =
@@ -7546,6 +7582,7 @@ export const VirtualMachinesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/start",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -7583,6 +7620,7 @@ export const VirtualMachinesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/stop",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;
@@ -7618,6 +7656,7 @@ export const VirtualMachinesTransferDisksInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/transferDisks",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesTransferDisksInput =
@@ -7656,6 +7695,7 @@ export const VirtualMachinesUnClaimInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/unClaim",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesUnClaimInput =
@@ -7809,6 +7849,7 @@ export const VirtualNetworksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworksCreateOrUpdateInput =
@@ -7865,6 +7906,7 @@ export const VirtualNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}",
       apiVersion: "2018-09-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;

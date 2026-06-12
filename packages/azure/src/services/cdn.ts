@@ -119,6 +119,7 @@ export const AFDCustomDomainsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDCustomDomainsCreateInput =
@@ -176,6 +177,7 @@ export const AFDCustomDomainsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDCustomDomainsDeleteInput =
@@ -337,6 +339,7 @@ export const AFDCustomDomainsRefreshValidationTokenInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}/refreshValidationToken",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDCustomDomainsRefreshValidationTokenInput =
@@ -439,6 +442,7 @@ export const AFDCustomDomainsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDCustomDomainsUpdateInput =
@@ -525,6 +529,7 @@ export const AFDEndpointsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDEndpointsCreateInput = typeof AFDEndpointsCreateInput.Type;
@@ -578,6 +583,7 @@ export const AFDEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDEndpointsDeleteInput = typeof AFDEndpointsDeleteInput.Type;
@@ -787,6 +793,7 @@ export const AFDEndpointsPurgeContentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/purge",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDEndpointsPurgeContentInput =
@@ -833,6 +840,7 @@ export const AFDEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDEndpointsUpdateInput = typeof AFDEndpointsUpdateInput.Type;
@@ -987,6 +995,7 @@ export const AFDOriginGroupsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDOriginGroupsCreateInput = typeof AFDOriginGroupsCreateInput.Type;
@@ -1043,6 +1052,7 @@ export const AFDOriginGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDOriginGroupsDeleteInput = typeof AFDOriginGroupsDeleteInput.Type;
@@ -1301,6 +1311,7 @@ export const AFDOriginGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AFDOriginGroupsUpdateInput = typeof AFDOriginGroupsUpdateInput.Type;
@@ -1408,6 +1419,7 @@ export const AFDOriginsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AFDOriginsCreateInput = typeof AFDOriginsCreateInput.Type;
@@ -1463,6 +1475,7 @@ export const AFDOriginsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AFDOriginsDeleteInput = typeof AFDOriginsDeleteInput.Type;
@@ -1662,6 +1675,7 @@ export const AFDOriginsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AFDOriginsUpdateInput = typeof AFDOriginsUpdateInput.Type;
@@ -1869,6 +1883,7 @@ export const AFDProfilesUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/upgrade",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AFDProfilesUpgradeInput = typeof AFDProfilesUpgradeInput.Type;
@@ -2116,6 +2131,7 @@ export const CustomDomainsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CustomDomainsCreateInput = typeof CustomDomainsCreateInput.Type;
@@ -2171,6 +2187,7 @@ export const CustomDomainsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CustomDomainsDeleteInput = typeof CustomDomainsDeleteInput.Type;
@@ -2208,6 +2225,7 @@ export const CustomDomainsDisableCustomHttpsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/disableCustomHttps",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CustomDomainsDisableCustomHttpsInput =
@@ -2271,6 +2289,7 @@ export const CustomDomainsEnableCustomHttpsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CustomDomainsEnableCustomHttpsInput =
@@ -2620,6 +2639,7 @@ export const EndpointsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EndpointsCreateInput = typeof EndpointsCreateInput.Type;
@@ -2671,6 +2691,7 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
@@ -2876,6 +2897,7 @@ export const EndpointsLoadContentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/load",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EndpointsLoadContentInput = typeof EndpointsLoadContentInput.Type;
@@ -2914,6 +2936,7 @@ export const EndpointsPurgeContentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/purge",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EndpointsPurgeContentInput = typeof EndpointsPurgeContentInput.Type;
@@ -2951,6 +2974,7 @@ export const EndpointsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/start",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EndpointsStartInput = typeof EndpointsStartInput.Type;
@@ -3002,6 +3026,7 @@ export const EndpointsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/stop",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EndpointsStopInput = typeof EndpointsStopInput.Type;
@@ -3169,6 +3194,7 @@ export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
@@ -3866,6 +3892,7 @@ export const OriginGroupsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OriginGroupsCreateInput = typeof OriginGroupsCreateInput.Type;
@@ -3921,6 +3948,7 @@ export const OriginGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OriginGroupsDeleteInput = typeof OriginGroupsDeleteInput.Type;
@@ -4126,6 +4154,7 @@ export const OriginGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OriginGroupsUpdateInput = typeof OriginGroupsUpdateInput.Type;
@@ -4195,6 +4224,7 @@ export const OriginsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type OriginsCreateInput = typeof OriginsCreateInput.Type;
@@ -4248,6 +4278,7 @@ export const OriginsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type OriginsDeleteInput = typeof OriginsDeleteInput.Type;
@@ -4422,6 +4453,7 @@ export const OriginsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type OriginsUpdateInput = typeof OriginsUpdateInput.Type;
@@ -4704,6 +4736,7 @@ export const PoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PoliciesCreateOrUpdateInput =
@@ -4891,6 +4924,7 @@ export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PoliciesUpdateInput = typeof PoliciesUpdateInput.Type;
@@ -4943,6 +4977,7 @@ export const ProfilesCanMigrateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/canMigrate",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProfilesCanMigrateInput = typeof ProfilesCanMigrateInput.Type;
@@ -4999,6 +5034,7 @@ export const ProfilesCdnCanMigrateToAfdInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnCanMigrateToAfd",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProfilesCdnCanMigrateToAfdInput =
@@ -5087,6 +5123,7 @@ export const ProfilesCdnMigrateToAfdInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnMigrateToAfd",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProfilesCdnMigrateToAfdInput =
@@ -5230,6 +5267,7 @@ export const ProfilesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ProfilesCreateInput = typeof ProfilesCreateInput.Type;
@@ -5279,6 +5317,7 @@ export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ProfilesDeleteInput = typeof ProfilesDeleteInput.Type;
@@ -5649,6 +5688,7 @@ export const ProfilesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/migrate",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ProfilesMigrateInput = typeof ProfilesMigrateInput.Type;
@@ -5692,6 +5732,7 @@ export const ProfilesMigrationAbortInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationAbort",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProfilesMigrationAbortInput =
@@ -5729,6 +5770,7 @@ export const ProfilesMigrationCommitInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationCommit",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProfilesMigrationCommitInput =
@@ -5813,6 +5855,7 @@ export const ProfilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ProfilesUpdateInput = typeof ProfilesUpdateInput.Type;
@@ -5975,6 +6018,7 @@ export const RoutesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RoutesCreateInput = typeof RoutesCreateInput.Type;
@@ -6028,6 +6072,7 @@ export const RoutesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RoutesDeleteInput = typeof RoutesDeleteInput.Type;
@@ -6245,6 +6290,7 @@ export const RoutesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RoutesUpdateInput = typeof RoutesUpdateInput.Type;
@@ -6363,6 +6409,7 @@ export const RulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RulesCreateInput = typeof RulesCreateInput.Type;
@@ -6416,6 +6463,7 @@ export const RulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RulesDeleteInput = typeof RulesDeleteInput.Type;
@@ -6501,6 +6549,7 @@ export const RuleSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RuleSetsDeleteInput = typeof RuleSetsDeleteInput.Type;
@@ -6882,6 +6931,7 @@ export const RulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RulesUpdateInput = typeof RulesUpdateInput.Type;
@@ -6950,6 +7000,7 @@ export const SecretsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type SecretsCreateInput = typeof SecretsCreateInput.Type;
@@ -7001,6 +7052,7 @@ export const SecretsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type SecretsDeleteInput = typeof SecretsDeleteInput.Type;
@@ -7170,6 +7222,7 @@ export const SecurityPoliciesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SecurityPoliciesCreateInput =
@@ -7227,6 +7280,7 @@ export const SecurityPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SecurityPoliciesDeleteInput =
@@ -7397,6 +7451,7 @@ export const SecurityPoliciesPatchInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SecurityPoliciesPatchInput = typeof SecurityPoliciesPatchInput.Type;

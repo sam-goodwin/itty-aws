@@ -157,6 +157,7 @@ export const AdvancedThreatProtectionSettingsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/advancedThreatProtectionSettings/{advancedThreatProtectionName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AdvancedThreatProtectionSettingsUpdateInput =
@@ -224,6 +225,7 @@ export const AdvancedThreatProtectionSettingsUpdatePutInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/advancedThreatProtectionSettings/{advancedThreatProtectionName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AdvancedThreatProtectionSettingsUpdatePutInput =
@@ -291,6 +293,7 @@ export const AzureADAdministratorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/administrators/{administratorName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type AzureADAdministratorsCreateOrUpdateInput =
@@ -347,6 +350,7 @@ export const AzureADAdministratorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/administrators/{administratorName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureADAdministratorsDeleteInput =
@@ -520,6 +524,7 @@ export const BackupAndExportCreateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backupAndExport",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupAndExportCreateInput = typeof BackupAndExportCreateInput.Type;
@@ -920,6 +925,7 @@ export const ConfigurationsBatchUpdateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/updateConfigurations",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigurationsBatchUpdateInput =
@@ -1012,6 +1018,7 @@ export const ConfigurationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/configurations/{configurationName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type ConfigurationsCreateOrUpdateInput =
@@ -1221,6 +1228,7 @@ export const ConfigurationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/configurations/{configurationName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type ConfigurationsUpdateInput = typeof ConfigurationsUpdateInput.Type;
@@ -1282,6 +1290,7 @@ export const DatabasesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type DatabasesCreateOrUpdateInput =
@@ -1338,6 +1347,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}",
     apiVersion: "2024-12-30",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
@@ -1498,6 +1508,7 @@ export const FirewallRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -1555,6 +1566,7 @@ export const FirewallRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -2036,6 +2048,7 @@ export const LongRunningBackupCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backupsV2/{backupName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LongRunningBackupCreateInput =
@@ -2347,6 +2360,7 @@ export const MaintenancesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/maintenances/{maintenanceName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type MaintenancesUpdateInput = typeof MaintenancesUpdateInput.Type;
@@ -2658,6 +2672,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -2715,6 +2730,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -3082,6 +3098,7 @@ export const ServerKeysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/keys/{keyName}",
       apiVersion: "2020-01-01",
+      longRunning: {},
     }),
   );
 export type ServerKeysCreateOrUpdateInput =
@@ -3122,6 +3139,7 @@ export const ServerKeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/keys/{keyName}",
     apiVersion: "2020-01-01",
+    longRunning: {},
   }),
 );
 export type ServerKeysDeleteInput = typeof ServerKeysDeleteInput.Type;
@@ -3409,6 +3427,7 @@ export const ServersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
     apiVersion: "2024-12-30",
+    longRunning: { finalStateVia: "original-uri" },
   }),
 );
 export type ServersCreateInput = typeof ServersCreateInput.Type;
@@ -3458,6 +3477,7 @@ export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
     apiVersion: "2024-12-30",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ServersDeleteInput = typeof ServersDeleteInput.Type;
@@ -3494,6 +3514,7 @@ export const ServersDetachVNetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/detachVNet",
     apiVersion: "2024-12-30",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ServersDetachVNetInput = typeof ServersDetachVNetInput.Type;
@@ -3544,6 +3565,7 @@ export const ServersFailoverInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/failover",
     apiVersion: "2024-12-30",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServersFailoverInput = typeof ServersFailoverInput.Type;
@@ -3757,6 +3779,7 @@ export const ServersMigrationCutoverMigrationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/cutoverMigration",
       apiVersion: "2024-12-30",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServersMigrationCutoverMigrationInput =
@@ -3811,6 +3834,7 @@ export const ServersResetGtidInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/resetGtid",
     apiVersion: "2024-12-30",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ServersResetGtidInput = typeof ServersResetGtidInput.Type;
@@ -3846,6 +3870,7 @@ export const ServersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/restart",
     apiVersion: "2024-12-30",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServersRestartInput = typeof ServersRestartInput.Type;
@@ -3877,6 +3902,7 @@ export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/start",
     apiVersion: "2024-12-30",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServersStartInput = typeof ServersStartInput.Type;
@@ -3908,6 +3934,7 @@ export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/stop",
     apiVersion: "2024-12-30",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServersStopInput = typeof ServersStopInput.Type;
@@ -4051,6 +4078,7 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
     apiVersion: "2024-12-30",
+    longRunning: { finalStateVia: "original-uri" },
   }),
 );
 export type ServersUpdateInput = typeof ServersUpdateInput.Type;
@@ -4104,6 +4132,7 @@ export const ServersUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/upgrade",
     apiVersion: "2020-01-01",
+    longRunning: {},
   }),
 );
 export type ServersUpgradeInput = typeof ServersUpgradeInput.Type;

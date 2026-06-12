@@ -38,6 +38,7 @@ export const CacheRulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CacheRulesCreateInput = typeof CacheRulesCreateInput.Type;
@@ -91,6 +92,7 @@ export const CacheRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type CacheRulesDeleteInput = typeof CacheRulesDeleteInput.Type;
@@ -246,6 +248,7 @@ export const CacheRulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CacheRulesUpdateInput = typeof CacheRulesUpdateInput.Type;
@@ -389,6 +392,7 @@ export const ConnectedRegistriesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectedRegistriesCreateInput =
@@ -446,6 +450,7 @@ export const ConnectedRegistriesDeactivateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}/deactivate",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectedRegistriesDeactivateInput =
@@ -484,6 +489,7 @@ export const ConnectedRegistriesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectedRegistriesDeleteInput =
@@ -689,6 +695,7 @@ export const ConnectedRegistriesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectedRegistriesUpdateInput =
@@ -803,6 +810,7 @@ export const CredentialSetsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CredentialSetsCreateInput = typeof CredentialSetsCreateInput.Type;
@@ -858,6 +866,7 @@ export const CredentialSetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CredentialSetsDeleteInput = typeof CredentialSetsDeleteInput.Type;
@@ -1062,6 +1071,7 @@ export const CredentialSetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CredentialSetsUpdateInput = typeof CredentialSetsUpdateInput.Type;
@@ -1226,6 +1236,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1282,6 +1293,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1647,6 +1659,7 @@ export const RegistriesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RegistriesCreateInput = typeof RegistriesCreateInput.Type;
@@ -1698,6 +1711,7 @@ export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RegistriesDeleteInput = typeof RegistriesDeleteInput.Type;
@@ -1733,6 +1747,7 @@ export const RegistriesGenerateCredentialsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/generateCredentials",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistriesGenerateCredentialsInput =
@@ -1930,6 +1945,7 @@ export const RegistriesImportImageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/importImage",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistriesImportImageInput = typeof RegistriesImportImageInput.Type;
@@ -2307,6 +2323,7 @@ export const RegistriesScheduleRunInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scheduleRun",
       apiVersion: "2019-04-01",
+      longRunning: {},
     }),
   );
 export type RegistriesScheduleRunInput = typeof RegistriesScheduleRunInput.Type;
@@ -2452,6 +2469,7 @@ export const RegistriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RegistriesUpdateInput = typeof RegistriesUpdateInput.Type;
@@ -2532,6 +2550,7 @@ export const ReplicationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ReplicationsCreateInput = typeof ReplicationsCreateInput.Type;
@@ -2585,6 +2604,7 @@ export const ReplicationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationsDeleteInput = typeof ReplicationsDeleteInput.Type;
@@ -2744,6 +2764,7 @@ export const ReplicationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ReplicationsUpdateInput = typeof ReplicationsUpdateInput.Type;
@@ -2793,6 +2814,7 @@ export const RunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs/{runId}/cancel",
     apiVersion: "2019-04-01",
+    longRunning: {},
   }),
 );
 export type RunsCancelInput = typeof RunsCancelInput.Type;
@@ -2919,6 +2941,7 @@ export const RunsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs/{runId}",
     apiVersion: "2019-04-01",
+    longRunning: {},
   }),
 );
 export type RunsUpdateInput = typeof RunsUpdateInput.Type;
@@ -2970,6 +2993,7 @@ export const ScopeMapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ScopeMapsCreateInput = typeof ScopeMapsCreateInput.Type;
@@ -3021,6 +3045,7 @@ export const ScopeMapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ScopeMapsDeleteInput = typeof ScopeMapsDeleteInput.Type;
@@ -3177,6 +3202,7 @@ export const ScopeMapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ScopeMapsUpdateInput = typeof ScopeMapsUpdateInput.Type;
@@ -3380,6 +3406,7 @@ export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
     apiVersion: "2019-04-01",
+    longRunning: {},
   }),
 );
 export type TasksCreateInput = typeof TasksCreateInput.Type;
@@ -3410,6 +3437,7 @@ export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
     apiVersion: "2019-04-01",
+    longRunning: {},
   }),
 );
 export type TasksDeleteInput = typeof TasksDeleteInput.Type;
@@ -3669,6 +3697,7 @@ export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
     apiVersion: "2019-04-01",
+    longRunning: {},
   }),
 );
 export type TasksUpdateInput = typeof TasksUpdateInput.Type;
@@ -3747,6 +3776,7 @@ export const TokensCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type TokensCreateInput = typeof TokensCreateInput.Type;
@@ -3798,6 +3828,7 @@ export const TokensDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TokensDeleteInput = typeof TokensDeleteInput.Type;
@@ -3982,6 +4013,7 @@ export const TokensUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type TokensUpdateInput = typeof TokensUpdateInput.Type;
@@ -4054,6 +4086,7 @@ export const WebhooksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type WebhooksCreateInput = typeof WebhooksCreateInput.Type;
@@ -4105,6 +4138,7 @@ export const WebhooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WebhooksDeleteInput = typeof WebhooksDeleteInput.Type;
@@ -4398,6 +4432,7 @@ export const WebhooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type WebhooksUpdateInput = typeof WebhooksUpdateInput.Type;

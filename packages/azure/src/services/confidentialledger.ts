@@ -113,6 +113,7 @@ export const LedgerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}",
     apiVersion: "2022-05-13",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type LedgerCreateInput = typeof LedgerCreateInput.Type;
@@ -159,6 +160,7 @@ export const LedgerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}",
     apiVersion: "2022-05-13",
+    longRunning: {},
   }),
 );
 export type LedgerDeleteInput = typeof LedgerDeleteInput.Type;
@@ -191,6 +193,7 @@ export const LedgerFilesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}/filesExport",
     apiVersion: "2026-02-23",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LedgerFilesExportInput = typeof LedgerFilesExportInput.Type;
@@ -472,6 +475,7 @@ export const LedgerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}",
     apiVersion: "2022-05-13",
+    longRunning: {},
   }),
 );
 export type LedgerUpdateInput = typeof LedgerUpdateInput.Type;

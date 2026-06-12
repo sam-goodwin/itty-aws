@@ -65,6 +65,7 @@ export const ActiveDirectoryConnectorsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ActiveDirectoryConnectorsCreateInput =
@@ -111,6 +112,7 @@ export const ActiveDirectoryConnectorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type ActiveDirectoryConnectorsDeleteInput =
@@ -245,6 +247,7 @@ export const DataControllersDeleteDataControllerInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type DataControllersDeleteDataControllerInput =
@@ -509,6 +512,7 @@ export const DataControllersPatchDataControllerInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DataControllersPatchDataControllerInput =
@@ -628,6 +632,7 @@ export const DataControllersPutDataControllerInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DataControllersPutDataControllerInput =
@@ -697,6 +702,7 @@ export const FailoverGroupsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FailoverGroupsCreateInput = typeof FailoverGroupsCreateInput.Type;
@@ -742,6 +748,7 @@ export const FailoverGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type FailoverGroupsDeleteInput = typeof FailoverGroupsDeleteInput.Type;
@@ -945,6 +952,7 @@ export const PostgresInstancesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PostgresInstancesCreateInput =
@@ -994,6 +1002,7 @@ export const PostgresInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type PostgresInstancesDeleteInput =
@@ -1370,6 +1379,7 @@ export const SqlManagedInstancesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlManagedInstancesCreateInput =
@@ -1419,6 +1429,7 @@ export const SqlManagedInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type SqlManagedInstancesDeleteInput =
@@ -2010,6 +2021,7 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/createAvailabilityGroup",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupInput =
@@ -2097,6 +2109,7 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput 
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/createDistributedAvailabilityGroup",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput =
@@ -2278,6 +2291,7 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/createManagedInstanceLink",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput =
@@ -2329,6 +2343,7 @@ export const SqlServerAvailabilityGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type SqlServerAvailabilityGroupsDeleteInput =
@@ -2362,6 +2377,7 @@ export const SqlServerAvailabilityGroupsDeleteMiLinkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/deleteMiLink",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerAvailabilityGroupsDeleteMiLinkInput =
@@ -2498,6 +2514,7 @@ export const SqlServerAvailabilityGroupsFailoverMiLinkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/failoverMiLink",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerAvailabilityGroupsFailoverMiLinkInput =
@@ -2944,6 +2961,7 @@ export const SqlServerAvailabilityGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerAvailabilityGroupsUpdateInput =
@@ -3336,6 +3354,7 @@ export const SqlServerDatabasesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type SqlServerDatabasesDeleteInput =
@@ -3783,6 +3802,7 @@ export const SqlServerDatabasesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerDatabasesUpdateInput =
@@ -4742,6 +4762,7 @@ export const SqlServerInstancesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerInstancesCreateInput =
@@ -4789,6 +4810,7 @@ export const SqlServerInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
       apiVersion: "2026-01-01",
+      longRunning: {},
     }),
   );
 export type SqlServerInstancesDeleteInput =
@@ -4935,6 +4957,7 @@ export const SqlServerInstancesGetBestPracticesAssessmentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/getBestPracticesAssessment",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerInstancesGetBestPracticesAssessmentInput =
@@ -5099,6 +5122,7 @@ export const SqlServerInstancesGetTelemetryInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/getTelemetry",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerInstancesGetTelemetryInput =
@@ -5489,6 +5513,7 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessmentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/runManagedInstanceLinkAssessment",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerInstancesRunManagedInstanceLinkAssessmentInput =
@@ -6190,6 +6215,7 @@ export const SqlServerInstancesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlServerInstancesUpdateInput =

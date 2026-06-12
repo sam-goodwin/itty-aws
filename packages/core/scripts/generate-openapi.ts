@@ -69,6 +69,11 @@ interface Operation2 {
   parameters?: Parameter2[];
   responses: Record<string, Response2>;
   deprecated?: boolean;
+  /** Azure ARM: marks the operation as a long-running (async) operation. */
+  "x-ms-long-running-operation"?: boolean;
+  "x-ms-long-running-operation-options"?: {
+    "final-state-via"?: string;
+  };
 }
 
 interface Parameter2 {
@@ -695,6 +700,23 @@ interface GeneratedOperation {
   exports: string[];
 }
 
+/**
+ * Extract the long-running-operation marker from a Swagger operation. Returns
+ * `undefined` for synchronous operations; otherwise `{ finalStateVia }` where
+ * `finalStateVia` comes from `x-ms-long-running-operation-options` (absent for
+ * ARM's default resolution). Emitted into the `T.Http` trait so the client
+ * polls the operation to completion.
+ */
+function getLongRunning(
+  operation: Operation2,
+): { finalStateVia?: string } | undefined {
+  if (operation["x-ms-long-running-operation"] !== true) return undefined;
+  return {
+    finalStateVia:
+      operation["x-ms-long-running-operation-options"]?.["final-state-via"],
+  };
+}
+
 function generateInputSchemaSwagger(
   operationId: string,
   method: string,
@@ -703,6 +725,7 @@ function generateInputSchemaSwagger(
   spec: Swagger2Spec,
   ctx?: SchemaGenerationContext,
   apiVersion?: string,
+  longRunning?: { finalStateVia?: string },
 ): { inputSchemaCode: string; inputSchemaName: string } {
   const inputSchemaName = `${toPascalCase(operationId)}Input`;
   const pathParams = parameters.filter((p) => p.in === "path");
@@ -808,6 +831,13 @@ function generateInputSchemaSwagger(
   ];
   if (apiVersion) {
     swaggerHttpTraitParts.push(`apiVersion: "${apiVersion}"`);
+  }
+  if (longRunning) {
+    swaggerHttpTraitParts.push(
+      longRunning.finalStateVia
+        ? `longRunning: { finalStateVia: "${longRunning.finalStateVia}" }`
+        : "longRunning: {}",
+    );
   }
   const inputSchemaCode =
     annotatePureExportConst(`export const ${inputSchemaName} = Schema.Struct({
@@ -1309,6 +1339,7 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
               swagger,
               sensitiveCtx,
               config.apiVersion,
+              getLongRunning(operation),
             );
 
           const responseSchema = getResponseSchema(

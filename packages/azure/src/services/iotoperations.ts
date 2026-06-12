@@ -73,6 +73,7 @@ export const AkriConnectorCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AkriConnectorCreateOrUpdateInput =
@@ -132,6 +133,7 @@ export const AkriConnectorDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AkriConnectorDeleteInput = typeof AkriConnectorDeleteInput.Type;
@@ -365,6 +367,7 @@ export const AkriConnectorTemplateCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AkriConnectorTemplateCreateOrUpdateInput =
@@ -421,6 +424,7 @@ export const AkriConnectorTemplateDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AkriConnectorTemplateDeleteInput =
@@ -627,6 +631,7 @@ export const AkriServiceCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AkriServiceCreateOrUpdateInput =
@@ -685,6 +690,7 @@ export const AkriServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
     apiVersion: "2026-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AkriServiceDeleteInput = typeof AkriServiceDeleteInput.Type;
@@ -907,6 +913,7 @@ export const BrokerAuthenticationCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BrokerAuthenticationCreateOrUpdateInput =
@@ -965,6 +972,7 @@ export const BrokerAuthenticationDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BrokerAuthenticationDeleteInput =
@@ -1196,6 +1204,7 @@ export const BrokerAuthorizationCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BrokerAuthorizationCreateOrUpdateInput =
@@ -1254,6 +1263,7 @@ export const BrokerAuthorizationDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BrokerAuthorizationDeleteInput =
@@ -1780,6 +1790,7 @@ export const BrokerCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BrokerCreateOrUpdateInput = typeof BrokerCreateOrUpdateInput.Type;
@@ -1834,6 +1845,7 @@ export const BrokerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
     apiVersion: "2026-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type BrokerDeleteInput = typeof BrokerDeleteInput.Type;
@@ -2069,6 +2081,7 @@ export const BrokerListenerCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BrokerListenerCreateOrUpdateInput =
@@ -2127,6 +2140,7 @@ export const BrokerListenerDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BrokerListenerDeleteInput = typeof BrokerListenerDeleteInput.Type;
@@ -2425,6 +2439,7 @@ export const DataflowCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DataflowCreateOrUpdateInput =
@@ -2483,6 +2498,7 @@ export const DataflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
     apiVersion: "2026-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DataflowDeleteInput = typeof DataflowDeleteInput.Type;
@@ -2816,6 +2832,7 @@ export const DataflowEndpointCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DataflowEndpointCreateOrUpdateInput =
@@ -2872,6 +2889,7 @@ export const DataflowEndpointDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DataflowEndpointDeleteInput =
@@ -3159,6 +3177,7 @@ export const DataflowGraphCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DataflowGraphCreateOrUpdateInput =
@@ -3218,6 +3237,7 @@ export const DataflowGraphDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DataflowGraphDeleteInput = typeof DataflowGraphDeleteInput.Type;
@@ -3510,6 +3530,7 @@ export const DataflowProfileCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DataflowProfileCreateOrUpdateInput =
@@ -3566,6 +3587,7 @@ export const DataflowProfileDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DataflowProfileDeleteInput = typeof DataflowProfileDeleteInput.Type;
@@ -3801,6 +3823,7 @@ export const InstanceCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type InstanceCreateOrUpdateInput =
@@ -3855,6 +3878,7 @@ export const InstanceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
     apiVersion: "2026-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type InstanceDeleteInput = typeof InstanceDeleteInput.Type;
@@ -4230,6 +4254,7 @@ export const RegistryEndpointCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RegistryEndpointCreateOrUpdateInput =
@@ -4286,6 +4311,7 @@ export const RegistryEndpointDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryEndpointDeleteInput =

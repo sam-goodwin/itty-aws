@@ -86,6 +86,7 @@ export const AvailabilityGroupListenersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AvailabilityGroupListenersCreateOrUpdateInput =
@@ -142,6 +143,7 @@ export const AvailabilityGroupListenersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AvailabilityGroupListenersDeleteInput =
@@ -379,6 +381,7 @@ export const SqlVirtualMachineGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlVirtualMachineGroupsCreateOrUpdateInput =
@@ -433,6 +436,7 @@ export const SqlVirtualMachineGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlVirtualMachineGroupsDeleteInput =
@@ -658,6 +662,7 @@ export const SqlVirtualMachineGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlVirtualMachineGroupsUpdateInput =
@@ -978,6 +983,7 @@ export const SqlVirtualMachinesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlVirtualMachinesCreateOrUpdateInput =
@@ -1032,6 +1038,7 @@ export const SqlVirtualMachinesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlVirtualMachinesDeleteInput =
@@ -1070,6 +1077,7 @@ export const SqlVirtualMachinesFetchDCAssessmentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/fetchDCAssessment",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlVirtualMachinesFetchDCAssessmentInput =
@@ -1364,6 +1372,7 @@ export const SqlVirtualMachinesRedeployInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/redeploy",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlVirtualMachinesRedeployInput =
@@ -1401,6 +1410,7 @@ export const SqlVirtualMachinesStartAssessmentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/startAssessment",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlVirtualMachinesStartAssessmentInput =
@@ -1438,6 +1448,7 @@ export const SqlVirtualMachinesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlVirtualMachinesUpdateInput =
@@ -1508,6 +1519,7 @@ export const SqlVirtualMachineTroubleshootTroubleshootInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/troubleshoot",
       apiVersion: "2023-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlVirtualMachineTroubleshootTroubleshootInput =

@@ -86,6 +86,7 @@ export const TriggersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
       apiVersion: "2025-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TriggersCreateOrUpdateInput =
@@ -138,6 +139,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
     apiVersion: "2025-10-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
@@ -283,6 +285,7 @@ export const VirtualMachineImageTemplatesCancelInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/cancel",
       apiVersion: "2025-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineImageTemplatesCancelInput =
@@ -494,6 +497,7 @@ export const VirtualMachineImageTemplatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
       apiVersion: "2025-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineImageTemplatesCreateOrUpdateInput =
@@ -546,6 +550,7 @@ export const VirtualMachineImageTemplatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
       apiVersion: "2025-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineImageTemplatesDeleteInput =
@@ -889,6 +894,7 @@ export const VirtualMachineImageTemplatesRunInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run",
       apiVersion: "2025-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineImageTemplatesRunInput =
@@ -969,6 +975,7 @@ export const VirtualMachineImageTemplatesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
       apiVersion: "2025-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineImageTemplatesUpdateInput =

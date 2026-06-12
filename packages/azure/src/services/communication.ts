@@ -110,6 +110,7 @@ export const CommunicationServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}",
       apiVersion: "2026-03-18",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CommunicationServicesCreateOrUpdateInput =
@@ -166,6 +167,7 @@ export const CommunicationServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}",
       apiVersion: "2026-03-18",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CommunicationServicesDeleteInput =
@@ -623,6 +625,7 @@ export const DomainsCancelVerificationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/cancelVerification",
       apiVersion: "2026-03-18",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DomainsCancelVerificationInput =
@@ -817,6 +820,7 @@ export const DomainsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
       apiVersion: "2026-03-18",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
@@ -874,6 +878,7 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
     apiVersion: "2026-03-18",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
@@ -970,6 +975,7 @@ export const DomainsInitiateVerificationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/initiateVerification",
       apiVersion: "2026-03-18",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DomainsInitiateVerificationInput =
@@ -1089,6 +1095,7 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
     apiVersion: "2026-03-18",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
@@ -1162,6 +1169,7 @@ export const EmailServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
       apiVersion: "2026-03-18",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EmailServicesCreateOrUpdateInput =
@@ -1219,6 +1227,7 @@ export const EmailServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
       apiVersion: "2026-03-18",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EmailServicesDeleteInput = typeof EmailServicesDeleteInput.Type;
@@ -1478,6 +1487,7 @@ export const EmailServicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
       apiVersion: "2026-03-18",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EmailServicesUpdateInput = typeof EmailServicesUpdateInput.Type;

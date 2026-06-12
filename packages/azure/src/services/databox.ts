@@ -699,6 +699,7 @@ export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type JobsCreateInput = typeof JobsCreateInput.Type;
@@ -748,6 +749,7 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type JobsDeleteInput = typeof JobsDeleteInput.Type;
@@ -1229,6 +1231,7 @@ export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type JobsUpdateInput = typeof JobsUpdateInput.Type;

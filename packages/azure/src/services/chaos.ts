@@ -384,6 +384,7 @@ export const ExperimentsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/cancel",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExperimentsCancelInput = typeof ExperimentsCancelInput.Type;
@@ -478,6 +479,7 @@ export const ExperimentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExperimentsCreateOrUpdateInput =
@@ -534,6 +536,7 @@ export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExperimentsDeleteInput = typeof ExperimentsDeleteInput.Type;
@@ -967,6 +970,7 @@ export const ExperimentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/start",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExperimentsStartInput = typeof ExperimentsStartInput.Type;
@@ -1022,6 +1026,7 @@ export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExperimentsUpdateInput = typeof ExperimentsUpdateInput.Type;

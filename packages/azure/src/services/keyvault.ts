@@ -961,6 +961,7 @@ export const ManagedHsmsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedHsmsCreateOrUpdateInput =
@@ -1017,6 +1018,7 @@ export const ManagedHsmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ManagedHsmsDeleteInput = typeof ManagedHsmsDeleteInput.Type;
@@ -1354,6 +1356,7 @@ export const ManagedHsmsPurgeDeletedInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/locations/{location}/deletedManagedHSMs/{name}/purge",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedHsmsPurgeDeletedInput =
@@ -1551,6 +1554,7 @@ export const ManagedHsmsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ManagedHsmsUpdateInput = typeof ManagedHsmsUpdateInput.Type;
@@ -1603,6 +1607,7 @@ export const MHSMPrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MHSMPrivateEndpointConnectionsDeleteInput =
@@ -2125,6 +2130,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -2938,6 +2944,7 @@ export const VaultsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VaultsCreateOrUpdateInput = typeof VaultsCreateOrUpdateInput.Type;
@@ -3377,6 +3384,7 @@ export const VaultsPurgeDeletedInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/locations/{location}/deletedVaults/{vaultName}/purge",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VaultsPurgeDeletedInput = typeof VaultsPurgeDeletedInput.Type;

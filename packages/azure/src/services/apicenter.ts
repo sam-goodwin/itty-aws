@@ -140,6 +140,7 @@ export const ApiDefinitionsExportSpecificationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions/{definitionName}/exportSpecification",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiDefinitionsExportSpecificationInput =
@@ -255,6 +256,7 @@ export const ApiDefinitionsImportSpecificationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions/{definitionName}/importSpecification",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiDefinitionsImportSpecificationInput =
@@ -1725,6 +1727,7 @@ export const ServicesExportMetadataSchemaInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/exportMetadataSchema",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServicesExportMetadataSchemaInput =

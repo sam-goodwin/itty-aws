@@ -97,6 +97,7 @@ export const RetentionPoliciesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RetentionPoliciesCreateOrReplaceInput =
@@ -151,6 +152,7 @@ export const RetentionPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RetentionPoliciesDeleteInput =
@@ -340,6 +342,7 @@ export const RetentionPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RetentionPoliciesUpdateInput =
@@ -455,6 +458,7 @@ export const SchedulersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SchedulersCreateOrUpdateInput =
@@ -548,6 +552,7 @@ export const SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
@@ -603,6 +608,7 @@ export const SchedulersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SchedulersDeleteInput = typeof SchedulersDeleteInput.Type;
@@ -636,6 +642,7 @@ export const SchedulersDeletePrivateEndpointConnectionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SchedulersDeletePrivateEndpointConnectionInput =
@@ -1133,6 +1140,7 @@ export const SchedulersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SchedulersUpdateInput = typeof SchedulersUpdateInput.Type;
@@ -1204,6 +1212,7 @@ export const SchedulersUpdatePrivateEndpointConnectionInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SchedulersUpdatePrivateEndpointConnectionInput =
@@ -1276,6 +1285,7 @@ export const TaskHubsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TaskHubsCreateOrUpdateInput =
@@ -1332,6 +1342,7 @@ export const TaskHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TaskHubsDeleteInput = typeof TaskHubsDeleteInput.Type;

@@ -55,6 +55,7 @@ export const CaCertificatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CaCertificatesCreateOrUpdateInput =
@@ -96,6 +97,7 @@ export const CaCertificatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CaCertificatesDeleteInput = typeof CaCertificatesDeleteInput.Type;
@@ -320,6 +322,7 @@ export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}",
     apiVersion: "2025-02-15",
+    longRunning: {},
   }),
 );
 export type ChannelsDeleteInput = typeof ChannelsDeleteInput.Type;
@@ -562,6 +565,7 @@ export const ClientGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clientGroups/{clientGroupName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ClientGroupsCreateOrUpdateInput =
@@ -604,6 +608,7 @@ export const ClientGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clientGroups/{clientGroupName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClientGroupsDeleteInput = typeof ClientGroupsDeleteInput.Type;
@@ -773,6 +778,7 @@ export const ClientsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clients/{clientName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ClientsCreateOrUpdateInput = typeof ClientsCreateOrUpdateInput.Type;
@@ -813,6 +819,7 @@ export const ClientsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clients/{clientName}",
     apiVersion: "2025-02-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClientsDeleteInput = typeof ClientsDeleteInput.Type;
@@ -1078,6 +1085,7 @@ export const DomainEventSubscriptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type DomainEventSubscriptionsCreateOrUpdateInput =
@@ -1119,6 +1127,7 @@ export const DomainEventSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type DomainEventSubscriptionsDeleteInput =
@@ -1445,6 +1454,7 @@ export const DomainEventSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type DomainEventSubscriptionsUpdateInput =
@@ -1597,6 +1607,7 @@ export const DomainsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
@@ -1635,6 +1646,7 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
     apiVersion: "2025-02-15",
+    longRunning: {},
   }),
 );
 export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
@@ -1926,6 +1938,7 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
     apiVersion: "2025-02-15",
+    longRunning: {},
   }),
 );
 export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
@@ -2108,6 +2121,7 @@ export const DomainTopicEventSubscriptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type DomainTopicEventSubscriptionsCreateOrUpdateInput =
@@ -2151,6 +2165,7 @@ export const DomainTopicEventSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type DomainTopicEventSubscriptionsDeleteInput =
@@ -2486,6 +2501,7 @@ export const DomainTopicEventSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type DomainTopicEventSubscriptionsUpdateInput =
@@ -2528,6 +2544,7 @@ export const DomainTopicsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{domainTopicName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type DomainTopicsCreateOrUpdateInput =
@@ -2570,6 +2587,7 @@ export const DomainTopicsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{domainTopicName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type DomainTopicsDeleteInput = typeof DomainTopicsDeleteInput.Type;
@@ -2834,6 +2852,7 @@ export const EventSubscriptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type EventSubscriptionsCreateOrUpdateInput =
@@ -2873,6 +2892,7 @@ export const EventSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type EventSubscriptionsDeleteInput =
@@ -3603,6 +3623,7 @@ export const EventSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type EventSubscriptionsUpdateInput =
@@ -3858,6 +3879,7 @@ export const NamespacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NamespacesCreateOrUpdateInput =
@@ -3897,6 +3919,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
     apiVersion: "2025-02-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
@@ -4085,6 +4108,7 @@ export const NamespacesRegenerateKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/regenerateKey",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespacesRegenerateKeyInput =
@@ -4260,6 +4284,7 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
     apiVersion: "2025-02-15",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
@@ -4297,6 +4322,7 @@ export const NamespacesValidateCustomDomainOwnershipInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/validateCustomDomainOwnership",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespacesValidateCustomDomainOwnershipInput =
@@ -4552,6 +4578,7 @@ export const NamespaceTopicEventSubscriptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NamespaceTopicEventSubscriptionsCreateOrUpdateInput =
@@ -4595,6 +4622,7 @@ export const NamespaceTopicEventSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceTopicEventSubscriptionsDeleteInput =
@@ -4949,6 +4977,7 @@ export const NamespaceTopicEventSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NamespaceTopicEventSubscriptionsUpdateInput =
@@ -5029,6 +5058,7 @@ export const NamespaceTopicsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NamespaceTopicsCreateOrUpdateInput =
@@ -5070,6 +5100,7 @@ export const NamespaceTopicsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceTopicsDeleteInput = typeof NamespaceTopicsDeleteInput.Type;
@@ -5232,6 +5263,7 @@ export const NamespaceTopicsRegenerateKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/regenerateKey",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceTopicsRegenerateKeyInput =
@@ -5277,6 +5309,7 @@ export const NamespaceTopicsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NamespaceTopicsUpdateInput = typeof NamespaceTopicsUpdateInput.Type;
@@ -5452,6 +5485,7 @@ export const PartnerConfigurationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerConfigurationsCreateOrUpdateInput =
@@ -5489,6 +5523,7 @@ export const PartnerConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerConfigurationsDeleteInput =
@@ -5691,6 +5726,7 @@ export const PartnerConfigurationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerConfigurationsUpdateInput =
@@ -5789,6 +5825,7 @@ export const PartnerNamespacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerNamespacesCreateOrUpdateInput =
@@ -5828,6 +5865,7 @@ export const PartnerNamespacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerNamespacesDeleteInput =
@@ -6083,6 +6121,7 @@ export const PartnerNamespacesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerNamespacesUpdateInput =
@@ -6150,6 +6189,7 @@ export const PartnerRegistrationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerRegistrationsCreateOrUpdateInput =
@@ -6189,6 +6229,7 @@ export const PartnerRegistrationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerRegistrationsDeleteInput =
@@ -6350,6 +6391,7 @@ export const PartnerRegistrationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerRegistrationsUpdateInput =
@@ -6536,6 +6578,7 @@ export const PartnerTopicEventSubscriptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerTopicEventSubscriptionsCreateOrUpdateInput =
@@ -6577,6 +6620,7 @@ export const PartnerTopicEventSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerTopicEventSubscriptionsDeleteInput =
@@ -6902,6 +6946,7 @@ export const PartnerTopicEventSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerTopicEventSubscriptionsUpdateInput =
@@ -7139,6 +7184,7 @@ export const PartnerTopicsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PartnerTopicsDeleteInput = typeof PartnerTopicsDeleteInput.Type;
@@ -7386,6 +7432,7 @@ export const PermissionBindingsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/permissionBindings/{permissionBindingName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PermissionBindingsCreateOrUpdateInput =
@@ -7427,6 +7474,7 @@ export const PermissionBindingsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/permissionBindings/{permissionBindingName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PermissionBindingsDeleteInput =
@@ -7558,6 +7606,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -7740,6 +7789,7 @@ export const PrivateEndpointConnectionsUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsUpdateInput =
@@ -8039,6 +8089,7 @@ export const SystemTopicEventSubscriptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type SystemTopicEventSubscriptionsCreateOrUpdateInput =
@@ -8080,6 +8131,7 @@ export const SystemTopicEventSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type SystemTopicEventSubscriptionsDeleteInput =
@@ -8405,6 +8457,7 @@ export const SystemTopicEventSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type SystemTopicEventSubscriptionsUpdateInput =
@@ -8501,6 +8554,7 @@ export const SystemTopicsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type SystemTopicsCreateOrUpdateInput =
@@ -8541,6 +8595,7 @@ export const SystemTopicsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type SystemTopicsDeleteInput = typeof SystemTopicsDeleteInput.Type;
@@ -8714,6 +8769,7 @@ export const SystemTopicsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type SystemTopicsUpdateInput = typeof SystemTopicsUpdateInput.Type;
@@ -8900,6 +8956,7 @@ export const TopicEventSubscriptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type TopicEventSubscriptionsCreateOrUpdateInput =
@@ -8941,6 +8998,7 @@ export const TopicEventSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type TopicEventSubscriptionsDeleteInput =
@@ -9268,6 +9326,7 @@ export const TopicEventSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type TopicEventSubscriptionsUpdateInput =
@@ -9418,6 +9477,7 @@ export const TopicsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type TopicsCreateOrUpdateInput = typeof TopicsCreateOrUpdateInput.Type;
@@ -9455,6 +9515,7 @@ export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
     apiVersion: "2025-02-15",
+    longRunning: {},
   }),
 );
 export type TopicsDeleteInput = typeof TopicsDeleteInput.Type;
@@ -9728,6 +9789,7 @@ export const TopicSpacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces/{topicSpaceName}",
       apiVersion: "2025-02-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TopicSpacesCreateOrUpdateInput =
@@ -9771,6 +9833,7 @@ export const TopicSpacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces/{topicSpaceName}",
     apiVersion: "2025-02-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TopicSpacesDeleteInput = typeof TopicSpacesDeleteInput.Type;
@@ -9887,6 +9950,7 @@ export const TopicsRegenerateKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/regenerateKey",
       apiVersion: "2025-02-15",
+      longRunning: {},
     }),
   );
 export type TopicsRegenerateKeyInput = typeof TopicsRegenerateKeyInput.Type;
@@ -9983,6 +10047,7 @@ export const TopicsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
     apiVersion: "2025-02-15",
+    longRunning: {},
   }),
 );
 export type TopicsUpdateInput = typeof TopicsUpdateInput.Type;

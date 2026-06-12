@@ -135,6 +135,7 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
     apiVersion: "2022-11-08",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ClustersCreateInput = typeof ClustersCreateInput.Type;
@@ -182,6 +183,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
     apiVersion: "2022-11-08",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -391,6 +393,7 @@ export const ClustersPromoteReadReplicaInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/promote",
       apiVersion: "2022-11-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersPromoteReadReplicaInput =
@@ -425,6 +428,7 @@ export const ClustersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/restart",
     apiVersion: "2022-11-08",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersRestartInput = typeof ClustersRestartInput.Type;
@@ -454,6 +458,7 @@ export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/start",
     apiVersion: "2022-11-08",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersStartInput = typeof ClustersStartInput.Type;
@@ -483,6 +488,7 @@ export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/stop",
     apiVersion: "2022-11-08",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersStopInput = typeof ClustersStopInput.Type;
@@ -540,6 +546,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
     apiVersion: "2022-11-08",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -898,6 +905,7 @@ export const ConfigurationsUpdateOnCoordinatorInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/coordinatorConfigurations/{configurationName}",
       apiVersion: "2022-11-08",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigurationsUpdateOnCoordinatorInput =
@@ -966,6 +974,7 @@ export const ConfigurationsUpdateOnNodeInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/nodeConfigurations/{configurationName}",
       apiVersion: "2022-11-08",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigurationsUpdateOnNodeInput =
@@ -1026,6 +1035,7 @@ export const FirewallRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
       apiVersion: "2022-11-08",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -1079,6 +1089,7 @@ export const FirewallRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
       apiVersion: "2022-11-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -1315,6 +1326,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2022-11-08",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1368,6 +1380,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2022-11-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1648,6 +1661,7 @@ export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}",
     apiVersion: "2022-11-08",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RolesCreateInput = typeof RolesCreateInput.Type;
@@ -1695,6 +1709,7 @@ export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}",
     apiVersion: "2022-11-08",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RolesDeleteInput = typeof RolesDeleteInput.Type;

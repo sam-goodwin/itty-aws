@@ -33,6 +33,7 @@ export const ControllerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controller/{resourceName}",
     apiVersion: "2021-03-15",
+    longRunning: {},
   }),
 );
 export type ControllerCreateInput = typeof ControllerCreateInput.Type;
@@ -70,6 +71,7 @@ export const ControllerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controller/{resourceName}",
     apiVersion: "2021-03-15",
+    longRunning: {},
   }),
 );
 export type ControllerDeleteInput = typeof ControllerDeleteInput.Type;
@@ -263,6 +265,7 @@ export const DelegatedSubnetServiceDeleteDetailsInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
       apiVersion: "2021-03-15",
+      longRunning: {},
     }),
   );
 export type DelegatedSubnetServiceDeleteDetailsInput =
@@ -426,6 +429,7 @@ export const DelegatedSubnetServicePatchDetailsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
       apiVersion: "2021-03-15",
+      longRunning: {},
     }),
   );
 export type DelegatedSubnetServicePatchDetailsInput =
@@ -489,6 +493,7 @@ export const DelegatedSubnetServicePutDetailsInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
       apiVersion: "2021-03-15",
+      longRunning: {},
     }),
   );
 export type DelegatedSubnetServicePutDetailsInput =
@@ -606,6 +611,7 @@ export const OrchestratorInstanceServiceCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators/{resourceName}",
       apiVersion: "2021-03-15",
+      longRunning: {},
     }),
   );
 export type OrchestratorInstanceServiceCreateInput =
@@ -654,6 +660,7 @@ export const OrchestratorInstanceServiceDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators/{resourceName}",
       apiVersion: "2021-03-15",
+      longRunning: {},
     }),
   );
 export type OrchestratorInstanceServiceDeleteInput =

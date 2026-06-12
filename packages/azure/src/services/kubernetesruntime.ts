@@ -36,6 +36,7 @@ export const BgpPeersCreateOrUpdateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BgpPeersCreateOrUpdateInput =
@@ -229,6 +230,7 @@ export const LoadBalancersCreateOrUpdateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LoadBalancersCreateOrUpdateInput =
@@ -698,6 +700,7 @@ export const StorageClassCreateOrUpdateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageClassCreateOrUpdateInput =
@@ -749,6 +752,7 @@ export const StorageClassDeleteInput =
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageClassDeleteInput = typeof StorageClassDeleteInput.Type;
@@ -927,6 +931,7 @@ export const StorageClassUpdateInput =
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageClassUpdateInput = typeof StorageClassUpdateInput.Type;

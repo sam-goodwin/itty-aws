@@ -209,6 +209,7 @@ export const AzureLargeInstanceRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/restart",
       apiVersion: "2024-04-10",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureLargeInstanceRestartInput =
@@ -300,6 +301,7 @@ export const AzureLargeInstanceShutdownInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/shutdown",
       apiVersion: "2024-04-10",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureLargeInstanceShutdownInput =
@@ -391,6 +393,7 @@ export const AzureLargeInstanceStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/start",
       apiVersion: "2024-04-10",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureLargeInstanceStartInput =

@@ -723,6 +723,7 @@ export const BlobContainersObjectLevelWormInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BlobContainersObjectLevelWormInput =
@@ -1519,6 +1520,7 @@ export const ConnectorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ConnectorsCreateInput = typeof ConnectorsCreateInput.Type;
@@ -1572,6 +1574,7 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ConnectorsDeleteInput = typeof ConnectorsDeleteInput.Type;
@@ -1727,6 +1730,7 @@ export const ConnectorsTestExistingConnectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}/testExistingConnection",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectorsTestExistingConnectionInput =
@@ -1784,6 +1788,7 @@ export const ConnectorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ConnectorsUpdateInput = typeof ConnectorsUpdateInput.Type;
@@ -1867,6 +1872,7 @@ export const DataSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DataSharesCreateInput = typeof DataSharesCreateInput.Type;
@@ -1920,6 +1926,7 @@ export const DataSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DataSharesDeleteInput = typeof DataSharesDeleteInput.Type;
@@ -2096,6 +2103,7 @@ export const DataSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DataSharesUpdateInput = typeof DataSharesUpdateInput.Type;
@@ -4197,6 +4205,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsReconcileInput =
@@ -5433,6 +5442,7 @@ export const StorageAccountsAbortHierarchicalNamespaceMigrationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAccountsAbortHierarchicalNamespaceMigrationInput =
@@ -5837,6 +5847,7 @@ export const StorageAccountsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAccountsCreateInput = typeof StorageAccountsCreateInput.Type;
@@ -5920,6 +5931,7 @@ export const StorageAccountsCustomerInitiatedMigrationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAccountsCustomerInitiatedMigrationInput =
@@ -5993,6 +6005,7 @@ export const StorageAccountsFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAccountsFailoverInput =
@@ -6146,6 +6159,7 @@ export const StorageAccountsHierarchicalNamespaceMigrationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAccountsHierarchicalNamespaceMigrationInput =
@@ -6521,6 +6535,7 @@ export const StorageAccountsRestoreBlobRangesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAccountsRestoreBlobRangesInput =
@@ -7125,6 +7140,7 @@ export const StorageTaskAssignmentsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTaskAssignmentsCreateInput =
@@ -7181,6 +7197,7 @@ export const StorageTaskAssignmentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageTaskAssignmentsDeleteInput =
@@ -7421,6 +7438,7 @@ export const StorageTaskAssignmentsStopAssignmentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/stopAssignment",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTaskAssignmentsStopAssignmentInput =
@@ -7531,6 +7549,7 @@ export const StorageTaskAssignmentsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTaskAssignmentsUpdateInput =

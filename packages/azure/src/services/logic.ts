@@ -3500,6 +3500,7 @@ export const IntegrationServiceEnvironmentManagedApisDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis/{apiName}",
       apiVersion: "2019-05-01",
+      longRunning: {},
     }),
   );
 export type IntegrationServiceEnvironmentManagedApisDeleteInput =
@@ -3792,6 +3793,7 @@ export const IntegrationServiceEnvironmentManagedApisPutInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis/{apiName}",
       apiVersion: "2019-05-01",
+      longRunning: {},
     }),
   );
 export type IntegrationServiceEnvironmentManagedApisPutInput =
@@ -4087,6 +4089,7 @@ export const IntegrationServiceEnvironmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}",
       apiVersion: "2019-05-01",
+      longRunning: {},
     }),
   );
 export type IntegrationServiceEnvironmentsCreateOrUpdateInput =
@@ -4529,6 +4532,7 @@ export const IntegrationServiceEnvironmentsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}",
       apiVersion: "2019-05-01",
+      longRunning: {},
     }),
   );
 export type IntegrationServiceEnvironmentsUpdateInput =
@@ -5999,6 +6003,7 @@ export const WorkflowsMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/move",
     apiVersion: "2019-05-01",
+    longRunning: {},
   }),
 );
 export type WorkflowsMoveInput = typeof WorkflowsMoveInput.Type;

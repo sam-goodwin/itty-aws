@@ -651,6 +651,7 @@ export const IotDpsResourceCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
       apiVersion: "2022-12-12",
+      longRunning: {},
     }),
   );
 export type IotDpsResourceCreateOrUpdateInput =
@@ -726,6 +727,7 @@ export const IotDpsResourceCreateOrUpdatePrivateEndpointConnectionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2022-12-12",
+      longRunning: {},
     }),
   );
 export type IotDpsResourceCreateOrUpdatePrivateEndpointConnectionInput =
@@ -793,6 +795,7 @@ export const IotDpsResourceDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
       apiVersion: "2022-12-12",
+      longRunning: {},
     }),
   );
 export type IotDpsResourceDeleteInput = typeof IotDpsResourceDeleteInput.Type;
@@ -824,6 +827,7 @@ export const IotDpsResourceDeletePrivateEndpointConnectionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2022-12-12",
+      longRunning: {},
     }),
   );
 export type IotDpsResourceDeletePrivateEndpointConnectionInput =
@@ -1430,6 +1434,7 @@ export const IotDpsResourceUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
       apiVersion: "2022-12-12",
+      longRunning: {},
     }),
   );
 export type IotDpsResourceUpdateInput = typeof IotDpsResourceUpdateInput.Type;

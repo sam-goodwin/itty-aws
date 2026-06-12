@@ -23,6 +23,7 @@ export const AddonsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AddonsCreateOrUpdateInput = typeof AddonsCreateOrUpdateInput.Type;
@@ -79,6 +80,7 @@ export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AddonsDeleteInput = typeof AddonsDeleteInput.Type;
@@ -487,6 +489,7 @@ export const BandwidthSchedulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BandwidthSchedulesCreateOrUpdateInput =
@@ -543,6 +546,7 @@ export const BandwidthSchedulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BandwidthSchedulesDeleteInput =
@@ -729,6 +733,7 @@ export const ContainersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainersCreateOrUpdateInput =
@@ -787,6 +792,7 @@ export const ContainersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ContainersDeleteInput = typeof ContainersDeleteInput.Type;
@@ -948,6 +954,7 @@ export const ContainersRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}/refresh",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ContainersRefreshInput = typeof ContainersRefreshInput.Type;
@@ -996,6 +1003,7 @@ export const DeviceCapacityCheckCheckResourceCreationFeasibilityInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/deviceCapacityCheck",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeviceCapacityCheckCheckResourceCreationFeasibilityInput =
@@ -1334,6 +1342,7 @@ export const DevicesCreateOrUpdateSecuritySettingsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/securitySettings/default/update",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DevicesCreateOrUpdateSecuritySettingsInput =
@@ -1369,6 +1378,7 @@ export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DevicesDeleteInput = typeof DevicesDeleteInput.Type;
@@ -1401,6 +1411,7 @@ export const DevicesDownloadUpdatesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/downloadUpdates",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DevicesDownloadUpdatesInput =
@@ -1678,6 +1689,7 @@ export const DevicesInstallUpdatesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/installUpdates",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DevicesInstallUpdatesInput = typeof DevicesInstallUpdatesInput.Type;
@@ -1852,6 +1864,7 @@ export const DevicesScanForUpdatesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/scanForUpdates",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DevicesScanForUpdatesInput = typeof DevicesScanForUpdatesInput.Type;
@@ -2181,6 +2194,7 @@ export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInp
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticProactiveLogCollectionSettings/default",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInput =
@@ -2257,6 +2271,7 @@ export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticRemoteSupportSettings/default",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput =
@@ -2398,6 +2413,7 @@ export const MonitoringConfigCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MonitoringConfigCreateOrUpdateInput =
@@ -2454,6 +2470,7 @@ export const MonitoringConfigDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MonitoringConfigDeleteInput =
@@ -2964,6 +2981,7 @@ export const OrdersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OrdersCreateOrUpdateInput = typeof OrdersCreateOrUpdateInput.Type;
@@ -3016,6 +3034,7 @@ export const OrdersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type OrdersDeleteInput = typeof OrdersDeleteInput.Type;
@@ -3219,6 +3238,7 @@ export const RolesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{name}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RolesCreateOrUpdateInput = typeof RolesCreateOrUpdateInput.Type;
@@ -3271,6 +3291,7 @@ export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{name}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RolesDeleteInput = typeof RolesDeleteInput.Type;
@@ -3494,6 +3515,7 @@ export const SharesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SharesCreateOrUpdateInput = typeof SharesCreateOrUpdateInput.Type;
@@ -3548,6 +3570,7 @@ export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SharesDeleteInput = typeof SharesDeleteInput.Type;
@@ -3701,6 +3724,7 @@ export const SharesRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}/refresh",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SharesRefreshInput = typeof SharesRefreshInput.Type;
@@ -3755,6 +3779,7 @@ export const StorageAccountCredentialsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials/{name}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAccountCredentialsCreateOrUpdateInput =
@@ -3811,6 +3836,7 @@ export const StorageAccountCredentialsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials/{name}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAccountCredentialsDeleteInput =
@@ -3990,6 +4016,7 @@ export const StorageAccountsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAccountsCreateOrUpdateInput =
@@ -4046,6 +4073,7 @@ export const StorageAccountsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
@@ -4213,6 +4241,7 @@ export const SupportPackagesTriggerSupportPackageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggerSupportPackage",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SupportPackagesTriggerSupportPackageInput =
@@ -4251,6 +4280,7 @@ export const TriggersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers/{name}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TriggersCreateOrUpdateInput =
@@ -4307,6 +4337,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers/{name}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
@@ -4485,6 +4516,7 @@ export const UsersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users/{name}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
@@ -4537,6 +4569,7 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users/{name}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;

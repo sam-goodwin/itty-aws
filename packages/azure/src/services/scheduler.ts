@@ -118,6 +118,7 @@ export const JobCollectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}",
       apiVersion: "2016-03-01",
+      longRunning: {},
     }),
   );
 export type JobCollectionsDeleteInput = typeof JobCollectionsDeleteInput.Type;
@@ -150,6 +151,7 @@ export const JobCollectionsDisableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/disable",
       apiVersion: "2016-03-01",
+      longRunning: {},
     }),
   );
 export type JobCollectionsDisableInput = typeof JobCollectionsDisableInput.Type;
@@ -183,6 +185,7 @@ export const JobCollectionsEnableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/enable",
       apiVersion: "2016-03-01",
+      longRunning: {},
     }),
   );
 export type JobCollectionsEnableInput = typeof JobCollectionsEnableInput.Type;

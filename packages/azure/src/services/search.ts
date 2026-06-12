@@ -219,6 +219,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/networkSecurityPerimeterConfigurations/{nspConfigName}/reconcile",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsReconcileInput =
@@ -995,6 +996,7 @@ export const ServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -1519,6 +1521,7 @@ export const ServicesUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/upgrade",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServicesUpgradeInput = typeof ServicesUpgradeInput.Type;
@@ -1590,6 +1593,7 @@ export const SharedPrivateLinkResourcesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SharedPrivateLinkResourcesCreateOrUpdateInput =
@@ -1647,6 +1651,7 @@ export const SharedPrivateLinkResourcesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SharedPrivateLinkResourcesDeleteInput =

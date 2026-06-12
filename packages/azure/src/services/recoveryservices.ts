@@ -199,6 +199,7 @@ export const DeletedVaultsUndeleteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}/undelete",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeletedVaultsUndeleteInput = typeof DeletedVaultsUndeleteInput.Type;
@@ -1349,6 +1350,7 @@ export const VaultsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VaultsCreateOrUpdateInput = typeof VaultsCreateOrUpdateInput.Type;
@@ -1401,6 +1403,7 @@ export const VaultsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VaultsDeleteInput = typeof VaultsDeleteInput.Type;
@@ -1886,6 +1889,7 @@ export const VaultsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VaultsUpdateInput = typeof VaultsUpdateInput.Type;

@@ -148,6 +148,7 @@ export const AgentPoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AgentPoolsCreateOrUpdateInput =
@@ -204,6 +205,7 @@ export const AgentPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AgentPoolsDeleteInput = typeof AgentPoolsDeleteInput.Type;
@@ -381,6 +383,7 @@ export const AgentPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AgentPoolsUpdateInput = typeof AgentPoolsUpdateInput.Type;
@@ -488,6 +491,7 @@ export const BareMetalMachineKeySetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BareMetalMachineKeySetsCreateOrUpdateInput =
@@ -544,6 +548,7 @@ export const BareMetalMachineKeySetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachineKeySetsDeleteInput =
@@ -727,6 +732,7 @@ export const BareMetalMachineKeySetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BareMetalMachineKeySetsUpdateInput =
@@ -783,6 +789,7 @@ export const BareMetalMachinesCordonInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/cordon",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesCordonInput =
@@ -985,6 +992,7 @@ export const BareMetalMachinesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BareMetalMachinesCreateOrUpdateInput =
@@ -1039,6 +1047,7 @@ export const BareMetalMachinesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesDeleteInput =
@@ -1262,6 +1271,7 @@ export const BareMetalMachinesPowerOffInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/powerOff",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesPowerOffInput =
@@ -1299,6 +1309,7 @@ export const BareMetalMachinesReimageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/reimage",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesReimageInput =
@@ -1348,6 +1359,7 @@ export const BareMetalMachinesReplaceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/replace",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesReplaceInput =
@@ -1385,6 +1397,7 @@ export const BareMetalMachinesRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/restart",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesRestartInput =
@@ -1425,6 +1438,7 @@ export const BareMetalMachinesRunCommandInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runCommand",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesRunCommandInput =
@@ -1469,6 +1483,7 @@ export const BareMetalMachinesRunDataExtractsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtracts",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesRunDataExtractsInput =
@@ -1512,6 +1527,7 @@ export const BareMetalMachinesRunDataExtractsRestrictedInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtractsRestricted",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesRunDataExtractsRestrictedInput =
@@ -1555,6 +1571,7 @@ export const BareMetalMachinesRunReadCommandsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runReadCommands",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesRunReadCommandsInput =
@@ -1591,6 +1608,7 @@ export const BareMetalMachinesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/start",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesStartInput =
@@ -1628,6 +1646,7 @@ export const BareMetalMachinesUncordonInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/uncordon",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BareMetalMachinesUncordonInput =
@@ -1671,6 +1690,7 @@ export const BareMetalMachinesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BareMetalMachinesUpdateInput =
@@ -1777,6 +1797,7 @@ export const BmcKeySetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BmcKeySetsCreateOrUpdateInput =
@@ -1833,6 +1854,7 @@ export const BmcKeySetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type BmcKeySetsDeleteInput = typeof BmcKeySetsDeleteInput.Type;
@@ -2005,6 +2027,7 @@ export const BmcKeySetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type BmcKeySetsUpdateInput = typeof BmcKeySetsUpdateInput.Type;
@@ -2142,6 +2165,7 @@ export const CloudServicesNetworksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudServicesNetworksCreateOrUpdateInput =
@@ -2196,6 +2220,7 @@ export const CloudServicesNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudServicesNetworksDeleteInput =
@@ -2448,6 +2473,7 @@ export const CloudServicesNetworksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudServicesNetworksUpdateInput =
@@ -2574,6 +2600,7 @@ export const ClusterManagersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ClusterManagersCreateOrUpdateInput =
@@ -2628,6 +2655,7 @@ export const ClusterManagersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClusterManagersDeleteInput = typeof ClusterManagersDeleteInput.Type;
@@ -2926,6 +2954,7 @@ export const ClustersContinueUpdateVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/continueUpdateVersion",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersContinueUpdateVersionInput =
@@ -3310,6 +3339,7 @@ export const ClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -3364,6 +3394,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -3396,6 +3427,7 @@ export const ClustersDeployInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/deploy",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersDeployInput = typeof ClustersDeployInput.Type;
@@ -3612,6 +3644,7 @@ export const ClustersScanRuntimeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/scanRuntime",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersScanRuntimeInput = typeof ClustersScanRuntimeInput.Type;
@@ -3878,6 +3911,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -3929,6 +3963,7 @@ export const ClustersUpdateVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/updateVersion",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersUpdateVersionInput = typeof ClustersUpdateVersionInput.Type;
@@ -3993,6 +4028,7 @@ export const ConsolesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConsolesCreateOrUpdateInput =
@@ -4049,6 +4085,7 @@ export const ConsolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ConsolesDeleteInput = typeof ConsolesDeleteInput.Type;
@@ -4214,6 +4251,7 @@ export const ConsolesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ConsolesUpdateInput = typeof ConsolesUpdateInput.Type;
@@ -4300,6 +4338,7 @@ export const KubernetesClusterFeaturesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type KubernetesClusterFeaturesCreateOrUpdateInput =
@@ -4356,6 +4395,7 @@ export const KubernetesClusterFeaturesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type KubernetesClusterFeaturesDeleteInput =
@@ -4532,6 +4572,7 @@ export const KubernetesClusterFeaturesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type KubernetesClusterFeaturesUpdateInput =
@@ -4988,6 +5029,7 @@ export const KubernetesClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type KubernetesClustersCreateOrUpdateInput =
@@ -5042,6 +5084,7 @@ export const KubernetesClustersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type KubernetesClustersDeleteInput =
@@ -5266,6 +5309,7 @@ export const KubernetesClustersRestartNodeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/restartNode",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type KubernetesClustersRestartNodeInput =
@@ -5335,6 +5379,7 @@ export const KubernetesClustersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type KubernetesClustersUpdateInput =
@@ -5425,6 +5470,7 @@ export const L2NetworksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type L2NetworksCreateOrUpdateInput =
@@ -5479,6 +5525,7 @@ export const L2NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type L2NetworksDeleteInput = typeof L2NetworksDeleteInput.Type;
@@ -5786,6 +5833,7 @@ export const L3NetworksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type L3NetworksCreateOrUpdateInput =
@@ -5840,6 +5888,7 @@ export const L3NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type L3NetworksDeleteInput = typeof L3NetworksDeleteInput.Type;
@@ -6131,6 +6180,7 @@ export const MetricsConfigurationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MetricsConfigurationsCreateOrUpdateInput =
@@ -6187,6 +6237,7 @@ export const MetricsConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MetricsConfigurationsDeleteInput =
@@ -6359,6 +6410,7 @@ export const MetricsConfigurationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MetricsConfigurationsUpdateInput =
@@ -6490,6 +6542,7 @@ export const RacksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RacksCreateOrUpdateInput = typeof RacksCreateOrUpdateInput.Type;
@@ -6540,6 +6593,7 @@ export const RacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RacksDeleteInput = typeof RacksDeleteInput.Type;
@@ -6874,6 +6928,7 @@ export const RacksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type RacksUpdateInput = typeof RacksUpdateInput.Type;
@@ -6991,6 +7046,7 @@ export const StorageAppliancesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageAppliancesCreateOrUpdateInput =
@@ -7045,6 +7101,7 @@ export const StorageAppliancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAppliancesDeleteInput =
@@ -7082,6 +7139,7 @@ export const StorageAppliancesDisableRemoteVendorManagementInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/disableRemoteVendorManagement",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAppliancesDisableRemoteVendorManagementInput =
@@ -7119,6 +7177,7 @@ export const StorageAppliancesEnableRemoteVendorManagementInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/enableRemoteVendorManagement",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAppliancesEnableRemoteVendorManagementInput =
@@ -7347,6 +7406,7 @@ export const StorageAppliancesRunReadCommandsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/runReadCommands",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageAppliancesRunReadCommandsInput =
@@ -7389,6 +7449,7 @@ export const StorageAppliancesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageAppliancesUpdateInput =
@@ -7480,6 +7541,7 @@ export const TrunkedNetworksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TrunkedNetworksCreateOrUpdateInput =
@@ -7534,6 +7596,7 @@ export const TrunkedNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TrunkedNetworksDeleteInput = typeof TrunkedNetworksDeleteInput.Type;
@@ -7810,6 +7873,7 @@ export const VirtualMachinesAssignRelayInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/assignRelay",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesAssignRelayInput =
@@ -7986,6 +8050,7 @@ export const VirtualMachinesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachinesCreateOrUpdateInput =
@@ -8040,6 +8105,7 @@ export const VirtualMachinesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
@@ -8260,6 +8326,7 @@ export const VirtualMachinesPowerOffInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/powerOff",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesPowerOffInput =
@@ -8297,6 +8364,7 @@ export const VirtualMachinesReimageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/reimage",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesReimageInput =
@@ -8334,6 +8402,7 @@ export const VirtualMachinesRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/restart",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesRestartInput =
@@ -8371,6 +8440,7 @@ export const VirtualMachinesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/start",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -8439,6 +8509,7 @@ export const VirtualMachinesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
@@ -8520,6 +8591,7 @@ export const VolumesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VolumesCreateOrUpdateInput = typeof VolumesCreateOrUpdateInput.Type;
@@ -8573,6 +8645,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;

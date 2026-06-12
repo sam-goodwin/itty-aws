@@ -415,6 +415,7 @@ export const WebPubSubCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WebPubSubCreateOrUpdateInput =
@@ -487,6 +488,7 @@ export const WebPubSubCustomCertificatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates/{certificateName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WebPubSubCustomCertificatesCreateOrUpdateInput =
@@ -719,6 +721,7 @@ export const WebPubSubCustomDomainsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WebPubSubCustomDomainsCreateOrUpdateInput =
@@ -773,6 +776,7 @@ export const WebPubSubCustomDomainsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebPubSubCustomDomainsDeleteInput =
@@ -932,6 +936,7 @@ export const WebPubSubDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}",
     apiVersion: "2024-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WebPubSubDeleteInput = typeof WebPubSubDeleteInput.Type;
@@ -1047,6 +1052,7 @@ export const WebPubSubHubsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs/{hubName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WebPubSubHubsCreateOrUpdateInput =
@@ -1102,6 +1108,7 @@ export const WebPubSubHubsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs/{hubName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebPubSubHubsDeleteInput = typeof WebPubSubHubsDeleteInput.Type;
@@ -1556,6 +1563,7 @@ export const WebPubSubPrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebPubSubPrivateEndpointConnectionsDeleteInput =
@@ -1875,6 +1883,7 @@ export const WebPubSubRegenerateKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/regenerateKey",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebPubSubRegenerateKeyInput =
@@ -1947,6 +1956,7 @@ export const WebPubSubReplicasCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WebPubSubReplicasCreateOrUpdateInput =
@@ -2114,6 +2124,7 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
@@ -2357,6 +2368,7 @@ export const WebPubSubReplicasRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/restart",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebPubSubReplicasRestartInput =
@@ -2424,6 +2436,7 @@ export const WebPubSubReplicasUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebPubSubReplicasUpdateInput =
@@ -2476,6 +2489,7 @@ export const WebPubSubRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/restart",
     apiVersion: "2024-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WebPubSubRestartInput = typeof WebPubSubRestartInput.Type;
@@ -2535,6 +2549,7 @@ export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
@@ -2587,6 +2602,7 @@ export const WebPubSubSharedPrivateLinkResourcesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebPubSubSharedPrivateLinkResourcesDeleteInput =
@@ -2965,6 +2981,7 @@ export const WebPubSubUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}",
     apiVersion: "2024-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WebPubSubUpdateInput = typeof WebPubSubUpdateInput.Type;

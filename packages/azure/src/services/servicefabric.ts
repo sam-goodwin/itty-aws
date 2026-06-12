@@ -146,6 +146,7 @@ export const ApplicationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type ApplicationsCreateOrUpdateInput =
@@ -176,6 +177,7 @@ export const ApplicationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
@@ -404,6 +406,7 @@ export const ApplicationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
@@ -497,6 +500,7 @@ export const ApplicationTypesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type ApplicationTypesDeleteInput =
@@ -648,6 +652,7 @@ export const ApplicationTypeVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type ApplicationTypeVersionsCreateOrUpdateInput =
@@ -677,6 +682,7 @@ export const ApplicationTypeVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type ApplicationTypeVersionsDeleteInput =
@@ -1146,6 +1152,7 @@ export const ClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -1651,6 +1658,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
     apiVersion: "2021-06-01",
+    longRunning: {},
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -1996,6 +2004,7 @@ export const ServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -2027,6 +2036,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
     apiVersion: "2021-06-01",
+    longRunning: {},
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -2209,6 +2219,7 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
     apiVersion: "2021-06-01",
+    longRunning: {},
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;

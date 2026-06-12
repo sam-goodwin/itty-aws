@@ -308,6 +308,7 @@ export const CommunicationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CommunicationsCreateInput = typeof CommunicationsCreateInput.Type;
@@ -533,6 +534,7 @@ export const CommunicationsNoSubscriptionCreateInput =
       method: "PUT",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CommunicationsNoSubscriptionCreateInput =
@@ -1725,6 +1727,7 @@ export const SupportTicketsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SupportTicketsCreateInput = typeof SupportTicketsCreateInput.Type;
@@ -2010,6 +2013,7 @@ export const SupportTicketsNoSubscriptionCreateInput =
       method: "PUT",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SupportTicketsNoSubscriptionCreateInput =

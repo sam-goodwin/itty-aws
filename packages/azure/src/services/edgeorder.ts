@@ -56,6 +56,7 @@ export const AddressesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
     apiVersion: "2024-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AddressesCreateInput = typeof AddressesCreateInput.Type;
@@ -106,6 +107,7 @@ export const AddressesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
     apiVersion: "2024-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AddressesDeleteInput = typeof AddressesDeleteInput.Type;
@@ -361,6 +363,7 @@ export const AddressesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
     apiVersion: "2024-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AddressesUpdateInput = typeof AddressesUpdateInput.Type;
@@ -984,6 +987,7 @@ export const OrderItemsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
     apiVersion: "2024-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type OrderItemsCreateInput = typeof OrderItemsCreateInput.Type;
@@ -1036,6 +1040,7 @@ export const OrderItemsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
     apiVersion: "2024-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type OrderItemsDeleteInput = typeof OrderItemsDeleteInput.Type;
@@ -1307,6 +1312,7 @@ export const OrderItemsReturnInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}/return",
     apiVersion: "2024-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type OrderItemsReturnInput = typeof OrderItemsReturnInput.Type;
@@ -1476,6 +1482,7 @@ export const OrderItemsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
     apiVersion: "2024-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type OrderItemsUpdateInput = typeof OrderItemsUpdateInput.Type;

@@ -790,6 +790,7 @@ export const ClusterDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
     apiVersion: "2024-07-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClusterDeleteInput = typeof ClusterDeleteInput.Type;
@@ -924,6 +925,7 @@ export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
     apiVersion: "2024-07-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ConnectorDeleteInput = typeof ConnectorDeleteInput.Type;
@@ -1156,6 +1158,7 @@ export const EnvironmentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
     apiVersion: "2024-07-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EnvironmentDeleteInput = typeof EnvironmentDeleteInput.Type;
@@ -1415,6 +1418,7 @@ export const OrganizationCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
       apiVersion: "2024-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type OrganizationCreateInput = typeof OrganizationCreateInput.Type;
@@ -1549,6 +1553,7 @@ export const OrganizationDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
       apiVersion: "2024-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OrganizationDeleteInput = typeof OrganizationDeleteInput.Type;
@@ -2575,6 +2580,7 @@ export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
     apiVersion: "2024-07-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TopicsDeleteInput = typeof TopicsDeleteInput.Type;

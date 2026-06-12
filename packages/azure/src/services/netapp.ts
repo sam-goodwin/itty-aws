@@ -29,6 +29,7 @@ export const AccountsChangeKeyVaultInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/changeKeyVault",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccountsChangeKeyVaultInput =
@@ -174,6 +175,7 @@ export const AccountsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AccountsCreateOrUpdateInput =
@@ -228,6 +230,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -309,6 +312,7 @@ export const AccountsGetChangeKeyVaultInformationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/getKeyVaultStatus",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AccountsGetChangeKeyVaultInformationInput =
@@ -479,6 +483,7 @@ export const AccountsRenewCredentialsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/renewCredentials",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AccountsRenewCredentialsInput =
@@ -518,6 +523,7 @@ export const AccountsTransitionToCmkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/transitiontocmk",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccountsTransitionToCmkInput =
@@ -662,6 +668,7 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -735,6 +742,7 @@ export const BackupPoliciesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BackupPoliciesCreateInput = typeof BackupPoliciesCreateInput.Type;
@@ -790,6 +798,7 @@ export const BackupPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupPoliciesDeleteInput = typeof BackupPoliciesDeleteInput.Type;
@@ -973,6 +982,7 @@ export const BackupPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BackupPoliciesUpdateInput = typeof BackupPoliciesUpdateInput.Type;
@@ -1044,6 +1054,7 @@ export const BackupsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type BackupsCreateInput = typeof BackupsCreateInput.Type;
@@ -1097,6 +1108,7 @@ export const BackupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type BackupsDeleteInput = typeof BackupsDeleteInput.Type;
@@ -1361,6 +1373,7 @@ export const BackupsUnderAccountMigrateBackupsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/migrateBackups",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupsUnderAccountMigrateBackupsInput =
@@ -1402,6 +1415,7 @@ export const BackupsUnderBackupVaultRestoreFilesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}/restoreFiles",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupsUnderBackupVaultRestoreFilesInput =
@@ -1443,6 +1457,7 @@ export const BackupsUnderVolumeMigrateBackupsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/migrateBackups",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupsUnderVolumeMigrateBackupsInput =
@@ -1487,6 +1502,7 @@ export const BackupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type BackupsUpdateInput = typeof BackupsUpdateInput.Type;
@@ -1547,6 +1563,7 @@ export const BackupVaultsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BackupVaultsCreateOrUpdateInput =
@@ -1604,6 +1621,7 @@ export const BackupVaultsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupVaultsDeleteInput = typeof BackupVaultsDeleteInput.Type;
@@ -1759,6 +1777,7 @@ export const BackupVaultsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupVaultsUpdateInput = typeof BackupVaultsUpdateInput.Type;
@@ -2445,6 +2464,7 @@ export const NetAppResourceUpdateNetworkSiblingSetInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/updateNetworkSiblingSet",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetAppResourceUpdateNetworkSiblingSetInput =
@@ -2733,6 +2753,7 @@ export const PoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PoolsCreateOrUpdateInput = typeof PoolsCreateOrUpdateInput.Type;
@@ -2785,6 +2806,7 @@ export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PoolsDeleteInput = typeof PoolsDeleteInput.Type;
@@ -2936,6 +2958,7 @@ export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PoolsUpdateInput = typeof PoolsUpdateInput.Type;
@@ -2992,6 +3015,7 @@ export const RansomwareReportsClearSuspectsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}/clearSuspects",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RansomwareReportsClearSuspectsInput =
@@ -3267,6 +3291,7 @@ export const SnapshotPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SnapshotPoliciesDeleteInput =
@@ -3543,6 +3568,7 @@ export const SnapshotPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SnapshotPoliciesUpdateInput =
@@ -3609,6 +3635,7 @@ export const SnapshotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SnapshotsCreateInput = typeof SnapshotsCreateInput.Type;
@@ -3664,6 +3691,7 @@ export const SnapshotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SnapshotsDeleteInput = typeof SnapshotsDeleteInput.Type;
@@ -3817,6 +3845,7 @@ export const SnapshotsRestoreFilesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}/restoreFiles",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SnapshotsRestoreFilesInput = typeof SnapshotsRestoreFilesInput.Type;
@@ -3858,6 +3887,7 @@ export const SnapshotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SnapshotsUpdateInput = typeof SnapshotsUpdateInput.Type;
@@ -3921,6 +3951,7 @@ export const SubvolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type SubvolumesCreateInput = typeof SubvolumesCreateInput.Type;
@@ -3978,6 +4009,7 @@ export const SubvolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type SubvolumesDeleteInput = typeof SubvolumesDeleteInput.Type;
@@ -4071,6 +4103,7 @@ export const SubvolumesGetMetadataInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}/getMetadata",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SubvolumesGetMetadataInput = typeof SubvolumesGetMetadataInput.Type;
@@ -4210,6 +4243,7 @@ export const SubvolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type SubvolumesUpdateInput = typeof SubvolumesUpdateInput.Type;
@@ -4530,6 +4564,7 @@ export const VolumeGroupsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumeGroupsCreateInput = typeof VolumeGroupsCreateInput.Type;
@@ -4583,6 +4618,7 @@ export const VolumeGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumeGroupsDeleteInput = typeof VolumeGroupsDeleteInput.Type;
@@ -4767,6 +4803,7 @@ export const VolumeQuotaRulesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumeQuotaRulesCreateInput =
@@ -4828,6 +4865,7 @@ export const VolumeQuotaRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumeQuotaRulesDeleteInput =
@@ -5028,6 +5066,7 @@ export const VolumeQuotaRulesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumeQuotaRulesUpdateInput =
@@ -5088,6 +5127,7 @@ export const VolumesAuthorizeExternalReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeExternalReplication",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesAuthorizeExternalReplicationInput =
@@ -5131,6 +5171,7 @@ export const VolumesAuthorizeReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeReplication",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesAuthorizeReplicationInput =
@@ -5174,6 +5215,7 @@ export const VolumesBreakFileLocksInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakFileLocks",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesBreakFileLocksInput = typeof VolumesBreakFileLocksInput.Type;
@@ -5215,6 +5257,7 @@ export const VolumesBreakReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakReplication",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesBreakReplicationInput =
@@ -5466,6 +5509,7 @@ export const VolumesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VolumesCreateOrUpdateInput = typeof VolumesCreateOrUpdateInput.Type;
@@ -5524,6 +5568,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
@@ -5561,6 +5606,7 @@ export const VolumesDeleteReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/deleteReplication",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesDeleteReplicationInput =
@@ -5602,6 +5648,7 @@ export const VolumesFinalizeExternalReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeExternalReplication",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesFinalizeExternalReplicationInput =
@@ -5642,6 +5689,7 @@ export const VolumesFinalizeRelocationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeRelocation",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesFinalizeRelocationInput =
@@ -5793,6 +5841,7 @@ export const VolumesListGetGroupIdListForLdapUserInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/getGroupIdListForLdapUser",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VolumesListGetGroupIdListForLdapUserInput =
@@ -5845,6 +5894,7 @@ export const VolumesListQuotaReportInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listQuotaReport",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VolumesListQuotaReportInput =
@@ -5971,6 +6021,7 @@ export const VolumesPeerExternalClusterInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/peerExternalCluster",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesPeerExternalClusterInput =
@@ -6014,6 +6065,7 @@ export const VolumesPerformReplicationTransferInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/performReplicationTransfer",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesPerformReplicationTransferInput =
@@ -6056,6 +6108,7 @@ export const VolumesPoolChangeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/poolChange",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesPoolChangeInput = typeof VolumesPoolChangeInput.Type;
@@ -6092,6 +6145,7 @@ export const VolumesPopulateAvailabilityZoneInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/populateAvailabilityZone",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesPopulateAvailabilityZoneInput =
@@ -6151,6 +6205,7 @@ export const VolumesReestablishReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reestablishReplication",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesReestablishReplicationInput =
@@ -6191,6 +6246,7 @@ export const VolumesReInitializeReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reinitializeReplication",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesReInitializeReplicationInput =
@@ -6231,6 +6287,7 @@ export const VolumesRelocateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/relocate",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesRelocateInput = typeof VolumesRelocateInput.Type;
@@ -6318,6 +6375,7 @@ export const VolumesResetCifsPasswordInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resetCifsPassword",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesResetCifsPasswordInput =
@@ -6359,6 +6417,7 @@ export const VolumesResyncReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resyncReplication",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesResyncReplicationInput =
@@ -6400,6 +6459,7 @@ export const VolumesRevertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revert",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesRevertInput = typeof VolumesRevertInput.Type;
@@ -6436,6 +6496,7 @@ export const VolumesRevertRelocationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revertRelocation",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesRevertRelocationInput =
@@ -6477,6 +6538,7 @@ export const VolumesSplitCloneFromParentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/splitCloneFromParent",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumesSplitCloneFromParentInput =
@@ -6625,6 +6687,7 @@ export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesUpdateInput = typeof VolumesUpdateInput.Type;

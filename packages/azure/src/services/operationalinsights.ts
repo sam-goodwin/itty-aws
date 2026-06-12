@@ -173,6 +173,7 @@ export const ClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
       apiVersion: "2025-07-01",
+      longRunning: {},
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -213,6 +214,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
     apiVersion: "2025-07-01",
+    longRunning: {},
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -404,6 +406,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
     apiVersion: "2025-07-01",
+    longRunning: {},
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -1080,6 +1083,7 @@ export const LinkedServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
       apiVersion: "2025-07-01",
+      longRunning: {},
     }),
   );
 export type LinkedServicesCreateOrUpdateInput =
@@ -1122,6 +1126,7 @@ export const LinkedServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
       apiVersion: "2025-07-01",
+      longRunning: {},
     }),
   );
 export type LinkedServicesDeleteInput = typeof LinkedServicesDeleteInput.Type;
@@ -2852,6 +2857,7 @@ export const SummaryLogsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SummaryLogsCreateOrUpdateInput =
@@ -2908,6 +2914,7 @@ export const SummaryLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type SummaryLogsDeleteInput = typeof SummaryLogsDeleteInput.Type;
@@ -3066,6 +3073,7 @@ export const SummaryLogsRetryBinInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/retrybin",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SummaryLogsRetryBinInput = typeof SummaryLogsRetryBinInput.Type;
@@ -3098,6 +3106,7 @@ export const SummaryLogsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/start",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type SummaryLogsStartInput = typeof SummaryLogsStartInput.Type;
@@ -3326,6 +3335,7 @@ export const TablesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TablesCreateOrUpdateInput = typeof TablesCreateOrUpdateInput.Type;
@@ -3366,6 +3376,7 @@ export const TablesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type TablesDeleteInput = typeof TablesDeleteInput.Type;
@@ -3645,6 +3656,7 @@ export const TablesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
     apiVersion: "2025-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type TablesUpdateInput = typeof TablesUpdateInput.Type;
@@ -3958,6 +3970,7 @@ export const WorkspacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
       apiVersion: "2025-07-01",
+      longRunning: {},
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -3999,6 +4012,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
     apiVersion: "2025-07-01",
+    longRunning: {},
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -4032,6 +4046,7 @@ export const WorkspacesFailbackInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/failback",
       apiVersion: "2025-07-01",
+      longRunning: {},
     }),
   );
 export type WorkspacesFailbackInput = typeof WorkspacesFailbackInput.Type;
@@ -4066,6 +4081,7 @@ export const WorkspacesFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/locations/{location}/workspaces/{workspaceName}/failover",
       apiVersion: "2025-07-01",
+      longRunning: {},
     }),
   );
 export type WorkspacesFailoverInput = typeof WorkspacesFailoverInput.Type;
@@ -4336,6 +4352,7 @@ export const WorkspacesReconcileNSPInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspacesReconcileNSPInput =

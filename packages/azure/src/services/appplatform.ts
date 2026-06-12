@@ -22,6 +22,7 @@ export const ApiPortalCustomDomainsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ApiPortalCustomDomainsCreateOrUpdateInput =
@@ -67,6 +68,7 @@ export const ApiPortalCustomDomainsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ApiPortalCustomDomainsDeleteInput =
@@ -254,6 +256,7 @@ export const ApiPortalsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ApiPortalsCreateOrUpdateInput =
@@ -301,6 +304,7 @@ export const ApiPortalsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type ApiPortalsDeleteInput = typeof ApiPortalsDeleteInput.Type;
@@ -478,6 +482,7 @@ export const ApmsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ApmsCreateOrUpdateInput = typeof ApmsCreateOrUpdateInput.Type;
@@ -521,6 +526,7 @@ export const ApmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ApmsDeleteInput = typeof ApmsDeleteInput.Type;
@@ -711,6 +717,7 @@ export const ApplicationAcceleratorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ApplicationAcceleratorsCreateOrUpdateInput =
@@ -756,6 +763,7 @@ export const ApplicationAcceleratorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ApplicationAcceleratorsDeleteInput =
@@ -929,6 +937,7 @@ export const ApplicationLiveViewsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ApplicationLiveViewsCreateOrUpdateInput =
@@ -974,6 +983,7 @@ export const ApplicationLiveViewsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ApplicationLiveViewsDeleteInput =
@@ -1218,6 +1228,7 @@ export const AppsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type AppsCreateOrUpdateInput = typeof AppsCreateOrUpdateInput.Type;
@@ -1261,6 +1272,7 @@ export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type AppsDeleteInput = typeof AppsDeleteInput.Type;
@@ -1418,6 +1430,7 @@ export const AppsSetActiveDeploymentsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/setActiveDeployments",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type AppsSetActiveDeploymentsInput =
@@ -1568,6 +1581,7 @@ export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type AppsUpdateInput = typeof AppsUpdateInput.Type;
@@ -1653,6 +1667,7 @@ export const BindingsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type BindingsCreateOrUpdateInput =
@@ -1700,6 +1715,7 @@ export const BindingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type BindingsDeleteInput = typeof BindingsDeleteInput.Type;
@@ -1838,6 +1854,7 @@ export const BindingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type BindingsUpdateInput = typeof BindingsUpdateInput.Type;
@@ -1913,6 +1930,7 @@ export const BuildpackBindingCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type BuildpackBindingCreateOrUpdateInput =
@@ -1958,6 +1976,7 @@ export const BuildpackBindingDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type BuildpackBindingDeleteInput =
@@ -2273,6 +2292,7 @@ export const BuildServiceAgentPoolUpdatePutInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type BuildServiceAgentPoolUpdatePutInput =
@@ -2352,6 +2372,7 @@ export const BuildServiceBuilderCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type BuildServiceBuilderCreateOrUpdateInput =
@@ -2397,6 +2418,7 @@ export const BuildServiceBuilderDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type BuildServiceBuilderDeleteInput =
@@ -2585,6 +2607,7 @@ export const BuildServiceCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BuildServiceCreateOrUpdateInput =
@@ -2733,6 +2756,7 @@ export const BuildServiceDeleteBuildInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BuildServiceDeleteBuildInput =
@@ -3379,6 +3403,7 @@ export const CertificatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type CertificatesCreateOrUpdateInput =
@@ -3425,6 +3450,7 @@ export const CertificatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
@@ -3649,6 +3675,7 @@ export const ConfigServersUpdatePatchInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ConfigServersUpdatePatchInput =
@@ -3749,6 +3776,7 @@ export const ConfigServersUpdatePutInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ConfigServersUpdatePutInput =
@@ -3826,6 +3854,7 @@ export const ConfigServersValidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/validate",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigServersValidateInput = typeof ConfigServersValidateInput.Type;
@@ -3923,6 +3952,7 @@ export const ConfigurationServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ConfigurationServicesCreateOrUpdateInput =
@@ -3968,6 +3998,7 @@ export const ConfigurationServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ConfigurationServicesDeleteInput =
@@ -4131,6 +4162,7 @@ export const ConfigurationServicesValidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validate",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigurationServicesValidateInput =
@@ -4231,6 +4263,7 @@ export const ConfigurationServicesValidateResourceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validateResource",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigurationServicesValidateResourceInput =
@@ -4290,6 +4323,7 @@ export const ContainerRegistriesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainerRegistriesCreateOrUpdateInput =
@@ -4335,6 +4369,7 @@ export const ContainerRegistriesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainerRegistriesDeleteInput =
@@ -4486,6 +4521,7 @@ export const ContainerRegistriesValidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}/validate",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainerRegistriesValidateInput =
@@ -4534,6 +4570,7 @@ export const CustomDomainsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type CustomDomainsCreateOrUpdateInput =
@@ -4580,6 +4617,7 @@ export const CustomDomainsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type CustomDomainsDeleteInput = typeof CustomDomainsDeleteInput.Type;
@@ -4725,6 +4763,7 @@ export const CustomDomainsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type CustomDomainsUpdateInput = typeof CustomDomainsUpdateInput.Type;
@@ -4808,6 +4847,7 @@ export const CustomizedAcceleratorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type CustomizedAcceleratorsCreateOrUpdateInput =
@@ -4853,6 +4893,7 @@ export const CustomizedAcceleratorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type CustomizedAcceleratorsDeleteInput =
@@ -5019,6 +5060,7 @@ export const CustomizedAcceleratorsValidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}/validate",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type CustomizedAcceleratorsValidateInput =
@@ -5170,6 +5212,7 @@ export const DeploymentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type DeploymentsCreateOrUpdateInput =
@@ -5217,6 +5260,7 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
@@ -5240,6 +5284,7 @@ export const DeploymentsDisableRemoteDebuggingInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/disableRemoteDebugging",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type DeploymentsDisableRemoteDebuggingInput =
@@ -5272,6 +5317,7 @@ export const DeploymentsEnableRemoteDebuggingInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/enableRemoteDebugging",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type DeploymentsEnableRemoteDebuggingInput =
@@ -5306,6 +5352,7 @@ export const DeploymentsGenerateHeapDumpInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateHeapDump",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type DeploymentsGenerateHeapDumpInput =
@@ -5338,6 +5385,7 @@ export const DeploymentsGenerateThreadDumpInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateThreadDump",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type DeploymentsGenerateThreadDumpInput =
@@ -5597,6 +5645,7 @@ export const DeploymentsRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/restart",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type DeploymentsRestartInput = typeof DeploymentsRestartInput.Type;
@@ -5621,6 +5670,7 @@ export const DeploymentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/start",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type DeploymentsStartInput = typeof DeploymentsStartInput.Type;
@@ -5648,6 +5698,7 @@ export const DeploymentsStartJFRInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/startJFR",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type DeploymentsStartJFRInput = typeof DeploymentsStartJFRInput.Type;
@@ -5673,6 +5724,7 @@ export const DeploymentsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/stop",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type DeploymentsStopInput = typeof DeploymentsStopInput.Type;
@@ -5818,6 +5870,7 @@ export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type DeploymentsUpdateInput = typeof DeploymentsUpdateInput.Type;
@@ -5927,6 +5980,7 @@ export const DevToolPortalsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type DevToolPortalsCreateOrUpdateInput =
@@ -5972,6 +6026,7 @@ export const DevToolPortalsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type DevToolPortalsDeleteInput = typeof DevToolPortalsDeleteInput.Type;
@@ -6106,6 +6161,7 @@ export const GatewayCustomDomainsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type GatewayCustomDomainsCreateOrUpdateInput =
@@ -6151,6 +6207,7 @@ export const GatewayCustomDomainsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type GatewayCustomDomainsDeleteInput =
@@ -6327,6 +6384,7 @@ export const GatewayRouteConfigsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type GatewayRouteConfigsCreateOrUpdateInput =
@@ -6372,6 +6430,7 @@ export const GatewayRouteConfigsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type GatewayRouteConfigsDeleteInput =
@@ -6619,6 +6678,7 @@ export const GatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type GatewaysCreateOrUpdateInput =
@@ -6666,6 +6726,7 @@ export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
@@ -6819,6 +6880,7 @@ export const GatewaysRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/restart",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type GatewaysRestartInput = typeof GatewaysRestartInput.Type;
@@ -6942,6 +7004,7 @@ export const MonitoringSettingsUpdatePatchInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type MonitoringSettingsUpdatePatchInput =
@@ -7009,6 +7072,7 @@ export const MonitoringSettingsUpdatePutInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type MonitoringSettingsUpdatePutInput =
@@ -7147,6 +7211,7 @@ export const PredefinedAcceleratorsDisableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/disable",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type PredefinedAcceleratorsDisableInput =
@@ -7174,6 +7239,7 @@ export const PredefinedAcceleratorsEnableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/enable",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type PredefinedAcceleratorsEnableInput =
@@ -7349,6 +7415,7 @@ export const ServiceRegistriesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ServiceRegistriesCreateOrUpdateInput =
@@ -7394,6 +7461,7 @@ export const ServiceRegistriesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ServiceRegistriesDeleteInput =
@@ -7645,6 +7713,7 @@ export const ServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -7692,6 +7761,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -7717,6 +7787,7 @@ export const ServicesDisableApmGloballyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableApmGlobally",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServicesDisableApmGloballyInput =
@@ -7775,6 +7846,7 @@ export const ServicesEnableApmGloballyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableApmGlobally",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServicesEnableApmGloballyInput =
@@ -7837,6 +7909,7 @@ export const ServicesFlushVnetDnsSettingInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/flushVirtualNetworkDnsSettings",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServicesFlushVnetDnsSettingInput =
@@ -8201,6 +8274,7 @@ export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/start",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type ServicesStartInput = typeof ServicesStartInput.Type;
@@ -8225,6 +8299,7 @@ export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/stop",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type ServicesStopInput = typeof ServicesStopInput.Type;
@@ -8327,6 +8402,7 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
@@ -8458,6 +8534,7 @@ export const StoragesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type StoragesCreateOrUpdateInput =
@@ -8505,6 +8582,7 @@ export const StoragesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type StoragesDeleteInput = typeof StoragesDeleteInput.Type;

@@ -147,6 +147,7 @@ export const ConfigurationStoresCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
       apiVersion: "2024-06-01",
+      longRunning: {},
     }),
   );
 export type ConfigurationStoresCreateInput =
@@ -179,6 +180,7 @@ export const ConfigurationStoresDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
       apiVersion: "2024-06-01",
+      longRunning: {},
     }),
   );
 export type ConfigurationStoresDeleteInput =
@@ -461,6 +463,7 @@ export const ConfigurationStoresPurgeDeletedInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}/purge",
       apiVersion: "2024-06-01",
+      longRunning: {},
     }),
   );
 export type ConfigurationStoresPurgeDeletedInput =
@@ -586,6 +589,7 @@ export const ConfigurationStoresUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
       apiVersion: "2024-06-01",
+      longRunning: {},
     }),
   );
 export type ConfigurationStoresUpdateInput =
@@ -682,6 +686,7 @@ export const KeyValuesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
     apiVersion: "2024-06-01",
+    longRunning: {},
   }),
 );
 export type KeyValuesDeleteInput = typeof KeyValuesDeleteInput.Type;
@@ -939,6 +944,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-06-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1007,6 +1013,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-06-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1296,6 +1303,7 @@ export const ReplicasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
     apiVersion: "2024-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ReplicasCreateInput = typeof ReplicasCreateInput.Type;
@@ -1355,6 +1363,7 @@ export const ReplicasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
     apiVersion: "2024-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ReplicasDeleteInput = typeof ReplicasDeleteInput.Type;
@@ -1556,6 +1565,7 @@ export const SnapshotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/snapshots/{snapshotName}",
     apiVersion: "2024-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type SnapshotsCreateInput = typeof SnapshotsCreateInput.Type;

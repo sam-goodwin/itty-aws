@@ -153,6 +153,7 @@ export const ApiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}",
     apiVersion: "2024-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ApiCreateOrUpdateInput = typeof ApiCreateOrUpdateInput.Type;
@@ -194,6 +195,7 @@ export const ApiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}",
     apiVersion: "2024-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ApiDeleteInput = typeof ApiDeleteInput.Type;
@@ -793,6 +795,7 @@ export const ApiGatewayConfigConnectionCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}/configConnections/{configConnectionName}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApiGatewayConfigConnectionCreateOrUpdateInput =
@@ -835,6 +838,7 @@ export const ApiGatewayConfigConnectionDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}/configConnections/{configConnectionName}",
       apiVersion: "2024-05-01",
+      longRunning: {},
     }),
   );
 export type ApiGatewayConfigConnectionDeleteInput =
@@ -1015,6 +1019,7 @@ export const ApiGatewayCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}",
       apiVersion: "2024-05-01",
+      longRunning: {},
     }),
   );
 export type ApiGatewayCreateOrUpdateInput =
@@ -1056,6 +1061,7 @@ export const ApiGatewayDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}",
     apiVersion: "2024-05-01",
+    longRunning: {},
   }),
 );
 export type ApiGatewayDeleteInput = typeof ApiGatewayDeleteInput.Type;
@@ -1250,6 +1256,7 @@ export const ApiGatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}",
     apiVersion: "2024-05-01",
+    longRunning: {},
   }),
 );
 export type ApiGatewayUpdateInput = typeof ApiGatewayUpdateInput.Type;
@@ -2305,6 +2312,7 @@ export const ApiManagementServiceApplyNetworkConfigurationUpdatesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/applynetworkconfigurationupdates",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiManagementServiceApplyNetworkConfigurationUpdatesInput =
@@ -2358,6 +2366,7 @@ export const ApiManagementServiceBackupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiManagementServiceBackupInput =
@@ -2676,6 +2685,7 @@ export const ApiManagementServiceCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}",
       apiVersion: "2024-05-01",
+      longRunning: {},
     }),
   );
 export type ApiManagementServiceCreateOrUpdateInput =
@@ -2717,6 +2727,7 @@ export const ApiManagementServiceDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}",
       apiVersion: "2024-05-01",
+      longRunning: {},
     }),
   );
 export type ApiManagementServiceDeleteInput =
@@ -2956,6 +2967,7 @@ export const ApiManagementServiceMigrateToStv2Input =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/migrateToStv2",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiManagementServiceMigrateToStv2Input =
@@ -3009,6 +3021,7 @@ export const ApiManagementServiceRestoreInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiManagementServiceRestoreInput =
@@ -3350,6 +3363,7 @@ export const ApiManagementServiceUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}",
       apiVersion: "2024-05-01",
+      longRunning: {},
     }),
   );
 export type ApiManagementServiceUpdateInput =
@@ -4981,6 +4995,7 @@ export const ApiSchemaCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/schemas/{schemaId}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApiSchemaCreateOrUpdateInput =
@@ -8298,6 +8313,7 @@ export const DeletedServicesPurgeInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeletedServicesPurgeInput = typeof DeletedServicesPurgeInput.Type;
@@ -10426,6 +10442,7 @@ export const GlobalSchemaCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/schemas/{schemaId}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GlobalSchemaCreateOrUpdateInput =
@@ -12056,6 +12073,7 @@ export const NamedValueCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues/{namedValueId}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamedValueCreateOrUpdateInput =
@@ -12266,6 +12284,7 @@ export const NamedValueRefreshSecretInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues/{namedValueId}/refreshSecret",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamedValueRefreshSecretInput =
@@ -12314,6 +12333,7 @@ export const NamedValueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues/{namedValueId}",
     apiVersion: "2024-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NamedValueUpdateInput = typeof NamedValueUpdateInput.Type;
@@ -13589,6 +13609,7 @@ export const PerformConnectivityCheckAsyncInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/connectivityCheck",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PerformConnectivityCheckAsyncInput =
@@ -13823,6 +13844,7 @@ export const PolicyFragmentCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyFragments/{id}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PolicyFragmentCreateOrUpdateInput =
@@ -14370,6 +14392,7 @@ export const PolicyRestrictionValidationsByServiceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/validatePolicies",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PolicyRestrictionValidationsByServiceInput =
@@ -14679,6 +14702,7 @@ export const PortalRevisionCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalRevisions/{portalRevisionId}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PortalRevisionCreateOrUpdateInput =
@@ -14835,6 +14859,7 @@ export const PortalRevisionUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalRevisions/{portalRevisionId}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PortalRevisionUpdateInput = typeof PortalRevisionUpdateInput.Type;
@@ -14892,6 +14917,7 @@ export const PrivateEndpointConnectionCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-05-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionCreateOrUpdateInput =
@@ -14936,6 +14962,7 @@ export const PrivateEndpointConnectionDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-05-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionDeleteInput =
@@ -19787,6 +19814,7 @@ export const TenantConfigurationDeployInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/deploy",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TenantConfigurationDeployInput =
@@ -19879,6 +19907,7 @@ export const TenantConfigurationSaveInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/save",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TenantConfigurationSaveInput =
@@ -19929,6 +19958,7 @@ export const TenantConfigurationValidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/validate",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TenantConfigurationValidateInput =
@@ -20074,6 +20104,7 @@ export const UserDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}",
     apiVersion: "2024-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UserDeleteInput = typeof UserDeleteInput.Type;
@@ -20620,6 +20651,7 @@ export const WorkspaceApiCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspaceApiCreateOrUpdateInput =
@@ -22791,6 +22823,7 @@ export const WorkspaceApiSchemaCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/schemas/{schemaId}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspaceApiSchemaCreateOrUpdateInput =
@@ -24755,6 +24788,7 @@ export const WorkspaceGlobalSchemaCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/schemas/{schemaId}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspaceGlobalSchemaCreateOrUpdateInput =
@@ -25665,6 +25699,7 @@ export const WorkspaceNamedValueCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues/{namedValueId}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspaceNamedValueCreateOrUpdateInput =
@@ -25900,6 +25935,7 @@ export const WorkspaceNamedValueRefreshSecretInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues/{namedValueId}/refreshSecret",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspaceNamedValueRefreshSecretInput =
@@ -25950,6 +25986,7 @@ export const WorkspaceNamedValueUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues/{namedValueId}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspaceNamedValueUpdateInput =
@@ -26588,6 +26625,7 @@ export const WorkspacePolicyFragmentCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policyFragments/{id}",
       apiVersion: "2024-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspacePolicyFragmentCreateOrUpdateInput =

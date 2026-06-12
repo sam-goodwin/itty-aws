@@ -72,6 +72,7 @@ export const CloudEndpointsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudEndpointsCreateInput = typeof CloudEndpointsCreateInput.Type;
@@ -129,6 +130,7 @@ export const CloudEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudEndpointsDeleteInput = typeof CloudEndpointsDeleteInput.Type;
@@ -298,6 +300,7 @@ export const CloudEndpointsPostBackupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudEndpointsPostBackupInput =
@@ -360,6 +363,7 @@ export const CloudEndpointsPostRestoreInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postrestore",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudEndpointsPostRestoreInput =
@@ -402,6 +406,7 @@ export const CloudEndpointsPreBackupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prebackup",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudEndpointsPreBackupInput =
@@ -459,6 +464,7 @@ export const CloudEndpointsPreRestoreInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prerestore",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudEndpointsPreRestoreInput =
@@ -545,6 +551,7 @@ export const CloudEndpointsTriggerChangeDetectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/triggerChangeDetection",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudEndpointsTriggerChangeDetectionInput =
@@ -838,6 +845,7 @@ export const PrivateEndpointConnectionsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -895,6 +903,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1145,6 +1154,7 @@ export const RegisteredServersCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegisteredServersCreateInput =
@@ -1202,6 +1212,7 @@ export const RegisteredServersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegisteredServersDeleteInput =
@@ -1368,6 +1379,7 @@ export const RegisteredServersTriggerRolloverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}/triggerRollover",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegisteredServersTriggerRolloverInput =
@@ -1412,6 +1424,7 @@ export const RegisteredServersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegisteredServersUpdateInput =
@@ -1498,6 +1511,7 @@ export const ServerEndpointsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerEndpointsCreateInput = typeof ServerEndpointsCreateInput.Type;
@@ -1556,6 +1570,7 @@ export const ServerEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerEndpointsDeleteInput = typeof ServerEndpointsDeleteInput.Type;
@@ -1726,6 +1741,7 @@ export const ServerEndpointsRecallActionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}/recallAction",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerEndpointsRecallActionInput =
@@ -1782,6 +1798,7 @@ export const ServerEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerEndpointsUpdateInput = typeof ServerEndpointsUpdateInput.Type;
@@ -1909,6 +1926,7 @@ export const StorageSyncServicesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageSyncServicesCreateInput =
@@ -1964,6 +1982,7 @@ export const StorageSyncServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageSyncServicesDeleteInput =
@@ -2222,6 +2241,7 @@ export const StorageSyncServicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
       apiVersion: "2022-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageSyncServicesUpdateInput =

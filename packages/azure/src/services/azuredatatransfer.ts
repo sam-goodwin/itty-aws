@@ -198,6 +198,7 @@ export const ConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectionsCreateOrUpdateInput =
@@ -254,6 +255,7 @@ export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
     apiVersion: "2025-05-21",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ConnectionsDeleteInput = typeof ConnectionsDeleteInput.Type;
@@ -336,6 +338,7 @@ export const ConnectionsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/link",
     apiVersion: "2025-05-21",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ConnectionsLinkInput = typeof ConnectionsLinkInput.Type;
@@ -541,6 +544,7 @@ export const ConnectionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
     apiVersion: "2025-05-21",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ConnectionsUpdateInput = typeof ConnectionsUpdateInput.Type;
@@ -724,6 +728,7 @@ export const FlowsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FlowsCreateOrUpdateInput = typeof FlowsCreateOrUpdateInput.Type;
@@ -776,6 +781,7 @@ export const FlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
     apiVersion: "2025-05-21",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FlowsDeleteInput = typeof FlowsDeleteInput.Type;
@@ -809,6 +815,7 @@ export const FlowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/disable",
     apiVersion: "2025-05-21",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FlowsDisableInput = typeof FlowsDisableInput.Type;
@@ -860,6 +867,7 @@ export const FlowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/enable",
     apiVersion: "2025-05-21",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FlowsEnableInput = typeof FlowsEnableInput.Type;
@@ -912,6 +920,7 @@ export const FlowsGeneratePassphraseInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/generatePassphrase",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FlowsGeneratePassphraseInput =
@@ -1182,6 +1191,7 @@ export const FlowsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/link",
     apiVersion: "2025-05-21",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FlowsLinkInput = typeof FlowsLinkInput.Type;
@@ -1304,6 +1314,7 @@ export const FlowsSetDestinationEndpointPortsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setDestinationEndpointPorts",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FlowsSetDestinationEndpointPortsInput =
@@ -1361,6 +1372,7 @@ export const FlowsSetDestinationEndpointsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setDestinationEndpoints",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FlowsSetDestinationEndpointsInput =
@@ -1418,6 +1430,7 @@ export const FlowsSetPassphraseInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setPassphrase",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FlowsSetPassphraseInput = typeof FlowsSetPassphraseInput.Type;
@@ -1472,6 +1485,7 @@ export const FlowsSetSourceAddressesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setSourceAddresses",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FlowsSetSourceAddressesInput =
@@ -1550,6 +1564,7 @@ export const FlowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
     apiVersion: "2025-05-21",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FlowsUpdateInput = typeof FlowsUpdateInput.Type;
@@ -2087,6 +2102,7 @@ export const PipelinesApproveConnectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PipelinesApproveConnectionInput =
@@ -2279,6 +2295,7 @@ export const PipelinesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PipelinesCreateOrUpdateInput =
@@ -2333,6 +2350,7 @@ export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
     apiVersion: "2025-05-21",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PipelinesDeleteInput = typeof PipelinesDeleteInput.Type;
@@ -2369,6 +2387,7 @@ export const PipelinesExecuteActionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PipelinesExecuteActionInput =
@@ -2608,6 +2627,7 @@ export const PipelinesRejectConnectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/rejectConnection",
       apiVersion: "2025-05-21",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PipelinesRejectConnectionInput =
@@ -2708,6 +2728,7 @@ export const PipelinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
     apiVersion: "2025-05-21",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PipelinesUpdateInput = typeof PipelinesUpdateInput.Type;

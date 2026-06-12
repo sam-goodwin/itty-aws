@@ -107,6 +107,7 @@ export const ApplicationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsCreateOrUpdateInput =
@@ -164,6 +165,7 @@ export const ApplicationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
@@ -209,6 +211,7 @@ export const ApplicationsFetchHealthInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/fetchHealth",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsFetchHealthInput =
@@ -365,6 +368,7 @@ export const ApplicationsReadUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/fetchUpgradeStatus",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsReadUpgradeInput =
@@ -409,6 +413,7 @@ export const ApplicationsRestartDeployedCodePackageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/restartDeployedCodePackage",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsRestartDeployedCodePackageInput =
@@ -448,6 +453,7 @@ export const ApplicationsResumeUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/resumeUpgrade",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsResumeUpgradeInput =
@@ -487,6 +493,7 @@ export const ApplicationsStartRollbackInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/startRollback",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsStartRollbackInput =
@@ -534,6 +541,7 @@ export const ApplicationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
@@ -630,6 +638,7 @@ export const ApplicationsUpdateUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/updateUpgrade",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsUpdateUpgradeInput =
@@ -732,6 +741,7 @@ export const ApplicationTypesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationTypesDeleteInput =
@@ -959,6 +969,7 @@ export const ApplicationTypeVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationTypeVersionsCreateOrUpdateInput =
@@ -1017,6 +1028,7 @@ export const ApplicationTypeVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationTypeVersionsDeleteInput =
@@ -1561,6 +1573,7 @@ export const ManagedClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedClustersCreateOrUpdateInput =
@@ -1615,6 +1628,7 @@ export const ManagedClustersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedClustersDeleteInput = typeof ManagedClustersDeleteInput.Type;
@@ -1835,6 +1849,7 @@ export const ManagedClustersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedClustersUpdateInput = typeof ManagedClustersUpdateInput.Type;
@@ -2530,6 +2545,7 @@ export const NodeTypesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NodeTypesCreateOrUpdateInput =
@@ -2592,6 +2608,7 @@ export const NodeTypesDeallocateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/deallocate",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NodeTypesDeallocateInput = typeof NodeTypesDeallocateInput.Type;
@@ -2626,6 +2643,7 @@ export const NodeTypesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NodeTypesDeleteInput = typeof NodeTypesDeleteInput.Type;
@@ -2665,6 +2683,7 @@ export const NodeTypesDeleteNodeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/deleteNode",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NodeTypesDeleteNodeInput = typeof NodeTypesDeleteNodeInput.Type;
@@ -2884,6 +2903,7 @@ export const NodeTypesRedeployInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/redeploy",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NodeTypesRedeployInput = typeof NodeTypesRedeployInput.Type;
@@ -2920,6 +2940,7 @@ export const NodeTypesReimageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/reimage",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NodeTypesReimageInput = typeof NodeTypesReimageInput.Type;
@@ -2956,6 +2977,7 @@ export const NodeTypesRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/restart",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NodeTypesRestartInput = typeof NodeTypesRestartInput.Type;
@@ -2992,6 +3014,7 @@ export const NodeTypesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/start",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NodeTypesStartInput = typeof NodeTypesStartInput.Type;
@@ -3033,6 +3056,7 @@ export const NodeTypesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NodeTypesUpdateInput = typeof NodeTypesUpdateInput.Type;
@@ -3275,6 +3299,7 @@ export const ServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -3333,6 +3358,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -3499,6 +3525,7 @@ export const ServicesRestartReplicaInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services/{serviceName}/restartReplica",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServicesRestartReplicaInput =

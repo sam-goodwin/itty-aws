@@ -97,6 +97,7 @@ export const InstancesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
       apiVersion: "2024-09-18",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type InstancesCreateOrUpdateInput =
@@ -151,6 +152,7 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
     apiVersion: "2024-09-18",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;

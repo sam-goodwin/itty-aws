@@ -182,6 +182,7 @@ export const OpenShiftClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
       apiVersion: "2025-07-25",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OpenShiftClustersCreateOrUpdateInput =
@@ -238,6 +239,7 @@ export const OpenShiftClustersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
       apiVersion: "2025-07-25",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OpenShiftClustersDeleteInput =
@@ -710,6 +712,7 @@ export const OpenShiftClustersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
       apiVersion: "2025-07-25",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OpenShiftClustersUpdateInput =

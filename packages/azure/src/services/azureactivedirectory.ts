@@ -47,6 +47,7 @@ export const PrivateEndpointConnectionsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2020-03-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -78,6 +79,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2020-03-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -185,6 +187,7 @@ export const PrivateLinkForAzureAdCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}",
       apiVersion: "2020-03-01",
+      longRunning: {},
     }),
   );
 export type PrivateLinkForAzureAdCreateInput =

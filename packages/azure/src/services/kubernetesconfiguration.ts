@@ -154,6 +154,7 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
     apiVersion: "2023-05-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
@@ -196,6 +197,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
     apiVersion: "2023-05-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
@@ -330,6 +332,7 @@ export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
     apiVersion: "2023-05-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ExtensionsUpdateInput = typeof ExtensionsUpdateInput.Type;
@@ -708,6 +711,7 @@ export const FluxConfigurationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
       apiVersion: "2023-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FluxConfigurationsCreateOrUpdateInput =
@@ -753,6 +757,7 @@ export const FluxConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
       apiVersion: "2023-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FluxConfigurationsDeleteInput =
@@ -1031,6 +1036,7 @@ export const FluxConfigurationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
       apiVersion: "2023-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FluxConfigurationsUpdateInput =
@@ -1393,6 +1399,7 @@ export const SourceControlConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
       apiVersion: "2023-05-01",
+      longRunning: {},
     }),
   );
 export type SourceControlConfigurationsDeleteInput =

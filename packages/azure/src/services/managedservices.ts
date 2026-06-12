@@ -593,6 +593,7 @@ export const RegistrationAssignmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
       apiVersion: "2022-10-01",
+      longRunning: {},
     }),
   );
 export type RegistrationAssignmentsCreateOrUpdateInput =
@@ -766,6 +767,7 @@ export const RegistrationAssignmentsDeleteInput =
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
       apiVersion: "2022-10-01",
+      longRunning: {},
     }),
   );
 export type RegistrationAssignmentsDeleteInput =
@@ -1249,6 +1251,7 @@ export const RegistrationDefinitionsCreateOrUpdateInput =
       method: "PUT",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
       apiVersion: "2022-10-01",
+      longRunning: {},
     }),
   );
 export type RegistrationDefinitionsCreateOrUpdateInput =

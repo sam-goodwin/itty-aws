@@ -132,6 +132,7 @@ export const ContactProfilesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ContactProfilesCreateOrUpdateInput =
@@ -184,6 +185,7 @@ export const ContactProfilesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContactProfilesDeleteInput = typeof ContactProfilesDeleteInput.Type;
@@ -401,6 +403,7 @@ export const ContactProfilesUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContactProfilesUpdateTagsInput =
@@ -496,6 +499,7 @@ export const ContactsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts/{contactName}",
     apiVersion: "2022-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ContactsCreateInput = typeof ContactsCreateInput.Type;
@@ -543,6 +547,7 @@ export const ContactsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts/{contactName}",
     apiVersion: "2022-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ContactsDeleteInput = typeof ContactsDeleteInput.Type;
@@ -1524,6 +1529,7 @@ export const L2ConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type L2ConnectionsCreateOrUpdateInput =
@@ -1577,6 +1583,7 @@ export const L2ConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L2ConnectionsDeleteInput = typeof L2ConnectionsDeleteInput.Type;
@@ -1792,6 +1799,7 @@ export const L2ConnectionsUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L2ConnectionsUpdateTagsInput =
@@ -1894,6 +1902,7 @@ export const OperationsResultsGetInput =
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/locations/{location}/operationResults/{operationId}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OperationsResultsGetInput = typeof OperationsResultsGetInput.Type;
@@ -1986,6 +1995,7 @@ export const SpacecraftsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SpacecraftsCreateOrUpdateInput =
@@ -2040,6 +2050,7 @@ export const SpacecraftsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
     apiVersion: "2022-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SpacecraftsDeleteInput = typeof SpacecraftsDeleteInput.Type;
@@ -2187,6 +2198,7 @@ export const SpacecraftsListAvailableContactsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/listAvailableContacts",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SpacecraftsListAvailableContactsInput =
@@ -2316,6 +2328,7 @@ export const SpacecraftsUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SpacecraftsUpdateTagsInput = typeof SpacecraftsUpdateTagsInput.Type;

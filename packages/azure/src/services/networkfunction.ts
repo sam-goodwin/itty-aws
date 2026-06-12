@@ -173,6 +173,7 @@ export const AzureTrafficCollectorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AzureTrafficCollectorsCreateOrUpdateInput =
@@ -227,6 +228,7 @@ export const AzureTrafficCollectorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureTrafficCollectorsDeleteInput =
@@ -413,6 +415,7 @@ export const CollectorPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CollectorPoliciesCreateOrUpdateInput =
@@ -469,6 +472,7 @@ export const CollectorPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CollectorPoliciesDeleteInput =

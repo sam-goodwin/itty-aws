@@ -28,6 +28,7 @@ export const BackupShortTermRetentionPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupShortTermRetentionPoliciesCreateOrUpdateInput =
@@ -221,6 +222,7 @@ export const BackupShortTermRetentionPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupShortTermRetentionPoliciesUpdateInput =
@@ -2326,6 +2328,7 @@ export const DatabaseEncryptionProtectorsRevalidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/encryptionProtector/{encryptionProtectorName}/revalidate",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabaseEncryptionProtectorsRevalidateInput =
@@ -2366,6 +2369,7 @@ export const DatabaseEncryptionProtectorsRevertInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/encryptionProtector/{encryptionProtectorName}/revert",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabaseEncryptionProtectorsRevertInput =
@@ -2430,6 +2434,7 @@ export const DatabaseExtensionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabaseExtensionsCreateOrUpdateInput =
@@ -3275,6 +3280,7 @@ export const DatabasesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DatabasesCreateOrUpdateInput =
@@ -3331,6 +3337,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
@@ -3581,6 +3588,7 @@ export const DatabasesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/export",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesExportInput = typeof DatabasesExportInput.Type;
@@ -3637,6 +3645,7 @@ export const DatabasesFailoverInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/failover",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesFailoverInput = typeof DatabasesFailoverInput.Type;
@@ -3742,6 +3751,7 @@ export const DatabasesImportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/import",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesImportInput = typeof DatabasesImportInput.Type;
@@ -4004,6 +4014,7 @@ export const DatabasesPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/pause",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesPauseInput = typeof DatabasesPauseInput.Type;
@@ -4268,6 +4279,7 @@ export const DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/initiateScan",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteInput =
@@ -5011,6 +5023,7 @@ export const DatabasesResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/resume",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesResumeInput = typeof DatabasesResumeInput.Type;
@@ -5216,6 +5229,7 @@ export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesUpdateInput = typeof DatabasesUpdateInput.Type;
@@ -5268,6 +5282,7 @@ export const DatabasesUpgradeDataWarehouseInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/upgradeDataWarehouse",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabasesUpgradeDataWarehouseInput =
@@ -5824,6 +5839,7 @@ export const DatabaseVulnerabilityAssessmentScansInitiateScanInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/initiateScan",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabaseVulnerabilityAssessmentScansInitiateScanInput =
@@ -6782,6 +6798,7 @@ export const DeletedServersRecoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/deletedServers/{deletedServerName}/recover",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeletedServersRecoverInput = typeof DeletedServersRecoverInput.Type;
@@ -6895,6 +6912,7 @@ export const DistributedAvailabilityGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DistributedAvailabilityGroupsCreateOrUpdateInput =
@@ -6951,6 +6969,7 @@ export const DistributedAvailabilityGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DistributedAvailabilityGroupsDeleteInput =
@@ -6990,6 +7009,7 @@ export const DistributedAvailabilityGroupsFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}/failover",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DistributedAvailabilityGroupsFailoverInput =
@@ -7175,6 +7195,7 @@ export const DistributedAvailabilityGroupsSetRoleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}/setRole",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DistributedAvailabilityGroupsSetRoleInput =
@@ -7289,6 +7310,7 @@ export const DistributedAvailabilityGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DistributedAvailabilityGroupsUpdateInput =
@@ -7587,6 +7609,7 @@ export const ElasticPoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ElasticPoolsCreateOrUpdateInput =
@@ -7644,6 +7667,7 @@ export const ElasticPoolsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticPoolsDeleteInput = typeof ElasticPoolsDeleteInput.Type;
@@ -7678,6 +7702,7 @@ export const ElasticPoolsFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/failover",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticPoolsFailoverInput = typeof ElasticPoolsFailoverInput.Type;
@@ -7874,6 +7899,7 @@ export const ElasticPoolsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ElasticPoolsUpdateInput = typeof ElasticPoolsUpdateInput.Type;
@@ -7940,6 +7966,7 @@ export const EncryptionProtectorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EncryptionProtectorsCreateOrUpdateInput =
@@ -8122,6 +8149,7 @@ export const EncryptionProtectorsRevalidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}/revalidate",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EncryptionProtectorsRevalidateInput =
@@ -8504,6 +8532,7 @@ export const ExtendedServerBlobAuditingPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/extendedAuditingSettings/{blobAuditingPolicyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExtendedServerBlobAuditingPoliciesCreateOrUpdateInput =
@@ -8720,6 +8749,7 @@ export const FailoverGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FailoverGroupsCreateOrUpdateInput =
@@ -8776,6 +8806,7 @@ export const FailoverGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FailoverGroupsDeleteInput = typeof FailoverGroupsDeleteInput.Type;
@@ -8813,6 +8844,7 @@ export const FailoverGroupsFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}/failover",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FailoverGroupsFailoverInput =
@@ -8870,6 +8902,7 @@ export const FailoverGroupsForceFailoverAllowDataLossInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}/forceFailoverAllowDataLoss",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FailoverGroupsForceFailoverAllowDataLossInput =
@@ -9050,6 +9083,7 @@ export const FailoverGroupsTryPlannedBeforeForcedFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}/tryPlannedBeforeForcedFailover",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FailoverGroupsTryPlannedBeforeForcedFailoverInput =
@@ -9140,6 +9174,7 @@ export const FailoverGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FailoverGroupsUpdateInput = typeof FailoverGroupsUpdateInput.Type;
@@ -9642,6 +9677,7 @@ export const InstanceFailoverGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InstanceFailoverGroupsCreateOrUpdateInput =
@@ -9698,6 +9734,7 @@ export const InstanceFailoverGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InstanceFailoverGroupsDeleteInput =
@@ -9736,6 +9773,7 @@ export const InstanceFailoverGroupsFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/failover",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InstanceFailoverGroupsFailoverInput =
@@ -9792,6 +9830,7 @@ export const InstanceFailoverGroupsForceFailoverAllowDataLossInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/forceFailoverAllowDataLoss",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InstanceFailoverGroupsForceFailoverAllowDataLossInput =
@@ -10118,6 +10157,7 @@ export const InstancePoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InstancePoolsCreateOrUpdateInput =
@@ -10173,6 +10213,7 @@ export const InstancePoolsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InstancePoolsDeleteInput = typeof InstancePoolsDeleteInput.Type;
@@ -10406,6 +10447,7 @@ export const InstancePoolsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InstancePoolsUpdateInput = typeof InstancePoolsUpdateInput.Type;
@@ -10676,6 +10718,7 @@ export const JobAgentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type JobAgentsCreateOrUpdateInput =
@@ -10732,6 +10775,7 @@ export const JobAgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type JobAgentsDeleteInput = typeof JobAgentsDeleteInput.Type;
@@ -10915,6 +10959,7 @@ export const JobAgentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type JobAgentsUpdateInput = typeof JobAgentsUpdateInput.Type;
@@ -11238,6 +11283,7 @@ export const JobExecutionsCreateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/start",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type JobExecutionsCreateInput = typeof JobExecutionsCreateInput.Type;
@@ -11294,6 +11340,7 @@ export const JobExecutionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type JobExecutionsCreateOrUpdateInput =
@@ -11591,6 +11638,7 @@ export const JobPrivateEndpointsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/privateEndpoints/{privateEndpointName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type JobPrivateEndpointsCreateOrUpdateInput =
@@ -11649,6 +11697,7 @@ export const JobPrivateEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/privateEndpoints/{privateEndpointName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type JobPrivateEndpointsDeleteInput =
@@ -13203,6 +13252,7 @@ export const LedgerDigestUploadsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LedgerDigestUploadsCreateOrUpdateInput =
@@ -13260,6 +13310,7 @@ export const LedgerDigestUploadsDisableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}/disable",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LedgerDigestUploadsDisableInput =
@@ -13449,6 +13500,7 @@ export const LongTermRetentionBackupsChangeAccessTierInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/changeAccessTier",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsChangeAccessTierInput =
@@ -13510,6 +13562,7 @@ export const LongTermRetentionBackupsChangeAccessTierByResourceGroupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/changeAccessTier",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsChangeAccessTierByResourceGroupInput =
@@ -13581,6 +13634,7 @@ export const LongTermRetentionBackupsCopyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/copy",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsCopyInput =
@@ -13652,6 +13706,7 @@ export const LongTermRetentionBackupsCopyByResourceGroupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/copy",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsCopyByResourceGroupInput =
@@ -13711,6 +13766,7 @@ export const LongTermRetentionBackupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsDeleteInput =
@@ -13752,6 +13808,7 @@ export const LongTermRetentionBackupsDeleteByResourceGroupInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsDeleteByResourceGroupInput =
@@ -14368,6 +14425,7 @@ export const LongTermRetentionBackupsLockTimeBasedImmutabilityInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/lockTimeBasedImmutability",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsLockTimeBasedImmutabilityInput =
@@ -14427,6 +14485,7 @@ export const LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupInp
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/lockTimeBasedImmutability",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupInput =
@@ -14488,6 +14547,7 @@ export const LongTermRetentionBackupsRemoveLegalHoldImmutabilityInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/removeLegalHoldImmutability",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsRemoveLegalHoldImmutabilityInput =
@@ -14547,6 +14607,7 @@ export const LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupI
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/removeLegalHoldImmutability",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupInput =
@@ -14608,6 +14669,7 @@ export const LongTermRetentionBackupsRemoveTimeBasedImmutabilityInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/removeTimeBasedImmutability",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsRemoveTimeBasedImmutabilityInput =
@@ -14667,6 +14729,7 @@ export const LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupI
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/removeTimeBasedImmutability",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupInput =
@@ -14728,6 +14791,7 @@ export const LongTermRetentionBackupsSetLegalHoldImmutabilityInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/setLegalHoldImmutability",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsSetLegalHoldImmutabilityInput =
@@ -14787,6 +14851,7 @@ export const LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupInpu
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/setLegalHoldImmutability",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupInput =
@@ -14855,6 +14920,7 @@ export const LongTermRetentionBackupsUpdateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/update",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsUpdateInput =
@@ -14921,6 +14987,7 @@ export const LongTermRetentionBackupsUpdateByResourceGroupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/update",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionBackupsUpdateByResourceGroupInput =
@@ -14980,6 +15047,7 @@ export const LongTermRetentionManagedInstanceBackupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups/{backupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionManagedInstanceBackupsDeleteInput =
@@ -15021,6 +15089,7 @@ export const LongTermRetentionManagedInstanceBackupsDeleteByResourceGroupInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups/{backupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionManagedInstanceBackupsDeleteByResourceGroupInput =
@@ -15659,6 +15728,7 @@ export const LongTermRetentionPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LongTermRetentionPoliciesCreateOrUpdateInput =
@@ -16031,6 +16101,7 @@ export const ManagedBackupShortTermRetentionPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedBackupShortTermRetentionPoliciesCreateOrUpdateInput =
@@ -16223,6 +16294,7 @@ export const ManagedBackupShortTermRetentionPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedBackupShortTermRetentionPoliciesUpdateInput =
@@ -17095,6 +17167,7 @@ export const ManagedDatabasesCancelMoveInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/cancelMove",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedDatabasesCancelMoveInput =
@@ -17267,6 +17340,7 @@ export const ManagedDatabasesCompleteMoveInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/completeMove",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedDatabasesCompleteMoveInput =
@@ -17306,6 +17380,7 @@ export const ManagedDatabasesCompleteRestoreInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/completeRestore",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedDatabasesCompleteRestoreInput =
@@ -17413,6 +17488,7 @@ export const ManagedDatabasesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedDatabasesCreateOrUpdateInput =
@@ -17469,6 +17545,7 @@ export const ManagedDatabasesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedDatabasesDeleteInput =
@@ -18564,6 +18641,7 @@ export const ManagedDatabasesReevaluateInaccessibleDatabaseStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/reevaluateInaccessibleDatabaseState",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedDatabasesReevaluateInaccessibleDatabaseStateInput =
@@ -18622,6 +18700,7 @@ export const ManagedDatabasesStartMoveInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/startMove",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedDatabasesStartMoveInput =
@@ -18729,6 +18808,7 @@ export const ManagedDatabasesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedDatabasesUpdateInput =
@@ -19428,6 +19508,7 @@ export const ManagedDatabaseVulnerabilityAssessmentScansInitiateScanInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/initiateScan",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedDatabaseVulnerabilityAssessmentScansInitiateScanInput =
@@ -19799,6 +19880,7 @@ export const ManagedInstanceAdministratorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceAdministratorsCreateOrUpdateInput =
@@ -19854,6 +19936,7 @@ export const ManagedInstanceAdministratorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceAdministratorsDeleteInput =
@@ -20023,6 +20106,7 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateInput 
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/advancedThreatProtectionSettings/{advancedThreatProtectionName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateInput =
@@ -20215,6 +20299,7 @@ export const ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications/{authenticationName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateInput =
@@ -20271,6 +20356,7 @@ export const ManagedInstanceAzureADOnlyAuthenticationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications/{authenticationName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceAzureADOnlyAuthenticationsDeleteInput =
@@ -20469,6 +20555,7 @@ export const ManagedInstanceDtcsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dtc/{dtcName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceDtcsCreateOrUpdateInput =
@@ -20661,6 +20748,7 @@ export const ManagedInstanceEncryptionProtectorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector/{encryptionProtectorName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceEncryptionProtectorsCreateOrUpdateInput =
@@ -20842,6 +20930,7 @@ export const ManagedInstanceEncryptionProtectorsRevalidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector/{encryptionProtectorName}/revalidate",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceEncryptionProtectorsRevalidateInput =
@@ -20890,6 +20979,7 @@ export const ManagedInstanceKeysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceKeysCreateOrUpdateInput =
@@ -20946,6 +21036,7 @@ export const ManagedInstanceKeysDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceKeysDeleteInput =
@@ -21125,6 +21216,7 @@ export const ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateInput =
@@ -21183,6 +21275,7 @@ export const ManagedInstanceLongTermRetentionPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceLongTermRetentionPoliciesDeleteInput =
@@ -21547,6 +21640,7 @@ export const ManagedInstancePrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancePrivateEndpointConnectionsCreateOrUpdateInput =
@@ -21603,6 +21697,7 @@ export const ManagedInstancePrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancePrivateEndpointConnectionsDeleteInput =
@@ -22046,6 +22141,7 @@ export const ManagedInstancesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancesCreateOrUpdateInput =
@@ -22100,6 +22196,7 @@ export const ManagedInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancesDeleteInput =
@@ -22140,6 +22237,7 @@ export const ManagedInstancesFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/failover",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancesFailoverInput =
@@ -22605,6 +22703,7 @@ export const ManagedInstancesReevaluateInaccessibleDatabaseStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/reevaluateInaccessibleDatabaseState",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancesReevaluateInaccessibleDatabaseStateInput =
@@ -22641,6 +22740,7 @@ export const ManagedInstancesRefreshStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/refreshExternalGovernanceStatus",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancesRefreshStatusInput =
@@ -22695,6 +22795,7 @@ export const ManagedInstancesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/start",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancesStartInput = typeof ManagedInstancesStartInput.Type;
@@ -22749,6 +22850,7 @@ export const ManagedInstancesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/stop",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancesStopInput = typeof ManagedInstancesStopInput.Type;
@@ -22954,6 +23056,7 @@ export const ManagedInstancesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancesUpdateInput =
@@ -23010,6 +23113,7 @@ export const ManagedInstancesValidateAzureKeyVaultEncryptionKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/validateAzureKeyVaultEncryptionKey",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstancesValidateAzureKeyVaultEncryptionKeyInput =
@@ -23052,6 +23156,7 @@ export const ManagedInstanceTdeCertificatesCreateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/tdeCertificates",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedInstanceTdeCertificatesCreateInput =
@@ -23335,6 +23440,7 @@ export const ManagedLedgerDigestUploadsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedLedgerDigestUploadsCreateOrUpdateInput =
@@ -23392,6 +23498,7 @@ export const ManagedLedgerDigestUploadsDisableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}/disable",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedLedgerDigestUploadsDisableInput =
@@ -23582,6 +23689,7 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCre
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateInput =
@@ -23777,6 +23885,7 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpd
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateInput =
@@ -23836,6 +23945,7 @@ export const ManagedServerDnsAliasesAcquireInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}/acquire",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedServerDnsAliasesAcquireInput =
@@ -23892,6 +24002,7 @@ export const ManagedServerDnsAliasesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedServerDnsAliasesCreateOrUpdateInput =
@@ -23947,6 +24058,7 @@ export const ManagedServerDnsAliasesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedServerDnsAliasesDeleteInput =
@@ -24121,6 +24233,7 @@ export const ManagedServerSecurityAlertPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies/{securityAlertPolicyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedServerSecurityAlertPoliciesCreateOrUpdateInput =
@@ -24426,6 +24539,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/networkSecurityPerimeterConfigurations/{nspConfigName}/reconcile",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsReconcileInput =
@@ -24528,6 +24642,7 @@ export const OutboundFirewallRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OutboundFirewallRulesCreateOrUpdateInput =
@@ -24583,6 +24698,7 @@ export const OutboundFirewallRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OutboundFirewallRulesDeleteInput =
@@ -24777,6 +24893,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -24833,6 +24950,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -25435,6 +25553,7 @@ export const ReplicationLinksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationLinksCreateOrUpdateInput =
@@ -25531,6 +25650,7 @@ export const ReplicationLinksFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/failover",
       apiVersion: "2014-04-01-legacy",
+      longRunning: {},
     }),
   );
 export type ReplicationLinksFailoverInput =
@@ -25570,6 +25690,7 @@ export const ReplicationLinksFailoverAllowDataLossInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/forceFailoverAllowDataLoss",
       apiVersion: "2014-04-01-legacy",
+      longRunning: {},
     }),
   );
 export type ReplicationLinksFailoverAllowDataLossInput =
@@ -25804,6 +25925,7 @@ export const ReplicationLinksUnlinkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/unlink",
       apiVersion: "2014-04-01-legacy",
+      longRunning: {},
     }),
   );
 export type ReplicationLinksUnlinkInput =
@@ -25849,6 +25971,7 @@ export const ReplicationLinksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationLinksUpdateInput =
@@ -26160,6 +26283,7 @@ export const RestorePointsCreateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RestorePointsCreateInput = typeof RestorePointsCreateInput.Type;
@@ -26972,6 +27096,7 @@ export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advancedThreatProtectionSettings/{advancedThreatProtectionName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerAdvancedThreatProtectionSettingsCreateOrUpdateInput =
@@ -27530,6 +27655,7 @@ export const ServerAzureADAdministratorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerAzureADAdministratorsCreateOrUpdateInput =
@@ -27586,6 +27712,7 @@ export const ServerAzureADAdministratorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerAzureADAdministratorsDeleteInput =
@@ -27756,6 +27883,7 @@ export const ServerAzureADOnlyAuthenticationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/azureADOnlyAuthentications/{authenticationName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerAzureADOnlyAuthenticationsCreateOrUpdateInput =
@@ -27812,6 +27940,7 @@ export const ServerAzureADOnlyAuthenticationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/azureADOnlyAuthentications/{authenticationName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerAzureADOnlyAuthenticationsDeleteInput =
@@ -27992,6 +28121,7 @@ export const ServerBlobAuditingPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/auditingSettings/{blobAuditingPolicyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerBlobAuditingPoliciesCreateOrUpdateInput =
@@ -28189,6 +28319,7 @@ export const ServerConfigurationOptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverConfigurationOptions/{serverConfigurationOptionName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerConfigurationOptionsCreateOrUpdateInput =
@@ -28379,6 +28510,7 @@ export const ServerConnectionPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerConnectionPoliciesCreateOrUpdateInput =
@@ -28573,6 +28705,7 @@ export const ServerDevOpsAuditSettingsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/devOpsAuditingSettings/{devOpsAuditingSettingsName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServerDevOpsAuditSettingsCreateOrUpdateInput =
@@ -28757,6 +28890,7 @@ export const ServerDnsAliasesAcquireInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}/acquire",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerDnsAliasesAcquireInput =
@@ -28814,6 +28948,7 @@ export const ServerDnsAliasesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerDnsAliasesCreateOrUpdateInput =
@@ -28870,6 +29005,7 @@ export const ServerDnsAliasesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerDnsAliasesDeleteInput =
@@ -29044,6 +29180,7 @@ export const ServerKeysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys/{keyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerKeysCreateOrUpdateInput =
@@ -29100,6 +29237,7 @@ export const ServerKeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys/{keyName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServerKeysDeleteInput = typeof ServerKeysDeleteInput.Type;
@@ -29474,6 +29612,7 @@ export const ServersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServersCreateOrUpdateInput = typeof ServersCreateOrUpdateInput.Type;
@@ -29527,6 +29666,7 @@ export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServersDeleteInput = typeof ServersDeleteInput.Type;
@@ -29572,6 +29712,7 @@ export const ServerSecurityAlertPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerSecurityAlertPoliciesCreateOrUpdateInput =
@@ -29825,6 +29966,7 @@ export const ServersImportDatabaseInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/import",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServersImportDatabaseInput = typeof ServersImportDatabaseInput.Type;
@@ -30001,6 +30143,7 @@ export const ServersRefreshStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/refreshExternalGovernanceStatus",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServersRefreshStatusInput = typeof ServersRefreshStatusInput.Type;
@@ -30159,6 +30302,7 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServersUpdateInput = typeof ServersUpdateInput.Type;
@@ -30217,6 +30361,7 @@ export const ServerTrustCertificatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerTrustCertificatesCreateOrUpdateInput =
@@ -30273,6 +30418,7 @@ export const ServerTrustCertificatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerTrustCertificatesDeleteInput =
@@ -30451,6 +30597,7 @@ export const ServerTrustGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/serverTrustGroups/{serverTrustGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerTrustGroupsCreateOrUpdateInput =
@@ -30507,6 +30654,7 @@ export const ServerTrustGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/serverTrustGroups/{serverTrustGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerTrustGroupsDeleteInput =
@@ -31345,6 +31493,7 @@ export const SqlVulnerabilityAssessmentExecuteScanExecuteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/initiateScan",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlVulnerabilityAssessmentExecuteScanExecuteInput =
@@ -32604,6 +32753,7 @@ export const SyncAgentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SyncAgentsCreateOrUpdateInput =
@@ -32660,6 +32810,7 @@ export const SyncAgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SyncAgentsDeleteInput = typeof SyncAgentsDeleteInput.Type;
@@ -33021,6 +33172,7 @@ export const SyncGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SyncGroupsCreateOrUpdateInput =
@@ -33079,6 +33231,7 @@ export const SyncGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SyncGroupsDeleteInput = typeof SyncGroupsDeleteInput.Type;
@@ -33411,6 +33564,7 @@ export const SyncGroupsRefreshHubSchemaInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/refreshHubSchema",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SyncGroupsRefreshHubSchemaInput =
@@ -33546,6 +33700,7 @@ export const SyncGroupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SyncGroupsUpdateInput = typeof SyncGroupsUpdateInput.Type;
@@ -33648,6 +33803,7 @@ export const SyncMembersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SyncMembersCreateOrUpdateInput =
@@ -33710,6 +33866,7 @@ export const SyncMembersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SyncMembersDeleteInput = typeof SyncMembersDeleteInput.Type;
@@ -33949,6 +34106,7 @@ export const SyncMembersRefreshMemberSchemaInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}/refreshSchema",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SyncMembersRefreshMemberSchemaInput =
@@ -34037,6 +34195,7 @@ export const SyncMembersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}",
     apiVersion: "2025-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SyncMembersUpdateInput = typeof SyncMembersUpdateInput.Type;
@@ -34097,6 +34256,7 @@ export const TdeCertificatesCreateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/tdeCertificates",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TdeCertificatesCreateInput = typeof TdeCertificatesCreateInput.Type;
@@ -34267,6 +34427,7 @@ export const TransparentDataEncryptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TransparentDataEncryptionsCreateOrUpdateInput =
@@ -34454,6 +34615,7 @@ export const TransparentDataEncryptionsResumeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}/resume",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TransparentDataEncryptionsResumeInput =
@@ -34512,6 +34674,7 @@ export const TransparentDataEncryptionsSuspendInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}/suspend",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TransparentDataEncryptionsSuspendInput =
@@ -34634,6 +34797,7 @@ export const VirtualClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualClustersCreateOrUpdateInput =
@@ -34688,6 +34852,7 @@ export const VirtualClustersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualClustersDeleteInput = typeof VirtualClustersDeleteInput.Type;
@@ -34912,6 +35077,7 @@ export const VirtualClustersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualClustersUpdateInput = typeof VirtualClustersUpdateInput.Type;
@@ -34966,6 +35132,7 @@ export const VirtualClustersUpdateDnsServersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}/updateManagedInstanceDnsServers",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualClustersUpdateDnsServersInput =
@@ -35037,6 +35204,7 @@ export const VirtualNetworkRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkRulesCreateOrUpdateInput =
@@ -35093,6 +35261,7 @@ export const VirtualNetworkRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkRulesDeleteInput =
@@ -35270,6 +35439,7 @@ export const WorkloadClassifiersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkloadClassifiersCreateOrUpdateInput =
@@ -35330,6 +35500,7 @@ export const WorkloadClassifiersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkloadClassifiersDeleteInput =
@@ -35516,6 +35687,7 @@ export const WorkloadGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkloadGroupsCreateOrUpdateInput =
@@ -35574,6 +35746,7 @@ export const WorkloadGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkloadGroupsDeleteInput = typeof WorkloadGroupsDeleteInput.Type;

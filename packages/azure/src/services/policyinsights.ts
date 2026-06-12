@@ -55,6 +55,7 @@ export const AttestationsCreateOrUpdateAtResourceInput =
       method: "PUT",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
+      longRunning: {},
     }),
   );
 export type AttestationsCreateOrUpdateAtResourceInput =
@@ -130,6 +131,7 @@ export const AttestationsCreateOrUpdateAtResourceGroupInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
+      longRunning: {},
     }),
   );
 export type AttestationsCreateOrUpdateAtResourceGroupInput =
@@ -206,6 +208,7 @@ export const AttestationsCreateOrUpdateAtSubscriptionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
+      longRunning: {},
     }),
   );
 export type AttestationsCreateOrUpdateAtSubscriptionInput =
@@ -4617,6 +4620,7 @@ export const PolicyStatesTriggerResourceGroupEvaluationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation",
       apiVersion: "2024-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PolicyStatesTriggerResourceGroupEvaluationInput =
@@ -4644,6 +4648,7 @@ export const PolicyStatesTriggerSubscriptionEvaluationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation",
       apiVersion: "2024-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PolicyStatesTriggerSubscriptionEvaluationInput =

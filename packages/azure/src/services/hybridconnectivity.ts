@@ -610,6 +610,7 @@ export const PublicCloudConnectorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PublicCloudConnectorsCreateOrUpdateInput =
@@ -888,6 +889,7 @@ export const PublicCloudConnectorsTestPermissionsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}/testPermissions",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PublicCloudConnectorsTestPermissionsInput =
@@ -1534,6 +1536,7 @@ export const SolutionConfigurationsSyncNowInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/syncNow",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SolutionConfigurationsSyncNowInput =

@@ -258,6 +258,7 @@ export const ApplicationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsCreateInput = typeof ApplicationsCreateInput.Type;
@@ -286,6 +287,7 @@ export const ApplicationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
@@ -699,6 +701,7 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersCreateInput = typeof ClustersCreateInput.Type;
@@ -727,6 +730,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -763,6 +767,7 @@ export const ClustersExecuteScriptActionsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/executeScriptActions",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersExecuteScriptActionsInput =
@@ -965,6 +970,7 @@ export const ClustersResizeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/roles/{roleName}/resize",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersResizeInput = typeof ClustersResizeInput.Type;
@@ -994,6 +1000,7 @@ export const ClustersRotateDiskEncryptionKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/rotatediskencryptionkey",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersRotateDiskEncryptionKeyInput =
@@ -1094,6 +1101,7 @@ export const ClustersUpdateAutoScaleConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/roles/{roleName}/autoscale",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersUpdateAutoScaleConfigurationInput =
@@ -1127,6 +1135,7 @@ export const ClustersUpdateGatewaySettingsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/updateGatewaySettings",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersUpdateGatewaySettingsInput =
@@ -1158,6 +1167,7 @@ export const ClustersUpdateIdentityCertificateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/updateClusterIdentityCertificate",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersUpdateIdentityCertificateInput =
@@ -1240,6 +1250,7 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
@@ -1264,6 +1275,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
@@ -1287,6 +1299,7 @@ export const ExtensionsDisableAzureMonitorInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExtensionsDisableAzureMonitorInput =
@@ -1314,6 +1327,7 @@ export const ExtensionsDisableMonitoringInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExtensionsDisableMonitoringInput =
@@ -1360,6 +1374,7 @@ export const ExtensionsEnableAzureMonitorInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExtensionsEnableAzureMonitorInput =
@@ -1390,6 +1405,7 @@ export const ExtensionsEnableMonitoringInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExtensionsEnableMonitoringInput =
@@ -2318,6 +2334,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -2349,6 +2366,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -2787,6 +2805,7 @@ export const VirtualMachinesRestartHostsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesRestartHostsInput =

@@ -20,6 +20,7 @@ export const EndpointsPurgeContentInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/purge",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EndpointsPurgeContentInput = typeof EndpointsPurgeContentInput.Type;
@@ -92,6 +93,7 @@ export const ExperimentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExperimentsCreateOrUpdateInput =
@@ -138,6 +140,7 @@ export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExperimentsDeleteInput = typeof ExperimentsDeleteInput.Type;
@@ -267,6 +270,7 @@ export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExperimentsUpdateInput = typeof ExperimentsUpdateInput.Type;
@@ -449,6 +453,7 @@ export const FrontDoorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FrontDoorsCreateOrUpdateInput =
@@ -491,6 +496,7 @@ export const FrontDoorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type FrontDoorsDeleteInput = typeof FrontDoorsDeleteInput.Type;
@@ -685,6 +691,7 @@ export const FrontendEndpointsDisableHttpsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/disableHttps",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FrontendEndpointsDisableHttpsInput =
@@ -742,6 +749,7 @@ export const FrontendEndpointsEnableHttpsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/enableHttps",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FrontendEndpointsEnableHttpsInput =
@@ -926,6 +934,7 @@ export const NetworkExperimentProfilesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkExperimentProfilesCreateOrUpdateInput =
@@ -968,6 +977,7 @@ export const NetworkExperimentProfilesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkExperimentProfilesDeleteInput =
@@ -1140,6 +1150,7 @@ export const NetworkExperimentProfilesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkExperimentProfilesUpdateInput =
@@ -1528,6 +1539,7 @@ export const PoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PoliciesCreateOrUpdateInput =
@@ -1570,6 +1582,7 @@ export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PoliciesDeleteInput = typeof PoliciesDeleteInput.Type;
@@ -1723,6 +1736,7 @@ export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PoliciesUpdateInput = typeof PoliciesUpdateInput.Type;
@@ -2020,6 +2034,7 @@ export const RulesEnginesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RulesEnginesCreateOrUpdateInput =
@@ -2063,6 +2078,7 @@ export const RulesEnginesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
       apiVersion: "2025-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RulesEnginesDeleteInput = typeof RulesEnginesDeleteInput.Type;

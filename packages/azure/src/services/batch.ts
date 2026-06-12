@@ -687,6 +687,7 @@ export const BatchAccountCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BatchAccountCreateInput = typeof BatchAccountCreateInput.Type;
@@ -738,6 +739,7 @@ export const BatchAccountDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BatchAccountDeleteInput = typeof BatchAccountDeleteInput.Type;
@@ -1648,6 +1650,7 @@ export const NetworkSecurityPerimeterReconcileConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkSecurityPerimeterReconcileConfigurationInput =
@@ -2374,6 +2377,7 @@ export const PoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PoolDeleteInput = typeof PoolDeleteInput.Type;
@@ -3299,6 +3303,7 @@ export const PrivateEndpointConnectionDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionDeleteInput =
@@ -3498,6 +3503,7 @@ export const PrivateEndpointConnectionUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionUpdateInput =

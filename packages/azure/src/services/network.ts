@@ -106,6 +106,7 @@ export const AdminRuleCollectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AdminRuleCollectionsDeleteInput =
@@ -315,6 +316,7 @@ export const AdminRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AdminRulesDeleteInput = typeof AdminRulesDeleteInput.Type;
@@ -443,6 +445,7 @@ export const ApplicationGatewayPrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationGatewayPrivateEndpointConnectionsDeleteInput =
@@ -598,6 +601,7 @@ export const ApplicationGatewayPrivateEndpointConnectionsUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApplicationGatewayPrivateEndpointConnectionsUpdateInput =
@@ -681,6 +685,7 @@ export const ApplicationGatewaysBackendHealthInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendhealth",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationGatewaysBackendHealthInput =
@@ -786,6 +791,7 @@ export const ApplicationGatewaysBackendHealthOnDemandInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/getBackendHealthOnDemand",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationGatewaysBackendHealthOnDemandInput =
@@ -1234,6 +1240,7 @@ export const ApplicationGatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApplicationGatewaysCreateOrUpdateInput =
@@ -1276,6 +1283,7 @@ export const ApplicationGatewaysDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationGatewaysDeleteInput =
@@ -1699,6 +1707,7 @@ export const ApplicationGatewaysStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/start",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationGatewaysStartInput =
@@ -1736,6 +1745,7 @@ export const ApplicationGatewaysStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/stop",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationGatewaysStopInput =
@@ -1919,6 +1929,7 @@ export const ApplicationSecurityGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApplicationSecurityGroupsCreateOrUpdateInput =
@@ -1961,6 +1972,7 @@ export const ApplicationSecurityGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationSecurityGroupsDeleteInput =
@@ -2646,6 +2658,7 @@ export const AzureFirewallsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AzureFirewallsCreateOrUpdateInput =
@@ -2688,6 +2701,7 @@ export const AzureFirewallsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureFirewallsDeleteInput = typeof AzureFirewallsDeleteInput.Type;
@@ -2848,6 +2862,7 @@ export const AzureFirewallsListLearnedPrefixesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}/learnedIPPrefixes",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureFirewallsListLearnedPrefixesInput =
@@ -2910,6 +2925,7 @@ export const AzureFirewallsPacketCaptureInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}/packetCapture",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureFirewallsPacketCaptureInput =
@@ -2971,6 +2987,7 @@ export const AzureFirewallsPacketCaptureOperationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}/packetCaptureOperation",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureFirewallsPacketCaptureOperationInput =
@@ -3024,6 +3041,7 @@ export const AzureFirewallsUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AzureFirewallsUpdateTagsInput =
@@ -3129,6 +3147,7 @@ export const BastionHostsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BastionHostsCreateOrUpdateInput =
@@ -3172,6 +3191,7 @@ export const BastionHostsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BastionHostsDeleteInput = typeof BastionHostsDeleteInput.Type;
@@ -3327,6 +3347,7 @@ export const BastionHostsUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BastionHostsUpdateTagsInput =
@@ -3496,6 +3517,7 @@ export const ConfigurationPolicyGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}/configurationPolicyGroups/{configurationPolicyGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigurationPolicyGroupsCreateOrUpdateInput =
@@ -3536,6 +3558,7 @@ export const ConfigurationPolicyGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}/configurationPolicyGroups/{configurationPolicyGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigurationPolicyGroupsDeleteInput =
@@ -3821,6 +3844,7 @@ export const ConnectionMonitorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectionMonitorsCreateOrUpdateInput =
@@ -3867,6 +3891,7 @@ export const ConnectionMonitorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectionMonitorsDeleteInput =
@@ -4002,6 +4027,7 @@ export const ConnectionMonitorsStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/stop",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectionMonitorsStopInput =
@@ -4200,6 +4226,7 @@ export const ConnectivityConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations/{configurationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectivityConfigurationsDeleteInput =
@@ -4413,6 +4440,7 @@ export const CustomIPPrefixesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CustomIPPrefixesCreateOrUpdateInput =
@@ -4455,6 +4483,7 @@ export const CustomIPPrefixesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CustomIPPrefixesDeleteInput =
@@ -4701,6 +4730,7 @@ export const DdosCustomPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DdosCustomPoliciesCreateOrUpdateInput =
@@ -4743,6 +4773,7 @@ export const DdosCustomPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DdosCustomPoliciesDeleteInput =
@@ -4901,6 +4932,7 @@ export const DdosProtectionPlansCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DdosProtectionPlansCreateOrUpdateInput =
@@ -4943,6 +4975,7 @@ export const DdosProtectionPlansDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DdosProtectionPlansDeleteInput =
@@ -5257,6 +5290,7 @@ export const DeleteBastionShareableLinkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinks",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeleteBastionShareableLinkInput =
@@ -5295,6 +5329,7 @@ export const DeleteBastionShareableLinkByTokenInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinksByToken",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeleteBastionShareableLinkByTokenInput =
@@ -5511,6 +5546,7 @@ export const DscpConfigurationCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DscpConfigurationCreateOrUpdateInput =
@@ -5553,6 +5589,7 @@ export const DscpConfigurationDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DscpConfigurationDeleteInput =
@@ -5743,6 +5780,7 @@ export const ExpressRouteCircuitAuthorizationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRouteCircuitAuthorizationsCreateOrUpdateInput =
@@ -5783,6 +5821,7 @@ export const ExpressRouteCircuitAuthorizationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCircuitAuthorizationsDeleteInput =
@@ -5945,6 +5984,7 @@ export const ExpressRouteCircuitConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRouteCircuitConnectionsCreateOrUpdateInput =
@@ -5987,6 +6027,7 @@ export const ExpressRouteCircuitConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCircuitConnectionsDeleteInput =
@@ -6278,6 +6319,7 @@ export const ExpressRouteCircuitPeeringsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRouteCircuitPeeringsCreateOrUpdateInput =
@@ -6318,6 +6360,7 @@ export const ExpressRouteCircuitPeeringsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCircuitPeeringsDeleteInput =
@@ -6514,6 +6557,7 @@ export const ExpressRouteCircuitsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRouteCircuitsCreateOrUpdateInput =
@@ -6556,6 +6600,7 @@ export const ExpressRouteCircuitsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCircuitsDeleteInput =
@@ -6812,6 +6857,7 @@ export const ExpressRouteCircuitsListArpTableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/arpTables/{devicePath}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCircuitsListArpTableInput =
@@ -6862,6 +6908,7 @@ export const ExpressRouteCircuitsListRoutesTableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/routeTables/{devicePath}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCircuitsListRoutesTableInput =
@@ -6913,6 +6960,7 @@ export const ExpressRouteCircuitsListRoutesTableSummaryInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/routeTablesSummary/{devicePath}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCircuitsListRoutesTableSummaryInput =
@@ -7092,6 +7140,7 @@ export const ExpressRouteConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRouteConnectionsCreateOrUpdateInput =
@@ -7132,6 +7181,7 @@ export const ExpressRouteConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteConnectionsDeleteInput =
@@ -7389,6 +7439,7 @@ export const ExpressRouteCrossConnectionPeeringsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRouteCrossConnectionPeeringsCreateOrUpdateInput =
@@ -7429,6 +7480,7 @@ export const ExpressRouteCrossConnectionPeeringsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCrossConnectionPeeringsDeleteInput =
@@ -7595,6 +7647,7 @@ export const ExpressRouteCrossConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRouteCrossConnectionsCreateOrUpdateInput =
@@ -7726,6 +7779,7 @@ export const ExpressRouteCrossConnectionsListArpTableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/arpTables/{devicePath}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCrossConnectionsListArpTableInput =
@@ -7821,6 +7875,7 @@ export const ExpressRouteCrossConnectionsListRoutesTableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/routeTables/{devicePath}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCrossConnectionsListRoutesTableInput =
@@ -7872,6 +7927,7 @@ export const ExpressRouteCrossConnectionsListRoutesTableSummaryInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/routeTablesSummary/{devicePath}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteCrossConnectionsListRoutesTableSummaryInput =
@@ -8005,6 +8061,7 @@ export const ExpressRouteGatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRouteGatewaysCreateOrUpdateInput =
@@ -8047,6 +8104,7 @@ export const ExpressRouteGatewaysDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExpressRouteGatewaysDeleteInput =
@@ -8218,6 +8276,7 @@ export const ExpressRouteGatewaysUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRouteGatewaysUpdateTagsInput =
@@ -8366,6 +8425,7 @@ export const ExpressRoutePortAuthorizationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRoutePortAuthorizationsCreateOrUpdateInput =
@@ -8406,6 +8466,7 @@ export const ExpressRoutePortAuthorizationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRoutePortAuthorizationsDeleteInput =
@@ -8594,6 +8655,7 @@ export const ExpressRoutePortsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRoutePortsCreateOrUpdateInput =
@@ -8636,6 +8698,7 @@ export const ExpressRoutePortsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExpressRoutePortsDeleteInput =
@@ -9302,6 +9365,7 @@ export const FirewallPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FirewallPoliciesCreateOrUpdateInput =
@@ -9344,6 +9408,7 @@ export const FirewallPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FirewallPoliciesDeleteInput =
@@ -9555,6 +9620,7 @@ export const FirewallPolicyDeploymentsDeployInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/deploy",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FirewallPolicyDeploymentsDeployInput =
@@ -10311,6 +10377,7 @@ export const FirewallPolicyRuleCollectionGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FirewallPolicyRuleCollectionGroupsCreateOrUpdateInput =
@@ -10351,6 +10418,7 @@ export const FirewallPolicyRuleCollectionGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FirewallPolicyRuleCollectionGroupsDeleteInput =
@@ -10546,6 +10614,7 @@ export const FlowLogsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FlowLogsCreateOrUpdateInput =
@@ -10590,6 +10659,7 @@ export const FlowLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FlowLogsDeleteInput = typeof FlowLogsDeleteInput.Type;
@@ -10751,6 +10821,7 @@ export const GeneratevirtualwanvpnserverconfigurationvpnprofileInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/generateVpnProfile",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GeneratevirtualwanvpnserverconfigurationvpnprofileInput =
@@ -10790,6 +10861,7 @@ export const GetActiveSessionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type GetActiveSessionsInput = typeof GetActiveSessionsInput.Type;
@@ -10941,6 +11013,7 @@ export const HubRouteTablesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables/{routeTableName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type HubRouteTablesCreateOrUpdateInput =
@@ -10981,6 +11054,7 @@ export const HubRouteTablesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables/{routeTableName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HubRouteTablesDeleteInput = typeof HubRouteTablesDeleteInput.Type;
@@ -11182,6 +11256,7 @@ export const HubVirtualNetworkConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type HubVirtualNetworkConnectionsCreateOrUpdateInput =
@@ -11221,6 +11296,7 @@ export const HubVirtualNetworkConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HubVirtualNetworkConnectionsDeleteInput =
@@ -11382,6 +11458,7 @@ export const InboundNatRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type InboundNatRulesCreateOrUpdateInput =
@@ -11422,6 +11499,7 @@ export const InboundNatRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InboundNatRulesDeleteInput = typeof InboundNatRulesDeleteInput.Type;
@@ -11571,6 +11649,7 @@ export const InboundSecurityRuleCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/inboundSecurityRules/{ruleCollectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type InboundSecurityRuleCreateOrUpdateInput =
@@ -11679,6 +11758,7 @@ export const IpAllocationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IpAllocationsCreateOrUpdateInput =
@@ -11722,6 +11802,7 @@ export const IpAllocationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IpAllocationsDeleteInput = typeof IpAllocationsDeleteInput.Type;
@@ -11949,6 +12030,7 @@ export const IpamPoolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type IpamPoolsCreateInput = typeof IpamPoolsCreateInput.Type;
@@ -12001,6 +12083,7 @@ export const IpamPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type IpamPoolsDeleteInput = typeof IpamPoolsDeleteInput.Type;
@@ -12352,6 +12435,7 @@ export const IpGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IpGroupsCreateOrUpdateInput =
@@ -12394,6 +12478,7 @@ export const IpGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type IpGroupsDeleteInput = typeof IpGroupsDeleteInput.Type;
@@ -13145,6 +13230,7 @@ export const LoadBalancerBackendAddressPoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LoadBalancerBackendAddressPoolsCreateOrUpdateInput =
@@ -13185,6 +13271,7 @@ export const LoadBalancerBackendAddressPoolsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LoadBalancerBackendAddressPoolsDeleteInput =
@@ -13429,6 +13516,7 @@ export const LoadBalancerLoadBalancingRulesHealthInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules/{loadBalancingRuleName}/health",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LoadBalancerLoadBalancingRulesHealthInput =
@@ -13820,6 +13908,7 @@ export const LoadBalancersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LoadBalancersCreateOrUpdateInput =
@@ -13863,6 +13952,7 @@ export const LoadBalancersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LoadBalancersDeleteInput = typeof LoadBalancersDeleteInput.Type;
@@ -14029,6 +14119,7 @@ export const LoadBalancersListInboundNatRulePortMappingsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LoadBalancersListInboundNatRulePortMappingsInput =
@@ -14131,6 +14222,7 @@ export const LoadBalancersSwapPublicIpAddressesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/setLoadBalancerFrontendPublicIpAddresses",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LoadBalancersSwapPublicIpAddressesInput =
@@ -14273,6 +14365,7 @@ export const LocalNetworkGatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LocalNetworkGatewaysCreateOrUpdateInput =
@@ -14315,6 +14408,7 @@ export const LocalNetworkGatewaysDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LocalNetworkGatewaysDeleteInput =
@@ -14749,6 +14843,7 @@ export const NatGatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NatGatewaysCreateOrUpdateInput =
@@ -14793,6 +14888,7 @@ export const NatGatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NatGatewaysDeleteInput = typeof NatGatewaysDeleteInput.Type;
@@ -15039,6 +15135,7 @@ export const NatRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NatRulesCreateOrUpdateInput =
@@ -15079,6 +15176,7 @@ export const NatRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NatRulesDeleteInput = typeof NatRulesDeleteInput.Type;
@@ -15275,6 +15373,7 @@ export const NetworkGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkGroupsDeleteInput = typeof NetworkGroupsDeleteInput.Type;
@@ -15639,6 +15738,7 @@ export const NetworkInterfacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkInterfacesCreateOrUpdateInput =
@@ -15681,6 +15781,7 @@ export const NetworkInterfacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkInterfacesDeleteInput =
@@ -15809,6 +15910,7 @@ export const NetworkInterfacesGetEffectiveRouteTableInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveRouteTable",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkInterfacesGetEffectiveRouteTableInput =
@@ -16060,6 +16162,7 @@ export const NetworkInterfacesListEffectiveNetworkSecurityGroupsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveNetworkSecurityGroups",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkInterfacesListEffectiveNetworkSecurityGroupsInput =
@@ -16234,6 +16337,7 @@ export const NetworkInterfaceTapConfigurationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkInterfaceTapConfigurationsCreateOrUpdateInput =
@@ -16274,6 +16378,7 @@ export const NetworkInterfaceTapConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkInterfaceTapConfigurationsDeleteInput =
@@ -16403,6 +16508,7 @@ export const NetworkManagerCommitsPostInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/commit",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkManagerCommitsPostInput =
@@ -16605,6 +16711,7 @@ export const NetworkManagerRoutingConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkManagerRoutingConfigurationsDeleteInput =
@@ -16838,6 +16945,7 @@ export const NetworkManagersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkManagersDeleteInput = typeof NetworkManagersDeleteInput.Type;
@@ -17126,6 +17234,7 @@ export const NetworkProfilesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkProfilesDeleteInput = typeof NetworkProfilesDeleteInput.Type;
@@ -17403,6 +17512,7 @@ export const NetworkSecurityGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkSecurityGroupsCreateOrUpdateInput =
@@ -17445,6 +17555,7 @@ export const NetworkSecurityGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkSecurityGroupsDeleteInput =
@@ -18046,6 +18157,7 @@ export const NetworkSecurityPerimeterAssociationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkSecurityPerimeterAssociationsCreateOrUpdateInput =
@@ -18102,6 +18214,7 @@ export const NetworkSecurityPerimeterAssociationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkSecurityPerimeterAssociationsDeleteInput =
@@ -18307,6 +18420,7 @@ export const NetworkSecurityPerimeterLinkReferencesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/linkReferences/{linkReferenceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkSecurityPerimeterLinkReferencesDeleteInput =
@@ -18556,6 +18670,7 @@ export const NetworkSecurityPerimeterLinksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/links/{linkName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkSecurityPerimeterLinksDeleteInput =
@@ -19340,6 +19455,7 @@ export const NetworkSecurityPerimetersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkSecurityPerimetersDeleteInput =
@@ -19751,6 +19867,7 @@ export const NetworkVirtualApplianceConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/networkVirtualApplianceConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkVirtualApplianceConnectionsCreateOrUpdateInput =
@@ -19790,6 +19907,7 @@ export const NetworkVirtualApplianceConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/networkVirtualApplianceConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkVirtualApplianceConnectionsDeleteInput =
@@ -20097,6 +20215,7 @@ export const NetworkVirtualAppliancesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkVirtualAppliancesCreateOrUpdateInput =
@@ -20139,6 +20258,7 @@ export const NetworkVirtualAppliancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkVirtualAppliancesDeleteInput =
@@ -20223,6 +20343,7 @@ export const NetworkVirtualAppliancesGetBootDiagnosticLogsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/getBootDiagnosticLogs",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkVirtualAppliancesGetBootDiagnosticLogsInput =
@@ -20350,6 +20471,7 @@ export const NetworkVirtualAppliancesReimageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/reimage",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkVirtualAppliancesReimageInput =
@@ -20389,6 +20511,7 @@ export const NetworkVirtualAppliancesRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/restart",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkVirtualAppliancesRestartInput =
@@ -20502,6 +20625,7 @@ export const NetworkWatchersCheckConnectivityInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectivityCheck",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersCheckConnectivityInput =
@@ -20747,6 +20871,7 @@ export const NetworkWatchersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersDeleteInput = typeof NetworkWatchersDeleteInput.Type;
@@ -20831,6 +20956,7 @@ export const NetworkWatchersGetAzureReachabilityReportInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/azureReachabilityReport",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersGetAzureReachabilityReportInput =
@@ -20889,6 +21015,7 @@ export const NetworkWatchersGetFlowLogStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryFlowLogStatus",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersGetFlowLogStatusInput =
@@ -20994,6 +21121,7 @@ export const NetworkWatchersGetNetworkConfigurationDiagnosticInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/networkConfigurationDiagnostic",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersGetNetworkConfigurationDiagnosticInput =
@@ -21085,6 +21213,7 @@ export const NetworkWatchersGetNextHopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/nextHop",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersGetNextHopInput =
@@ -21212,6 +21341,7 @@ export const NetworkWatchersGetTroubleshootingInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/troubleshoot",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersGetTroubleshootingInput =
@@ -21273,6 +21403,7 @@ export const NetworkWatchersGetTroubleshootingResultInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryTroubleshootResult",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersGetTroubleshootingResultInput =
@@ -21334,6 +21465,7 @@ export const NetworkWatchersGetVMSecurityRulesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/securityGroupView",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersGetVMSecurityRulesInput =
@@ -21544,6 +21676,7 @@ export const NetworkWatchersListAvailableProvidersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/availableProvidersList",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersListAvailableProvidersInput =
@@ -21658,6 +21791,7 @@ export const NetworkWatchersSetFlowLogConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/configureFlowLog",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersSetFlowLogConfigurationInput =
@@ -21803,6 +21937,7 @@ export const NetworkWatchersVerifyIPFlowInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/ipFlowVerify",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkWatchersVerifyIPFlowInput =
@@ -21988,6 +22123,7 @@ export const P2sVpnGatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type P2sVpnGatewaysCreateOrUpdateInput =
@@ -22030,6 +22166,7 @@ export const P2sVpnGatewaysDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type P2sVpnGatewaysDeleteInput = typeof P2sVpnGatewaysDeleteInput.Type;
@@ -22066,6 +22203,7 @@ export const P2sVpnGatewaysDisconnectP2sVpnConnectionsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{p2sVpnGatewayName}/disconnectP2sVpnConnections",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type P2sVpnGatewaysDisconnectP2sVpnConnectionsInput =
@@ -22105,6 +22243,7 @@ export const P2sVpnGatewaysGenerateVpnProfileInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/generatevpnprofile",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type P2sVpnGatewaysGenerateVpnProfileInput =
@@ -22183,6 +22322,7 @@ export const P2sVpnGatewaysGetP2sVpnConnectionHealthInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealth",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type P2sVpnGatewaysGetP2sVpnConnectionHealthInput =
@@ -22227,6 +22367,7 @@ export const P2sVpnGatewaysGetP2sVpnConnectionHealthDetailedInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealthDetailed",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type P2sVpnGatewaysGetP2sVpnConnectionHealthDetailedInput =
@@ -22350,6 +22491,7 @@ export const P2SVpnGatewaysResetInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/reset",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type P2SVpnGatewaysResetInput = typeof P2SVpnGatewaysResetInput.Type;
@@ -22390,6 +22532,7 @@ export const P2sVpnGatewaysUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type P2sVpnGatewaysUpdateTagsInput =
@@ -22473,6 +22616,7 @@ export const PacketCapturesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PacketCapturesCreateInput = typeof PacketCapturesCreateInput.Type;
@@ -22554,6 +22698,7 @@ export const PacketCapturesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PacketCapturesDeleteInput = typeof PacketCapturesDeleteInput.Type;
@@ -22671,6 +22816,7 @@ export const PacketCapturesGetStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/queryStatus",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PacketCapturesGetStatusInput =
@@ -22817,6 +22963,7 @@ export const PacketCapturesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/stop",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PacketCapturesStopInput = typeof PacketCapturesStopInput.Type;
@@ -22990,6 +23137,7 @@ export const PrivateDnsZoneGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateDnsZoneGroupsCreateOrUpdateInput =
@@ -23030,6 +23178,7 @@ export const PrivateDnsZoneGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateDnsZoneGroupsDeleteInput =
@@ -23252,6 +23401,7 @@ export const PrivateEndpointsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointsCreateOrUpdateInput =
@@ -23294,6 +23444,7 @@ export const PrivateEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointsDeleteInput =
@@ -23459,6 +23610,7 @@ export const PrivateLinkServicesCheckPrivateLinkServiceVisibilityInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesCheckPrivateLinkServiceVisibilityInput =
@@ -23497,6 +23649,7 @@ export const PrivateLinkServicesCheckPrivateLinkServiceVisibilityByResourceGroup
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesCheckPrivateLinkServiceVisibilityByResourceGroupInput =
@@ -23612,6 +23765,7 @@ export const PrivateLinkServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateLinkServicesCreateOrUpdateInput =
@@ -23654,6 +23808,7 @@ export const PrivateLinkServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesDeleteInput =
@@ -23692,6 +23847,7 @@ export const PrivateLinkServicesDeletePrivateEndpointConnectionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesDeletePrivateEndpointConnectionInput =
@@ -24233,6 +24389,7 @@ export const PublicIPAddressesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PublicIPAddressesCreateOrUpdateInput =
@@ -24275,6 +24432,7 @@ export const PublicIPAddressesDdosProtectionStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}/ddosProtectionStatus",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PublicIPAddressesDdosProtectionStatusInput =
@@ -24316,6 +24474,7 @@ export const PublicIPAddressesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PublicIPAddressesDeleteInput =
@@ -24354,6 +24513,7 @@ export const PublicIPAddressesDisassociateCloudServiceReservedPublicIpInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}/disassociateCloudServiceReservedPublicIp",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PublicIPAddressesDisassociateCloudServiceReservedPublicIpInput =
@@ -24684,6 +24844,7 @@ export const PublicIPAddressesReserveCloudServicePublicIpAddressInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}/reserveCloudServicePublicIpAddress",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PublicIPAddressesReserveCloudServicePublicIpAddressInput =
@@ -24844,6 +25005,7 @@ export const PublicIPPrefixesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PublicIPPrefixesCreateOrUpdateInput =
@@ -24886,6 +25048,7 @@ export const PublicIPPrefixesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PublicIPPrefixesDeleteInput =
@@ -25113,6 +25276,7 @@ export const PutBastionShareableLinkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PutBastionShareableLinkInput =
@@ -25545,6 +25709,7 @@ export const ReachabilityAnalysisRunsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisRuns/{reachabilityAnalysisRunName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReachabilityAnalysisRunsDeleteInput =
@@ -25791,6 +25956,7 @@ export const RouteFilterRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RouteFilterRulesCreateOrUpdateInput =
@@ -25831,6 +25997,7 @@ export const RouteFilterRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RouteFilterRulesDeleteInput =
@@ -25990,6 +26157,7 @@ export const RouteFiltersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RouteFiltersCreateOrUpdateInput =
@@ -26033,6 +26201,7 @@ export const RouteFiltersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RouteFiltersDeleteInput = typeof RouteFiltersDeleteInput.Type;
@@ -26315,6 +26484,7 @@ export const RouteMapsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps/{routeMapName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RouteMapsCreateOrUpdateInput =
@@ -26357,6 +26527,7 @@ export const RouteMapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps/{routeMapName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RouteMapsDeleteInput = typeof RouteMapsDeleteInput.Type;
@@ -26495,6 +26666,7 @@ export const RoutesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RoutesCreateOrUpdateInput = typeof RoutesCreateOrUpdateInput.Type;
@@ -26533,6 +26705,7 @@ export const RoutesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RoutesDeleteInput = typeof RoutesDeleteInput.Type;
@@ -26675,6 +26848,7 @@ export const RouteTablesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RouteTablesCreateOrUpdateInput =
@@ -26719,6 +26893,7 @@ export const RouteTablesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RouteTablesDeleteInput = typeof RouteTablesDeleteInput.Type;
@@ -26941,6 +27116,7 @@ export const RoutingIntentCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RoutingIntentCreateOrUpdateInput =
@@ -26982,6 +27158,7 @@ export const RoutingIntentDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RoutingIntentDeleteInput = typeof RoutingIntentDeleteInput.Type;
@@ -27184,6 +27361,7 @@ export const RoutingRuleCollectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RoutingRuleCollectionsDeleteInput =
@@ -27422,6 +27600,7 @@ export const RoutingRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RoutingRulesDeleteInput = typeof RoutingRulesDeleteInput.Type;
@@ -27841,6 +28020,7 @@ export const SecurityAdminConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecurityAdminConfigurationsDeleteInput =
@@ -28008,6 +28188,7 @@ export const SecurityPartnerProvidersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SecurityPartnerProvidersCreateOrUpdateInput =
@@ -28050,6 +28231,7 @@ export const SecurityPartnerProvidersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecurityPartnerProvidersDeleteInput =
@@ -28320,6 +28502,7 @@ export const SecurityRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SecurityRulesCreateOrUpdateInput =
@@ -28361,6 +28544,7 @@ export const SecurityRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecurityRulesDeleteInput = typeof SecurityRulesDeleteInput.Type;
@@ -28552,6 +28736,7 @@ export const SecurityUserConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecurityUserConfigurationsDeleteInput =
@@ -28770,6 +28955,7 @@ export const SecurityUserRuleCollectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecurityUserRuleCollectionsDeleteInput =
@@ -29015,6 +29201,7 @@ export const SecurityUserRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecurityUserRulesDeleteInput =
@@ -29242,6 +29429,7 @@ export const ServiceEndpointPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServiceEndpointPoliciesCreateOrUpdateInput =
@@ -29284,6 +29472,7 @@ export const ServiceEndpointPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServiceEndpointPoliciesDeleteInput =
@@ -29519,6 +29708,7 @@ export const ServiceEndpointPolicyDefinitionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServiceEndpointPolicyDefinitionsCreateOrUpdateInput =
@@ -29559,6 +29749,7 @@ export const ServiceEndpointPolicyDefinitionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServiceEndpointPolicyDefinitionsDeleteInput =
@@ -29739,6 +29930,7 @@ export const ServiceGatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServiceGatewaysCreateOrUpdateInput =
@@ -29793,6 +29985,7 @@ export const ServiceGatewaysDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServiceGatewaysDeleteInput = typeof ServiceGatewaysDeleteInput.Type;
@@ -30140,6 +30333,7 @@ export const ServiceGatewaysUpdateAddressLocationsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}/updateAddressLocations",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServiceGatewaysUpdateAddressLocationsInput =
@@ -30210,6 +30404,7 @@ export const ServiceGatewaysUpdateServicesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}/updateServices",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServiceGatewaysUpdateServicesInput =
@@ -30493,6 +30688,7 @@ export const StaticCidrsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}/staticCidrs/{staticCidrName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type StaticCidrsDeleteInput = typeof StaticCidrsDeleteInput.Type;
@@ -31032,6 +31228,7 @@ export const SubnetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SubnetsCreateOrUpdateInput = typeof SubnetsCreateOrUpdateInput.Type;
@@ -31071,6 +31268,7 @@ export const SubnetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SubnetsDeleteInput = typeof SubnetsDeleteInput.Type;
@@ -31199,6 +31397,7 @@ export const SubnetsPrepareNetworkPoliciesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/prepareNetworkPolicies",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SubnetsPrepareNetworkPoliciesInput =
@@ -31238,6 +31437,7 @@ export const SubnetsUnprepareNetworkPoliciesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/unprepareNetworkPolicies",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SubnetsUnprepareNetworkPoliciesInput =
@@ -31647,6 +31847,7 @@ export const VerifierWorkspacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VerifierWorkspacesDeleteInput =
@@ -31894,6 +32095,7 @@ export const VipSwapCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/microsoft.Compute/cloudServices/{resourceName}/providers/Microsoft.Network/cloudServiceSlots/{singletonResource}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VipSwapCreateInput = typeof VipSwapCreateInput.Type;
@@ -32032,6 +32234,7 @@ export const VirtualApplianceSitesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualApplianceSitesCreateOrUpdateInput =
@@ -32072,6 +32275,7 @@ export const VirtualApplianceSitesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualApplianceSitesDeleteInput =
@@ -32313,6 +32517,7 @@ export const VirtualHubBgpConnectionCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualHubBgpConnectionCreateOrUpdateInput =
@@ -32353,6 +32558,7 @@ export const VirtualHubBgpConnectionDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualHubBgpConnectionDeleteInput =
@@ -32475,6 +32681,7 @@ export const VirtualHubBgpConnectionsListAdvertisedRoutesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/advertisedRoutes",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualHubBgpConnectionsListAdvertisedRoutesInput =
@@ -32526,6 +32733,7 @@ export const VirtualHubBgpConnectionsListLearnedRoutesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/learnedRoutes",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualHubBgpConnectionsListLearnedRoutesInput =
@@ -32612,6 +32820,7 @@ export const VirtualHubIpConfigurationCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations/{ipConfigName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualHubIpConfigurationCreateOrUpdateInput =
@@ -32652,6 +32861,7 @@ export const VirtualHubIpConfigurationDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations/{ipConfigName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualHubIpConfigurationDeleteInput =
@@ -32801,6 +33011,7 @@ export const VirtualHubRouteTableV2sCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables/{routeTableName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualHubRouteTableV2sCreateOrUpdateInput =
@@ -32841,6 +33052,7 @@ export const VirtualHubRouteTableV2sDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables/{routeTableName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualHubRouteTableV2sDeleteInput =
@@ -33074,6 +33286,7 @@ export const VirtualHubsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualHubsCreateOrUpdateInput =
@@ -33118,6 +33331,7 @@ export const VirtualHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VirtualHubsDeleteInput = typeof VirtualHubsDeleteInput.Type;
@@ -33189,6 +33403,7 @@ export const VirtualHubsGetEffectiveVirtualHubRoutesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/effectiveRoutes",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualHubsGetEffectiveVirtualHubRoutesInput =
@@ -33239,6 +33454,7 @@ export const VirtualHubsGetInboundRoutesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/inboundRoutes",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualHubsGetInboundRoutesInput =
@@ -33288,6 +33504,7 @@ export const VirtualHubsGetOutboundRoutesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/outboundRoutes",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualHubsGetOutboundRoutesInput =
@@ -33495,6 +33712,7 @@ export const VirtualNetworkAppliancesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkAppliances/{virtualNetworkApplianceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworkAppliancesCreateOrUpdateInput =
@@ -33537,6 +33755,7 @@ export const VirtualNetworkAppliancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkAppliances/{virtualNetworkApplianceName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkAppliancesDeleteInput =
@@ -33954,6 +34173,7 @@ export const VirtualNetworkGatewayConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworkGatewayConnectionsCreateOrUpdateInput =
@@ -33996,6 +34216,7 @@ export const VirtualNetworkGatewayConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewayConnectionsDeleteInput =
@@ -34074,6 +34295,7 @@ export const VirtualNetworkGatewayConnectionsGetIkeSasInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/getikesas",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewayConnectionsGetIkeSasInput =
@@ -34193,6 +34415,7 @@ export const VirtualNetworkGatewayConnectionsResetConnectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/resetconnection",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewayConnectionsResetConnectionInput =
@@ -34230,6 +34453,7 @@ export const VirtualNetworkGatewayConnectionsResetSharedKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey/reset",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewayConnectionsResetSharedKeyInput =
@@ -34270,6 +34494,7 @@ export const VirtualNetworkGatewayConnectionsSetSharedKeyInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworkGatewayConnectionsSetSharedKeyInput =
@@ -34309,6 +34534,7 @@ export const VirtualNetworkGatewayConnectionsStartPacketCaptureInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/startPacketCapture",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewayConnectionsStartPacketCaptureInput =
@@ -34346,6 +34572,7 @@ export const VirtualNetworkGatewayConnectionsStopPacketCaptureInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/stopPacketCapture",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewayConnectionsStopPacketCaptureInput =
@@ -34383,6 +34610,7 @@ export const VirtualNetworkGatewayConnectionsUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworkGatewayConnectionsUpdateTagsInput =
@@ -34463,6 +34691,7 @@ export const VirtualNetworkGatewayNatRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules/{natRuleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworkGatewayNatRulesCreateOrUpdateInput =
@@ -34503,6 +34732,7 @@ export const VirtualNetworkGatewayNatRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules/{natRuleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewayNatRulesDeleteInput =
@@ -34971,6 +35201,7 @@ export const VirtualNetworkGatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworkGatewaysCreateOrUpdateInput =
@@ -35013,6 +35244,7 @@ export const VirtualNetworkGatewaysDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysDeleteInput =
@@ -35050,6 +35282,7 @@ export const VirtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnections
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/disconnectVirtualNetworkGatewayVpnConnections",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnectionsInput =
@@ -35095,6 +35328,7 @@ export const VirtualNetworkGatewaysGeneratevpnclientpackageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnclientpackage",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGeneratevpnclientpackageInput =
@@ -35137,6 +35371,7 @@ export const VirtualNetworkGatewaysGenerateVpnProfileInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnprofile",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGenerateVpnProfileInput =
@@ -35217,6 +35452,7 @@ export const VirtualNetworkGatewaysGetAdvertisedRoutesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getAdvertisedRoutes",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGetAdvertisedRoutesInput =
@@ -35269,6 +35505,7 @@ export const VirtualNetworkGatewaysGetBgpPeerStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGetBgpPeerStatusInput =
@@ -35331,6 +35568,7 @@ export const VirtualNetworkGatewaysGetFailoverAllTestDetailsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getFailoverAllTestsDetails",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGetFailoverAllTestDetailsInput =
@@ -35416,6 +35654,7 @@ export const VirtualNetworkGatewaysGetFailoverSingleTestDetailsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getFailoverSingleTestDetails",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGetFailoverSingleTestDetailsInput =
@@ -35492,6 +35731,7 @@ export const VirtualNetworkGatewaysGetLearnedRoutesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getLearnedRoutes",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGetLearnedRoutesInput =
@@ -35543,6 +35783,7 @@ export const VirtualNetworkGatewaysGetResiliencyInformationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getResiliencyInformation",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGetResiliencyInformationInput =
@@ -35609,6 +35850,7 @@ export const VirtualNetworkGatewaysGetRoutesInformationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getRoutesInformation",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGetRoutesInformationInput =
@@ -35680,6 +35922,7 @@ export const VirtualNetworkGatewaysGetVpnclientConnectionHealthInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getVpnClientConnectionHealth",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGetVpnclientConnectionHealthInput =
@@ -35735,6 +35978,7 @@ export const VirtualNetworkGatewaysGetVpnclientIpsecParametersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnclientipsecparameters",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGetVpnclientIpsecParametersInput =
@@ -35831,6 +36075,7 @@ export const VirtualNetworkGatewaysGetVpnProfilePackageUrlInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnprofilepackageurl",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysGetVpnProfilePackageUrlInput =
@@ -35867,6 +36112,7 @@ export const VirtualNetworkGatewaysInvokeAbortMigrationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/abortMigration",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysInvokeAbortMigrationInput =
@@ -35903,6 +36149,7 @@ export const VirtualNetworkGatewaysInvokeCommitMigrationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/commitMigration",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysInvokeCommitMigrationInput =
@@ -35939,6 +36186,7 @@ export const VirtualNetworkGatewaysInvokeExecuteMigrationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/executeMigration",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysInvokeExecuteMigrationInput =
@@ -35977,6 +36225,7 @@ export const VirtualNetworkGatewaysInvokePrepareMigrationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/prepareMigration",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysInvokePrepareMigrationInput =
@@ -36151,6 +36400,7 @@ export const VirtualNetworkGatewaysResetInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/reset",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysResetInput =
@@ -36195,6 +36445,7 @@ export const VirtualNetworkGatewaysResetVpnClientSharedKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/resetvpnclientsharedkey",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysResetVpnClientSharedKeyInput =
@@ -36290,6 +36541,7 @@ export const VirtualNetworkGatewaysSetVpnclientIpsecParametersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/setvpnclientipsecparameters",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysSetVpnclientIpsecParametersInput =
@@ -36387,6 +36639,7 @@ export const VirtualNetworkGatewaysStartExpressRouteSiteFailoverSimulationInput 
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/startSiteFailoverTest",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysStartExpressRouteSiteFailoverSimulationInput =
@@ -36427,6 +36680,7 @@ export const VirtualNetworkGatewaysStartPacketCaptureInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/startPacketCapture",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysStartPacketCaptureInput =
@@ -36474,6 +36728,7 @@ export const VirtualNetworkGatewaysStopExpressRouteSiteFailoverSimulationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/stopSiteFailoverTest",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysStopExpressRouteSiteFailoverSimulationInput =
@@ -36513,6 +36768,7 @@ export const VirtualNetworkGatewaysStopPacketCaptureInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/stopPacketCapture",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkGatewaysStopPacketCaptureInput =
@@ -36586,6 +36842,7 @@ export const VirtualNetworkGatewaysUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworkGatewaysUpdateTagsInput =
@@ -36807,6 +37064,7 @@ export const VirtualNetworkPeeringsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworkPeeringsCreateOrUpdateInput =
@@ -36848,6 +37106,7 @@ export const VirtualNetworkPeeringsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkPeeringsDeleteInput =
@@ -37128,6 +37387,7 @@ export const VirtualNetworksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworksCreateOrUpdateInput =
@@ -37170,6 +37430,7 @@ export const VirtualNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
@@ -37335,6 +37596,7 @@ export const VirtualNetworksListDdosProtectionStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/ddosProtectionStatus",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworksListDdosProtectionStatusInput =
@@ -37522,6 +37784,7 @@ export const VirtualNetworkTapsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworkTapsCreateOrUpdateInput =
@@ -37564,6 +37827,7 @@ export const VirtualNetworkTapsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkTapsDeleteInput =
@@ -37796,6 +38060,7 @@ export const VirtualRouterPeeringsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualRouterPeeringsCreateOrUpdateInput =
@@ -37836,6 +38101,7 @@ export const VirtualRouterPeeringsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualRouterPeeringsDeleteInput =
@@ -37998,6 +38264,7 @@ export const VirtualRoutersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualRoutersCreateOrUpdateInput =
@@ -38040,6 +38307,7 @@ export const VirtualRoutersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualRoutersDeleteInput = typeof VirtualRoutersDeleteInput.Type;
@@ -38243,6 +38511,7 @@ export const VirtualWansCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualWansCreateOrUpdateInput =
@@ -38287,6 +38556,7 @@ export const VirtualWansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VirtualWansDeleteInput = typeof VirtualWansDeleteInput.Type;
@@ -38669,6 +38939,7 @@ export const VpnConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VpnConnectionsCreateOrUpdateInput =
@@ -38709,6 +38980,7 @@ export const VpnConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VpnConnectionsDeleteInput = typeof VpnConnectionsDeleteInput.Type;
@@ -38829,6 +39101,7 @@ export const VpnConnectionsStartPacketCaptureInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/startpacketcapture",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VpnConnectionsStartPacketCaptureInput =
@@ -38869,6 +39142,7 @@ export const VpnConnectionsStopPacketCaptureInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/stoppacketcapture",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VpnConnectionsStopPacketCaptureInput =
@@ -38980,6 +39254,7 @@ export const VpnGatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VpnGatewaysCreateOrUpdateInput =
@@ -39024,6 +39299,7 @@ export const VpnGatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VpnGatewaysDeleteInput = typeof VpnGatewaysDeleteInput.Type;
@@ -39176,6 +39452,7 @@ export const VpnGatewaysResetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/reset",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VpnGatewaysResetInput = typeof VpnGatewaysResetInput.Type;
@@ -39218,6 +39495,7 @@ export const VpnGatewaysStartPacketCaptureInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/startpacketcapture",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VpnGatewaysStartPacketCaptureInput =
@@ -39255,6 +39533,7 @@ export const VpnGatewaysStopPacketCaptureInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/stoppacketcapture",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VpnGatewaysStopPacketCaptureInput =
@@ -39292,6 +39571,7 @@ export const VpnGatewaysUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VpnGatewaysUpdateTagsInput = typeof VpnGatewaysUpdateTagsInput.Type;
@@ -39426,6 +39706,7 @@ export const VpnLinkConnectionsGetIkeSasInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/getikesas",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VpnLinkConnectionsGetIkeSasInput =
@@ -39554,6 +39835,7 @@ export const VpnLinkConnectionsResetConnectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/resetconnection",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VpnLinkConnectionsResetConnectionInput =
@@ -39612,6 +39894,7 @@ export const VpnLinkConnectionsSetOrInitDefaultSharedKeyInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/sharedKeys/default",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VpnLinkConnectionsSetOrInitDefaultSharedKeyInput =
@@ -39652,6 +39935,7 @@ export const VpnServerConfigurationsAssociatedWithVirtualWanListInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnServerConfigurations",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VpnServerConfigurationsAssociatedWithVirtualWanListInput =
@@ -39846,6 +40130,7 @@ export const VpnServerConfigurationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VpnServerConfigurationsCreateOrUpdateInput =
@@ -39888,6 +40173,7 @@ export const VpnServerConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VpnServerConfigurationsDeleteInput =
@@ -40268,6 +40554,7 @@ export const VpnSitesConfigurationDownloadInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VpnSitesConfigurationDownloadInput =
@@ -40400,6 +40687,7 @@ export const VpnSitesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VpnSitesCreateOrUpdateInput =
@@ -40442,6 +40730,7 @@ export const VpnSitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VpnSitesDeleteInput = typeof VpnSitesDeleteInput.Type;
@@ -41021,6 +41310,7 @@ export const WebApplicationFirewallPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebApplicationFirewallPoliciesDeleteInput =

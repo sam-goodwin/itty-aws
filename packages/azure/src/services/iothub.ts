@@ -299,6 +299,7 @@ export const IotHubManualFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/failover",
       apiVersion: "2023-06-30",
+      longRunning: {},
     }),
   );
 export type IotHubManualFailoverInput = typeof IotHubManualFailoverInput.Type;
@@ -774,6 +775,7 @@ export const IotHubResourceCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
       apiVersion: "2023-06-30",
+      longRunning: {},
     }),
   );
 export type IotHubResourceCreateOrUpdateInput =
@@ -811,6 +813,7 @@ export const IotHubResourceDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
       apiVersion: "2023-06-30",
+      longRunning: {},
     }),
   );
 export type IotHubResourceDeleteInput = typeof IotHubResourceDeleteInput.Type;
@@ -1859,6 +1862,7 @@ export const IotHubResourceUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
       apiVersion: "2023-06-30",
+      longRunning: {},
     }),
   );
 export type IotHubResourceUpdateInput = typeof IotHubResourceUpdateInput.Type;
@@ -1937,6 +1941,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-06-30",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -2110,6 +2115,7 @@ export const PrivateEndpointConnectionsUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-06-30",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsUpdateInput =

@@ -1150,6 +1150,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
     apiVersion: "2025-08-02",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;

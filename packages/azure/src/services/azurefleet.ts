@@ -1605,6 +1605,7 @@ export const FleetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FleetsCreateOrUpdateInput = typeof FleetsCreateOrUpdateInput.Type;
@@ -1657,6 +1658,7 @@ export const FleetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}",
     apiVersion: "2024-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FleetsDeleteInput = typeof FleetsDeleteInput.Type;
@@ -3492,6 +3494,7 @@ export const FleetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}",
     apiVersion: "2024-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FleetsUpdateInput = typeof FleetsUpdateInput.Type;

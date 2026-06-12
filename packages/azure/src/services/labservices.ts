@@ -241,6 +241,7 @@ export const LabPlansCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
       apiVersion: "2023-06-07",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type LabPlansCreateOrUpdateInput =
@@ -276,6 +277,7 @@ export const LabPlansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LabPlansDeleteInput = typeof LabPlansDeleteInput.Type;
@@ -417,6 +419,7 @@ export const LabPlansSaveImageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/saveImage",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LabPlansSaveImageInput = typeof LabPlansSaveImageInput.Type;
@@ -502,6 +505,7 @@ export const LabPlansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LabPlansUpdateInput = typeof LabPlansUpdateInput.Type;
@@ -644,6 +648,7 @@ export const LabsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
       apiVersion: "2023-06-07",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type LabsCreateOrUpdateInput = typeof LabsCreateOrUpdateInput.Type;
@@ -675,6 +680,7 @@ export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LabsDeleteInput = typeof LabsDeleteInput.Type;
@@ -811,6 +817,7 @@ export const LabsPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/publish",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LabsPublishInput = typeof LabsPublishInput.Type;
@@ -837,6 +844,7 @@ export const LabsSyncGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/syncGroup",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LabsSyncGroupInput = typeof LabsSyncGroupInput.Type;
@@ -961,6 +969,7 @@ export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LabsUpdateInput = typeof LabsUpdateInput.Type;
@@ -1186,6 +1195,7 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
@@ -1476,6 +1486,7 @@ export const UsersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
       apiVersion: "2023-06-07",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
@@ -1507,6 +1518,7 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
@@ -1561,6 +1573,7 @@ export const UsersInviteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}/invite",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UsersInviteInput = typeof UsersInviteInput.Type;
@@ -1628,6 +1641,7 @@ export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
     apiVersion: "2023-06-07",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UsersUpdateInput = typeof UsersUpdateInput.Type;
@@ -1728,6 +1742,7 @@ export const VirtualMachinesRedeployInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/redeploy",
       apiVersion: "2023-06-07",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesRedeployInput =
@@ -1758,6 +1773,7 @@ export const VirtualMachinesReimageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/reimage",
       apiVersion: "2023-06-07",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesReimageInput =
@@ -1791,6 +1807,7 @@ export const VirtualMachinesResetPasswordInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/resetPassword",
       apiVersion: "2023-06-07",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesResetPasswordInput =
@@ -1820,6 +1837,7 @@ export const VirtualMachinesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/start",
       apiVersion: "2023-06-07",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -1848,6 +1866,7 @@ export const VirtualMachinesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/stop",
       apiVersion: "2023-06-07",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;

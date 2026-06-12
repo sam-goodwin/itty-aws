@@ -43,6 +43,7 @@ export const AssociationsInterfaceCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AssociationsInterfaceCreateOrUpdateInput =
@@ -99,6 +100,7 @@ export const AssociationsInterfaceDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AssociationsInterfaceDeleteInput =
@@ -350,6 +352,7 @@ export const FrontendsInterfaceCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FrontendsInterfaceCreateOrUpdateInput =
@@ -406,6 +409,7 @@ export const FrontendsInterfaceDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FrontendsInterfaceDeleteInput =
@@ -699,6 +703,7 @@ export const SecurityPoliciesInterfaceCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SecurityPoliciesInterfaceCreateOrUpdateInput =
@@ -755,6 +760,7 @@ export const SecurityPoliciesInterfaceDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecurityPoliciesInterfaceDeleteInput =
@@ -1031,6 +1037,7 @@ export const TrafficControllerInterfaceCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TrafficControllerInterfaceCreateOrUpdateInput =
@@ -1085,6 +1092,7 @@ export const TrafficControllerInterfaceDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
       apiVersion: "2025-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TrafficControllerInterfaceDeleteInput =

@@ -1221,6 +1221,7 @@ export const OperationResultsGetInput =
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/operationresults/{operationResultId}",
       apiVersion: "2022-09-15",
+      longRunning: {},
     }),
   );
 export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;

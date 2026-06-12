@@ -442,6 +442,7 @@ export const ManagementGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagementGroupsCreateOrUpdateInput =
@@ -494,6 +495,7 @@ export const ManagementGroupsDeleteInput =
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagementGroupsDeleteInput =

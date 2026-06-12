@@ -56,6 +56,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/privateLinks/{privateLinkName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -111,6 +112,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/privateLinks/{privateLinkName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -475,6 +477,7 @@ export const PrivateLinksCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/privateLinks/{privateLinkName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateLinksCreateInput = typeof PrivateLinksCreateInput.Type;
@@ -524,6 +527,7 @@ export const PrivateLinksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/privateLinks/{privateLinkName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateLinksDeleteInput = typeof PrivateLinksDeleteInput.Type;

@@ -200,6 +200,7 @@ export const DigitalTwinsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
       apiVersion: "2023-01-31",
+      longRunning: {},
     }),
   );
 export type DigitalTwinsCreateOrUpdateInput =
@@ -279,6 +280,7 @@ export const DigitalTwinsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
       apiVersion: "2023-01-31",
+      longRunning: {},
     }),
   );
 export type DigitalTwinsDeleteInput = typeof DigitalTwinsDeleteInput.Type;
@@ -411,6 +413,7 @@ export const DigitalTwinsEndpointCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
       apiVersion: "2023-01-31",
+      longRunning: {},
     }),
   );
 export type DigitalTwinsEndpointCreateOrUpdateInput =
@@ -460,6 +463,7 @@ export const DigitalTwinsEndpointDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
       apiVersion: "2023-01-31",
+      longRunning: {},
     }),
   );
 export type DigitalTwinsEndpointDeleteInput =
@@ -927,6 +931,7 @@ export const DigitalTwinsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
       apiVersion: "2023-01-31",
+      longRunning: {},
     }),
   );
 export type DigitalTwinsUpdateInput = typeof DigitalTwinsUpdateInput.Type;
@@ -1095,6 +1100,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-01-31",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1169,6 +1175,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-01-31",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1496,6 +1503,7 @@ export const TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}",
       apiVersion: "2023-01-31",
+      longRunning: {},
     }),
   );
 export type TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
@@ -1545,6 +1553,7 @@ export const TimeSeriesDatabaseConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}",
       apiVersion: "2023-01-31",
+      longRunning: {},
     }),
   );
 export type TimeSeriesDatabaseConnectionsDeleteInput =

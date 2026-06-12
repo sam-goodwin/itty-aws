@@ -380,6 +380,7 @@ export const HealthValidationsStartValidationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations/{healthValidationName}/startValidation",
       apiVersion: "2025-01-02",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HealthValidationsStartValidationInput =
@@ -498,6 +499,7 @@ export const SharedPrivateLinkResourcesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2025-01-02",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SharedPrivateLinkResourcesCreateInput =
@@ -554,6 +556,7 @@ export const SharedPrivateLinkResourcesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2025-01-02",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SharedPrivateLinkResourcesDeleteInput =
@@ -992,6 +995,7 @@ export const WatchersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
       apiVersion: "2025-01-02",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WatchersCreateOrUpdateInput =
@@ -1046,6 +1050,7 @@ export const WatchersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
     apiVersion: "2025-01-02",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WatchersDeleteInput = typeof WatchersDeleteInput.Type;
@@ -1260,6 +1265,7 @@ export const WatchersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/start",
     apiVersion: "2025-01-02",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type WatchersStartInput = typeof WatchersStartInput.Type;
@@ -1309,6 +1315,7 @@ export const WatchersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/stop",
     apiVersion: "2025-01-02",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type WatchersStopInput = typeof WatchersStopInput.Type;
@@ -1398,6 +1405,7 @@ export const WatchersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
     apiVersion: "2025-01-02",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WatchersUpdateInput = typeof WatchersUpdateInput.Type;
